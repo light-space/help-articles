@@ -54,9 +54,6 @@ Configure reimbursement preferences:
 1. Open the employee's profile
 2. Navigate to **Reimbursement Settings**
 3. Set:
-   - **Preferred Payment Method**: Direct deposit, check, etc.
-   - **Minimum Reimbursement**: Only pay if amount exceeds threshold
-   - **Reimbursement Schedule**: How often to pay (weekly, monthly, etc.)
    - **Default Cost Center**: Default GL account for expenses
 
 4. Click **Save**
