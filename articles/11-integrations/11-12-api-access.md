@@ -1,319 +1,237 @@
 # API Access and Custom Integrations
 
-For integrations beyond Light's pre-built connectors, Light provides a comprehensive REST API enabling custom integrations with any system. The API allows reading and writing transactions, accessing reports, and automating accounting workflows.
+For integrations beyond Light's pre-built connectors, Light provides a REST API enabling custom integrations with any system. The API allows creating and managing transactions, accessing financial data, and automating accounting workflows.
 
-[Open in Light →](https://app.light.inc/settings/integrations)
+[Open API documentation →](https://docs.light.inc)
 
 ## API overview
 
-Light's API provides:
+The Light API is organized around REST and uses standard HTTP response codes, authentication, and verbs. Most endpoints accept and return JSON-encoded data in **camelCase** format. The base URL for all API requests is:
 
-- **Transaction creation**: Create AP, AR, JE, FX documents programmatically
-- **Transaction queries**: Search and retrieve transactions by criteria
-- **Report access**: Retrieve financial reports (balance sheet, P&L, trial balance)
-- **Master data**: Access and update customers, vendors, employees, chart of accounts
-- **Batch operations**: Create multiple transactions in a single API call
-- **Webhooks**: Receive real-time notifications of accounting events
+```
+https://api.light.inc
+```
 
-This enables unlimited custom integrations.
+Some fields use enumerated (enum) values to represent specific states or types. While these enums are documented, they are not guaranteed to be exhaustive — new enum values may be introduced over time. To maintain forward compatibility, always handle unexpected or unknown enum values gracefully rather than relying on exhaustive matching.
 
-## API authentication
+## Available API resources
 
-Light uses OAuth for API authentication:
+The API provides endpoints for managing the following resources:
 
-1. Create API credentials in **Settings (gear icon) > API > Credentials**
-2. Generate API key and secret
-3. Store credentials securely (never commit to code)
-4. Use credentials to authenticate API requests
+- **Accounting Documents** — List and query all accounting documents across types
+- **Attachments** — Upload, list, and manage document attachments
+- **Authorization** — OAuth 2.0 token management
+- **Bank Accounts** — Access bank account data
+- **Card Transactions** — List, post, and update card transactions and receipts
+- **Cards** — Create, freeze, unfreeze, and manage corporate cards
+- **Companies** — Access company configuration (e.g., currency settings)
+- **Contracts** — Create, publish, renew, terminate, and manage contracts
+- **Credit Notes** — Create, list, and link credit notes to invoice payables
+- **Custom Properties** — Access custom property groups
+- **Customer Credits** — Manage customer credit documents
+- **Customers** — Create, list, activate, and archive customers
+- **Expenses** — List expenses and submit reimbursements
+- **Invoice Approvals** — Retrieve invoice approval status
+- **Invoice Payables** — Create, approve, decline, and manage bills and their line items
+- **Invoices** — Create, update, open, reset, and send sales invoices
+- **Journal Entries** — Create journal entries programmatically
+- **Ledger Transactions** — Query ledger transaction lines
+- **Ledger Accounts** — List the chart of accounts
+- **Products** — Manage product catalog
+- **Purchase Orders** — Create, close, cancel, and manage purchase orders and lines
+- **User Comments** — Create, list, and manage comments on records
+- **Users** — List users, manage reimbursement configuration
+- **Vendors** — Create, list, update, and manage vendors
 
-OAuth is industry standard and secure.
+For full endpoint details, see the [API Reference](https://docs.light.inc) (click "API Reference" in the top navigation).
 
-> Security: Never expose API credentials. Use environment variables, secure vaults, or managed secrets services.
+## Authentication
+
+You can authenticate to the Light API using **API keys** or **OAuth 2.0**.
+
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail. Make sure your HTTP client follows redirects and forwards the `Authorization` header, as some endpoints may redirect to other URLs.
+
+### API keys
+
+To create an API key:
+
+1. Log in to Light and navigate to **Settings > API Keys**
+2. Click **Create Key**
+3. Copy and securely store the generated API key — it will not be shown again
+
+Light API keys are linked to roles the same way user accounts are. The roles assigned to the API key determine what actions the key can perform.
+
+To authenticate with an API key, include the `Authorization` header using **Basic** authentication:
+
+```
+Authorization: Basic YOUR_API_KEY
+```
+
+> **Security**: Never expose API keys in client-side code, public repositories, or shared documents. Use environment variables or a secrets manager.
+
+### OAuth 2.0
+
+For integrations that act on behalf of users, Light supports the OAuth 2.0 authorization code flow:
+
+1. Contact Light support at **support@light.inc** to set up your account for OAuth 2.0
+2. You'll receive a `client_id` and `client_secret`, and provide Light with your redirect URI
+3. Initiate the flow by directing users to:
+
+```
+https://api.light.inc/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI
+```
+
+4. After authorization, exchange the authorization code for an access token:
+
+```
+curl -X POST https://api.light.inc/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
+```
+
+5. Use the returned access token in subsequent requests:
+
+```
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+The response also includes a `refresh_token` and `expires_in` value. When the access token expires, refresh it:
+
+```
+curl -X POST https://api.light.inc/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=refresh_token&refresh_token=YOUR_REFRESH_TOKEN&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
+```
+
+Store your tokens securely and update the refresh token after each refresh, as the old one is invalidated.
+
+For a full implementation example (Node.js/Express), see the [OAuth Callback example](https://docs.light.inc/examples/oauth-callback) in the API documentation.
 
 ## Creating transactions via API
 
-Common use case: Create AR invoices from external system
+A common use case is creating invoice payables (bills) from an external system.
 
-**Example**: Your e-commerce platform wants to create invoices in Light
-
-```
-POST /api/v1/accounting/invoices
-Content-Type: application/json
-Authorization: Bearer [API_TOKEN]
-
-{
-  "customerName": "Acme Corp",
-  "amount": 10000,
-  "currency": "USD",
-  "postingDate": "2025-02-07",
-  "lineItems": [
-    {
-      "description": "Product A",
-      "quantity": 10,
-      "unitPrice": 1000,
-      "ledgerAccountId": "[UUID]"
-    }
-  ]
-}
-```
-
-Light creates the invoice and returns its ID, ready for posting.
-
-## Querying transactions
-
-Retrieve existing transactions from Light:
-
-**Example**: Get all invoices for a customer
+**Example**: Create a bill in Light from your procurement system
 
 ```
-GET /api/v1/accounting/invoices?customer=Acme&status=POSTED
-Authorization: Bearer [API_TOKEN]
+curl -X POST https://api.light.inc/v1/invoice-payables \
+  -H "Authorization: Basic YOUR_API_KEY" \
+  -H "Content-Type: application/json;charset=UTF-8" \
+  -d '{
+    "vendorId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+    "amount": 100000,
+    "currency": "USD"
+  }'
 ```
 
-Light returns array of matching invoices with full detail.
+Note that amounts are specified in **cents** (e.g., 100000 = $1,000.00). Light creates the invoice payable and returns its ID and metadata.
 
-## Accessing financial data
+You can also create sales invoices, journal entries, purchase orders, and other document types through their respective endpoints.
 
-Retrieve reports and GL data:
+## Querying data
 
-**Example**: Get balance sheet as of date
+Retrieve existing records using GET endpoints with sorting, filtering, and pagination:
 
-```
-GET /api/v1/reporting/balance-sheet?asOfDate=2025-01-31
-Authorization: Bearer [API_TOKEN]
-```
-
-Light returns balance sheet data in structured format.
-
-## Batch operations
-
-Create multiple transactions efficiently:
-
-**Example**: Post 100 customer payments at once
+**Example**: List accounting documents sorted by date
 
 ```
-POST /api/v1/accounting/batch
-Content-Type: application/json
-Authorization: Bearer [API_TOKEN]
-
-{
-  "operations": [
-    { "type": "create_receipt", "data": {...} },
-    { "type": "create_receipt", "data": {...} },
-    ...
-  ]
-}
+curl -X GET "https://api.light.inc/v1/accounting-documents/accounting-documents?sort=documentDate:desc&limit=50" \
+  -H "Authorization: Basic YOUR_API_KEY"
 ```
 
-Light processes in batch, faster than individual requests.
+### Sorting
 
-## Webhooks for real-time events
+Sort using the format `field:direction`. Separate multiple sort fields with commas.
 
-Receive notifications of accounting events:
+Available directions: `asc`, `desc`
 
-1. Navigate to **Settings (gear icon) > API > Webhooks**
-2. Configure webhook endpoint (your API receiving Light events)
-3. Select events you want to be notified of:
-   - Invoice created
-   - Invoice posted
-   - Payment received
-   - Report generated
-4. When event occurs, Light sends POST to your endpoint
+Example: `sort=amount:desc,createdAt:asc`
 
-This enables real-time reaction to accounting events.
+### Filtering
 
-**Example webhook payload**:
+Filter using the format `field:operator:value`. Separate multiple filters with commas.
 
-```json
-{
-  "eventType": "invoice.posted",
-  "timestamp": "2025-02-07T10:30:00Z",
-  "data": {
-    "invoiceId": "[UUID]",
-    "customer": "Acme Corp",
-    "amount": 10000,
-    "status": "POSTED"
-  }
-}
-```
+Available operators: `eq`, `ne`, `in`, `not_in`, `gt`, `gte`, `lt`, `lte`
 
-Your system receives this and can take immediate action.
+For `in` and `not_in` operators, separate multiple values with the pipe character (`|`).
 
-## Rate limiting
+Example: `filter=state:in:IN_DRAFT|SCHEDULED|PAID,amount:gte:500,vendorId:ne:null`
 
-Light API has rate limits to prevent abuse:
+### Pagination
 
-- **10,000 requests per hour** per API key
-- **100 requests per minute** burst limit
-- Exceeding limit returns 429 (Too Many Requests)
-- Implement exponential backoff when rate limited
+Results are paginated. Use the `limit` parameter to control page size (default: 50, maximum: 200). For cursor-based pagination, provide `0` as the cursor for the initial request.
 
-Check rate limit headers in API responses.
+## Rate limits
+
+The Light API enforces two rate limits:
+
+- **300 requests per minute** per API key or OAuth token (applied individually to each user in your organization)
+- **100,000 requests per day** per organization (resets at midnight UTC, shared across all users)
+
+Exceeding a limit returns a `429 Too Many Requests` response with these headers:
+
+- `X-RateLimit-Limit` — Maximum capacity
+- `X-RateLimit-Remaining` — Remaining capacity
+- `X-RateLimit-Reset` — Unix timestamp when the limit resets
+- `Retry-After` — Recommended seconds to wait before retrying
+
+Best practices for staying within limits: monitor `X-RateLimit-Remaining` before large operations, implement exponential backoff on retries, respect the `Retry-After` header, and spread scheduled jobs across different times.
+
+If your use case requires higher limits, contact Light support at **support@light.inc**.
 
 ## Error handling
 
-API returns standard HTTP status codes:
+The API returns standard HTTP status codes:
 
-- **200 OK**: Request successful
-- **400 Bad Request**: Invalid request (malformed data)
-- **401 Unauthorized**: API credentials invalid or missing
-- **403 Forbidden**: Insufficient permissions
-- **404 Not Found**: Resource not found
-- **429 Too Many Requests**: Rate limit exceeded
-- **500 Internal Server Error**: Light error (rare)
-
-Include error handling in your integration.
+- **200 OK** — Request successful
+- **400 Bad Request** — Invalid request (malformed data or missing required fields)
+- **401 Unauthorized** — API credentials invalid or missing
+- **403 Forbidden** — Insufficient permissions for the requested action
+- **404 Not Found** — Resource not found
+- **429 Too Many Requests** — Rate limit exceeded (check `Retry-After` header)
+- **500 Internal Server Error** — Server error (contact Light support with request details)
 
 ## Custom integration examples
 
-**Example 1: Project management to timesheet to invoicing**
+**Example 1: Procurement system to AP automation**
 
-1. Project management system tracks project hours
-2. API reads completed project hours
-3. Aggregates hours by customer
-4. Creates AR invoice with line items by project
-5. Posts invoice to GL
+1. Procurement system approves a purchase
+2. API creates an invoice payable via `POST /v1/invoice-payables` with vendor ID and amount
+3. API adds line items via `POST /v1/invoice-payables/{id}/line-items`
+4. Approval workflow triggers via `POST /v1/invoice-payables/{id}/approve`
+5. Invoice enters Light's standard payment processing
 
-This automates invoice creation from project data.
+**Example 2: CRM to invoicing**
 
-**Example 2: Accounting software migration**
+1. CRM closes a deal and records the customer
+2. API creates a customer via `POST /v1/customers` (or looks up existing via `GET /v1/customers`)
+3. API creates an invoice via `POST /v1/invoices` with customer and line items
+4. API opens the invoice via `POST /v1/invoices/{id}/open`
+5. API sends the invoice email via `POST /v1/invoices/{id}/send-email`
 
-1. Old accounting system exports GL and transactions
-2. Custom script uses Light API to recreate chart of accounts
-3. Script recreates historical transactions
-4. Script posts opening balances
-5. Migration complete, old system retired
+**Example 3: Financial reporting dashboard**
 
-This enables data migration to Light.
+1. Dashboard queries ledger accounts via `GET /v1/ledger-accounts`
+2. Retrieves transaction lines via `GET /v1/ledger-transactions/lines` with date filters
+3. Aggregates data for custom visualizations
+4. Refreshes on a schedule, respecting rate limits
 
-**Example 3: Real-time expense alerts**
+## Troubleshooting
 
-1. Expense management system processes expenses
-2. Expenses sync to Light via API
-3. Light webhook notifies management system of posting
-4. Alert triggered if expense violates policy
-5. Manager approves or rejects in real-time
+**401 Unauthorized**: Verify your API key is correct and hasn't been revoked. Check that the `Authorization` header uses `Basic` scheme (for API keys) or `Bearer` scheme (for OAuth tokens).
 
-This creates real-time expense controls.
+**400 Bad Request**: Verify request JSON is valid and all required fields are provided. Check that amounts are in cents (integer) and IDs are valid UUIDs.
 
-## API documentation
+**403 Forbidden**: The API key's assigned role may not have permission for this action. Check role permissions in Settings > API Keys.
 
-Comprehensive API documentation is available at:
+**429 Too Many Requests**: Implement exponential backoff and check the `Retry-After` header. Consider spreading requests over time.
 
-`https://docs.light.com/api/`
+**Redirect issues**: Ensure your HTTP client follows redirects and forwards the `Authorization` header to redirected URLs.
 
-Documentation includes:
+## API documentation and support
 
-- Full endpoint reference
-- Request/response examples
-- Error codes and meanings
-- Authentication methods
-- Rate limiting policies
-- SDK availability (JavaScript, Python, Go)
-
-## SDKs and client libraries
-
-Light provides SDKs to simplify integration:
-
-**Official SDKs**:
-- JavaScript/Node.js
-- Python
-- Go
-- Java
-
-**Community SDKs**:
-- C#/.NET
-- Ruby
-- PHP
-
-Use SDKs to reduce boilerplate and handle authentication automatically.
-
-## API access control
-
-Control who can access the API:
-
-1. Navigate to **Settings (gear icon) > API > Access Control**
-2. Create API credentials for each integration
-3. Assign permissions:
-   - Read-only (can't create/modify)
-   - Read/Write (can create and modify)
-   - Webhook-only (can only receive events)
-4. Revoke credentials for old integrations
-5. Monitor API usage by credential
-
-This maintains security and auditability.
-
-## Testing API integration
-
-Before going live:
-
-1. Use Light's test/sandbox environment
-2. Create test data
-3. Test API requests
-4. Verify data appears correctly in Light
-5. Test error scenarios
-6. Once confident, move to production
-
-This prevents production data issues.
-
-## Monitoring API performance
-
-Track API usage:
-
-1. Navigate to **Settings (gear icon) > API > Usage Analytics**
-2. View:
-   - Number of API calls (by endpoint, by credential)
-   - Average response time
-   - Error rates
-   - Peak usage times
-3. Optimize based on patterns
-
-This helps identify bottlenecks or errors.
-
-## API rate limiting and optimization
-
-When integrating large data volumes:
-
-1. Use batch operations (100-1000 records per batch)
-2. Schedule heavy operations during off-peak times
-3. Implement caching to avoid redundant queries
-4. Use filtering to retrieve only necessary data
-5. Monitor rate limit headers to stay within limits
-
-This ensures smooth integration performance.
-
-## Webhook security
-
-Secure your webhook endpoints:
-
-1. Use HTTPS only (no HTTP)
-2. Validate webhook signature (Light includes signature header)
-3. Implement request timeout (if slow processing needed, queue asynchronously)
-4. Log all webhooks for audit trail
-5. Test webhook delivery (Light provides test webhook feature)
-
-This prevents unauthorized webhook calls.
-
-## Troubleshooting API issues
-
-**Connection refused**: Verify API endpoint URL is correct, check firewall allows outbound connections.
-
-**401 Unauthorized**: Verify API credentials are correct, check if credentials have been revoked.
-
-**400 Bad Request**: Verify request JSON is valid, check required fields are provided.
-
-**429 Too Many Requests**: Implement exponential backoff, reduce request frequency.
-
-**500 Internal Server Error**: Contact Light support with request details.
-
-## API support and resources
-
-For help with API integration:
-
-- **API documentation**: https://docs.light.com/api/
-- **Community forum**: https://community.light.com/api-integrations
-- **Support ticket**: Create support request in Light
-- **Office hours**: Weekly developer office hours (timezone rotating)
+- **Full API reference**: [docs.light.inc](https://docs.light.inc) — includes endpoint details, request/response schemas, and code examples
+- **Support**: Contact **support@light.inc** for API integration help or to request OAuth 2.0 setup or higher rate limits
 
 ## Related articles
 
