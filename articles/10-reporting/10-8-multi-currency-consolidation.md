@@ -8,7 +8,7 @@ When your organization operates in multiple currencies through subsidiary compan
 
 Consolidation of foreign subsidiaries involves:
 
-1. **Translate subsidiary P&L accounts**: Revenue, expense, COGS → average period exchange rates
+1. **Translate subsidiary P&L accounts**: Revenue, expense, COGS → actual daily exchange rates
 2. **Translate subsidiary balance sheet accounts**: Assets, liabilities → period-end exchange rates
 3. **Translate subsidiary equity**: Opening balance at historical rates, add translated profit, deduct dividends
 4. **Record translation differences**: Differences from rate changes → other comprehensive income (OCI)
@@ -43,7 +43,7 @@ Light supports two translation methods:
 - Current assets and liabilities: Period-end rate
 - Non-current assets and liabilities: Historical rate
 - Equity: Historical rates
-- P&L: Average rates
+- P&L: Actual daily rates
 - Translation differences to retained earnings
 
 Less common under IFRS, but required in some jurisdictions.
@@ -52,29 +52,18 @@ Less common under IFRS, but required in some jurisdictions.
 - Assets/liabilities recorded at fair value: Period-end rate
 - Assets/liabilities at historical cost: Historical rate
 - Equity: Historical rates
-- P&L: Average rates
+- P&L: Actual daily rates
 - Translation differences to other comprehensive income
 
 Light defaults to temporal method, which is IFRS-compliant.
 
 ## Choosing exchange rates
 
-**Average rate** (for P&L): Calculate average exchange rate for the entire period.
-
-- Sum daily rates for the month
-- Divide by number of days
-- Apply to revenue, expense, COGS accounts
-
-Light can use:
-- Monthly average
-- Quarterly average
-- Annual average
+**Actual daily rates** (for P&L): Light uses the actual exchange rate on the date each transaction was posted, not period averages. This provides more accurate translation because each revenue or expense line is converted at the rate that applied on the day it occurred.
 
 **Period-end rate** (for balance sheet): Spot exchange rate on the last day of the period.
 
-Configure your rate source in consolidation settings.
-
-> Tip: Some companies use a published rate (e.g., ECB average) for consistency and auditability. Others use their internal rates.
+> Good to know: Many accounting systems use average rates for P&L translation. Light uses actual daily rates instead, which gives a more precise result — especially when exchange rates move significantly within a period.
 
 ## Recording translation differences
 
@@ -112,8 +101,8 @@ Example: UK subsidiary (GBP) sells to German subsidiary (EUR).
 1. UK entity: Record sale in GBP (e.g., GBP 100,000)
 2. German entity: Record purchase in EUR (translate to EUR using transaction-date rate)
 3. In consolidation:
-   - Translate UK sale to USD using average rate
-   - Translate German purchase to USD using average rate
+   - Translate UK sale to USD using actual daily rate
+   - Translate German purchase to USD using actual daily rate
    - Eliminate the corresponding amounts
 
 Light links inter-company transactions across currencies and eliminates them correctly.
