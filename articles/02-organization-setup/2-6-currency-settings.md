@@ -59,12 +59,12 @@ Light automatically fetches exchange rates from configured sources:
 1. Go to **Settings (gear icon) → Currency settings** or **Organization settings**
 2. Click **Exchange Rate Configuration**
 3. Select your **Rate Source**:
-   - **ECB (European Central Bank)**: Daily rates for EUR and cross-rates
+   - **ECB (European Central Bank)**: Daily rates covering all major currency pairs (default)
    - **Manual**: Upload rates yourself via CSV
    - **API Integration**: Real-time rates from financial data providers
 4. Click **Save Configuration**
 
-ECB rates are updated daily and cover EUR pairs with most major currencies. If using manual rates, upload a CSV file with date, from-currency, to-currency, and rate columns.
+ECB rates are the default exchange rate source in Light. They are updated daily and cover all major currency pairs — not just EUR-based pairs. Light uses ECB cross-rates to derive conversions between any two supported currencies. If using manual rates, upload a CSV file with date, from-currency, to-currency, and rate columns.
 
 ## Managing exchange rates
 
@@ -99,7 +99,7 @@ For multi-entity transactions, each entity uses its local currency; Light tracks
 
 ## Best practices
 
-Keep group currency consistent for reliable consolidation. Select exchange rate sources matching your needs (ECB for EUR operations). Verify rate accuracy before large transactions. Execute FX revaluation at every period close. Use multi-currency GL accounts for foreign currency balances. Document conversion policies. Test before going live and archive rates for audit purposes.
+Keep group currency consistent for reliable consolidation. ECB daily rates work well as the default for most organizations. Verify rate accuracy before large transactions. Execute FX revaluation at every period close. Use multi-currency GL accounts for foreign currency balances. Document conversion policies. Test before going live and archive rates for audit purposes.
 
 ## Related articles
 
