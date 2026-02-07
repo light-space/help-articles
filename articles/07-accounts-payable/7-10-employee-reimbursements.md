@@ -17,25 +17,24 @@ Common reimbursable expenses:
 
 ## Setting Up Employees for Reimbursement
 
-### Creating Employee Vendors
+### Adding Employees
 
-Employees need to be set up as "User" type vendors in Light:
+Employees are set up as users in Light:
 
-1. Navigate to **Vendors**
-2. Click **Create Vendor**
-3. Select **Vendor Type**: User
-4. Enter:
+1. Navigate to **Users** ([Open in Light →](https://app.light.inc/users))
+2. Click **+ Create user**
+3. Enter:
    - **Employee Name**
    - **Email**: Employee email address
-   - **Currency**: Currency for reimbursements (usually company currency)
+   - **Role**: Assign the reimbursement role for the employee to be able to file reimbursements
 
-5. Click **Create**
+4. Click **Create**
 
 ### Employee Banking Information
 
 Add banking details for reimbursement payments:
 
-1. Open the employee vendor
+1. Open the employee's profile
 2. Navigate to **Banking Details**
 3. Enter:
    - **Bank Name** and **Country**
@@ -52,12 +51,9 @@ Light uses this to automatically pay reimbursements.
 
 Configure reimbursement preferences:
 
-1. Open the employee vendor
+1. Open the employee's profile
 2. Navigate to **Reimbursement Settings**
 3. Set:
-   - **Preferred Payment Method**: Direct deposit, check, etc.
-   - **Minimum Reimbursement**: Only pay if amount exceeds threshold
-   - **Reimbursement Schedule**: How often to pay (weekly, monthly, etc.)
    - **Default Cost Center**: Default GL account for expenses
 
 4. Click **Save**
@@ -137,8 +133,8 @@ Once approved, create bills for accounting:
 1. Navigate to **Reimbursements** > **Approved**
 2. Select reimbursements to process
 3. Click **Create Reimbursement Bills**
-4. Light creates bills in AP for each employee:
-   - Vendor: Employee
+4. Light creates reimbursement records for each employee:
+   - Employee: Name from user profile
    - Amount: Total approved expenses
    - Line items: Expense categories from submitted receipts
    - GL accounts: Posted to appropriate accounts
