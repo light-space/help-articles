@@ -64,7 +64,7 @@ Light automatically fetches exchange rates from configured sources:
    - **API Integration**: Real-time rates from financial data providers
 4. Click **Save Configuration**
 
-ECB rates are the default exchange rate source in Light. They are updated daily and cover all major currency pairs — not just EUR-based pairs. Light uses ECB cross-rates to derive conversions between any two supported currencies. If using manual rates, upload a CSV file with date, from-currency, to-currency, and rate columns.
+ECB rates are the default exchange rate source in Light. They are updated daily and cover all major currency pairs. Light uses ECB cross-rates to derive conversions between any two supported currencies. If using manual rates, upload a CSV file with date, from-currency, to-currency, and rate columns.
 
 ## Managing exchange rates
 
