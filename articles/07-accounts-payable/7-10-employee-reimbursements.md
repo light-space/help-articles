@@ -26,7 +26,7 @@ Employees are set up as users in Light:
 3. Enter:
    - **Employee Name**
    - **Email**: Employee email address
-   - **Role**: Assign appropriate role
+   - **Role**: Assign the reimbursement role for the employee to be able to file reimbursements
 
 4. Click **Create**
 
