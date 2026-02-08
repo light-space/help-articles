@@ -29,7 +29,7 @@ When you submit an expense and it gets approved, Light needs to know where to se
 3. Double-check that everything is correct—Light will use this to deposit your reimbursements
 4. Click "Save"
 
-**Don't worry about security:** Your banking details are encrypted and stored securely. Light only uses this information to send you money, never to withdraw from your account.
+**Security:** Your banking details are encrypted and stored securely and is only used to send you money.
 
 ## Notification Preferences
 
