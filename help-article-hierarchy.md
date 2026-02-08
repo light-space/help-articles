@@ -1,6 +1,6 @@
 # Light Help Center — Article Hierarchy
 
-> Complete article index for the Light help center, covering both admin and employee audiences.
+> Article index for the Light help center, covering both admin and employee audiences.
 
 ---
 
