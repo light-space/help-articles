@@ -4,22 +4,12 @@ Vendor management in Light is the foundation of AP. This article covers creating
 
 [Open in Light →](https://app.light.inc/vendors)
 
-## Understanding Vendor Types
-
-Light supports two vendor types:
-
-- **External Vendors**: Third-party suppliers, contractors, service providers, and equipment vendors
-- **User Vendors**: Employees used for reimbursement tracking and expense advances
-
-The vendor type affects how they're used in the system (bills vs. expense reimbursements).
-
 ## Creating a Vendor
 
 1. Navigate to **Spend management → Vendors**
 2. Click **+ Create vendor**
 3. Enter required information:
    - **Vendor Name**: Company or individual name
-   - **Vendor Type**: External or User
    - **Email**: Primary contact email
    - **Vendor Status**: Active or Inactive
 
