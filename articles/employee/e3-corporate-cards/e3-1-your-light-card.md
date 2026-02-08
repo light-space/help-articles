@@ -6,7 +6,7 @@ Your Light corporate card is a convenient way to pay for work expenses directly.
 
 ## Activating Your Card
 
-When you first receive your physical Light card, you'll need to activate it before you can use it. Open the Light app, go to **Cards**, and follow the activation steps. You'll verify your card details and set up any additional security preferences.
+When you first receive your Light card, you'll need to activate it before you can use it. Open the Light app, go to **Cards**, and follow the activation steps. You'll verify your card details and set up any additional security preferences.
 
 ## Viewing Your Card Details
 
