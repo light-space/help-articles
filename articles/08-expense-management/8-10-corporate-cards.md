@@ -1,88 +1,76 @@
 # Issuing and Managing Corporate Cards
 
-Light corporate cards provide employees with virtual payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
+Light corporate cards provide employees and vendors with virtual payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
 
 [Open in Light →](https://app.light.inc/cards)
 
-## Card Program Management
+## Cards Page Overview
 
-### Setting Up Card Program
+The Cards page has three tabs:
 
-1. Navigate to **Settings (gear icon)** > **Card Program**
-2. Configure:
-   - **Card Provider**: Light, Visa, or other partner
-   - **Card Type**: Credit, Debit, or Prepaid
-   - **Spending Limits**: Default per-card and per-employee limits
-   - **Merchant Blocks**: Categories not allowed (gambling, nightclubs, etc.)
-   - **Approval Required**: If spending requires manager approval first
+- [**Transactions**](https://app.light.inc/cards?tab=transactions): View all card transactions with Date, Merchant, Ledger account, Amount, and Tax code. Filter by status and search by keyword.
+- [**Cards**](https://app.light.inc/cards?tab=cards): View all issued cards with Owner, Vendor, Type, Card, and Description columns.
+- [**Accounts**](https://app.light.inc/cards?tab=accounts): View card accounts with Account number, Account name, Currency, Entity, and Cards connected.
 
-3. Click **Save**
+## Creating Cards
 
-### Assigning Cards to Employees
+To create a new card, click **+ Create card** from the Cards page. Light supports two card types:
 
-Assign cards to employees:
+### Employee Cards
 
-1. Navigate to **Spend management → Cards → Issue Card**
-2. Select **Employee** from list
-3. Set card details:
-   - **Card Limit**: Limit on this card (e.g., $5,000)
-   - **Billing Currency**: Usually company currency
-   - **Linked Account**: Which GL account for settlement
-   - **Expense Categories**: Allowed categories or all
+Use for employee expenses like travel or supplies.
 
-4. Click **Issue Card**
+1. Click **+ Create card**
+2. Select **Employee card**
+3. Fill in the details:
+   - **Owner**: Select the employee from the dropdown
+   - **Authentication phone number**: Phone number for card verification
+   - **Card account**: Select which card account to link
+   - **Card description**: A label for this card (optional)
+   - **Limits**: Set a spending limit (Monthly by default) with the currency and amount
+
+4. Click **Create card**
 
 The virtual card becomes available immediately.
 
-### Card Reconciliation
+### Vendor Cards
 
-Transactions automatically appear in expense system:
+Use for recurring vendor payments like subscriptions.
 
-1. Card transactions feed from card processor (daily)
-2. Light extracts:
-   - **Merchant Name**: Where card was used
-   - **Amount**: Transaction amount
-   - **Date**: Transaction date
-   - **Category**: Expense category (if available from merchant)
+1. Click **+ Create card**
+2. Select **Vendor card**
+3. Fill in the details:
+   - **Owner**: Select the card owner from the dropdown
+   - **Authentication phone number**: Phone number for card verification
+   - **Card account**: Select which card account to link
+   - **Vendor**: Select the vendor (or click **Quick-add vendor** to create one)
+   - **Card description**: A label for this card (optional)
 
-3. Transactions appear in expense module with status: **Pending**
-4. If employee categorization is needed, employee confirms
-5. Manager approval workflow applies
-6. Expenses are categorized and approved
+4. Click **Create card**
 
-### Card Settlement
+## Card Accounts
 
-Settlement happens automatically:
+Before issuing cards, you need at least one card account. To create one:
 
-1. Card issuer submits bill to company (monthly typical)
-2. Light creates **AP bill** for card charges:
-   - **Vendor**: Card issuer
-   - **Amount**: Total card charges
-   - **Line items**: Grouped by employee or department
-   - **GL accounts**: Posted to respective expense accounts
+1. Go to the [**Accounts**](https://app.light.inc/cards?tab=accounts) tab on the Cards page
+2. Click **+ Create account**
+3. Configure the account details including account name, currency, and entity
 
-3. Finance team pays card issuer
-4. Reconciliation complete
+Card accounts group cards together and control the funding source and entity association.
 
-## Managing Employee Cards
+## Managing Cards
 
-### Card Inventory
+### Viewing Cards
 
-View all issued cards:
+1. Navigate to [**Cards**](https://app.light.inc/cards?tab=cards)
+2. See all cards with:
+   - **Owner**: Who the card is assigned to
+   - **Vendor**: The associated vendor (for vendor cards)
+   - **Type**: Employee or Vendor
+   - **Card**: Card identifier
+   - **Description**: Card label
 
-1. Navigate to **Cards** > **Card Inventory**
-2. See all cards with status:
-   - **Employee Name**: Who card is issued to
-   - **Status**: Active, Inactive, Cancelled
-   - **Limit**: Current limit
-   - **Recent Activity**: Last transaction date
-   - **Balance**: Amount remaining (for prepaid)
-
-3. Click card to see details:
-   - **Card Number** (last 4 digits only for security)
-   - **Expiration Date**
-   - **Spending YTD**: Year-to-date spending on card
-   - **Recent Transactions**: Last 10 transactions
+3. Click a card to see its details and manage it
 
 ### Adjusting Card Limits
 
@@ -90,11 +78,10 @@ Increase or decrease individual card limits:
 
 1. Open the card
 2. Click **Edit Limit**
-3. Adjust the **Card Limit** (e.g., from $5,000 to $10,000)
-4. Optionally, add **Reason**: Why limit changed
-5. Click **Save**
+3. Adjust the limit amount
+4. Click **Save**
 
-New limit takes effect immediately. Employee is notified if increased.
+New limit takes effect immediately.
 
 ### Blocking/Unblocking Cards
 
@@ -102,7 +89,7 @@ Temporarily block a card without cancelling:
 
 1. Open the card
 2. Click **Block Card**
-3. Optionally, select **Reason**: Under investigation, Unusual activity, etc.
+3. Optionally, select a reason: Under investigation, Unusual activity, etc.
 4. Card is immediately frozen (no transactions allowed)
 5. Employee is notified
 
@@ -118,7 +105,7 @@ Permanently cancel a card:
 
 1. Open the card
 2. Click **Cancel Card**
-3. Provide **Reason**: Employee left, Card replaced, etc.
+3. Provide a reason: Employee left, Card replaced, etc.
 4. Light immediately:
    - Cancels card
    - Freezes any pending transactions
@@ -126,46 +113,27 @@ Permanently cancel a card:
 
 5. Card cannot be reactivated (new card must be issued)
 
-## Spending Controls
+## Transactions and Reconciliation
 
-### Policy Enforcement
+### Viewing Transactions
 
-Policies limit what can be purchased:
+Card transactions appear automatically in the **Transactions** tab:
 
-1. Define policy limits:
-   - **Daily Limit**: Max transactions per day
-   - **Monthly Limit**: Max per month
-   - **Merchant Category Limits**: (e.g., meals $75, travel $2,000)
-   - **Blocked Merchants**: No purchases allowed
+1. Navigate to [**Cards → Transactions**](https://app.light.inc/cards?tab=transactions)
+2. Each transaction shows:
+   - **Date**: When the transaction occurred
+   - **Merchant**: Where the card was used
+   - **Ledger account**: The GL account for this transaction
+   - **Amount**: Transaction amount
+   - **Tax code**: Applicable tax code
 
-2. Light enforces at transaction time:
-   - Transaction exceeds limit: Declined
-   - Merchant blocked: Declined
-   - Employee over daily limit: Declined
+3. Use the status filter and search bar to find specific transactions
 
-3. Employee can request increase:
-   - Manager approves
-   - Temporary override granted
-   - Or permanent limit increased
+### Card Reconciliation
 
-### Spending Approvals
+Reconcile card transactions through bank reconciliation:
 
-Require approvals for large purchases:
-
-1. Configure: **Spending over $X requires approval**
-2. When employee makes large card purchase:
-   - Transaction pending (card charges immediately)
-   - Manager receives approval request
-   - If approved: Expense is approved, posting continues
-   - If rejected: Refund is initiated, charge reversed
-
-## Reconciliation and Reporting
-
-### Card Settlement Reconciliation
-
-Reconcile card receipts to transactions:
-
-1. Navigate to **Accounting → Bank reconciliation**
+1. Navigate to [**Accounting → Bank reconciliation**](https://app.light.inc/bank-reconciliation)
 2. Light matches:
    - **Transactions**: Individual card charges
    - **Card Bill**: Aggregate bill from issuer
@@ -178,25 +146,48 @@ Reconcile card receipts to transactions:
 
 4. Click **Reconcile** to mark settled
 
-### Card Spending Reports
+### Card Settlement
 
-Analyze card spending:
+Settlement happens automatically:
 
-1. Navigate to **Planning & Reports → Reports → Card Spending**
-2. View:
-   - **By Employee**: Spending by person
-   - **By Merchant**: Where employees buy most
-   - **By Category**: Spending by expense category
-   - **Trends**: Month-over-month changes
+1. Card issuer submits bill to company (monthly typical)
+2. Light creates an **AP bill** for card charges:
+   - **Vendor**: Card issuer
+   - **Amount**: Total card charges
+   - **Line items**: Grouped by employee or department
+   - **GL accounts**: Posted to respective expense accounts
 
-3. Filter by:
-   - **Date Range**: Specific months/years
-   - **Employee/Department**: Specific people or teams
-   - **Merchant Category**: Type of merchant
+3. Finance team pays card issuer
+4. Reconciliation complete
 
-4. Export to Excel for analysis
+## Spending Controls
 
-### Fraud Detection
+### Policy Enforcement
+
+Spending policies can be configured under [**Settings → Policies**](https://app.light.inc/settings/guardrails/policies) to limit what can be purchased:
+
+- **Monthly Limit**: Max spending per month
+- **Merchant Category Limits**: Limits by category (e.g., meals, travel)
+- **Blocked Merchants**: No purchases allowed
+
+Light enforces policies at transaction time. If a transaction violates a policy, it is declined.
+
+### Spending Approvals
+
+Require approvals for large purchases:
+
+1. Configure spending thresholds in your approval workflows
+2. When an employee makes a large card purchase:
+   - Transaction pending (card charges immediately)
+   - Manager receives approval request
+   - If approved: Expense is approved, posting continues
+   - If rejected: Refund is initiated, charge reversed
+
+## Reporting
+
+Analyze card spending using the reports available under [**Planning & Reports → Reports**](https://app.light.inc/ledger-reports). You can create custom reports to track card spending by employee, merchant, category, or time period. Export reports to Excel for further analysis.
+
+## Fraud Detection
 
 Light monitors for suspicious patterns:
 
@@ -209,41 +200,6 @@ Flagged transactions are:
 - Employee notified to confirm
 - Finance team alerted if suspicious
 - Investigation initiated if fraud suspected
-
-## Card Program Optimization
-
-### Optimizing Card Usage
-
-Use data to improve program:
-
-1. Review card vs. employee reimbursement spending:
-   - If many employees still doing reimbursements: Encourage card use
-   - If reimbursements declining: Card adoption is working
-
-2. Review declined transactions:
-   - Are limits too strict?
-   - Should certain merchants be unblocked?
-   - Employee frustration indicator
-
-3. Review approval times:
-   - Are approvals slowing down process?
-   - Should thresholds be adjusted?
-
-### Program Cost Analysis
-
-1. Navigate to **Planning & Reports → Reports → Card Program Cost**
-2. View:
-   - **Card Fees**: Annual/monthly fees
-   - **Transaction Costs**: Processing fees per transaction
-   - **Interest Costs**: If using credit cards
-   - **Reconciliation Costs**: Staff time to reconcile
-
-3. Compare to:
-   - Cost of employee reimbursements (staff time to process)
-   - Cost of check writing
-   - Cost of ACH payments
-
-4. Justify program ROI or optimization
 
 ## Employee Support
 
