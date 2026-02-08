@@ -2,6 +2,8 @@
 
 Submitting an expense in Light is fast and simple. Just snap a photo of your receipt, and Light's AI does the heavy lifting. Here's how.
 
+> **Note:** To submit expenses for reimbursement, your account must have the **Reimbursement** access role. If you don't see expense or reimbursement options in Light, ask your admin to assign this role to you.
+
 [Open in Light →](https://app.light.inc/expenses)
 
 ## Step 1: Navigate to Expenses
