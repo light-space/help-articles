@@ -26,15 +26,17 @@ Light includes the following predefined roles:
 
 **AR Clerk** - Access to accounts receivable functions including invoice creation, customer management, and payment registration.
 
-**Cardholder** - Access to corporate card features and transaction history. Users can view and dispute card transactions, report fraud.
+**Cardholder** - Access to corporate card features and transaction history. Users can view and dispute card transactions, report fraud. This role does not grant access to expense reimbursement features — users who also need reimbursement must be assigned the **Reimbursement** role separately.
 
 **Vendor Management** - Authority to create, edit, and approve vendor master data changes. Manages vendor information and payment details.
 
-**Reimbursement** - Access to employee expense reimbursement features. Users can submit expenses and view reimbursement status.
+**Reimbursement** - Access to employee expense reimbursement features. Users can submit expenses and view reimbursement status. This role does not grant access to corporate card features — users who also need card access must be assigned the **Cardholder** role separately.
 
 **Report Viewer** - Read-only access to financial reports and dashboards. Ideal for stakeholders who need visibility without transaction access.
 
 **Purchase Requester** - Access to create and manage purchase orders. Limited to procurement workflows.
+
+> **Important:** The **Cardholder** and **Reimbursement** roles are independent. A user with only the Cardholder role cannot access reimbursement features, and a user with only the Reimbursement role cannot access card features. If a user needs both, assign both roles.
 
 ## How Permissions Work
 
