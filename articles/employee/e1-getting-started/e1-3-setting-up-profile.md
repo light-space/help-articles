@@ -2,6 +2,8 @@
 
 Before you start submitting expenses and getting reimbursed, take a few minutes to set up your profile. It only takes a few steps, and it ensures you get paid back smoothly.
 
+> **Note:** To access the reimbursement module, your account must have the **Reimbursement** access role. If you don't see reimbursement options in Light, ask your admin to assign this role to you.
+
 [Open in Light →](https://app.light.inc/user-profile)
 
 ## Adding Your Personal Details
