@@ -1,6 +1,6 @@
 # Issuing and Managing Corporate Cards
 
-Light corporate cards provide employees with physical and virtual payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
+Light corporate cards provide employees with virtual payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
 
 [Open in Light →](https://app.light.inc/cards)
 
@@ -12,7 +12,6 @@ Light corporate cards provide employees with physical and virtual payment cards 
 2. Configure:
    - **Card Provider**: Light, Visa, or other partner
    - **Card Type**: Credit, Debit, or Prepaid
-   - **Card Design**: Logo and branding (optional)
    - **Spending Limits**: Default per-card and per-employee limits
    - **Merchant Blocks**: Categories not allowed (gambling, nightclubs, etc.)
    - **Approval Required**: If spending requires manager approval first
@@ -25,36 +24,15 @@ Assign cards to employees:
 
 1. Navigate to **Spend management → Cards → Issue Card**
 2. Select **Employee** from list
-3. Choose **Card Type**:
-   - Physical card
-   - Virtual card only
-   - Both (physical + virtual capability)
-
-4. Set card details:
+3. Set card details:
    - **Card Limit**: Limit on this card (e.g., $5,000)
    - **Billing Currency**: Usually company currency
    - **Linked Account**: Which GL account for settlement
    - **Expense Categories**: Allowed categories or all
 
-5. Click **Issue Card**
+4. Click **Issue Card**
 
-Light initiates card issuance; card is shipped (or virtual card becomes available immediately).
-
-## Physical Card Management
-
-### Issuance and Activation
-
-When issuing physical card:
-
-1. Employee receives card in mail (5-7 business days)
-2. Employee must **activate** card:
-   - Open Light app
-   - Navigate to **Cards**
-   - Click **Activate Card**
-   - Enter last 4 digits and security code
-   - Set PIN
-
-3. Once activated, card can be used
+The virtual card becomes available immediately.
 
 ### Card Reconciliation
 
@@ -95,7 +73,6 @@ View all issued cards:
 1. Navigate to **Cards** > **Card Inventory**
 2. See all cards with status:
    - **Employee Name**: Who card is issued to
-   - **Card Type**: Physical, Virtual, etc.
    - **Status**: Active, Inactive, Cancelled
    - **Limit**: Current limit
    - **Recent Activity**: Last transaction date
@@ -125,7 +102,7 @@ Temporarily block a card without cancelling:
 
 1. Open the card
 2. Click **Block Card**
-3. Optionally, select **Reason**: Lost, Under investigation, Unusual activity, etc.
+3. Optionally, select **Reason**: Under investigation, Unusual activity, etc.
 4. Card is immediately frozen (no transactions allowed)
 5. Employee is notified
 
@@ -186,7 +163,7 @@ Require approvals for large purchases:
 
 ### Card Settlement Reconciliation
 
-Reconcile card bills to transactions:
+Reconcile card receipts to transactions:
 
 1. Navigate to **Accounting → Bank reconciliation**
 2. Light matches:
@@ -225,8 +202,7 @@ Light monitors for suspicious patterns:
 
 1. **Velocity Checking**: Too many transactions in short time
 2. **Amount Checking**: Unusually large transactions
-3. **Geographic Checking**: Card used in unexpected locations
-4. **Merchant Checking**: Known high-risk merchants
+3. **Merchant Checking**: Known high-risk merchants
 
 Flagged transactions are:
 - Temporarily held
@@ -276,9 +252,8 @@ Use data to improve program:
 Employees can get help:
 
 1. **Card Declined**: Contact support to understand why (limit, blocked merchant, etc.)
-2. **Lost or Stolen**: Immediately frozen and replaced
-3. **Wrong Amount**: Investigate transaction and dispute if needed
-4. **Duplicate Charge**: Review settlement and request refund
+2. **Wrong Amount**: Investigate transaction and dispute if needed
+3. **Duplicate Charge**: Review settlement and request refund
 
 ## Related Articles
 
