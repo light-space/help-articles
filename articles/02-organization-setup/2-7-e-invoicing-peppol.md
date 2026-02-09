@@ -1,14 +1,14 @@
 # E-invoicing and Peppol
 
-This article explains how to set up e-invoicing, configure Peppol network connectivity, and ensure compliance with electronic invoicing requirements in Light.
+This article explains how to configure e-invoicing details in Light to support electronic invoice exchange via the Peppol network.
 
-[Open in Light →](https://app.light.inc/accounting/invoicing)
+[Open in Light →](https://app.light.inc/settings/entities)
 
 ## What is e-invoicing?
 
 E-invoicing is the electronic exchange of invoice documents in a standardized format between trading partners. Instead of PDF or paper invoices, e-invoicing uses structured data that can be automatically processed by receiving systems. E-invoicing improves accuracy, reduces processing time, and enhances audit trails.
 
-> Good to know: Many countries now mandate e-invoicing for B2B transactions. Light supports the Peppol network and other e-invoicing standards.
+> Good to know: Many countries now mandate e-invoicing for B2B transactions. Light supports e-invoicing configuration through entity settings and tax code EDIFACT codes.
 
 ## Peppol network overview
 
@@ -20,79 +20,56 @@ Peppol (Pan-European Public Procurement OnLine) is a free, open network for elec
 - **Mandatory in Many Jurisdictions**: EU countries and others require Peppol for B2B invoicing
 - **Free to Join**: No licensing fees for network participation
 
-## Enabling e-invoicing in Light
+## Configuring e-invoicing on entities
 
-1. Navigate to **Settings (gear icon) → E-invoicing** (or **Settings (gear icon) → Integrations**)
-2. Click **Enable E-invoicing**
-3. Choose your **E-invoicing Network**:
-   - **Peppol**: For EU and global B2B invoicing
-   - **Other Standards**: Alternative networks by jurisdiction
-4. Click **Next** to proceed with configuration
+Each company entity can have e-invoicing details configured:
+
+1. Go to **Settings (gear icon) → Entities**
+2. Click **+ Create entity** (for new entities) or click an existing entity and then **Edit**
+3. In the **E-invoicing (optional)** section, fill in:
+   - **EAS code**: The Electronic Address Scheme identifier (e.g., 9930 for EU tax ID, 0007 for organization number)
+   - **E-invoice address**: The Peppol network address for this entity
+4. Click **Create** or **Save**
+
+> Tip: Different entities within your group can have different Peppol registrations based on their jurisdiction.
+
+## EAS codes
+
+The EAS code identifies the type of addressing scheme used for your Peppol identifier. Common EAS codes include:
+
+- **0007**: Organization number (used in many EU countries)
+- **9930**: Tax identification number
+- Other country-specific codes as required by your jurisdiction
+
+Consult your jurisdiction's requirements to determine the correct EAS code.
+
+## EDIFACT codes on tax codes
+
+Tax codes in Light include an optional **EDIFACT** field that supports e-invoicing compliance:
+
+1. Go to **Accounting → Tax codes**
+2. Click **+ Create tax code** or edit an existing tax code
+3. Select the appropriate **EDIFACT (optional)** code from the dropdown
+4. This EDIFACT code is included in e-invoice documents to classify the tax treatment
 
 ## Registering on the Peppol network
 
 To send and receive invoices via Peppol:
 
 1. Register with a Peppol **Service Provider** (authorized network operator)
-2. Light provides a list of certified service providers by country
-3. Register your company with your chosen provider
-4. They issue you a **Peppol Identifier** (Peppol participant ID)
-5. Provide the Peppol Identifier to Light
+2. They issue you a **Peppol Identifier** (participant ID)
+3. Enter this identifier as the **E-invoice address** on your entity in Light
+4. Set the appropriate **EAS code** for your registration type
 
 Your Peppol Identifier is unique and identifies your organization on the network (typically formatted as country-code:number-scheme:identifier).
 
-## Configuring entity e-invoicing details
+## Best practices
 
-Each company entity can have e-invoicing enabled:
-
-1. Go to **Settings (gear icon) → Entities**
-2. Select the entity
-3. Click **Edit**
-4. Scroll to **E-invoicing Configuration**
-5. Enter the **Peppol Identifier** for this entity
-6. Enter the **EAS Code** (Electronic Address Scheme):
-   - For most EU companies: 9930 (TAXID) or 0007 (Organization number)
-   - Consult your jurisdiction's requirements
-7. Enter the **E-invoice Address**: The complete Peppol address
-8. Set **E-invoicing Status** to **Active**
-9. Click **Save**
-
-> Tip: Different entities within your group can have different Peppol registrations based on their jurisdiction.
-
-## E-invoicing compliance requirements
-
-Different jurisdictions have specific requirements. The EU mandates UBL XML via Peppol for B2B invoices above minimum thresholds with VAT validation required. Denmark requires all B2B invoices via specific service providers. Some countries have national systems instead of Peppol. To verify compliance, go to **Settings (gear icon) → E-invoicing** and click **Compliance Check** to validate VAT numbers, Peppol identifiers, and EAS codes.
-
-## Sending and receiving e-invoices
-
-When creating an invoice for a Peppol customer, mark Send via Peppol and Light converts to UBL format and transmits automatically. For non-Peppol customers, use email delivery. When vendors send Peppol invoices, they arrive in your inbox and Light automatically retrieves them. Invoices appear in Accounts Payable with pre-populated details extracted from UBL format. Peppol invoices capture complete audit trail information automatically.
-
-## VAT number validation in Peppol
-
-Peppol transactions validate VAT numbers:
-
-1. When sending an invoice, Light validates your VAT number
-2. When receiving an invoice, Light validates the vendor's VAT number
-3. For EU entities, Light can perform VIES (VAT Information Exchange System) checks
-4. Invalid VAT numbers trigger warnings but don't block transmission
-5. Correct VAT numbers before final sending to ensure compliance
-
-> Good to know: Peppol's built-in validation helps prevent incorrect VAT registration numbers from being transmitted.
-
-## Peppol identifier management
-
-Manage your Peppol identifiers in one place:
-
-1. Go to **Settings (gear icon) → E-invoicing**
-2. Click **Manage Peppol Identifiers**
-3. View all registered identifiers for your entities
-4. Update identifiers if service providers change
-5. Track validation status for each identifier
-6. Generate Peppol connection test reports
-
-## E-invoicing monitoring and best practices
-
-In **Planning & Reports → Reports** or **E-invoicing Dashboard**, track sent/received invoices, failed transmissions, and validation errors filtered by entity or date. Register entities before mandate deadlines, verify identifiers are current, validate VAT numbers before sending, and test with sample invoices. Monitor the dashboard regularly, archive logs for compliance, train your team, and maintain service provider contact information.
+- Register entities for Peppol before mandate deadlines in your jurisdiction
+- Verify EAS codes and e-invoice addresses are correct before sending invoices
+- Configure e-invoicing details on all entities that will participate in electronic document exchange
+- Assign the correct EDIFACT codes to tax codes used in e-invoicing transactions
+- Maintain current service provider contact information
 
 ## Related articles
 
