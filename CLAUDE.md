@@ -88,19 +88,15 @@ When referencing how to navigate to a page in the Light app, always use the corr
 
 ## Workflow
 
-This repo uses a **PR-based workflow**. The `main` branch is protected — all changes must go through a pull request.
+Push updates directly to the `main` branch.
 
-When triggered via a GitHub issue (e.g., `@claude update the article about GL accounts`):
+When making changes (e.g., triggered via a GitHub issue like `@claude update the article about GL accounts`):
 
-1. Create a new branch from `main` (e.g., `update/gl-accounts-6-digits`)
-2. Find the relevant article(s) based on the topic described in the issue
-3. Make targeted edits — don't rewrite articles from scratch unless specifically asked
-4. Ensure navigation paths, button names, and UI terminology stay consistent with the conventions above
-5. If creating a new article, follow the numbering convention (section-number-slug.md) and add it to `help-article-hierarchy.md`
-6. Commit changes to the branch and open a PR against `main`
-7. Reference the original issue in the PR description (e.g., "Fixes #1")
-
-**Never push directly to `main`.** Always create a branch and open a PR.
+1. Find the relevant article(s) based on the topic described
+2. Make targeted edits — don't rewrite articles from scratch unless specifically asked
+3. Ensure navigation paths, button names, and UI terminology stay consistent with the conventions above
+4. If creating a new article, follow the numbering convention (section-number-slug.md) and add it to `help-article-hierarchy.md`
+5. Commit and push directly to `main`
 
 ## Article Index
 
