@@ -2,7 +2,7 @@
 
 Approval workflows define how documents like invoices and expenses progress through your organization before being posted to the ledger. This article explains how to configure approval workflows and routing rules.
 
-[Open in Light →](https://app.light.inc/settings/profile)
+[Open in Light →](https://app.light.inc/settings/workflows)
 
 ## Understanding Approval Workflows
 
@@ -12,130 +12,72 @@ Workflows prevent unauthorized spending, catch errors early, and create an audit
 
 ## Workflow Types
 
-Light supports several built-in workflow types:
+Light includes the following built-in workflow types:
 
-**Bill Approval Workflow** - Controls how vendor invoices (bills) move through approval before payment
+**Bill Payment** - Controls how vendor invoices (bills) move through approval before payment. Triggered when bill data changes.
 
-**Expense Submission Workflow** - Routes employee expense reimbursement requests for approval
+**Invoice-to-Cash** - Controls AR invoice creation and collection processes. Triggered when an invoice is posted.
 
-**Vendor Approval Workflow** - Routes new or changed vendor master data for approval
+**Vendor Card Request** - Routes corporate card requests for review and approval. Triggered when a card request is created.
 
-**Invoice Receivable Workflow** - Controls AR invoice creation and dunning (payment reminders)
+**Expense Reimbursement** - Routes employee expense reimbursement requests for approval. Triggered when an expense report is submitted.
 
-**Card Approval Workflow** - Routes corporate card transactions for review and approval
+**Vendor Onboarding** - Routes new or changed vendor master data for approval. Triggered when a vendor is created or bank data changes.
 
-## Approval Tiers
+Additional workflow types may be available depending on your integrations, such as sync workflows for HubSpot, Salesforce, or HRM systems.
 
-Approval workflows are organized by tiers (approval levels). Each tier represents an approval stage that a document must pass through:
+## Workflow Editor
 
-1. **Tier 1** - First level of approval (e.g., department manager)
-2. **Tier 2** - Second level of approval (e.g., finance manager)
-3. **Tier 3** - Third level of approval (e.g., CFO)
+Light uses a visual flow editor to define workflows. Each workflow is built by connecting nodes on a canvas:
 
-You can define how many tiers your workflow requires and who approves at each tier.
+1. Navigate to **Settings → Workflows** ([Open in Light →](https://app.light.inc/settings/workflows))
+2. Click on a workflow to open its visual editor
+3. Use the toolbar at the bottom to add **Action** or **Condition** nodes
+4. Connect nodes to define the approval flow
 
-## Defining Approvers
+The visual editor lets you see the entire approval path at a glance and makes it easy to add branching logic.
 
-Approvers can be assigned in three ways:
+## Condition Nodes
 
-**Specific Users** - Explicitly select individual users as approvers. Useful for small teams or executive approval.
+Condition nodes route documents to different approval paths based on criteria:
 
-**User Groups** - Assign a user group as approvers. Any member of the group can approve. Ideal for distributed approval authority.
-
-**Auto-Assignment Rules** - Automatically assign approvers based on document properties:
-  - Manager of the requester (person who submitted)
-  - Manager of the previous approver (chain approval)
-  - Budget owner for the cost center
-
-Auto-assignment is powerful for scaling approvals without hardcoding every approver.
-
-## Approval Conditions
-
-You can set conditions that determine whether a document needs approval:
-
-- **Amount thresholds** - Documents above a certain amount require approval
-- **Document type** - Only certain invoice types need approval
-- **Custom properties** - Documents with specific custom property values require approval
+- **Amount thresholds** - Documents above a certain amount follow a different path
+- **Document type** - Route based on invoice type, bill type, or other classifications
+- **Vendor** - Route based on specific vendors
 - **Cost center** - Documents charged to certain cost centers have different approval requirements
+- **Custom properties** - Route based on any custom field values
 
-This allows you to route documents intelligently based on risk or spend level.
+Each condition creates branches (including an "else" default path) that connect to different downstream nodes.
 
-## Approval Rules
+## Approval Nodes
 
-Create approval rules to define the approval logic:
+Approval nodes are stop points where designated users must approve or reject a document before the workflow continues. Each approval node shows two paths:
 
-1. Navigate to **Settings (gear icon) > Workflows**
-2. Select the workflow type (Bill Approval, Expense, etc.)
-3. Click **+ Create rule** or edit an existing rule
-4. Define the **conditions** (amount, type, etc.) that trigger this rule
-5. Specify the **approvers and tiers** for documents matching these conditions
-6. Click **Save**
-
-You can have multiple rules that apply to different scenarios. Documents are matched against rules in order, with the first matching rule being applied.
-
-> Tip: Order your rules from most specific to least specific. This ensures documents match the right rule. For example, put your "invoices over 10,000" rule before "all invoices".
-
-## Required vs. Optional Approvals
-
-Approval tiers can be marked as **required** or **optional**:
-
-**Required** - The document cannot progress until approved at this tier. Rejections send documents back to the requester.
-
-**Optional** - If no one from this tier approves within a timeframe, the document can proceed anyway.
-
-## Approval Reminders
-
-Light can automatically send reminders to approvers when documents are waiting for approval:
-
-1. Go to **Settings (gear icon) > Workflows > [Workflow Name]**
-2. Enable **Approval Reminders**
-3. Set the **reminder frequency** (daily, every 2 days, weekly, etc.)
-4. Choose the **notification channel** (Slack, Teams, Email)
-
-Reminders help keep approvals moving and reduce bottlenecks.
-
-## Concurrent vs. Sequential Approvals
-
-**Sequential** - Approvals happen one tier at a time. Tier 1 must approve before Tier 2 sees the document.
-
-**Concurrent** - All approvers in a tier can approve simultaneously. The document moves to the next tier when all approvers at the current tier have approved.
-
-Sequential approvals ensure reviews happen in order. Concurrent approvals speed up the process when multiple people can review in parallel.
+- **If approved** - The document proceeds to the next step
+- **If rejected** - The document is sent back or routed to an alternative path
 
 ## Publishing Workflows
 
 Workflows exist in **draft** and **published** states:
 
-**Draft** - You can edit workflows freely but they don't apply to new documents
+**Draft** - You can edit the workflow freely in the visual editor, but it doesn't apply to new documents.
 
-**Published** - The workflow is active and applies to new documents. You cannot edit published workflows; create a new version instead.
+**Published** - The workflow is active and applies to new documents. Each workflow tracks its version number and who published it.
 
 To publish a workflow:
 
-1. Navigate to the workflow
-2. Click **Review & Publish**
-3. Verify the rules and approvers
-4. Click **Publish**
+1. Navigate to the workflow in the visual editor
+2. Click **Publish** in the top-right corner
+3. The workflow becomes active immediately
 
-Only published workflows apply to documents. Keep one version published to avoid confusion.
-
-## Testing Workflows
-
-Before publishing, test your workflow:
-
-1. Create a test document that would match your workflow rules
-2. Verify it's assigned to the correct approver
-3. Check that approval notifications are sent correctly
-4. Submit through the full approval process
-
-Testing catches configuration errors before impacting real documents.
+The Workflows list shows the published date, who published it, and the current version number for each workflow.
 
 ## Best Practices
 
-- **Keep it simple** - Limit approval tiers to 3 or fewer to avoid delays
-- **Use auto-assignment** - Reduces manual configuration and scales better
-- **Set reasonable timeouts** - Don't let approvals linger indefinitely
-- **Monitor exceptions** - Track which rules are applied most to optimize your workflow
+- **Keep it simple** - Limit approval paths to avoid delays
+- **Use conditions wisely** - Route documents based on risk and spend level
+- **Test before publishing** - Run test documents through workflows before publishing
+- **Monitor versions** - Track which version is published and review changes
 - **Review quarterly** - As your organization changes, revisit approval rules to ensure they still fit
 
 ## Related Articles
