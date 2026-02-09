@@ -131,6 +131,19 @@ SSO is configured at the organization level in coordination with Light's team â€
 
 Light's team will configure the connection on the Auth0 backend and test it with you before going live.
 
+### SAML Configuration
+
+When configuring your identity provider for SAML-based SSO:
+
+1. In your identity provider (e.g., Okta, Azure AD, OneLogin), create a new SAML application for Light.
+2. Set the **Assertion Consumer Service (ACS) URL** (also called the Callback URL or Reply URL) to: `https://light-inc-prod.eu.auth0.com/login/callback`
+3. Set the Single Sign-On URL to your Light instance.
+4. Download the SAML certificate.
+5. In Light, upload the certificate and enter the SSO URL.
+6. Test the connection by logging in with your identity provider credentials.
+
+> **Note:** The callback URL `https://light-inc-prod.eu.auth0.com/login/callback` is the same for all identity providers (Okta, Azure AD, OneLogin, etc.).
+
 ### Just-In-Time Provisioning
 
 When SSO is enabled, new users can be provisioned automatically on their first login. Their name and email are pulled from the identity provider, and they receive a default role. Admins can then adjust roles and entity assignments as needed from **Business partners > Users**.
