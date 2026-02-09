@@ -73,13 +73,9 @@ You can create new groups using the **+ Create group** button at the top of the 
 
 ### Entity Assignment
 
-Light supports multi-entity organizations. Each user is assigned to an entity (legal company) via the **Entity** dropdown on their user detail form. This controls which entity's transactions and data they can access.
+Light supports multi-entity organizations. Each user is assigned to an entity (legal company) via the **Entity** dropdown on their user detail form.
 
 Available entities are configured under **Settings > Entities**, where each entity has a code, name, base currency, and VAT number.
-
-### Levels
-
-Users may also be assigned a **Level**, visible under **Settings > Profile > Organization details**. Levels can be used to further scope access or define approval hierarchies.
 
 ## Approval Guardrails
 
@@ -133,30 +129,13 @@ Light's team will configure the connection on the Auth0 backend and test it with
 
 ### SAML Configuration
 
-When configuring your identity provider for SAML-based SSO:
+When setting up SAML-based SSO, you'll need to configure a new SAML application in your identity provider (e.g., Okta, Azure AD, OneLogin). Use the following callback URL:
 
-1. In your identity provider (e.g., Okta, Azure AD, OneLogin), create a new SAML application for Light.
-2. Set the **Assertion Consumer Service (ACS) URL** (also called the Callback URL or Reply URL) to: `https://light-inc-prod.eu.auth0.com/login/callback`
-3. Set the Single Sign-On URL to your Light instance.
-4. Download the SAML certificate.
-5. In Light, upload the certificate and enter the SSO URL.
-6. Test the connection by logging in with your identity provider credentials.
+- **Assertion Consumer Service (ACS) URL**: `https://light-inc-prod.eu.auth0.com/login/callback`
 
-> **Note:** The callback URL `https://light-inc-prod.eu.auth0.com/login/callback` is the same for all identity providers (Okta, Azure AD, OneLogin, etc.).
+This callback URL is the same for all identity providers. Share your SAML metadata (Entity ID, SSO URL, and signing certificate) with your Light representative, and they will complete the configuration on Light's side.
 
-> **Important:** When sharing your SAML certificate with your Light representative, use a secure method such as a 1Password shared link, an encrypted email, or another trusted secret-sharing tool. Do not send certificates as plain-text email attachments.
-
-### Just-In-Time Provisioning
-
-When SSO is enabled, new users can be provisioned automatically on their first login. Their name and email are pulled from the identity provider, and they receive a default role. Admins can then adjust roles and entity assignments as needed from **Business partners > Users**.
-
-### Multi-Factor Authentication (MFA)
-
-If your organization requires multi-factor authentication, this is configured through your identity provider. Light's Auth0 layer respects the MFA requirements set by your IdP, so users will be prompted for MFA during the SSO login flow if your provider enforces it.
-
-### Session and Security
-
-Light enforces session timeouts for inactive users.
+> **Important:** When sharing your SAML certificate, use a secure method such as a 1Password shared link, an encrypted email, or another trusted secret-sharing tool. Do not send certificates as plain-text email attachments.
 
 ## Related Articles
 
