@@ -21,6 +21,10 @@ Create manual journal entries for:
 
 **Custom entries** - Any GL transaction not handled by AP/AR/Payments
 
+**Bank reconciliation adjustments** - Small differences between bank and ledger amounts (e.g., rounding, fees)
+
+> **Tip:** If you need to create a journal entry to resolve a bank reconciliation discrepancy (such as a small amount difference between the bank transaction and your ledger), you can use the **Journal entry** option directly within bank reconciliation. This creates and matches the journal entry in one step, saving you from having to manually create the JE first and then return to match it. See [Resolving Discrepancies](../04-bank-reconciliation/4-6-resolving-discrepancies.md) for more details.
+
 ## Creating a Simple Journal Entry
 
 To create a basic journal entry:
