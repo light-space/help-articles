@@ -155,10 +155,13 @@ Light supports industry-standard SSO protocols:
 If using Okta:
 
 1. In Okta, create a new SAML application for Light
-2. Set the Single Sign-On URL to your Light instance
-3. Download the SAML certificate
-4. In Light, upload the certificate and enter the SSO URL
-5. Test the connection by logging in with Okta credentials
+2. Set the **Assertion Consumer Service (ACS) URL** (also called the Callback URL or Reply URL) to: `https://light-inc-prod.eu.auth0.com/login/callback`
+3. Set the Single Sign-On URL to your Light instance
+4. Download the SAML certificate
+5. In Light, upload the certificate and enter the SSO URL
+6. Test the connection by logging in with Okta credentials
+
+> Note: The callback URL `https://light-inc-prod.eu.auth0.com/login/callback` is the same for all identity providers (Okta, Azure AD, OneLogin, etc.).
 
 #### OIDC Configuration Example
 
