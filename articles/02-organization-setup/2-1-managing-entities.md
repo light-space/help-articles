@@ -8,72 +8,60 @@ This article explains how to create and manage company entities in Light, which 
 
 A company entity represents a distinct legal entity within your organization. This might be a parent company, a subsidiary, a division, or any legally separate business unit. Each entity can operate independently with its own accounting records, VAT numbers, and local currency settings. Multi-entity organizations can consolidate reporting across all entities within Light.
 
-> Good to know: You can organize entities hierarchically, with parent-subsidiary relationships that reflect your corporate structure.
-
 ## Creating a new entity
 
-1. Navigate to **Settings (gear icon) → Entities**
+1. Navigate to **Settings (gear icon) → Entities** (under the Records section)
 2. Click **+ Create entity**
-3. Fill in the required information:
-   - **Entity Code**: A unique identifier for the entity (e.g., "US-HQ", "EU-SUBSIDIARY")
-   - **Display Name**: The display name as it appears in Light (e.g., "US Headquarters")
-   - **Legal Name**: The official legal name registered with authorities
-   - **Local Currency**: The primary currency for this entity's operations
+3. Fill in the entity details:
+   - **Display name**: The name as it appears in Light (e.g., "US Headquarters")
+   - **Legal name**: The official legal name registered with authorities
+   - **VAT** (optional): The entity's VAT identification number
+   - **Business reg. number** (optional): Legal registration or company number
+   - **Street** (optional): Street address
+   - **Zip / postcode** (optional): Postal code
+   - **City** (optional): City name
    - **Country**: The country where the entity is registered
-   - **Address**: Full business address including street, city, postal code
-4. Add optional details:
-   - **VAT Number**: The entity's VAT identification number
-   - **Business Registration Number**: Legal registration or company number
-   - **EAS Code**: Electronic Address Scheme identifier for e-invoicing
-   - **E-invoice Address**: Peppol network address if using e-invoicing
-5. Click **Create Entity**
+   - **State**: State or region (if applicable)
+   - **Local currency**: The primary currency for this entity's operations
+4. Optionally fill in **E-invoicing** details:
+   - **EAS code**: Electronic Address Scheme identifier for e-invoicing
+   - **E-invoice address**: Peppol network address if using e-invoicing
+5. Click **Create**
+
+An entity code is automatically assigned to each new entity.
+
+## Viewing entity details
+
+1. Go to **Settings (gear icon) → Entities**
+2. The entity list displays columns for **Entity code**, **Name**, **Currency**, **VAT**, and **Cards**
+3. Click on any entity to open its detail panel, which shows all configured fields
 
 ## Editing entity details
 
 1. Go to **Settings (gear icon) → Entities**
-2. Find the entity in the list and click **Edit**
-3. Update the information you need to change
-4. Click **Save Changes**
+2. Click the entity you want to modify
+3. Click **Edit** in the detail panel
+4. Update the information in the **Edit details** dialog
+5. Click **Save**
 
-Entity codes and local currency cannot be modified after creation. If you need to change these, you'll need to create a new entity.
+Local currency cannot be modified after creation. If you need to change it, you'll need to create a new entity.
 
-## Entity hierarchy and relationships
+## Cards
 
-You can establish parent-subsidiary relationships to reflect your organizational structure:
+Each entity has a **Cards** section that manages expense card onboarding for that entity. The Cards status shows whether the entity has been onboarded with the card issuer:
 
-1. When creating or editing an entity, select **Parent Entity** if this entity is a subsidiary
-2. The parent entity field allows you to link subordinate entities to a parent company
-3. This hierarchy is used for consolidation and reporting purposes in Light
+- **Not onboarded**: The entity has not yet been set up for expense cards
+- **In process**: Card onboarding is underway
+- **Active**: Expense cards are enabled for this entity
 
-> Tip: Set up your entity hierarchy to match your corporate structure before adding accounts and transactions.
-
-## Entity status
-
-Entities have three possible statuses:
-
-- **Active**: The entity is in use and transactions can be posted to it
-- **Hidden**: The entity exists but is not displayed in lists (useful for archiving without deletion)
-- **Inactive**: The entity is no longer operational
-
-To change an entity's status, edit the entity and update the **Status** field.
-
-## Deactivating or archiving entities
-
-If an entity is no longer active but you need to retain historical records:
-
-1. Edit the entity
-2. Change the **Status** to **Hidden** or **Inactive**
-3. Click **Save Changes**
-
-Active entities cannot be deleted, but changing status to Hidden or Inactive effectively removes them from active workflows while preserving all historical data.
+To activate expense cards, open the entity detail panel, scroll to the Cards section, and follow the onboarding steps to provide legal documents and set limits.
 
 ## Best practices
 
-- Use consistent entity codes across your organization for easier identification
 - Ensure each entity's local currency matches its operating country when possible
 - Verify VAT and registration numbers are accurate before posting transactions
-- Set up the complete entity hierarchy before beginning transactions
-- Use the Display Name field for user-friendly names that will appear in reports and interfaces
+- Use the Display name field for user-friendly names that will appear in reports and interfaces
+- Fill in e-invoicing details (EAS code and e-invoice address) if you plan to use Peppol
 
 ## Related articles
 
