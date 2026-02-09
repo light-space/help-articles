@@ -1,179 +1,70 @@
 # Audit Log and Activity History
 
-Light maintains detailed audit logs of all significant actions for compliance, troubleshooting, and security monitoring. This article explains how to access and use audit logs.
+Light tracks changes to documents through activity timelines and change logs on individual records. This article explains how to view activity history for documents in Light.
 
-[Open in Light →](https://app.light.inc/settings/profile)
+[Open in Light →](https://app.light.inc/payables)
 
-## What is the Audit Log?
+## Document Activity Tracking
 
-The audit log is a permanent, immutable record of:
+When you open a document such as a bill, invoice, or expense, Light displays an activity timeline in the **Approval** section at the top of the document detail view. This timeline shows key events in the document's lifecycle, such as when it was created, submitted for approval, approved, or posted.
 
-- **User authentication** - Who logged in and when
-- **Document actions** - Creating, editing, posting, clearing documents
-- **Permission changes** - User role assignments and modifications
-- **System settings** - Configuration changes to workflows, accounts, etc.
-- **API access** - Calls made by service accounts and external systems
-- **Data exports** - When reports are downloaded or data is exported
+Each event in the timeline includes:
 
-Every action includes:
+- **Event type** - What happened (e.g., Bill created, Approved, Posted)
+- **Date** - When the event occurred
+- **Event count** - A summary showing how many events have been tracked (e.g., "1 events tracked")
 
-- **Who** performed the action (user or service account)
-- **What** action was taken (created, posted, approved, etc.)
-- **When** it happened (timestamp)
-- **Where** from (IP address, device)
-- **Original and new values** (before/after data for changes)
+Click **See all** to expand the full event timeline if there are multiple events.
 
-## Accessing the Audit Log
+## Document Change Log
 
-To view audit logs:
+For a detailed record of every field-level change made to a document, use the **Log** tab:
 
-1. Navigate to **Settings (gear icon) > Audit Logs** to view audit logs
-2. View the activity stream showing recent actions
-3. Use filters to narrow results by:
-   - **Date range** - When the action occurred
-   - **User** - Who performed the action
-   - **Action type** - What was done (created, posted, deleted, etc.)
-   - **Document type** - Which entities were affected (invoices, journal entries, etc.)
-4. Click a log entry to see full details including before/after data
+1. Open a document (bill, invoice, expense, etc.)
+2. Scroll down to the section below the approval area
+3. Click the **Log** tab (next to **Lines** and **Ledger impact**)
 
-> Good to know: Audit logs are retained for 7 years per standard regulatory requirements. You cannot delete or modify audit logs.
+The Log tab displays a table with the following columns:
 
-## Document Activity History
+**Date** - The exact date and time the change was made
 
-For individual documents, view an activity timeline:
+**Actor** - The user who made the change
 
-1. Open a document (invoice, journal entry, etc.)
-2. Click the **Activity** or **History** tab
-3. View all changes to that document in chronological order
-4. Click an entry to see what changed and who made the change
+**Action** - The type of change (e.g., Updated)
 
-This is useful for understanding how a document evolved from creation through posting to clearing.
+**Property** - Which field was changed (e.g., Ledger Account Label, Tax Code, Business Partner Name)
 
-## Using Filters Effectively
+**Value** - The new value or the before/after change (e.g., "Inventory → Accounts Payable")
 
-Apply multiple filters to find specific events:
+This provides a complete audit trail of every modification to a document, showing who changed what and when.
 
-**By Date** - Filter to a specific period (last 7 days, last month, custom range)
+## Workflow Execution History
 
-**By User** - Find all actions by a specific person
+To monitor how documents are progressing through approval workflows:
 
-**By Document Type** - Show only invoices, journal entries, payments, etc.
+1. Go to **Settings → Workflows**
+2. View the list of workflows with their trigger types, published dates, and versions
+3. Click a workflow to see its configuration and identify where documents are in the approval process
 
-**By Action** - Find specific action types:
-  - **Posted** - Documents moved from draft to posted
-  - **Modified** - Changes to existing documents
-  - **Cleared** - Payments and clearings
-  - **Approved/Rejected** - Workflow approvals
+This helps you track bottlenecks and ensure documents are moving through your approval processes.
 
-Combining filters helps you investigate specific scenarios quickly.
+## Investigating Common Questions
 
-## Common Investigations
+Between the event timeline, the Log tab, and workflow monitoring, you can investigate common questions:
 
-Use the audit log to investigate common questions:
+**Who modified this document?** - Open the document and check the Log tab to see all changes, who made them, and when.
 
-**Who modified this invoice?**
-- Filter by document ID, see all changes and who made them
+**What changed on this document?** - The Log tab shows every field-level change with before and after values.
 
-**When was this payment posted?**
-- Filter by payment ID, find the post action and timestamp
+**Where is this document in the approval process?** - Check the Approval section on the document to see the event timeline and current approval status.
 
-**Why is an invoice in this status?**
-- View activity history, see the sequence of state changes
-
-**Did someone delete a document?**
-- Filter by document and look for "archived" or "deleted" actions
-
-**Which service account made this API call?**
-- Filter by API access, see what each service account did
-
-## Understanding Log Entries
-
-Each audit log entry shows:
-
-**Timestamp** - Exact date and time of the action
-
-**User/Service Account** - Who performed the action
-
-**Action** - What was done (created, posted, approved, cleared, etc.)
-
-**Entity** - What was affected (specific invoice, user, workflow, etc.)
-
-**IP Address** - Where the action originated from
-
-**Before/After** - Original and new values for changes
-
-**Status** - Success or failure with error details if applicable
-
-Clicking the entry shows the full detail view with complete before/after data.
-
-## Export Audit Logs
-
-Export audit logs for external analysis or long-term storage:
-
-1. Go to **Settings (gear icon) > Audit Logs**
-2. Apply filters for the data you want to export
-3. Click **Export to CSV**
-4. Open the downloaded file in your spreadsheet application
-
-CSV exports include all columns and can be analyzed with Excel, Google Sheets, or other tools.
-
-## Retention and Compliance
-
-Light's audit logging supports compliance with regulations:
-
-- **SOX (Sarbanes-Oxley)** - Complete audit trail of financial transactions
-- **GDPR** - Record of who accessed personal data
-- **HIPAA** - Activity logs for healthcare industry compliance
-- **Internal policies** - Custom audit requirements
-
-Audit logs are immutable (cannot be changed or deleted) and retained for 7 years minimum.
-
-> Important: Export and archive audit logs periodically if you need longer retention than 7 years for compliance.
-
-## Monitoring for Security
-
-Use audit logs to monitor for suspicious activity:
-
-- **Failed login attempts** - Multiple failures may indicate account compromise attempts
-- **Unusual access times** - Access outside normal business hours
-- **Permission escalation** - Users suddenly given higher-privilege roles
-- **Bulk data access** - Users or service accounts exporting large amounts of data
-- **After-hours modifications** - Changes made by users outside their normal schedule
-
-Review audit logs regularly as part of your security program.
-
-## API Activity
-
-For integrations and automations, audit logs show:
-
-- **Service account** that made the call
-- **API endpoint** that was called
-- **Request parameters** and data sent
-- **Response status** (success or error)
-- **Timestamp** when the call occurred
-
-This helps debug integration issues and audit external system access.
-
-## Alerts and Notifications
-
-Set up alerts for critical audit events:
-
-1. Go to **Settings (gear icon) > Audit Logs** to configure audit alerts
-2. Click **+ Create alert rule**
-3. Select which actions trigger alerts (user added, payment posted, etc.)
-4. Choose notification method (email, Slack, Teams)
-5. Configure recipients
-
-Alerts notify you immediately when important events occur, rather than waiting to review logs manually.
+**How are documents flowing through workflows?** - Use Settings → Workflows to monitor workflow execution and identify delays.
 
 ## Best Practices
 
-- **Review regularly** - Check audit logs weekly for unusual activity
-- **Archive exports** - Periodically export logs for long-term storage
-- **Set up alerts** - Get notified of critical events immediately
-- **Investigate anomalies** - Follow up on suspicious patterns
-- **Retain records** - Never delete or modify audit logs
-- **Share with auditors** - Provide audit log exports to external auditors when requested
+- **Review document logs** - When investigating discrepancies, check the Log tab on the relevant document for a full change history
+- **Monitor approval timelines** - Use the event timeline on documents to ensure approvals are happening on schedule
+- **Track workflow execution** - Periodically review workflow execution in Settings to identify bottlenecks
 
 ## Related Articles
 
