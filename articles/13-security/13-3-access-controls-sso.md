@@ -144,6 +144,8 @@ When configuring your identity provider for SAML-based SSO:
 
 > **Note:** The callback URL `https://light-inc-prod.eu.auth0.com/login/callback` is the same for all identity providers (Okta, Azure AD, OneLogin, etc.).
 
+> **Important:** When sharing your SAML certificate with your Light representative, use a secure method such as a 1Password shared link, an encrypted email, or another trusted secret-sharing tool. Do not send certificates as plain-text email attachments.
+
 ### Just-In-Time Provisioning
 
 When SSO is enabled, new users can be provisioned automatically on their first login. Their name and email are pulled from the identity provider, and they receive a default role. Admins can then adjust roles and entity assignments as needed from **Business partners > Users**.
