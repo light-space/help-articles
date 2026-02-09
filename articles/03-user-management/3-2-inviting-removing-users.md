@@ -1,93 +1,74 @@
 # Inviting and Removing Users
 
-Add new team members to Light and manage user access as your organization grows. This article covers inviting users, setting their roles, and removing access when needed.
+Add new team members to Light and manage user access as your organization grows. This article covers creating users, setting their roles, and removing access when needed.
 
 [Open in Light →](https://app.light.inc/users)
 
-## Inviting a New User
+## Creating a New User
 
-New users are invited via email and can be given roles during the invitation process. Follow these steps to invite a user:
+New users are created from the Users page. Follow these steps to add a user:
 
 1. Navigate to **Business partners → Users** ([Open in Light →](https://app.light.inc/users))
 2. Click the **+ Create user** button
-3. Enter the user's email address
-4. Select their **Company Entity** (where they'll work primarily)
-5. Select their **notification channel** (Slack, MS Teams, or Web App)
-6. Select **one or more roles** based on their responsibilities
-7. Click **Send Invitation**
+3. Fill in the user's details:
+   - **First name** and **Last name**
+   - **Email** address
+   - **Address**, **Country**, **State**, **City**, and **Zip / postcode** (optional)
+   - **Phone number** (optional)
+4. Select their **Entity** (the entity they'll work in primarily)
+5. Select their **Communication channel** (Slack, MS Teams, or Web App)
+6. Select their **Access role** (one or more roles based on their responsibilities)
+7. Optionally assign a **Manager** (for approval workflow routing)
+8. Click **Create**
 
 The user will receive an email with a secure link to activate their account. They'll set their own password and can start using Light immediately after activation.
 
 > Good to know: Email invitations expire after 7 days. If a user doesn't accept within this period, send a new invitation.
 
-## User Information
-
-When inviting users, you can optionally capture additional profile information:
-
-- First name and last name
-- Phone number (for contact and SMS notifications)
-- Country and state (for localization and region-specific rules)
-- Address and city
-- Direct manager (for approval workflow routing)
-
-This information helps Light route approvals correctly and personalize the user experience.
-
 ## Assigning Multiple Roles
 
-Users can have multiple roles simultaneously. For example, an invoice reviewer might need both **AP Clerk** and **Invoice Approver** roles. When assigning multiple roles:
+Users can have multiple roles simultaneously. For example, an invoice reviewer might need both **AP Clerk** and **Invoice Approver** roles. The **Access role** field in the user form accepts multiple selections — simply select additional roles as needed. The user will have the combined permissions from all selected roles.
 
-1. Select the first role checkbox
-2. Continue selecting additional role checkboxes as needed
-3. The user will have combined permissions from all selected roles
+## Changing User Details and Roles
 
-## Changing User Roles
-
-To modify a user's roles after they've been invited:
+To modify a user's roles or information after they've been created:
 
 1. Go to **Business partners → Users**
 2. Find the user in the list and click their name
-3. Update their **roles** by checking or unchecking role checkboxes
-4. Click **Save Changes**
+3. Update any fields including their **Access role** by adding or removing roles
+4. Click **Save**
 
 The user's access updates immediately. They don't need to log out and back in for role changes to take effect.
 
-## Deactivating vs. Removing Users
+## Archiving Users
 
-You have two options for removing user access:
-
-**Deactivate User** - The user's account is marked inactive. They cannot log in, but their historical data and permissions remain in the system. Use this when users are temporarily unavailable (leave, transfer).
-
-**Remove User** - The user is permanently removed from the company. They cannot access any company data. Their historical audit trail remains for compliance.
-
-To deactivate or remove a user:
+To remove a user's access, you can archive their account:
 
 1. Go to **Business partners → Users**
-2. Find the user and click the **Actions** menu
-3. Select **Deactivate** or **Remove**
+2. Find the user and click their name to open their details
+3. Click the **Archive** button at the bottom of the dialog
 4. Confirm your choice
 
-> Important: Removing a user cannot be undone. All their permissions and settings are deleted immediately. Make sure the user no longer needs access to any company resources.
+Archived users cannot log in, but their historical data and audit trail remain in the system for compliance purposes.
 
-## User Status
-
-Users can have one of three statuses:
-
-**Active** - User can log in and access Light based on their assigned roles
-
-**Deactivated** - User cannot log in. Account is preserved with all historical data intact. Can be reactivated by an admin.
-
-**Pending** - User has been invited but hasn't yet activated their account by setting a password
+> Important: Consider whether you need to reassign any workflows, approvals, or manager relationships before archiving a user.
 
 ## User Groups
 
-In addition to roles, users can be added to **user groups** for organized access control and approval routing. Groups can be hierarchical (parent-child relationships) to reflect your organization structure. See [Setting up approval workflows](/mnt/help-articles/articles/03-user-management/3-3-approval-workflows.md) for details on using groups in approvals.
+In addition to roles, users can be organized into **groups** for access control and approval routing. To manage groups:
+
+1. Go to **Business partners → Users**
+2. Select the **Groups** tab
+3. Click **+ Create group** to create a new group, or click an existing group to manage its members
+
+Groups have a name, description, and member list. You can also assign users to groups directly from their user detail page via the **Groups** field. See [Setting up approval workflows](/mnt/help-articles/articles/03-user-management/3-3-approval-workflows.md) for details on using groups in approvals.
 
 ## Best Practices
 
 - **Principle of least privilege**: Assign only the roles users need. Remove roles users no longer need.
 - **Review regularly**: Audit user access quarterly as job responsibilities change.
 - **Manager assignments**: Keep manager relationships up to date for approval routing.
-- **Deactivate instead of remove**: Use deactivation for temporary absences to preserve audit history.
+- **Archive instead of ignoring**: Archive users who no longer need access to maintain a clean user list.
 
 ## Related Articles
 
