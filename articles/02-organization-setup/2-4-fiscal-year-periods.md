@@ -1,127 +1,75 @@
 # Fiscal Year and Accounting Periods
 
-This article explains how to configure fiscal years, accounting periods, and period status management in Light. Proper period configuration ensures accurate closing procedures and period-based reporting.
+This article explains how to configure fiscal years, accounting periods, and period closing tasks in Light. Proper period configuration ensures accurate closing procedures and period-based reporting.
 
 [Open in Light →](https://app.light.inc/accounting/accounting-periods)
 
 ## Understanding fiscal years and accounting periods
 
-A **fiscal year** is your organization's accounting year, which may differ from the calendar year. An **accounting period** is a subdivision of the fiscal year (typically monthly, quarterly, or yearly) during which transactions are grouped for reporting and closing purposes.
+A **fiscal year** is your organization's accounting year, which may differ from the calendar year. An **accounting period** is a subdivision of the fiscal year (typically monthly) during which transactions are grouped for reporting and closing purposes.
 
-> Good to know: Light supports flexible period configurations. You can use monthly, quarterly, or annual periods depending on your reporting requirements.
+## Navigating accounting periods
 
-## Creating a fiscal year
+1. Go to **Accounting → Accounting periods** in the sidebar
+2. The page displays fiscal years as collapsible sections (e.g., 2025, 2026, 2027)
+3. Expand a fiscal year to see its accounting periods
+4. Each period shows columns for **Period** (month name), **Start date**, **End date**, and **Status**
 
-1. Navigate to **Accounting → Accounting periods** ([Open in Light →](https://app.light.inc/accounting/accounting-periods))
+The status column shows how many closing tasks have been completed (e.g., "2/4 tasks done", "0/4 tasks done").
+
+## Generating accounting periods
+
+1. Navigate to **Accounting → Accounting periods**
 2. Click **+ Generate next period**
-3. Enter the **Year** (numeric value, e.g., 2024)
-4. The system automatically calculates the **Start Date** and **End Date** based on your period interval configuration
-5. Click **Create**
+3. Light automatically generates the next set of monthly periods
+4. The periods are created with start and end dates based on your fiscal year configuration
 
-The fiscal year status depends on its accounting periods:
-- **Open**: At least one period is open
-- **Partially Closed**: Some periods are closed, others are open
-- **Closed**: All periods are closed
+## Period closing tasks
 
-## Configuring accounting periods
+Each accounting period has a set of closing tasks that must be completed before the period can be closed. To view and manage tasks:
 
-Before creating accounting periods, configure your period interval type:
+1. Click on a period in the accounting periods list
+2. The **Tasks** view opens, showing the required closing tasks:
+   - **Account Payables**: Close or reopen accounts payable for the period
+   - **Journal Entries**: Close or reopen journal entry posting for the period
+   - **FX revaluation**: Run foreign exchange revaluations for the period
+   - **Account Receivables**: Close or reopen accounts receivable for the period
+3. Each task shows a **Required** badge and an action button:
+   - **Close**: Locks the task area for the period
+   - **Reopen**: Unlocks a previously closed task area
+   - **Run revaluations**: Executes FX revaluation calculations
 
-1. Go to **Accounting → Accounting periods**
-2. Click **Settings** or **Period Configuration**
-3. Select your **Interval Type**:
-   - **Monthly**: 12 periods per year (Jan-Dec or other start month)
-   - **Quarterly**: 4 periods per year (Q1-Q4)
-   - **Yearly**: 1 period per year
-4. Click **Save Configuration**
+## Closing a period
 
-> Tip: This interval type applies to all fiscal years. You cannot mix interval types within a company.
+Once all four closing tasks are completed:
 
-## Creating accounting periods
+1. Navigate to the period's Tasks view
+2. Ensure all tasks show **Reopen** buttons (meaning they've been closed)
+3. Click the **Close period** button at the bottom of the page
+4. Confirm the closing
 
-Once interval configuration is complete, create periods:
+A closed period prevents new transactions from being posted.
 
-1. In **Accounting → Accounting periods**, click **+ Generate next period**
-2. Select the **Fiscal Year** to create periods for
-3. Light automatically generates periods based on your interval configuration:
-   - Monthly creates 12 periods
-   - Quarterly creates 4 periods
-   - Yearly creates 1 period
-4. Review the period dates and labels
-5. Click **Create**
+## Reopening tasks
 
-Each period includes:
-- A unique label (e.g., "Jan 2024", "Q1 2024")
-- Start and end dates
-- An open status allowing transactions to be posted
+If corrections are needed after closing a task:
 
-## Period status: Open and Closed
+1. Navigate to the period's Tasks view
+2. Click **Reopen** on the relevant task
+3. Make the necessary corrections
+4. Close the task again when complete
 
-Periods can be opened or closed to control transaction posting:
+## Fiscal year structure
 
-- **Open**: Transactions can be posted to this period
-- **Closed**: Transactions cannot be posted; period is locked for reporting
-
-To change a period status:
-
-1. Find the period in the accounting periods list
-2. Click the period to view details
-3. Click **Edit Status**
-4. Change the status to **Open** or **Closed**
-5. Click **Save**
-
-Closing a period is typically done after all transactions are recorded, reconciliations are complete, and the period is ready for reporting.
-
-## Opening and closing periods
-
-### Opening a period
-
-Opening a previously closed period allows new transactions to be posted:
-
-1. Navigate to **Accounting → Accounting periods**
-2. Find the closed period
-3. Click **Reopen Period**
-4. Confirm the action
-
-Reopening is useful if corrections are needed after initial closing.
-
-### Closing a period
-
-Closing a period after all transactions and reconciliations are complete:
-
-1. Navigate to **Accounting → Accounting periods**
-2. Find the open period
-3. Click **Close Period**
-4. The system may perform final adjustments if configured (FX revaluation, period closing entries)
-5. Confirm the closing
-6. The period status changes to **Closed**
-
-## Accounting period tasks
-
-Light tracks closing tasks like LOCK_AP (Accounts Payable), LOCK_AR (Accounts Receivable), LOCK_JE (Journal Entries), and FX_REVALUATION (foreign exchange adjustments). For multi-entity organizations, periods are company-wide but closing tasks are tracked per entity, allowing some entities to complete tasks before others.
-
-## Fiscal year closing
-
-When a complete fiscal year is finished:
-
-1. Ensure all periods within the year are closed
-2. Verify all closing tasks are completed for all entities
-3. Perform final year-end adjustments (retained earnings, tax provisions)
-4. The fiscal year status automatically updates to **Closed**
-5. Generate final year-end reports
-
-Closed fiscal years retain all transaction data but prevent new posting in those periods.
+Fiscal years are displayed in reverse chronological order on the Accounting periods page. Each fiscal year's status depends on the progress of its accounting periods and their closing tasks.
 
 ## Best practices
 
-- Establish a consistent period structure (monthly periods are most common)
-- Close periods promptly after month-end to enable timely reporting
+- Complete all four closing tasks promptly after month-end to enable timely reporting
+- Run FX revaluations before closing Account Payables and Account Receivables
 - Plan period closing tasks in advance and assign responsibilities
-- Use period closing checklists to ensure all steps are completed
-- Maintain audit trails of who closed each period and when
-- Archive closed periods' documentation for regulatory compliance
-- Consider reopening periods only for legitimate corrections
-- Schedule period closings during low-activity periods when possible
+- Reopen periods only for legitimate corrections
+- Close periods in chronological order to maintain accounting integrity
 
 ## Related articles
 
