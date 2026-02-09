@@ -1,8 +1,3 @@
----
-title: Access Controls and SSO
-description: Learn how Light manages user access through role-based controls, entity assignments, approval guardrails, and Single Sign-On (SSO).
----
-
 # Access Controls and SSO
 
 Light provides role-based access controls, entity-level scoping, and approval guardrails to protect your financial data. Single Sign-On (SSO) is available through Light's Auth0-based authentication layer and is configured in coordination with Light's team.
