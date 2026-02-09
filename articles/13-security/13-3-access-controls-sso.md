@@ -1,230 +1,154 @@
+---
+title: Access Controls and SSO
+description: Learn how Light manages user access through role-based controls, entity assignments, approval guardrails, and Single Sign-On (SSO).
+---
+
 # Access Controls and SSO
 
-This article explains how to manage user access in Light using role-based controls and Single Sign-On (SSO) authentication.
+Light provides role-based access controls, entity-level scoping, and approval guardrails to protect your financial data. Single Sign-On (SSO) is available through Light's Auth0-based authentication layer and is configured in coordination with Light's team.
 
-[Open in Light →](https://app.light.inc/settings)
+## User Management
 
-## Overview
+User management lives under **Business partners > Users** in the main sidebar navigation. This page has three tabs: **Users**, **Groups**, and **Access roles**.
 
-Light provides flexible access control to ensure users can do their jobs while protecting sensitive financial data. You can grant permissions at the role level and restrict access by entity, department, and data type.
+### Managing Users
 
-## Role-Based Access Control
+The **Users** tab lists all users in your organization, showing their full name, email, roles, groups, and city. You can search and filter the list, customize which columns are shown via the **Columns** button, and create new users with **+ Create user**.
 
-Light includes pre-built roles for common job functions:
+Clicking on a user opens their detail form, where an admin can view or edit:
 
-### Global Roles
+- **First name** and **Last name**
+- **Email**
+- **Address**, **Country**, **State**, **City**, and **Zip / postcode**
+- **Phone number**
+- **Entity** — the legal entity (company) the user belongs to, selected from a dropdown.
+- **Communication channel** — how the user receives notifications (e.g., Slack).
+- **Access role** — one or more roles assigned to the user, selected from a multi-select dropdown.
+- **Manager** — the user's direct manager, used for approval routing.
+- **Groups** — any groups the user belongs to.
 
-- **Admin**: Full system access, can manage users, configure settings, and access all financial data
-- **Finance Manager**: Access to all financial modules, can approve transactions and manage bank accounts
-- **Accountant**: Can create and post journal entries, access transaction details, run reports
-- **Approver**: Can approve expenses and documents up to their approval limit
-- **Employee**: Can submit expenses and view their own reimbursement status
-- **Viewer**: Read-only access to designated reports and dashboards
+Users can be archived from this form using the **Archive** button.
 
-### Role Permissions
+### Access Roles
 
-Each role includes permissions for:
+Each user is assigned one or more access roles that determine what they can see and do across the platform. Light includes the following predefined roles:
 
-- **Financial Transactions**: Create, edit, approve, post, or view transactions
-- **Reconciliation**: Access to bank reconciliation and matching groups
-- **Reporting**: Access to financial reports and dashboards
-- **Administration**: User management, company settings, integration configuration
-- **Data Export**: Permission to export data in bulk
+- **Admin** — Full system access, including settings, user management, and all modules.
+- **Controller** — Broad access to financial oversight, reporting, and reconciliation.
+- **AP clerk** — Manages accounts payable tasks such as processing and viewing bills.
+- **AP preparation** — Prepares accounts payable records for review and posting.
+- **AR clerk** — Manages accounts receivable tasks such as invoicing.
+- **Invoice approver** — Reviews and approves invoices within the approval workflow.
+- **Purchase requester** — Submits purchase requests for approval.
+- **Cardholder** — Manages their assigned corporate card and related transactions.
+- **Reimbursement** — Submits and tracks expense reimbursements.
+- **Vendor management** — Manages vendor records and onboarding.
+- **Report viewer** — Read-only access to reports and dashboards.
 
-> Good to know: Your Light administrator can create custom roles tailored to your organization's structure.
+To assign roles, open a user's detail form from **Business partners > Users**, then select the desired role(s) from the **Access role** dropdown.
 
-## Data-Level Access Control
+You can also view your own assigned roles in **Settings > Profile > Organization details**.
 
-Beyond global roles, Light provides fine-grained controls on specific data:
+### Permissions Matrix
 
-### Company Entity Access
+The **Access roles** tab on the Users page displays a full permissions matrix. Each row represents a specific permission (grouped by category), and each column represents a role. A checkmark indicates the role has that permission.
 
-Restrict users to specific companies or business units:
+Permission categories include:
 
-- **Single Entity**: User sees data only for one company
-- **Multiple Entities**: User sees data across multiple selected companies
-- **All Entities**: User sees all company data
+- **Accounting Documents** — viewing accounting document pages.
+- **Accounting Periods** — viewing accounting periods.
+- **AI Config** — viewing and editing AI configuration.
+- **API Keys** — viewing and editing API keys.
+- **Cards** — editing cards, posting transactions to ledger, viewing card accounts and transactions, viewing own cards.
+- **Company Settings** — editing and viewing company settings.
+- **Contracts** — contract-related permissions.
+- **Ledger** — viewing accounts, accrual templates, intercompany configurations and journal entries, journal entries, ledger transactions, reports, and tax codes.
+- **Payables** — approving bills, creating and editing bills, managing credit entries, processing payments, and viewing bills.
+- **Vendor Portal** — editing own vendor portal form.
+- **Vendors** — adding new vendors, editing vendor bank details and details, requesting vendor onboarding, viewing vendors.
+- **Workflows** — editing and viewing workflows.
 
-### Department and Cost Center Access
+This matrix is read-only and reflects the system-defined permissions for each role.
 
-Limit access by department or cost center:
+### Groups
 
-- User sees only transactions for their department
-- Expenses from other departments are hidden
-- Reports show only department-relevant data
+The **Groups** tab lets you organize users into groups. Each group has a name, an optional description, and a member count. Groups can be used to scope access, route approvals, or organize teams.
 
-### Currency Access
+You can create new groups using the **+ Create group** button at the top of the Users page.
 
-Restrict access by currency:
+### Entity Assignment
 
-- Users see transactions only in assigned currencies
-- Multi-currency reports are filtered
-- Exchange rate data is limited to assigned currencies
+Light supports multi-entity organizations. Each user is assigned to an entity (legal company) via the **Entity** dropdown on their user detail form. This controls which entity's transactions and data they can access.
 
-### Document Type Access
+Available entities are configured under **Settings > Entities**, where each entity has a code, name, base currency, and VAT number.
 
-Granular controls on document types:
+### Levels
 
-- Restrict journal entry access to accountants
-- Allow employees to view only their own invoices
-- Limit bank account access to finance personnel
+Users may also be assigned a **Level**, visible under **Settings > Profile > Organization details**. Levels can be used to further scope access or define approval hierarchies.
 
-## Setting Up Access Control
+## Approval Guardrails
 
-### For Global Roles
+Light uses **Guardrails** to enforce approval requirements on financial transactions. Guardrail settings are found under **Settings > Guardrails > Payables**.
 
-1. Navigate to **Admin** > **Users**
-2. Select a user to edit
-3. Under **Roles**, choose the appropriate role
-4. Click **Save**
+### Bills
 
-### For Entity-Level Access
+Under the **Bills** tab, you can view the approval rules that apply to bill payments. For example, a guardrail might require approval from a minimum number of approvers before a bill can be processed.
 
-1. Go to **Admin** > **Users**
-2. Select a user
-3. Under **Data Access**, select **Entities**
-4. Choose which companies/entities the user can access
-5. Click **Save**
+### Reimbursements
 
-### For Department-Level Access
+Under the **Reimbursements** tab, similar approval rules apply to expense reimbursements — such as requiring approval from at least two approvers before a reimbursement is paid out.
 
-1. Go to **Admin** > **Users**
-2. Select a user
-3. Under **Data Access**, select **Departments**
-4. Choose which departments the user can access
-5. Click **Save**
+> **Note:** Guardrail configurations are managed by Light. If you need to update your approval rules, contact your Light representative — you'll see a **Contact Light for update** prompt on the guardrails page.
 
-> Tip: Use department access to control expense visibility, preventing staff from viewing colleagues' sensitive spending.
+## Workflows
 
-## Approval Workflows
+Light includes a visual **Workflow** builder for automating processes that involve approvals and other actions. Workflows are accessed from **Settings > Workflows**.
 
-Light can enforce approval workflows based on user roles and transaction amounts:
+Each workflow is triggered by an event and can include approval steps, conditional logic, and automated actions. Pre-built workflows include:
 
-### Approval Levels
+- **Bill payment** — triggered when bill data changes.
+- **Expense reimbursement** — triggered when an expense report is submitted.
+- **Vendor card request** — triggered when a card request is created.
+- **Invoice-to-cash** — triggered when an invoice is posted.
+- **Vendor onboarding** — triggered when a vendor is created or bank data changes.
+- **Employee record updates** — triggered when an HRM system update is received.
+- **Sync from HubSpot** / **Sync to Salesforce** / **Sync from Salesforce** — triggered by data changes in external systems.
 
-1. Define approval levels (e.g., $0-$500, $500-$5,000, $5,000+)
-2. Assign approvers to each level
-3. Transactions automatically route to appropriate approvers
+Workflows are configured using a drag-and-drop node editor with **Action** and **Condition** blocks. Each workflow can be published, and the Workflows page shows the trigger, publication date, publisher, and version number.
 
-### Delegation
+## Policies
 
-Approvers can temporarily delegate authority:
-
-1. Go to **Settings** > **Delegation**
-2. Select who to delegate to and for how long
-3. Approvals route to the delegate during the period
-4. Delegation automatically expires on the specified date
+Under **Settings > Guardrails > Policies**, you can create and manage spend policies that are scoped to specific entities. Policies can be uploaded or created from scratch using the **+ Create policy** and **Upload** buttons. Each policy is associated with one or more entities and tracks the last edit date and editor.
 
 ## Single Sign-On (SSO)
 
-### Overview
+Light supports Single Sign-On so that employees can log in using their company's identity provider rather than managing a separate username and password. Light's SSO is powered by Auth0.
 
-Single Sign-On lets employees use their company credentials to access Light without creating separate usernames and passwords. Light supports SSO via Auth0.
+### How SSO Works
 
-### Supported Protocols
+SSO is configured at the organization level in coordination with Light's team — there is no self-service SSO setup screen in the Light app. To enable SSO, contact your Light representative and provide:
 
-Light supports industry-standard SSO protocols:
+1. Your identity provider type (e.g., Okta, Azure AD, Google Workspace, OneLogin).
+2. The relevant connection details for your provider:
+   - For **SAML 2.0** providers: Entity ID, SSO URL, and signing certificate.
+   - For **OpenID Connect (OIDC)** providers: Client ID, Client Secret, and discovery endpoint.
+3. The user attributes you'd like mapped (e.g., email, first name, last name).
 
-- **SAML 2.0**: For companies with Okta, Azure AD, OneLogin, or other SAML providers
-- **OpenID Connect (OIDC)**: For companies with Google Workspace, Office 365, or OIDC-compatible identity providers
-- **OAuth 2.0**: For integration with social and corporate identity providers
+Light's team will configure the connection on the Auth0 backend and test it with you before going live.
 
-### Setting Up SSO
+### Just-In-Time Provisioning
 
-#### Prerequisites
-
-- Access to your company's identity provider (Okta, Azure AD, etc.)
-- Light admin access
-- Authority to configure SSO at your organization
-
-#### Configuration Steps
-
-1. Go to **Admin** > **Authentication Settings**
-2. Select **Enable Single Sign-On**
-3. Choose your identity provider (SAML or OIDC)
-4. Configure connection details:
-   - **Entity ID / Client ID**: Provided by your identity provider
-   - **SSO URL**: The login endpoint for your identity provider
-   - **Certificate**: SAML certificate (for SAML only)
-5. Map user attributes (email, first name, last name, etc.)
-6. Click **Test Connection** to verify configuration
-7. Click **Enable** to activate SSO
-
-#### SAML Configuration Example
-
-If using Okta:
-
-1. In Okta, create a new SAML application for Light
-2. Set the **Assertion Consumer Service (ACS) URL** (also called the Callback URL or Reply URL) to: `https://light-inc-prod.eu.auth0.com/login/callback`
-3. Set the Single Sign-On URL to your Light instance
-4. Download the SAML certificate
-5. In Light, upload the certificate and enter the SSO URL
-6. Test the connection by logging in with Okta credentials
-
-> Note: The callback URL `https://light-inc-prod.eu.auth0.com/login/callback` is the same for all identity providers (Okta, Azure AD, OneLogin, etc.).
-
-#### OIDC Configuration Example
-
-If using Azure AD:
-
-1. Register Light as an application in Azure AD
-2. Note the Client ID and Client Secret
-3. In Light, select OIDC and enter Client ID and Secret
-4. Configure the discovery endpoint
-5. Test by logging in with Azure AD credentials
-
-### Session Management
-
-Light sessions are secured:
-
-- **Timeout**: Sessions expire after 30 minutes of inactivity (configurable)
-- **Logout**: Logging out of Light also logs out from SSO provider
-- **Multiple Devices**: Users can be logged in on multiple devices simultaneously
-- **Browser Cookies**: Session cookies are encrypted and httpOnly
+When SSO is enabled, new users can be provisioned automatically on their first login. Their name and email are pulled from the identity provider, and they receive a default role. Admins can then adjust roles and entity assignments as needed from **Business partners > Users**.
 
 ### Multi-Factor Authentication (MFA)
 
-For additional security, enable MFA:
+If your organization requires multi-factor authentication, this is configured through your identity provider. Light's Auth0 layer respects the MFA requirements set by your IdP, so users will be prompted for MFA during the SSO login flow if your provider enforces it.
 
-1. In **Admin** > **Authentication Settings**, select **Require MFA**
-2. Users must set up MFA (authenticator app, SMS, or hardware key)
-3. MFA is required on every login
-4. MFA settings sync with your identity provider if configured
+### Session and Security
 
-> Good to know: MFA is recommended for all admin users and finance personnel with approval authority.
-
-## Just-In-Time Provisioning
-
-With SSO enabled, users are automatically created in Light on first login:
-
-- **Automatic User Creation**: User accounts are created when they first log in
-- **Attributes Mapped**: First name, last name, email are pulled from SSO provider
-- **Default Role**: New users are assigned a default role (e.g., Viewer)
-- **Manual Override**: Admins can still manually create users with custom roles
-
-## SSO Troubleshooting
-
-### Users Can't Log In
-
-- Verify identity provider configuration is correct
-- Check that user exists in identity provider
-- Ensure user's email matches in both systems
-- Review audit logs in Light for detailed error messages
-
-### Wrong User Data Displayed
-
-- Verify attribute mappings are correct in SSO configuration
-- Check that identity provider is returning the correct attributes
-- Update attribute mappings if your identity provider structure changed
-
-### MFA Issues
-
-- Users should set up MFA before logging in through the identity provider
-- Clear browser cookies and try again
-- Contact your IT team if MFA device is lost
+Light enforces session timeouts for inactive users.
 
 ## Related Articles
 
-- Light's security architecture
-- Data encryption and storage
-- Compliance certifications
+- [Security Architecture](/articles/13-security/13-1-security-architecture)
+- [Data Encryption and Storage](/articles/13-security/13-2-data-encryption-storage)
