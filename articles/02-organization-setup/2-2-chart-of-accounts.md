@@ -10,7 +10,7 @@ Your Chart of Accounts is the complete list of all accounts available for postin
 
 ## Navigating the Accounts page
 
-The Accounts page is located at **Accounting → Chart of accounts** in the sidebar. The page has three tabs:
+The Accounts page is located at [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) in the sidebar. The page has three tabs:
 
 - **Chart of accounts**: View, search, and manage all GL accounts
 - **Account defaults**: Configure system account mappings (e.g., Rounding, FX loss, FX gain, Bank fees)
@@ -34,7 +34,7 @@ Each account in Light has the following properties:
 
 ## Creating a new account
 
-1. Go to **Accounting → Chart of accounts**
+1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Click **+ Create account**
 3. Fill in the account details:
    - **Account number**: Enter a unique account number
@@ -52,7 +52,7 @@ Each account in Light has the following properties:
 
 To bulk-import accounts:
 
-1. Go to **Accounting → Chart of accounts**
+1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Click the **Upload** button in the top-right actions
 3. Prepare your accounts file in the supported format (CSV or Excel)
 4. Upload your prepared file
@@ -64,7 +64,7 @@ To bulk-import accounts:
 
 ## Editing accounts
 
-1. Go to **Accounting → Chart of accounts**
+1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Search for the account you need to modify
 3. Click the account to open its detail view
 4. Click **Edit** to update the account fields
@@ -83,7 +83,7 @@ To deactivate an account, open the account, click Edit, change Account status to
 
 ## Account defaults
 
-The **Account defaults** tab configures which accounts are used for system-level postings:
+The [**Account defaults**](https://app.light.inc/accounting/ledger-accounts) tab configures which accounts are used for system-level postings:
 
 - **Rounding**: Account for rounding gain/loss
 - **FX loss** / **FX gain**: Accounts for realized foreign exchange gains and losses

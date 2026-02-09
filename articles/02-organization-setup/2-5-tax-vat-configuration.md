@@ -10,7 +10,7 @@ Light supports tax configurations for multinational operations, including multip
 
 ## Navigating the Tax codes page
 
-1. Go to **Accounting → Tax codes** in the sidebar
+1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes) in the sidebar
 2. The page displays all tax codes with columns for **Name**, **Context**, **Type**, **Rate**, and **Country**
 3. By default, the list is filtered to show only **Active** tax codes
 4. Use the **Search** bar to find specific tax codes
@@ -18,7 +18,7 @@ Light supports tax configurations for multinational operations, including multip
 
 ## Creating a tax code
 
-1. Navigate to **Accounting → Tax codes**
+1. Navigate to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click **+ Create tax code**
 3. Fill in the **General** section:
    - **Active** toggle: Enable or disable the tax code
@@ -46,7 +46,7 @@ Tax codes in Light use a structured naming convention. For example, "P-DK-STD-25
 
 Each company entity can have VAT details configured:
 
-1. Go to **Settings (gear icon) → Entities**
+1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Select the entity to configure
 3. Click **Edit**
 4. Enter the **VAT** number for the entity
@@ -56,7 +56,7 @@ Each company entity can have VAT details configured:
 
 ## Editing tax codes
 
-1. Go to **Accounting → Tax codes**
+1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click on the tax code you want to modify
 3. Click **Edit** to update the tax code fields
 4. Make your changes and save

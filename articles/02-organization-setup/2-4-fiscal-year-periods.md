@@ -10,7 +10,7 @@ A **fiscal year** is your organization's accounting year, which may differ from 
 
 ## Navigating accounting periods
 
-1. Go to **Accounting → Accounting periods** in the sidebar
+1. Go to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods) in the sidebar
 2. The page displays fiscal years as collapsible sections (e.g., 2025, 2026, 2027)
 3. Expand a fiscal year to see its accounting periods
 4. Each period shows columns for **Period** (month name), **Start date**, **End date**, and **Status**
@@ -19,7 +19,7 @@ The status column shows how many closing tasks have been completed (e.g., "2/4 t
 
 ## Generating accounting periods
 
-1. Navigate to **Accounting → Accounting periods**
+1. Navigate to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods)
 2. Click **+ Generate next period**
 3. Light automatically generates the next set of monthly periods
 4. The periods are created with start and end dates based on your fiscal year configuration

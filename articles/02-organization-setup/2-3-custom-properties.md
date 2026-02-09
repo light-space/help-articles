@@ -21,7 +21,7 @@ Light supports several field types for custom properties:
 
 ## Viewing custom properties
 
-1. Navigate to **Settings (gear icon) → Custom properties** (under the Records section)
+1. Navigate to [**Settings (gear icon) → Custom properties**](https://app.light.inc/settings/custom-properties) (under the Records section)
 2. The list displays all custom properties with columns for **Label**, **Internal name**, **Field type**, **Object**, and **Level**
 3. By default, the list is filtered to show only **Active** properties
 4. Use the **Search** bar to find specific properties
@@ -29,7 +29,7 @@ Light supports several field types for custom properties:
 
 ## Creating a custom property
 
-1. Navigate to **Settings (gear icon) → Custom properties**
+1. Navigate to [**Settings (gear icon) → Custom properties**](https://app.light.inc/settings/custom-properties)
 2. Click **+ Create property**
 3. Fill in the property details:
    - **Object group**: Select whether this property applies at the **Header** (entire document) or **Lines** (individual line items) level

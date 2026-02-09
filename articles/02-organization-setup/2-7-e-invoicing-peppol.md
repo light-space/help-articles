@@ -24,7 +24,7 @@ Peppol (Pan-European Public Procurement OnLine) is a free, open network for elec
 
 Each company entity can have e-invoicing details configured:
 
-1. Go to **Settings (gear icon) → Entities**
+1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Click **+ Create entity** (for new entities) or click an existing entity and then **Edit**
 3. In the **E-invoicing (optional)** section, fill in:
    - **EAS code**: The Electronic Address Scheme identifier (e.g., 9930 for EU tax ID, 0007 for organization number)
@@ -47,7 +47,7 @@ Consult your jurisdiction's requirements to determine the correct EAS code.
 
 Tax codes in Light include an optional **EDIFACT** field that supports e-invoicing compliance:
 
-1. Go to **Accounting → Tax codes**
+1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click **+ Create tax code** or edit an existing tax code
 3. Select the appropriate **EDIFACT (optional)** code from the dropdown
 4. This EDIFACT code is included in e-invoice documents to classify the tax treatment

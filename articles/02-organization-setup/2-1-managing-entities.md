@@ -10,7 +10,7 @@ A company entity represents a distinct legal entity within your organization. Th
 
 ## Creating a new entity
 
-1. Navigate to **Settings (gear icon) → Entities** (under the Records section)
+1. Navigate to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities) (under the Records section)
 2. Click **+ Create entity**
 3. Fill in the entity details:
    - **Display name**: The name as it appears in Light (e.g., "US Headquarters")
@@ -32,13 +32,13 @@ An entity code is automatically assigned to each new entity.
 
 ## Viewing entity details
 
-1. Go to **Settings (gear icon) → Entities**
+1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. The entity list displays columns for **Entity code**, **Name**, **Currency**, **VAT**, and **Cards**
 3. Click on any entity to open its detail panel, which shows all configured fields
 
 ## Editing entity details
 
-1. Go to **Settings (gear icon) → Entities**
+1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Click the entity you want to modify
 3. Click **Edit** in the detail panel
 4. Update the information in the **Edit details** dialog

@@ -16,7 +16,7 @@ Light supports multi-currency accounting:
 
 Each entity has its own local currency, set when the entity is created:
 
-1. Go to **Settings (gear icon) → Entities**
+1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Click **+ Create entity** (for new entities) or click an existing entity and then **Edit**
 3. Select the **Local currency** from the dropdown
 4. Click **Create** or **Save**
@@ -27,9 +27,9 @@ The local currency is the default currency for all transactions at that entity. 
 
 ## FX account configuration
 
-Light uses designated accounts for foreign exchange gains, losses, and revaluations. These are configured in the **Account defaults** tab:
+Light uses designated accounts for foreign exchange gains, losses, and revaluations. These are configured in the [**Account defaults**](https://app.light.inc/accounting/ledger-accounts) tab:
 
-1. Go to **Accounting → Chart of accounts**
+1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Click the **Account defaults** tab
 3. Configure the following FX-related accounts:
    - **FX loss**: Account for realized foreign exchange losses
@@ -44,7 +44,7 @@ These accounts receive the gain/loss entries generated during currency conversio
 
 At period end, Light can revalue balance sheet accounts to current exchange rates through the FX revaluation closing task:
 
-1. Navigate to **Accounting → Accounting periods**
+1. Navigate to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods)
 2. Click on the period you want to revalue
 3. In the Tasks view, find the **FX revaluation** task
 4. Click **Run revaluations**
@@ -54,7 +54,7 @@ At period end, Light can revalue balance sheet accounts to current exchange rate
 
 ## Multi-currency accounts
 
-Accounts can be configured to track foreign currency transactions. When creating or editing an account in the Chart of accounts, check the **Revalue open balance for foreign currency transactions** checkbox to enable automatic FX revaluation for that account.
+Accounts can be configured to track foreign currency transactions. When creating or editing an account in the [Chart of accounts](https://app.light.inc/accounting/ledger-accounts), check the **Revalue open balance for foreign currency transactions** checkbox to enable automatic FX revaluation for that account.
 
 ## Best practices
 
