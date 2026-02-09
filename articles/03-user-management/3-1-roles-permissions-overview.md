@@ -2,7 +2,7 @@
 
 Light uses a role-based access control system to manage what actions users can perform in your company. This article explains the available roles and their permissions.
 
-[Open in Light →](https://app.light.inc/users)
+[Open in Light →](https://app.light.inc/users?tab=roles)
 
 ## Understanding Roles
 
@@ -12,9 +12,7 @@ Roles define a set of permissions that determine what users can do in Light. Eac
 
 Light includes the following predefined roles:
 
-**Superuser** - Full system access with complete control over all features, configurations, and user management. Only use this for administrators who need unrestricted access.
-
-**Company Admin** - Administrative access for company-level configuration, including company setup, user management, and basic settings. Recommended for your primary finance administrator.
+**Admin** - Full system access with complete control over all features, configurations, and user management. Only assign this to administrators who need unrestricted access.
 
 **Controller** - Access to financial reports, ledger management, and accounting period closing. Ideal for your finance controller or accounting manager.
 
@@ -40,25 +38,17 @@ Light includes the following predefined roles:
 
 ## How Permissions Work
 
-Permissions are granular and tied to specific features:
-
-- **View permissions** allow users to see data and reports
-- **Create permissions** allow users to create new documents
-- **Edit permissions** allow modifications to existing documents
-- **Delete permissions** allow removal of documents
-- **Approve permissions** allow progression of documents through approval workflows
+You can view the full permissions matrix by navigating to **Business partners → Users** and selecting the **Access roles** tab. This shows every permission grouped by feature area (e.g., Accounting Documents, Accounting Periods, AI Config, API Keys) and which roles have access to each.
 
 Permissions are cumulative, meaning a user with multiple roles has the combined permissions of all their roles. If a role doesn't explicitly grant a permission, the user cannot perform that action.
 
-> Good to know: Users cannot have more permissions than what their highest-privilege role grants. For example, an Invoice Approver cannot increase approval thresholds beyond what's configured for that role.
+## Entities and Permissions
 
-## Company Entities and Permissions
-
-Permissions can also be scoped by company entity. A user may have full access in one entity but limited or no access in another. This is useful for multi-entity companies where you want to restrict certain users to specific operating units.
+Permissions can also be scoped by entity. A user may have full access in one entity but limited or no access in another. This is useful for multi-entity companies where you want to restrict certain users to specific operating units.
 
 ## Assigning and Modifying Roles
 
-Roles are assigned by users with Company Admin or Superuser roles. When assigning roles, consider the principle of least privilege: give users only the roles they need to perform their job.
+Roles are assigned by users with the Admin role. When assigning roles, consider the principle of least privilege: give users only the roles they need to perform their job.
 
 > Tip: Review user roles quarterly. Periodically audit who has which roles to ensure access is still appropriate as job responsibilities change.
 
