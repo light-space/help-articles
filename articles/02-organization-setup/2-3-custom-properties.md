@@ -8,103 +8,90 @@ This article explains how to set up and manage custom properties (also called di
 
 Custom properties are user-defined fields that extend Light's data model to capture business-specific information. They function as dimensions for analysis and reporting. For example, you might create custom properties to track cost centers, projects, departments, or any other organizational attribute relevant to your business.
 
-> Good to know: Custom properties can be attached to bills, invoices, purchase orders, reimbursements, journal entries, and other transactional objects.
+> Good to know: Custom properties can be attached to various object types including bills, invoices, purchase orders, card transactions, contracts, products, and customers.
 
 ## Types of custom properties
 
-Light supports several input types for custom properties:
+Light supports several field types for custom properties:
 
-- **Single Select**: Choose one value from a predefined list
-- **Multi Select**: Choose multiple values from a predefined list
+- **Single select**: Choose one value from a predefined list
+- **Multiple select**: Choose multiple values from a predefined list
 - **Text**: Free-form text entry
-- **Numeric**: Numeric values with optional ranges
-- **Boolean**: True/false or yes/no flags
 - **Date**: Date selection for time-based attributes
 
-## Creating a custom property group
+## Viewing custom properties
 
-Custom properties are organized into groups. To create a new property group:
+1. Navigate to **Settings (gear icon) → Custom properties** (under the Records section)
+2. The list displays all custom properties with columns for **Label**, **Internal name**, **Field type**, **Object**, and **Level**
+3. By default, the list is filtered to show only **Active** properties
+4. Use the **Search** bar to find specific properties
+5. Click **Columns** to customize which columns are displayed
+
+## Creating a custom property
 
 1. Navigate to **Settings (gear icon) → Custom properties**
-2. Click **+ Create property group**
-3. Enter the **Group Name** (e.g., "Cost Center", "Project")
-4. Enter the **Internal Name** for system reference (cannot be changed later)
-5. Select the **Input Type** that matches your data (single select, text, numeric, etc.)
-6. Choose the **Object Types** this property applies to:
-   - Bills, Invoices, Purchase Orders, Reimbursements, Journal Entries, etc.
-7. Specify **Object Level**:
-   - Header: Property applies to the entire document
-   - Line: Property applies to individual line items
-8. Toggle **Required** if this property must be set
-9. Click **Create Group**
+2. Click **+ Create property**
+3. Fill in the property details:
+   - **Object group**: Select whether this property applies at the **Header** (entire document) or **Lines** (individual line items) level
+   - **Object**: Choose which object types this property applies to (e.g., Bill, Invoice, Card Transaction, Purchase Order, Contract, Product, Customer)
+   - **Label**: The display name for this property (e.g., "Project", "Cost Center")
+   - **Internal name**: A system reference name (auto-generated from label, cannot be changed later)
+   - **Context**: Optional description of the property's purpose
+   - **Required**: Toggle on if this property must be filled in
+   - **Field type**: Select the data type (Single select, Multiple select, Text, or Date)
+4. Click **Create**
 
-## Adding values to a property group
+## Adding values to a select property
 
-For select-type properties, add the available values:
+For single select and multiple select properties, you need to add the available values:
 
-1. Open the property group you just created
-2. Click **Add Value**
-3. Enter the **Value Label** (how it appears to users)
-4. Enter the **Internal Name** for system reference
-5. Add an optional **Description** if needed
-6. Click **Add Value**
+1. Open the property by clicking on it in the list
+2. Scroll down to the **Values** section
+3. Click **+ Add item**
+4. Fill in the value details:
+   - **Label**: How the value appears to users
+   - **Internal name**: System reference name
+   - **Context**: Optional description of this value
+   - **User groups**: Optionally restrict this value to specific user groups
+5. Repeat for each value users can select
 
-Repeat this process for each value users can select. You can add values anytime, even after initial creation.
+You can add values at any time, even after the property is already in use.
 
-## Setting default values
+## Editing a custom property
 
-Default values pre-populate custom properties to streamline data entry:
+1. Open the property by clicking on it in the list
+2. Click **Edit** in the top-right corner
+3. Update the property fields as needed
+4. Save your changes
 
-1. Go to **Settings (gear icon) → Custom properties**
-2. Click **Manage Defaults**
-3. Choose the **Owner Type**:
-   - User: Set defaults for individual team members
-   - User Group: Set defaults for groups of users
-   - Vendor: Set defaults for specific vendors
-4. Select the **User**, **Group**, or **Vendor** as applicable
-5. For each property, select the default value(s) to apply
-6. Click **Save Defaults**
+Internal names cannot be changed after creation.
 
-When users create transactions, default custom property values will be pre-populated based on their user profile.
+## Archiving properties
+
+If a property is no longer needed:
+
+1. Open the property
+2. Click **Archive** in the top-right corner
+3. The property is archived and removed from active use, but historical values are retained
 
 ## Applying custom properties to transactions
 
 When creating or editing a transaction:
 
-1. Locate the **Custom Properties** section in the document form
+1. Locate the custom properties fields in the document form
 2. Fill in each required custom property marked with an asterisk (*)
 3. For select properties, click the dropdown and choose a value
-4. For text/numeric properties, enter the value directly
+4. For text properties, enter the value directly
 5. For date properties, select the date from the calendar picker
 6. When all required properties are filled, the transaction can be saved
 
-> Tip: Custom properties appear in the same form as your core transaction data, making them easy to populate during transaction entry.
-
-## Organizing properties with groups
-
-Keep related properties together by creating logical groupings:
-
-- Separate properties into distinct groups by business purpose
-- Use consistent naming conventions across groups (e.g., all cost-related properties in one group)
-- Consider how users will filter and report on properties
-- Document the purpose and valid values for each property in your team
-
-## Using custom properties in reports
-
-Custom properties enable powerful filtering and analysis. In reporting modules, use custom property filters to slice data, export values with transactions, and group reports by cost center, project, or department. Create dashboards that pivot by custom property dimensions.
-
-## Deactivating properties
-
-If a property is no longer needed, edit the group, set Status to Deleted, and click Save. Deletion archives the property but retains all historical values.
-
 ## Best practices
 
-- Plan your property groups before creation to ensure consistency
-- Use clear, descriptive names that users will understand
+- Plan your properties before creation to ensure consistency
+- Use clear, descriptive labels that users will understand
 - Keep the number of required properties reasonable to avoid data entry friction
-- Document the purpose and valid values for each property
 - Use internal names that are code-friendly (no spaces, special characters)
-- Consider setting defaults for properties to reduce manual entry
+- Use the Context field to document the purpose of each property and its values
 - Review property usage periodically and archive unused properties
 - Test custom properties on a sample transaction before rolling out to your team
 
