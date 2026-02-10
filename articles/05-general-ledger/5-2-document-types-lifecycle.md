@@ -52,6 +52,7 @@ All documents share a common structure:
 - Purpose: Vendor invoices for goods/services received
 - Lifecycle: Created, approved, posted, paid, cleared
 - Key fields: Vendor, invoice number, due date, payment terms
+- Posting date: The **invoice date** on the bill is used as the posting date when the document posts to the ledger. This means the invoice date must fall within an open accounting period for the bill to be posted. If you need to track a separate received date (e.g., when the invoice was received vs. the date on the invoice), you can create a custom property date field on the bill header.
 
 **Accounts Receivable (AR)**
 - Type: Invoice Receivable
