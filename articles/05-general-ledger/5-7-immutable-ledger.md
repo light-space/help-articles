@@ -1,16 +1,26 @@
 # Immutable Ledger and Audit Trail
 
-Light's ledger is immutable by design—once transactions post, they cannot be changed. This ensures data integrity and creates a complete audit trail. This article explains how immutability works and why it matters.
+Light's ledger is immutable by design—once transactions post, they cannot be changed. This ensures data integrity and creates a complete audit trail. This article explains how immutability works, the distinction between accounting documents and transactions, and why it matters.
 
 [Open in Light →](https://app.light.inc/ledger-transactions)
 
 
+## Accounting Documents vs. Transactions
+
+In Light, it's important to understand the distinction between accounting documents and transactions:
+
+**Accounting documents** (such as bills, sales invoices, and journal entries) are **mutable** records that can be edited. A single accounting document can generate one or several transactions on the general ledger.
+
+**Transactions** are the individual debit and credit entries posted to the general ledger. Once posted, transactions are **immutable**—they cannot be changed or deleted.
+
+When you edit an accounting document that has already been posted, the accounting document engine automatically handles the reversal of existing transactions on the general ledger and creates new transactions reflecting your changes. You don't need to manually create reversing entries.
+
 ## What Does Immutable Mean?
 
-Immutability means posted transactions cannot be changed or deleted:
+Immutability applies specifically to posted transactions on the general ledger:
 
-- **No editing** - You cannot modify a posted transaction
-- **No deletion** - You cannot remove a posted transaction
+- **No editing** - You cannot modify a posted transaction directly
+- **No deletion** - You cannot remove a posted transaction from the ledger
 - **Permanent record** - All transactions remain forever
 - **Complete trail** - Every change is logged and traceable
 
@@ -30,69 +40,61 @@ This design prevents fraud, maintains compliance, and ensures financial data is 
 
 ## How Immutability Works
 
-When you post a document:
+When you post an accounting document:
 
-1. Document status changes from DRAFT to POSTED
-2. GL transactions are created in ledger_transaction_line table
+1. Document status changes from Draft to Posted
+2. GL transactions are created on the general ledger
 3. Transactions are marked as immutable
-4. System prevents any modification
+4. System prevents any direct modification of those transactions
 
-If you need to change a posted transaction:
+If you need to change something after posting:
 
-1. You cannot edit it directly
-2. Instead, you create a reversing entry (opposite amounts)
-3. Then create a correcting entry (if needed)
-4. Both reversing and correcting are tracked and posted
+1. **Edit the accounting document** - You can modify the accounting document itself
+2. **Automatic reversal** - The accounting document engine automatically reverses the existing transactions
+3. **New transactions created** - New transactions reflecting your changes are posted
+4. **Full audit trail** - Both the original and new transactions remain visible for audit purposes
 
-## Reversals Instead of Edits
+## How Automatic Reversals Work
 
-The correct way to fix a posted error:
+When you edit a posted accounting document, the system automatically creates reversals behind the scenes. Here's what happens:
 
-**Wrong approach:**
-- Edit the original posted transaction (not possible)
+1. **Original transactions are reversed** - All debits become credits, all credits become debits
+2. **New transactions are created** - Reflecting your updated accounting document
+3. **Both remain on the ledger** - The original, reversal, and new transactions are all preserved
 
-**Right approach:**
-1. Create reversing entry:
-   - All debits become credits, all credits become debits
-   - Same GL accounts, amounts, and descriptions
-   - Marked as reversing entry in system
-   - Posts new entry (and system marks original as "reversed")
-2. Create correcting entry:
-   - New entry with correct amounts
-   - Posts to same GL accounts
-   - Now correct balance is restored
-
-Example: You posted $1,000 but should have posted $1,200
+Example: You posted a bill for $1,000 but should have posted $1,200
 
 ```
-Original entry (Posted):
+Original transactions (from initial posting):
   Debit: Expense 1000
   Credit: Payable 1000
 
-Reversing entry (Posted):
+Automatic reversal (when you edit the document):
   Debit: Payable 1000
   Credit: Expense 1000
 
-Correcting entry (Posted):
+New transactions (from your corrected document):
   Debit: Expense 1200
   Credit: Payable 1200
 
 Result: Net effect is Debit Expense 1200, Credit Payable 1200 (correct)
 ```
 
-## Modification vs. Reversal
+All of this happens automatically when you save your changes to the accounting document—you only need to edit the document itself.
 
-Light offers **modification** for posted documents:
+## Editing Accounting Documents
 
-1. Click **Modify** on a posted document
-2. System automatically:
-   - Reverses the original posting
-   - Makes your changes
-   - Re-posts with new amounts
-3. Behind the scenes: Creates reversing and correcting entries
-4. But presents as a single "modification" action
+Light allows you to edit accounting documents even after they've been posted:
 
-Modification is cleaner than manual reversals—use it when available.
+1. Open the posted accounting document
+2. Make your changes (e.g., correct a cost center, update an amount, change a GL account)
+3. Save your changes
+4. The accounting document engine automatically:
+   - Reverses the original transactions on the general ledger
+   - Creates new transactions reflecting your changes
+   - Maintains full audit trail of both sets of transactions
+
+This approach preserves the immutability of the ledger while giving you flexibility to correct errors in accounting documents. You don't need to manually create reversing entries—the system handles this automatically.
 
 ## Audit Trail
 
@@ -178,18 +180,19 @@ Immutability supports compliance:
 
 ## Correcting Errors
 
-When you discover an error:
+When you discover an error in a posted accounting document:
 
-1. **Identify the error** - Original posting was incorrect
-2. **Create reversal** - If still in current period, reverse in same period
-3. **Create correction** - Post correct entry
-4. **Document the issue** - Add note explaining why correction was made
-5. **Verify GL** - Ensure net effect is correct
+1. **Open the accounting document** - Find the document with the error
+2. **Edit the document** - Make your corrections (update amounts, GL accounts, cost centers, etc.)
+3. **Save** - The system automatically reverses the original transactions and creates corrected ones
+4. **Verify** - Check that the GL now reflects the correct entries
+
+The accounting document engine handles all the reversal logic automatically, so you don't need to manually create reversing journal entries.
 
 For prior period errors:
-- Don't reverse prior period entries
-- Create correcting entry in current period
-- Note that it's a prior period correction
+- Consider whether you need to correct in the original period or the current period
+- Consult your accounting policies for prior period adjustments
+- The system maintains full audit trail regardless of when corrections are made
 
 ## Preventing Errors in the First Place
 
