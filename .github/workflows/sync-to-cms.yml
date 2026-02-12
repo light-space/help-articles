@@ -1,0 +1,28 @@
+name: Sync to Knowledge Base
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger CMS sync
+        run: |
+          response=$(curl -s -w "\n%{http_code}" \
+            "https://light-cms-kr0w.vercel.app/api/sync?secret=${{ secrets.CMS_SYNC_SECRET }}")
+
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+
+          echo "Response: $body"
+          echo "HTTP Status: $http_code"
+
+          if [ "$http_code" != "200" ]; then
+            echo "Sync failed with status $http_code"
+            exit 1
+          fi
+
+          echo "Sync completed successfully"
