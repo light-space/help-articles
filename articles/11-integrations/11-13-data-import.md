@@ -131,6 +131,46 @@ This migrates transaction history.
 
 > Important: Typically, only migrate current-year transactions and open receivables/payables. Close prior-year transactions with opening balance approach.
 
+## Importing journal entries
+
+Upload journal entries via CSV with the following format:
+
+### Required columns
+
+| Header | Description |
+|--------|-------------|
+| `entry id` | Groups lines into one journal entry |
+| `date` | Posting date (YYYY-MM-DD) |
+| `currency` | Currency code (e.g., USD, EUR) |
+| `debit` | Debit amount |
+| `credit` | Credit amount |
+| `tax amount` | Tax amount |
+| `account code` | Ledger account code |
+| `tax code` | Tax code identifier |
+| `entry description` | Description for the entry |
+| `line description` | Description for the line |
+| `business partner name` | Name of the business partner (required) |
+
+### Optional columns
+
+| Header | Description |
+|--------|-------------|
+| `business partner id` | UUID of the business partner |
+| `local currency rate` | FX rate for local currency |
+| `group currency rate` | FX rate for group currency |
+| `ledger name` | e.g., PRIMARY, ELIMINATION |
+| `target entity code` | For intercompany entries |
+| `accounting release template id` | Template for amortization |
+| `accounting release start date` | Amortization start |
+| `accounting release end date` | Amortization end |
+
+### Business partner fields
+
+- **business partner name** — Required string field. Must match an existing customer or vendor name in Light.
+- **business partner id** — Optional field. If provided, must be a valid UUID of an existing business partner.
+
+> Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry.
+
 ## Opening balance import
 
 Set GL account starting balances:
