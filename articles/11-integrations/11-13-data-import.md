@@ -166,8 +166,8 @@ Upload journal entries via CSV with the following format:
 
 ### Business partner fields
 
-- **business partner name** — Required string field. Must match an existing customer or vendor name in Light.
-- **business partner id** — Optional field. If provided, must be a valid UUID of an existing business partner.
+- **business partner name** — Required string field.
+- **business partner id** — Required to map to an existing business partner. Must be a valid UUID of an existing customer or vendor in Light. If omitted, a new business partner may be created.
 
 > Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry.
 
