@@ -28,6 +28,26 @@ Employees receive instructions:
 3. Employees save address in contacts
 4. Ready to start submitting
 
+### Setting Up Automatic Email Forwarding
+
+Instead of manually forwarding receipts, you can set up automatic forwarding rules in your email client to send receipts directly to Light. This is useful for recurring expenses (e.g., SaaS subscriptions, utility bills) that arrive via email.
+
+**Step 1: Create a forwarding rule in your email client**
+
+In Gmail, Outlook, or your email provider, create a forwarding rule or filter to automatically forward emails from specific senders (e.g., receipts from vendors) to your company's Light expense email address.
+
+**Step 2: Complete email verification**
+
+When you set up automatic forwarding, your email provider sends a verification request to Light's email address. The Light support team will accept this forwarding request on your behalf. This may take up to one business day.
+
+If your forwarding rule isn't working after 24 hours, contact Light support at **support@light.inc** to confirm the verification was completed.
+
+**Step 3: Test the rule**
+
+Once approved, send a test email to confirm receipts are being forwarded automatically.
+
+> Good to know: Automatic forwarding works best for predictable receipts from known vendors. For one-off expenses, manually forwarding or using the mobile app may be faster.
+
 ## Submitting via Email
 
 ### Sending a Receipt Email
