@@ -34,6 +34,21 @@ Credit notes reduce your AP balance and can be applied to future vendor invoices
 
 The credit note is created in DRAFT state.
 
+### From the Bill Inbox
+
+You can forward vendor credit notes to the same email address used for bills. Light will process them automatically:
+
+1. Forward the credit note document to your bill inbox email address
+2. Light analyzes the document:
+   - **If recognized as a credit note**: Light automatically creates a credit entry
+   - **If classified as a bill**: The document appears in your inbox as a bill
+3. To manually convert a bill to a credit note in the inbox:
+   - Open the document in the inbox
+   - Click **Convert to Credit Note**
+   - Light converts the bill to a credit entry with the same details
+
+This is useful when vendors send credit notes as PDF attachments that need to be ingested into Light.
+
 ### Manual Credit Note Creation
 
 1. Navigate to **Spend management → Credit entries**
