@@ -1,80 +1,126 @@
 # Sending Invoices and Payment Reminders
 
-Light streamlines invoice delivery and automates payment reminders. The system handles multi-channel distribution with full audit trails and customer engagement tracking.
+Light streamlines invoice delivery and automates payment reminders. The system handles multi-channel distribution — including email and e-invoicing — with full audit trails and customer engagement tracking.
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
-## Posting Invoices
+## Opening Invoices
 
-Before sending invoices, they must be posted. Posting finalizes the invoice and locks it for editing.
+Before an invoice can be sent or tracked, it must be opened. Opening finalizes the invoice, transitions it from DRAFT to OPEN status, and locks it for editing. Opening can optionally include sending the invoice via email or e-invoice in a single step.
 
-### Individual Posting
+### Opening a Single Invoice
 
 1. Open a DRAFT invoice
 2. Review the invoice details
-3. Click **Post**
+3. Click **Open**
+4. Optionally, choose to send by email and/or submit as an e-invoice:
+   - Toggle **Send Email** to email the invoice on open
+   - Toggle **Submit E-Invoice** to submit via the e-invoicing channel
+5. If sending by email, verify the **email subject**, **reply-to address**, **recipients**, and optionally add **CC recipients** and a **custom message**
+6. Confirm the action
 
-The invoice status changes from DRAFT to POSTED.
+The invoice status changes from DRAFT to OPEN. If email or e-invoice delivery was selected, Light handles sending automatically as a background process.
 
-### Batch Posting
+### Batch Opening
 
-Post multiple invoices at once:
+Open multiple invoices at once using the batch open feature. This processes invoices as a background job, allowing you to continue working while Light handles the operation.
 
 1. Navigate to **Sales invoices**
-2. **Filter the table to show DRAFT invoices** — batch post only works when viewing draft invoices
-3. Click **Select All** or individually check the invoices you want to post
-4. Click **Post**
-5. Confirm the action
+2. Filter the table to show DRAFT invoices
+3. Select the invoices you want to open — use **Select All** or individually check the invoices
+4. Click **Open**
+5. Optionally, choose to send by email and/or submit as an e-invoice for all selected invoices
+6. If sending by email, configure the shared email settings (subject, reply-to, CC recipients, custom message)
+7. Confirm the action
 
-> Important: The batch post option is only available when the table view is filtered to show draft invoices. If you're viewing all invoices or a different status filter, the batch post action will not appear.
+Light creates a batch operation and processes each invoice in the background. During batch processing:
+
+- Invoices are processed in parallel, in groups of up to 20 at a time for optimal performance.
+- Each invoice is opened independently — if one invoice fails (e.g., missing required fields like a customer), the rest continue processing normally.
+- When sending by email, **recipient email addresses are resolved automatically** from each invoice's customer record. You do not need to specify individual recipients per invoice.
+- When submitting e-invoices, the customer's e-invoice address is used. If unavailable, Light falls back to the customer's standard email.
+
+> Important: If you choose to send emails during a batch open, email settings (subject, reply-to, etc.) must be provided. The batch will not proceed without them. However, recipient addresses are pulled automatically from each customer's contact details.
+
+### Monitoring Batch Operations
+
+Track the progress of any batch open operation:
+
+1. After initiating a batch open, Light returns a batch operation with a unique ID
+2. Navigate to **Batch Operations** to view all batch operations
+3. Each operation shows an overall status:
+   - **In Progress** — some invoices are still being processed
+   - **Completed** — all invoices were successfully opened (and sent, if requested)
+   - **Failed** — one or more invoices encountered an error
+4. Expand a batch operation to see per-invoice details, including individual statuses and failure reasons for any that did not succeed
+5. Click **Acknowledge** to dismiss a completed or failed batch notification
+
+> Good to know: Batch operations support partial success. If some invoices fail due to validation errors (e.g., missing customer, missing template, or incomplete line items), the successfully processed invoices are still opened and sent. You can review and fix the failed invoices, then re-process them individually or in a new batch.
 
 ## Sending an Invoice
 
-### Manual Sending
+### Sending on Open
 
-1. Open the invoice in DRAFT or POSTED state
-2. Click **Send**
-3. Verify the **recipient email addresses** (pulled from customer email preferences)
-4. Review the email **subject** and **message body**
-5. Optionally, add **CC recipients**
-6. Click **Send Now** or **Schedule for Later**
+The simplest way to send an invoice is to include email delivery when opening:
 
-Once sent, the invoice moves to OPEN state (if currently POSTED).
+1. Open a DRAFT invoice
+2. Click **Open**
+3. Toggle **Send Email** on
+4. Verify the **recipient email addresses** (pulled from the customer's contact information)
+5. Review the email **subject** and **reply-to address**
+6. Optionally, add **CC recipients** and a **custom message**
+7. Confirm
 
-### Batch Sending
+Light opens the invoice and sends it in a single step.
 
-Send multiple invoices at once:
+### Sending a Previously Opened Invoice
 
-1. Navigate to **Invoices**
-2. Filter to the invoices you want to send (e.g., by due date, customer)
-3. Click **Select All** or individually check boxes
-4. Click **Bulk Actions** > **Send Invoices**
-5. Confirm the send settings
-6. Click **Send**
+To send (or re-send) an invoice that is already in OPEN status:
 
-> Good to know: Light sends invoices as PDF attachments in email. You can customize the email subject and body before sending.
+1. Open the invoice
+2. Click **Send Email**
+3. Configure the email details:
+   - **Subject**: the email subject line
+   - **Reply-To**: the address recipients will reply to
+   - **Recipients**: one or more email addresses
+   - **CC**: optional CC recipients
+   - **Custom Message**: optional personalized message
+4. Click **Send**
+
+> Note: Sending an email is only available for invoices in OPEN status. If the invoice is still in DRAFT, you must open it first.
+
+### E-Invoice Submission
+
+Light supports submitting invoices via e-invoicing channels:
+
+1. When opening an invoice, toggle **Submit E-Invoice**
+2. Light uses the customer's e-invoice address for delivery
+3. If no e-invoice address is configured, Light falls back to the customer's standard email address
+
+E-invoicing can be used alongside or instead of email delivery. Both options are available during single and batch open operations.
 
 ## Email Customization
 
 ### Using Email Templates
 
-1. Open the invoice
-2. Click **Send**
-3. Find **Email Template** dropdown
-4. Select a predefined template (or create a new one)
-5. Review the populated subject and message
-6. Click **Send**
+1. Navigate to **Invoice Templates**
+2. Configure default email settings on a template:
+   - **Default Email Subject**
+   - **Default Email Message**
+   - **Reply-To Email**
+   - **CC Emails**
+3. When sending invoices that use this template, these defaults are pre-populated
 
 ### Customizing Email Content
 
-1. When sending, click **Customize**
-2. Edit the **Subject Line**
-3. Modify the **Message Body** (markdown supported)
-4. Add **Call-to-Action** text and button label (e.g., "Pay Now")
-5. Include a link to your **payment portal** if available
-6. Click **Send**
+When sending an invoice, you can override the template defaults:
 
-Custom email content overrides the template for this send only.
+1. When sending, modify the **Subject Line**
+2. Edit the **Custom Message** field
+3. Add or change **CC recipients**
+4. Click **Send**
+
+Custom email content overrides the template defaults for that send only.
 
 ## Payment Reminders and Dunning
 
