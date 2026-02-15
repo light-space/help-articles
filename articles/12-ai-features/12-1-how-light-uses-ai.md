@@ -76,3 +76,4 @@ To put it in practical terms, here are some common tasks where AI makes a measur
 - [AI Receipt Capture and Categorization](12-4-ai-receipt-categorization.md)
 - [Natural Language Q&A in Slack](12-5-ai-slack-qa.md)
 - [AI-Assisted Reconciliation](12-6-ai-reconciliation.md)
+- [Light Command Interface (LCI)](12-7-ai-conversational-assistant.md)

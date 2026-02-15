@@ -32,4 +32,5 @@ Ready to get started? Check out [Navigating Light](#e1-2-navigating-light.md) to
 
 - [Navigating Light as an Employee](e1-2-navigating-light.md)
 - [Setting Up Your Profile](e1-3-setting-up-profile.md)
+- [Using Light with Slack and Microsoft Teams](e1-4-using-light-with-slack-and-teams.md)
 - [Submitting an Expense for Reimbursement](../e2-expenses-reimbursements/e2-1-submitting-expense.md)
