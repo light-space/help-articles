@@ -4,6 +4,30 @@ Light streamlines invoice delivery and automates payment reminders. The system h
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
+## Posting Invoices
+
+Before sending invoices, they must be posted. Posting finalizes the invoice and locks it for editing.
+
+### Individual Posting
+
+1. Open a DRAFT invoice
+2. Review the invoice details
+3. Click **Post**
+
+The invoice status changes from DRAFT to POSTED.
+
+### Batch Posting
+
+Post multiple invoices at once:
+
+1. Navigate to **Sales invoices**
+2. **Filter the table to show DRAFT invoices** — batch post only works when viewing draft invoices
+3. Click **Select All** or individually check the invoices you want to post
+4. Click **Post**
+5. Confirm the action
+
+> Important: The batch post option is only available when the table view is filtered to show draft invoices. If you're viewing all invoices or a different status filter, the batch post action will not appear.
+
 ## Sending an Invoice
 
 ### Manual Sending
