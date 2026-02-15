@@ -43,5 +43,6 @@ New to Light? Head to [Setting Up Your Profile](e1-3-setting-up-profile.md) to a
 
 - [Welcome to Light](e1-1-welcome-to-light.md)
 - [Setting Up Your Profile](e1-3-setting-up-profile.md)
+- [Using Light with Slack and Microsoft Teams](e1-4-using-light-with-slack-and-teams.md)
 - [Submitting an Expense for Reimbursement](../e2-expenses-reimbursements/e2-1-submitting-expense.md)
 - [Tracking Your Reimbursement Status](../e2-expenses-reimbursements/e2-6-tracking-reimbursement.md)

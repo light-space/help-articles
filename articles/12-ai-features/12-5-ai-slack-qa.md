@@ -140,3 +140,4 @@ Sensitive questions can be asked in direct messages for extra privacy.
 
 - How Light uses AI
 - AI-assisted reconciliation
+- [Light Command Interface (LCI)](12-7-ai-conversational-assistant.md)

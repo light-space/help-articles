@@ -163,6 +163,7 @@
 - 12.4 [AI receipt capture and categorization](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-4-ai-receipt-categorization.md)
 - 12.5 [Natural language Q&A in Slack (Ask @Light)](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-5-ai-slack-qa.md)
 - 12.6 [AI-assisted reconciliation](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-6-ai-reconciliation.md)
+- 12.7 [Light Command Interface (LCI)](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-7-ai-conversational-assistant.md)
 
 ## 13. Security & Privacy
 - 13.1 [Light's security architecture](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-1-security-architecture.md)
@@ -186,6 +187,7 @@
 - E1.1 [Welcome to Light](https://github.com/light-space/help-articles/blob/main/articles/employee/e1-getting-started/e1-1-welcome-to-light.md)
 - E1.2 [Navigating Light as an employee](https://github.com/light-space/help-articles/blob/main/articles/employee/e1-getting-started/e1-2-navigating-light.md)
 - E1.3 [Setting up your profile](https://github.com/light-space/help-articles/blob/main/articles/employee/e1-getting-started/e1-3-setting-up-profile.md)
+- E1.4 [Using Light with Slack and Microsoft Teams](https://github.com/light-space/help-articles/blob/main/articles/employee/e1-getting-started/e1-4-using-light-with-slack-and-teams.md)
 
 ## E2. Expenses & Reimbursements
 - E2.1 [Submitting an expense for reimbursement](https://github.com/light-space/help-articles/blob/main/articles/employee/e2-expenses-reimbursements/e2-1-submitting-expense.md)
