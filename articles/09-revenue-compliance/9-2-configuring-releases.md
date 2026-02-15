@@ -76,6 +76,48 @@ Once templates are configured, apply them when entering transactions:
 
 The system prevents accidentally posting transactions that should follow a release template, ensuring consistent application of accounting policies.
 
+## Example: Depreciating office furniture
+
+This example shows how to record a $12,000 office furniture purchase with a 5-year useful life and no salvage value.
+
+**Step 1: Ensure your release template exists**
+
+Your organization should have a release template called "Furniture" configured with:
+- **Release Type**: Accounts Payables
+- **Duration**: 60 months (5 years)
+- **Pattern**: Straight-line
+- **Contra account**: 800800 - Furniture and Assets (asset account)
+
+**Step 2: Enter the bill**
+
+Navigate to **Spend management → Bills** and click **+ Create bill**. On the bill line item:
+
+| Field | Value |
+|-------|-------|
+| Description | Office furniture |
+| Amount | $12,000 |
+| GL Account | 500500 - Office Furniture (expense account) |
+| Release Template | Furniture |
+
+**What happens when you post this bill:**
+
+1. Light creates the accounts payable liability for $12,000
+2. The release template immediately capitalizes the expense to the asset account (800800 - Furniture and Assets)
+3. Each month, Light automatically posts $200 in depreciation expense (12,000 ÷ 60 months)
+4. After 60 months, the asset is fully depreciated with a book value of $0
+
+**The accounting entries:**
+
+*Initial posting (when bill is posted):*
+- Debit: 800800 - Furniture and Assets $12,000 (asset)
+- Credit: Accounts Payable $12,000 (liability)
+
+*Monthly release (repeated 60 times):*
+- Debit: 500500 - Office Furniture $200 (expense)
+- Credit: 800800 - Furniture and Assets $200 (contra asset)
+
+> Tip: On the bill, you select the **expense account** (500500) as the GL account. The release template handles capitalizing to the **asset account** (800800) and releasing the expense over time.
+
 ## Monitoring and adjusting releases
 
 View active releases in the **Accounting > Releases** dashboard (in Platform section). This shows all pending and completed releases, their progress, and book values. You can:
