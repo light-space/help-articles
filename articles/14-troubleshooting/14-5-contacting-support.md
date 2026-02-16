@@ -55,44 +55,7 @@ When emailing, include:
 - Steps to reproduce the issue
 - When the issue started
 
-A support agent will review your request and respond directly.
-
-## Support SLA (Service Level Agreement)
-
-Light's support response times are:
-
-| Severity | Response Time | Resolution Time |
-|----------|---------------|-----------------|
-| Critical | 30 minutes | 4 hours |
-| High | 2 hours | 24 hours |
-| Medium | 8 hours | 72 hours |
-| Low | 24 hours | 1 week |
-
-### Severity Levels
-
-**Critical**: Production issue affecting your business operations
-- Cannot perform essential financial functions
-- Data corruption or loss occurring
-- Security breach or breach suspected
-- All users blocked from using Light
-
-**High**: Significant functionality not working
-- A major feature is broken or unusable
-- Multiple users affected
-- Workaround exists but is cumbersome
-- Feature is critical to your workflows
-
-**Medium**: Partial functionality affected
-- A feature works but with issues or limitations
-- Workaround is available
-- Only specific conditions trigger the issue
-- A few users affected
-
-**Low**: Minor issue or question
-- General usage question
-- Cosmetic issue or UI glitch
-- Feature request or enhancement
-- One user affected
+A support agent will review your request and respond the same day.
 
 ## Information to Include in Support Request
 
