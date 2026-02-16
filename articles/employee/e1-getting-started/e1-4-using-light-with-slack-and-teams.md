@@ -21,7 +21,13 @@ When you make a purchase with your Light card, Light sends you a notification as
 If you're a manager or invoice approver, Light sends you approval notifications in Slack or Teams. You can ask questions about the bill right in the notification thread and approve or reject it without logging in to Light.
 
 **Create Purchase Requests and Orders**
-Ask @Light to create a purchase request or purchase order through conversation. Describe what you need, and Light walks you through it.
+Ask @Light to create a purchase request or purchase order through conversation. Describe what you need, and Light walks you through it. For example: "Create a purchase request for new office chairs, $2,500" or "Create a PO for Acme Corp for 100 units at $50 each."
+
+**Request a Vendor Card**
+If you have the cardholder role, you can request a new vendor card directly through @Light. Tell Light the vendor name, spending limit, and why you need the card. For example: "Request a vendor card for AWS with a $5,000 monthly limit for cloud infrastructure." Light creates the card request and sends it through the approval workflow.
+
+**Submit Expenses for Reimbursement**
+Once you've uploaded your receipts and reviewed the extracted details, tell @Light "Submit my expenses" to send all your draft expenses for reimbursement in one step. Light validates your address and reimbursement configuration, then submits everything. You'll receive a notification when your reimbursement is approved, rejected, or paid.
 
 **Look Up Company Policies**
 Ask @Light questions like "What's our travel expense policy?" or "What are the approval thresholds for purchases?" Light finds the answer in your company's uploaded policies and links you to the source.
@@ -32,6 +38,9 @@ Ask "What's the status of my reimbursements?" or "Do I have any pending expenses
 **Get Directed to the Right Page**
 If you need to do something that requires the full Light interface, ask @Light and it will give you a direct link to the right page — whether that's your expenses, a specific bill, a card transaction, or your profile.
 
+**Get Notified About Important Updates**
+Light proactively sends you notifications — you don't always need to ask. You'll receive messages when your uploaded receipt has been processed (with the extracted details), when a reimbursement is approved and paid, or when a reimbursement is rejected (with the reason from your finance team). If you're a cardholder, Light also reminds you when a card transaction is missing a receipt.
+
 ## Getting Started in Slack
 
 ### Finding @Light
@@ -40,6 +49,8 @@ If you need to do something that requires the full Light interface, ask @Light a
 2. Search for **@Light** in the search bar
 3. Click to open a direct message with the Light bot
 4. Say "Hi" or ask a question — Light responds with an answer
+
+The first time you open the @Light app home in Slack, Light sends a welcome message and confirms your Light account is connected. If you don't have a Light account yet, Light directs you to sign up.
 
 If you don't see @Light in your Slack workspace, your admin needs to enable the integration in **Settings (gear icon) → Integrations → Slack**.
 
@@ -63,15 +74,24 @@ When you use your Light card, Light sends you a notification: "We are missing a 
 
 ### Approving Bills in Slack
 
-When a bill needs your approval, Light sends you a notification message. You can:
+When a bill needs your approval, Light sends you a notification message with interactive buttons: **Approve**, **Deny**, **Add Note**, and **Start Conversation**. You can:
 
-1. Reply directly in the notification thread to ask questions about the bill (e.g., "What are the line items?" or "Who submitted this?")
-2. Light answers using the bill's context
-3. Approve or reject through LCI by saying "approve this bill" or by using the Light web app
+1. Click **Approve** or **Deny** to take immediate action
+2. Click **Add Note** to leave a comment on the bill
+3. Click **Start Conversation** or reply directly in the notification thread to ask questions about the bill (e.g., "What are the line items?" or "Who submitted this?") — Light answers using the bill's context
+4. Approve or reject through LCI by saying "approve this bill" in the thread
 
 ### Creating Purchase Requests
 
 Ask @Light to create a purchase request by describing what you need. For example: "Create a purchase request for new office chairs, $2,500." Light uses the create purchase order tool to start the process.
+
+### Requesting a Vendor Card
+
+If you have the cardholder role, message @Light with the vendor name, spending limit, and business justification. For example: "Request a vendor card for AWS with a $5,000 monthly limit for cloud infrastructure." Light creates the request and routes it through the approval workflow.
+
+### Submitting Expenses
+
+After uploading your receipts and reviewing the extracted details in the Light web app, message @Light "Submit my expenses" to send all draft expenses for reimbursement. Light checks that your profile is complete (address and reimbursement configuration) and submits them. You'll receive a notification when the reimbursement is processed.
 
 ## Getting Started in Microsoft Teams
 
@@ -99,11 +119,19 @@ Card transaction notifications work in Teams just like Slack. When Light asks fo
 
 ### Approving Bills in Teams
 
-Bill approval notifications arrive as messages from the Light bot. Reply in the thread to ask questions, or use the Light web app to review and approve.
+Bill approval notifications arrive as adaptive cards from the Light bot with **Approve**, **Reject**, and **Add Comment** buttons. Click a button to take action directly, or reply in the thread to ask questions about the bill before deciding.
 
 ### Creating Purchase Requests in Teams
 
 Ask the Light bot to create a purchase request the same way you would in Slack — describe what you need, and Light handles it.
+
+### Requesting a Vendor Card in Teams
+
+Request vendor cards through the Light bot just as you would in Slack. Describe the vendor, spending limit, and business justification.
+
+### Submitting Expenses in Teams
+
+Message the Light bot "Submit my expenses" to submit all your draft expenses for reimbursement, the same as in Slack.
 
 ## Tips for Better Answers
 
@@ -123,16 +151,20 @@ As an employee, you can typically:
 - Search for and view your own expenses, reimbursements, and card transactions
 - Submit receipts — Light routes them to the right place based on your roles (reimbursement or cardholder)
 - Attach receipts to card transactions via notification threads
-- Create purchase requests and purchase orders
+- Submit all draft expenses for reimbursement (with the reimbursement role)
+- Request vendor cards with spending limits (with the cardholder role)
+- Create purchase requests and purchase orders (with the purchase requester role)
 - Check the status of your reimbursements and expenses
+- Receive notifications when receipts are processed, reimbursements are paid or rejected, or card transactions are missing receipts
 - Ask about company policies (with links to the source)
 - Get directed to specific pages in Light (expenses, cards, profile, purchase requests, etc.)
 - View help articles
 
 If you're a manager or approver, you can also:
 
-- View your approval queue
-- Approve or reject bills directly from Slack or Teams
+- View your approval queue (bill approvals, purchase requests)
+- Approve or reject bills directly from Slack or Teams using interactive buttons
+- Ask questions about a bill in the approval notification thread before deciding
 - Ask broader questions about team spending
 
 You typically cannot:
@@ -140,6 +172,7 @@ You typically cannot:
 - Access organization-wide financial reports (unless you're an admin or controller)
 - Change accounting settings or chart of accounts
 - Create journal entries (unless you have an admin or controller role)
+- Generate custom SQL reports (unless you're an admin or controller)
 
 If you ask about something you don't have access to, Light lets you know and suggests what to do instead.
 
