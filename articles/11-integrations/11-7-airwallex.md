@@ -1,220 +1,114 @@
 # Airwallex Integration
 
-Airwallex is a global fintech platform enabling multi-currency payments, virtual accounts, and financial operations for international businesses. Light's Airwallex integration connects your payments and banking data to automatically sync transactions to your ledger.
+Airwallex is a global fintech platform enabling multi-currency payments, virtual accounts, and financial operations for international businesses. Light integrates with Airwallex to enable outgoing payments directly from your Airwallex virtual bank accounts.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
+
+> **No fees from Light**: Light does not charge any integration or transaction fees for the Airwallex integration. Additional fees from Airwallex may apply — see the [Airwallex pricing page](https://www.airwallex.com/eu/pricing) for details.
 
 ## Integration capabilities
 
 The Airwallex integration enables:
 
-- **Payment sync**: Outbound payments from Airwallex automatically post to cash disbursements
-- **Inbound transaction sync**: Customer deposits to Airwallex accounts automatically post to cash receipts
-- **Multi-currency account management**: Track accounts and balances in multiple currencies
-- **FX conversion tracking**: Automatic recording of currency conversion impacts
-- **Account balance monitoring**: Real-time visibility into Airwallex balances
+- **Outgoing payments**: Make domestic and international (SWIFT) payments from your Airwallex virtual bank accounts
+- **Bank account linking**: Connect one or more Airwallex bank accounts to Light, each mapped by currency
+- **Payment status tracking**: Light automatically checks for payment status updates every 15 minutes
 
-This automates international payment and cash management.
+## Prerequisites
+
+Before connecting Airwallex to Light, you'll need:
+
+1. An active Airwallex account
+2. Your Client ID and API Key from the Airwallex dashboard (see [Airwallex documentation](https://www.airwallex.com) for how to retrieve them)
+3. At least one Airwallex bank account created in Light
+
+To create an Airwallex bank account in Light:
+
+1. Navigate to **Settings (gear icon) → Bank accounts**
+2. Click **+ Add account**
+3. Fill in only the following fields:
+   - **Entity**: The entity owning the bank account
+   - **Bank Country**: The country of the bank account
+   - **Name**: The display name shown when selecting a bank account
+   - **Bank provider**: Must be set to `Airwallex`
+   - **Currency**: Must match the currency of the corresponding Airwallex account balance
+4. Click **Add**
 
 ## Setting up Airwallex integration
 
 To connect Airwallex:
 
-1. Navigate to **Settings (gear icon) > Integrations > Airwallex**
-2. Click **Connect**
-3. You're redirected to Airwallex to authorize
-4. Sign in to your Airwallex account
-5. Review permissions Light is requesting
-6. Click **Authorize**
-7. Light confirms connection and enables sync
+1. Navigate to **Settings (gear icon) → Integrations → Add Integration → Airwallex**
+2. In the connection dialog, enter:
+   - **Client ID**: Found in your Airwallex dashboard
+   - **API Key**: Found in your Airwallex dashboard
 
-Next, configure what accounts and data to sync.
+> **Important**: Make sure to use account-level credentials, not organization-level credentials.
 
-## Configuring account sync
+3. Under **Bank Accounts**, select the Light bank accounts you want to link to this Airwallex connection:
+   - You can add one bank account per currency
+   - Use the toggle to set each bank account as active or inactive
+   - Click **+ Add another bank account** to link additional accounts
+4. Click **Create** to save the connection
 
-Map Airwallex accounts to Light cash accounts:
+Once connected, Light validates your credentials against Airwallex and your connection is ready for use.
 
-1. Navigate to **Settings > Integrations > Airwallex > Account Mapping**
-2. For each Airwallex account, specify:
-   - **Airwallex Account** → **Light Bank Account**
-   - Currency matching (Airwallex account currency to Light account currency)
-   - Reconciliation method (match by date, amount, or description)
-3. Save mappings
+## Managing your connection
 
-Light then knows which Airwallex account corresponds to which Light bank account.
+### Viewing connections
 
-## Payment sync configuration
+Navigate to **Settings (gear icon) → Integrations → Airwallex** to view all your Airwallex connections.
 
-Configure how Airwallex payments become Light cash disbursements:
+### Updating a connection
 
-1. Navigate to **Settings > Integrations > Airwallex > Payment Mapping**
-2. Select **Sync Payments**: Toggle on
-3. Configure mapping:
-   - **Airwallex Payment Amount** → **Light Cash Disbursement Amount**
-   - **Airwallex Beneficiary** → **Light Vendor** (match to Light vendor master)
-   - **Airwallex Payment Date** → **Light Payment Date**
-   - **Airwallex Reference** → **Light Memo** (for audit trail)
-4. Configure filters:
-   - Payment status: Only sync completed payments
-   - Currency: Specific currencies or all
-   - Amount threshold: Minimum payment size to sync
-5. Save configuration
+To change your API key (for example, when rotating keys) or modify bank account mappings:
 
-## Inbound transaction sync
+1. Navigate to **Settings (gear icon) → Integrations → Airwallex** and select the desired connection
+2. To update the API key, click the **Update** icon, enter the new API key in the dialog, and click **Save Changes**
+3. To change bank account mappings, add or remove mappings as needed, then click **Save Changes**
 
-Configure how Airwallex incoming deposits become Light cash receipts:
+### Disabling a bank account
 
-1. Navigate to **Settings > Integrations > Airwallex > Receipt Mapping**
-2. Select **Sync Deposits**: Toggle on
-3. Configure mapping:
-   - **Airwallex Deposit Amount** → **Light Cash Receipt Amount**
-   - **Airwallex Sender** → **Light Customer** (match to customer master)
-   - **Airwallex Deposit Date** → **Light Receipt Date**
-4. Configure filters (status, currency, minimum amount)
-5. Save
+To temporarily stop payments from a specific bank account without removing the connection entirely:
 
-Light automatically posts customer payments received in Airwallex accounts.
+1. Toggle the bank account to **Inactive**
+2. Click **Save Changes**
 
-## Multi-currency account management
+This blocks new payments, including scheduled payments that haven't reached their payment date, while preserving the connection for historical records. You can reactivate the account at any time by toggling it back to **Active**.
 
-Track accounts in different currencies:
+> **Note**: If a bank account is disabled immediately after a payment is executed, Light cannot retrieve the status of that payment (whether it succeeded or failed) since the connection has been disabled.
 
-1. Navigate to **Settings > Integrations > Airwallex > Multi-Currency Settings**
-2. For each currency account:
-   - Create Light cash account in that currency
-   - Map to corresponding Airwallex account
-3. Light maintains separate GL accounts for each currency
-4. Reports show balances in each currency
+### Deleting a connection
 
-This enables full multi-currency banking visibility.
+To remove an Airwallex connection entirely:
 
-## FX conversion tracking
+1. Navigate to **Settings (gear icon) → Integrations → Airwallex** and select the desired connection
+2. Click **Delete Connection**
+3. Confirm the deletion by clicking **Delete** in the dialog
 
-When you convert currencies through Airwallex:
+This removes all bank account mappings associated with that connection. The same considerations for disabling a bank account apply: new payments are blocked and the status of still-executing payments cannot be retrieved.
 
-1. Airwallex records the conversion (EUR 100 = GBP 85 at 0.85 rate)
-2. Light syncs both legs of the conversion:
-   - Debit EUR account (reduction in EUR)
-   - Credit GBP account (increase in GBP)
-3. Light records any FX gain/loss if conversion rate differs from your standard rate
+## Making payments
 
-This maintains accurate FX tracking.
+In the bill payment details page, select the Airwallex connection from the **Pay from Account** dropdown to initiate a payment through Airwallex.
 
-## Account balance monitoring
+### Payment status
 
-Light displays current Airwallex account balances:
+Once a payment is initiated through Airwallex, Light automatically checks for status updates every 15 minutes.
 
-1. Navigate to **Planning & Reports → Reports**
-2. View all Airwallex accounts:
-   - Account name and currency
-   - Current balance
-   - Daily activity (deposits, withdrawals)
-   - Comparison to prior day
-3. Real-time visibility (or configurable refresh frequency)
+## Fees
 
-This helps with cash management and FX optimization.
+Light does not charge any integration fees or transaction fees for this integration. For information on Airwallex pricing, including transaction fees and other applicable charges, refer directly to the [Airwallex pricing page](https://www.airwallex.com/eu/pricing).
 
-## Sync frequency
+## Troubleshooting
 
-Configure how often Light checks Airwallex:
+**"Invalid credentials" error**: Verify your Client ID and API Key are correct in the Airwallex dashboard. Ensure your API key has not expired or been revoked.
 
-1. Navigate to **Settings > Integrations > Airwallex > Sync Settings**
-2. Select frequency:
-   - **Real-time**: Via webhook (immediate sync as transaction occurs)
-   - **Hourly**: Check hourly
-   - **Daily**: Check once daily
-3. Save
+**"Bank account not valid" error**: The bank account must be set up as a virtual bank account with Airwallex as the provider. Contact support if you need help configuring bank accounts.
 
-Real-time is ideal for visibility into international payments. Daily is sufficient for most organizations.
+**"Country mismatch" error**: Your company entity country must match one of the countries configured in your Airwallex account. Check your entity settings in Light or your Airwallex account configuration.
 
-## Monitoring sync activity
-
-Track Airwallex integration:
-
-1. Navigate to **Settings > Integrations > Airwallex > Sync History**
-2. View all past syncs:
-   - Date/time
-   - Number of transactions synced
-   - Payments and deposits processed
-   - Errors (if any)
-3. Click any sync for details:
-   - Which transactions processed
-   - Which matched to invoices/vendors
-   - Issues encountered
-
-## Bank reconciliation with Airwallex
-
-Reconcile Light GL accounts to Airwallex:
-
-1. Navigate to **Ledger > Bank Reconciliation**
-2. Select the Airwallex cash account
-3. Upload Airwallex statement (or Light pulls automatically)
-4. Match Light transactions to Airwallex statement
-5. Identify reconciling items (in-transit payments, processing delays)
-6. Complete reconciliation
-
-Light simplifies reconciliation through automated sync.
-
-## Payment approval workflows
-
-Set up approval for international payments:
-
-1. Configure payment approval rules (amount threshold, approver)
-2. When payment needs approval, Light notifies approver
-3. Approver reviews and approves in Light
-4. Payment syncs from Light to Airwallex
-5. Airwallex processes the payment
-6. Completed payment syncs back to Light
-
-This enables full workflow automation.
-
-## Reporting on Airwallex transactions
-
-Analyze Airwallex activity in Light:
-
-1. Create custom reports showing:
-   - Cash by currency
-   - Payments by vendor and currency
-   - Deposits by customer and currency
-   - FX gains/losses
-2. Export for analysis
-3. Benchmark cash efficiency
-
-## Troubleshooting Airwallex sync
-
-**Payments not syncing**: Check sync status, verify filter criteria, ensure Airwallex payment is completed (not pending).
-
-**Wrong vendor assigned**: Verify vendor mapping, check for duplicate vendor names, manually link if needed.
-
-**Currency mismatch**: Verify account currency matches Airwallex account currency, check FX conversion settings.
-
-**Connection failed**: Re-authorize Airwallex integration, verify your Airwallex account has API access.
-
-**Balance discrepancy**: Check for pending transactions, verify filter criteria, review recent FX conversions.
-
-## Automating international payments
-
-Use Airwallex integration for streamlined global payments:
-
-1. Create payable invoice in Light
-2. Schedule payment through Light
-3. Light syncs payment details to Airwallex
-4. Airwallex processes international payment
-5. Completed payment syncs back to Light
-6. AP marked paid automatically
-
-This eliminates manual payment entry.
-
-## Multi-entity Airwallex management
-
-For organizations with multiple entities:
-
-1. Configure separate Airwallex accounts per entity (or per currency within entity)
-2. Map each Airwallex account to entity-specific Light GL accounts
-3. Light consolidates in multi-entity reporting
-4. Each entity sees only its own Airwallex activity
-
-This maintains proper separation of entity finances.
+**Payments not processing**: Verify the bank account mapping is set to active (toggle is on). Check that your Airwallex account has sufficient funds. Ensure beneficiary details are valid.
 
 ## Related articles
 
