@@ -15,17 +15,27 @@ Your company's finance or accounting team knows your setup best. They can often 
 
 Check your internal directory or Slack to find who to reach out to. They're usually happy to help.
 
+## Get instant answers
+
+### In-app chat (AI-powered)
+
+Look for the help icon in the bottom right corner of [app.light.inc](https://app.light.inc). You can type your question and get an instant AI-powered answer. This is the fastest way to find help with common questions about using Light.
+
+### @light in Slack or Microsoft Teams
+
+If your company has connected Light to Slack or Microsoft Teams, you can mention **@light** in any channel or direct message to get instant AI-powered answers — without leaving your communication tool.
+
 ## Contact Light support
 
-If your finance team can't solve it, or if it's a technical issue with the app itself, reach out to Light support.
+If you need help from a person — for example, something isn't working and the AI answers aren't solving it — email the Light support team.
 
 **Email:** `support@light.inc`
 
-**Response time:** We typically respond within 24 hours on weekdays.
+A support agent will respond to your request.
 
 ## What to include in your report
 
-When you contact Light support, help us help you faster by including:
+When you email Light support, help us help you faster by including:
 
 - **What you were trying to do** — Be specific ("I tried to upload a receipt for an expense" instead of "upload isn't working")
 - **What happened** — Describe the error or unexpected behavior
@@ -35,14 +45,6 @@ When you contact Light support, help us help you faster by including:
 - **When it happened** — Date and time, and whether it's still happening
 
 The more detail you give, the faster we can track down the problem.
-
-## In-app help and chat
-
-Look for the help icon (usually a question mark) in the bottom right corner of Light. You can:
-
-- Search our help articles
-- Chat with our support team in real-time (if available in your region)
-- Browse frequently asked questions
 
 ## Still having trouble?
 

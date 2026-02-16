@@ -10,33 +10,41 @@ Light offers responsive support through multiple channels. Our support team is a
 
 ## Support Channels
 
-### In-App Support
+### In-App Chat (AI-Powered)
 
-The easiest way to reach Light support is through the app itself.
+The quickest way to get help is through the chat interface built into Light.
 
-1. Click the **Help** icon (usually a question mark) in the top right
-2. Select **Contact Support**
-3. Write your question or describe the issue
-4. Click **Send**
-5. You'll receive a response within your SLA
+1. Go to [app.light.inc](https://app.light.inc)
+2. Click the **Help** icon in the bottom right corner
+3. Type your question or describe the issue
+4. Get an instant AI-powered response
 
-In-app support automatically includes:
+In-app chat is best for:
 
-- Your account information
-- Your Light organization
-- The page/feature you were viewing when you submitted
-- Your browser and system information
+- Quick questions about how to use a feature
+- General usage help
+- Non-urgent troubleshooting
 
-This context helps us resolve issues faster.
+> Note: In-app chat is powered by AI and provides instant answers. For complex issues that require human assistance, email support instead.
 
-> Tip: In-app support is preferred because it includes automatic context about your account and issue location.
+### @light in Slack or Microsoft Teams
+
+If your organization has connected Light to Slack or Microsoft Teams, you can ask **@light** directly in your workspace.
+
+1. Open Slack or Microsoft Teams
+2. Mention **@light** in any channel or direct message
+3. Ask your question
+4. Get an instant AI-powered response
+
+This is great for getting quick answers without leaving your communication tool.
+
+> Note: @light in Slack and Teams is powered by AI. For issues that require a human support agent, email support instead.
 
 ### Email Support
 
-You can also email Light support directly.
+For issues that need human attention, email the Light support team.
 
-- **Email**: support@uselight.com
-- **Response Time**: 24 hours for most issues; 2 hours for critical issues
+- **Email**: support@light.inc
 
 When emailing, include:
 
@@ -47,35 +55,7 @@ When emailing, include:
 - Steps to reproduce the issue
 - When the issue started
 
-### Phone Support
-
-For critical or urgent issues, you can request a phone call.
-
-1. Submit a support request via in-app or email
-2. Mark it as "Critical" or "Urgent"
-3. Provide a phone number to reach you
-4. Light support will call within 2 hours (business hours)
-
-Phone support is best for:
-
-- Production issues affecting your business
-- Complex issues requiring screen sharing
-- Urgent questions needed immediately
-
-### Chat Support
-
-For quick questions, Light offers chat support during business hours.
-
-1. Click the **Help** icon
-2. Select **Chat with Support**
-3. Chat with a support representative in real time
-4. Available Monday-Friday, 9 AM - 5 PM (PT)
-
-Chat is best for:
-
-- Quick questions
-- General usage help
-- Non-urgent troubleshooting
+A support agent will review your request and respond directly.
 
 ## Support SLA (Service Level Agreement)
 
