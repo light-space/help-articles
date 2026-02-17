@@ -4,6 +4,8 @@ AP aging reports analyze outstanding vendor payables by how overdue they are. Th
 
 [Open in Light →](https://app.light.inc/payables)
 
+> **Important:** AP aging reports group transactions by the vendor's UUID (unique identifier). For accurate aging data, ensure all vendors have a UUID assigned. Transactions linked to vendors without a UUID may appear under a blank partner or be grouped incorrectly.
+
 ## Understanding AP Aging Buckets
 
 Vendor bills are grouped into aging buckets based on how overdue they are:
