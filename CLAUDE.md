@@ -20,7 +20,7 @@ articles/
 ├── 12-ai-features/           (7 articles)
 ├── 13-security/              (5 articles)
 ├── 14-troubleshooting/       (5 articles)
-├── employee/                 (24 articles)
+├── 15-employee/              (24 articles)
 help-article-hierarchy.md     (master table of contents)
 article-mapping.md            (mapping to existing help.light.inc articles)
 ```
