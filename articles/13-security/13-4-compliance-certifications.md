@@ -8,6 +8,33 @@ This article explains Light's security and compliance certifications, demonstrat
 
 Light maintains multiple security and compliance certifications from independent auditors and standards bodies. These certifications provide assurance that Light meets industry standards for security, privacy, and operational excellence.
 
+Light holds the following certifications:
+
+- **SOC 1 Type II**
+- **SOC 2 Type II**
+- **GDPR**
+- **CSA STAR**
+- **Trusted Cloud Providers (CSA)**
+- **AWS Security Competency**
+- **PCI SAQ D**
+- **SSAE 18**
+- **ISAE 3402**
+
+## SOC 1 Compliance
+
+### What is SOC 1?
+
+SOC 1 (System and Organization Controls 1) is a framework for evaluating internal controls at service organizations that are relevant to user entities' internal control over financial reporting. It is conducted by independent auditors and is particularly important for financial platforms like Light.
+
+### SOC 1 Type II
+
+Light maintains **SOC 1 Type II** certification:
+
+- **Independent Audit**: Conducted annually by independent auditing firms
+- **Testing Period**: Auditors observe Light's controls in operation over a sustained period
+- **Financial Controls**: Focuses on controls relevant to customers' financial reporting
+- **Continuous Compliance**: Light maintains compliance year-round
+
 ## SOC 2 Compliance
 
 ### What is SOC 2?
@@ -33,7 +60,7 @@ SOC 2 evaluates controls over:
 - **Confidentiality**: Sensitive data is protected from unauthorized disclosure
 - **Privacy**: Data is collected, used, and retained appropriately
 
-> Good to know: Request Light's SOC 2 Type II report directly from your account team. Most customers receive the full audit report under NDA.
+> Good to know: Request Light's SOC 1 or SOC 2 Type II reports directly from your account team. Most customers receive the full audit reports under NDA.
 
 ## GDPR Compliance
 
@@ -61,42 +88,83 @@ Light provides:
 - **Sub-processor Management**: All sub-processors are listed and compliant
 - **Breach Notification**: Light notifies you within 72 hours if a breach occurs
 
-## CCPA Compliance
+## CSA STAR Certification
 
-### What is CCPA?
+### What is CSA STAR?
 
-CCPA (California Consumer Privacy Act) is California's privacy law giving residents specific rights over their personal data.
+CSA STAR (Cloud Security Alliance Security, Trust, Assurance, and Risk) is a program for cloud security assurance. It provides a framework for cloud providers to demonstrate their security posture through independent assessments.
 
-### Light's CCPA Compliance
+### Light's CSA Certifications
 
-Light complies with CCPA requirements:
+Light holds both **CSA STAR** certification and **Trusted Cloud Providers (CSA)** designation:
 
-- **Disclosure**: Clear disclosure of data collection and use
-- **Consumer Rights**: Consumers can request access, deletion, and opt-out
-- **Non-Discrimination**: No discrimination for exercising privacy rights
-- **Sub-processor Auditing**: Regular audits of vendors and sub-processors
+- **CSA STAR**: Independent assessment of Light's cloud security controls against the Cloud Controls Matrix (CCM)
+- **Trusted Cloud Providers**: Recognition by the Cloud Security Alliance that Light meets rigorous cloud security standards
+- **Transparency**: Light's security posture is documented in the CSA STAR Registry
+- **Continuous Improvement**: Regular reassessment to maintain certification
 
-### Key CCPA Capabilities
+## AWS Security Competency
 
-- **Access Requests**: Consumers can request all data collected about them
-- **Deletion Requests**: Data can be deleted upon request (where legally permitted)
-- **Do Not Sell My Data**: Light doesn't sell customer data
-- **Vendor Transparency**: Full disclosure of vendors and data sharing
+### What is AWS Security Competency?
 
-## ISO 27001 Certification
+AWS Security Competency is an AWS Partner Network designation recognizing technology partners that have demonstrated technical proficiency and proven customer success in specialized security areas on the AWS platform.
 
-### What is ISO 27001?
+### Light's AWS Certifications
 
-ISO 27001 is an international standard for information security management. It specifies requirements for establishing, implementing, maintaining, and continually improving an information security management system (ISMS).
+Light holds **AWS Security Competency** certification:
 
-### Light's ISO 27001 Compliance
+- **AWS Infrastructure**: Light's platform runs on AWS with security best practices
+- **Security Competency**: Validated by AWS for meeting rigorous security requirements
+- **Architecture Review**: Light's architecture has been reviewed against AWS security standards
+- **Data Residency**: Regional data storage options leveraging AWS global infrastructure
 
-Light's infrastructure is ISO 27001 certified:
+## PCI Compliance
 
-- **Information Security**: Comprehensive controls for information security
-- **Risk Management**: Documented process for identifying and mitigating information security risks
-- **Continuous Improvement**: Regular assessment and improvement of security controls
-- **Employee Training**: All personnel receive security training
+### What is PCI?
+
+PCI DSS (Payment Card Industry Data Security Standard) is a set of security standards designed to ensure that all companies that accept, process, store, or transmit credit card information maintain a secure environment.
+
+### PCI SAQ D
+
+Light maintains **PCI SAQ D** compliance, the most comprehensive self-assessment questionnaire:
+
+- **Full Assessment**: SAQ D covers all PCI DSS requirements applicable to Light's environment
+- **Cardholder Data Protection**: Controls for protecting payment card data
+- **Network Security**: Secure network architecture and access controls
+- **Regular Testing**: Ongoing vulnerability scanning and security testing
+- **Access Controls**: Strict access controls for systems handling payment data
+
+## SSAE 18
+
+### What is SSAE 18?
+
+SSAE 18 (Statement on Standards for Attestation Engagements No. 18) is the current attestation standard issued by the AICPA (American Institute of Certified Public Accountants) governing SOC examinations and other service organization reports.
+
+### Light's SSAE 18 Compliance
+
+Light's SOC reports are issued under the **SSAE 18** standard:
+
+- **Current Standard**: SSAE 18 is the governing standard for all SOC 1 and SOC 2 reports in the United States
+- **Vendor Oversight**: Includes requirements for monitoring sub-service organizations
+- **Risk-Based Approach**: Focuses on risks most relevant to user entities
+- **Annual Examination**: Reports are issued annually under this standard
+
+## ISAE 3402
+
+### What is ISAE 3402?
+
+ISAE 3402 (International Standard on Assurance Engagements 3402) is the international equivalent of the SSAE 18 standard, issued by the International Auditing and Assurance Standards Board (IAASB). It provides assurance on controls at service organizations for an international audience.
+
+### Light's ISAE 3402 Compliance
+
+Light maintains **ISAE 3402** compliance:
+
+- **International Recognition**: Accepted globally as the standard for service organization assurance
+- **Independent Assurance**: Reports issued by independent auditors
+- **Control Objectives**: Covers controls relevant to customers' financial reporting
+- **Global Customers**: Provides assurance to Light's international customer base
+
+> Tip: ISAE 3402 reports are the internationally recognized equivalent of US SOC reports and are suitable for customers operating outside the United States.
 
 ## Data Processing Agreements (DPA)
 
@@ -123,44 +191,6 @@ Light provides:
 - **Data Subject Rights**: Mechanisms for exercising consumer rights
 - **Liability**: Allocation of liability and indemnification
 
-## Regulatory Compliance by Region
-
-### United States
-
-Light complies with:
-
-- **CCPA**: California privacy requirements
-- **HIPAA**: If processing healthcare data
-- **SOX**: For publicly traded customers
-- **State Laws**: All state-level privacy and security laws
-
-### European Union
-
-Light complies with:
-
-- **GDPR**: Comprehensive data protection regulation
-- **ePrivacy Directive**: Electronic communications privacy
-- **National Laws**: Country-specific implementation laws
-- **Adequacy Decisions**: Data transfer mechanisms authorized under GDPR
-
-### United Kingdom
-
-Light complies with:
-
-- **UK GDPR**: Post-Brexit UK implementation
-- **Data Protection Act 2018**: Supplementary UK legislation
-- **Standard Contractual Clauses**: For international data transfers
-
-### Australia
-
-Light complies with:
-
-- **Privacy Act**: Australia's privacy legislation
-- **Australian Consumer Law**: Consumer protection requirements
-- **Notifiable Data Breaches**: Breach notification requirements
-
-> Tip: If you operate in multiple regions, Light's compliance covers all your jurisdictions. Ask your account team about region-specific requirements.
-
 ## Penetration Testing and Security Audits
 
 Light maintains security through:
@@ -185,7 +215,7 @@ Light undergoes regular audits:
 To request compliance documentation:
 
 1. Contact your Light account manager
-2. Specify which certification (SOC 2, GDPR, etc.)
+2. Specify which certification (SOC 1, SOC 2, GDPR, PCI, etc.)
 3. Indicate if you need the full report or summary
 4. Document your organization's need for the information
 5. Light delivers documentation under NDA if required
