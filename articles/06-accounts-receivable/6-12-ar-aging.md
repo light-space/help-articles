@@ -4,6 +4,8 @@ AR aging reports analyze outstanding invoices by how overdue they are. These rep
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
+> **Important:** AR aging reports group transactions by the customer's UUID (unique identifier). For accurate aging data, ensure all customers have a UUID assigned. Transactions linked to customers without a UUID may appear under a blank partner or be grouped incorrectly.
+
 ## Understanding Aging Buckets
 
 Invoices are grouped into aging buckets based on days past due:
