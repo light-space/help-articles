@@ -31,10 +31,6 @@ Use filters to narrow the ledger view:
 **By Status:**
 - Draft, Posted, Partially Cleared, Cleared, Archived
 
-**By Entry Status:**
-- **Simplified** - Shows transactions that have a net impact on the ledger, filtering out all reversed transactions. Use this view for a cleaner, more focused list of active entries.
-- **All** - Shows all transactions, including reversed entries. Use this view when you need to see the complete transaction history.
-
 **By Date Range:**
 - Posting date (when it posted to GL)
 - Document date (when transaction occurred)
