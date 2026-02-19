@@ -59,6 +59,13 @@ Transactions in the ledger record the actual debit and credit:
 
 Transactions follow the fundamental equation: **Debits = Credits** (double-entry bookkeeping)
 
+## Entry Status
+
+When viewing ledger transactions, you can toggle the **Entry status** to control which transactions are displayed:
+
+- **Simplified** - Shows only transactions that have a net impact on the ledger, filtering out all reversed transactions. This is useful for a cleaner view of active, meaningful entries.
+- **All** - Shows all transactions, including reversed entries. Use this when you need the complete transaction history for audit or investigation purposes.
+
 ## Document Flow to Ledger
 
 Financial documents flow through Light and post to the ledger:
