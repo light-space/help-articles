@@ -32,32 +32,6 @@ To connect Gmail:
 
 The Gmail integration is now connected for your company.
 
-## Activating email fetching
-
-After connecting, activate email fetching to start scanning for receipts:
-
-1. Navigate to **Settings (gear icon) > Integrations > Gmail**
-2. Click **Activate** or toggle **Enable Email Fetching** to on
-3. Light performs a connectivity check to verify it can access emails via your domain's service account
-4. If the check passes, email fetching is now active for your entire organization
-
-Once activated, Light begins scanning Gmail accounts across your company for receipt emails that match card transactions.
-
-> Good to know: Email fetching requires your Google Workspace admin to configure domain-wide delegation for Light's service account. This grants Light read-only access to Gmail on behalf of users in your domain. Contact your IT administrator if the connectivity check fails.
-
-## Google Workspace requirements
-
-The Gmail integration requires Google Workspace (formerly G Suite) with domain-wide delegation configured for Light's service account. This allows Light to securely fetch emails on behalf of all users in your domain without any action from individual team members.
-
-To set up domain-wide delegation:
-
-1. Contact Light support to obtain the service account email and client ID
-2. Your Google Workspace admin adds these credentials in the Google Admin Console under **Security > API Controls > Domain-wide Delegation**
-3. Grant the `https://www.googleapis.com/auth/gmail.readonly` scope
-4. Return to Light and activate the integration
-
-Once delegation is configured and the integration is activated, Light can fetch receipt emails from any user in your domain.
-
 ## How receipt matching works
 
 Once the integration is activated:
