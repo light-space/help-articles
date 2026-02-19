@@ -29,8 +29,8 @@ Create manual journal entries for:
 
 To create a basic journal entry:
 
-1. Go to **General Ledger > Journal Entries**
-2. Click **Create Journal Entry**
+1. Go to **Accounting → Journal entries**
+2. Click **+ Create journal entry**
 3. Enter details:
    - **Description** - What is this entry for
    - **Posting Date** - When to post to GL
@@ -97,49 +97,46 @@ Credit: Shared Expense Clearing - $10,000
 
 ## Reversing Entries
 
-Create entries that reverse previous entries:
+Create a self-reversing journal entry by using the same GL account on both the debit and credit sides, then setting a release schedule on one of the lines to automatically reverse the entry in a future period.
 
-1. Open the original entry
-2. Click **Create Reversal**
-3. System automatically:
-   - Creates new entry with opposite amounts
-   - Links to original for audit trail
-   - Shows both entries side by side
-4. Choose posting date for reversal
-5. Click **Post**
+To create a reversing entry:
 
-Reversals are used to undo entries while maintaining audit trail.
+1. Go to **Accounting → Journal entries**
+2. Click **+ Create journal entry**
+3. Add two lines using the **same GL account** — one as a debit and one as a credit
+4. On the line you want to reverse, set the **Release schedule** and choose a date in the next month
+5. Post the entry
 
-## Recurring Entries
+Light will automatically create the reversing entry on the scheduled date.
 
-Set up entries that post automatically each period:
+**Example — Accrue January consulting fees and reverse in February:**
 
-1. Create a journal entry as normal
-2. Before posting, click **Make Recurring**
-3. Set recurrence:
-   - Frequency (monthly, quarterly, annually)
-   - Start and end dates
-   - Adjustment rules (e.g., increase amount 5% each year)
-4. Click **Save**
+```
+Line 1: Account 620100 (Consulting Expense) — Debit $5,000
+Line 2: Account 620100 (Consulting Expense) — Credit $5,000  |  Release schedule: Feb 1 (the release will hit Accrued expenses on this line)
+```
 
-Recurring entries automatically post on schedule. For monthly rent accrual, create once and it posts every month.
+When posted, the $5,000 accrual hits the books immediately. On February 1, Light automatically posts the reversal:
+
+```
+Line 1: Account 210300 (Accrued Expenses)   — Debit $5,000
+Line 2: Account 620100 (Consulting Expense) — Credit $5,000
+```
+
+This is useful for month-end accruals that need to reverse at the start of the next period.
 
 ## Multi-Entity Entries
 
-For multi-entity companies:
+For multi-entity companies, journal entries can post across entities using the **Intercompany** tab.
 
 **Same entity entry:**
 - All lines post to the same company entity's GL
 
 **Intercompany entry:**
-- Some lines post to entity A, others to entity B
-- Creates payable/receivable between entities
-- Consolidated reporting eliminates intercompany amounts
-
-To create intercompany entry:
-1. Add lines to different entities
-2. System tracks which entity each line posts to
-3. Consolidation logic handles elimination
+- Open a journal entry and select the **Intercompany** tab
+- Add lines that post to different entities
+- Light creates the corresponding payable/receivable between entities
+- Consolidated reporting automatically eliminates intercompany amounts
 
 ## FX and Multi-Currency
 
@@ -183,7 +180,7 @@ Large entries or special types may have approval workflows.
 
 Create multiple entries at once:
 
-1. Go to **General Ledger > Journal Entries**
+1. Go to **Accounting → Journal entries**
 2. Click **Import Batch**
 3. Upload CSV with entries:
    - Description, Date, Account, Amount, DebitOrCredit
@@ -237,15 +234,13 @@ Debit: Depreciation Expense (5600)
 Credit: Accumulated Depreciation (1800)
 ```
 
-**Intercompany allocation:**
+**Intercompany allocation** (use the **Intercompany** tab):
 ```
 Description: Allocate headquarters costs
-Debit: Entity A Expense (Entity A GL 5700)
-Debit: Entity B Expense (Entity B GL 5700)
-Credit: HQ Allocation Clearing (HQ GL 9999)
+Debit: Entity A Expense (570000)
+Debit: Entity B Expense (570000)
+Credit: HQ Allocation Clearing (999900)
 ```
-
-Save templates and use them repeatedly.
 
 ## Period-End Entries
 
@@ -265,7 +260,7 @@ Create these after other transactions post but before closing the period.
 
 Find created entries:
 
-1. Go to **General Ledger > Journal Entries**
+1. Go to **Accounting → Journal entries**
 2. Filter by:
    - Date range
    - Description keywords
