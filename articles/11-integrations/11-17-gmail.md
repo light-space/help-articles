@@ -86,8 +86,6 @@ Your Google Workspace admin can revoke Light's access at any time from the Googl
 
 **Connection shows "Not Connected" unexpectedly**: The OAuth credentials may have expired or been revoked. Navigate to **Settings > Integrations > Gmail** and click **Connect** to re-authorize.
 
-**Access denied error during OAuth**: Your Google Workspace admin may have restricted which third-party apps can access your organization's data. Allowlist Light in the Google Admin Console under **Security > API Controls**.
-
 ## Disabling the integration
 
 To disable Gmail integration:
