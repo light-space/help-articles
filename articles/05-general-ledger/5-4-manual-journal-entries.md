@@ -113,7 +113,7 @@ Light will automatically create the reversing entry on the scheduled date.
 
 ```
 Line 1: Account 620100 (Consulting Expense) — Debit $5,000
-Line 2: Account 210300 (Accrued Expenses)   — Credit $5,000  |  Release schedule: Feb 1
+Line 2: Account 620100 (Consulting Expense) — Credit $5,000  |  Release schedule: Feb 1 (the release will hit Accrued expenses on this line)
 ```
 
 When posted, the $5,000 accrual hits the books immediately. On February 1, Light automatically posts the reversal:
