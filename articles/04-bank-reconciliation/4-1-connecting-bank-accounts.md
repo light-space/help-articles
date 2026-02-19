@@ -110,6 +110,20 @@ Bank accounts can be:
 
 If a connection expires (your bank requires periodic re-authorization), you'll see a notification to re-authorize.
 
+## Editing Bank Account Names
+
+To change the display name of a bank account in Light:
+
+1. Go to **Accounting → Chart of accounts**
+2. Find the ledger account associated with your bank account
+3. Click on the account to open its details
+4. Update the **Account name** field
+5. Click **Save**
+
+The updated name will appear in bank reconciliation and throughout Light.
+
+> Note: Bank account names are managed through the Chart of Accounts, not through Settings > Bank accounts. The bank account settings page is used for connection details and feed authorization, while the COA controls how the account appears in your financial records.
+
 ## Re-authorizing Bank Feeds
 
 Bank feed authorizations may expire after a period (6-12 months depending on the bank):
