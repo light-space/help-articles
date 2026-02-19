@@ -155,6 +155,7 @@
 - 11.14 [Data migration from E-Conomic to Light](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-14-migration-economic.md)
 - 11.15 [Data migration from QuickBooks to Light](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-15-migration-quickbooks.md)
 - 11.16 [Cutover fundamentals and execution steps](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-16-cutover.md)
+- 11.17 [Gmail integration](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-17-gmail.md)
 
 ## 12. AI Features
 - 12.1 [How Light uses AI across the platform](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-1-how-light-uses-ai.md)
@@ -221,4 +222,4 @@
 
 ---
 
-*Total: 20 sections, 159 articles (136 admin + 23 employee)*
+*Total: 20 sections, 160 articles (137 admin + 23 employee)*
