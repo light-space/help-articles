@@ -1,79 +1,30 @@
 # Exporting and Sharing Reports
 
-Financial reports need to be shared with stakeholders: management, investors, auditors, tax authorities, and board members. Light provides flexible export and sharing capabilities, enabling you to distribute reports in the format each stakeholder needs.
+Financial reports need to be shared with stakeholders: management, investors, auditors, tax authorities, and board members. Light provides export capabilities to help you distribute report data to stakeholders who need it.
 
 [Open in Light →](https://app.light.inc/ledger-reports)
 
-## Report export formats
+## Report export format
 
-Export reports in multiple formats:
+Light exports reports in CSV (comma-separated values) format. CSV files contain raw data that can be opened in spreadsheet applications like Excel or Google Sheets, imported into BI tools, or loaded into databases and other systems.
 
-**PDF**: Professional, formatted for printing and presentation. Preserves fonts, colors, and layout. Ideal for formal reporting, distribution, and archiving.
-
-**Excel**: Allows recipients to recalculate, adjust, and further analyze. Preserves formulas if supported. Good for internal management review and variance analysis.
-
-**CSV**: Raw comma-separated data for loading into other systems, BI tools, or databases. No formatting, just pure data.
-
-**HTML**: Web-viewable format for sharing via email or posting to internal portals.
-
-## Exporting a single report
+## Exporting a report
 
 To export a report:
 
 1. Navigate to any report in Light
 2. Click **Export**
-3. Select format (PDF, Excel, CSV, HTML)
-4. Configure export options:
-   - **Columns to include**: Choose which columns to export (useful for narrowing export scope)
-   - **Rows to include**: Specify if you want summary only, or detail lines also
-   - **Formatting**: For Excel/PDF, include/exclude formatting (colors, fonts)
-5. Click **Export**
-6. Light generates and downloads the file
+3. Light generates and downloads a CSV file
 
-Your browser downloads the file in your default downloads folder.
+Your browser downloads the file to your default downloads folder. You can then open the CSV in your preferred spreadsheet application for further formatting, analysis, or sharing.
 
-## Batch exporting multiple reports
+## Exporting multiple reports
 
-Export several reports at once:
+To export several reports:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select multiple saved reports to export
-3. Select format (all will export in same format)
-4. Click **Export All**
-5. Light generates a ZIP file containing all reports
-6. Download and extract
-
-This saves time when distributing multiple reports to the same group.
-
-## Email distribution
-
-Send reports automatically via email:
-
-1. Open any report
-2. Click **Share**
-3. Select **Email**
-4. Enter email addresses (recipient list)
-5. Optionally add message
-6. Select format (PDF, Excel, CSV)
-7. Click **Send**
-
-Light emails the report to recipients immediately.
-
-> Tip: Use email distribution to send monthly reports automatically. Recipients get the report immediately without manual work.
-
-## Scheduled distribution
-
-Automate recurring report distribution:
-
-1. Open a saved report
-2. Click **Schedule Distribution**
-3. Enter recipient list (users or email addresses)
-4. Select frequency (weekly, monthly, quarterly, annually)
-5. Select format (PDF, Excel, or both)
-6. Optionally add message text
-7. Click **Schedule**
-
-Light generates and distributes the report automatically on the schedule.
+2. Export each report individually as CSV
+3. Combine or organize the CSV files as needed for distribution
 
 ## Access control and sharing permissions
 
@@ -105,39 +56,16 @@ Create a library of shared reports for your organization:
 
 This creates a central repository reducing duplicate work.
 
-## White-label PDFs
+## Formatting exported data
 
-For client-facing reports, customize PDF formatting:
+After exporting a CSV file, you can format and present the data as needed:
 
-1. Navigate to **Settings (gear icon)** to customize PDF branding
-2. Upload logo (appears in PDF header)
-3. Add footer text (company name, confidentiality notice, website)
-4. Select colors and fonts
-5. Save branding
+1. Open the CSV in Excel, Google Sheets, or another spreadsheet application
+2. Apply formatting (fonts, colors, borders) for presentation
+3. Create charts and visualizations
+4. Save as PDF or other formats for distribution to stakeholders
 
-Light applies branding to all exported PDFs automatically.
-
-## Watermarking sensitive reports
-
-Add watermarks to sensitive reports:
-
-1. Export report as PDF
-2. In PDF export options, select **Add Watermark**
-3. Choose watermark text: "CONFIDENTIAL", "DRAFT", "FOR DISCUSSION ONLY", etc.
-4. Light applies watermark to entire PDF
-
-This provides visual indication of sensitivity/status.
-
-## Report annotation and sign-off
-
-For formal reporting, capture approval:
-
-1. Export report as PDF
-2. Circulate to approver (email, portal)
-3. Approver reviews, signs (digitally or printed)
-4. Archive signed report
-
-Light integrates with e-signature tools to streamline approval workflows.
+This approach gives you full control over how the final report appears.
 
 ## Linking reports in documents
 
@@ -154,8 +82,8 @@ This is useful when multiple reports support a decision or analysis.
 When presenting variances or trends:
 
 1. Create custom report showing budget vs. actual with variance %
-2. Highlight significant variances (>threshold)
-3. Export to Excel
+2. Export to CSV
+3. Open in a spreadsheet application to highlight significant variances
 4. Create charts for presentation deck
 5. Reference supporting report for detail
 
@@ -176,28 +104,28 @@ Archiving supports audit procedures and trend analysis.
 
 Format financial statements for presentation or SEC filing:
 
-1. Export balance sheet, P&L, cash flow as PDF
-2. Light includes standard formatting:
+1. Export balance sheet, P&L, and cash flow reports as CSV
+2. Open in a spreadsheet application to format:
    - Proper indentation and account classification
    - Subtotals and totals properly labeled
    - Currency clearly indicated
 3. Add footnotes and disclosures
-4. Submit to regulators or investors
+4. Save as PDF for submission to regulators or investors
 
 ## Auditor data requests
 
 Financial auditors request extensive data. Light simplifies fulfillment:
 
-1. Create a reporting template package:
+1. Export the reports auditors need:
    - Trial balance (as-of date)
    - Balance sheet and P&L (date and period)
    - Account detail schedules (major accounts)
    - Reconciliation schedules (AR aging, AP aging, bank rec, fixed assets)
    - Consolidation working papers (if applicable)
-2. Export all reports at once as ZIP
-3. Send to audit firm
+2. Export each report as CSV
+3. Package and send to audit firm
 
-Auditors receive comprehensive data with proper formatting and structure.
+Auditors receive comprehensive data that can be imported into their analysis tools.
 
 ## Real estate and lease data export
 
@@ -207,7 +135,7 @@ For lease accounting or real estate analysis:
    - Lease obligations by property
    - Right-of-use asset detail
    - Lease expense schedule
-2. Export to Excel
+2. Export to CSV
 3. Lease accountant uses for subledger reconciliation
 
 ## Budget vs. actual for board presentations
@@ -216,8 +144,9 @@ Prepare executive summaries:
 
 1. Create variance report: Budget vs. Actual
 2. Filter to show only significant items (>$1M or >10% variance)
-3. Add explanatory narratives for material variances
-4. Export as PDF for board book
+3. Export to CSV and format in a spreadsheet application
+4. Add explanatory narratives for material variances
+5. Save as PDF for board book
 
 This provides governance-level summary without overwhelming detail.
 
@@ -226,8 +155,8 @@ This provides governance-level summary without overwhelming detail.
 Share limited reports with external stakeholders:
 
 1. Create statement showing customer account balance, aging, recent transactions
-2. Export as PDF
-3. Share with customer for their records
+2. Export to CSV and format in a spreadsheet application
+3. Save as PDF and share with customer for their records
 
 Similarly for vendors, showing your outstanding payables.
 
@@ -238,7 +167,7 @@ Package tax data for filing or audit:
 1. Create tax transaction detail report (by tax code)
 2. VAT return supporting documentation
 3. Income tax supporting schedules
-4. Export as package
+4. Export each report as CSV
 5. Send to tax advisor or file with returns
 
 ## Data import to BI and analytics tools
