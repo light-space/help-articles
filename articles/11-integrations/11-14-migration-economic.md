@@ -27,11 +27,11 @@ Light can import from E-Conomic:
 - **Invoices**: Outstanding AR invoices (unmatched payments)
 - **Bills**: Outstanding AP bills (unpaid)
 - **Payments**: Customer payments and supplier payments (if needed for audit trail)
-- **Fixed assets**: Asset register with depreciation
 - **Budgets**: Budget data (if applicable)
 
 What typically doesn't transfer:
 
+- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a fixed asset release template on the lines. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions >1 year old (migrated via opening balances instead)
 - Closed invoices/bills (migrated via GL balances)
 - Internal notes (not easily portable)
@@ -61,7 +61,6 @@ Export all necessary data:
    - **Suppliers**: Suppliers (names, addresses, terms, payment methods)
    - **Invoices**: Sales → Invoices (outstanding AR only)
    - **Bills**: Purchases → Bills (outstanding AP only)
-   - **Fixed Assets**: Assets (asset register with cost, depreciation, book value)
 4. Export as CSV or Excel format
 5. Store exports safely
 
@@ -136,7 +135,6 @@ Once transformed, import to Light:
    - Opening balances (GL accounts initialized)
    - Outstanding invoices (AR)
    - Outstanding bills (AP)
-   - Fixed assets (if using Light asset tracking)
    - Budgets (if applicable)
 3. Validate each import before proceeding to next
 4. Use Light's import preview to verify data looks correct
@@ -187,7 +185,7 @@ After cutover, reconcile accounts:
 1. **Bank reconciliation**: Reconcile cash accounts to bank statements
 2. **AR reconciliation**: Reconcile AR subsidiary ledger to GL
 3. **AP reconciliation**: Reconcile AP subsidiary ledger to GL
-4. **Fixed asset verification**: Verify asset register integrity
+4. **Fixed asset verification**: Verify fixed assets were entered correctly via journal entries, bills, or sales invoices with release templates applied
 5. **Customer contact verification**: Contact customers to verify AR balances
 
 This ensures migration accuracy.
