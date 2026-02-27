@@ -129,22 +129,39 @@ Card transactions appear automatically in the **Transactions** tab:
 
 3. Use the status filter and search bar to find specific transactions
 
+### Transaction Status and Posting
+
+Card transactions go through two stages before they can impact the general ledger:
+
+**Pending transactions:**
+- Appear immediately after a card is used
+- Show a **Pending** status
+- **Cannot be posted** to the GL yet
+- The merchant has not yet settled the transaction with the card network
+- The amount may still change (merchants can adjust the final amount, add tips, etc.)
+
+**Settled transactions:**
+- The merchant has finalized and settled the transaction
+- Show a **Settled** status
+- Can now be **posted** to create a GL impact
+- The amount is final and will not change
+
+> Good to know: If you see a card transaction in Pending status and cannot post it, this is expected behavior. Wait for the merchant to settle the transaction (typically 1-3 business days), and it will then become available for posting.
+
 ### Card Reconciliation
 
-Reconcile card transactions through bank reconciliation:
+Card accounts are **not available** in the [**Accounting → Bank reconciliation**](https://app.light.inc/bank-reconciliation) page. Unlike bank accounts, card transactions are reconciled through the card settlement process and the matching of bills to card charges.
 
-1. Navigate to [**Accounting → Bank reconciliation**](https://app.light.inc/bank-reconciliation)
-2. Light matches:
-   - **Transactions**: Individual card charges
-   - **Card Bill**: Aggregate bill from issuer
-   - **Approved Expenses**: Expenses approved in Light
+Card reconciliation works as follows:
 
-3. Verify:
-   - All transactions appear on bill
+1. **Individual transactions** post to the GL when they settle (see above)
+2. **Card issuer bill** arrives (monthly typical) with all charges
+3. Light creates an AP bill that groups card charges
+4. Verify:
+   - All posted transactions appear on the bill
    - No duplicate charges
    - Amounts match
-
-4. Click **Reconcile** to mark settled
+5. Pay the card issuer bill through normal AP payment process
 
 ### Card Settlement
 

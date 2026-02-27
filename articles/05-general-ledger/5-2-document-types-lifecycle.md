@@ -81,8 +81,9 @@ All documents share a common structure:
 **Card Transactions**
 - Type: Card Transaction
 - Purpose: Corporate card charges
-- Lifecycle: Imported, categorized, posted, cleared
+- Lifecycle: Imported (Pending), settled, categorized, posted, cleared
 - Key fields: Cardholder, merchant, category, amount
+- Posting date: Card transactions can only be posted after the merchant has **settled** the transaction with the card network. While a transaction is in **Pending** status, posting is not possible because the merchant may still adjust the final amount. Once settled (typically 1-3 business days), the transaction can be posted to the GL.
 
 **Credit Notes**
 - Type: Credit Note (AP) or Customer Credit (AR)
