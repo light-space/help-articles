@@ -85,7 +85,7 @@ Before cutover, validate:
 - AP total matches GL
 
 **Fixed Asset Validation**:
-- All assets imported with cost and depreciation
+- Fixed assets entered via journal entries, bills, or sales invoices with release templates
 - Book values match legacy system
 
 Use Light's reconciliation reports to validate.

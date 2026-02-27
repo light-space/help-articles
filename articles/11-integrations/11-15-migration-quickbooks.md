@@ -29,12 +29,12 @@ Light can import from QuickBooks:
 - **Bills**: Outstanding AP bills (unpaid)
 - **Payments**: Customer payments and vendor payments (optional)
 - **Journal entries**: Adjusting entries as needed
-- **Fixed assets**: Asset register with cost, accumulated depreciation
 - **Budgets**: Budget data (if using QuickBooks budgeting)
 - **Classes/Cost centers**: For allocation to departments
 
 What typically doesn't transfer:
 
+- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a fixed asset release template on the lines. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions > 1-2 years (migrated via GL opening balances)
 - Closed invoices/bills (migrated to GL totals)
 - QuickBooks reports (recreate in Light)
@@ -64,8 +64,6 @@ If using QuickBooks Online:
 4. **Invoices**: Reports → Sales → Open Invoice Report → Export
 5. **Bills**: Reports → Expenses → Unpaid Bills Report → Export
 6. **Trial Balance**: Reports → Accounting → Trial Balance → Export (as of cutover date)
-7. **Fixed Asset list**: If using QB fixed assets, export asset register
-
 Store all exports safely.
 
 ## Exporting from QuickBooks Desktop
@@ -179,7 +177,6 @@ Once transformed, import data:
    - Opening balances (GL)
    - Outstanding invoices (AR)
    - Outstanding bills (AP)
-   - Fixed assets (if applicable)
    - Budgets (if applicable)
 3. Validate each import before proceeding
 4. Review Light's import preview carefully

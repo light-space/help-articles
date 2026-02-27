@@ -13,10 +13,11 @@ Light supports importing:
 - **Historical transactions**: Past invoices, bills, payments (with limits)
 - **Opening balances**: GL account balances as of transition date
 - **Inventory**: Products and SKUs
-- **Fixed assets**: Asset register
 - **Budgets**: Budget data for planning
 
 This enables comprehensive data setup.
+
+> Good to know: Light does not support importing a fixed asset register directly. To enter fixed assets, create a journal entry, bill, or sales invoice with a fixed asset release template applied on one or more lines. See [Configuring releases: depreciation, prepayments, deferred revenue](../09-revenue-compliance/9-2-configuring-releases.md) for details.
 
 ## Preparing import files
 
