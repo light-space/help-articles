@@ -44,7 +44,9 @@ Permissions are cumulative, meaning a user with multiple roles has the combined 
 
 ## Entities and Permissions
 
-Permissions can also be scoped by entity. A user may have full access in one entity but limited or no access in another. This is useful for multi-entity companies where you want to restrict certain users to specific operating units.
+Roles in Light are company-wide and apply across all entities. It is not currently possible to scope a user's role or permissions to specific entities. For example, if a user has the **AP Clerk** role, they will have AP Clerk permissions in all entities within the company.
+
+> **Note:** If you need to restrict users to specific entities, consider creating separate Light companies for each business unit that requires isolated access.
 
 ## Assigning and Modifying Roles
 
