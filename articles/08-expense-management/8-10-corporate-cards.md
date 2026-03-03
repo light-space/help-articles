@@ -4,6 +4,12 @@ Light corporate cards provide employees and vendors with virtual payment cards f
 
 [Open in Light →](https://app.light.inc/cards)
 
+## Supported Regions
+
+Light cards can be issued to entities in the **United States**, **United Kingdom**, and **European Union**.
+
+For employees at entities outside these regions, you can still provide card access by issuing cards from your US, UK, or EU entities. When an employee uses a card issued by a different entity, Light supports **intercompany transfers** to ensure accurate bookkeeping—expenses are properly recorded under the employee's home entity while the card charges settle through the issuing entity.
+
 ## Cards Page Overview
 
 The Cards page has three tabs:
