@@ -23,6 +23,7 @@
 - 1.6 [Connecting your first bank account](https://github.com/light-space/help-articles/blob/main/articles/01-getting-started/1-6-connecting-bank-account.md)
 - 1.7 [Quick-start checklist for new customers](https://github.com/light-space/help-articles/blob/main/articles/01-getting-started/1-7-quick-start-checklist.md)
 - 1.8 [Go-live readiness and minimum viable setup](https://github.com/light-space/help-articles/blob/main/articles/01-getting-started/1-8-go-live-readiness.md)
+- 1.9 [Sandbox environments](https://github.com/light-space/help-articles/blob/main/articles/01-getting-started/1-9-sandbox-environments.md)
 
 ## 2. Organization & Setup
 - 2.1 [Managing entities (adding, editing, removing)](https://github.com/light-space/help-articles/blob/main/articles/02-organization-setup/2-1-managing-entities.md)
@@ -222,4 +223,4 @@
 
 ---
 
-*Total: 20 sections, 160 articles (137 admin + 23 employee)*
+*Total: 20 sections, 161 articles (138 admin + 23 employee)*
