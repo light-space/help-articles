@@ -44,7 +44,7 @@ This is great for getting quick answers without leaving your communication tool.
 
 For issues that need human attention, email the Light support team.
 
-- **Email**: support@light.inc
+- **Email**: help@light.inc
 
 When emailing, include:
 

@@ -73,7 +73,7 @@ Authorization: Basic YOUR_API_KEY
 
 For integrations that act on behalf of users, Light supports the OAuth 2.0 authorization code flow:
 
-1. Contact Light support at **support@light.inc** to set up your account for OAuth 2.0
+1. Contact Light support at **help@light.inc** to set up your account for OAuth 2.0
 2. You'll receive a `client_id` and `client_secret`, and provide Light with your redirect URI
 3. Initiate the flow by directing users to:
 
@@ -177,7 +177,7 @@ Exceeding a limit returns a `429 Too Many Requests` response with these headers:
 
 Best practices for staying within limits: monitor `X-RateLimit-Remaining` before large operations, implement exponential backoff on retries, respect the `Retry-After` header, and spread scheduled jobs across different times.
 
-If your use case requires higher limits, contact Light support at **support@light.inc**.
+If your use case requires higher limits, contact Light support at **help@light.inc**.
 
 ## Error handling
 
@@ -231,7 +231,7 @@ The API returns standard HTTP status codes:
 ## API documentation and support
 
 - **Full API reference**: [docs.light.inc](https://docs.light.inc) — includes endpoint details, request/response schemas, and code examples
-- **Support**: Contact **support@light.inc** for API integration help or to request OAuth 2.0 setup or higher rate limits
+- **Support**: Contact **help@light.inc** for API integration help or to request OAuth 2.0 setup or higher rate limits
 
 ## Related articles
 

@@ -29,7 +29,7 @@ If your company has connected Light to Slack or Microsoft Teams, you can mention
 
 If you need help from a person — for example, something isn't working and the AI answers aren't solving it — email the Light support team.
 
-**Email:** `support@light.inc`
+**Email:** `help@light.inc`
 
 A support agent will respond to your request.
 
