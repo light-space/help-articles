@@ -40,7 +40,7 @@ In Gmail, Outlook, or your email provider, create a forwarding rule or filter to
 
 When you set up automatic forwarding, your email provider sends a verification request to Light's email address. The Light support team will accept this forwarding request on your behalf. This may take up to one business day.
 
-If your forwarding rule isn't working after 24 hours, contact Light support at **support@light.inc** to confirm the verification was completed.
+If your forwarding rule isn't working after 24 hours, contact Light support at **help@light.inc** to confirm the verification was completed.
 
 **Step 3: Test the rule**
 
