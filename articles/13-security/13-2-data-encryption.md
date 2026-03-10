@@ -139,7 +139,7 @@ When you delete data or accounts, Light securely disposes of it:
 
 Light is transparent about encryption:
 
-- **Security Audit Reports**: Third-party SOC 2 audits verify encryption implementation
+- **Security Audit Reports**: Third-party SOC 1 and SOC 2 audits verify encryption implementation
 - **Documentation**: Full technical documentation of encryption methods is available under NDA
 - **Testing**: Regular penetration testing verifies encryption cannot be bypassed
 

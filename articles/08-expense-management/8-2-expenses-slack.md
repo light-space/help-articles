@@ -223,7 +223,7 @@ Your expense submissions in Slack:
 
 - **Encrypted**: Receipts are encrypted in transit and at rest
 - **Private**: Only you and your manager can see your expenses
-- **Compliant**: GDPR and SOC 2 compliant
+- **Compliant**: GDPR, SOC 1, and SOC 2 compliant
 - **No Storage**: Receipt photos are deleted after processing (only metadata retained)
 
 ## Related Articles
