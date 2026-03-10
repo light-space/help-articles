@@ -171,7 +171,7 @@
 - 13.1 [Light's security architecture](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-1-security-architecture.md)
 - 13.2 [Data encryption and storage](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-2-data-encryption.md)
 - 13.3 [Access controls and SSO (Auth0)](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-3-access-controls-sso.md)
-- 13.4 [Compliance certifications (SOC 2, GDPR, etc.)](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-4-compliance-certifications.md)
+- 13.4 [Compliance certifications (SOC 1, SOC 2, GDPR, etc.)](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-4-compliance-certifications.md)
 - 13.5 [Data retention and deletion policies](https://github.com/light-space/help-articles/blob/main/articles/13-security/13-5-data-retention.md)
 
 ## 14. Troubleshooting & FAQ
