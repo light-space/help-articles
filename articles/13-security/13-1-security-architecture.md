@@ -140,11 +140,12 @@ Light maintains an incident response plan:
 
 Light maintains multiple security certifications:
 
+- **SOC 1 Type II**: Audited controls for financial reporting, relevant for customers whose financial statements rely on Light's services
 - **SOC 2 Type II**: Audited controls for security, availability, processing integrity, confidentiality, and privacy
 - **GDPR Compliance**: Full compliance with European data protection regulations
 - **CCPA Compliance**: Compliance with California privacy requirements
 
-> Tip: Request Light's SOC 2 or security audit reports directly from your Light account team for your due diligence.
+> Tip: Request Light's SOC 1, SOC 2, or security audit reports directly from your Light account team for your due diligence.
 
 ## Data Isolation
 
