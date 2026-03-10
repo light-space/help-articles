@@ -12,7 +12,7 @@ Light retains your financial data for as long as necessary to serve your account
 
 ### Active Financial Data
 
-**Retention Period**: As long as your account is active, plus 7 years after account termination
+**Retention Period**: As long as your account is active. After termination, customer data remains accessible in a limited-function account for **90 days**, during which you can access, extract, and delete your data. If deletion is requested or agreed upon, Light deletes the data after this 90-day period. Otherwise, financial data is retained for up to **7 years** after account termination for tax and accounting reporting purposes.
 
 Financial data includes:
 
@@ -23,7 +23,7 @@ Financial data includes:
 - Reports and dashboards
 - Customer and vendor records
 
-This 7-year retention supports:
+The 7-year default retention supports:
 
 - Regulatory compliance (IRS, SEC, and other auditors require 7-year records)
 - Tax audits and inquiries
@@ -126,6 +126,8 @@ To delete an entire company's account and data:
 6. Data is permanently removed from backups as retention periods expire
 
 > Good to know: Deletion is final and cannot be undone. Light recommends exporting a data backup before requesting account deletion.
+
+Upon request, Light will provide **written certification** of the destruction of personal data.
 
 ### GDPR Right to Erasure
 

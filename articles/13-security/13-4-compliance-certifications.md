@@ -78,6 +78,26 @@ Light is fully GDPR compliant:
 - **Privacy Policy**: Clear, transparent privacy terms
 - **Consent Management**: Explicit consent for processing where required
 
+### Controller and Processor Roles
+
+For customer data processed in the Light service, the customer acts as **Data Controller** and Light acts as **Data Processor** under the Data Processing Agreement (DPA). Light processes the following categories of personal data on the customer's behalf:
+
+- **Identification and contact data**: name, business email address, business phone number, job title, office location
+- **Customer-provided content**: documents, images, and other data in electronic form that end users upload, submit, store, or otherwise process through the Light application
+- **System and usage data**: authentication data, login events, activity logs, device/IP information, and other metadata necessary for service provision, security, and auditing
+
+The processing concerns customer employees, authorized users, designated administrators, and customer representatives interacting with Light support. Light does not process personal data of the customer's own customers, suppliers, or the general public unless those individuals are intentionally added or included by the customer in the service.
+
+Light does **not** require, request, or intentionally process any special-category personal data (Article 9 GDPR).
+
+### Supervisory Authority
+
+Light is headquartered in Denmark. Its supervisory data protection authority is **Datatilsynet** (the Danish Data Protection Authority). Denmark does not require GDPR controllers or processors to register with the supervisory authority, so no registration number applies.
+
+### Data Subject Access Requests (DSARs)
+
+Light supports customers in fulfilling data subject access requests by enabling them to access, export, and delete personal data stored in their tenant. Under the DPA, Light provides reasonable assistance to the customer. The customer remains the Data Controller and is responsible for responding directly to data subjects.
+
 ### Key GDPR Capabilities
 
 Light provides:
@@ -86,7 +106,7 @@ Light provides:
 - **Right to Deletion**: Users can request deletion of their data
 - **Data Processing Agreements (DPA)**: Standard DPA available for all customers
 - **Sub-processor Management**: All sub-processors are listed and compliant
-- **Breach Notification**: Light notifies you within 72 hours if a breach occurs
+- **Breach Notification**: Light notifies you within 36 hours if a breach occurs
 
 ## CSA STAR Certification
 
@@ -180,7 +200,7 @@ Light provides:
 - **Customization**: DPAs can be customized for specific requirements
 - **GDPR Compliant**: Full compliance with GDPR Article 28 requirements
 - **Signature**: Executed within 5 business days of request
-- **Online Access**: DPA templates available in Light's legal portal
+- **Online Access**: Light's DPA is available at [light.inc/dpa](https://light.inc/dpa)
 
 ### Key DPA Terms
 
@@ -190,6 +210,35 @@ Light provides:
 - **Sub-processors**: Lists vendors that may access data
 - **Data Subject Rights**: Mechanisms for exercising consumer rights
 - **Liability**: Allocation of liability and indemnification
+
+### Subprocessors
+
+Light's DPA lists the following subprocessors and their processing locations:
+
+| Subprocessor | Location |
+|---|---|
+| Amazon Web Services | Ireland |
+| OpenAI Services | Europe |
+| AMC Banking | Denmark |
+| Google Cloud (Vertex AI) | Europe |
+| Adyen | Netherlands |
+
+Customers are notified of new subprocessors with a **30-day notice period** and have the right to object under the DPA.
+
+### International Data Transfers
+
+Where cross-border transfers of personal data occur outside the EEA, Light relies on GDPR Chapter V safeguards, including:
+
+- EU Standard Contractual Clauses (SCCs) where required
+- Subprocessor DPAs and contractual safeguards
+- Supplementary technical and organizational measures such as encryption, access controls, and data minimization
+
+### Public Legal and Privacy Links
+
+- [Terms of Service](https://light.inc/terms)
+- [Privacy Policy](https://light.inc/privacy)
+- [Data Processing Agreement](https://light.inc/dpa)
+- [Security Overview](https://light.inc/security)
 
 ## Penetration Testing and Security Audits
 

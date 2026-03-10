@@ -241,7 +241,7 @@ Configure these in **Settings (gear icon) → AI Assistant → Instructions**, o
 - All LCI requests are authenticated — the `LciPolicy` requires a valid session
 - Conversation threads are stored per user and per company with full audit trail
 - Slack and Teams messages are processed through Light's secure integration layer
-- Financial data is never used to train public AI models
+- Customer data is never used for AI model training or fine-tuning
 - In Slack and Teams, user identity is resolved via OAuth tokens — LCI maps Slack/Teams users to their Light accounts
 
 ## Limitations
