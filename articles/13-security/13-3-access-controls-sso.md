@@ -111,6 +111,10 @@ Workflows are configured using a drag-and-drop node editor with **Action** and *
 
 Under **Settings > Guardrails > Policies**, you can create and manage spend policies that are scoped to specific entities. Policies can be uploaded or created from scratch using the **+ Create policy** and **Upload** buttons. Each policy is associated with one or more entities and tracks the last edit date and editor.
 
+## Multi-Factor Authentication (MFA)
+
+Multi-factor authentication is required for all administrative and engineering access to production systems and management consoles. MFA adds a second layer of verification beyond a password, helping prevent unauthorized access even if credentials are compromised.
+
 ## Single Sign-On (SSO)
 
 Light supports Single Sign-On so that employees can log in using their company's identity provider rather than managing a separate username and password. Light's SSO is powered by Auth0.

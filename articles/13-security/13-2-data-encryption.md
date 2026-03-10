@@ -37,7 +37,7 @@ Light maintains encrypted backups for disaster recovery:
 - **Retention**: Backups are retained for at least 30 days, and recovery-ready backups for 7 years
 - **Encryption**: All backups are encrypted with AES-256
 - **Testing**: Recovery procedures are tested regularly to ensure backups are reliable
-- **Location**: Backups are stored geographically distributed to prevent loss
+- **Location**: Backups are stored across multiple availability zones within the same region for redundancy
 
 > Good to know: Even if someone gained access to Light's backup systems, the encrypted data would be useless without the encryption keys.
 

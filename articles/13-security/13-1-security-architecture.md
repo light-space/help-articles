@@ -19,7 +19,7 @@ Light is built on several core security principles:
 
 ### Cloud Infrastructure
 
-Light runs on secure, isolated cloud infrastructure with:
+Light is hosted on **Amazon Web Services (AWS)** and runs on secure, isolated cloud infrastructure with:
 
 - **Network Isolation**: Your financial data is in isolated network segments
 - **DDoS Protection**: Advanced DDoS mitigation to prevent service disruption
@@ -33,7 +33,7 @@ Light's infrastructure includes:
 - **Physical Security**: Access to data centers is restricted and monitored
 - **Environmental Controls**: Redundant power, cooling, and climate monitoring
 - **Fire Suppression**: Automatic fire detection and suppression systems
-- **Backup Systems**: Multiple redundant systems ensure availability
+- **Backup Systems**: Multiple redundant systems ensure availability, with encrypted backups performed daily
 
 > Good to know: Light's infrastructure is designed for 99.9% uptime with automatic failover to backup systems.
 
@@ -104,6 +104,18 @@ Light monitors for:
 
 Suspicious activity triggers alerts to your security team.
 
+## Change Management
+
+Light follows a formal change management process for all production changes. Changes go through identification and logging, impact and risk assessment, peer review and approval, testing in non-production environments, controlled deployment through CI/CD pipelines, and post-deployment monitoring with rollback capability.
+
+## Security Awareness Training
+
+All Light employees complete security awareness training as part of onboarding. Periodic refresher training is provided to keep employees up to date on evolving threats and security best practices.
+
+## Endpoint Security
+
+All employee devices are enrolled in an endpoint management program that continuously monitors for compliance, including verification that antivirus and endpoint protection software is installed and active.
+
 ## Vulnerability Management
 
 ### Security Testing
@@ -119,9 +131,9 @@ Light conducts:
 
 Light maintains an incident response plan:
 
-- 24/7 security monitoring to detect breaches quickly
+- Continuous automated security monitoring and alerting tools running 24/7
 - Rapid response procedures to contain and remediate incidents
-- Transparent communication with affected customers
+- Transparent communication with affected customers — Light will notify customers in writing **within 36 hours** of identifying a potential or actual breach of personal data
 - Post-incident analysis to prevent recurrence
 
 ## Compliance and Certifications
@@ -131,7 +143,6 @@ Light maintains multiple security certifications:
 - **SOC 2 Type II**: Audited controls for security, availability, processing integrity, confidentiality, and privacy
 - **GDPR Compliance**: Full compliance with European data protection regulations
 - **CCPA Compliance**: Compliance with California privacy requirements
-- **ISO 27001**: Information security management standards
 
 > Tip: Request Light's SOC 2 or security audit reports directly from your Light account team for your due diligence.
 
@@ -139,9 +150,8 @@ Light maintains multiple security certifications:
 
 Light ensures strict data isolation between companies:
 
-- Each company's data is logically and physically isolated
+- Each company's data is **logically separated** using tenant identifiers in a shared database architecture, with application queries scoped by tenant ID to prevent cross-tenant access
 - No company can access another company's data, even through administrative access
-- Multi-tenancy architecture ensures natural boundaries
 - Database-level controls prevent cross-company data leakage
 
 ## API Security
@@ -152,6 +162,10 @@ Light's APIs are secured with:
 - **Rate Limiting**: Protection against brute force or DDoS attacks via API
 - **Request Validation**: Strict validation of all API inputs
 - **Audit Logging**: All API calls are logged and audited
+
+## Business Continuity and Disaster Recovery
+
+Light leverages AWS regional redundancy and failover capabilities for business continuity and disaster recovery. Infrastructure is distributed across multiple availability zones, ensuring that service remains available in the event of localized failures.
 
 ## Related Articles
 
