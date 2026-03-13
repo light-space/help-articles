@@ -13,7 +13,7 @@ Connecting bank accounts enables:
 - **Real-time visibility** - See current bank balances and recent activity
 - **Payment scheduling** - Use Light to initiate payments directly from your bank
 
-Light supports connections to major banks in US, Europe, and Asia through providers like Plaid, GoCardless, and Airwallex.
+Light supports connections to major banks in US, Europe, and Asia through providers like Plaid, GoCardless, Airwallex and Host-to-Host integrations.
 
 ## Before You Start
 
@@ -38,7 +38,7 @@ To add a new bank account to Light:
    - For IBAN accounts: IBAN and BIC
    - For US accounts: Routing number and account number
    - Bank country and currency
-8. Click **Connect**
+8. Click **Add**
 
 ## Bank Feed Authorization
 
@@ -56,15 +56,15 @@ To enable automatic transaction imports, authorize Light to access your bank acc
 
 Light supports transaction feeds from:
 
-**Plaid** (North America, Europe) - Connects to thousands of banks in US, Canada, UK, Europe
+**Plaid** (North America) - Connects to thousands of banks in the United States
 
 **GoCardless** (Europe, UK) - Covers European and UK banks including revolut, Wise, Starling, and traditional banks
 
 **Stripe** (Payment Processing) - For Stripe payment accounts
 
-**AMC** (SWIFT-based) - For banks using SWIFT payments infrastructure
+**AMC** (Host-to-Host) - For banks not covered via Plaid and GoCardless - note your bank may charge you a fee for setting this up. Timeline is often 2-3 months depending on the bank. 
 
-Not all banks support all providers. If your bank isn't available via your preferred provider, try a different provider.
+Not all banks support all providers e.g. J.P. Morgan and HSBC is not supported via Plaid in the US while Gocardless do not support J.P. Morgan in the UK. If your bank isn't available via your preferred provider, you can always upload the bank feed manually or inquire Light about options for Host-to-Host integration support.
 
 ## Multi-Currency Accounts
 
