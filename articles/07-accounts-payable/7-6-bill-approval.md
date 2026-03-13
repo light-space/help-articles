@@ -1,200 +1,144 @@
 # Bill Approval Workflows
 
-Bill approval workflows in Light ensure appropriate oversight before payment. Workflows can be simple (single approver) or complex (multi-level with escalation rules).
+Bill approval workflows in Light ensure appropriate oversight before payment. Light provides a predefined Bill workflow that you can customize with approval conditions based on your organization's requirements.
 
 [Open in Light →](https://app.light.inc/payables)
 
-## Understanding Approval Workflows
+## Understanding the Bill Approval Workflow
 
-An approval workflow defines:
+Light includes a predefined Bill approval workflow that routes bills to the appropriate approvers based on configurable conditions. You can edit this workflow to match your organization's approval policies.
 
-- **Approval levels**: How many levels of approval (1, 2, or 3+)
-- **Approvers**: Who must approve at each level
-- **Approval limits**: Amount thresholds (e.g., finance approves bills over $10,000)
-- **Escalation**: What happens if approval times out (escalate to manager)
-- **Conditions**: Rules for who approves based on vendor, amount, GL account, etc.
+> Good to know: You cannot create additional approval workflows—Light provides a single Bill workflow that you customize to handle all approval scenarios.
 
-## Default Approval Workflow
+## Approval Conditions
 
-Light provides a standard workflow:
+The approval workflow routes bills based on the following condition types:
 
-- **Level 1**: Manager approves bills under $5,000
-- **Level 2**: Finance approves $5,000-$50,000
-- **Level 3**: CFO approves over $50,000
+- **Amount**: Route bills based on total amount (e.g., bills over $10,000 require CFO approval)
+- **Entity**: Different approval rules per company entity
+- **Bill type**: Route based on the type of bill or expense category
+- **Custom properties**: Use custom fields on bills to determine routing
 
-You can customize or create additional workflows.
+You can combine multiple conditions to create sophisticated approval rules that match your internal controls.
 
-## Creating a Custom Approval Workflow
+## Editing the Approval Workflow
 
-### Basic Workflow Setup
+### Accessing Workflow Settings
 
-1. Navigate to **Settings** > **Approval Workflows**
-2. Click **Create Workflow**
-3. Enter **Workflow Name** (e.g., "Standard AP Approval")
-4. Set **Default Approval**: Which workflow applies to bills without specific rules
-5. Click **Create**
+1. Navigate to **Settings (gear icon)** > **Approval Workflows**
+2. Select the **Bill** workflow
+3. Click **Edit** to modify the workflow conditions
 
-### Defining Approval Levels
+### Configuring Approval Conditions
 
-1. In the workflow, click **Add Level**
-2. Set the **Level Number** (1, 2, 3, etc.)
-3. Specify **Approvers**:
-   - Add by **User**: Select specific people
-   - Add by **Role**: Anyone with this role (useful when teams change)
+1. In the workflow editor, click **Add Condition**
+2. Select the condition type:
+   - **Amount**: Set threshold (e.g., "Amount greater than $5,000")
+   - **Entity**: Select which entities this rule applies to
+   - **Bill type**: Choose bill categories
+   - **Custom property**: Select a custom field and value
 
-4. Set the **Approval Authority**:
-   - **Amount Threshold**: Bills up to $X require this level
-   - **All Bills**: This level approves everything
-   - **Custom Rule**: See Conditional Rules section
+3. Specify the **Approver(s)**:
+   - Select specific users
+   - Select users by role (recommended for flexibility)
 
-5. Optionally, set **Timeout** and **Escalation** (see below)
-6. Click **Add Level**
-7. Repeat for additional levels
+4. Click **Save**
 
-> Good to know: Using role-based approvers makes workflows flexible. If the finance manager leaves, reassign the Finance role to someone new and workflow updates automatically.
+### Example Configurations
 
-### Approval Authorities
+**Amount-based approval:**
+- Bills under $5,000 → Manager approval
+- Bills $5,000–$50,000 → Finance approval
+- Bills over $50,000 → CFO approval
 
-You can combine multiple authority types:
+**Entity-based approval:**
+- US Entity bills → US Finance team
+- EU Entity bills → EU Finance team
 
-- **Amount-based**: Bills under/over certain amounts
-- **Vendor-based**: Different approvers for vendor categories
-- **GL Account-based**: Different approvers for expense types
-- **Department-based**: Different approvers per cost center
-- **Custom**: Complex rules (e.g., international vendors only)
+**Combined conditions:**
+- Bills over $10,000 AND Entity = US → CFO + US Controller
 
-## Conditional Approval Rules
-
-For complex scenarios, create rules that route bills to specific approvers:
-
-1. In the workflow, click **Add Rule**
-2. Set the **condition** (IF statement):
-   - If Vendor Type = International
-   - If Amount > $50,000
-   - If GL Account = Travel & Expenses
-   - If Cost Center = Engineering
-
-3. Set the **action** (THEN):
-   - Then assign to [User] for approval
-   - Then require 2 approvals instead of 1
-   - Then escalate if not approved in 5 days
-
-4. Set **Rule Priority** (rules are evaluated in order)
-5. Click **Add Rule**
-
-Repeat to create comprehensive rule sets.
+> Tip: Using role-based approvers instead of specific users makes workflows more resilient to team changes. When someone leaves, reassign the role and the workflow continues working.
 
 ## Bill Routing and Approval Process
 
 ### How Bills are Routed
 
 1. Bill is created and posted
-2. Light evaluates approval workflow rules
-3. Bill is assigned to appropriate approvers
+2. Light evaluates the workflow conditions
+3. Bill is assigned to the appropriate approver(s) based on matching conditions
 4. Approvers receive notification
-5. They review and approve/reject
-6. Bill moves to next level (or payment queue if all approved)
+5. Approvers review and approve or reject
+6. Approved bills move to the payment queue
 
 ### Approver Experience
 
 When approvers receive bills:
 
 1. They see notifications (email, in-app, Slack)
-2. Click notification to open bill
-3. Review the bill:
+2. Click notification to open the bill
+3. Review the bill details:
    - **Details**: Vendor, amount, date, terms
    - **Line Items**: What was purchased, GL accounts
    - **Supporting Documents**: Any attached receipts or POs
-   - **History**: Previous approvals/rejections
+   - **History**: Previous approvals or rejections
 
 4. Click **Approve** or **Reject**
-5. Optionally, add a **comment** explaining decision
+5. Optionally add a **comment** explaining the decision
 
 ### Approval Actions
 
 **Approve:**
-- Bill moves to next approval level (if applicable)
-- Last approver's approval sends bill to payment queue
-- Approver who approved last can see status anytime
+- Bill is approved and moves to the payment queue
+- If multiple approvers are required, bill waits for all approvals
 
 **Reject:**
-- Bill is returned to bill creator with reason
+- Bill is returned to the bill creator with the rejection reason
 - Bill returns to DRAFT state
-- Creator must address issue and resubmit
-- Bill enters approval workflow again
+- Creator must address the issue and resubmit
+- Bill enters the approval workflow again when resubmitted
 
 **Request Changes:**
-- Approver asks for modifications without full rejection
-- Bill creator receives request
-- Can make minor corrections without restarting workflow
+- Approver asks for modifications without fully rejecting the bill
+- Bill creator receives the request
+- Can make minor corrections without restarting the workflow
 - Updated bill is resubmitted for approval
 
-## Escalation and Timeouts
+## Viewing Pending Approvals
 
-### Setting Escalation Rules
+### Finding Bills Awaiting Your Approval
 
-Prevent bills from getting stuck in approval:
-
-1. In the workflow level, set **Timeout**: Days before escalation (e.g., 5 days)
-2. Set **Escalation Action**:
-   - **Escalate to Manager**: Route to approver's manager
-   - **Auto-Approve**: Automatically approve after timeout
-   - **Send Reminder**: Send reminder email to approver
-
-3. Light automatically takes action if approver doesn't respond
-
-### Escalation Example
-
-- Bill assigned to Manager on Monday
-- Timeout is 5 days
-- Manager doesn't approve by Saturday
-- Light escalates to Director (manager's manager)
-- Director receives notification and approves
-
-## Approval Dashboard
-
-Monitor approval status:
-
-1. Navigate to **Approvals** > **Pending**
+1. Navigate to **Home → Tasks** or click on your **Tasks** in the sidebar
 2. See all bills awaiting your approval:
    - Bill number and vendor
    - Amount
-   - Days pending
    - Bill date
+   - Days pending
 
-3. Click a bill to open and approve
-4. Filter by:
-   - Amount range
-   - Vendor
-   - Date
-   - Department
+3. Click a bill to open and review
+4. Take approval action directly from the task list
 
-### Approval Analytics
+### Filtering and Sorting
 
-Track workflow performance:
+Filter pending approvals by:
+- Amount range
+- Vendor
+- Date
+- Entity
 
-1. Navigate to **Reports** > **Approval Metrics**
-2. View:
-   - **Average Approval Time**: How long bills take to approve
-   - **Rejection Rate**: % of bills rejected
-   - **Common Rejection Reasons**: Top reasons for rejections
-   - **Approver Performance**: Which approvers slow down workflow
-
-3. Use to identify bottlenecks and improve processes
-
-## Bulk Actions During Approval
+## Bulk Approval Actions
 
 ### Batch Approve
 
 Approve multiple bills at once:
 
-1. Navigate to **Approvals** > **Pending**
+1. Navigate to your pending approvals
 2. Select multiple bills (checkboxes)
 3. Click **Bulk Approve**
-4. Add optional **comment** explaining approval
+4. Add an optional **comment** explaining the approval
 5. Click **Approve All**
 
-All selected bills move forward in workflow.
+All selected bills are approved.
 
 ### Batch Reject
 
@@ -202,35 +146,33 @@ Reject multiple bills:
 
 1. Select bills
 2. Click **Bulk Reject**
-3. Provide **reason**
+3. Provide a **reason** for rejection
 4. Click **Reject All**
 
-Use sparingly; rejecting without individual review is risky.
+> Note: Use batch reject sparingly—rejecting without individual review may miss important details.
 
 ## Mobile Approvals
 
-Approve bills on the go:
+Approve bills on the go using the Light mobile app:
 
-1. Use Light mobile app
-2. Open **Approvals** section
+1. Open the Light mobile app
+2. Navigate to **Tasks** or **Approvals**
 3. View pending bills
-4. Click **Approve** or **Reject**
-5. Add comment if needed
+4. Tap to review details
+5. Click **Approve** or **Reject**
+6. Add a comment if needed
 
-Mobile approval supports fingerprint/face authentication for security.
+Mobile approval supports fingerprint and face authentication for security.
 
-## Delegation
+## Best Practices
 
-Temporarily delegate approval authority:
+**Keep conditions simple:** Start with straightforward amount-based rules and add complexity only when needed.
 
-1. Open **Approval Settings**
-2. Click **Delegate Authority**
-3. Select **Delegate To**: The person taking over
-4. Set **Duration**: When delegation ends
-5. Select which **Approval Levels** they're delegating
-6. Click **Delegate**
+**Use roles, not users:** Assign approvers by role (e.g., "Finance Manager") rather than specific people to avoid workflow disruptions when team members change.
 
-Useful when on vacation or during leave.
+**Document your approval policy:** Maintain an internal policy document that explains your approval thresholds and who is responsible for each level.
+
+**Review regularly:** Periodically review your workflow conditions to ensure they still match your organization's needs as you grow.
 
 ## Related Articles
 
