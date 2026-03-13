@@ -2,7 +2,7 @@
 
 This repository contains all help center articles for [Light](https://light.inc), an AI-native financial platform for multinational companies.
 
-## Repository Structure
+## Repository Structure54
 
 ```
 articles/
