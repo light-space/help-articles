@@ -200,7 +200,7 @@ To correct information on an existing bill:
 1. Open the bill
 2. If DRAFT: Click **Edit** and make corrections
 3. If POSTED: Click **Amend Bill**
-4. Light creates an adjustment record
+4. Light creates an adjustment transaction
 5. Make corrections
 6. Click **Save Amendment**
 
