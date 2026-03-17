@@ -1,6 +1,6 @@
 # Adding and Managing Vendors
 
-Vendor management in Light is the foundation of AP. This article covers creating vendors, updating vendor information, and managing vendor hierarchies and approvers.
+Vendor management in Light is the foundation of AP. This article covers creating vendors, configuring banking details, managing entity assignments, and tracking vendor status.
 
 [Open in Light →](https://app.light.inc/vendors)
 
@@ -8,191 +8,129 @@ Vendor management in Light is the foundation of AP. This article covers creating
 
 1. Navigate to **Spend management → Vendors**
 2. Click **+ Create vendor**
-3. Enter required information:
-   - **Vendor Name**: Company or individual name
-   - **Email**: Primary contact email
-   - **Vendor Status**: Active or Inactive
+3. Choose one of two creation modes:
 
-4. Add optional details:
-   - **Description**: Notes about the vendor
-   - **Website**: Vendor's website URL
-   - **Phone Number**: Contact phone
-   - **Country**: Vendor location
-   - **Address**: Street, city, state, postal code
+---
 
-5. Click **Create**
+### Option A — Customer Request
 
-## Vendor Tax Information
+Send the vendor a portal link so they fill in their own information.
 
-Configure tax details for correct bill treatment:
+Required fields:
+- **Vendor name**
+- **Country**
+- **Entity** (one or more)
+- **Vendor email** (portal invitation is sent here)
 
-1. Open the vendor
-2. Navigate to **Tax Information**
-3. Enter:
-   - **VAT Number**: EU VAT ID (if applicable)
-   - **Business Registration Number**: Company registration ID
-   - **Tax Classification**: If available (affects 1099 reporting)
+Optional:
+- **CC email** — copies an additional contact on the invitation
 
-4. Optionally, mark vendor for **1099 reporting** (US contractors only)
-5. Click **Save**
+Once submitted, the vendor receives a link to complete their business and banking details directly in the Light vendor portal.
 
-> Good to know: Accurate tax information ensures correct GL coding and tax reporting compliance.
+---
 
-## Banking Information
+### Option B — Manual Entry
 
-Add vendor banking details for payments:
+Fill in the vendor's information yourself via a 3-step form.
 
-1. Open the vendor
-2. Navigate to **Banking Details**
-3. Choose **Bank Account Type**:
-   - **Domestic Account**: Local bank account (account number/routing)
-   - **International Account**: IBAN/SWIFT for cross-border payments
-   - **ACH Account**: US ACH payments
-   - **Check**: Mailing address for check payments
+**Step 1 – Business**
 
-4. For bank accounts, enter:
-   - **Bank Name** and **Country**
-   - **Account Number** (or IBAN)
-   - **Bank Code** (or BIC/SWIFT)
-   - Optionally, **Secondary Account** (if vendor has multiple)
+| Field | Required |
+|---|---|
+| Name | ✅ |
+| Country | ✅ |
+| Website | — |
+| Description | — |
+| VAT number | — |
+| Phone number | — |
+| Address (street, city, state, ZIP) | — |
+| Email | — |
+| Custom properties | — |
 
-5. For checks, enter **Mailing Address**
-6. Click **Save**
+**Step 2 – Payment**
 
-## Payment Preferences
+Banking fields adapt based on the selected **bank country**:
 
-Configure how this vendor prefers to be paid:
+| Bank country | Fields shown |
+|---|---|
+| United States | Routing number (9 digits) + Account number |
+| United Kingdom | IBAN + Sort code + Account number |
+| Sweden | IBAN + Clearing code + Account number + Bankgiro/Plusgiro |
+| Denmark / Norway | IBAN + Clearing/bank code + Account number |
+| Most EU countries | IBAN only |
+| Australia | BSB code + Account number |
+| Canada | Transit number + Account number |
 
-1. Open the vendor
-2. Navigate to **Payment Preferences**
-3. Set:
-   - **Preferred Payment Method** (bank transfer, check, ACH, virtual card)
-   - **Payment Terms** (Net 30, Net 60, etc.)
-   - **Currency**: Default payment currency
-   - **Minimum Payment Amount**: Only pay if amount exceeds threshold
-   - **Scheduled Payment Days**: Best days to pay (e.g., "Mid-month")
+Additional optional fields: BIC/SWIFT, bank name, bank address.
 
-4. Click **Save**
+**Step 3 – Accounting**
 
-Light uses these preferences when scheduling payments.
+| Field | Required |
+|---|---|
+| Entity assignment (one or more) | ✅ |
+| Default entity | — |
+| Default GL account | — |
+| Default tax code | — |
+| Default from account (payment bank account) | — |
+| Cost center | — |
+| Approvers | — |
 
-## Vendor Contacts
+Click **Create** to save.
 
-Manage multiple contact people at the vendor:
+---
 
-1. Open the vendor
-2. Navigate to **Contacts**
-3. Click **Add Contact**
-4. Enter:
-   - **Contact Name**
-   - **Email Address**
-   - **Phone Number** (optional)
-   - **Role**: (e.g., Accounts Payable, Sales, Support)
-   - **Primary Contact**: Toggle if this is the main contact
+## Vendor Statuses
 
-5. Click **Save**
+| Status | Description |
+|---|---|
+| **Onboarding** | Vendor has been invited but hasn't completed their information yet |
+| **In review** | Vendor's information has been submitted and is awaiting approval |
+| **Active** | Vendor is approved and available to receive bills |
+| **Rejected** | Vendor was reviewed and rejected |
 
-When sending bills or payment reminders, Light uses the primary contact by default.
+The vendor list defaults to showing **Onboarding**, **In review**, and **Active** vendors.
+
+---
+
+## Banking Details and Change Requests
+
+When bank details are updated — either by you or through a vendor portal submission — the change goes through an approval flow before taking effect.
+
+While a change is pending you'll see two tabs on the vendor:
+- **Awaiting approval** — shows the proposed new banking details
+- **Current details** — shows the existing banking details still in use
+
+---
 
 ## Entity Assignment
 
-Assign vendors to specific company entities:
+A vendor can be assigned to one or more company entities. For each default entity you can configure:
 
-1. Open the vendor
-2. Navigate to **Entity Assignment**
-3. Click **Assign to Entity**
-4. Select one or more entities
-5. Optionally, set **Entity-Specific Details**:
-   - Different default GL account per entity
-   - Entity-specific payment terms
-   - Entity-specific contact
+- **Default GL account** — pre-fills coding on bills from this vendor
+- **Default tax code** — pre-fills tax on bills from this vendor
+- **Default from account** — the company bank account used to pay this vendor
+- **Cost center** — optional default cost center
 
-6. Click **Assign**
+---
 
-If a vendor is assigned to multiple entities, you'll see their bills grouped by entity.
+## Approvers
 
-## Vendor Approval Hierarchy
+Approvers can be assigned to a vendor in the **Accounting** step during creation, or edited later. Assigned approvers are required to sign off on bills or changes from that vendor based on your organization's approval workflow.
 
-Configure who must approve bills from this vendor:
+---
 
-1. Open the vendor
-2. Navigate to **Approval Settings**
-3. Click **Add Approver**
-4. Select the **User** or **Role**
-5. Set the **Approval Level** (1, 2, 3, etc.)
-6. Set **Approval Limit**: Bills up to this amount don't require approval; above require this user
-7. Click **Add**
+## Vendor Details Tabs
 
-Repeat for each approval level.
+Once a vendor is created, opening it shows the following tabs:
 
-Example:
-- Level 1: Manager (approves bills under $5,000)
-- Level 2: Finance Lead (approves $5,000-$50,000)
-- Level 3: CFO (approves over $50,000)
+| Tab | Visible when |
+|---|---|
+| **Accounting Documents** | Vendor status is **Active** |
+| **Tasks** | Always |
+| **Attachments** | Always |
+| **Onboarding** | During onboarding flow |
 
-## Spending Limits
-
-Set maximum spending authority per vendor:
-
-1. Open the vendor
-2. Navigate to **Spending Limits**
-3. Set:
-   - **Annual Spending Limit**: Max total spending per year
-   - **Monthly Spending Limit**: Max per month
-   - **Single Transaction Limit**: Max per single bill
-   - **Rolling Limit**: 30-day or other period
-
-4. Optionally, set **Notification Threshold** (alert at 80% of limit)
-5. Click **Save**
-
-Light prevents bill posting if limits are exceeded.
-
-## Vendor Status and Archiving
-
-Manage vendor lifecycle:
-
-**Vendor Statuses:**
-- **ACTIVE**: Can receive bills and make payments
-- **INACTIVE**: Cannot receive new bills; historical bills remain
-- **PENDING**: Awaiting approval before becoming active
-
-To archive a vendor:
-
-1. Open the vendor
-2. Click **Archive**
-3. Optionally, set **Archive Reason** (moved, merged, etc.)
-4. Archived vendors:
-   - No longer appear in active vendor lists
-   - Remain accessible for historical billing
-   - Can be reactivated by clicking **Activate**
-
-## Custom Properties
-
-Add vendor-specific custom fields:
-
-1. Open the vendor
-2. Navigate to **Custom Properties**
-3. Click **Add Property**
-4. Select property group and label
-5. Enter value
-6. Click **Save**
-
-Use custom properties for procurement coding, department tracking, or vendor classification.
-
-## Bulk Vendor Operations
-
-Manage many vendors at once:
-
-1. Navigate to **Vendors**
-2. Click **Bulk Actions**
-3. Select vendors using checkboxes
-4. Choose action:
-   - **Update Entity Assignment**: Add/remove entities
-   - **Update Payment Method**: Change preferred method
-   - **Archive**: Deactivate multiple vendors
-   - **Update Custom Properties**: Bulk update a field
-
-5. Review changes and confirm
+---
 
 ## Related Articles
 
