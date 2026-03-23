@@ -88,7 +88,7 @@ You can download a complete export of your company's data at any time.
 
 ### 5. Port Your Data
 
-If you switch from Light, you can export all data in standard formats (CSV, PDF, JSON) for use in another system.
+If you switch from Light, you can export all data in standard CSV format for use in another system.
 
 ## Data Deletion Procedures
 
@@ -150,7 +150,7 @@ To export all company data:
 1. Go to **Admin** > **Data Export**
 2. Click **Request Export**
 3. Select what to include (transactions, invoices, customers, etc.)
-4. Choose format (CSV, Excel, JSON, or PDF)
+4. Format is CSV
 5. Light prepares your export (typically within 24 hours)
 6. Download your data
 7. Export is available for 7 days, then deleted
@@ -161,7 +161,7 @@ To export individual reports:
 
 1. Run the report you want to export
 2. Click **Export** in the report header
-3. Choose format (Excel, PDF, CSV)
+3. Format is CSV
 4. Download the file
 5. Save it to your computer
 
