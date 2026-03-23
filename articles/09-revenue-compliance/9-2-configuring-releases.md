@@ -18,7 +18,7 @@ Each release template includes:
 
 **Release pattern**: How the amount is distributed. Light supports straight-line (equal portions each period), declining balance, and custom allocation patterns.
 
-**Account mappings**: Which ledger accounts are used for the initial booking and the periodic releases. For deferred revenue, you specify the deferred revenue liability account and the revenue recognition account.
+**Balance sheet account (Contra account)**: The release template requires a **balance sheet account** — this is where the full amount is initially parked. For prepayments, this would be a prepaid asset account; for depreciation, a fixed asset account; for deferred revenue, a deferred revenue liability account. When you apply the template to a transaction line, Light automatically moves the entire amount to this balance sheet account and releases it to the expense/revenue account over time.
 
 **Currency handling**: Specify whether releases use the transaction currency, local entity currency, or group currency for each posting.
 
@@ -70,11 +70,13 @@ Fixed assets lose value over time through use and obsolescence. Depreciation tem
 Once templates are configured, apply them when entering transactions:
 
 1. Create a new AP, AR, or JE document
-2. On each line, select the appropriate release template
-3. Specify the start and end dates for the release
-4. Light automatically calculates and posts entries according to the template schedule
+2. On each line, select the **expense account** (or revenue account) as the GL account — this is where the amount will ultimately be recognized
+3. Select the appropriate release template
+4. Specify the start and end dates for the release
 
-The system prevents accidentally posting transactions that should follow a release template, ensuring consistent application of accounting policies.
+**How it works:** When you post the transaction, Light automatically moves the entire amount to the **balance sheet account** configured in the template. The release engine then systematically releases the amount from the balance sheet account to your selected expense/revenue account according to the template schedule.
+
+> Important: You do not need to manually book to the balance sheet account. Pick the expense account on the line, assign the template, and Light handles the rest.
 
 ## Example: Depreciating office furniture
 
@@ -86,7 +88,7 @@ Your organization should have a release template called "Furniture" configured w
 - **Release Type**: Accounts Payables
 - **Duration**: 60 months (5 years)
 - **Pattern**: Straight-line
-- **Contra account**: 800800 - Furniture and Assets (asset account)
+- **Balance sheet account**: 800800 - Furniture and Assets (this is where the full amount is parked before being released)
 
 **Step 2: Enter the bill**
 
@@ -116,7 +118,7 @@ Navigate to **Spend management → Bills** and click **+ Create bill**. On the b
 - Debit: 500500 - Office Furniture $200 (expense)
 - Credit: 800800 - Furniture and Assets $200 (contra asset)
 
-> Tip: On the bill, you select the **expense account** (500500) as the GL account. The release template handles capitalizing to the **asset account** (800800) and releasing the expense over time.
+> Key concept: On the bill line, you select the **expense account** (500500) as the GL account. The release template's **balance sheet account** (800800) is where Light automatically parks the full amount. The engine then releases from the balance sheet account to your expense account over the 60-month period — you don't need to manually book to the asset account.
 
 ## Monitoring and adjusting releases
 
