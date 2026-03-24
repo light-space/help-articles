@@ -77,17 +77,13 @@ If OpenCode shows `⚠ needs authentication`, the environment variable was not i
 
 ### Claude Desktop
 
-<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.54; padding: 40px 0 40px 0;">
-  <iframe src="https://app.supademo.com/embed/cmn2v0nkv4xersjdoez6n4ccs?embed_v=2&utm_source=embed" loading="lazy" title="Installing Light MCP on Claude Desktop" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-</div>
+Step-by-step walkthrough: [Connect Light's MCP server from Claude Desktop](https://app.supademo.com/demo/cmn2v0nkv4xersjdoez6n4ccs?utm_source=link)
 
 ---
 
 ### n8n
 
-<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.60; padding: 40px 0 40px 0;">
-  <iframe src="https://app.supademo.com/embed/cmn3x1hlk0cchz3qmh18fqr7m?embed_v=2&utm_source=embed" loading="lazy" title="How to add Light's MCP server to n8n" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-</div>
+Step-by-step walkthrough: [Connect Light's MCP server from n8n](https://app.supademo.com/demo/cmn3x1hlk0cchz3qmh18fqr7m?utm_source=link)
 
 ---
 
