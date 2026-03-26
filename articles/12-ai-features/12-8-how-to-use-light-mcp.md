@@ -38,7 +38,7 @@ Tokens are personal, each team member generates and manages their own. Tokens ar
 Run this once, replacing the token with yours:
 
 ```bash
-claude mcp add --transport http light-mcp https://app.light.inc/rest/ext/mcp --header "Authorization: Bearer lmcp_your_token_here"
+claude mcp add --transport http light-mcp https://api.light.inc/rest/ext/mcp --header "Authorization: Bearer lmcp_your_token_here"
 ```
 
 That's it. Restart Claude Code and Light tools will appear in the tool list.
@@ -62,7 +62,7 @@ Then edit `~/.config/opencode/opencode.json` and add the `light` entry under `mc
     "mcp": {
         "light": {
             "type": "remote",
-            "url": "https://app.light.inc/rest/ext/mcp",
+            "url": "https://api.light.inc/rest/ext/mcp",
             "headers": {
                 "Authorization": "Bearer {env:LIGHT_MCP_TOKEN}"
             }
