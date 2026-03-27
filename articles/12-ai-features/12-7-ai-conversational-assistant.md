@@ -114,6 +114,24 @@ LCI responses can include:
 - **Policy answers** — Answers to policy questions with a link to the source policy section
 - **Navigation** — Direct links to specific pages in the Light app
 
+### File Attachments
+
+You can attach files directly to your LCI messages using the paperclip button in the input area. The AI reads the file contents and acts on them as part of your request.
+
+**To attach a file:**
+1. Click the paperclip icon in the LCI input area
+2. Select a file from your device
+3. Type your request and send — for example:
+   - "Import these journal entries" *(CSV of journal entries)*
+   - "Create these accounts from the list" *(CSV of chart of accounts)*
+   - "Book these vendor invoices" *(PDF invoices)*
+   - "Match these transactions to the right accounts" *(bank statement or expense export)*
+   - "Set up these employees as users" *(HR export)*
+
+**Limits:** Up to 10 files per message, maximum 10 MB per file.
+
+Attachments are saved in the thread history so you can refer back to them in follow-up messages. The AI can also reference files uploaded earlier in the same conversation — you don't need to re-upload them.
+
 ## Using LCI in Slack
 
 ### How It Works
@@ -251,7 +269,6 @@ Some tasks are better handled in Light's full web interface:
 - Multi-step workflows that require interactive forms (creating complex bills with many line items)
 - Bulk operations (batch approvals are not yet supported via LCI)
 - Configuration changes to accounting settings, chart of accounts, or approval workflows
-- File uploads other than receipts (contracts, multi-page documents)
 - Tasks that exceed five tool-call rounds in a single request
 
 For these, LCI can navigate you to the right page in Light with a direct link.
