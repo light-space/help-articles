@@ -182,14 +182,16 @@ Create multiple entries at once:
 
 1. Go to **Accounting → Journal entries**
 2. Click **Import Batch**
-3. Upload CSV with entries:
-   - Description, Date, Account, Amount, DebitOrCredit
-   - One line per row
-4. System validates format
-5. Creates all entries in DRAFT status
-6. Review before posting
+3. Click **Download template** to get a company-specific CSV that includes your custom properties
+4. Fill in the template using friendly display names (e.g., "Cost Center" instead of "cost_center")
+5. Upload your CSV file
+6. System validates format
+7. Creates all entries in DRAFT status
+8. Review before posting
 
-Batch import is faster than entering individually.
+The import template is dynamic and includes all your active custom properties. You can use display names for columns, values, and accrual templates—internal names and UUIDs also work for backward compatibility.
+
+For detailed column specifications, see [Data Import and Migration Tools](../11-integrations/11-13-data-import.md#importing-journal-entries).
 
 ## Editing Entries
 

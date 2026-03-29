@@ -134,7 +134,17 @@ This migrates transaction history.
 
 ## Importing journal entries
 
-Upload journal entries via CSV with the following format:
+Upload journal entries via CSV with the following format.
+
+### Downloading the template
+
+Click **Download template** to get a company-specific CSV template that includes:
+
+- All required columns with `(required)` annotations
+- Your company's active custom properties with `(custom)` annotations
+- Only custom properties relevant to journal entries
+
+The template dynamically reflects your company's configuration, so you can fill it in and upload directly.
 
 ### Required columns
 
@@ -143,11 +153,9 @@ Upload journal entries via CSV with the following format:
 | `entry id` | Groups lines into one journal entry |
 | `date` | Posting date (YYYY-MM-DD) |
 | `currency` | Currency code (e.g., USD, EUR) |
-| `debit` | Debit amount |
-| `credit` | Credit amount |
-| `tax amount` | Tax amount |
+| `debit` | Debit amount (zero values are accepted) |
+| `credit` | Credit amount (zero values are accepted) |
 | `account code` | Ledger account code |
-| `tax code` | Tax code identifier |
 | `entry description` | Description for the entry |
 | `line description` | Description for the line |
 | `business partner name` | Name of the business partner (required) |
@@ -156,21 +164,44 @@ Upload journal entries via CSV with the following format:
 
 | Header | Description |
 |--------|-------------|
+| `tax amount` | Tax amount (can be omitted if not needed) |
+| `tax code` | Tax code identifier (can be omitted if not needed) |
 | `business partner id` | UUID of the business partner |
 | `local currency rate` | FX rate for local currency |
 | `group currency rate` | FX rate for group currency |
 | `ledger name` | e.g., PRIMARY, ELIMINATION |
 | `target entity code` | For intercompany entries |
-| `accounting release template id` | Template for amortization |
+| `accounting release template` | Template name or UUID for amortization |
 | `accounting release start date` | Amortization start |
 | `accounting release end date` | Amortization end |
+| Custom property columns | Use the label name (e.g., "Cost Center") or internal name |
+
+### Using display names
+
+You can use friendly display names instead of internal system names:
+
+- **Custom property columns**: Use the label name (e.g., "Cost Center") instead of the internal name (e.g., "cost_center")
+- **Custom property values**: Use value labels (e.g., "New York") instead of internal names (e.g., "new_york") for single-select and multi-select fields
+- **Accrual templates**: Use the template name instead of the UUID
+
+Internal names and UUIDs still work for backward compatibility—existing uploads are unaffected.
+
+### Multi-select values
+
+For multi-select custom properties, separate values with semicolons:
+
+```
+New York; Los Angeles; Chicago
+```
+
+This format works even when labels contain spaces.
 
 ### Business partner fields
 
 - **business partner name** — Required string field.
 - **business partner id** — (Recommended) The UUID of an existing customer or vendor in Light. Using the business partner UUID is the recommended approach for importing customers and vendors, as it ensures accurate matching and avoids duplicate or mismatched records. If omitted, Light attempts to match by name, which may cause errors if names don't match exactly or if duplicates exist.
 
-> Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry.
+> Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry. Headers with `(required)` and `(custom)` annotations from the template are automatically stripped during import.
 
 ## Opening balance import
 
