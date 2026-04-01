@@ -1,294 +1,109 @@
-# Custom Reports and Filters
+# Custom Reports
 
-While Light provides standard financial statements (balance sheet, P&L, cash flow), custom reports let you analyze data in ways specific to your business. Custom reports combine flexible filtering, dimensioning, and formatting to answer questions like: How profitable is each customer? What's our selling, general, and administrative expense by department?
+Light's custom report builder lets you create Table reports — structured row-and-column layouts driven by formulas — alongside Pivot tables and AI-generated charts. This article focuses on the **Table** report type, which is the same format used by all of Light's built-in financial statements.
 
 [Open in Light →](https://app.light.inc/ledger-reports)
 
-## Custom report builder
-
-Light's report builder enables creating reports without SQL or programming:
+## Creating a Table report
 
 1. Navigate to **Planning & Reports → Reports**
 2. Click **+ Create report**
-3. Choose a base report type:
-   - Account balances (GL account data)
-   - Transaction detail (individual transactions)
-   - Aging reports (AR/AP aging)
-   - Blank canvas (start from scratch)
-4. Configure rows, columns, filters, and calculations
-5. Save the report
+3. Select **Table** from the dropdown
+4. The template editor opens with a blank form
 
-Light saves the template for reuse and automatic regeneration with current data.
+## Template header settings
 
-## Configuring report rows
+At the top of the editor, configure the template properties:
 
-Rows define what you're analyzing:
+| Field | Required | Notes |
+|---|---|---|
+| **Template name** | ✅ | Displayed in the reports list |
+| **Country** | — | Enables country-specific tax tag autocomplete in formulas |
+| **Period** | ✅ | Controls how date filters work when the report is run |
+| **Exclude year-end transactions** | — | Checkbox — excludes year-closing journal entries from results |
 
-**Account-based rows**:
-- Individual GL accounts
-- Account hierarchies (asset class, expense category)
-- Account type (asset, liability, revenue, expense)
+**Period options:**
 
-**Dimension-based rows**:
-- Cost center (department, business unit)
-- Business partner (customer, vendor)
-- Custom property (project, product line, geography)
-- Ledger (if using multiple ledgers)
+| Option | Description |
+|---|---|
+| **Range** | User picks a start and end date when running the report |
+| **Monthly** | Report is scoped to a single calendar month |
+| **Quarterly** | Report is scoped to a single quarter |
+| **Yearly** | Report is scoped to a full year |
 
-Select the dimension, then specify grouping level. For example, for business partner, you could show:
-- All customers combined
-- Top 10 customers individually, others grouped
-- All customers individually
+## Building the row structure
 
-> Tip: Grouping by cost center is excellent for analyzing spending by department. Grouping by business partner reveals which customers/vendors drive your business.
+Rows define what appears in the report. Each row has a **label** and formula cells for each column.
 
-## Configuring report columns
+**Adding rows:**
+- Click **+ Add row** at the bottom of the table to append a new row
+- Hover over any row number to reveal the row actions menu (⋮):
+  - **Insert 1 row above**
+  - **Insert 1 row below**
+  - **Insert child row** — creates an indented sub-row under the current row
+  - **Delete row** — deletes the row and all its child rows (requires confirmation)
 
-Columns define how you're slicing the data:
+**Row hierarchy:**
+Rows can be nested to create parent/child groupings. Child rows are indented visually by their depth level. Deleting a parent row removes all its children.
 
-**Time-based columns**:
-- Periods (days, weeks, months, quarters, years)
-- Comparison (current vs. prior year)
-- Fiscal calendar (using your defined fiscal periods)
+## Working with columns
 
-**Dimension-based columns**:
-- Entity (if you operate multiple legal entities)
-- Currency (transaction, local, or group)
-- Custom properties (dimensions you've assigned)
+New templates start with a single column (**A**). You can add up to 5 columns (A–E).
 
-**Calculated columns**:
-- Variance (actual vs. budget or actual vs. prior period)
-- Percentage of total
-- Running totals
-- Growth rates
+- Click **+** in the last column header to add a new column
+- Click the column letter (e.g. **A.**) to open the column menu:
+  - **Rename** — edit the column label directly in the header
+  - **Delete column** — clears all formulas in that column (requires confirmation)
 
-You can combine multiple column dimensions (e.g., Month and Entity).
+## Writing formulas
 
-## Report filtering
+Each row/column cell uses a single-line formula editor with autocomplete. Light supports the following functions:
 
-Filter data to specific subsets:
+| Function | Syntax | Description |
+|---|---|---|
+| `SUM` | `SUM(A1, B3, -A4)` | Sums the values of referenced cells in this template |
+| `ACP` | `ACP(4, 5, -6)` | Itemises and sums accounts whose code starts with the given prefix |
+| `ACPSUM` | `ACPSUM(2, -3, 4)` | Same as ACP but summarised into a single value |
+| `ACT` | `ACT(REVENUE, -COST_OF_SALES)` | Itemises and sums accounts by account type |
+| `ACTSUM` | `ACTSUM(REVENUE, -COST_OF_SALES)` | Same as ACT but summarised |
+| `ACTCUR` | `ACTCUR(BANK, CARD, CASH_AND_EQUIVALENTS)` | Sums accounts by type in their account currency (for bank/cash accounts) |
+| `TAXTAG` | `TAXTAG(UK_0, -UK_4)` | Sums amounts by tax tag (only available when a country is set on the template) |
 
-1. Click **Add Filter**
-2. Select filter type:
-   - **Date range**: Include only transactions within a date range
-   - **Specific accounts**: Include only certain GL accounts
-   - **Specific entities**: Include only certain company entities
-   - **Specific business partners**: Include only certain customers/vendors
-   - **Specific cost centers**: Include only certain departments
-   - **Custom properties**: Include only transactions with specific custom attributes
-3. Specify filter criteria
-4. Light applies filters before generating the report
+**Tips:**
+- Prefix an argument with `-` to subtract it (e.g. `ACP(4, -5)` adds account-code-4 and subtracts account-code-5)
+- Use `SUM` to reference other cells in the template — for example `SUM(A1, A2, A3)` to total three rows
+- Autocomplete activates as you type and shows context-sensitive suggestions (account types inside `ACT()`, cell references inside `SUM()`, tax tags inside `TAXTAG()`)
 
-Multiple filters combine (AND logic): all must be true for a row to appear.
+## Saving and reusing templates
 
-## Calculated fields
+Click **Save** in the top bar to save the template. The report is immediately available in the reports list under **Planning & Reports → Reports**. Saved templates regenerate with current data every time you open them — no need to reconfigure.
 
-Add calculations to your report:
+To rename a saved report, edit the template name field and click **Save** again.
 
-**Account-level calculations**:
-- Subtotal: Sum of grouped accounts
-- Margin: Revenue - COGS, or other calculations
-- Percentage: As percentage of parent group or total
+## Running a report
 
-**Period calculations**:
-- Running total: Cumulative sum from first period
-- Growth: Percentage change from prior period
-- YTD: Year-to-date cumulative
+Open any saved Table report from the reports list. Use the filters at the top to control the output:
 
-**Dimension calculations**:
-- Percentage of total: As percentage of all customers/departments
-- Ranking: Rank by amount (top 10 items)
+- **Entity** — single entity, multiple entities, or Consolidated view
+- **Date range** — determined by the template's Period setting
+- **Currency** — Entity Crcy (local) or Group Crcy (group)
+- **Comparison** — compare against 1–12 prior months or 1–3 prior years
+- **Custom properties** — filter by any custom property value
 
-Formulas support basic arithmetic and aggregation functions.
+Click any cell value to drill into the underlying ledger transactions.
 
-## Drill-down and detail views
+## Duplicating a report
 
-Pivot from summary to detail:
+To create a variation of an existing template:
 
-1. Generate a custom report
-2. Click any cell in the report
-3. Light displays transactions included in that cell
-4. Review transaction detail, dates, amounts, business partners
-5. Export transaction list if needed
+1. Go to **Planning & Reports → Reports**
+2. Click the menu (⋮) on any Table report
+3. Select **Duplicate**
 
-This enables rapid troubleshooting of unexpected values.
-
-## Report formatting
-
-Format reports for presentation:
-
-**Number formatting**:
-- Decimal places (no decimals for whole dollars, or 2 decimals for cents)
-- Thousands separator
-- Currency symbol
-- Percentage formatting
-
-**Conditional formatting**:
-- Color negative amounts red, positive green
-- Highlight values exceeding thresholds (e.g., expenses >$100k)
-- Apply data bar charts for visual impact
-
-**Layout formatting**:
-- Column width (auto-size or specific)
-- Row height
-- Header styling (bold, color, alignment)
-- Repeat headers on each page (for multi-page reports)
-
-**Page breaks**:
-- Page break after each major group
-- Fit to page width (for printing)
-
-## Headers and footers
-
-Add context to your reports:
-
-**Headers**:
-- Report title
-- Report date or period
-- Entity name
-- Currency
-
-**Footers**:
-- Page numbers
-- Report generated date/time
-- Confidentiality notice
-- Signed approval line
-
-Light includes these automatically and allows customization.
-
-## Subtotals and summaries
-
-Organize reports with subtotals:
-
-**Subtotals**: Sum of grouped items
-- Subtotal by cost center (sum of all expenses in each department)
-- Subtotal by business partner (sum of all sales to each customer)
-- Subtotal by account type (sum of all revenue, all expenses)
-
-**Grand total**: Sum of all subtotals
-
-Light automatically calculates subtotals. Specify whether they should appear:
-- After each group
-- At the end of the report
-- Both
-
-## Ratio and KPI calculations
-
-Add business metrics to reports:
-
-**Financial ratios**:
-- Gross margin: (Revenue - COGS) / Revenue
-- Operating margin: Operating Income / Revenue
-- Current ratio: Current Assets / Current Liabilities
-- Debt-to-equity: Total Debt / Total Equity
-
-**Operational metrics**:
-- Revenue per employee (if you track headcount)
-- Customer acquisition cost
-- Churn rate
-- Days sales outstanding (DSO)
-
-Define these once, reuse across reports.
-
-## Budget vs. actual comparisons
-
-Create variance reports comparing actual to budget:
-
-1. Configure report with actual amounts and budget amounts side-by-side
-2. Add calculated columns for variance ($ and %)
-3. Light highlights significant variances (e.g., >10%)
-
-This supports management review and variance investigations.
-
-## Saving and reusing reports
-
-Once created, save your report template:
-
-1. Click **Save Report**
-2. Enter a descriptive name
-3. Optionally add a description
-4. Light saves the configuration
-
-Reuse the report:
-- Navigate to **Planning & Reports → Reports**
-- Click the report name
-- Light regenerates with current data
-- No need to reconfigure
-
-## Scheduling reports
-
-Automate recurring reports:
-
-1. Open a saved report
-2. Click **Schedule**
-3. Select frequency (daily, weekly, monthly, quarterly, annually)
-4. Select recipients (users or email addresses)
-5. Light generates and distributes automatically on the schedule
-
-This eliminates manual report generation and ensures timely distribution.
-
-## Report templates and standardization
-
-Create standard reports your organization uses regularly:
-
-1. **Sales report**: Revenue by customer, by product, by salesperson
-2. **Expense report**: Spending by department, by category
-3. **Cash position**: Cash by bank account, by entity
-4. **AR aging**: Receivables aging by customer
-5. **AP aging**: Payables aging by vendor
-6. **Variance analysis**: Actual vs. budget by account
-
-Document each report's purpose and usage.
-
-> Tip: Assign report ownership. Someone should be responsible for updating assumptions, validating accuracy, and distributing on schedule.
-
-## Dashboard vs. report
-
-Light provides both dashboards and reports:
-
-**Reports**: Static snapshots as of a specific date/period. Good for formal reporting, archiving, compliance.
-
-**Dashboards**: Real-time views updating continuously. Good for operational monitoring and quick decision-making.
-
-Use both together: Dashboards for daily monitoring, reports for formal periods.
-
-## Exporting custom reports
-
-Export reports for presentation or further analysis:
-
-1. Generate the custom report
-2. Click **Export**
-3. Select format:
-   - **PDF**: Formatted for printing and presentation, maintains formatting
-   - **Excel**: Allows further analysis and recalculation by users
-   - **CSV**: Raw data for loading into BI tools
-4. Light generates and downloads the file
-
-## Performance optimization
-
-Large reports can take time to generate. Optimize:
-
-1. **Filter restrictively**: Exclude unnecessary data (e.g., closed accounts, old dates)
-2. **Limit dimensions**: Fewer row/column dimensions = faster generation
-3. **Use scheduled reports**: Run at off-peak times (e.g., after-hours)
-4. **Archive old data**: Move closed periods to archive to reduce data set
-
-For very large reports, consider using Light's data export to BI tools instead.
-
-## Report sharing and access control
-
-Control who can view reports:
-
-1. After generating a report, click **Share**
-2. Select users or teams
-3. Set permissions: View only, or Edit (can modify)
-4. Light tracks who accessed the report and when
-
-This supports compliance and governance.
+The copy opens with a timestamp appended to the name. Edit and save as needed.
 
 ## Related articles
 
 - [Reporting overview](10-1-reporting-overview.md)
 - [Tables and pivot reports](10-6-tables-pivot-reports.md)
-- [Exporting and sharing reports](10-11-exporting-reports.md)
-- [Real-time dashboards and KPIs](10-12-dashboards-kpis.md)
+- [Exporting reports](10-11-exporting-reports.md)
