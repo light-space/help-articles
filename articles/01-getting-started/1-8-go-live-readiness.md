@@ -4,6 +4,16 @@ This article outlines the minimum viable setup for going live with Light and hel
 
 [Open in Light →](https://app.light.inc/dashboard)
 
+## Key concepts
+
+Before starting, align your team on these terms:
+
+**Cutoff Date** — The last day you operate in your legacy system (end of day). This is the reference point for your Trial Balance, open items, and releases. All transactions before this date stay in the legacy system for historical reference.
+
+**Go-Live Date** — The first day you operate in Light. From this date forward, Light is your system of record. All new transactions are created and managed in Light.
+
+**Migration Suspense Account** — A temporary balance sheet account used in Light to offset migrated AP and AR balances during the cutover import. After all cutover imports are complete, this account must net to zero.
+
 ## Before you go live
 
 Successful go-live requires careful planning and testing. This article helps you verify that Light is ready for production use and that your organization is prepared for the transition.
@@ -43,54 +53,112 @@ Your Light instance is ready for go-live when it includes:
 - Salesforce or HubSpot connected (if you use them)
 - Any other critical integrations tested and verified
 
+**Additional setup**
+- Tax codes configured
+- Reimbursement category → GL mapping defined
+- Invoice template configured
+- AI assistant rules configured (optional)
+
+**Cards (if applicable)**
+- Adyen GL account created in Light before go-live
+- Adyen account funding and spending limits configured
+
+**Master data**
+- Vendors created: those present in open AP, plus those used in last year's postings
+- Customers created: those present in open AR, plus those used in last year's postings
+- Products/services created for any active contracts
+- Open contracts uploaded so recurring sales invoices work from day one
+
+## Legacy system preparation
+
+Before cutover, complete the following in your legacy system. These steps reduce migration issues more than anything else.
+
+**1. Reconcile subledgers to GL**
+- Reconcile AP subledger ↔ AP control account in the General Ledger
+- Reconcile AR subledger ↔ AR control account in the General Ledger
+- Reconcile fixed assets register ↔ FA / accumulated depreciation accounts (if applicable)
+
+If differences exist, correct them in the legacy system. Do not attempt to patch differences in Light.
+
+**2. Clean up open items**
+- Apply vendor credit notes to open invoices
+- Apply customer credits to open invoices
+- Allocate prepayments where possible
+
+The goal is to migrate clean, consistent data.
+
+**3. Confirm prior year close**
+Ensure the previous year-end close (e.g. 2024) is completed in the legacy system — especially important if importing only current-year journals.
+
+**4. Complete COA mapping**
+Every account used in the agreed historical period must be mapped to a Light account code. Missing mappings are a common cause of migration delays.
+
+**5. Prepare accruals schedule**
+Document all ongoing accruals to carry forward operationally:
+- Deferred revenue and prepaid expenses
+- Start date, end date, frequency, and remaining balance for each
+
 ## Data migration requirements
 
-If you're transitioning from a legacy system (NetSuite, SAP, Xero, QuickBooks, etc.):
-
-### Chart of accounts
-- Export your complete chart of accounts from the legacy system
-- Import into Light or manually recreate
-- Verify account codes and balances match
-- Test GL posting from invoices, bills, and expenses
-
-### Customer and vendor data
-- Extract customer master file from legacy system
-- Import into Light with account history
-- Set credit limits and payment terms
-- Verify customer GL mapping for revenue recognition
-
-- Extract vendor master file with payment terms
-- Import with vendor reference numbers and tax IDs
-- Configure payment methods (bank transfer, check, card)
-- Set up AP aging reports for transition period
-
-### Open transactions
-- Identify all open invoices, bills, and purchase orders
-- Export outstanding AR aging report
-- Export outstanding AP aging report
-- Plan how to transition these to Light:
-  - Create as new transactions in Light, or
-  - Import as batch in native format, or
-  - Manually recreate high-priority items
-
-- Decide on cutover date (e.g., "Go live with Light on March 1st")
-- All transactions before cutover date stay in legacy system for historical reference
-- New transactions post to Light starting on cutover date
-
-### Bank account history
-- Determine how much historical transaction data to import (typically last 90 days)
-- Export bank statements in CSV format if automated feed won't provide history
-- Plan to import via bulk CSV or Plaid sync
-
-### GL opening balances
-- Run trial balance from legacy system as of cutover date
-- Verify all GL accounts are created in Light
-- Post opening balances via:
-  - Manual journal entry for each account, or
-  - Single "Opening balances" journal entry, or
-  - Import via CSV bulk journal entry tool
+If you're transitioning from a legacy system (NetSuite, SAP, Xero, QuickBooks, etc.), follow these steps in order. Completing them out of sequence can cause reconciliation problems.
 
 > **Good to know:** Light provides CSV import templates for most entities. Ask your implementation specialist for templates that match your legacy system's export format.
+
+### Step 0 — Lock snapshot exports
+
+Once month-end close is complete in the legacy system, prepare frozen data packages and hand them to the implementation team:
+- Final trial balance as of the cutoff date
+- Open AP aging report
+- Open AR aging report
+- Fixed asset register (if applicable)
+- Historical GL journals for the agreed import period
+
+Do not post further transactions in the legacy system after this point.
+
+### Step 1 — Import open AP and open AR
+
+Import all unpaid invoices and bills into Light using the **Migration Suspense Account** (not P&L accounts). After import:
+- Verify totals match between the legacy export and Light
+- Resolve any exceptions
+- Open invoices now appear in Light and can be collected or paid normally
+
+> **Important:** Do not process payments or run bank reconciliation in Light until this step is complete. Doing so before migration is finished risks incorrect open balances.
+
+### Step 2 — Import opening trial balance and historical GL journals
+
+Post the opening trial balance as of the cutoff date via:
+- Manual journal entry per account, or
+- A single "Opening balances" journal entry, or
+- CSV bulk journal entry import
+
+After all imports in Steps 1 and 2 are complete, verify that the **Migration Suspense Account nets to zero**. A non-zero balance indicates an import discrepancy that must be resolved before go-live.
+
+### Step 3 — Upload fixed assets and ongoing releases
+
+Upload depreciation schedules and deferred revenue using the provided templates. Confirm that amortization logic matches your operational process.
+
+### Step 4 — Validate foreign currency accounts and FX revaluation
+
+If your entity operates in multiple currencies:
+- Verify opening balances for all foreign currency accounts
+- Confirm revaluation settings are configured correctly
+- Run a test revaluation and confirm no unexpected FX gains or losses appear
+
+## Operating rules during cutover
+
+Follow these rules to maintain clean books during the transition period.
+
+**Transactions and journals**
+- Finalize all transactions in the legacy system as part of the final month-end close before cutoff
+- From go-live forward, record all new transactions directly in Light
+- If a correction is discovered after cutoff that relates to a legacy period: post the adjustment in the legacy system first to preserve historical accuracy, then mirror it in Light as a "Prior Period Adjustment" with a reference to the legacy entry for audit purposes
+
+**Supplier and customer invoices**
+- Invoices dated before cutoff: create and manage in the legacy system; these are migrated to Light as part of the initial upload
+- Invoices dated on or after go-live: process directly in Light (via AP intake email or manual entry)
+
+**Payments and bank reconciliation**
+- Do not process payments or run bank reconciliation in Light until Open AP and Open AR migration (Step 1) is fully complete and verified
 
 ## Legacy system parallel run
 
