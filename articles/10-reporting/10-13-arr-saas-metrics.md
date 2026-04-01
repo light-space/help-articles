@@ -1,6 +1,6 @@
 # ARR Tracking with Contracts
 
-Light does not have a dedicated SaaS metrics dashboard. ARR tracking in Light is done through the **Contracts** module, where each contract carries an estimated contract value (displayed as ARR) alongside its billing schedule and invoice history.
+Light tracks ARR through the **Contracts** module, where each contract carries an estimated contract value alongside its billing schedule and invoice history.
 
 [Open in Light →](https://app.light.inc/contracts)
 
@@ -41,19 +41,6 @@ There is no aggregate ARR total or MRR summary shown in the list view.
 | **Draft** | Contract created but not yet published |
 | **Active** | Contract is live and generating invoices |
 | **Terminated** | Contract has been ended |
-
-## What Light does not currently provide
-
-The following SaaS metrics are **not calculated or displayed** in Light:
-
-- Monthly Recurring Revenue (MRR)
-- Net Revenue Retention (NRR)
-- Churn rate
-- Cohort retention analysis
-- Customer Acquisition Cost (CAC) / LTV / LTV:CAC ratio
-- Magic Number / Rule of 40
-
-For these metrics, export contract and invoice data via the reporting CSV export and calculate them externally in a spreadsheet or BI tool.
 
 ## Related articles
 
