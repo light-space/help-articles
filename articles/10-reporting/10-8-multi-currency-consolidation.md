@@ -1,213 +1,53 @@
-# Multi-Currency Consolidation
+# Multi-Currency Reporting
 
-When your organization operates in multiple currencies through subsidiary companies in different countries, consolidating requires translating foreign subsidiary results to the group's reporting currency. Light automates foreign currency translation following IFRS and GAAP standards.
+Light stores every transaction in three currency perspectives simultaneously: transaction currency, local (entity) currency, and group currency. When running reports across multiple entities, you choose which perspective to view.
 
 [Open in Light →](https://app.light.inc/ledger-reports)
 
-## Multi-currency consolidation overview
+## Currency options on reports
 
-Consolidation of foreign subsidiaries involves:
+Every report has a currency selector with two options:
 
-1. **Translate subsidiary P&L accounts**: Revenue, expense, COGS → actual daily exchange rates
-2. **Translate subsidiary balance sheet accounts**: Assets, liabilities → period-end exchange rates
-3. **Translate subsidiary equity**: Opening balance at historical rates, add translated profit, deduct dividends
-4. **Record translation differences**: Differences from rate changes → other comprehensive income (OCI)
-5. **Eliminate inter-company transactions**: As with single-currency consolidation
-6. **Combine results**: Sum translated figures with parent company
+| Option | Label | Description |
+|---|---|---|
+| **LOCAL** | Entity Crcy | Shows each entity's figures in its own functional currency |
+| **GROUP** | Group Crcy | Shows all entities translated to the company's base (group) currency |
 
-The result is consolidated statements in the group's reporting currency with separate disclosure of translation gains/losses.
+> **Note:** Entity Crcy cannot be used when viewing multiple entities that have different functional currencies. If you select it in that case, Light shows a warning: *"Selected entities have different currencies."* Switch to Group Crcy for cross-entity comparisons.
 
-> Good to know: Translation differences are not recognized in profit/loss (they're in OCI) because they're not realized cash impacts.
+## When to use each option
 
-## Functional vs. presentation currency
+**Entity Crcy** is useful when:
+- Reviewing a single entity's performance in its operating currency
+- Running a report where FX translation isn't relevant
 
-Light distinguishes between two currencies for each entity:
+**Group Crcy** is useful when:
+- Comparing multiple entities side by side
+- Running a consolidated report (required for the Subtotal, Eliminations, and Consolidated columns)
+- Reporting to group-level stakeholders who work in the base currency
 
-**Functional currency**: The currency in which the entity operates day-to-day.
-- UK subsidiary: GBP
-- German subsidiary: EUR
-- US subsidiary: USD
+## How Group Crcy translation works
 
-Financial statements are first prepared in functional currency.
+Translation from local to group currency happens server-side automatically using the exchange rates stored against each transaction. There are no translation rate settings to configure in the report UI — the translated amounts are calculated from the rates recorded at posting time.
 
-**Presentation currency**: The currency in which consolidated statements are presented (group currency).
-- Multinational group: Often USD or EUR
+For consolidated reports, all per-entity columns, the Subtotal, and the Consolidated column are shown in the group currency.
 
-If functional and presentation currencies differ, translation is required.
+## FX revaluations
 
-## Translation methods
+Unrealized FX gains and losses on open balances (e.g. a foreign currency receivable whose value has changed since it was recorded) are handled through the **FX Revaluation** module, which is separate from reporting.
 
-Light supports two translation methods:
+To create an FX revaluation:
 
-**Current-noncurrent method**:
-- Current assets and liabilities: Period-end rate
-- Non-current assets and liabilities: Historical rate
-- Equity: Historical rates
-- P&L: Actual daily rates
-- Translation differences to retained earnings
+1. Navigate to **Accounting → Transactions**
+2. Open the FX revaluation section
+3. Set the **Valuation date** — Light uses the exchange rate on this date to revalue open balances
+4. Set the **Posting date** and optionally a description
+5. Light calculates the gain or loss per account line and generates the revaluation document
 
-Less common under IFRS, but required in some jurisdictions.
-
-**Temporal method** (most common under IFRS):
-- Assets/liabilities recorded at fair value: Period-end rate
-- Assets/liabilities at historical cost: Historical rate
-- Equity: Historical rates
-- P&L: Actual daily rates
-- Translation differences to other comprehensive income
-
-Light defaults to temporal method, which is IFRS-compliant.
-
-## Choosing exchange rates
-
-**Actual daily rates** (for P&L): Light uses the actual exchange rate on the date each transaction was posted, not period averages. This provides more accurate translation because each revenue or expense line is converted at the rate that applied on the day it occurred.
-
-**Period-end rate** (for balance sheet): Spot exchange rate on the last day of the period.
-
-> Good to know: Many accounting systems use average rates for P&L translation. Light uses actual daily rates instead, which gives a more precise result — especially when exchange rates move significantly within a period.
-
-## Recording translation differences
-
-When exchange rates change, translation differences arise. Example:
-
-Foreign subsidiary starts year with EUR 100,000 equity when 1 EUR = 1.20 USD (USD 120,000 equivalent).
-
-At year-end, 1 EUR = 1.15 USD, so EUR 100,000 = USD 115,000 equivalent.
-
-Translation loss of USD 5,000 records as:
-
-Dr. Other Comprehensive Income USD 5,000
-Cr. Consolidated Equity USD 5,000
-
-Light calculates and records translation differences automatically in consolidation.
-
-## Multi-entity, multi-currency consolidation
-
-For complex structures (e.g., US parent with UK and German subsidiaries):
-
-1. Each subsidiary has functional currency and local P&L/balance sheet
-2. Light translates each to group currency (USD)
-3. Light then consolidates all translated results
-4. Eliminates inter-company transactions between entities
-5. Result: USD consolidated statements
-
-Light manages this multi-step process automatically.
-
-## Inter-company transactions in multi-currency
-
-When entities transact in different currencies, consolidation must eliminate properly:
-
-Example: UK subsidiary (GBP) sells to German subsidiary (EUR).
-
-1. UK entity: Record sale in GBP (e.g., GBP 100,000)
-2. German entity: Record purchase in EUR (translate to EUR using transaction-date rate)
-3. In consolidation:
-   - Translate UK sale to USD using actual daily rate
-   - Translate German purchase to USD using actual daily rate
-   - Eliminate the corresponding amounts
-
-Light links inter-company transactions across currencies and eliminates them correctly.
-
-## FX gains and losses on inter-company balances
-
-After consolidation, inter-company balances are eliminated. However, during the period, FX movements on inter-company payables/receivables create gains or losses.
-
-Example: German subsidiary owes GBP 100,000 to UK parent. At invoicing (1 GBP = 1.20 EUR), payable is EUR 120,000. At period-end (1 GBP = 1.22 EUR), payable is EUR 122,000. FX loss of EUR 2,000.
-
-In consolidation:
-- The inter-company balance is eliminated (no balance sheet impact)
-- The FX gain/loss within the group is also eliminated (no P&L impact)
-- Only FX impacts on external transactions remain
-
-Light handles this elimination automatically.
-
-## Dividend translations
-
-Subsidiaries pay dividends to parents in foreign currency. On consolidation:
-
-1. Dividend payment translates at payment-date rate
-2. Record in consolidated cash flow
-3. Reduces subsidiary retained earnings
-
-If dividend is declared before payment and rates change, record dividend at declaration rate, recognize FX gain/loss on settlement.
-
-## Consolidation date and fiscal year differences
-
-Foreign subsidiaries may have different fiscal year-ends. To consolidate:
-
-1. Translate subsidiary statements as of the group consolidation date
-2. If subsidiary's fiscal year differs, prepare interim statements at group date
-3. Record adjustments for inter-company transactions between subsidiary fiscal year-end and group date
-
-Light helps coordinate this timing.
-
-## Translated P&L analysis
-
-After consolidation, P&L appears in group currency. Analysis considers translation impacts:
-
-**Reported revenue growth** = Organic growth + FX impact
-
-Example: German subsidiary's EUR revenue grew 10%, but EUR weakened against USD by 5%, so reported USD growth is 5%.
-
-Light separately tracks:
-- Organic growth (growth in functional currency)
-- FX impact (effect of rate changes)
-
-This helps management understand true operational performance vs. currency effects.
-
-## Multi-currency balance sheet analysis
-
-Compare balance sheet items across currencies:
-
-**Total assets**: Sum of:
-- Parent assets (in group currency)
-- German subsidiary assets (translated to group currency)
-- UK subsidiary assets (translated to group currency)
-
-Changes reflect:
-- Operational changes (profit, capital expenditure)
-- FX translation differences
-- Consolidation eliminations
-
-Separately reporting translation differences clarifies the real impacts.
-
-## Hedging of net investments
-
-Companies sometimes hedge foreign subsidiary investments to offset translation losses.
-
-Example: USD parent invests in EUR subsidiary. EUR weakens relative to USD. Translation loss occurs. Parent enters EUR debt (which gains when EUR weakens) to offset translation loss.
-
-Light tracks:
-- Foreign investment net asset
-- Hedging instrument position
-- Translation gain/loss on investment
-- Effective hedge relationship
-
-This supports comprehensive reporting of hedge impacts.
-
-## Disclosure of translation impacts
-
-Consolidated financial statements should disclose FX translation effects:
-
-1. **Translation differences in OCI**: Total FX translation gains/losses for the period
-2. **Cumulative translation differences**: Accumulated translation gains/losses
-3. **By subsidiary**: If material, disclose by significant foreign subsidiary
-4. **Related hedges**: If you hedge foreign investments, disclose hedge relationships
-
-Light maintains detailed translation schedules supporting these disclosures.
-
-## Deferred tax on translation differences
-
-Under IFRS, deferred tax on translation differences is generally not recognized (they're non-taxable). However, some jurisdictions require tax on translation differences.
-
-Configure deferred tax treatment for translation:
-
-1. Navigate to **Settings (gear icon)** and configure deferred tax
-2. Specify treatment of translation differences
-3. Light applies the correct approach per jurisdiction
+FX revaluation entries post to the ledger as accounting documents and appear in reports once posted.
 
 ## Related articles
 
 - [Reporting overview](10-1-reporting-overview.md)
 - [Multi-entity consolidation](10-7-multi-entity-consolidation.md)
-- [Multi-currency revenue recognition](../09-revenue-compliance/9-4-multi-currency-revenue.md)
-- [Balance sheet](10-2-balance-sheet.md)
+- [FX revaluations](/articles/05-general-ledger/5-10-fx-revaluations.md)
