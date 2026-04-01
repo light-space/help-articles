@@ -1,9 +1,8 @@
 # Intercompany Documents
 
-Intercompany documents record transactions between entities in your corporate group. This article explains how to create and track intercompany entries.
+Intercompany documents record transactions between entities in your corporate group. This article explains how to configure intercompany accounts and create intercompany journal entries.
 
-[Open in Light →](https://app.light.inc/ledger-transactions)
-
+[Open in Light →](https://app.light.inc/journal-entries)
 
 ## What Are Intercompany Transactions?
 
@@ -17,240 +16,123 @@ Intercompany transactions are financial activities between entities within the s
 
 These transactions don't go outside the group, so they're eliminated during consolidation.
 
-## Intercompany Document Types
+## Setting Up Intercompany Configuration
 
-Light supports two types of intercompany documents:
+Before creating intercompany journal entries, configure which accounts are used for intercompany postings.
 
-**Intercompany Invoices**
-- One entity invoices another for goods/services
-- Creates AP for the paying entity
-- Creates AR for the selling entity
-- Matched and cleared when paid
+1. Go to **Accounting → Chart of accounts**
+2. Open the **Intercompany config** section
+3. Click **+ Add configuration**
+4. Fill in the fields:
 
-**Intercompany Journal Entries**
-- Posted to multiple entities simultaneously
-- Automatically balances across entities
-- Creates payable/receivable pair
+| Field | Description |
+|---|---|
+| **From account code** | Start of the account code range this rule applies to |
+| **To account code** | End of the account code range |
+| **Debit intercompany account** | Account used for debit-side intercompany postings |
+| **Credit intercompany account** | Account used for credit-side intercompany postings |
+| **Eliminate source line** | Toggle on to mark the source line for elimination during consolidation (defaults to on) |
 
-## Creating Intercompany Invoices
+At least one of debit or credit intercompany account must be set. You can click any existing config row to edit it.
 
-When Entity A sells to Entity B:
+## Creating an Intercompany Journal Entry
 
-1. **Entity A creates AR invoice**:
-   - Customer: Entity B
-   - Amount: $10,000
-   - Post to Entity A's GL
-   - Creates: Debit AR, Credit Sales
+1. Go to **Accounting → Journal entries**
+2. Click **+ Create journal entry** and select the intercompany type
+3. Fill in the header fields:
 
-2. **Entity B creates AP invoice**:
-   - Vendor: Entity A
-   - Amount: $10,000
-   - Post to Entity B's GL
-   - Creates: Debit Expense, Credit AP
+| Field | Required |
+|---|---|
+| **Currency** | ✅ |
+| **Description** | — |
+| **Posting date** | — |
+| **Valuation date** | — |
+| Custom properties | — |
 
-3. **Link the invoices**:
-   - System links them as intercompany pair
-   - Shows relationship in both documents
+4. Configure the **FROM line** (source entity):
+   - **Entity** — the originating company entity
+   - **Account** — the GL account
+   - **Eliminate** — whether this line is eliminated at consolidation (Yes / No)
+   - **Description** — optional line note
+   - **Tax code** — optional
+   - **Debit / Credit amount**
 
-4. **When paid**:
-   - Entity B posts payment to Entity A
-   - Payment clears both AR and AP
-   - Both entities show cleared status
+5. Configure one or more **TO lines** (receiving entities) with the same fields. Use **+ Add line** to add more TO lines.
 
-## Creating Intercompany Journal Entries
+6. Review the **Net impact** panel (bottom of the form) — shows a real-time preview of the net effect per entity and account as you enter amounts.
 
-For non-invoice intercompany transactions:
+7. Click **Save** to keep as Draft, or **Post** to finalise.
 
-1. Go to **General Ledger > Journal Entries**
-2. Click **Create Journal Entry**
-3. Add lines for multiple entities:
-   - Line 1: Debit Entity A account (e.g., Asset)
-   - Line 2: Credit Entity B account (e.g., Liability)
-4. System auto-generates:
-   - Entity A's debit entry
-   - Entity B's credit entry
-   - Maintains balanced pair
-5. Click **Post**
+> **Good to know:** Debit and credit totals are shown at the bottom of the lines table. The entry must balance before it can be posted.
 
-Example: Parent loans $100,000 to subsidiary
-```
-Line 1: Entity A - Debit Intercompany Receivable $100,000
-Line 2: Entity B - Credit Intercompany Payable $100,000
-```
+## Statuses
 
-## Automatic Balancing
+| Status | Description |
+|---|---|
+| **Draft** | Saved but not yet posted. Still editable, can be deleted. |
+| **Posted** | Finalised and reflected in the GL. Read-only. |
 
-Light ensures intercompany entries balance:
+## Net Impact Preview
 
-**Rule:** Total debits to Entity A = Total credits to Entity B (and vice versa)
+While a journal entry is in **Draft**, the **Net impact** panel updates in real time as you edit lines. It shows the net effect of the transaction per entity and account before you commit.
 
-If you create:
-```
-Debit Entity A Asset 100
-Credit Entity A Liability 50
-Credit Entity B Receivable 50
-```
+After posting, the panel shows the actual posted net impact. The tooltip reads:
+> *"Displays the net effect of intercompany transactions. These are reversed via elimination entries to ensure accurate reporting, while this view highlights their original impact."*
 
-This balances: Entity A net debit 50 = Entity B net credit 50
+## Entry Detail Tabs
 
-## Intercompany Accounts
+When viewing an intercompany journal entry, three tabs are available on the right panel:
 
-Set up dedicated accounts for intercompany transactions:
+| Tab | Contents |
+|---|---|
+| **Activity** | Audit log of all changes to the entry |
+| **Documents** | Attachments linked to the entry |
+| **Postings** | The individual GL postings generated (visible after posting) |
 
-**Asset side:**
-- Intercompany Receivable (what you're owed by other entities)
-- Intercompany Loan (loan to another entity)
+## Filtering the Journal Entries List
 
-**Liability side:**
-- Intercompany Payable (what you owe to other entities)
-- Intercompany Loan (borrowed from another entity)
+The intercompany journal entries list can be filtered by:
 
-These accounts:
-- Post transaction on both sides of the pair
-- Eliminate during consolidation (payable and receivable offset)
-- Show intercompany transactions in GL
+- **Posting date** (defaults to current quarter)
+- **Valuation date**
+- **Currency**
+- **Status** (Draft / Posted)
 
-## Eliminating Intercompany Entries
+Free-text search is also available.
 
-During consolidation, eliminate intercompany amounts:
+## Elimination and Consolidation
 
-**Consolidation logic:**
-- Entity A Intercompany Receivable $100,000
-- Entity B Intercompany Payable $100,000
-- Consolidation: Both eliminated (net = $0)
-- Consolidated GL shows only external transactions
+The **Eliminate** field on each line and the **Eliminate source line** toggle in intercompany config determine which lines are flagged for elimination when producing consolidated statements.
 
-Elimination happens at group level; entity-level GL still shows intercompany accounts.
+At consolidation:
+- Lines marked for elimination are excluded from the consolidated GL
+- Intercompany receivables and payables offset each other
+- Only external transactions remain in consolidated output
 
-## Transfer Pricing
+Entity-level GL reports still show intercompany amounts in full.
 
-For tax purposes, entities may use different prices for intercompany transactions:
+## Regulatory and Tax Context
 
-**Example:** Parent sells inventory to subsidiary
-- Actual cost: $50
-- Transfer price: $80 (to allocate profit)
-- Subsidiary sells to customers for $100
-
-GL entries:
-- Parent: Debit AR $80, Credit Sales $80
-- Subsidiary: Debit Inventory $80, Debit AP $80
-
-At consolidation, intercompany profits may be deferred (under arm's-length pricing rules).
-
-## Matching Intercompany Invoices
-
-When invoices are created but not yet paid:
-
-1. Entity A has AR
-2. Entity B has AP
-3. Both show unmatched status
-4. When Entity B pays Entity A:
-   - Payment clears both invoices
-   - Both show cleared status
-
-For direct intercompany journal entries, matching happens differently.
-
-## Clearing Intercompany Entries
-
-To clear a posted intercompany entry:
-
-1. Create reversing payment or settlement entry
-2. Both entities post the settlement
-3. Intercompany payable and receivable reduce to zero
-4. Both marked as cleared
-
-Example: Subsidiary repays loan
-```
-Entity B posts payment:
-  Debit: Intercompany Payable $50,000
-  Credit: Cash $50,000
-Entity A posts receipt:
-  Debit: Cash $50,000
-  Credit: Intercompany Receivable $50,000
-```
-
-Both Intercompany accounts now show reduced balance.
-
-## Interest on Intercompany Loans
-
-For intercompany loans, accrue interest:
-
-1. Set up intercompany loan with terms
-2. Specify interest rate (e.g., 5% annually)
-3. Monthly, create accrual entry:
-   - Borrowing entity: Debit Interest Expense, Credit Intercompany Payable
-   - Lending entity: Debit Intercompany Receivable, Credit Interest Income
-4. When paid, clear both payable and receivable
-
-Interest should be at arm's-length rates (competitive market rates) for tax compliance.
-
-## Multi-Entity Allocations
-
-Allocate shared costs across entities:
-
-1. Parent incurs $100,000 corporate overhead
-2. Allocate to 3 entities: A=$50,000, B=$30,000, C=$20,000
-3. Create intercompany journal entry:
-   - Debit Entity A Allocated Expense $50,000
-   - Debit Entity B Allocated Expense $30,000
-   - Debit Entity C Allocated Expense $20,000
-   - Credit Entity P Clearing Account $100,000
-
-Each entity's GL shows its allocated share; consolidation eliminates clearing account.
-
-## Intercompany Receivables Aging
-
-View aging of intercompany amounts owed:
-
-1. Go to **Reports > Intercompany Receivables Aging**
-2. See how long amounts have been outstanding
-3. Identify amounts overdue for collection
-
-For intercompany amounts, there's generally no "aging" since these are internal matters, but you can track outstanding balances.
-
-## Consolidation and Elimination
-
-For consolidated statements:
-
-1. Pull entity-level GL
-2. Convert all entities to group currency (if multi-currency)
-3. **Eliminate intercompany accounts:**
-   - Entity A Intercompany Receivable offset by Entity B Intercompany Payable
-   - Same for other intercompany accounts
-4. Result: Consolidated GL shows only external amounts
-
-Light supports elimination rules for consolidation.
-
-## Regulatory and Tax Treatment
-
-**GAAP/IFRS:**
+**GAAP / IFRS:**
 - Intercompany transactions are eliminated in consolidated statements
 - Entity-level statements still show intercompany amounts
 - Intercompany profits may be deferred (upstream/downstream sales)
 
 **Tax:**
 - Intercompany transactions must be at arm's-length prices
-- Documentation required for tax authorities
 - Transfer pricing regulations apply to significant intercompany amounts
-
-**Reporting:**
-- Consolidated financial statements show only external transactions
-- Entity-level statements show intercompany amounts
-- Disclosures explain major intercompany balances and transactions
+- Documentation required for tax authorities
 
 ## Best Practices
 
-- **Use consistent accounts** - Standardize intercompany account naming
-- **Require approval** - Significant intercompany transactions should require approval
-- **Document transfer pricing** - Keep records of how prices are set
-- **Reconcile monthly** - Ensure payables match receivables
-- **Clear promptly** - Don't let intercompany balances sit outstanding
-- **Track interest** - Accrue interest on intercompany loans per terms
-- **Plan consolidation** - Ensure elimination rules are set up for reporting
-- **Monitor for compliance** - Ensure transfer prices comply with tax rules
+- **Standardise accounts** — use consistent intercompany account naming across entities
+- **Set up config first** — configure account ranges before creating entries so elimination flags apply correctly
+- **Reconcile monthly** — ensure intercompany balances across entities agree
+- **Review net impact** — use the preview panel to verify the effect before posting
+- **Document the purpose** — use the description field and attachments to record the business reason
 
 ## Related Articles
 
-- [Multi-entity ledger management](/mnt/help-articles/articles/05-general-ledger/5-6-multi-entity-ledger.md)
-- [Creating manual journal entries](/mnt/help-articles/articles/05-general-ledger/5-4-manual-journal-entries.md)
-- [FX revaluations](/mnt/help-articles/articles/05-general-ledger/5-10-fx-revaluations.md)
+- [Multi-entity ledger management](/articles/05-general-ledger/5-6-multi-entity-ledger.md)
+- [Creating manual journal entries](/articles/05-general-ledger/5-4-manual-journal-entries.md)
+- [FX revaluations](/articles/05-general-ledger/5-10-fx-revaluations.md)
