@@ -18,7 +18,7 @@ Each contract in Light stores the following financial data:
 | **Net terms** | Payment terms |
 | **Payment type** | Direct, Stripe, etc. |
 
-The contract value is a **manually entered figure** — it is not calculated automatically from invoice history.
+The contract value is entered manually on each contract.
 
 ## Contract stats
 

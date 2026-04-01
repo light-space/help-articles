@@ -6,7 +6,7 @@ Light's budget feature lets you upload one or more budget scenarios as CSV files
 
 ## Uploading a budget scenario
 
-Budgets are uploaded as CSV files. Light does not have a manual budget entry interface.
+Budgets are uploaded as CSV files using the template provided in the upload dialog.
 
 1. Navigate to **Planning & Reports → Budget**
 2. Click **+ Upload budget**
