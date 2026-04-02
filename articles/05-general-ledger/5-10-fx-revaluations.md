@@ -17,6 +17,15 @@ FX revaluation addresses the mismatch between when a transaction is recorded and
 
 FX revaluation entries record this unrealized gain or loss and adjust GL balances to reflect current exchange rates at period-end.
 
+## Exchange Rate Sources
+
+Light sources exchange rates from two providers:
+
+- **European Central Bank (ECB)** — The primary source for major currency pairs. Light polls ECB daily for the latest rates.
+- **ExchangeRateApi** — Used for exotic currencies not supported by ECB. This ensures coverage for less common currencies where ECB rates are unavailable.
+
+You can also manually override exchange rates if needed for specific transactions or historical data imports.
+
 ## Which Accounts Revalue?
 
 Revaluation applies to accounts that hold foreign currency balances that have not yet settled.
