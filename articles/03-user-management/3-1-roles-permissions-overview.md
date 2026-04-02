@@ -42,6 +42,18 @@ You can view the full permissions matrix by navigating to **Business partners â†
 
 Permissions are cumulative, meaning a user with multiple roles has the combined permissions of all their roles. If a role doesn't explicitly grant a permission, the user cannot perform that action.
 
+## MCP (Model Context Protocol) Permissions
+
+Light's MCP integration uses the same role-based access controls as the rest of the platform. When a user connects to Light via MCP, their permissions are determined by their assigned rolesâ€”the same roles that control their access in the Light web app.
+
+This means:
+
+- **Role-bound access** - MCP users can only perform actions their roles permit. A user with the **AP Clerk** role can access accounts payable functions via MCP, but not AR or admin functions.
+- **Tool visibility** - Users only see MCP tools that are available to their role. Tools for features outside their permissions are not exposed.
+- **No elevated privileges** - MCP does not grant any additional permissions beyond what the user already has in Light.
+
+If you're rolling out MCP access to your organization, you can safely enable it for all users knowing that each person's access is automatically scoped to their existing role permissions.
+
 ## Entities and Permissions
 
 Roles in Light are company-wide and apply across all entities. It is not currently possible to scope a user's role or permissions to specific entities. For example, if a user has the **AP Clerk** role, they will have AP Clerk permissions in all entities within the company.
