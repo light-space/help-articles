@@ -232,6 +232,32 @@ The [`IFRS Policies`](https://github.com/light-space/help-articles/tree/main/IFR
 
 **When to use:** The agent should read these policies only when it needs to understand or cite official IFRS standards to answer a question or perform an action — for example, when a user asks about revenue recognition rules (IFRS 15), lease accounting (IFRS 16), or any other IFRS-governed treatment. Do not proactively reference these policies unless the question or task requires IFRS guidance.
 
+### Standards
+
+- [IFRS 1 — First-time Adoption of International Financial Reporting Standards](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-1-first-time-adoption-of-international-financial-reporting-standards.md)
+- [IFRS 2 — Share-based Payment](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-2-share-based-payment.md)
+- [IFRS 3 — Business Combinations](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-3-business-combinations.md)
+- [IFRS 5 — Non-current Assets Held for Sale and Discontinued Operations](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-5-non-current-assets-held-for-sale-and-discontinued-operations.md)
+- [IFRS 6 — Exploration for and Evaluation of Mineral Resources](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-6-exploration-for-and-evaluation-of-mineral-resources.md)
+- [IFRS 7 — Financial Instruments: Disclosures](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-7-financial-instruments-disclosures.md)
+- [IFRS 8 — Operating Segments](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-8-operating-segments.md)
+- [IFRS 9 — Financial Instruments](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-9-financial-instruments.md)
+- [IFRS 10 — Consolidated Financial Statements](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-10-consolidated-financial-statements.md)
+- [IFRS 11 — Joint Arrangements](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-11-joint-arrangements.md)
+- [IFRS 12 — Disclosure of Interests in Other Entities](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-12-disclosure-of-interests-in-other-entities.md)
+- [IFRS 13 — Fair Value Measurement](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-13-fair-value-measurement.md)
+- [IFRS 14 — Regulatory Deferral Accounts](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-14-regulatory-deferral-accounts.md)
+- [IFRS 15 — Revenue from Contracts with Customers](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-15-revenue-from-contracts-with-customers.md)
+- [IFRS 16 — Leases](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-16-leases.md)
+- [IFRS 17 — Insurance Contracts](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-17-insurance-contracts.md)
+- [IFRS 18 — Presentation and Disclosure in Financial Statements](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-18-presentation-and-disclosure-in-financial-statements.md)
+- [IFRS 19 — Subsidiaries without Public Accountability: Disclosures](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/ifrs-19-subsidiaries-without-public-accountability-disclosures.md)
+
+### Practice Statements
+
+- [IFRS Practice Statement 1 — Management Commentary](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/IFRS%20-%20IFRS%20Practice%20Statement%201_%20Management%20Commentary.md)
+- [IFRS Practice Statement 2 — Making Materiality Judgements](https://github.com/light-space/help-articles/blob/main/IFRS%20Policies/IFRS%20-%20IFRS%20Practice%20Statement%202_%20Making%20Materiality%20Judgements.md)
+
 ---
 
-*Total: 20 sections, 161 articles (138 admin + 23 employee)*
+*Total: 20 sections, 161 articles (138 admin + 23 employee), 20 IFRS policy references*
