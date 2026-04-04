@@ -224,7 +224,7 @@
 
 ---
 
-# IFRS Policies (Agent-Only Reference)
+# IFRS Policies
 
 The [`IFRS Policies`](https://github.com/light-space/help-articles/tree/main/IFRS%20Policies) folder contains official IFRS policy documents. 
 
