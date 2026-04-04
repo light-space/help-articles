@@ -226,9 +226,7 @@
 
 # IFRS Policies (Agent-Only Reference)
 
-The [`IFRS Policies`](https://github.com/light-space/help-articles/tree/main/IFRS%20Policies) folder contains official IFRS policy documents. These are **not** synced to the help center and are **not** intended for end users.
-
-**Audience:** Light AI agent only.
+The [`IFRS Policies`](https://github.com/light-space/help-articles/tree/main/IFRS%20Policies) folder contains official IFRS policy documents. 
 
 **When to use:** The agent should read these policies only when it needs to understand or cite official IFRS standards to answer a question or perform an action — for example, when a user asks about revenue recognition rules (IFRS 15), lease accounting (IFRS 16), or any other IFRS-governed treatment. Do not proactively reference these policies unless the question or task requires IFRS guidance.
 
