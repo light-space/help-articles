@@ -89,6 +89,18 @@ To send (or re-send) an invoice that is already in OPEN status:
 
 > Note: Sending an email is only available for invoices in OPEN status. If the invoice is still in DRAFT, you must open it first.
 
+### Editing and Resending an Invoice
+
+If you need to make changes to an invoice that has already been opened or posted and resend it to the customer:
+
+1. Open the invoice
+2. Click the **three dots** menu (⋮)
+3. Select **Reset** to return the invoice to DRAFT status
+4. Make your edits to the invoice
+5. Click **Post and Send** to record the changes and resend the updated invoice to the customer, or select **Post** to record the changes without sending
+
+> Tip: Use **Post and Send** when you want the customer to receive the corrected invoice immediately. Use **Post** alone if you're making internal corrections that don't require customer notification.
+
 ### E-Invoice Submission
 
 Light supports submitting invoices via e-invoicing channels:
