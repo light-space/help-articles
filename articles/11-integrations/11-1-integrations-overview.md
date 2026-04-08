@@ -39,6 +39,7 @@ Light provides native integrations with popular platforms:
 
 **Tax & Compliance**:
 - AvaTax (US): Automated sales tax calculation and reporting
+- Sphere (US): Automated sales tax calculation and reporting
 - Avalara E-Invoicing: Peppol compliance and transmission
 - HMRC (UK): VAT returns and filings
 
@@ -47,7 +48,11 @@ Light provides native integrations with popular platforms:
 - Microsoft Teams: Notifications and alerts
 
 **Banking**:
-- Bank APIs: Direct account feeds, balance updates
+- Bank feed: Direct account feeds, balance updates via GoCardless and Plaid's APIs. Payments are not prebuilt. 
+
+## Non-prebuilt integrations
+**Payments via your banks**
+- AP and Reimbursement- Payments: SFTP or Host-to-Host connections via AMC Banking.
 
 ## Setting up integrations
 
@@ -180,11 +185,13 @@ Salesforce → Light → Bank
 6. Cash posting completes the lead-to-cash cycle
 
 **Payroll integration**:
-HRM (Finch) → Light
+Payroll (on roadmap via Finch) → Light
 1. Employees paid by payroll processor
 2. Finch integration syncs payroll data to Light
 3. Light automatically creates JE to record payroll expense
 4. GL reflects latest headcount and expense
+
+Most companies performs a simple monthly journal upload.
 
 **Tax compliance**:
 Light → AvaTax → Tax Authority
@@ -193,6 +200,14 @@ Light → AvaTax → Tax Authority
 3. Light posts tax to GL
 4. AvaTax integration prepares tax return
 5. Light submits to tax authority
+
+Light → Sphere → Tax Authority
+1. Create AR invoice in Light with tax codes
+2. Sphere integration calculates applicable tax
+3. Light posts tax to GL
+4. Sphere integration prepares tax return
+5. Light submits to tax authority
+
 
 ## Common integration issues and troubleshooting
 
