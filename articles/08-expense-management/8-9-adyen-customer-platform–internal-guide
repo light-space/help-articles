@@ -1,0 +1,448 @@
+# Adyen (Customer Platform) – Internal Guide
+
+## Purpose
+
+This guide explains Light employees how to help clients with their card setup. Note that the client does not have access to Adyen, so this guide explains Light employees how to:
+- navigate Adyen
+- find transactions
+- understand declines and error messages
+- troubleshoot top-ups
+- know when and how to contact Adyen Support
+
+---
+
+## Access & Setup
+
+### User accounts (important)
+
+- Do **not share logins**
+- Every team member should have their **own Adyen user**
+  - ensures audit trail (who viewed/changed what)
+- If you need a login, contact **@Kristine Enkov**
+
+---
+
+### Favorites / quick navigation
+
+Most workflows start from **Accounts & balances**
+
+Recommended favorites:
+- `Accounts & balances > Account holders`
+- `Accounts & balances > Balance accounts`
+
+Optional (if access available):
+- `Payment instruments`
+- `Transfer instruments`
+
+---
+
+## Core Concepts (plain language)
+
+### Account holder
+
+- The customer/company (e.g. Wawa, Lovable)
+- This is your **primary entity**
+
+---
+
+### Balance account
+
+- Where funds are held
+- One account holder can have:
+  - multiple balance accounts
+  - multiple currencies
+
+---
+
+### Transfer instrument (bank account)
+
+- The bank account used for:
+  - top-ups
+  - inbound transfers
+- This is the **KYC-approved bank account**
+
+---
+
+### Payment instrument
+
+- A card (virtual or physical)
+- Best identifier: **Payment Instrument ID**
+
+Other possible identifiers:
+- last 4 digits
+- cardholder name (less reliable)
+
+---
+
+### Transfers / transactions
+
+Main place to:
+- find authorisations and captures
+- see declines and reasons
+- filter by date/status
+- export CSV
+
+---
+
+## Common Workflow 1: Find a customer
+
+**Path:** `Accounts & balances > Account holders`
+
+### Steps
+
+1. Search customer name
+2. Click **View account holder**
+3. Review:
+   - Account holder ID (copy this)
+   - capabilities
+   - verification status
+   - legal entity
+   - transfer instruments
+   - balance accounts
+
+### Best practice
+
+Always copy/store:
+- Account Holder ID
+- Payment Instrument ID
+- Transfer Instrument ID
+
+---
+
+## Common Workflow 2: Top-ups & inbound transfers
+
+### Core rule (most issues)
+
+- **Non-KYC bank account → funds returned**
+- **KYC-approved account → funds accepted**
+
+---
+
+### Check KYC bank account
+
+Path:
+`Account holder > Transfer instruments`
+
+Confirm:
+- bank account is listed
+- status is verified/approved
+
+---
+
+### If wrong bank account used
+
+Expected outcome:
+- funds returned
+
+Customer action:
+- resend from approved account  
+- or complete KYC for used account
+
+---
+
+### Onboarding best practice
+
+Ask:
+> “How many bank accounts will you use for funding?”
+
+Encourage:
+- KYC for multiple accounts (3+ common for scale-ups)
+
+---
+
+### Edge case: intermediary / IBAN changes
+
+Scenario:
+- customer sends from correct account
+- transfer arrives via different IBAN/intermediary (e.g. Airwallex)
+
+Impact:
+- Adyen may not recognise it correctly
+
+Action:
+- open Adyen ticket
+- include full transfer details
+- request rule implementation if needed
+
+---
+
+## Common Workflow 3: Find a transaction
+
+### Best method
+
+Use **Payment Instrument ID**
+
+If unavailable:
+- use:
+  - date
+  - merchant
+  - amount
+
+---
+
+### Steps
+
+1. `Account holder > Balance accounts`
+2. Open relevant balance account
+3. Click **View transfers**
+4. Filter:
+   - date range (start here)
+   - status:
+     - Declined
+     - Refused
+     - Authorised
+     - Captured
+   - reference (if available)
+
+---
+
+### Reading declines
+
+Open transaction → check:
+- reason
+- rule
+- message
+
+#### Interpretation rules
+
+**Internal (your configuration):**
+- transaction rules
+- limits
+- cumulative limits
+- velocity controls
+
+**External factors:**
+- scheme (Visa/Mastercard)
+- merchant behaviour
+- CVV / authentication
+- 3DS
+- terminal constraints
+
+---
+
+### 3DS
+
+- Physical card (chip/contactless): usually no 3DS
+- E-commerce: 3DS may appear in details
+
+---
+
+## Common Workflow 4: Pending vs captured
+
+### What pending means
+
+- transaction is **authorised**
+- not yet **captured**
+
+---
+
+### Who controls capture
+
+- The **merchant**
+  - hotels
+  - car rentals
+  - travel
+
+Typical flow:
+- authorisation now
+- capture later (or never)
+
+---
+
+### Customer explanation
+
+> “This transaction is authorised; the merchant decides when to capture it. If they don’t, it will eventually drop off.”
+
+---
+
+## Searching by cardholder name
+
+### Limitation
+
+- UI filtering is limited
+
+---
+
+### Workarounds
+
+- use:
+  - date + merchant + amount
+- export CSV and search locally
+- prioritise collecting:
+  - Payment Instrument ID
+
+---
+
+## Exporting data
+
+From transfers view:
+- click **Export**
+- download CSV (up to ~1000 rows)
+
+Search locally by:
+- merchant
+- amount
+- cardholder name (if included)
+- last digits
+- IDs
+
+---
+
+## Adyen Support Tickets
+
+### When to open a ticket
+
+- top-ups failing due to routing/intermediaries
+- non-deterministic issues
+- suspected scheme/network issues
+- need Adyen rule/config change
+- anything not explainable via UI
+
+---
+
+### Support link
+
+https://help.adyen.com/knowledge/account/access-your-customer-area/how-do-i-reach-adyen-support
+
+---
+
+### What to include
+
+**Always include “Issuing” in subject** (routing)
+
+Include:
+- Product (Issuing, etc.)
+- Environment (TEST / LIVE)
+- Payment Instrument ID
+- Transfer ID
+- Account Holder ID
+- Balance Account ID
+- Description of issue
+- examples
+- troubleshooting steps taken
+- screenshots/videos (optional)
+
+**Important:**
+- Provide IDs in **text**, not just screenshots
+
+---
+
+### SLA
+
+- First response: ~24 hours
+- Resolution time varies
+
+Depends on:
+- issue complexity
+- ticket quality
+- completeness of data
+
+> Better tickets = faster resolution
+
+---
+
+### Timing tip
+
+Adyen uses follow-the-sun support:
+
+- Late CET → US/APAC queues
+- Non-urgent → send next CET morning
+
+---
+
+### Known issue
+
+Rare but real:
+- tickets can get “stuck” in queue
+
+If no response in 1–2 business days:
+- follow up
+- escalate
+
+---
+
+## Fraud & Disputes (internal rules)
+
+### If fraud is reported
+
+1. Confirm:
+   - is it truly unauthorised?
+   - check for internal misuse
+2. Take action:
+   - freeze/suspend card (per internal process)
+3. Collect:
+   - merchant
+   - amount
+   - date
+   - context
+4. Escalate if needed:
+   - Adyen ticket
+   - internal escalation
+
+---
+
+### Fraud vs dispute
+
+- **Fraud** = unauthorised usage
+- **Dispute** = chargeback process
+
+They may overlap but are handled differently.
+
+---
+
+## Virtual vs Physical Cards
+
+### Capabilities
+
+- Same payment capabilities (no scheme difference)
+
+---
+
+### When physical helps
+
+- ATM withdrawals (if enabled)
+- phone unavailable
+- no Apple/Google Pay
+- legacy terminals
+
+---
+
+### Customer explanation
+
+> “Virtual cards have the same payment capabilities as physical cards. Physical cards mainly help in edge cases like ATM access, phone issues, or very old terminals.”
+
+---
+
+## Team Playbook
+
+### Ask customers upfront
+
+- date/time (+ timezone)
+- amount + currency
+- merchant
+- cardholder name
+- virtual or physical
+- screenshot (if available)
+
+For top-ups:
+- sending bank
+- IBAN
+- reference used
+
+---
+
+### Internally capture
+
+Always store:
+- Account Holder ID
+- Payment Instrument ID
+- Transfer Instrument ID
+
+---
+
+## Internal Owners
+
+- Adyen escalation contact: `@`
+- Ticket submitters: `[Team/Role]`
+- Disputes owner: `[Name]`
+- KYC onboarding owner: `[Name]`
