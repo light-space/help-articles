@@ -1,0 +1,256 @@
+# How to Report Fraudulent Card Transactions (Adyen)
+
+## Overview
+
+We have a defined procedure for collecting and processing dispute requests. Please follow these steps to ensure requests are handled quickly and successfully.
+
+- CSV template & instructions:  
+  https://www.notion.so/uselight/How-to-report-Fraudulent-Card-Transactions-Adyen-2cdf9bd84c8c802b82a3c9644a136b42?source=copy_link
+
+- Attached files:
+  - `disputes.csv` (template)
+  - `Disputes_Form_(Fraud).docx` (optional evidence template)
+
+This CSV format is required for:
+- Fraud disputes
+- Goods/Services not delivered
+- Duplicate disputes
+
+Other dispute types must be submitted via Adyen Support.
+
+> Note: The Disputes API exists but is **not currently supported**.
+
+---
+
+## Eligibility
+
+- Only **captured** payments can be disputed
+- Cannot dispute:
+  - authorised
+  - cancelled
+  - expired
+  - refunded
+- Disputes must be submitted within **120 days of capture**
+
+---
+
+## Packaging Instructions
+
+### General Rules
+
+- You may include **multiple transactions** in one CSV
+- Only complete columns relevant to the dispute type:
+  - Fraud → fraud fields only
+  - Duplicate → duplicate fields only
+
+### File Naming
+
+- CSV file: `disputes.csv`
+- ZIP file: `disputes.zip`
+- Attachment files:
+  - Max **15 characters**
+  - Must be **unique per file**, even if reused
+
+### Steps
+
+1. Complete `disputes.csv`
+2. Add attachments (if applicable)
+3. Package into `disputes.zip`
+4. Submit via Adyen Support
+
+---
+
+## Submission
+
+Send to: `support@adyen.com`  
+CC: `compliance@light.inc`
+
+### Email Requirements
+
+- Subject must include:
+  - "Platform"
+  - "Issuing Dispute Request"
+
+- Body must include:
+  - Number of disputes
+  - Any reference IDs (e.g. transfer linkage)
+  - Confirmation you are a platform
+
+- Attach:
+  - `disputes.zip`
+
+---
+
+## CSV Requirements
+
+- Format: `.csv` only
+- Recommended tools:
+  - Excel
+  - Google Sheets
+- Delimiter: comma `,`
+
+### Not Allowed
+
+- `.xls` or other formats
+- semicolon `;`
+- tab delimiters
+
+> Files not conforming to these requirements will be rejected.  
+> Adyen Support will not reformat files.
+
+---
+
+# Fraud Disputes
+
+## CSV Rules
+
+- Do NOT change column order
+- Do NOT add extra columns
+- Leave `notDeliveredInfo` columns empty
+
+---
+
+## Required Fields
+
+- `transactionID`
+  - Found in capture event (BPCA & Balance Platform Accounting Report)
+  - Not the same as transferID  
+  - Example: `EVJN429S7223223P5M29RW38584BVZUSD`
+
+- `description`
+  - Internal reference
+  - Max 50 characters
+
+- `type`
+  - Value: `fraud`
+
+- `fraudInfo_cardDoesNotBelongToCardholder`
+  - Boolean: `true` / `false`
+  - True if lost or stolen
+
+- `fraudInfo_cardWasCounterfeited`
+  - Boolean: `true` / `false`
+
+- `fraudInfo_descriptionOfIssue`
+  - Description of fraud
+  - Max 2500 characters
+
+- `fraudInfo_reportOnly`
+  - Boolean
+  - Default: `false`
+  - If `true`: report only (no chargeback or fee reversal)
+
+---
+
+## Optional Fields
+
+- `attachment_fileName`
+  - Min 4 characters
+  - Max 17 characters (including extension)
+  - Allowed:
+    - `.pdf`
+    - `.jpeg`
+    - `.tiff`
+
+- `attachmentType`
+  - Required if attachment is included
+  - Values:
+    - `receipt`
+    - `correspondence`
+    - `other`
+
+---
+
+## Attachments
+
+### Requirements
+
+- One file per transaction
+- Formats:
+  - PDF
+  - JPEG
+  - TIF
+- File names:
+  - Max 15 characters
+  - Must be unique
+
+### Evidence Guidelines
+
+- Must be collected directly from the cardholder
+- Examples:
+  - cardholder statements
+  - email correspondence
+  - police reports
+
+### Avoid
+
+- Screenshots from Adyen
+- Large file sizes
+
+---
+
+## Scheme Requirements
+
+- **Mastercard**
+  - Evidence is required
+  - Missing evidence may result in rejection
+
+- **Visa**
+  - Evidence is optional
+
+---
+
+## Fraud Response Actions
+
+If fraud is suspected:
+
+- Immediately:
+  - Suspend or close the card/payment instrument
+  - Report fraud to Adyen
+
+---
+
+## Processing Notes
+
+- Submissions not in the correct format will be rejected
+- Adyen will review the CSV and respond with next steps
+- You may submit disputes at your own cadence:
+  - weekly
+  - monthly
+  - etc.
+
+---
+
+## Attachments / Templates
+
+- CSV template: `disputes.csv`
+- Fraud evidence template: `Disputes_Form_(Fraud).docx`
+
+These can be used directly or as part of your submission.
+
+---
+
+## API (Not Currently Used)
+
+Adyen provides a Disputes API:
+https://docs.adyen.com/issuing/raise-disputes/
+
+This allows:
+- Creating disputes programmatically
+- Submitting chargebacks without support cases
+
+> This is recommended for future implementation but not currently supported.
+
+---
+
+## Summary Checklist
+
+- [ ] CSV named `disputes.csv`
+- [ ] ZIP named `disputes.zip`
+- [ ] Only fraud fields completed
+- [ ] Column order unchanged
+- [ ] Attachments valid and correctly named
+- [ ] Transactions are captured
+- [ ] Within 120 days
+- [ ] Email includes required details
+- [ ] Compliance team CC’d (`compliance@light.inc`)
