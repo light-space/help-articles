@@ -8,6 +8,19 @@ This article explains how to reach Light support, what information to include in
 
 Light offers responsive support through multiple channels. Our support team is available to help with technical issues, usage questions, and troubleshooting.
 
+## Filing a Support Ticket
+
+You can file a support ticket directly with the Light support team from any of the following channels:
+
+| Channel | How to File a Ticket |
+|---------|---------------------|
+| **Web App** | Click the **Help** icon in the bottom right corner, then select **File a support ticket** |
+| **Mobile App** | Tap the **Help** button in the menu, then tap **File a support ticket** |
+| **Slack** | Message **@light** with "file a support ticket" or use the `/light support` command |
+| **Microsoft Teams** | Message **@light** with "file a support ticket" or use the `@light support` command |
+
+When you file a support ticket, a human support agent will review your request and respond according to your support SLA.
+
 ## Support Channels
 
 ### In-App Chat (AI-Powered)
