@@ -100,6 +100,23 @@ To archive an inactive customer without losing historical data:
 
 Archived customers no longer appear in active customer lists but remain accessible for historical reporting. You can reactivate them at any time by clicking **Activate**.
 
+## Downloading Account Statements
+
+Generate and download statements showing your transaction history with a customer.
+
+1. Navigate to **Revenue & Invoicing → Customers**
+2. Select a customer
+3. Click **Download account statement**
+4. Apply filters:
+   - **Period**: Select a date range (optional — if specified, the period appears on the statement)
+   - **Entity**: Filter by entity (optional)
+
+5. Click **Download**
+
+Statement behavior:
+- **Single entity**: The entity name appears on the statement
+- **Currency requirement**: All selected transactions must be in the same currency — if currencies differ, an error is shown
+
 ## Related Articles
 
 - [AR overview](/articles/06-accounts-receivable/6-1-ar-overview.md)

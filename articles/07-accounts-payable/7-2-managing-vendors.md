@@ -132,6 +132,25 @@ Once a vendor is created, opening it shows the following tabs:
 
 ---
 
+## Downloading Account Statements
+
+Generate and download statements showing your transaction history with a vendor.
+
+1. Navigate to **Spend management → Vendors**
+2. Select a vendor
+3. Click **Download account statement**
+4. Apply filters:
+   - **Period**: Select a date range (optional — if specified, the period appears on the statement)
+   - **Entity**: Filter by entity (optional)
+
+5. Click **Download**
+
+Statement behavior:
+- **Single entity**: The entity name appears on the statement
+- **Currency requirement**: All selected transactions must be in the same currency — if currencies differ, an error is shown
+
+---
+
 ## Related Articles
 
 - [AP overview](/articles/07-accounts-payable/7-1-ap-overview.md)
