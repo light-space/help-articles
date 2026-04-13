@@ -137,7 +137,7 @@ Once a vendor is created, opening it shows the following tabs:
 Generate and download statements showing your transaction history with a vendor.
 
 1. Navigate to **Spend management → Vendors**
-2. Select one or more vendors using the checkboxes
+2. Select a vendor
 3. Click **Download account statement**
 4. Apply filters:
    - **Period**: Select a date range (optional — if specified, the period appears on the statement)
@@ -147,10 +147,7 @@ Generate and download statements showing your transaction history with a vendor.
 
 Statement behavior:
 - **Single entity**: The entity name appears on the statement
-- **Multiple entities**: No entity name is displayed on the statement
 - **Currency requirement**: All selected transactions must be in the same currency — if currencies differ, an error is shown
-
-> Good to know: Account statements work across multiple vendors in a single download, making it easy to generate consolidated reports for audits or reconciliation.
 
 ---
 
