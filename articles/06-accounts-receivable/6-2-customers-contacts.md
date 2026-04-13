@@ -32,8 +32,6 @@ The customer type affects tax calculation and e-invoicing capabilities. You can 
 
 5. Click **Create** to save the customer
 
-> Good to know: The billing address is used for tax calculations unless you specify a shipping address. Light uses the shipping address first if both are provided.
-
 ## Managing Customer Contacts
 
 Each customer can have multiple contacts for different purposes. To add a contact:
