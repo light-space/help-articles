@@ -14,9 +14,9 @@ For employees at entities outside these regions, you can still provide card acce
 
 The Cards page has three tabs:
 
-- [**Transactions**](https://app.light.inc/cards?tab=transactions): View all card transactions with Date, Merchant, Ledger account, Amount, and Tax code. Filter by status and search by keyword.
-- [**Cards**](https://app.light.inc/cards?tab=cards): View all issued cards with Owner, Vendor, Type, Card, and Description columns.
-- [**Accounts**](https://app.light.inc/cards?tab=accounts): View card accounts with Account number, Account name, Currency, Entity, and Cards connected.
+- [**Transactions**](https://app.light.inc/cards?tab=transactions): View all card transactions. Default columns: Date, Merchant, Ledger account, Amount, Tax code, Entity. Additional columns available: Owner, Card, Posted, Receipt, Account, Description.
+- [**Cards**](https://app.light.inc/cards?tab=cards): View all issued cards. Columns: Owner, Vendor, Type, Card, Description, Spend, Account, Entity.
+- [**Accounts**](https://app.light.inc/cards?tab=accounts): View card accounts. Columns: Account number, Account name, Currency, Entity, Cards connected, Spent this month, Available funds.
 
 ## Creating Cards
 
@@ -30,14 +30,12 @@ Use for employee expenses like travel or supplies.
 2. Select **Employee card**
 3. Fill in the details:
    - **Owner**: Select the employee from the dropdown
-   - **Authentication phone number**: Phone number for card verification
+   - **Authentication phone number**: Phone number for 3D Secure verification
    - **Card account**: Select which card account to link
    - **Card description**: A label for this card (optional)
-   - **Limits**: Set a spending limit (Monthly by default) with the currency and amount
+   - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
 
 4. Click **Create card**
-
-The virtual card becomes available immediately.
 
 ### Vendor Cards
 
@@ -47,10 +45,11 @@ Use for recurring vendor payments like subscriptions.
 2. Select **Vendor card**
 3. Fill in the details:
    - **Owner**: Select the card owner from the dropdown
-   - **Authentication phone number**: Phone number for card verification
+   - **Authentication phone number**: Phone number for 3D Secure verification
    - **Card account**: Select which card account to link
-   - **Vendor**: Select the vendor (or click **Quick-add vendor** to create one)
+   - **Vendor**: Select the vendor (or click **Quick-add vendor** to create one inline)
    - **Card description**: A label for this card (optional)
+   - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
 
 4. Click **Create card**
 
@@ -60,7 +59,12 @@ Before issuing cards, you need at least one card account. To create one:
 
 1. Go to the [**Accounts**](https://app.light.inc/cards?tab=accounts) tab on the Cards page
 2. Click **+ Create account**
-3. Configure the account details including account name, currency, and entity
+3. Fill in:
+   - **Entity selection**: The company entity this account belongs to
+   - **Currency**: The account currency
+   - **Account number**: A 6-digit number used in your chart of accounts
+   - **Account name**: A label for this account (auto-filled based on currency)
+4. Click **Create**
 
 Card accounts group cards together and control the funding source and entity association.
 
@@ -69,174 +73,82 @@ Card accounts group cards together and control the funding source and entity ass
 ### Viewing Cards
 
 1. Navigate to [**Cards**](https://app.light.inc/cards?tab=cards)
-2. See all cards with:
-   - **Owner**: Who the card is assigned to
-   - **Vendor**: The associated vendor (for vendor cards)
-   - **Type**: Employee or Vendor
-   - **Card**: Card identifier
-   - **Description**: Card label
+2. Click a card row to open the card details drawer
 
-3. Click a card to see its details and manage it
+The card details drawer shows:
+- **Card visual** with last four digits and freeze status
+- **Balance**: Remaining balance, limit term, spend vs. limit with progress bar
+- **Card details**: Owner, 3DS Password (visible to card owner only). Click **Show more** to see phone, address, entity, account, and tax code.
+- **Recent transactions** with a **See all** link
 
-### Adjusting Card Limits
+### Editing a Card
 
-Increase or decrease individual card limits:
-
-1. Open the card
-2. Click **Edit Limit**
-3. Adjust the limit amount
+1. Open the card details drawer
+2. Click **Edit**
+3. Update the Owner and/or Limits
 4. Click **Save**
 
-New limit takes effect immediately.
+### Freezing and Unfreezing Cards
 
-### Blocking/Unblocking Cards
+Temporarily freeze a card without closing it:
 
-Temporarily block a card without cancelling:
+1. Open the card details drawer
+2. Click **Freeze card**
+3. The card is immediately frozen — no transactions allowed
 
-1. Open the card
-2. Click **Block Card**
-3. Optionally, select a reason: Under investigation, Unusual activity, etc.
-4. Card is immediately frozen (no transactions allowed)
-5. Employee is notified
+To unfreeze:
+1. Click **Activate card**
+2. The card is immediately active again
 
-To unblock:
-1. Click **Unblock Card**
-2. Card is immediately active again
+### Closing Cards
 
-Use blocking to investigate suspicious activity without permanent cancellation.
+Permanently close a card:
 
-### Cancelling Cards
+1. Open the card details drawer
+2. Click the three-dot menu (⋯)
+3. Click **Close card**
+4. Confirm in the dialog — this action cannot be undone
 
-Permanently cancel a card:
+A closed card cannot be reactivated. Issue a new card if needed.
 
-1. Open the card
-2. Click **Cancel Card**
-3. Provide a reason: Employee left, Card replaced, etc.
-4. Light immediately:
-   - Cancels card
-   - Freezes any pending transactions
-   - Prevents future use
+### Add to Wallet
 
-5. Card cannot be reactivated (new card must be issued)
+Employee card owners can add their card to Apple Pay or Google Pay directly from the card details drawer using the **Add to wallet** button.
 
-## Transactions and Reconciliation
+## Transactions
 
 ### Viewing Transactions
 
 Card transactions appear automatically in the **Transactions** tab:
 
 1. Navigate to [**Cards → Transactions**](https://app.light.inc/cards?tab=transactions)
-2. Each transaction shows:
-   - **Date**: When the transaction occurred
-   - **Merchant**: Where the card was used
-   - **Ledger account**: The GL account for this transaction
-   - **Amount**: Transaction amount
-   - **Tax code**: Applicable tax code
+2. Use the status filter and search bar to find specific transactions
+3. Click a transaction to open its details
 
-3. Use the status filter and search bar to find specific transactions
+### Transaction Statuses
 
-### Transaction Status and Posting
-
-Card transactions go through two stages before they can impact the general ledger:
-
-**Pending transactions:**
-- Appear immediately after a card is used
-- Show a **Pending** status
-- **Cannot be posted** to the GL yet
-- The merchant has not yet settled the transaction with the card network
-- The amount may still change (merchants can adjust the final amount, add tips, etc.)
-
-**Settled transactions:**
-- The merchant has finalized and settled the transaction
-- Show a **Settled** status
-- Can now be **posted** to create a GL impact
-- The amount is final and will not change
-
-> Good to know: If you see a card transaction in Pending status and cannot post it, this is expected behavior. Wait for the merchant to settle the transaction (typically 1-3 business days), and it will then become available for posting.
+| Status | Description |
+|---|---|
+| **Authorized** | Transaction initiated — amount may still change. Shown with a pending indicator. |
+| **Captured** | Merchant has finalized the charge |
+| **Refunded** | Transaction has been refunded |
+| **Posted** | Transaction has been posted to the general ledger |
 
 ### Card Reconciliation
 
-Card accounts are **not available** in the [**Accounting → Bank reconciliation**](https://app.light.inc/bank-reconciliation) page. Unlike bank accounts, card transactions are reconciled through the card settlement process and the matching of bills to card charges.
-
 Card reconciliation works as follows:
 
-1. **Individual transactions** post to the GL when they settle (see above)
-2. **Card issuer bill** arrives (monthly typical) with all charges
-3. Light creates an AP bill that groups card charges
-4. Verify:
-   - All posted transactions appear on the bill
-   - No duplicate charges
-   - Amounts match
-5. Pay the card issuer bill through normal AP payment process
-
-### Card Settlement
-
-Settlement happens automatically:
-
-1. Card issuer submits bill to company (monthly typical)
-2. Light creates an **AP bill** for card charges:
-   - **Vendor**: Card issuer
-   - **Amount**: Total card charges
-   - **Line items**: Grouped by employee or department
-   - **GL accounts**: Posted to respective expense accounts
-
-3. Finance team pays card issuer
-4. Reconciliation complete
-
-## Spending Controls
-
-### Policy Enforcement
-
-Spending policies can be configured under [**Settings → Policies**](https://app.light.inc/settings/guardrails/policies) to limit what can be purchased:
-
-- **Monthly Limit**: Max spending per month
-- **Merchant Category Limits**: Limits by category (e.g., meals, travel)
-- **Blocked Merchants**: No purchases allowed
-
-Light enforces policies at transaction time. If a transaction violates a policy, it is declined.
-
-### Spending Approvals
-
-Require approvals for large purchases:
-
-1. Configure spending thresholds in your approval workflows
-2. When an employee makes a large card purchase:
-   - Transaction pending (card charges immediately)
-   - Manager receives approval request
-   - If approved: Expense is approved, posting continues
-   - If rejected: Refund is initiated, charge reversed
+1. Individual transactions are posted to the GL once captured
+2. The card issuer submits a bill (typically monthly) with all charges
+3. Light creates an AP bill grouping the card charges
+4. The finance team verifies the transactions match and pays the card issuer bill through the normal AP payment process
 
 ## Reporting
 
-Analyze card spending using the reports available under [**Planning & Reports → Reports**](https://app.light.inc/ledger-reports). You can create custom reports to track card spending by employee, merchant, category, or time period. Export reports to Excel for further analysis.
-
-## Fraud Detection
-
-Light monitors for suspicious patterns:
-
-1. **Velocity Checking**: Too many transactions in short time
-2. **Amount Checking**: Unusually large transactions
-3. **Merchant Checking**: Known high-risk merchants
-
-Flagged transactions are:
-- Temporarily held
-- Employee notified to confirm
-- Finance team alerted if suspicious
-- Investigation initiated if fraud suspected
-
-## Employee Support
-
-### Card Troubleshooting
-
-Employees can get help:
-
-1. **Card Declined**: Contact support to understand why (limit, blocked merchant, etc.)
-2. **Wrong Amount**: Investigate transaction and dispute if needed
-3. **Duplicate Charge**: Review settlement and request refund
+Analyze card spending using the reports available under [**Planning & Reports → Reports**](https://app.light.inc/ledger-reports). You can create custom reports to track card spending by employee, merchant, category, or time period. Export reports to CSV for further analysis.
 
 ## Related Articles
 
 - [Setting up Light cards (KYC)](/articles/08-expense-management/8-9-light-cards-kyc.md)
 - [Virtual cards](/articles/08-expense-management/8-11-virtual-cards.md)
-- [Apple Pay and Google Pay](/articles/08-expense-management/8-12-apple-google-pay.md)
 - [Expense management overview](/articles/08-expense-management/8-1-expense-overview.md)
