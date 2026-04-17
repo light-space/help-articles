@@ -28,6 +28,7 @@ Bills progress through states: DRAFT → POSTED → PARTIALLY_CLEARED → CLEARE
    - **Due Date**: When payment is due
    - **Company Entity**: Which entity is receiving the bill
    - **Currency**: Billing currency
+   - **Payment Method**: How this bill will be paid (inherited from vendor default, can override)
    - **Description**: Internal notes (optional)
 
 5. Click **Next** to add line items
@@ -120,6 +121,20 @@ Upload multiple bills at once from a spreadsheet:
 8. Click **Import**
 
 Light creates draft bills for all valid rows and reports any errors.
+
+## Payment Methods
+
+The **Payment Method** field controls what happens to a bill after approval:
+
+| Payment Method | Behavior After Approval |
+|---|---|
+| **Automatic** (default) | Light schedules the payment automatically. Requires a host-to-host bank connection. |
+| **Direct Debit** | Bill skips guardrails and goes straight to Unpaid status. The vendor collects the payment directly from your bank account. |
+| **Manual** | Bill goes through guardrails and batch approval, then moves to Unpaid. You pay the vendor outside Light (wire, check, etc.). |
+
+New bills inherit the payment method from the vendor's default setting. You can override it per bill while the bill is in Draft status.
+
+> Good to know: When using Direct Debit or Manual, vendor banking details (IBAN, BIC, etc.) are not required when submitting the bill — useful for vendors that collect payments themselves or that you pay out-of-band.
 
 ## Bill States and Workflow
 
