@@ -71,9 +71,18 @@ Additional optional fields: BIC/SWIFT, bank name, bank address.
 | Default entity | — |
 | Default GL account | — |
 | Default tax code | — |
+| Default payment method | — |
 | Default from account (payment bank account) | — |
 | Cost center | — |
 | Approvers | — |
+
+**Default payment method** controls how bills from this vendor are paid after approval:
+
+- **Automatic** (default): Light schedules the payment automatically after approval. Requires a host-to-host bank connection.
+- **Direct Debit**: Bill goes straight to Unpaid status — the vendor collects the payment directly from your bank account.
+- **Manual**: Bill goes through guardrails and batch approval, then moves to Unpaid — you pay the vendor outside Light (wire, check, etc.).
+
+When Direct Debit or Manual is selected, vendor banking details (IBAN, BIC, etc.) are not required when submitting bills.
 
 Click **Create** to save.
 

@@ -89,7 +89,10 @@ When approvers receive bills:
 ### Approval Actions
 
 **Approve:**
-- Bill is approved and moves to the payment queue
+- Bill is approved and moves forward based on its **Payment Method**:
+  - **Automatic**: Scheduled for payment automatically (requires host-to-host bank connection)
+  - **Direct Debit**: Goes straight to Unpaid status — vendor collects payment
+  - **Manual**: Goes through guardrails and batch approval, then to Unpaid — paid outside Light
 - If multiple approvers are required, bill waits for all approvals
 
 **Reject:**
