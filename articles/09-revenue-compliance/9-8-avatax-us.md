@@ -190,3 +190,5 @@ This documentation supports audit procedures and provides evidence of tax compli
 - [Tax compliance — HMRC (UK) and VAT](9-7-hmrc-vat.md)
 - [Audit-ready record keeping](9-9-audit-ready-records.md)
 - [AvaTax integration (US)](../11-integrations/11-10-avatax-us.md)
+- [Sphere integration (US)](../11-integrations/11-19-sphere-us.md)
+- [E-invoicing and Peppol setup](../11-integrations/11-20-e-invoicing.md)

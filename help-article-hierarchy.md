@@ -158,6 +158,8 @@
 - 11.16 [Cutover fundamentals and execution steps](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-16-cutover.md)
 - 11.17 [Gmail integration](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-17-gmail.md)
 - 11.18 [Abacum integration](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-18-abacum.md)
+- 11.19 [Sphere integration (US)](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-19-sphere-us.md)
+- 11.20 [E-invoicing and Peppol setup](https://github.com/light-space/help-articles/blob/main/articles/11-integrations/11-20-e-invoicing.md)
 
 ## 12. AI Features
 - 12.1 [How Light uses AI across the platform](https://github.com/light-space/help-articles/blob/main/articles/12-ai-features/12-1-how-light-uses-ai.md)
@@ -258,4 +260,4 @@ These are official IFRS policy documents.
 
 ---
 
-*Total: 20 sections, 161 articles (138 admin + 23 employee), 20 IFRS policy references*
+*Total: 20 sections, 163 articles (140 admin + 23 employee), 20 IFRS policy references*

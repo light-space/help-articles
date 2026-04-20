@@ -157,3 +157,5 @@ You can export Peppol invoice history for compliance reviews:
 - [Tax compliance — AvaTax (US)](9-8-avatax-us.md)
 - [Audit-ready record keeping](9-9-audit-ready-records.md)
 - [AvaTax integration (US)](../11-integrations/11-10-avatax-us.md)
+- [E-invoicing and Peppol setup](../11-integrations/11-20-e-invoicing.md)
+- [E-invoicing and Peppol](../02-organization-setup/2-7-e-invoicing-peppol.md)

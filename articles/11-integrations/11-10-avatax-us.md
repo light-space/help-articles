@@ -1,12 +1,10 @@
-# AvaTax - Light Customer Onboarding
+# AvaTax Integration (US)
 
-## AvaTax Integration (US)
+AvaTax is Avalara's automated sales tax service for US operations. Light's AvaTax integration automatically calculates applicable sales tax, manages nexus across jurisdictions, and supports filing and remittance to state tax authorities.
 
-AvaTax is Avalara's automated sales tax service for US operations. Light's AvaTax integration automatically calculates applicable sales tax, manages nexus across jurisdictions, and supports filing/remittance to state authorities.
+[Open in Light →](https://app.light.inc/settings/integrations)
 
-[Open in Light →](#)
-
-### Integration capabilities
+## Integration capabilities
 
 The AvaTax integration enables:
 
@@ -14,202 +12,133 @@ The AvaTax integration enables:
 - **Nexus management**: Track states where tax must be collected
 - **Tax return filing**: Generate and file state tax returns
 - **Tax payment**: Optional Avalara remittance services
-- **Multi-entity support**: Separate profiles per entity
+- **Multi-entity support**: Separate AvaTax profiles per entity
 - **Compliance documentation**: Audit-ready records
 
-## Commercial & onboarding flow
+## Setting up AvaTax integration
 
-### New AvaTax customers
+To connect AvaTax:
 
-If the customer is new to AvaTax:
-
-1. Light engages Avalara via **Vini da Silva (Senior Strategic Alliance Manager)**
-2. Customer introduction is made via email: **vini.dasilva@avalara.com**
-3. Avalara sales team conducts:
-   - Discovery sessions
-   - Product demo
-4. Avalara provides commercial proposal (software & services)
-5. If Light implements:
-   - Light shares implementation services proposal
-6. Customer signs agreements with Avalara (and Light if applicable)
-7. AvaTax provisioning begins
-
-### Existing AvaTax customers
-
-If the customer already uses AvaTax:
-
-### Step 1: Provide API credentials (Customer)
-
-1. Log in to Avalara tenant
-2. Navigate to **Settings → API Keys**
-3. Generate:
-   - **Client ID**
-   - **Client Secret**
-4. Share securely with Light (e.g. via 1Password)
-
-### Step 2: Light setup (Backend)
-
-Light will:
-
-- Store credentials securely (AWS Secrets Manager)
-- Enable system-to-system communication with AvaTax
-- Configure company entity mappings
-
-## Mapping Avalara to Light
-
-To calculate tax correctly, Light maps internal objects to Avalara:
-
-| Light Object | Avalara Mapping |
-|---|---|
-| Company Entity | Avalara Company Code |
-
-- These mappings are stored internally
-- Avalara "codes" are required for accurate filing
-
-**Note:**
-
-- Tax calculation can work with default (`DEFAULT`) codes
-- However, incorrect mappings may affect tax filing later
-
-## Customer requirements
-
-Customers must provide:
-
-- **Client ID & Client Secret**
-- **Company Entity Codes** (optional, defaults can be used)
-- **Preferred GL account for tax posting**
-
-## Verifying connection
-
-Light admin can verify integration:
-
-```
-GET /v1/avatax/ping?companyId={COMPANY_ID}
-```
-
-**Expected result:**
-
-- Successful response includes `avataxUsername`
-
-## Setting up AvaTax integration (UI)
-
-To connect AvaTax in Light:
-
-1. Navigate to **Settings > Integrations > AvaTax**
+1. Navigate to **Settings (gear icon) > Integrations > AvaTax**
 2. Click **Connect**
-3. Authorize via Avalara login
-4. Light confirms connection
+3. You're redirected to Avalara to authorize
+4. Sign in to your Avalara account (or create one)
+5. Review permissions Light is requesting
+6. Click **Authorize**
+7. Light confirms connection is active
 
-## Configuring company and entities
+Next, configure your company and entities.
 
-1. Navigate to **Company Settings**
+## Configuring company and entity information
+
+1. Navigate to **Settings (gear icon) > Integrations > AvaTax > Company Settings**
 2. Configure:
-   - Legal entity name
-   - Headquarters address
-   - Federal ID (EIN)
-   - Accounting method
-3. For multi-entity setups:
-   - Create profiles per entity
-   - Configure nexus per entity
+   - **Company name**: Legal entity name
+   - **Headquarters address**: For AvaTax configuration
+   - **Federal ID (EIN)**: For tax identification
+   - **Accounting method**: Cash or accrual
+3. For multi-entity companies, create an AvaTax company profile for each Light entity and configure nexus per entity
+
+Light uses the correct AvaTax profile when calculating tax for each entity's transactions.
 
 ## Configuring nexus
 
-1. Navigate to **Nexus settings**
-2. Define:
-   - State
-   - Effective date
-   - Tax responsibility
+Define which states require tax collection:
 
-AvaTax will automatically apply correct tax rules.
+1. Navigate to **Settings (gear icon) > Integrations > AvaTax > Nexus**
+2. For each state, specify:
+   - **State**: Which state you have nexus in
+   - **Effective date**: When nexus began
+   - **Tax responsibility**: Whether you are responsible for collecting tax
+3. As your business grows, add new states as nexus is established
+
+AvaTax automatically includes all configured states in tax calculations.
 
 ## Configuring tax calculation
 
-Set:
+1. Navigate to **Settings (gear icon) > Integrations > AvaTax > Tax Calculation**
+2. Configure:
+   - **Tax basis**: Which amount to calculate on
+   - **Discount handling**: How to treat line item discounts
+   - **Shipping**: Whether shipping is taxable
+   - **Rounding**: How to handle penny rounding
+3. Save configuration
 
-- Tax basis
-- Discount handling
-- Shipping taxability
-- Rounding rules
+## Transaction processing with AvaTax
 
-## Transaction flow
+When you create an AR invoice:
 
-When creating an invoice:
+1. Light sends transaction details to AvaTax (customer address, line items, and shipping)
+2. AvaTax determines the applicable jurisdiction, tax rate, and tax amount
+3. Light displays tax on the invoice
+4. You review and click **Post** to record in the GL
 
-1. Light sends transaction data to AvaTax
-2. AvaTax determines:
-   - Jurisdiction
-   - Tax rate
-   - Tax amount
-3. Tax is returned to Light
-4. Tax appears on invoice
-5. User posts to GL
+This happens automatically for every invoice.
 
-## Customer exemptions
+## Customer exemption certificates
 
-1. Upload exemption certificate in Light
-2. AvaTax marks customer as exempt
-3. Future invoices apply 0% tax
+1. Obtain the exemption certificate from your customer
+2. In Light, navigate to **Sales invoices → Customers → [Customer]**
+3. Upload the certificate file under **Tax Exemption**
+4. AvaTax marks the customer as exempt — future invoices apply 0% tax
 
-## Returns & refunds
+Light maintains a certificate archive for your audit trail.
 
-- Credit notes trigger tax reversals
-- AvaTax adjusts tax liability accordingly
+## Handling returns and refunds
 
-## Filing & remittance
+When you issue a credit note in Light, Light sends the reversal to AvaTax automatically. AvaTax records the tax reversal and reduces your tax liability by the returned amount.
 
-1. Navigate to **Reports**
-2. Select state & period
-3. Review tax summary
-4. File directly or export
+## Filing and remittance
 
-Optional: Use Avalara for automatic remittance
+1. Navigate to **Planning & Reports → Reports**
+2. Select the period and state
+3. Review the tax summary
+4. Click **File** to submit directly to the state authority, or export the form to file manually
 
-## Audit & reporting
+Avalara payment services can be used for automatic remittance.
 
-Available reports:
+## Reporting on tax
+
+Navigate to **Planning & Reports → Reports** to view:
 
 - Sales by state
 - Tax by state
-- Filed returns
-- Exemption certificates
+- Effective tax rate by state
+- Filed returns and exemption certificates
 
-Exportable for audit purposes
+All reports are exportable for audit purposes.
 
 ## Multi-state handling
 
-AvaTax supports:
+AvaTax handles complex multi-state scenarios:
 
-- Cross-state sales
-- Drop-shipping
-- Marketplace scenarios
-- State-specific sourcing rules
+**Distance selling**: Tax is calculated for the buyer's state when you have nexus there.
+
+**Drop-shipping**: AvaTax calculates based on dropshipper or your location depending on configuration.
+
+**Marketplace facilitator**: AvaTax tracks marketplace-collected tax to avoid double-taxation.
+
+**Sourcing rules**: AvaTax automatically applies state-specific origin or destination sourcing rules.
 
 ## E-invoicing integration
 
-AvaTax also supports:
-
-- Peppol-compliant invoices
-- E-invoice submission via Avalara
+AvaTax also supports Peppol-compliant e-invoicing through Avalara's e-invoicing service. See [E-invoicing and Peppol setup](11-20-e-invoicing.md) for details.
 
 ## Troubleshooting
 
-- **No tax calculated** → Check address, nexus, tax codes
-- **Incorrect tax** → Verify ship-to location
-- **Connection issues** → Re-authorize integration
-- **Exemption issues** → Validate certificate
-- **Filing errors** → Review transaction data
+**Tax not calculating**: Verify the customer address is complete, check nexus is configured for that state, and ensure tax codes are assigned to line items.
 
-## Summary
+**Wrong tax rate**: Verify the ship-to address, check nexus for that state, and confirm the item's tax code.
 
-- AvaTax handles **end-to-end US sales tax compliance**
-- Light manages **integration, mapping, and automation**
-- Customers provide **credentials and entity setup**
-- System ensures **accurate calculation, reporting, and filing**
+**Connection failed**: Re-authorize the AvaTax integration and verify your Avalara account status.
 
-## Related articles
+**Exemption not applying**: Verify the exemption certificate is current and uploaded, and that the customer is properly linked.
+
+**Filing errors**: Review the tax return detail, correct any address or item coding issues, and re-file.
 
 ## Related articles
 
 - [Tax compliance — AvaTax (US)](../09-revenue-compliance/9-8-avatax-us.md)
 - [Integrations overview](11-1-integrations-overview.md)
+- [E-invoicing and Peppol setup](11-20-e-invoicing.md)
 - [E-invoicing compliance (Peppol)](../09-revenue-compliance/9-6-e-invoicing-compliance.md)

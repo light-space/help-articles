@@ -255,5 +255,8 @@ Light supports webhooks for:
 - [Microsoft Teams integration](11-5-microsoft-teams.md)
 - [Stripe integration](11-6-stripe.md)
 - [HRM integration (Finch)](11-8-hrm-finch.md)
+- [AvaTax integration (US)](11-10-avatax-us.md)
+- [Sphere integration (US)](11-19-sphere-us.md)
+- [E-invoicing and Peppol setup](11-20-e-invoicing.md)
 - [Abacum integration](11-18-abacum.md)
 - [API access and custom integrations](11-12-api-access.md)
