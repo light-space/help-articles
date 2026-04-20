@@ -73,6 +73,8 @@ Your Peppol Identifier is unique and identifies your organization on the network
 
 ## Related articles
 
-- [Managing Entities](/articles/02-organization-setup/2-1-managing-entities)
-- [Tax and VAT Configuration](/articles/02-organization-setup/2-5-tax-vat-configuration)
-- [Currency Settings](/articles/02-organization-setup/2-6-currency-settings)
+- [Managing Entities](2-1-managing-entities.md)
+- [Tax and VAT configuration](2-5-tax-vat-configuration.md)
+- [Currency settings](2-6-currency-settings.md)
+- [E-invoicing compliance (Peppol)](../09-revenue-compliance/9-6-e-invoicing-compliance.md)
+- [E-invoicing and Peppol setup](../11-integrations/11-20-e-invoicing.md)
