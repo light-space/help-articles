@@ -1,232 +1,103 @@
 # Deferred Entries (Accruals and Deferrals)
 
-Deferred entries allow you to spread costs over multiple periods using amortization schedules. This article explains how to set up and use accruals and deferrals.
+Deferred entries allow you to spread costs or revenue over multiple periods using release templates. This article explains how to set up templates and apply them to documents.
 
-[Open in Light →](https://app.light.inc/journal-entries)
-
+[Open in Light →](https://app.light.inc/release-templates)
 
 ## Understanding Deferrals
 
-Deferrals (also called accruals) spread a transaction across multiple accounting periods:
+Deferrals spread a transaction across multiple accounting periods:
 
-**Accrual Example** - You owe for services received:
-- You received professional services this month
-- Invoice arrives next month
-- Create an accrual entry this month to match revenue to expense
-- Reverse or clear the accrual when invoice arrives next month
-
-**Deferral Example** - You prepay for future services:
+**Deferral Example** — You prepay for future services:
 - You prepay annual insurance ($12,000)
 - Expense should spread over 12 months ($1,000/month)
-- Create deferral entries to post $1,000 each month
+- Apply a release template to the bill to post $1,000 each month
+
+**Accrual Example** — You owe for services received but not yet invoiced:
+- You received professional services this month
+- Create an accrual entry this month to match expense to the period
 
 Both defer the GL impact across periods for proper matching.
 
-## Amortization Schedules
+## Release Templates
 
-Deferrals use **amortization schedules** (also called amortization templates):
+Release templates define the rules for how an amount is spread across periods. They are reusable and can be applied to AP bills, AR invoices, journal entries, contracts, or fixed assets.
 
-**Components:**
-- **Name** - e.g., "12-Month Lease"
-- **Period type** - Monthly, Quarterly, Annually
-- **Number of periods** - How many periods to spread over
-- **GL accounts** - Which accounts to debit/credit each period
+### Template List
 
-When an invoice uses an amortization schedule, Light generates entries for each period automatically.
+Navigate to [**Accounting → Release templates**](https://app.light.inc/release-templates) to see all templates. The table shows:
 
-## Creating an Amortization Schedule
+| Column | Description |
+|---|---|
+| **Name** | Template name |
+| **Method** | Straight line with partial adjustment or Reducing balance |
+| **Type** | AP, AR, Journal entry, Revenue contract, or Fixed asset |
+| **Contra account** | The balance sheet account used for the deferral |
+| **Status** | Active or Archived |
 
-To create a reusable amortization template:
+### Creating a Release Template
 
-1. Go to **General Ledger > Amortization Schedules**
-2. Click **Create Schedule**
-3. Enter details:
-   - **Name** - Descriptive name
-   - **Company Entity** - Which entity uses this
-   - **Period Type** - Monthly, Quarterly, Annually
-   - **Number of Periods** - How many periods
-   - **GL Accounts**:
-     - **Expense Account** - Debit side
-     - **Deferral/Accrual Account** - Credit side (balance sheet account)
-4. Click **Save**
+1. Go to [**Accounting → Release templates**](https://app.light.inc/release-templates)
+2. Click **+ New**
+3. Fill in the fields:
+   - **Name**: Descriptive name (e.g., "12-Month Insurance")
+   - **Type**: Select what the template applies to:
+     - **Accounts payables** — for AP bills
+     - **Accounts receivables** — for AR invoices
+     - **Journal entry** — for manual journal entries
+     - **Revenue contract** — for contracts
+     - **Fixed asset** — for fixed asset depreciation
+   - **Method**: Select the amortization method:
+     - **Straight line with partial adjustment** — equal amounts each period (available for all types)
+     - **Reducing balance** — decreasing amounts over time (available for AP, JE, and Fixed asset)
+   - **Contra account**: The balance sheet account (e.g., Prepaid Expenses, Accrued Expenses). For Fixed asset type this is the Depreciations Account.
+   - **Contract Asset Account** *(Revenue contract only)*: The contract asset account
+   - **Additions Account** *(Fixed asset only)*: The additions account (required)
+   - **Initial Amount Percentage** *(Straight line only)*: Percentage for the first period
+   - **Residual Amount Percentage** *(Straight line, non-Fixed asset only)*: Percentage kept as residual
+   - **Reducing Rate Percentage** *(Reducing balance only)*: The rate applied each period
+   - **Default Duration (months)**: Pre-fills the duration when applying the template
+   - **Context**: Optional notes
+   - **Accumulate past amounts**: Whether to accumulate past period amounts
+4. Click **Create**
 
-The schedule can now be used when creating invoices or manual entries.
+### Editing a Template
 
-## Using Deferrals in Invoices
+Open a template and click **Edit** to modify its fields. Click **Save** when done.
 
-When creating an AP or AR invoice, enable deferrals:
+### Archiving a Template
 
-1. In the invoice, click **Amortize**
-2. Select the **Amortization Schedule**
-3. Specify the **Start Date** and **End Date**
-4. System calculates monthly amounts:
-   - First period: From invoice date to end of month
-   - Full periods: Same amount each month
-   - Last period: From start of month to end date
-5. Review the schedule and click **Confirm**
+To deactivate a template, open it, click the three-dot menu (⋯), and select **Archive**. Archived templates can no longer be applied to new documents.
 
-The invoice amount is spread across the selected periods.
+## Applying a Template to a Document
 
-## Deferred Entry Generation
+Release templates can be applied per line item on AP bills, AR invoices, and journal entries.
 
-When posting an amortized invoice:
+### On an AP Bill Line
 
-1. Initial entry posts to the deferral account (balance sheet)
-2. Monthly journal entries automatically generate
-3. Each month, system posts:
-   - Debit: Expense account
-   - Credit: Deferral account
-4. Over the period, deferral account balance reaches zero
-5. Total expense matches the original invoice
+1. Open or create an AP bill
+2. On a line item, click the amortization field (shown as **Template**)
+3. A popover opens with:
+   - **Start date** and **End date** date pickers
+   - **Template** selector — pick the release template to apply
+4. Click **Add amortization** to apply
 
-Entries are created automatically on schedule—you don't manually create each month's entry.
+To update an existing amortization on a line, click the field again and click **Update amortization**.
+To remove it, click **Remove**.
 
-## Accrual Examples
+### On an AR Invoice Line
 
-**Monthly Rent Accrual:**
-- Schedule: 1 month, repeating monthly
-- Creates entry each month: Debit Rent Expense, Credit Accrued Rent
-- When paid, clear the accrual entry
+1. Open or create an AR invoice
+2. On a line item, click the accrual field (shown as **Accrual template**)
+3. Set the **Start date**, **End date**, and **Accrual template**
+4. Click **Add accrual**
 
-**Annual Software License:**
-- Schedule: 12 months
-- Creates 12 monthly entries: Debit Software Expense, Credit Prepaid Software
-- After 12 months, balance of prepaid account is zero
+## Viewing Releases
 
-**Bonus Accrual:**
-- Schedule: 12 months
-- Accrues bonus evenly over the year
-- Posts total to Accrued Bonus liability by year-end
-
-## Managing Deferred Entries
-
-To view and manage deferred entries:
-
-1. Go to **General Ledger > Deferred Entries**
-2. See all active deferral schedules with:
-   - Parent document (the invoice)
-   - Schedule name and period
-   - Remaining balance
-   - Generated entries to date
-   - Remaining periods
-3. Click to edit or view details
-
-From here you can:
-- View generated entries for a schedule
-- Adjust remaining balance if needed
-- Pause or complete a schedule early
-
-## Partial Deferrals
-
-If an invoice is only partially deferred:
-
-1. Invoice total: $5,000
-2. Deferred portion: $3,000 (using amortization)
-3. Immediate portion: $2,000 (not deferred)
-4. Posts as:
-   - Immediate: Debit Expense 2,000, Credit AP 2,000
-   - Deferred: Debit Deferral Account 3,000, Credit AP 3,000
-
-The AP account shows the full $5,000 owed, split across immediate and deferred.
-
-## Period-Specific Deferrals
-
-Sometimes deferrals align to fiscal periods rather than calendar dates:
-
-**Example:** Prepaid insurance for fiscal year (Jan 1 - Dec 31)
-- Schedule: Quarterly (4 periods)
-- Start: Jan 1, End: Dec 31
-- System generates 4 entries for each quarter
-
-Specify your fiscal period dates when setting up the schedule.
-
-## Early Completion
-
-If a deferral finishes early:
-
-1. Go to **Deferred Entries > [Entry]**
-2. Click **Complete Early**
-3. Remaining periods are skipped
-4. Final entry posts any remaining balance
-5. Schedule marked as complete
-
-Use this if you no longer need to defer (e.g., contract cancelled).
-
-## Adjustments to Deferrals
-
-If you need to adjust a deferred amount:
-
-1. Go to **Deferred Entries > [Entry]**
-2. Click **Adjust**
-3. Enter new amount or new schedule
-4. System recalculates remaining entries
-5. Future entries adjust to match new total
-
-Adjustments maintain the deferral logic—you just change the total or timing.
-
-## Clearing Deferred Entries
-
-When the underlying transaction occurs, clear the deferral:
-
-1. Original deferral entry posts to balance sheet
-2. When paid/invoiced, a reversing entry clears it
-3. Manual match or automatic clearing links them
-4. Both show as cleared/matched
-
-Example: Accrued rent entry cleared when rent payment posts.
-
-## Monitoring Deferrals
-
-Track deferred balances:
-
-1. Go to **Reports > Balance Sheet**
-2. View deferral accounts (Prepaid Expenses, Accrued Expenses)
-3. See current balance of all deferrals
-4. Compare to prior period to track progress
-
-Deferral accounts should decline over time as they're amortized.
-
-## Multi-Currency Deferrals
-
-For foreign currency invoices:
-
-1. Invoice posted in EUR with amount 5,000
-2. Amortization Schedule specifies monthly periods
-3. Light converts using posting date rate
-4. Monthly entries use period-specific rates
-5. FX adjustments calculated for each period
-
-This ensures proper matching in local currency.
-
-## Common Deferral Scenarios
-
-**Rent (Monthly Deferral):**
-- 1 month schedule, repeating
-- Accrues or defers rent expense each month
-
-**Insurance (Annual Deferral):**
-- 12 month schedule
-- Prepaid insurance amortized monthly
-
-**Maintenance (Quarterly Deferral):**
-- 4 quarter schedule
-- Quarterly maintenance contract spread evenly
-
-**Salaries (Weekly Deferral):**
-- 52 week schedule (or 26 bi-weekly)
-- Salaries accrued as they're earned
-
-## Best Practices
-
-- **Use schedules consistently** - Save reusable schedules to ensure consistency
-- **Clear when paid** - Match deferral entries to actual payments
-- **Monitor balances** - Watch deferred account balances to catch errors
-- **Document purpose** - Use clear names and descriptions
-- **Review monthly** - Ensure deferrals are posting correctly
-- **Adjust early if needed** - Don't let incorrect deferrals run to completion
+Once a template is applied and the document is posted, Light generates the release entries. Navigate to [**Accounting → Releases**](https://app.light.inc/releases) to view all generated release entries.
 
 ## Related Articles
 
-- [Creating manual journal entries](/mnt/help-articles/articles/05-general-ledger/5-4-manual-journal-entries.md)
-- [Accounting document types and lifecycle](/mnt/help-articles/articles/05-general-ledger/5-2-document-types-lifecycle.md)
-- [Closing periods and month-end close](/mnt/help-articles/articles/05-general-ledger/5-8-closing-periods.md)
+- [Creating manual journal entries](/articles/05-general-ledger/5-4-manual-journal-entries.md)
+- [Accounting document types and lifecycle](/articles/05-general-ledger/5-2-document-types-lifecycle.md)
+- [Closing periods and month-end close](/articles/05-general-ledger/5-8-closing-periods.md)
