@@ -60,23 +60,44 @@ When referencing how to navigate to a page in the Light app, always use the corr
 - Vendors → /vendors
 
 **Accounting:**
+- Journal entries → /journal-entries
+- Bank reconciliation → /bank-reconciliation
 - Releases → /releases
 - Transactions → /ledger-transactions
-- Journal entries → /journal-entries
 - Accounting documents → /accounting-documents
-- Bank reconciliation → /bank-reconciliation
-- Chart of accounts → /accounting/ledger-accounts
 - Accounting periods → /accounting/accounting-periods
-- Tax codes → /accounting/ledger-tax-codes
 
 **Planning & Reports:**
 - Reports → /ledger-reports
 - Budget → /budget
 
 **Business partners:**
+- Customers → /customers
+- Vendors → /vendors
 - Users → /users
 
-**Settings:** Always reference as "Settings (gear icon)"
+**Settings (gear icon) — General:**
+- API keys → /settings/api-keys
+- Integrations → /settings/integrations
+- Organization settings → /settings/organization-settings
+- Profile → /settings/profile
+- Workflows → /settings/workflows
+- Jobs → /settings/jobs
+
+**Settings (gear icon) — Records:**
+- Bank accounts → /settings/bank-accounts
+- Chart of accounts → /accounting/ledger-accounts
+- Custom properties → /settings/custom-properties
+- Entities → /settings/entities
+- Reimbursement category → /settings/reimbursement-categories
+- Releases templates → /release-templates
+- Tax codes → /accounting/ledger-tax-codes
+- Tax tables → /settings/tax-tables
+- Templates → /settings/templates
+
+**Settings (gear icon) — Guardrails:**
+- Payables → /settings/guardrails/invoice
+- Policies → /settings/guardrails/policies
 
 ## Writing Style
 

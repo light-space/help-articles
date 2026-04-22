@@ -4,6 +4,8 @@ Deferred entries allow you to spread costs or revenue over multiple periods usin
 
 [Open in Light →](https://app.light.inc/release-templates)
 
+Navigate to this page via **Settings (gear icon) → Releases templates**.
+
 ## Understanding Deferrals
 
 Deferrals spread a transaction across multiple accounting periods:
@@ -25,7 +27,7 @@ Release templates define the rules for how an amount is spread across periods. T
 
 ### Template List
 
-Navigate to [**Accounting → Release templates**](https://app.light.inc/release-templates) to see all templates. The table shows:
+Navigate to [**Settings (gear icon) → Releases templates**](https://app.light.inc/release-templates) to see all templates. The table shows:
 
 | Column | Description |
 |---|---|
@@ -94,7 +96,7 @@ To remove it, click **Remove**.
 
 ## Viewing Releases
 
-Once a template is applied and the document is posted, Light generates the release entries. Navigate to [**Accounting → Releases**](https://app.light.inc/releases) to view all generated release entries.
+Once a template is applied and the document is posted, Light generates the release entries. Navigate to [**Accounting → Releases**](https://app.light.inc/releases) to view all generated release entries. (This item may be hidden depending on your plan's feature flags.)
 
 ## Related Articles
 
