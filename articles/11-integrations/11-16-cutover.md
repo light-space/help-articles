@@ -85,7 +85,8 @@ Before cutover, validate:
 - AP total matches GL
 
 **Fixed Asset Validation**:
-- Fixed assets entered via journal entries, bills, or sales invoices with release templates
+- Fixed assets entered via journal entries, bills, or sales invoices with a **Fixed Asset** release template applied on the line
+- Fixed asset register reviewed at [**Accounting → Releases**](https://app.light.inc/releases), filtered by **Fixed asset** type
 - Book values match legacy system
 
 Use Light's reconciliation reports to validate.

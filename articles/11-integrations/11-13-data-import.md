@@ -17,7 +17,7 @@ Light supports importing:
 
 This enables comprehensive data setup.
 
-> Good to know: Light does not support importing a fixed asset register directly. To enter fixed assets, create a journal entry, bill, or sales invoice with a fixed asset release template applied on one or more lines. See [Configuring releases: depreciation, prepayments, deferred revenue](../09-revenue-compliance/9-2-configuring-releases.md) for details.
+> Good to know: Light does not support importing a fixed asset register directly. To enter fixed assets, create a journal entry, bill, or sales invoice with a **Fixed Asset** release template applied on one or more lines. The fixed asset register itself lives at [**Accounting → Releases**](https://app.light.inc/releases) — filter the page by **Fixed asset** type to view only fixed assets. See [Configuring releases: depreciation, prepayments, deferred revenue](../09-revenue-compliance/9-2-configuring-releases.md) for details.
 
 ## Preparing import files
 

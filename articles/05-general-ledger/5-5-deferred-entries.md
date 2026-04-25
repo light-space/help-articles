@@ -98,6 +98,8 @@ To remove it, click **Remove**.
 
 Once a template is applied and the document is posted, Light generates the release entries. Navigate to [**Accounting → Releases**](https://app.light.inc/releases) to view all generated release entries. (This item may be hidden depending on your plan's feature flags.)
 
+This page is also Light's **fixed asset register** — filter by **Fixed asset** type to see only fixed assets along with their cost, accumulated depreciation, and remaining book value. Fixed assets themselves are entered by applying a **Fixed Asset** release template to a journal entry, bill, or sales invoice line.
+
 ## Related Articles
 
 - [Creating manual journal entries](/articles/05-general-ledger/5-4-manual-journal-entries.md)

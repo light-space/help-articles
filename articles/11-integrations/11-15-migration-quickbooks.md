@@ -34,7 +34,7 @@ Light can import from QuickBooks:
 
 What typically doesn't transfer:
 
-- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a fixed asset release template on the lines. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
+- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a **Fixed Asset** release template on the lines. The fixed asset register lives at [**Accounting → Releases**](https://app.light.inc/releases) — filter by **Fixed asset** type to view only fixed assets. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions > 1-2 years (migrated via GL opening balances)
 - Closed invoices/bills (migrated to GL totals)
 - QuickBooks reports (recreate in Light)

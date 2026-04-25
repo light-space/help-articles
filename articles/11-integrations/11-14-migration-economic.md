@@ -31,7 +31,7 @@ Light can import from E-Conomic:
 
 What typically doesn't transfer:
 
-- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a fixed asset release template on the lines. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
+- **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a **Fixed Asset** release template on the lines. The fixed asset register lives at [**Accounting → Releases**](https://app.light.inc/releases) — filter by **Fixed asset** type to view only fixed assets. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions >1 year old (migrated via opening balances instead)
 - Closed invoices/bills (migrated via GL balances)
 - Internal notes (not easily portable)
@@ -185,7 +185,7 @@ After cutover, reconcile accounts:
 1. **Bank reconciliation**: Reconcile cash accounts to bank statements
 2. **AR reconciliation**: Reconcile AR subsidiary ledger to GL
 3. **AP reconciliation**: Reconcile AP subsidiary ledger to GL
-4. **Fixed asset verification**: Verify fixed assets were entered correctly via journal entries, bills, or sales invoices with release templates applied
+4. **Fixed asset verification**: Verify fixed assets were entered correctly via journal entries, bills, or sales invoices with **Fixed Asset** release templates applied. Review the register at [**Accounting → Releases**](https://app.light.inc/releases), filtered by **Fixed asset** type
 5. **Customer contact verification**: Contact customers to verify AR balances
 
 This ensures migration accuracy.
