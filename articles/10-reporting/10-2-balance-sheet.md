@@ -136,15 +136,14 @@ Select your preferred format in report settings.
 
 ## Fixed asset detail
 
-The balance sheet's fixed asset section summarizes accumulated depreciation. View detailed fixed asset schedules:
+The balance sheet's fixed asset section summarizes accumulated depreciation. To see the **fixed asset register** — the per-asset detail behind those balances:
 
-1. Navigate to **Planning & Reports → Reports**
-2. Shows cost, accumulated depreciation, and book value
-3. Identifies assets by category (buildings, equipment, vehicles)
-4. Lists depreciation method and remaining useful life
-5. Identifies fully depreciated assets
+1. Navigate to [**Accounting → Releases**](https://app.light.inc/releases)
+2. Filter by **Fixed asset** type to view only fixed assets
+3. Each row shows cost, accumulated depreciation, and remaining book value
+4. Open a row to see the depreciation schedule, method, and remaining useful life
 
-This supports asset management and planning for replacements.
+Fixed assets are created by applying a **Fixed Asset** release template to a journal entry, bill, or sales invoice line — see [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md). This supports asset management and planning for replacements.
 
 ## Deferred tax balances
 

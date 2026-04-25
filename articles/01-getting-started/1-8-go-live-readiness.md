@@ -135,7 +135,7 @@ After all imports in Steps 1 and 2 are complete, verify that the **Migration Sus
 
 ### Step 3 — Upload fixed assets and ongoing releases
 
-Upload depreciation schedules and deferred revenue using the provided templates. Confirm that amortization logic matches your operational process.
+Light does not import a fixed asset register directly. Enter each fixed asset by creating a journal entry, bill, or sales invoice with a **Fixed Asset** release template applied on the line — Light then maintains the resulting register at [**Accounting → Releases**](https://app.light.inc/releases) (filter by **Fixed asset** type). Upload deferred revenue using the same release framework. Confirm that amortization logic matches your operational process.
 
 ### Step 4 — Validate foreign currency accounts and FX revaluation
 

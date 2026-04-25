@@ -51,7 +51,9 @@ Prepayments are amounts paid for future goods or services not yet delivered. Cre
 
 ## Setting up depreciation releases
 
-Fixed assets lose value over time through use and obsolescence. Depreciation templates allocate this loss systematically:
+Fixed assets lose value over time through use and obsolescence. In Light, fixed assets are entered by applying a **Fixed Asset** release template to a journal entry, bill, or sales invoice line — there is no separate fixed asset import. The resulting fixed asset register lives at [**Accounting → Releases**](https://app.light.inc/releases): filter the page by **Fixed asset** type to view only fixed assets.
+
+Depreciation templates allocate the asset cost systematically:
 
 1. Navigate to **Accounting > Releases** (in Platform section)
 2. Click **Create New Template**
@@ -122,7 +124,7 @@ Navigate to **Spend management → Bills** and click **+ Create bill**. On the b
 
 ## Monitoring and adjusting releases
 
-View active releases in the **Accounting > Releases** dashboard (in Platform section). This shows all pending and completed releases, their progress, and book values. You can:
+View active releases in the [**Accounting → Releases**](https://app.light.inc/releases) dashboard (in Platform section). This is also the **fixed asset register** — filter the page by **Fixed asset** type to see only fixed assets and their depreciation schedules. The dashboard shows all pending and completed releases, their progress, and book values. You can:
 
 - View the release schedule and book value chart
 - Adjust the end date or amount (adjustments create new release entries)
