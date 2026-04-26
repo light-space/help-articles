@@ -1,4 +1,4 @@
-# Fixed Assets
+# Fixed asset register
 
 Light treats fixed assets as a specialized form of accounting release. There is no separate "fixed asset" module — assets, their cost, additions, depreciation schedule, and remaining book value are all managed through the **Releases** framework using a **Fixed Asset** release template.
 

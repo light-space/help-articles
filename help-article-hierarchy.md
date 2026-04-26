@@ -183,7 +183,7 @@
 - 14.5 [Contacting Light support](https://github.com/light-space/help-articles/blob/main/articles/14-troubleshooting/14-5-contacting-support.md)
 
 ## 15. Fixed Assets
-- 15.1 [Fixed assets](https://github.com/light-space/help-articles/blob/main/articles/15-fixed-assets/15-1-fixed-assets.md)
+- 15.1 [Fixed asset register](https://github.com/light-space/help-articles/blob/main/articles/15-fixed-assets/15-1-fixed-assets.md)
 
 ---
 

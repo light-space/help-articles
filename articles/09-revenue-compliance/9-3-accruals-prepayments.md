@@ -98,6 +98,6 @@ For international operations, all release-based mechanisms (prepayments, deferre
 
 - [Revenue recognition rules overview](9-1-revenue-recognition-overview.md)
 - [Configuring releases: depreciation, prepayments, deferred revenue](9-2-configuring-releases.md)
-- [Fixed assets](../15-fixed-assets/15-1-fixed-assets.md)
+- [Fixed asset register](../15-fixed-assets/15-1-fixed-assets.md)
 - [Multi-currency revenue recognition](9-4-multi-currency-revenue.md)
 - [Trial balance](../10-reporting/10-5-trial-balance.md)
