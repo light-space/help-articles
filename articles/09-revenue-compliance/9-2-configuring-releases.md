@@ -145,5 +145,5 @@ For multinational organizations, release templates are defined at the company le
 
 - [Revenue recognition rules overview](9-1-revenue-recognition-overview.md)
 - [Accruals, prepayments, deferred revenue, and depreciation](9-3-accruals-prepayments.md)
-- [Fixed assets](9-10-fixed-assets.md)
+- [Fixed assets](../16-fixed-assets/16-1-fixed-assets.md)
 - [Multi-currency revenue recognition](9-4-multi-currency-revenue.md)

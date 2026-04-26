@@ -12,7 +12,7 @@ A fixed asset in Light is a posted document line (a journal entry, AP bill, or A
 2. Light schedules depreciation entries from the **contra account** (the depreciation/accumulated depreciation account on the template) to the expense account on the line, according to the template's method and duration.
 3. The asset appears in the fixed asset register and continues posting depreciation each period until the schedule is complete.
 
-This means the same engine that handles prepayments and deferred revenue also handles fixed assets — you just pick a different template type. See [Configuring releases](9-2-configuring-releases.md) and [Deferred entries](../05-general-ledger/5-5-deferred-entries.md) for the underlying mechanics.
+This means the same engine that handles prepayments and deferred revenue also handles fixed assets — you just pick a different template type. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) and [Deferred entries](../05-general-ledger/5-5-deferred-entries.md) for the underlying mechanics.
 
 ## The fixed asset register
 
@@ -139,12 +139,12 @@ Fixed Asset release templates honor the multi-currency rules of the underlying r
 
 The fixed asset section of the balance sheet summarizes capitalized cost and accumulated depreciation across all fixed asset accounts. For per-asset detail behind those balances, use the fixed asset register at [**Accounting → Releases**](https://app.light.inc/releases) filtered by **Fixed asset** type.
 
-For audit support, the register is the supporting subledger that should reconcile to the fixed asset and accumulated depreciation accounts on the trial balance — see [Audit-ready record keeping](9-9-audit-ready-records.md) and [Trial balance](../10-reporting/10-5-trial-balance.md).
+For audit support, the register is the supporting subledger that should reconcile to the fixed asset and accumulated depreciation accounts on the trial balance — see [Audit-ready record keeping](../09-revenue-compliance/9-9-audit-ready-records.md) and [Trial balance](../10-reporting/10-5-trial-balance.md).
 
 ## Related articles
 
-- [Configuring releases: depreciation, prepayments, deferred revenue](9-2-configuring-releases.md)
-- [Accruals, prepayments, deferred revenue, and depreciation](9-3-accruals-prepayments.md)
+- [Configuring releases: depreciation, prepayments, deferred revenue](../09-revenue-compliance/9-2-configuring-releases.md)
+- [Accruals, prepayments, deferred revenue, and depreciation](../09-revenue-compliance/9-3-accruals-prepayments.md)
 - [Deferred entries (accruals and deferrals)](../05-general-ledger/5-5-deferred-entries.md)
 - [Balance sheet](../10-reporting/10-2-balance-sheet.md)
 - [Go-live readiness and minimum viable setup](../01-getting-started/1-8-go-live-readiness.md)

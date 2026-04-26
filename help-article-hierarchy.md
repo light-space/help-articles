@@ -123,7 +123,6 @@
 - 9.7 [Tax compliance — HMRC (UK) and VAT returns](https://github.com/light-space/help-articles/blob/main/articles/09-revenue-compliance/9-7-hmrc-vat.md)
 - 9.8 [Tax compliance — AvaTax (US)](https://github.com/light-space/help-articles/blob/main/articles/09-revenue-compliance/9-8-avatax-us.md)
 - 9.9 [Audit-ready record keeping](https://github.com/light-space/help-articles/blob/main/articles/09-revenue-compliance/9-9-audit-ready-records.md)
-- 9.10 [Fixed assets](https://github.com/light-space/help-articles/blob/main/articles/09-revenue-compliance/9-10-fixed-assets.md)
 
 ## 10. Financial Reporting & Consolidation
 - 10.1 [Reporting overview and available reports](https://github.com/light-space/help-articles/blob/main/articles/10-reporting/10-1-reporting-overview.md)
@@ -182,6 +181,9 @@
 - 14.3 [Integration sync issues](https://github.com/light-space/help-articles/blob/main/articles/14-troubleshooting/14-3-integration-sync-issues.md)
 - 14.4 [Data import errors](https://github.com/light-space/help-articles/blob/main/articles/14-troubleshooting/14-4-data-import-errors.md)
 - 14.5 [Contacting Light support](https://github.com/light-space/help-articles/blob/main/articles/14-troubleshooting/14-5-contacting-support.md)
+
+## 16. Fixed Assets
+- 16.1 [Fixed assets](https://github.com/light-space/help-articles/blob/main/articles/16-fixed-assets/16-1-fixed-assets.md)
 
 ---
 

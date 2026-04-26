@@ -21,6 +21,7 @@ articles/
 ├── 13-security/              (5 articles)
 ├── 14-troubleshooting/       (5 articles)
 ├── 15-employee/              (24 articles)
+├── 16-fixed-assets/          (1 article)
 help-article-hierarchy.md     (master table of contents)
 article-mapping.md            (mapping to existing help.light.inc articles)
 ```
