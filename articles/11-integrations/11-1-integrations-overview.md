@@ -40,7 +40,8 @@ Light provides native integrations with popular platforms:
 **Tax & Compliance**:
 - AvaTax (US): Automated sales tax calculation and reporting
 - Sphere (US): Automated sales tax calculation and reporting
-- Avalara E-Invoicing: Peppol compliance and transmission
+- Avalara E-Invoicing: Peppol compliance and transmission (included with subscription)
+- Invopop E-Invoicing: Peppol compliance and global e-invoicing (included with subscription)
 - HMRC (UK): VAT returns and filings
 
 **Messaging**:

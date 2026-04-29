@@ -15,6 +15,8 @@ Peppol is a set of standards and governance rules enabling secure, reliable digi
 
 Most EU countries now require Peppol-compliant e-invoicing for B2B transactions and all B2G (business-to-government) transactions. Light automates Peppol compliance, converting your invoices to compliant format and managing transmission.
 
+> Good to know: Light includes e-invoicing as part of your standard subscription through partnerships with Avalara and Invopop—no additional purchase required.
+
 ## Peppol invoice requirements
 
 A Peppol-compliant invoice must include:
@@ -74,7 +76,7 @@ The invoice status changes to **Submitted** in your system. Light maintains a re
 
 When you submit a Peppol invoice:
 
-1. Light passes the invoice to your configured Peppol service provider (e.g., Avalara's e-invoicing service)
+1. Light passes the invoice to your configured Peppol service provider (Avalara or Invopop, both included with your subscription)
 2. The service provider transmits to a Peppol access point in the buyer's country
 3. The buyer's system receives and processes the invoice
 4. Delivery confirmation is sent back to you

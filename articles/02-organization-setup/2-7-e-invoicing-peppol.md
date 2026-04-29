@@ -52,14 +52,25 @@ Tax codes in Light include an optional **EDIFACT** field that supports e-invoici
 3. Select the appropriate **EDIFACT (optional)** code from the dropdown
 4. This EDIFACT code is included in e-invoice documents to classify the tax treatment
 
+## E-invoicing providers included with Light
+
+Light includes e-invoicing capabilities as part of your standard subscription—no additional purchase required. Light partners with:
+
+- **Avalara E-Invoicing**: Peppol network access and compliance
+- **Invopop**: Preferred e-invoicing partner for expanded global coverage
+
+These integrations handle Peppol registration, document transmission, and compliance validation automatically.
+
 ## Registering on the Peppol network
 
-To send and receive invoices via Peppol:
+Light's built-in e-invoicing providers handle Peppol registration for you:
 
-1. Register with a Peppol **Service Provider** (authorized network operator)
-2. They issue you a **Peppol Identifier** (participant ID)
-3. Enter this identifier as the **E-invoice address** on your entity in Light
-4. Set the appropriate **EAS code** for your registration type
+1. Navigate to **Settings (gear icon) → Integrations**
+2. Enable your preferred e-invoicing provider (Avalara or Invopop)
+3. Complete the registration workflow
+4. Your **Peppol Identifier** (participant ID) is issued automatically
+5. Enter this identifier as the **E-invoice address** on your entity in Light
+6. Set the appropriate **EAS code** for your registration type
 
 Your Peppol Identifier is unique and identifies your organization on the network (typically formatted as country-code:number-scheme:identifier).
 
