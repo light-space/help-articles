@@ -143,6 +143,25 @@ To reverse a revenue schedule completely:
 
 Use this if a contract is terminated early.
 
+## Contract Renewal and Revenue Schedules
+
+When you renew a contract that has revenue recognition configured:
+
+1. Navigate to the contract
+2. Click **Renew Contract**
+3. Set the new end date and renewal terms
+4. Click **Confirm**
+
+Light automatically:
+
+- Extends the revenue recognition end date to match the new contract end date
+- Creates an additional revenue schedule covering the renewal period
+- Maintains a consistent revenue recognition rate across both the original and renewal periods
+
+The original revenue schedule remains unchanged. The new schedule for the renewal period appears as a separate entry in your Revenue Schedules dashboard, ensuring proper revenue recognition throughout the extended contract term.
+
+> Good to know: The renewal schedule spreads revenue evenly across the renewal period, maintaining the same recognition pattern as the original contract.
+
 ## Multi-Currency Schedules
 
 For contracts in non-functional currency:
