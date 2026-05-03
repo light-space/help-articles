@@ -81,6 +81,21 @@ Enforce approval before orders are committed:
 
 Configure approval hierarchies in **Settings** > **PO Approvals**.
 
+## Automatic Vendor Notification
+
+When a PO is approved and transitions to OPEN state (after ERP sync), Light automatically emails the vendor with the purchase order PDF attached.
+
+The email includes:
+- **Purchase order number**
+- **Issue date**
+- **Delivery date**
+- **Description**
+- **PDF attachment**: The complete purchase order document
+
+> **Note**: The vendor email is only sent if the vendor has an email address configured in their vendor profile. If no email address is on file, the PO is still opened but no email is sent.
+
+This ensures vendors receive orders promptly without manual follow-up.
+
 ## Matching to Receipts and Bills
 
 ### Receipt Matching
