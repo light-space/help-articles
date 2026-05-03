@@ -51,6 +51,24 @@ Follow these steps to submit a purchase request:
 
 Your request is now in the queue for your finance team to review.
 
+## Requesting a Vendor Card
+
+Instead of ordering from a vendor, you can request a vendor card for your purchase. This gives you a card tied to a specific vendor with preset spending limits.
+
+When you select **Vendor Card** as your outcome, you'll need to fill in:
+
+**Card account:**
+Choose which account the card should be linked to.
+
+**Spend limit:**
+- Select the limit interval (daily, weekly, monthly, etc.)
+- Set the spending amount for that interval
+
+**Authentication phone number:**
+This field shows the phone number that will receive authentication requests when you transact with the card. Light automatically fills in your phone number from your profile. You can update it if needed.
+
+Once approved, your finance team will issue the vendor card with your specified limits.
+
 ## What Vendors Need to Know
 
 When possible, include quotes from your vendor in the purchase request. This helps your finance team:
