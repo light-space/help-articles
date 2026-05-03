@@ -156,6 +156,35 @@ Items unmatched for more than 30 days need investigation:
 
 The longer an item remains unmatched, the more likely it's an error.
 
+## All Transactions View
+
+Use the **All transactions** tab to investigate balance discrepancies by reviewing every bank transaction in one unified view:
+
+1. Go to **Accounting → Bank reconciliation → [Account]**
+2. Click the **All transactions** tab
+3. View all bank transactions with their status:
+   - **Matched** - Successfully reconciled to GL entries
+   - **Unmatched** - Waiting for GL entry or manual action
+   - **Excluded** - Marked to skip reconciliation
+4. Use the filters to investigate:
+   - **Period** - Adjust the date range to focus on specific months or weeks
+   - **Search** - Find transactions by number, name, or description
+   - **Status** - Filter to show only Matched, Unmatched, or Excluded items
+5. Review the **Opening** and **Closing balance** amounts to verify your bank statement
+
+**Investigating a discrepancy:**
+- Start with the full month view to see opening and closing balances
+- If balances don't match your bank statement, narrow the date range to pinpoint when the discrepancy occurred
+- Filter by **Status: Unmatched** to see which transactions need attention
+- Search for specific transaction numbers or counterparty names
+- Export to CSV to analyze in a spreadsheet or share with your bank
+
+This view is especially useful when:
+- Your month-end balance doesn't match the bank statement
+- You need to trace when a specific transaction was matched or excluded
+- You're preparing reconciliation documentation for an audit
+- You want to verify that all transactions in a period have been addressed
+
 ## Month-End Reconciliation Adjustments
 
 If you can't fully reconcile by month-end:
