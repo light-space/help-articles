@@ -53,7 +53,36 @@ Workflows have versions that track changes over time:
 
 Only one workflow version can be published at a time. The Workflows list shows the current version number, published date, and who published it for each workflow.
 
-To publish, click the **Publish** button in the top-right corner of the workflow editor.
+### Publishing Changes
+
+To publish, click the **Publish** button in the top-right corner of the workflow editor. The workflow badge changes from **Draft** to **Active** and the version number increments.
+
+### Viewing Version History
+
+View previous workflow versions to see what a workflow looked like at a specific point in time:
+
+1. Open a workflow from **Settings → Workflows**
+2. Click the version dropdown next to the workflow name (e.g., **v2**)
+3. Select any previous version from the list — each entry shows the version number and date published
+
+Previous versions are read-only. You cannot edit nodes, add conditions, or modify approvals when viewing a historical version. All editing controls are disabled with a tooltip explaining that changes can only be made on the latest version.
+
+The workflow badge shows **Active** when viewing the current published version, or no badge when viewing an older historical version.
+
+### Discarding Draft Changes
+
+If you've made changes to a workflow but haven't published them yet, you can discard those changes and revert to the last published version:
+
+1. Open the workflow with unpublished changes (indicated by a **Draft** badge)
+2. Click **Discard draft** in the top-right corner
+3. Confirm the action in the dialog
+
+This is useful when:
+- You've been experimenting with changes and want to start over
+- You need to revert accidental modifications before publishing
+- You want to abandon a draft and return to the stable published version
+
+All unpublished changes are permanently lost when you discard a draft — added nodes are removed, deleted nodes are restored, and modified nodes revert to their last published state.
 
 ## Monitoring Workflows
 
@@ -72,6 +101,7 @@ Track workflow execution from the Workflows list:
 - **Monitor versions** - Keep track of published versions and who changed them
 - **Document conditions** - Add clear condition labels so future editors understand the routing logic
 - **Review regularly** - Quarterly check that workflows still match your processes
+- **Discard drafts carefully** - Make sure you want to lose all unpublished changes before discarding
 
 ## Related Articles
 
