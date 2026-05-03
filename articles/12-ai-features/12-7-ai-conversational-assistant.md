@@ -128,7 +128,7 @@ You can attach files directly to your LCI messages using the paperclip button in
    - "Match these transactions to the right accounts" *(bank statement or expense export)*
    - "Set up these employees as users" *(HR export)*
 
-**Limits:** Up to 10 files per message, maximum 10 MB per file.
+**Limits:** Up to 10 files per message, maximum 10 MB per file. Messages can contain up to 10,000 characters of text — you can paste longer prompts, detailed instructions, or large text blocks without truncation.
 
 Attachments are saved in the thread history so you can refer back to them in follow-up messages. The AI can also reference files uploaded earlier in the same conversation — you don't need to re-upload them.
 
@@ -251,7 +251,9 @@ Admins can configure custom AI instructions (called "assistant memories") that g
 - **Reimbursement parsing** — Custom rules for receipt and reimbursement processing
 - **Intake** — Custom rules for general document intake
 
-Configure these in **Settings (gear icon) → AI Assistant → Instructions**, or manage them directly through LCI using the assistant memory tools. For example, you can say "Show me the current bill parsing instructions" or "Update the reimbursement parsing instructions to always categorize Uber receipts as transportation."
+Each instruction type can only have one instruction per company. When you create or update an instruction, the system automatically replaces the existing instruction for that type if one already exists.
+
+Configure these in **Settings (gear icon) → AI Assistant → Instructions**, or manage them directly through LCI using the assistant memory tools. For example, you can say "Show me the current bill parsing instructions" or "Update the reimbursement parsing instructions to always categorize Uber receipts as transportation." When updating via LCI, the system automatically finds and replaces the existing instruction for that type — you don't need to specify an ID.
 
 ## Privacy and Security
 
