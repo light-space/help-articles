@@ -8,10 +8,18 @@ This article explains how to configure fiscal years, accounting periods, and per
 
 A **fiscal year** is your organization's accounting year, which may differ from the calendar year. An **accounting period** is a subdivision of the fiscal year (typically monthly) during which transactions are grouped for reporting and closing purposes.
 
+Light supports fiscal years that start and end in any month, including:
+- **Calendar years** (January–December)
+- **Non-calendar fiscal years** (e.g., April–March, October–September)
+- **Partial years** (e.g., January–July for a company's first year)
+
 ## Navigating accounting periods
 
 1. Go to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods) in the sidebar
-2. The page displays fiscal years as collapsible sections (e.g., 2025, 2026, 2027)
+2. The page displays fiscal years as collapsible sections, with labels that reflect your fiscal year structure:
+   - **Calendar years**: `2025`, `2026`, `2027`
+   - **Non-calendar fiscal years**: `FY2025/2026`, `FY2026/2027` (e.g., for April–March or October–September)
+   - **Partial years**: `2025 Jan-Jul`, `2026 Apr-Sep`
 3. Expand a fiscal year to see its accounting periods
 4. Each period shows columns for **Period** (month name), **Start date**, **End date**, and **Status**
 
@@ -19,10 +27,46 @@ The status column shows how many closing tasks have been completed (e.g., "2/4 t
 
 ## Generating accounting periods
 
+### Creating your first fiscal year
+
 1. Navigate to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods)
 2. Click **+ Generate next period**
-3. Light automatically generates the next set of monthly periods
-4. The periods are created with start and end dates based on your fiscal year configuration
+3. In the dialog that appears:
+   - Use the **month range picker** to select your fiscal year start and end months
+   - The picker displays two consecutive calendar years side by side
+   - Select the starting month in the left panel and ending month in the right panel
+   - Your fiscal year must span exactly 12 consecutive months
+4. Review the **label preview** below the picker:
+   - `2026` for calendar years (January–December)
+   - `FY2026/2027` for fiscal years that cross calendar year boundaries
+   - `2026 Jan-Jul` for partial years (less than 12 months or non-standard ranges)
+5. Select the **duration** (typically Monthly)
+6. Click **Generate period**
+
+### Generating subsequent fiscal years
+
+Once you have at least one fiscal year configured:
+
+1. Click **+ Generate next period**
+2. The month range picker will default to the next 12-month period following your last period
+3. Adjust the range if needed, or accept the default
+4. Click **Generate next period**
+
+Light automatically creates the next set of periods based on your fiscal year configuration.
+
+## Configuring non-calendar fiscal years
+
+To set up a fiscal year that doesn't align with the calendar year (e.g., April 2025 to March 2026):
+
+1. Open the period generation dialog
+2. In the month range picker:
+   - Select **April** in the left panel (2025)
+   - Select **March** in the right panel (2026)
+3. The label preview will show: **FY2025/2026**
+4. Select **Monthly** as the duration
+5. Click **Generate period**
+
+Light will create 12 monthly periods spanning your fiscal year, with the year labeled as `FY2025/2026` in the accounting periods list.
 
 ## Period closing tasks
 
@@ -70,6 +114,7 @@ Fiscal years are displayed in reverse chronological order on the Accounting peri
 - Plan period closing tasks in advance and assign responsibilities
 - Reopen periods only for legitimate corrections
 - Close periods in chronological order to maintain accounting integrity
+- When configuring your first fiscal year, ensure the start and end months align with your organization's accounting calendar
 
 ## Related articles
 
