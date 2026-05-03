@@ -73,6 +73,46 @@ Credit notes follow similar states to invoices:
 - **CLEARED**: Fully applied or used
 - **ARCHIVED**: Retained for historical records
 
+## Editing Posted Credit Notes
+
+Posted credit notes can be edited to update metadata fields without reversing the ledger entry:
+
+1. Open the posted credit note
+2. Click **Edit** in the header
+3. Update any of these fields:
+   - **Description** (header-level)
+   - **Document date**
+   - **Custom properties** (header-level)
+   - **Line descriptions**
+   - **Line ledger accounts**
+   - **Line tax codes**
+   - **Line custom properties**
+
+4. Click **Save** to apply changes, or **Cancel** to discard
+
+These edits update the document's metadata without affecting the ledger posting. The original credit note remains posted throughout the editing process.
+
+> Good to know: You cannot edit line quantities, amounts, or add/remove lines after posting. To make those changes, reset the credit note to draft first.
+
+## Resetting Credit Notes to Draft
+
+If you need to make more substantial changes to a posted credit note, you can reset it back to draft status:
+
+1. Open the posted credit note
+2. Click the **⋮** menu in the header
+3. Select **Reset to draft**
+4. Confirm the reset action
+
+Resetting a credit note:
+- Reverses the original ledger entries
+- Returns the credit note to **DRAFT** status
+- Allows full editing of all fields and line items
+- Clears any applications to invoices
+
+After editing, post the credit note again to create new ledger entries.
+
+> Important: Resetting is different from reversing. **Reset** returns the credit note to draft for editing. **Reverse** creates an offsetting credit note to negate the original.
+
 ## Applying Credits
 
 ### Applying to Specific Invoices
@@ -116,7 +156,47 @@ Light automatically handles tax on credit notes:
 - **Partial returns**: Tax is proportionally reversed
 - **Damaged goods**: Tax may or may not be reversed depending on your jurisdiction
 
+Customer credits automatically use the tax engine configured for your entity. If your entity is onboarded with Sphere or Avalara, those tax engines will be applied to credits automatically—matching the behavior of invoices.
+
 Contact your tax administrator if you need custom tax treatment.
+
+## E-Invoicing Credit Notes
+
+Credit notes support e-invoicing through integrations like Peppol. When e-invoicing is enabled for your entity, you can track submission status for each credit note.
+
+### E-Invoice Status
+
+The customer credits table displays an **E-invoicing** column showing:
+
+- **Not sent**: Credit note has not been submitted for e-invoicing
+- **Sent**: Credit note submitted and processing
+- **Delivered**: Credit note successfully delivered to the recipient
+- **Failed**: Submission failed (view details in the credit note)
+
+### Filtering by E-Invoice Status
+
+Filter the customer credits table by e-invoice status:
+
+1. Navigate to **Revenue & Invoicing → Customer credits**
+2. Click the filter icon
+3. Select **E-invoicing** from the filter menu
+4. Choose one or more statuses to filter by
+5. Apply the filter
+
+### Post Without Sending Email
+
+When posting a credit note, you can choose whether to send an email notification:
+
+1. Open a draft credit note
+2. Click **Post & send**
+3. Toggle **Email** on or off
+   - When **on**: Credit note posts and email is sent to recipients
+   - When **off**: Credit note posts without sending email
+
+4. If e-invoicing is enabled, you can also toggle **E-invoice** independently
+5. Click **Post & send** (or **Post** if both toggles are off)
+
+This is useful when you need to post a credit note to the ledger but plan to notify the customer through other channels.
 
 ## Multi-Currency Credits
 
