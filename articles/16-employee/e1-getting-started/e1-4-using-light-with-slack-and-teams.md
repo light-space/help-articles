@@ -39,7 +39,12 @@ Ask "What's the status of my reimbursements?" or "Do I have any pending expenses
 If you need to do something that requires the full Light interface, ask @Light and it will give you a direct link to the right page — whether that's your expenses, a specific bill, a card transaction, or your profile.
 
 **Get Notified About Important Updates**
-Light proactively sends you notifications — you don't always need to ask. You'll receive messages when your uploaded receipt has been processed (with the extracted details), when a reimbursement is approved and paid, or when a reimbursement is rejected (with the reason from your finance team). If you're a cardholder, Light also reminds you when a card transaction is missing a receipt.
+Light proactively sends you notifications — you don't always need to ask. You'll receive messages when:
+- Your uploaded receipt has been processed (with the extracted details)
+- A reimbursement is approved and paid, or rejected (with the reason from your finance team)
+- A card transaction is missing a receipt (if you're a cardholder)
+- A purchase order you created has been opened (with the PO number and vendor name)
+- A purchase request you submitted has been approved or rejected (with the PR number, vendor name, and any rejection reason)
 
 ## Getting Started in Slack
 
