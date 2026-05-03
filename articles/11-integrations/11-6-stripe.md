@@ -13,6 +13,8 @@ The Stripe integration enables:
 - **Subscription tracking**: Recurring subscription payments tracked for revenue recognition
 - **Currency handling**: Multi-currency payments automatically converted
 - **Reconciliation**: Bank deposits matched to Stripe settlements
+- **Discount sync**: Line-level discounts from Stripe appear on Light invoices
+- **Invoice number capture**: Stripe invoice numbers stored as custom properties
 
 This creates an automated payment-to-cash-receipt workflow.
 
@@ -103,6 +105,20 @@ For SaaS with recurring Stripe subscriptions:
    - Updates revenue recognition (if using deferred revenue)
 
 This automates subscription billing entirely.
+
+## Stripe invoice sync
+
+When Stripe invoices sync to Light, the following data is captured:
+
+**Invoice numbers**: Stripe invoice numbers (e.g., "INV-0042") are automatically stored as a custom property on the Light invoice. This helps with reconciliation and customer inquiries that reference Stripe invoice numbers.
+
+**Line-level discounts**: Discounts applied to individual invoice lines in Stripe now sync correctly to Light:
+- The discount amount appears separately on each invoice line
+- The line subtotal reflects the pre-discount amount
+- The final line amount is the subtotal minus the discount
+- This applies to both one-time invoices and subscription renewals
+
+For example, if a Stripe line has a $100 subtotal with a $15 discount, the Light invoice line will show $100 subtotal, $15 discount, and $85 net amount.
 
 ## Multi-currency payments
 
