@@ -39,6 +39,26 @@ A filter bar at the top lets you narrow transactions by date (e.g., "Transaction
 - **Difference** — Displays the running difference between your selected bank transaction(s) and selected ledger transaction(s). When nothing is selected, the difference shows 0.00. As you select items, the value updates dynamically.
 - **Match** — Confirms the selected bank and ledger transactions as a reconciled pair. This button is enabled when you have selections on both sides.
 
+## Setting an Opening Bank Balance
+
+In the bank transactions toolbar (left panel of the **Unmatched** tab), you'll find a **Set bank balance** button (banknote icon) next to the upload and export buttons. This button lets you manually enter an opening balance anchor for the bank account.
+
+When you click **Set bank balance**, a dialog appears where you can:
+
+1. Select a **Date** — The specific date for which you're entering the balance (typically the end of a business day or statement period).
+2. Enter the **Balance** — The end-of-day bank statement balance for that date, in the account's currency.
+3. Click **Save** to confirm.
+
+Light will store this balance as an anchor point and calculate balances forward from this date by adding subsequent transactions.
+
+**When to use this feature:**
+
+- **During initial setup** — When you're starting to reconcile in Light and need to establish a baseline balance from your bank statement.
+- **Correcting historical balances** — If you need to adjust the opening balance to match your bank records.
+- **When bank feeds aren't available** — For accounts without automated bank connections, or when historical transactions weren't imported automatically.
+
+> Good to know: The balance you enter represents the end-of-day balance on the selected date. Any transactions already imported for that same day are assumed to be reflected in the balance you provide.
+
 ## How to Manually Match Transactions
 
 To manually reconcile a bank transaction with a ledger entry:
