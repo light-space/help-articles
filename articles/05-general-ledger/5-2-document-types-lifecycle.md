@@ -188,6 +188,8 @@ To completely undo a posting:
 
 Reversals are used when you want to document that an error occurred (for audit trail).
 
+> **Important:** If a document has linked payments, credit notes, or other clearing entries, you must reverse those first before you can reverse the original document. The system will show an error if you attempt to reverse a document in PARTIALLY_CLEARED or CLEARED status—reverse the linked entries to return the document to POSTED status, then reverse the original.
+
 ## Clearing and Matching
 
 Documents can be "cleared" when matched to other documents:
