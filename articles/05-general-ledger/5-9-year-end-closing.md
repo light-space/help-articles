@@ -226,6 +226,34 @@ If your fiscal year doesn't match the calendar year:
 
 Light supports any fiscal year; just set period dates accordingly.
 
+### Fiscal Year Quarters
+
+If you use quarterly accounting periods, Light labels quarters based on your fiscal year start month, not the calendar year:
+
+- **Example:** If your fiscal year starts October 1:
+  - **Q1** = October - December
+  - **Q2** = January - March
+  - **Q3** = April - June
+  - **Q4** = July - September
+
+- **Example:** If your fiscal year starts April 1:
+  - **Q1** = April - June
+  - **Q2** = July - September
+  - **Q3** = October - December
+  - **Q4** = January - March
+
+The quarter labels adjust automatically based on your chosen fiscal year start date.
+
+### Generating Accounting Years
+
+When generating accounting years in Light:
+
+- **Maximum duration:** Each generated year can be up to 12 months long
+- **Contiguous years:** New accounting years must start the day after the previous year ends—no gaps allowed
+- **Short years:** You can create a short year (less than 12 months) by specifying an explicit end date
+
+If you need to create a new year, ensure it starts immediately after your most recent year to maintain continuity.
+
 ## Multi-Currency Closing
 
 For companies with foreign entities:
@@ -250,6 +278,23 @@ Typical year-end close timeline:
 **January 15+:** Deliver to auditors, external parties
 
 Adjust based on your company's complexity and deadlines.
+
+## Troubleshooting
+
+### Posting to Disabled Accounts
+
+If your year-end close involves posting to disabled profit and loss accounts, Light will prompt you for confirmation:
+
+**What happens:**
+- When you click **Post year-end closing**, Light checks if any P&L accounts with non-zero balances are disabled
+- If disabled accounts are found, a confirmation dialog appears: **"Confirm posting to disabled accounts"**
+- You'll see the message: **"This action will post to disabled accounts. Would you like to proceed?"**
+
+**Your options:**
+- **Confirm** - Proceed with posting the year-end closing entries to disabled accounts
+- **Cancel** - Stop the closing process and re-enable the necessary accounts first
+
+> **Tip:** If you prefer to avoid posting to disabled accounts, cancel the operation and update the account status to "Active" before posting year-end closing entries.
 
 ## Common Issues and Solutions
 
