@@ -19,6 +19,14 @@ Light integrates with Slack to deliver notifications to your team's Slack worksp
 
 > Good to know: The [Integrations](https://app.light.inc/settings/integrations) page also includes connections for **HubSpot** and **Banks**, but Slack is the primary channel for team notifications.
 
+## Types of notifications
+
+Light sends Slack notifications for important events, including:
+
+- **Invoice approvals**: Notifications for invoices awaiting approval
+- **Payment failures**: Alerts when payments fail to process
+- **Purchase orders**: When a purchase order is opened, the purchase order owner receives a notification with a PDF download link
+
 ## Profile settings
 
 Your profile contains personal settings that affect how you interact with Light, but notification-specific preferences are managed through integrations rather than the profile page:
