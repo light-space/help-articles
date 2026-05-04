@@ -6,7 +6,9 @@ This article explains how notifications work in Light and how to configure integ
 
 ## Understanding notifications in Light
 
-Light notifies you about important events related to your work, such as tasks requiring your attention, approval requests, and updates to documents you're involved with. Notifications appear within the Light application as part of your workflow.
+Light notifies you about important events related to your work, such as tasks requiring your attention, approval requests, and updates to documents you're involved with. For example, when a purchase order is opened, the owner receives a notification with a PDF download link.
+
+Notifications appear within the Light application as part of your workflow.
 
 ## Slack integration
 
