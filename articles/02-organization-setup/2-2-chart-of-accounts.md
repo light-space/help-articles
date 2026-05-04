@@ -62,6 +62,8 @@ To bulk-import accounts:
 
 > Tip: Start with a clean, validated file to avoid upload errors. Light provides validation feedback to help identify issues before final import.
 
+> **Note**: If your upload includes bank account details (routing numbers, sort codes, or other domestic bank codes), format those columns as **text** in Excel—not numbers—to preserve leading zeros. For example, US routing numbers must be exactly 9 digits; if Excel treats `021000089` as a number, it will drop the leading zero and the import will fail validation.
+
 ## Editing accounts
 
 1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
