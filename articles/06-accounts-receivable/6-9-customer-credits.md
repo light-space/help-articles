@@ -28,6 +28,8 @@ Credit notes are negative invoices that:
 6. Tax is automatically recalculated
 7. Click **Create**
 
+> Good to know: If the original invoice included discounts, the credit note automatically carries over those discounts on a line-by-line basis, ensuring the ledger reversal matches the original invoice exactly.
+
 ### Manual Credit Note Creation
 
 1. Navigate to **Revenue & Invoicing → Customer credits**
