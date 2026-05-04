@@ -16,6 +16,8 @@ Light includes the following built-in workflow types:
 
 **Bill Payment** - Controls how vendor invoices (bills) move through approval before payment. Triggered when bill data changes.
 
+**Credit Note Approval** - Controls how customer credit notes move through approval before being posted to the ledger. Triggered when a credit note is created or updated.
+
 **Invoice-to-Cash** - Controls AR invoice creation and collection processes. Triggered when an invoice is posted.
 
 **Vendor Card Request** - Routes corporate card requests for review and approval. Triggered when a card request is created.
