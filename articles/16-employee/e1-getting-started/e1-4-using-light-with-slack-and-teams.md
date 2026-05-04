@@ -39,7 +39,7 @@ Ask "What's the status of my reimbursements?" or "Do I have any pending expenses
 If you need to do something that requires the full Light interface, ask @Light and it will give you a direct link to the right page — whether that's your expenses, a specific bill, a card transaction, or your profile.
 
 **Get Notified About Important Updates**
-Light proactively sends you notifications — you don't always need to ask. You'll receive messages when your uploaded receipt has been processed (with the extracted details), when a reimbursement is approved and paid, or when a reimbursement is rejected (with the reason from your finance team). If you're a cardholder, Light also reminds you when a card transaction is missing a receipt.
+Light proactively sends you notifications — you don't always need to ask. You'll receive messages when your uploaded receipt has been processed (with the extracted details), when a reimbursement is approved and paid, or when a reimbursement is rejected (with the reason from your finance team). If you're a cardholder, Light also reminds you when a card transaction is missing a receipt. When you open a purchase order or when a purchase request you submitted is approved or rejected, Light notifies you with the PO or PR number and vendor name.
 
 ## Getting Started in Slack
 
@@ -120,6 +120,10 @@ Card transaction notifications work in Teams just like Slack. When Light asks fo
 ### Approving Bills in Teams
 
 Bill approval notifications arrive as adaptive cards from the Light bot with **Approve**, **Reject**, and **Add Comment** buttons. Click a button to take action directly, or reply in the thread to ask questions about the bill before deciding.
+
+### Purchase Order and Purchase Request Notifications in Teams
+
+When a purchase order you opened is ready or when a purchase request you submitted is approved or rejected, Light sends you a notification in Teams with the PO or PR number and vendor name. These notifications work the same way as in Slack.
 
 ### Creating Purchase Requests in Teams
 
