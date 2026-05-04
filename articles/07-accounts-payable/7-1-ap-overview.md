@@ -50,6 +50,7 @@ Light handles complex AP scenarios:
 - **Vendor Credit Notes**: Track credits and apply to future invoices
 - **AP Aging Reports**: Monitor vendor payables and aging
 - **Employee Reimbursements**: Process expense reimbursements through AP
+- **CSV Export**: Export bills and reimbursements to CSV with your current filters, sorting, and search applied
 
 ## Vendor Management
 
