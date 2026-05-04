@@ -1,174 +1,61 @@
 # Tracking Payments and Outstanding Balances
 
-Light provides comprehensive payment tracking and AR aging analysis to help you monitor customer payments and identify overdue amounts.
+Light tracks the status of every sales invoice and exposes payment information at the invoice level and at the customer level.
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
-## Payment Recording
+## Tracking Payment Status from the Invoices List
 
-### Recording Individual Payments
+The Sales invoices list shows the state of each invoice. Open invoices that have received payments transition automatically based on the matched amount:
 
-1. Open the invoice
-2. Navigate to **Payments**
-3. Click **Add Payment**
-4. Enter the **Payment Amount**
-5. Select the **Payment Date**
-6. Enter the **Payment Reference** (check number, bank transfer ID, card last 4 digits)
-7. Optionally, note the **Payment Method** (bank transfer, check, credit card, etc.)
-8. Click **Save**
+| State | UI Label | Meaning |
+|---|---|---|
+| `OPEN` | **Open** | Posted; no payments received yet |
+| `PAYMENT_PENDING` | **Payment pending** | A payment is initiated but not yet cleared |
+| `PARTIALLY_PAID` | **Partially paid** | One or more payments received; balance remaining |
+| `PAID` | **Paid** | Fully paid |
+| `ARCHIVED` | **Void** | Voided |
 
-The invoice state automatically updates:
-- **OPEN** to **PARTIALLY_CLEARED** if payment is less than invoice total
-- **OPEN** to **CLEARED** if payment equals invoice total
+Use the filters above the table to narrow the list to a specific state or customer.
 
-### Batch Payment Recording
+## Recording Payments via Bank Reconciliation
 
-Record multiple payments at once:
+Payments received from customers are recorded in Light through **bank reconciliation**: the bank transaction is matched to the open invoice. As matches post, the invoice's payment state updates automatically.
 
-1. Navigate to **Payments**
-2. Click **Record Batch Payments**
-3. Upload a CSV with payment data:
-   - Invoice Number or ID
-   - Payment Amount
-   - Payment Date
-   - Payment Reference
+See [Bank reconciliation](/articles/04-bank-reconciliation/) for the matching workflow.
 
-4. Review the parsed data
-5. Click **Import**
+## Customer Payment History
 
-Light validates each payment and shows any errors before importing.
+To see all payments received from a specific customer:
+1. Open the customer from [Customers](https://app.light.inc/customers)
+2. Go to the **Payment history** tab
 
-> Good to know: Overpayments are tracked as credits that can be applied to future invoices.
+Each payment row opens a payment details drawer showing:
+- **Payment type** — Bank payment or Customer credit
+- **Amount** and **currency**
+- **Date**
+- **Linked invoices**
 
-## Payment Application
+## Customer Aging Widget
 
-When a payment can satisfy multiple invoices:
+Each customer's overview shows an **aging widget** with these buckets:
 
-1. Navigate to **Unapplied Payments**
-2. Find the payment record
-3. Click **Apply Payment**
-4. Select which invoice(s) to apply it to
-5. Light suggests optimal allocation based on invoice age
-6. Click **Apply**
+| Bucket | Range |
+|---|---|
+| **Current** | Not yet due (current/future) |
+| **1–30 days** | 1 to 30 days past due |
+| **31–60 days** | 31 to 60 days past due |
+| **61–90 days** | 61 to 90 days past due |
+| **91+ days** | More than 90 days past due |
 
-The system updates invoice states accordingly and creates GL entries.
+Click a bucket to drill into the underlying invoices.
 
-## Tracking Invoice Status
+## Activity Log
 
-### Invoice States and Meanings
-
-- **DRAFT**: Created but not finalized; no GL entries
-- **POSTED**: Finalized and GL entries created; awaiting payment
-- **OPEN**: Posted and ready for payment
-- **PARTIALLY_CLEARED**: Received partial payment; additional payment due
-- **CLEARED**: Fully paid or written off
-- **ARCHIVED**: No longer active; retained for historical records
-
-### Viewing Payment History
-
-1. Open an invoice
-2. Navigate to **Payment History**
-3. View all payments received with:
-   - Payment amount
-   - Payment date
-   - Payment reference
-   - Applied-to invoices
-   - User who recorded the payment
-
-## Outstanding Balances
-
-### Invoice Balance Dashboard
-
-1. Navigate to **Dashboard** or **AR Summary**
-2. View key metrics:
-   - **Total Outstanding**: Total amount owed across all customers
-   - **Overdue**: Amount past due date
-   - **Current**: Amount due within 30 days
-   - **Future**: Invoices not yet due
-
-3. Drill down to see detailed invoice listing
-
-### Customer Balance Statement
-
-View what individual customers owe:
-
-1. Open a customer
-2. Navigate to **Outstanding Invoices**
-3. View all unpaid and partially-paid invoices
-4. See customer's **Total Outstanding Balance**
-5. Optionally, generate and email a **Statement** to the customer
-
-## AR Aging Analysis
-
-The AR aging report groups outstanding invoices by how overdue they are:
-
-1. Navigate to **Reports** > **AR Aging**
-2. Select the **reporting date**
-3. View aging buckets:
-   - **0-30 Days**: Not yet due or due within 30 days
-   - **31-60 Days**: 31-60 days overdue
-   - **61-90 Days**: 61-90 days overdue
-   - **90+ Days**: More than 90 days overdue
-
-4. See totals and percentages by bucket
-5. Click into buckets to see specific invoices
-6. Filter by:
-   - Customer name or type
-   - Currency
-   - Company entity
-   - Customer status (active/archived)
-
-7. Export the report as Excel or PDF
-
-> Tip: Use AR aging to identify collection priorities. Focus on the 90+ day bucket first.
-
-## Collection Management
-
-Track collection activities on overdue invoices:
-
-1. Open an overdue invoice
-2. Navigate to **Collection Notes**
-3. Click **Add Note**
-4. Record collection activities:
-   - Follow-up call made
-   - Email sent
-   - Payment promised
-   - Dispute noted
-   - Other actions
-
-5. Click **Save**
-
-These notes are visible to your entire AR team and help coordinate collection efforts.
-
-## Writing Off Invoices
-
-For invoices that cannot be collected:
-
-1. Open the invoice
-2. Verify it's in PARTIALLY_CLEARED or CLEARED state
-3. Click **Write Off**
-4. Enter the **Write-off Amount** (partial or full)
-5. Select the **Reason** (bad debt, dispute, etc.)
-6. Provide a **Description**
-7. Click **Confirm**
-
-Light creates an adjusting journal entry to write off the uncollected balance.
-
-## Customer Credit Management
-
-Credit balances from overpayments or credit notes:
-
-1. Navigate to **Customer Credits**
-2. View all customers with credit balances
-3. Open a customer's credit
-4. Click **Apply Credit to Invoice**
-5. Select an open invoice
-6. Light automatically applies the credit
-7. Click **Apply**
+Each invoice has an activity log on its detail page showing posting, sending, payment, and other events.
 
 ## Related Articles
 
-- [Invoice generation and customization](/articles/06-accounts-receivable/6-5-invoice-generation.md)
-- [Sending invoices and payment reminders](/articles/06-accounts-receivable/6-7-sending-invoices.md)
-- [Customer credit notes](/articles/06-accounts-receivable/6-9-customer-credits.md)
-- [AR aging reports](/articles/06-accounts-receivable/6-12-ar-aging.md)
+- [AR aging](/articles/06-accounts-receivable/6-12-ar-aging.md)
+- [Customer credits](/articles/06-accounts-receivable/6-9-customer-credits.md)
+- [Bank reconciliation overview](/articles/04-bank-reconciliation/)

@@ -1,144 +1,74 @@
-# Invoice Generation and Customization
+# Invoice Generation
 
-Light's invoice generation tools allow you to create, customize, and manage customer invoices efficiently. Invoices are the core accounting documents in the AR module.
+Sales invoices (AR documents) are created from the Sales invoices page. This article covers creating, editing, and posting them.
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
+Navigate via **Revenue & Invoicing → Sales invoices**.
+
 ## Creating an Invoice
 
-Invoices can be created from contracts or manually:
+1. Click **+ Create sales invoice** — a dialog opens
+2. Fill in the create dialog:
+   - **Customer** — required
+   - **Entity** — the company entity issuing the invoice
+   - **Currency** — auto-populated from the selected entity (can be changed)
+3. Click **Create** — the invoice opens in DRAFT state, ready for line items and details
 
-**From a Contract:**
-1. Navigate to **Revenue & Invoicing → Contracts**
-2. Select the contract
-3. Click **Generate Invoice**
-4. Review line items and amounts
-5. Click **Create**
+## Invoice Detail Form
 
-**Manual Invoice Creation:**
-1. Navigate to **Revenue & Invoicing → Sales invoices**
-2. Click **Create Invoice**
-3. Select the **Customer**
-4. Choose the **Company Entity**
-5. Set the **Posting Date** and **Document Date**
+Once created, the invoice opens in its detail view. The header section includes:
 
-## Invoice Components
+- **Entity**
+- **Customer**
+- **Currency**
+- **Payment type** — the method of payment expected (e.g., Stripe, ACH, bank transfer)
+- **Net terms** — payment terms in days
+- **Document template** — controls the invoice layout and email defaults
 
-Each invoice contains:
+The body is a line items table with **+ Add line** to add items.
 
-- **Header Information**: Invoice number, dates, customer details
-- **Line Items**: Products/services with quantities, unit prices, discounts, and taxes
-- **Totals**: Subtotal, tax, discounts, and total amount
-- **Payment Terms**: When payment is due
-- **Payment Instructions**: Bank account or payment portal details
-- **Additional Notes**: Custom text or terms
+### Line Item Fields
 
-## Configuring Line Items
+Each line item supports:
+- **Product** — pick from your products catalog (auto-fills price, tax, ledger account)
+- **Description**
+- **Quantity**
+- **Unit price**
+- **Discount**
+- **Tax code**
+- **Ledger account**
+- **Amortization** — applies a release template to spread revenue over a date range (see [Deferred entries](/articles/05-general-ledger/5-5-deferred-entries.md))
 
-When adding line items to an invoice:
+Tabs in the invoice detail include the line items, an activity log, and (if applicable) accruals/deferred revenue.
 
-1. Click **Add Line Item**
-2. Select a **Product** (or leave blank for non-catalog items)
-3. Enter **Description** (auto-populated from product if selected)
-4. Set **Quantity** and **Unit Price**
-5. Choose the **Line Discount** (optional):
-   - Amount: Fixed discount
-   - Percentage: Percentage reduction
-6. Select **Tax Category**
-7. Light automatically calculates **Tax Amount** and **Line Total**
+## Invoice States
 
-> Tip: You can override product defaults on each line item without affecting the product master data.
+| State | UI Label | Description |
+|---|---|---|
+| `DRAFT` | **Draft** | Editable, not yet posted |
+| `OPEN_IN_PROGRESS` | **Open pending** | Posting in progress |
+| `OPEN` | **Open** | Posted; awaiting payment |
+| `PAYMENT_PENDING` | **Payment pending** | Payment initiated |
+| `PARTIALLY_PAID` | **Partially paid** | Some payment received |
+| `PAID` | **Paid** | Fully paid |
+| `ARCHIVED` | **Void** | Voided |
 
-## Applying Discounts
+## Editing an Invoice
 
-Light supports multiple discount methods:
+Invoices in **Draft** can be freely edited. Once posted (Open or beyond), edits are restricted to fields that don't affect GL impact.
 
-**Line-Level Discounts:**
-- Apply to individual line items
-- Can be fixed amount or percentage
-- Reduce the taxable amount (tax applied to discounted price)
+## Posting an Invoice
 
-**Invoice-Level Discounts:**
-- Applied after summing all line items
-- Useful for bulk purchase discounts
-- Optional tax treatment configuration
+To post an invoice, open it and use the action button in the top right:
+- **Post only** — posts to GL without sending
+- **Post & send invoice** — posts and emails the invoice in one action
 
-**Volume Discounts:**
-- Can be set up in contracts for automatic application
-- Applied at invoice generation time
-
-## Invoice Customization
-
-### Custom Fields
-
-Add internal notes or custom information to invoices:
-
-1. Open the invoice in edit mode
-2. Navigate to **Custom Fields**
-3. Click **Add Field**
-4. Enter the field value
-5. Click **Save**
-
-Custom fields appear on invoice reports and can be used for filtering.
-
-### Payment Instructions
-
-Configure how customers should pay:
-
-1. Open the invoice
-2. Navigate to **Payment Instructions**
-3. Select payment method (Bank Transfer, Credit Card, ACH, etc.)
-4. Enter method-specific details
-5. Click **Save**
-
-These instructions appear on the invoice PDF sent to the customer.
-
-## Invoice States and Workflow
-
-Invoices progress through these states:
-
-- **DRAFT**: Created but not yet finalized
-- **POSTED**: Confirmed and sent (creates GL entries)
-- **OPEN**: Posted and awaiting payment
-- **PARTIALLY_CLEARED**: Partial payment received
-- **CLEARED**: Fully paid
-- **ARCHIVED**: No longer needed
-
-To change states:
-1. Open the invoice
-2. Click the current state
-3. Select the new state
-4. Provide a reason (optional)
-5. Click **Confirm**
-
-## Applying Payments to Invoices
-
-When payments are received:
-
-1. Navigate to the invoice
-2. Click **Add Payment**
-3. Enter the **Payment Amount**
-4. Select the **Payment Date**
-5. Enter the **Payment Reference** (check number, bank transfer ID)
-6. Click **Save**
-
-Light automatically updates the invoice state to PARTIALLY_CLEARED or CLEARED based on the total received.
-
-## Managing Invoice History
-
-Invoices maintain full audit trails:
-
-1. Open an invoice
-2. Click **History**
-3. View all changes including:
-   - Who created/modified the invoice
-   - When changes were made
-   - What was changed
-   - Reason for changes
+For posting and sending in bulk, see [Sending invoices](/articles/06-accounts-receivable/6-7-sending-invoices.md).
 
 ## Related Articles
 
+- [Sending invoices](/articles/06-accounts-receivable/6-7-sending-invoices.md)
 - [Invoice templates](/articles/06-accounts-receivable/6-6-invoice-templates.md)
-- [Sending invoices and payment reminders](/articles/06-accounts-receivable/6-7-sending-invoices.md)
-- [Creating and managing contracts](/articles/06-accounts-receivable/6-3-contracts.md)
-- [Tracking payments and outstanding balances](/articles/06-accounts-receivable/6-8-tracking-payments.md)
+- [Tracking payments](/articles/06-accounts-receivable/6-8-tracking-payments.md)
+- [Customer credits](/articles/06-accounts-receivable/6-9-customer-credits.md)

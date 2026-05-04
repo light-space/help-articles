@@ -1,57 +1,71 @@
 # Accounts Receivable Overview
 
-Accounts Receivable (AR) in Light manages the contract-to-cash process for your organization. This module handles customer creation, invoicing, payment tracking, and revenue management across multiple entities and currencies.
+Accounts Receivable (AR) in Light covers the customer-to-cash workflow: creating customers, drafting and sending sales invoices, tracking payments, and recognising revenue across multiple entities and currencies.
 
 [Open in Light →](https://app.light.inc/invoice-receivables)
 
-## What is Contract-to-Cash?
+## Key Modules
 
-The contract-to-cash (C2C) process is the end-to-end workflow from establishing a customer contract through to receiving and clearing payment. In Light, this includes:
+| Module | Path | Description |
+|---|---|---|
+| **Sales invoices** | [/invoice-receivables](https://app.light.inc/invoice-receivables) | Create, post, and send AR invoices |
+| **Customer credits** | [/customer-credits](https://app.light.inc/customer-credits) | Issue credit notes and apply them to invoices |
+| **Contracts** | [/contracts](https://app.light.inc/contracts) | Multi-period customer agreements with line items |
+| **Products** | [/products](https://app.light.inc/products) | Reusable product catalog with default pricing and accounting |
+| **Customers** | [/customers](https://app.light.inc/customers) | Customer records with billing details and history |
 
-1. Customer onboarding and setup
-2. Contract creation and management
-3. Invoice generation and sending
-4. Payment tracking and reconciliation
-5. Revenue recognition and scheduling
-6. Credit note processing
+All five appear under **Revenue & Invoicing** in the sidebar.
 
-AR integrates with GL and Bank Reconciliation modules to provide complete visibility into your receivables position.
+## Sales Invoice Lifecycle
+
+A sales invoice (AR document) progresses through these states:
+
+| State | UI Label | Description |
+|---|---|---|
+| `DRAFT` | **Draft** | Created but not yet posted |
+| `OPEN_IN_PROGRESS` | **Open pending** | Posting in progress |
+| `OPEN` | **Open** | Posted; awaiting payment |
+| `PAYMENT_PENDING` | **Payment pending** | Payment initiated but not yet cleared |
+| `PARTIALLY_PAID` | **Partially paid** | Some payments received |
+| `PAID` | **Paid** | Fully paid |
+| `ARCHIVED` | **Void** | Voided / archived |
+
+Each invoice also tracks an **e-invoice status** (when e-invoicing is enabled for the entity), shown as a separate badge.
 
 ## Key Concepts
 
-**Invoices (AR documents)** are the primary accounting document in this module. They progress through states: DRAFT → OPEN → PARTIALLY_CLEARED → CLEARED → ARCHIVED. Each invoice contains line items with tax, discount, and allocation information.
+**Customers** represent the parties you bill. Each customer record stores name, billing email, addresses, VAT, business registration number, e-invoice routing fields, and customer type (Business / Consumer / Government).
 
-**Customers** represent your revenue-generating clients. Each customer can have multiple contacts, billing/shipping addresses, email preferences, and custom properties. Customers can be integrated with CRM systems like HubSpot or Salesforce.
+**Contracts** define multi-period agreements with a contract period, entity, currency, and lines. They can drive recurring invoicing and revenue recognition over time.
 
-**Payment Terms** determine when invoices are due. Light supports net terms (e.g., Net 30) and automatic payment reminders through dunning workflows.
+**Products** are reusable catalog items with default pricing (multi-currency), default tax code, default ledger account, and a recurrence (One time / Monthly / Quarterly / Half yearly / Yearly).
 
-**Revenue Schedules** handle deferred and subscription revenue using ASC 606 recognition rules. Invoices can be mapped to contracts for multi-period revenue tracking.
+**Customer credits** are credit notes issued to customers. They progress through Draft → Posted → Partially cleared → Cleared, and can be applied to one or more open invoices.
 
-> Good to know: Light's AR module uses AI-powered email sending and payment reminders. You can customize email templates, set dunning rules, and track customer engagement metrics.
+## Multi-Entity and Multi-Currency
 
-## Multi-Entity and Multi-Currency Support
-
-Light handles complex scenarios across multiple legal entities and currencies:
-
-- Create customers at the company level and assign them to specific entities
-- Issue invoices in any supported currency
-- Apply FX rates automatically or override them manually
-- Consolidate AR reports across entities
+Light supports multi-entity AR:
+- An entity is selected on each invoice and contract
+- Currency on the document defaults from the entity's functional currency
+- The Sales invoices list filters by entity
+- Customers can be used across entities
 
 ## Key Features
 
-- **Automated Invoice Generation**: Create invoices from contracts or manually with full customization
-- **Email Templates**: Customize invoice appearance with branded templates
-- **Payment Tracking**: Monitor which invoices are paid, partially paid, or outstanding
-- **AR Aging Reports**: View overdue invoices by aging bucket (0-30, 31-60, 60+)
-- **Credit Notes**: Issue full or partial credits to customers
-- **Revenue Recognition**: Schedule revenue across periods using ASC 606 rules
-- **E-Invoicing**: Submit invoices to tax authorities in supported countries
+- **Sales invoice creation** with line items, products, taxes, discounts, and document templates
+- **Document templates** (Settings → Templates) for invoice layout and email defaults
+- **Posting and sending** — post-only or post & send by email, with optional e-invoicing
+- **Bulk actions** for posting and sending multiple invoices at once
+- **Customer credits** to issue refunds and apply to invoices
+- **Customer aging widget** on each customer's record showing 0–30 / 31–60 / 61–90 / 91+ days
+- **Activity log** on each invoice
+- **Bank reconciliation** for matching incoming payments to open invoices
 
 ## Related Articles
 
 - [Setting up customers and contacts](/articles/06-accounts-receivable/6-2-customers-contacts.md)
 - [Creating and managing contracts](/articles/06-accounts-receivable/6-3-contracts.md)
-- [Invoice generation and customization](/articles/06-accounts-receivable/6-5-invoice-generation.md)
-- [Tracking payments and outstanding balances](/articles/06-accounts-receivable/6-8-tracking-payments.md)
-- [Revenue schedules and deferred revenue](/articles/06-accounts-receivable/6-10-revenue-schedules.md)
+- [Products and pricing](/articles/06-accounts-receivable/6-4-products-pricing.md)
+- [Invoice generation](/articles/06-accounts-receivable/6-5-invoice-generation.md)
+- [Sending invoices](/articles/06-accounts-receivable/6-7-sending-invoices.md)
+- [Tracking payments](/articles/06-accounts-receivable/6-8-tracking-payments.md)
