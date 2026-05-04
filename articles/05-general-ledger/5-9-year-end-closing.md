@@ -78,6 +78,8 @@ Light provides automated closing entry generation:
 5. Review the generated entries
 6. Click **Post** to post all closing entries
 
+> **Note:** If any P&L accounts with non-zero balances for the year are disabled, Light will prompt you to confirm before posting. You can proceed to complete the year-end close with disabled accounts, or cancel and re-enable the accounts first.
+
 ## Manual Closing Entries
 
 If you prefer manual control:
@@ -225,6 +227,21 @@ If your fiscal year doesn't match the calendar year:
 4. Same closing process, just different calendar date
 
 Light supports any fiscal year; just set period dates accordingly.
+
+### Fiscal Year and Quarterly Periods
+
+When you generate accounting periods, quarterly period labels align with your fiscal year start month, not the calendar year. For example, if your fiscal year starts October 1, the quarters are labeled:
+
+- **Q1:** October – December
+- **Q2:** January – March
+- **Q3:** April – June
+- **Q4:** July – September
+
+If your fiscal year starts June 1, Q1 runs June–August, Q2 runs September–November, and so on. Calendar-year companies (January 1 start) see the familiar January–March = Q1 pattern.
+
+When generating a new accounting year:
+- **Maximum duration:** Each generated year cannot exceed 12 months. If you need a shorter year (for example, when switching fiscal year regimes), specify the explicit end date.
+- **Contiguous years required:** If you've already generated a prior year, the new year must start the day after the previous year ends—no gaps are allowed.
 
 ## Multi-Currency Closing
 
