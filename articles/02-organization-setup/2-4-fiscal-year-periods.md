@@ -11,18 +11,41 @@ A **fiscal year** is your organization's accounting year, which may differ from 
 ## Navigating accounting periods
 
 1. Go to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods) in the sidebar
-2. The page displays fiscal years as collapsible sections (e.g., 2025, 2026, 2027)
+2. The page displays fiscal years as collapsible sections
 3. Expand a fiscal year to see its accounting periods
 4. Each period shows columns for **Period** (month name), **Start date**, **End date**, and **Status**
 
+The fiscal year labels reflect your configuration:
+- **Calendar year**: "2025" (Jan 1 – Dec 31, 2025)
+- **Fiscal year**: "FY2025/2026" (e.g., Apr 1, 2025 – Mar 31, 2026)
+- **Partial year**: "2025 Jan–Jul" (e.g., Jan 1 – Jul 31, 2025)
+
 The status column shows how many closing tasks have been completed (e.g., "2/4 tasks done", "0/4 tasks done").
+
+## Configuring fiscal years
+
+When generating accounting periods, you can configure your fiscal year to start and end on any month boundary.
+
+1. Click **+ Generate next period** on the Accounting periods page
+2. Use the **month range picker** to select your fiscal year start and end months
+   - Light constrains the range to 12 consecutive months across two adjacent calendar years
+   - As you select months, the live preview shows how your fiscal year will be labeled
+3. Choose your period interval (typically **Monthly**)
+4. Click **Generate period**
+
+**Examples:**
+- **April to March fiscal year**: Select Apr 2025 – Mar 2026 → labeled "FY2025/2026"
+- **Calendar year**: Select Jan 2025 – Dec 2025 → labeled "2025"
+- **Partial year**: Select Jan 2025 – Jul 2025 → labeled "2025 Jan–Jul"
 
 ## Generating accounting periods
 
 1. Navigate to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods)
 2. Click **+ Generate next period**
-3. Light automatically generates the next set of monthly periods
-4. The periods are created with start and end dates based on your fiscal year configuration
+3. Select your fiscal year start and end months using the month range picker
+4. Light automatically generates monthly periods based on your selection
+
+Your fiscal year can start in any month—not just January. For example, you can generate an April to March fiscal year or an October to September fiscal year.
 
 ## Period closing tasks
 
