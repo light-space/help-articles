@@ -62,6 +62,8 @@ When a Stripe payment syncs:
 
 This enables both automatic and manual matching.
 
+> **Note**: When syncing Stripe invoices, the original Stripe invoice number is automatically stored as a custom property on the Light invoice. This helps with reconciliation and customer inquiries that reference Stripe invoice numbers.
+
 ## Handling multiple invoices
 
 If a Stripe payment covers multiple customer invoices:
@@ -103,6 +105,8 @@ For SaaS with recurring Stripe subscriptions:
    - Updates revenue recognition (if using deferred revenue)
 
 This automates subscription billing entirely.
+
+> **Note**: When syncing Stripe invoices that include line-level discounts, Light captures the discount amount explicitly on each invoice line. The line amount represents the pre-discount subtotal, and the discount is shown separately, matching how Stripe represents discounted invoices.
 
 ## Multi-currency payments
 
