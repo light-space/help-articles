@@ -131,6 +131,14 @@ If circumstances change (contract extended, price adjusted):
 
 The amended schedule maintains history of both old and new terms.
 
+### Revenue Recognition on Contract Renewal
+
+When you renew a contract that has revenue recognition configured, Light automatically extends the accrual schedule to match the new contract end date. A delta Deferred Entry is created that spreads the additional revenue uniformly across the renewal period, keeping your recognition rate consistent.
+
+Example: A customer's 12-month contract with $12,000 revenue (recognized at $1,000/month) is renewed for another 12 months at the same rate. Light creates a delta Deferred Entry for the renewal period, continuing the $1,000/month recognition through the extended term.
+
+The original Deferred Entry remains unchanged; the delta entry handles only the incremental revenue from the extension.
+
 ### Canceling a Schedule
 
 To reverse a revenue schedule completely:
