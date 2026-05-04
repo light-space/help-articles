@@ -22,20 +22,30 @@ Peppol (Pan-European Public Procurement OnLine) is a free, open network for elec
 
 ## Configuring e-invoicing on entities
 
-Each company entity can have e-invoicing details configured:
+Each company entity can have e-invoicing addresses configured for one or more networks. Light supports:
+
+- **PEPPOL**: Pan-European Public Procurement OnLine (used across 40+ countries)
+- **NEMHANDEL**: Denmark's national e-invoicing network (interoperable with Peppol)
+- **SDI**: Italy's Sistema di Interscambio (Italian domestic invoicing)
+- **Portuguese Tax Reporting**: Portugal's domestic tax reporting system
+
+To configure e-invoicing:
 
 1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Click **+ Create entity** (for new entities) or click an existing entity and then **Edit**
-3. In the **E-invoicing (optional)** section, fill in:
+3. In the **E-invoicing (optional)** section, add one or more network addresses:
+   - **Network**: Select the e-invoicing network (PEPPOL, NEMHANDEL, SDI, or Portuguese Tax Reporting)
    - **EAS code**: The Electronic Address Scheme identifier (e.g., 9930 for EU tax ID, 0007 for organization number)
-   - **E-invoice address**: The Peppol network address for this entity
+   - **E-invoice address**: The network address for this entity on the selected network
 4. Click **Create** or **Save**
 
-> Tip: Different entities within your group can have different Peppol registrations based on their jurisdiction.
+> Good to know: If your business operates across multiple jurisdictions that require different e-invoicing networks, you can register the same entity on multiple networks. For example, a company with operations in Denmark and Italy can configure both NEMHANDEL and SDI addresses.
+
+> Tip: Different entities within your group can have different e-invoicing registrations based on their jurisdiction.
 
 ## EAS codes
 
-The EAS code identifies the type of addressing scheme used for your Peppol identifier. Common EAS codes include:
+The EAS code identifies the type of addressing scheme used for your e-invoicing identifier. Common EAS codes include:
 
 - **0007**: Organization number (used in many EU countries)
 - **9930**: Tax identification number
@@ -65,11 +75,12 @@ Your Peppol Identifier is unique and identifies your organization on the network
 
 ## Best practices
 
-- Register entities for Peppol before mandate deadlines in your jurisdiction
+- Register entities for e-invoicing before mandate deadlines in your jurisdiction
 - Verify EAS codes and e-invoice addresses are correct before sending invoices
 - Configure e-invoicing details on all entities that will participate in electronic document exchange
 - Assign the correct EDIFACT codes to tax codes used in e-invoicing transactions
 - Maintain current service provider contact information
+- If operating in multiple jurisdictions with different network requirements, configure addresses for each network your entity needs
 
 ## Related articles
 
