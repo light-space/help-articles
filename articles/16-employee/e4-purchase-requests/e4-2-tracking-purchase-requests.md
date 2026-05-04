@@ -51,6 +51,8 @@ Your request was not approved. You'll see a reason, which might be:
 
 You can resubmit with changes or contact your manager to discuss.
 
+> **Note:** If a purchase request fails due to a technical issue (e.g., problems creating a vendor card or setting up payment), Light displays detailed error information explaining what went wrong. This helps you understand the specific reason for failure and what actions you might need to take.
+
 ### On Hold
 
 Your request is temporarily paused. This might happen if:
@@ -68,6 +70,7 @@ When your request status changes, you'll receive:
 
 - **In-app notification**: A notification in Light
 - **Email notification**: An email to your work email address
+- **Slack notification**: If Slack is connected, you'll receive a notification when your request is approved or rejected (including the rejection reason when declined)
 - **Request notes**: Any messages from your finance team explaining the status
 
 Read these messages carefully—they often include next steps or what you need to do.
@@ -104,6 +107,7 @@ Your finance team handles communicating the PO to the vendor, but you might rece
 If you submitted a request but need to modify it:
 
 - **Before approval**: You can edit details or add information while it's pending
+- **During review**: Your finance or procurement team (admins) can update the request on your behalf—including description, amount, currency, vendor, and other details—if it's still under review
 - **After approval**: Contact your finance team if changes are needed—they may need to amend the purchase order
 
 ## Viewing Past Requests
