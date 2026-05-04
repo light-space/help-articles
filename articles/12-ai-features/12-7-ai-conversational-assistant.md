@@ -128,7 +128,7 @@ You can attach files directly to your LCI messages using the paperclip button in
    - "Match these transactions to the right accounts" *(bank statement or expense export)*
    - "Set up these employees as users" *(HR export)*
 
-**Limits:** Up to 10 files per message, maximum 10 MB per file.
+**Limits:** Up to 10 files per message, maximum 10 MB per file. Text input accepts up to 10,000 characters per message, so you can paste detailed instructions or large text blocks without truncation.
 
 Attachments are saved in the thread history so you can refer back to them in follow-up messages. The AI can also reference files uploaded earlier in the same conversation — you don't need to re-upload them.
 
@@ -244,7 +244,9 @@ If you try to use a tool your role doesn't allow, LCI tells you it can't complet
 
 ## Assistant Instructions
 
-Admins can configure custom AI instructions (called "assistant memories") that guide how LCI parses specific document types. These instructions are set per company and apply to four categories:
+Admins can configure custom AI instructions (called "assistant memories") that guide how LCI parses specific document types. Only one instruction is allowed per instruction type per company — when you update an instruction for a type that already exists, the system automatically replaces it.
+
+Instructions apply to four categories:
 
 - **Contract parsing** — Custom rules for how AI should extract data from contracts
 - **Bill parsing** — Custom rules for invoice data extraction
@@ -252,6 +254,8 @@ Admins can configure custom AI instructions (called "assistant memories") that g
 - **Intake** — Custom rules for general document intake
 
 Configure these in **Settings (gear icon) → AI Assistant → Instructions**, or manage them directly through LCI using the assistant memory tools. For example, you can say "Show me the current bill parsing instructions" or "Update the reimbursement parsing instructions to always categorize Uber receipts as transportation."
+
+When you upsert an instruction via the API or LCI, the system automatically replaces the existing instruction for that type if one exists, or creates a new one if none exists. You don't need to provide an instruction ID.
 
 ## Privacy and Security
 
