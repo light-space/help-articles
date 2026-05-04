@@ -1,116 +1,92 @@
 # Products and Pricing
 
-The Products module in Light's AR allows you to define and manage the goods or services you sell to customers. Products are used when creating contracts and invoices.
+The Products module lets you define the goods or services you sell to customers. Products can be reused on contracts and sales invoices, and they carry default accounting settings and pricing.
 
 [Open in Light →](https://app.light.inc/products)
 
-## Understanding Product Structure
+Navigate via **Revenue & Invoicing → Products**.
 
-Products in Light contain:
+## Products List
 
-- **Name**: Product identifier and display name
-- **Description**: Details about what the product is
-- **Category**: Product classification (optional)
-- **SKU**: Stock keeping unit or internal code
-- **Default Unit Price**: Starting price for contracts and invoices
-- **Tax Category**: Which tax rate applies
-- **GL Account**: Which GL account receives revenue
-- **Active Status**: Whether the product can be used in new contracts
+The Products page shows all products with the following columns:
+
+| Column | Description |
+|---|---|
+| **Product** | Product name |
+| **Type** | Pricing model (Fixed / Package) and Recurrence badges |
+| **Price** | First pricing amount and currency |
+
+Use the search bar above the table to filter products by name.
 
 ## Creating a Product
 
-1. Navigate to **Revenue & Invoicing → Products**
-2. Click **+ Create product**
-3. Fill in the basic information:
-   - **Product Name**: How it appears on invoices
-   - **Description**: What the product is or does
-   - **SKU**: Internal reference code
-   - **Product Category**: Optional classification
+1. Click **+ Create product** — a side drawer opens
+2. Fill in the **Details** section:
+   - **Name**: Product name (appears on contracts and invoices)
+   - **Pricing model**: Choose **Fixed** or **Package**
+   - **Recurrence**: Choose **One time**, **Monthly**, **Quarterly**, **Half yearly**, or **Yearly**
+   - **Custom properties** (if any are configured for products)
+3. Fill in the **Accounting** section:
+   - **Default tax code**: The tax code applied by default. You can also pick **Avatax** to use AvaTax tax determination (a separate dialog opens to enter the AvaTax code).
+   - **Default ledger account**: The GL account where revenue posts by default
+4. Fill in the **Price** section:
+   - Enter the **currency** and **amount** for the default price
+   - Click **+ Add more currencies** to add additional prices in other currencies
+5. Click **Create**
 
-4. Set pricing:
-   - **Default Unit Price**: Base price in your billing currency
-   - **Currency**: Confirm the currency used
+> Defaults set on a product (tax code, ledger account, prices) flow through to contract and invoice lines. They can still be overridden on each line.
 
-5. Configure GL mapping:
-   - **Revenue GL Account**: Where sales are posted
-   - **Tax Category**: Default tax treatment
+## Editing a Product
 
-6. Click **Create**
+1. Click a product row in the list — the edit drawer opens
+2. Update any field (Name, Pricing model, Recurrence, tax code, ledger account, prices, custom properties)
+3. Click **Save**
 
-> Good to know: You can override the default unit price on each contract or invoice line item.
-
-## Managing Product Pricing
-
-Products support flexible pricing structures:
-
-1. Open a product
-2. Click **Pricing**
-3. View the **Price History** showing all pricing changes
-4. Click **Update Price** to change the default unit price
-5. Enter the new price and a reason for the change
-6. Click **Save**
-
-Light maintains a complete audit trail of all price changes.
+If you have unsaved changes and try to close the drawer, Light asks you to confirm before discarding them.
 
 ## Multi-Currency Pricing
 
-For companies with global customers:
+Multi-currency is built into the product form — there is no separate currency tab.
 
-1. Open the product
-2. Navigate to **Currency Pricing**
-3. Click **Add Currency Price**
-4. Select the currency and set the price
-5. Click **Save**
+In the **Price** section of the create/edit drawer:
+1. Click **+ Add more currencies**
+2. Pick the currency and enter the amount
+3. Repeat for each additional currency
+4. Use the ✕ button next to any pricing row to remove it
 
-When creating contracts in a specific currency, Light automatically uses the currency-specific price if available, otherwise it uses the default price.
+When a contract or invoice is created in a specific currency, Light uses the matching product price for that currency if one exists.
 
-## Product Categories
+## Pricing Models
 
-Organize products using categories:
+Light supports two pricing models, set on each product:
 
-1. Navigate to **Product Categories**
-2. Click **Create Category**
-3. Enter the category name and description
-4. Click **Create**
+- **Fixed** — A single unit price applied per quantity
+- **Package** — A bundled price (used when the product is sold as a package rather than per unit)
 
-Assign categories to products to improve organization and enable category-level reporting.
+## Billing Recurrence
 
-## Tax Categories
+The **Recurrence** field defines how often the product is typically billed when used on a contract:
 
-Products can have different tax treatments:
+- **One time** — Billed once
+- **Monthly**
+- **Quarterly**
+- **Half yearly**
+- **Yearly**
 
-1. Open a product
-2. Navigate to **Tax Category**
-3. Select from available tax categories configured by your tax administrator
-4. Click **Save**
+## Tax Code and Avatax
 
-Tax categories determine which tax rates apply to line items containing this product.
+The **Default tax code** field on a product accepts either:
+- A tax code from your tax codes registry (Settings → Tax codes), or
+- An **Avatax** code, when AvaTax tax determination is enabled. Selecting Avatax opens a dialog to enter the AvaTax code.
 
-## Archiving Products
+## Products Synced from External Systems
 
-To retire a product from future use:
+Products imported from external systems show a "Generated from [source]" indicator at the top of the product form, with a button to copy the source ID. Supported sources include:
+- **Salesforce**
+- **Hubspot**
+- **Chargebee**
 
-1. Open the product
-2. Click **Archive**
-3. Confirm
-
-Archived products:
-- No longer appear in product selection dropdowns
-- Remain usable on existing contracts
-- Are visible in historical reports
-- Can be reactivated by clicking **Activate**
-
-## Product Variants (if applicable)
-
-For products with multiple variants (sizes, colors, editions):
-
-1. Open a product
-2. Click **Add Variant**
-3. Enter the variant name (e.g., "Professional Edition")
-4. Set variant-specific pricing (optional)
-5. Click **Add**
-
-Each variant can have its own SKU and pricing while sharing the base product record.
+For these products, some fields may be controlled by the source system.
 
 ## Related Articles
 
