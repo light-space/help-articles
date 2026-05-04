@@ -16,6 +16,38 @@ Bank reconciliation discrepancies occur when bank transactions don't match accou
 
 **Duplicate Transactions** - Same transaction appears twice in bank feed or GL
 
+## Using the All Transactions View
+
+When you see a balance difference and need to pinpoint when or where it occurred, use the **All transactions** tab. This unified view shows every bank transaction with its status (Matched, Unmatched, or Excluded) in one place, so you can investigate discrepancies yourself.
+
+**To open:**
+1. Go to **Accounting → Bank reconciliation**
+2. Click the account you want to investigate
+3. Click the **All transactions** tab
+
+**What you'll see:**
+- **Date** - Transaction date
+- **Transaction** - Transaction number or reference
+- **Amount** - Transaction amount (debits shown positive, credits negative)
+- **Name** - Business partner name
+- **Status** - Badge showing Matched, Unmatched, or Excluded
+- **Opening balance** - Account balance the day before your selected period (top right)
+- **Closing balance** - Account balance as of the end of your selected period (bottom right)
+
+**To investigate a discrepancy:**
+
+1. **Adjust the date range** - Use the period filter to narrow down when the discrepancy appeared. The default is the current month; you can expand or contract it to pinpoint the exact window.
+
+2. **Look for Unmatched or Excluded transactions** - These are the transactions causing your balance difference. Filter by status to see only unmatched or excluded items.
+
+3. **Search for a specific transaction** - If you know the transaction number or business partner name, use the search box to find it quickly.
+
+4. **Verify the balances** - Compare the opening and closing balances on screen against your bank statement. If they don't match, the unmatched/excluded transactions in that period explain the difference.
+
+5. **Export to CSV** - Click **Export** to download all transactions in the current view. Use this to cross-check against your bank statement or share with your accountant.
+
+Once you identify which transactions are unmatched or excluded, follow the steps in the rest of this article to resolve them.
+
 ## Timing Differences
 
 The most common discrepancy is timing—when the bank posts a transaction before or after your GL:
