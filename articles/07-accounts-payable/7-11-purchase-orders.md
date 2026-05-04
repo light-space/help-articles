@@ -64,6 +64,16 @@ To change PO state:
 4. Light validates transition
 5. Click **Confirm**
 
+### Vendor Notification
+
+When a PO moves to **OPEN** state (after approval and ERP sync), Light automatically sends an email to the vendor with the PO PDF attached. The email includes:
+
+- Purchase order number
+- Issue date and delivery date
+- Description of goods or services
+
+If the vendor has no email address on file, no email is sent. You can add or update vendor emails in **Vendors** > **[Vendor Name]** > **Edit**.
+
 ## PO Approvals
 
 Enforce approval before orders are committed:
