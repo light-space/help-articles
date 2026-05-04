@@ -71,6 +71,13 @@ At least one of debit or credit intercompany account must be set. You can click 
 |---|---|
 | **Draft** | Saved but not yet posted. Still editable, can be deleted. |
 | **Posted** | Finalised and reflected in the GL. Read-only. |
+| **Archived** | Posted entry that has been archived. All generated journal entry transactions are reversed, and the net impact becomes zero. Only posted entries can be archived. |
+
+## Archiving an Intercompany Entry
+
+If you need to reverse a posted intercompany journal entry, you can archive it. Archiving reverses all generated journal entry transactions across both entities and marks the intercompany document as **Archived**.
+
+Once archived, the entry remains visible for audit purposes, but its net impact on the ledger is zero. Draft entries cannot be archived - post them first if you need to archive, or simply delete the draft.
 
 ## Net Impact Preview
 
@@ -96,7 +103,7 @@ The intercompany journal entries list can be filtered by:
 - **Posting date** (defaults to current quarter)
 - **Valuation date**
 - **Currency**
-- **Status** (Draft / Posted)
+- **Status** (Draft / Posted / Archived)
 
 Free-text search is also available.
 
