@@ -241,6 +241,8 @@ Export journal entries and GL transactions for analysis:
 
 Use exports for detailed analysis in Excel or consolidation to other systems.
 
+> **Good to know:** When exporting journal entries, you can optionally include a "Created by" column that shows the display name of the user who created each entry. Users who have been deactivated or deleted appear as blank cells.
+
 ## GL Aging Analysis
 
 For AR and AP accounts, view aging:
