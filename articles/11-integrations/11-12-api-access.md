@@ -45,6 +45,8 @@ The API provides endpoints for managing the following resources:
 
 For full endpoint details, see the [API Reference](https://docs.light.inc) (click "API Reference" in the top navigation).
 
+> **Note**: The Customer Credits endpoint now includes `totalTransactionAmount` and `totalTransactionAmountInMajors` fields, which represent the sum of gross transaction amounts across all lines. These fields match the format used in other accounting documents and are also used in CSV exports.
+
 ## Authentication
 
 You can authenticate to the Light API using **API keys** or **OAuth 2.0**.
@@ -156,6 +158,8 @@ Available operators: `eq`, `ne`, `in`, `not_in`, `gt`, `gte`, `lt`, `lte`
 For `in` and `not_in` operators, separate multiple values with the pipe character (`|`).
 
 Example: `filter=state:in:IN_DRAFT|SCHEDULED|PAID,amount:gte:500,vendorId:ne:null`
+
+> **Breaking change**: If you filter customers by billing address fields, use `billingAddressCity` and `billingAddressCountry` instead of the previous `billingAddress.city` and `billingAddress.country` dot-notation. Update your filter query strings accordingly.
 
 ### Pagination
 
