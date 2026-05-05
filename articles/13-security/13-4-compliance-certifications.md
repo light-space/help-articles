@@ -6,49 +6,28 @@ This article explains Light's security and compliance certifications, demonstrat
 
 ## Overview
 
-Light maintains multiple security and compliance certifications from independent auditors and standards bodies. These certifications provide assurance that Light meets industry standards for security, privacy, and operational excellence.
+Light maintains security and compliance assurances backed by independent audit. These provide customers with evidence that Light meets industry standards for security, privacy, and operational handling of financial data.
 
-Light holds the following certifications:
+Light's current compliance posture:
 
-- **SOC 1 Type II**
-- **SOC 2 Type II**
-- **GDPR**
-- **CSA STAR**
-- **Trusted Cloud Providers (CSA)**
-- **AWS Security Competency**
-- **PCI SAQ D**
-- **SSAE 18**
-- **ISAE 3402**
-
-## SOC 1 Compliance
-
-### What is SOC 1?
-
-SOC 1 (System and Organization Controls 1) is a framework for evaluating internal controls at service organizations that are relevant to user entities' internal control over financial reporting. It is conducted by independent auditors and is particularly important for financial platforms like Light.
-
-### SOC 1 Type II
-
-Light maintains **SOC 1 Type II** certification:
-
-- **Independent Audit**: Conducted annually by independent auditing firms
-- **Testing Period**: Auditors observe Light's controls in operation over a sustained period
-- **Financial Controls**: Focuses on controls relevant to customers' financial reporting
-- **Continuous Compliance**: Light maintains compliance year-round
+- **SOC 2 Type II** — audited and maintained, renewal audit in progress
+- **GDPR compliance** — operational, with a customer-facing DPA
+- **PCI DSS 4.0.1 (in progress)** — SAQ-D Service Provider scope, audit closing May 21, 2026
 
 ## SOC 2 Compliance
 
 ### What is SOC 2?
 
-SOC 2 (System and Organization Controls 2) is a framework for evaluating controls at service providers. It's conducted by independent auditors and certifies that Light has appropriate controls in place for security, availability, processing integrity, confidentiality, and privacy.
+SOC 2 (System and Organization Controls 2) is a framework for evaluating controls at service providers, conducted by independent auditors. It assesses Light's controls for security, availability, processing integrity, confidentiality, and privacy. SOC 2 reports are issued under the AICPA's SSAE 18 attestation standard.
 
-### SOC 2 Type II
+### Light's SOC 2 Type II
 
-Light maintains **SOC 2 Type II** certification, the highest level:
+Light maintains **SOC 2 Type II**, with a renewal audit currently in progress:
 
-- **Independent Audit**: Conducted annually by Big Four accounting firms
-- **6-Month Testing Period**: Auditors observe Light's controls in practice
-- **Comprehensive Review**: Covers all systems, processes, and personnel
-- **Continuous Compliance**: Light maintains compliance year-round
+- **Independent Audit**: Conducted annually by an independent auditing firm
+- **Type II Testing Period**: Auditors observe Light's controls in operation over a multi-month period, not at a single point in time
+- **Comprehensive Review**: Covers Light's systems, processes, and personnel relevant to the Trust Services Criteria
+- **Continuous Compliance**: Light maintains the underlying controls year-round and tracks them on an ongoing basis
 
 ### What SOC 2 Covers
 
@@ -60,7 +39,7 @@ SOC 2 evaluates controls over:
 - **Confidentiality**: Sensitive data is protected from unauthorized disclosure
 - **Privacy**: Data is collected, used, and retained appropriately
 
-> Good to know: Request Light's SOC 1 or SOC 2 Type II reports directly from your account team. Most customers receive the full audit reports under NDA.
+> Good to know: Request Light's SOC 2 Type II report directly from your account team. The full audit report is provided under NDA.
 
 ## GDPR Compliance
 
@@ -108,83 +87,21 @@ Light provides:
 - **Sub-processor Management**: All sub-processors are listed and compliant
 - **Breach Notification**: Light notifies you within 36 hours if a breach occurs
 
-## CSA STAR Certification
+## PCI DSS Compliance (in progress)
 
-### What is CSA STAR?
+### What is PCI DSS?
 
-CSA STAR (Cloud Security Alliance Security, Trust, Assurance, and Risk) is a program for cloud security assurance. It provides a framework for cloud providers to demonstrate their security posture through independent assessments.
+PCI DSS (Payment Card Industry Data Security Standard) is a set of security requirements that apply to companies that store, process, or transmit cardholder data. PCI DSS 4.0.1 is the current version of the standard.
 
-### Light's CSA Certifications
+### Light's PCI Programme
 
-Light holds both **CSA STAR** certification and **Trusted Cloud Providers (CSA)** designation:
+Light is currently undergoing a PCI DSS 4.0.1 audit, scoped as **SAQ-D Service Provider**:
 
-- **CSA STAR**: Independent assessment of Light's cloud security controls against the Cloud Controls Matrix (CCM)
-- **Trusted Cloud Providers**: Recognition by the Cloud Security Alliance that Light meets rigorous cloud security standards
-- **Transparency**: Light's security posture is documented in the CSA STAR Registry
-- **Continuous Improvement**: Regular reassessment to maintain certification
+- **Scope**: SAQ-D is the most comprehensive self-assessment questionnaire and applies to service providers handling cardholder data
+- **Audit Close**: Targeted for **May 21, 2026**
+- **Controls in Place**: Encryption of cardholder data, network segmentation, access controls, vulnerability scanning, and logging are already in operation; remaining work is documentation and evidence collection toward audit close
 
-## AWS Security Competency
-
-### What is AWS Security Competency?
-
-AWS Security Competency is an AWS Partner Network designation recognizing technology partners that have demonstrated technical proficiency and proven customer success in specialized security areas on the AWS platform.
-
-### Light's AWS Certifications
-
-Light holds **AWS Security Competency** certification:
-
-- **AWS Infrastructure**: Light's platform runs on AWS with security best practices
-- **Security Competency**: Validated by AWS for meeting rigorous security requirements
-- **Architecture Review**: Light's architecture has been reviewed against AWS security standards
-- **Data Residency**: Regional data storage options leveraging AWS global infrastructure
-
-## PCI Compliance
-
-### What is PCI?
-
-PCI DSS (Payment Card Industry Data Security Standard) is a set of security standards designed to ensure that all companies that accept, process, store, or transmit credit card information maintain a secure environment.
-
-### PCI SAQ D
-
-Light maintains **PCI SAQ D** compliance, the most comprehensive self-assessment questionnaire:
-
-- **Full Assessment**: SAQ D covers all PCI DSS requirements applicable to Light's environment
-- **Cardholder Data Protection**: Controls for protecting payment card data
-- **Network Security**: Secure network architecture and access controls
-- **Regular Testing**: Ongoing vulnerability scanning and security testing
-- **Access Controls**: Strict access controls for systems handling payment data
-
-## SSAE 18
-
-### What is SSAE 18?
-
-SSAE 18 (Statement on Standards for Attestation Engagements No. 18) is the current attestation standard issued by the AICPA (American Institute of Certified Public Accountants) governing SOC examinations and other service organization reports.
-
-### Light's SSAE 18 Compliance
-
-Light's SOC reports are issued under the **SSAE 18** standard:
-
-- **Current Standard**: SSAE 18 is the governing standard for all SOC 1 and SOC 2 reports in the United States
-- **Vendor Oversight**: Includes requirements for monitoring sub-service organizations
-- **Risk-Based Approach**: Focuses on risks most relevant to user entities
-- **Annual Examination**: Reports are issued annually under this standard
-
-## ISAE 3402
-
-### What is ISAE 3402?
-
-ISAE 3402 (International Standard on Assurance Engagements 3402) is the international equivalent of the SSAE 18 standard, issued by the International Auditing and Assurance Standards Board (IAASB). It provides assurance on controls at service organizations for an international audience.
-
-### Light's ISAE 3402 Compliance
-
-Light maintains **ISAE 3402** compliance:
-
-- **International Recognition**: Accepted globally as the standard for service organization assurance
-- **Independent Assurance**: Reports issued by independent auditors
-- **Control Objectives**: Covers controls relevant to customers' financial reporting
-- **Global Customers**: Provides assurance to Light's international customer base
-
-> Tip: ISAE 3402 reports are the internationally recognized equivalent of US SOC reports and are suitable for customers operating outside the United States.
+We will update this article when the audit completes.
 
 ## Data Processing Agreements (DPA)
 
@@ -264,7 +181,7 @@ Light undergoes regular audits:
 To request compliance documentation:
 
 1. Contact your Light account manager
-2. Specify which certification (SOC 1, SOC 2, GDPR, PCI, etc.)
+2. Specify which document (SOC 2 Type II report, DPA, security overview, PCI status letter, etc.)
 3. Indicate if you need the full report or summary
 4. Document your organization's need for the information
 5. Light delivers documentation under NDA if required
