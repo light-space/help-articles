@@ -134,7 +134,7 @@ This migrates transaction history.
 
 ## Importing journal entries
 
-Upload journal entries via CSV with the following format.
+Upload journal entries via CSV with the following format. Journal entry files can be up to 250MB in size.
 
 ### Downloading the template
 
