@@ -22,6 +22,8 @@ A credit moves from Posted → Partially cleared → Cleared as it is applied to
 
 1. Click **+ Create customer credit**
 2. Fill in the form (customer, entity, currency, lines, etc.)
+   - For each line item, you can add a **Discount** — either a percentage (e.g., `10%`) or a fixed amount. The discount reduces the line's total.
+   - When you add discounts, the totals summary at the bottom shows the discount separately alongside the tax.
 3. Click **Create** — the credit opens in **Draft**
 
 ## Posting a Credit
