@@ -10,9 +10,9 @@ Light maintains security and compliance assurances backed by independent audit. 
 
 Light's current compliance posture:
 
-- **SOC 2 Type II** — audited and maintained, renewal audit in progress
-- **GDPR compliance** — operational, with a customer-facing DPA
-- **PCI DSS 4.0.1 (in progress)** — SAQ-D Service Provider scope, audit closing May 21, 2026
+- **SOC 2 Type II**: audited and maintained, renewal audit in progress
+- **GDPR compliance**: operational, with a customer-facing DPA
+- **PCI DSS 4.0.1 (in progress)**: SAQ-D Service Provider scope, audit closing May 21, 2026
 
 ## SOC 2 Compliance
 
