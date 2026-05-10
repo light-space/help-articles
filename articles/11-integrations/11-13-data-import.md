@@ -72,6 +72,8 @@ Create your GL account structure:
 
 > Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes navigation easier.
 
+> Good to know: When uploading a chart of accounts CSV, you can map and import custom property values. The import template dynamically includes active LEDGER_ACCOUNT custom properties (similar to journal entries). In the mapping drawer, map CSV columns to custom property groups in the **Custom properties** section. In the import preview table, custom property values appear as editable cells where you can review and adjust values before submitting the import.
+
 ## Importing customer master
 
 Load customer information:
