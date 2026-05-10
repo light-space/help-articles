@@ -32,7 +32,7 @@ The API provides endpoints for managing the following resources:
 - **Customers** — Create, list, activate, and archive customers
 - **Expenses** — List expenses and submit reimbursements
 - **Invoice Approvals** — Retrieve invoice approval status
-- **Invoice Payables** — Create, approve, decline, and manage bills and their line items
+- **Invoice Payables** — Create, approve, decline, mark as paid, and manage bills and their line items
 - **Invoices** — Create, update, open, reset, and send sales invoices
 - **Journal Entries** — Create journal entries programmatically
 - **Ledger Transactions** — Query ledger transaction lines
@@ -200,6 +200,7 @@ The API returns standard HTTP status codes:
 3. API adds line items via `POST /v1/invoice-payables/{id}/line-items`
 4. Approval workflow triggers via `POST /v1/invoice-payables/{id}/approve`
 5. Invoice enters Light's standard payment processing
+6. (Optional) If you handle payment externally, record the payment via `POST /v1/invoice-payables/{id}/mark-as-paid` to close the bill in Light
 
 **Example 2: CRM to invoicing**
 
