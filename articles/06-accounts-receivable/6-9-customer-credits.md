@@ -24,6 +24,15 @@ A credit moves from Posted → Partially cleared → Cleared as it is applied to
 2. Fill in the form (customer, entity, currency, lines, etc.)
 3. Click **Create** — the credit opens in **Draft**
 
+### Applying Line-Item Discounts
+
+When adding line items to a customer credit, you can apply a discount to each line in the **Discount** column:
+
+- **Percentage discount** — enter a percentage (e.g., `10` for 10% off)
+- **Fixed-amount discount** — enter a fixed amount in the credit's currency
+
+The total discount is shown in the totals summary at the bottom of the credit, along with any tax amounts.
+
 ## Posting a Credit
 
 From the credit detail page, use the action button at the top right:
