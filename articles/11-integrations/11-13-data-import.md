@@ -72,6 +72,20 @@ Create your GL account structure:
 
 > Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes navigation easier.
 
+### Including custom properties
+
+If your company has active custom properties configured for ledger accounts, the COA import template dynamically includes columns for them (similar to journal entries). When you download the template, custom property columns appear with a `(custom)` annotation alongside the required fields.
+
+During the import process:
+
+1. Map custom property columns in the column mapping step if needed
+2. In the import preview table, custom property cells are editable - you can adjust values before finalizing the import
+3. For SELECT-type properties, use the value label (e.g., "New York") or internal name (e.g., "new_york")
+4. For TEXT-type properties, enter the text value directly
+5. Light validates that required custom properties are filled and that SELECT values match available options
+
+This ensures your chart of accounts includes custom dimensions (cost centers, departments, regions, etc.) from the start.
+
 ## Importing customer master
 
 Load customer information:
@@ -134,7 +148,7 @@ This migrates transaction history.
 
 ## Importing journal entries
 
-Upload journal entries via CSV with the following format.
+Upload journal entries via CSV with the following format. Journal entry files can be up to 250MB in size.
 
 ### Downloading the template
 
