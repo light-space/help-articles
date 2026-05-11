@@ -117,6 +117,8 @@ When a bill arrives, Light matches it to PO and receipt:
 
 5. Matched bills are ready for approval and payment
 
+When viewing an open or closed PO, the matched invoices table displays which invoices have been matched to the PO, showing invoice number, match date, matched amount, and invoice total. The table also shows the remaining unmatched amount on the PO, making it easy to track partial matching and outstanding commitments.
+
 ## Controlling Spending with POs
 
 ### Spend Limits
