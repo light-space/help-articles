@@ -41,6 +41,7 @@ You can combine multiple conditions to create sophisticated approval rules that 
 3. Specify the **Approver(s)**:
    - Select specific users
    - Select users by role (recommended for flexibility)
+   - Select user groups—when a bill is routed to a user group, all members of that group see it in their Approving tab and can approve it
 
 4. Click **Save**
 
