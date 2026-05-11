@@ -21,7 +21,7 @@ The API provides endpoints for managing the following resources:
 - **Accounting Documents** — List and query all accounting documents across types
 - **Attachments** — Upload, list, and manage document attachments
 - **Authorization** — OAuth 2.0 token management
-- **Bank Accounts** — Access bank account data
+- **Bank Accounts** — Create bank accounts and access bank account data
 - **Card Transactions** — List, post, and update card transactions and receipts
 - **Cards** — Create, freeze, unfreeze, and manage corporate cards
 - **Companies** — Access company configuration (e.g., currency settings)
@@ -32,7 +32,7 @@ The API provides endpoints for managing the following resources:
 - **Customers** — Create, list, activate, and archive customers
 - **Expenses** — List expenses and submit reimbursements
 - **Invoice Approvals** — Retrieve invoice approval status
-- **Invoice Payables** — Create, approve, decline, and manage bills and their line items
+- **Invoice Payables** — Create, approve, decline, mark as paid, and manage bills and their line items
 - **Invoices** — Create, update, open, reset, and send sales invoices
 - **Journal Entries** — Create journal entries programmatically
 - **Ledger Transactions** — Query ledger transaction lines
