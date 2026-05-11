@@ -24,7 +24,7 @@ LCI maintains conversation threads so follow-up questions work naturally. Thread
 
 ## Available Tools
 
-LCI includes 31 tools organized into categories. The tools available to you depend on your role.
+LCI includes 33 tools organized into categories. The tools available to you depend on your role.
 
 ### Search Tools
 
@@ -51,6 +51,13 @@ Review and act on bills directly through LCI. These tools require specific roles
 - **Update bill line** — Update a single line item on a bill, including custom properties and grouped values. Available to admins, AP clerks, and AP preparation.
 - **Get approval queue** — See your pending approval tasks (bill approvals, purchase requests) filtered by status (pending, approved, queued, rejected). Available to all roles.
 - **Get user details** — Retrieve full details of a specific user including name, email, roles, company entity, and notification channel. Available to admins, AP preparation, and invoice approvers.
+
+### Customer Management Tools
+
+Create and update customers directly through LCI. Requires the **Company Admin** or **AR Clerk** role.
+
+- **Create customer** — Create a new customer with name, email, country, and optional details like customer type (business, consumer, government), VAT number, and business registration number. Example: "Create a customer named Acme Corp with email info@acme.com."
+- **Update customer** — Update an existing customer's details. Use **search customers** to find the customer ID first, then specify what to update. Example: "Update customer ABC123 to change their email address to newemail@acme.com."
 
 ### Report and Query Tools
 
@@ -222,11 +229,11 @@ LCI is accessible from the Light mobile app. The mobile interface provides the s
 
 LCI filters available tools based on your role. Here's what each role can do:
 
-**Company Admin / Controller** — Full access to all 31 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, manage assistant instructions, and view user details.
+**Company Admin / Controller** — Full access to all 33 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, create and update customers, manage assistant instructions, and view user details.
 
 **Invoice Approver** — Can approve and reject bills, view approval queue, get bill and user details, search bills, and use general query and navigation tools.
 
-**AP Clerk** — Can submit bills for approval, update bill lines, manage assistant instructions, and use general tools.
+**AP Clerk** — Can submit bills for approval, update bill lines, manage assistant instructions, create and update customers, and use general tools.
 
 **AP Preparation** — Can update bill lines, get bill and user details, create purchase orders, manage assistant instructions, and use general tools.
 
