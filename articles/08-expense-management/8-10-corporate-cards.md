@@ -28,17 +28,23 @@ Use for employee expenses like travel or supplies.
 1. Click **+ Create card**
 2. Select **Employee card**
 3. Fill in the details:
+   - **Physical card toggle**: Choose between a virtual card (instant, for online and contactless payments) or a physical card (shipped to an address). If you enable **Physical card**, shipping address fields appear below.
    - **Owner**: Select the employee from the dropdown
    - **Authentication phone number**: Phone number for 3D Secure verification
    - **Card account**: Select which card account to link
    - **Card description**: A label for this card (optional)
    - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
+   - **Shipping address** (physical cards only): Provide the recipient's name, street, house number, city, postal code, country, and state/province (if required). These fields auto-fill from the owner's profile when available.
 
-4. Click **Create card**
+4. Click **Create card** (or **Order card** if ordering a physical card)
+
+Physical cards display a **Physical** badge in the card UI.
 
 ### Vendor Cards
 
 Use for recurring vendor payments like subscriptions.
+
+**Note:** Vendor cards are always virtual — there is no physical card option for vendor cards.
 
 1. Click **+ Create card**
 2. Select **Vendor card**
@@ -51,6 +57,19 @@ Use for recurring vendor payments like subscriptions.
    - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
 
 4. Click **Create card**
+
+### Physical Cards
+
+When you order a physical card, Light ships a plastic card to the address you provide. Delivery time depends on the shipping destination (typically 5–10 business days).
+
+Physical cards ship frozen. To activate a physical card:
+
+1. Open the card details drawer
+2. Click **Activate card**
+3. A confirmation dialog appears: "By activating, you confirm you are in physical possession of your card."
+4. Click **Activate**
+
+This confirmation ensures the cardholder has received the physical card before it can be used.
 
 ## Card Accounts
 
@@ -97,7 +116,8 @@ Temporarily freeze a card without closing it:
 
 To unfreeze:
 1. Click **Activate card**
-2. The card is immediately active again
+2. For physical cards, a confirmation dialog appears asking you to confirm you are in physical possession of the card. Click **Activate** to proceed.
+3. The card is immediately active again
 
 ### Closing Cards
 
