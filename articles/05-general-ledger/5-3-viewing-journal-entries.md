@@ -237,7 +237,10 @@ Export journal entries and GL transactions for analysis:
    - CSV - For import elsewhere
    - PDF - For printing/sharing
 3. Specify columns to include
-4. Download the file
+
+**For large exports:** If your export includes more than 10,000 rows, Light runs it in the background to avoid timeouts. You'll receive a notification when the export is ready, with a download link. The file is available for 7 days.
+
+**For smaller exports:** Downloads begin instantly as before.
 
 Use exports for detailed analysis in Excel or consolidation to other systems.
 
