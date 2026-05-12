@@ -19,8 +19,8 @@ When you choose **Post & send invoice**, the email composer opens.
 |---|---|
 | **Subject** | Pre-filled from the document template's default email subject |
 | **Reply-to** | Pre-filled from the document template; comma-separated addresses |
-| **Recipients** | Customer billing email by default; comma-separated |
-| **CC** | Pre-filled from the document template's CC list |
+| **Recipients** | Pre-filled with the customer's billing email addresses (configured in customer email preferences); each email appears as a removable pill. You can remove pre-filled emails or add additional recipients. |
+| **CC** | Pre-filled from the document template's CC list; comma-separated |
 | **Custom message** | Pre-filled from the template's default message; max 750 characters |
 
 ### E-invoicing Toggle
