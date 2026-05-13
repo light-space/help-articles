@@ -203,6 +203,21 @@ This format works even when labels contain spaces.
 
 > Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry. Headers with `(required)` and `(custom)` annotations from the template are automatically stripped during import.
 
+### Archiving an import
+
+If you need to remove a journal entry import (for example, to correct data and re-import), you can archive it from the import history table:
+
+1. In the import history table, click the **⋯** (more actions) menu on the import row
+2. Select **Archive**
+3. If the import contains journal entries, Light shows a confirmation dialog explaining:
+   - **Draft entries** will be permanently removed
+   - **Posted entries** will be reversed
+4. Click **Archive** to confirm
+
+The status changes to **Archiving...** while Light processes the reversal. Once complete, the status updates to **Archived**.
+
+> Note: Some entries may fail to archive if they're in closed periods, have bank reconciliations, or have pending approvals. If this happens, the status shows **Archive failed**—contact support if you need help resolving the issue. Only users with COMPANY_ADMIN or CONTROLLER permissions can archive imports.
+
 ## Opening balance import
 
 Set GL account starting balances:
