@@ -15,6 +15,16 @@ Navigate via **Revenue & Invoicing → Sales invoices**.
    - **Currency** — auto-populated from the selected entity (can be changed)
 3. Click **Create** — the invoice opens in DRAFT state, ready for line items and details
 
+### Duplicating an Existing Invoice
+
+If you need to create a similar invoice, you can duplicate an existing one:
+
+1. Open the invoice you want to copy
+2. Click the three-dot menu (⋮) in the top right
+3. Select **Duplicate**
+
+Light creates a new draft invoice with the same customer, entity, currency, line items, and commercial settings (payment type, net terms, document template, custom properties). The new invoice opens immediately for editing. Invoice numbers and posting metadata are not copied—the duplicate starts as a fresh draft.
+
 ## Invoice Detail Form
 
 Once created, the invoice opens in its detail view. The header section includes:
