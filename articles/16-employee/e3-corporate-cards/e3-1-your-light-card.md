@@ -16,6 +16,8 @@ Your full card number, expiration date, and CVV are stored securely in the Light
 2. Tapping on your active card
 3. Revealing the full card number (you may need to authenticate)
 
+If you have a physical card, you can also reveal your 4-digit PIN the same way—it appears in the card details and auto-hides after a few seconds for security.
+
 Keep your card number private and never share it outside of work purchases.
 
 ## Checking Your Spending Limit
