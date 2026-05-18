@@ -203,6 +203,22 @@ This format works even when labels contain spaces.
 
 > Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry. Headers with `(required)` and `(custom)` annotations from the template are automatically stripped during import.
 
+### Archiving an import
+
+If you need to remove an import from your books (for example, to correct errors or undo a test import), archive it from the import history table:
+
+1. Navigate to **Settings > Import Data** and open the journal entry import history
+2. Find the import you want to archive
+3. Click the actions menu (**⋯**) and select **Archive**
+4. If the import created journal entries, confirm the action
+
+When you archive an import:
+
+- **Draft entries** are permanently removed from the system
+- **Posted entries** are reversed with offsetting journal entries, preserving the audit trail
+
+> Important: Archive requires COMPANY_ADMIN or CONTROLLER permissions. Some entries may fail to archive if they are in closed periods, bank-reconciled, or pending approval. If archiving fails, the import status will show **Archive failed**—contact support to resolve.
+
 ## Opening balance import
 
 Set GL account starting balances:
