@@ -17,7 +17,7 @@ You can create multiple sandboxes from one production account — for example, o
 From your production Light account, navigate to **Settings (gear icon) → Sandboxes** and click **+ Create sandbox**. Fill in the details:
 
 - **Company information** — vendor name, address, country, VAT number, website, and description
-- **Users** — the people who should have access, with their name, email, and phone number
+- **Users** — the people who should have access, with their name and email
 - **Personal message** (optional) — a custom note included in the invite email
 
 ### Step 2: The sandbox gets provisioned
@@ -93,7 +93,7 @@ If you need test data in the sandbox, it must be entered or imported manually wi
 
 Here's how it works:
 
-- When you create a sandbox, you provide a list of users (name, email, phone number) as part of the setup
+- When you create a sandbox, you provide a list of users (name and email) as part of the setup
 - These users are created as new accounts in the sandbox environment — they are completely independent from your production users
 - Each user receives an invite email with a link to log in at the sandbox URL (`app.sandbox.light.inc`)
 - Sandbox users have their own login credentials, separate from production
