@@ -52,7 +52,7 @@ This is useful when vendors send credit notes as PDF attachments that need to be
 ### Manual Credit Note Creation
 
 1. Navigate to **Spend management → Credit entries**
-2. Click **+ Create credit entry**
+2. Click **Create credit entry** in the page header
 3. Enter details:
    - **Vendor**: Select or search
    - **Credit Memo Number**: Vendor's credit memo number
