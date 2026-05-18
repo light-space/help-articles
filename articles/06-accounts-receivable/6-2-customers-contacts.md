@@ -21,6 +21,9 @@ Status is either **Active** or **Disabled** (the underlying values are `ACTIVE` 
    - **Domain** (optional)
    - **Description** (optional)
    - **Billing address**: country, state, city, street, zipcode
+   - **Email preferences**:
+     - **Send to** — default recipient email addresses for invoices sent to this customer
+     - **CC (optional)** — default CC addresses for invoices sent to this customer
    - **Shipping address** (optional)
    - **VAT**
    - **Business reg. number**
