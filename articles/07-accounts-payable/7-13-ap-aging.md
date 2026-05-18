@@ -50,11 +50,14 @@ Detailed listing by vendor showing:
 
 - **Vendor Name**
 - **Amounts by Bucket**: Breaking out vendor's total by aging
-- **Total Outstanding**: Vendor's total across all bills
+- **Total Outstanding**: Vendor's total across all bills (in your entity's currency)
+- **Open Amount (Vendor Currency)**: The vendor's balance in the currency they billed in - useful when reconciling with vendor statements, since they track amounts in their own currency
 - **Number of Bills**: Count of open bills per vendor
 - **Payment Terms**: Vendor's payment terms for reference
 
 Click on a vendor to see all individual bills and their aging.
+
+> Good to know: If a vendor bills you in multiple currencies (e.g., some invoices in EUR, others in USD), they appear as separate rows - one per currency. Each row shows both the entity-currency equivalent and the vendor-currency amount for that currency's bills.
 
 > Good to know: A healthy AP aging typically shows most bills in the Current bucket, with minimal past-due amounts.
 
@@ -119,12 +122,14 @@ View payables by currency:
 
 1. Select **Group By: Currency**
 2. See total exposure in each currency
-3. Helps with:
-   - FX risk assessment
-   - Currency liquidity planning
-   - Payment sequencing by currency
+3. Each vendor row now includes the **Open Amount (Vendor Currency)** column, making it easier to:
+   - Reconcile with vendor statements (which show amounts in the vendor's currency)
+   - Identify which specific currencies carry the most payables
+   - Track per-vendor exposure without manual FX conversion
 
 4. Large exposure in weakening currency: Consider early payment
+
+When a vendor has bills in multiple currencies (e.g., some EUR invoices and some USD invoices), they appear as separate rows - one per currency - so you can see the vendor's exposure in each currency individually.
 
 ## Cash Flow Planning with AP Aging
 
