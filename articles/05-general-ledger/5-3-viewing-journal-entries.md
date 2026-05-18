@@ -241,6 +241,8 @@ Export journal entries and GL transactions for analysis:
 
 Use exports for detailed analysis in Excel or consolidation to other systems.
 
+> **Note:** Ledger transaction CSV exports include **Release Begin Date** and **Release End Date** columns for lines with amortization or deferrals applied. These show the accounting period the release covers (e.g., when a deferred expense is being recognized).
+
 ## GL Aging Analysis
 
 For AR and AP accounts, view aging:
