@@ -90,6 +90,20 @@ To post a credit note:
 
 4. Click **Confirm**
 
+## Approving Credit Notes
+
+If your organization has credit note approvals enabled, credit notes may require approval before posting.
+
+When a credit note is pending approval and you're the assigned approver:
+
+1. Open the credit note
+2. **Approve** and **Reject** buttons appear in the credit entry header
+3. Click **Approve** to approve (or press **Shift+A**)
+4. Click **Reject** to reject (or press **Shift+D**)
+   - When rejecting, you can add optional notes explaining why
+
+Once all required approvals are complete, the credit note can be posted.
+
 ## Applying Credits to Future Invoices
 
 ### Applying to Specific Bills
@@ -164,6 +178,8 @@ Credit notes in different currency than original bill:
 5. GL entries record both original and adjusted amounts
 
 Use to credit customers at their original invoice rate if currencies have moved significantly.
+
+> **API users**: When creating or updating credit notes via `POST /credit-notes` or `PATCH /credit-notes/{id}`, you can pass `localCurrencyFxRateOverride` and `groupCurrencyFxRateOverride` to pin specific FX rates instead of defaulting to ECB rates. These fields work like the bill equivalents.
 
 ## Reverse/Reversing Credit Notes
 
