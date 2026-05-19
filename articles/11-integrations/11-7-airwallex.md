@@ -97,6 +97,14 @@ In the bill payment details page, select the Airwallex connection from the **Pay
 
 Once a payment is initiated through Airwallex, Light automatically checks for status updates every 15 minutes.
 
+### Retrying failed payments
+
+If a bill payment fails after Airwallex initially accepted the transfer, the bill returns to **UNPAID** status with a payment failure indicator. In this scenario, a **Retry payment** action appears in the bill details menu (three-dot icon in the top-right).
+
+> **Important**: When you click **Retry payment**, Light shows a confirmation prompt warning that funds may have already left your account before the failure was reported. Always verify with your bank that no funds were moved before retrying—otherwise the payment could be sent twice.
+
+After verifying with your bank, click **I have verified, retry** to resubmit the payment. Light shows a confirmation toast and the bill transitions out of UNPAID status.
+
 ## Fees
 
 Light does not charge any integration fees or transaction fees for this integration. For information on Airwallex pricing, including transaction fees and other applicable charges, refer directly to the [Airwallex pricing page](https://www.airwallex.com/eu/pricing).
