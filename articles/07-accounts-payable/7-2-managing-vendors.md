@@ -73,7 +73,6 @@ Additional optional fields: BIC/SWIFT, bank name, bank address.
 | Default tax code | — |
 | Default payment method | — |
 | Default from account (payment bank account) | — |
-| Cost center | — |
 | Approvers | — |
 
 **Default payment method** controls how bills from this vendor are paid after approval:
@@ -113,12 +112,13 @@ While a change is pending you'll see two tabs on the vendor:
 
 ## Entity Assignment
 
-A vendor can be assigned to one or more company entities. For each default entity you can configure:
+A vendor can be assigned to one or more company entities. After picking a **default entity**, you can configure the following defaults that pre-fill on bills from this vendor:
 
-- **Default GL account** — pre-fills coding on bills from this vendor
-- **Default tax code** — pre-fills tax on bills from this vendor
+- **Default GL account**
+- **Default tax code**
 - **Default from account** — the company bank account used to pay this vendor
-- **Cost center** — optional default cost center
+
+> The entity-specific defaults (GL account, tax code, from account) are only editable once a default entity has been selected.
 
 ---
 
@@ -138,25 +138,6 @@ Once a vendor is created, opening it shows the following tabs:
 | **Tasks** | Always |
 | **Attachments** | Always |
 | **Onboarding** | During onboarding flow |
-
----
-
-## Downloading Account Statements
-
-Generate and download statements showing your transaction history with a vendor.
-
-1. Navigate to **Spend management → Vendors**
-2. Select a vendor
-3. Click **Download account statement**
-4. Apply filters:
-   - **Period**: Select a date range (optional — if specified, the period appears on the statement)
-   - **Entity**: Filter by entity (optional)
-
-5. Click **Download**
-
-Statement behavior:
-- **Single entity**: The entity name appears on the statement
-- **Currency requirement**: All selected transactions must be in the same currency — if currencies differ, an error is shown
 
 ---
 
