@@ -42,6 +42,8 @@ The e-invoice goes through these statuses (shown as a separate badge on the invo
 
 Failures are reported per-invoice — if some invoices fail (for example, missing required fields), the others can still go through.
 
+> **Note:** When bulk sending, Light uses the recipient emails configured in each customer's email preferences if they've been set. If no email preferences are configured for a customer, the system falls back to the customer's primary email address.
+
 ## After Sending
 
 Once sent, the invoice transitions to **Open**. The activity log on the invoice records send events.
