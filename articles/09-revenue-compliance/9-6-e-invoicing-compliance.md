@@ -15,6 +15,8 @@ Peppol is a set of standards and governance rules enabling secure, reliable digi
 
 Most EU countries now require Peppol-compliant e-invoicing for B2B transactions and all B2G (business-to-government) transactions. Light automates Peppol compliance, converting your invoices to compliant format and managing transmission.
 
+> Good to know: Light currently supports sending Peppol invoices to customers in Belgium, Denmark, Germany, Finland, Luxembourg, Norway, and Sweden. Contact support if you need to send to additional countries.
+
 ## Peppol invoice requirements
 
 A Peppol-compliant invoice must include:
@@ -36,6 +38,16 @@ A Peppol-compliant invoice must include:
 Light validates all invoices against Peppol rules before submission. If validation fails, you receive detailed error messages indicating which fields don't comply.
 
 > Good to know: Different EU countries have additional Peppol rules (e.g., Italy requires Cassa Fiscale reporting, France requires specific VAT treatments). Light adapts validation based on buyer country.
+
+### Seller contact information (Germany)
+
+If you send Peppol invoices to German customers, you must include at least one seller contact field to meet German compliance rule DE-R-002. Set these using custom properties on the invoice or customer:
+
+- `cbc_seller_contact_name` — Contact person's name
+- `cbc_seller_contact_telephone` — Contact phone number
+- `cbc_seller_contact_electronic_mail` — Contact email address
+
+Light checks the invoice first, then falls back to the customer record if the property isn't set on the invoice. If all three are missing, German Peppol validation will reject the invoice. For other countries these fields are optional but recommended.
 
 ## Enabling Peppol in Light
 
