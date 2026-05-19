@@ -54,6 +54,8 @@ Detailed listing by vendor showing:
 - **Number of Bills**: Count of open bills per vendor
 - **Payment Terms**: Vendor's payment terms for reference
 
+When working with vendors who bill in different currencies, the report includes a **Total (Vendor Currency)** column showing each vendor's open balance in their original billing currency—useful when reconciling your records against their statements.
+
 Click on a vendor to see all individual bills and their aging.
 
 > Good to know: A healthy AP aging typically shows most bills in the Current bucket, with minimal past-due amounts.
@@ -125,6 +127,8 @@ View payables by currency:
    - Payment sequencing by currency
 
 4. Large exposure in weakening currency: Consider early payment
+
+The report also shows each vendor's open balance in their billing currency, making it easier to reconcile totals with vendor statements and confirm payment amounts in the original currency.
 
 ## Cash Flow Planning with AP Aging
 
