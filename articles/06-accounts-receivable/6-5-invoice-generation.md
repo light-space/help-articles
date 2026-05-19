@@ -12,7 +12,7 @@ Navigate via **Revenue & Invoicing → Sales invoices**.
 2. Fill in the create dialog:
    - **Customer** — required
    - **Entity** — the company entity issuing the invoice
-   - **Currency** — auto-populated from the selected entity (can be changed)
+   - **Currency** — defaults to the customer's most recent invoice currency (if they have one), otherwise the entity's base currency. You can change this before creating the invoice.
 3. Click **Create** — the invoice opens in DRAFT state, ready for line items and details
 
 ## Invoice Detail Form
