@@ -19,6 +19,7 @@ You can configure push notifications within the Light web app to stay updated on
    - **Test notifications**: Send yourself a test notification to confirm it works
    - **Bill approvals**: Toggle notifications for approval requests, reminders, and payment batch approvals
    - **Card transactions**: Toggle notifications for authorizations and declines
+   - **Invoice approvals**: Toggle notifications for invoice approval requests
    - **Reimbursements**: Toggle notifications for reimbursement updates (rejections, setup required, status changes)
    - **Tasks**: Toggle notifications for task updates and rejected requests
 4. Click **Save** to apply your changes
