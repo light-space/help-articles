@@ -114,6 +114,26 @@ LCI responses can include:
 - **Policy answers** — Answers to policy questions with a link to the source policy section
 - **Navigation** — Direct links to specific pages in the Light app
 
+### Skills
+
+Skills are user-created shortcuts for prompts you run frequently. When you create a skill, you give it a name (like `cash-flow` or `renew-contract`) and the prompt it runs. After that, you can trigger it by typing `/` followed by the skill name — or by clicking the **Run skill** button in the LCI toolbar.
+
+**To trigger a skill:**
+1. Type `/` in the LCI input — the skills dropdown opens and lists your skills
+2. Type part of the skill name to filter the list (e.g., `/cash` shows only skills starting with "cash")
+3. Select a skill from the list or press Enter to insert it
+
+Alternatively, click the **Run skill** button (next to the attachment button) to open the skills dropdown without typing.
+
+**If you don't have any skills yet:**
+
+When you type `/` for the first time, LCI asks: "You don't have any skills yet. Would you like to create one?" with two options:
+
+- **Yes, show me an example** — LCI fills the input with an example prompt you can send to create your first skill (e.g., "Create a skill that summarizes all my draft sales invoices and convert the sum to EUR")
+- **No thanks** — Closes the dropdown
+
+Once you've created skills, typing `/` always opens the skills list. If you type a name that doesn't match any of your skills, LCI shows "No matching skills."
+
 ### File Attachments
 
 You can attach files directly to your LCI messages using the paperclip button in the input area. The AI reads the file contents and acts on them as part of your request.
