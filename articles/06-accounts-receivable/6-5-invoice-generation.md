@@ -19,6 +19,17 @@ Navigate via **Revenue & Invoicing → Sales invoices**.
 
 If you need to create a new invoice similar to an existing one, open any invoice and click the **⋮** (three-dot menu) in the top right, then choose **Duplicate**. Light creates a new draft with the same customer, entity, currency, line items, and custom properties. You can then edit the draft as needed before posting.
 
+## Restoring a Voided Invoice
+
+If you've voided an invoice and need to bring it back, you can restore it to draft:
+
+1. Open the voided invoice (it will show **Void** status)
+2. Click the **⋮** (three-dot menu) in the top right
+3. Choose **Restore**
+4. Confirm the action
+
+The invoice returns to **Draft** state, where you can edit and re-post it.
+
 ## Invoice Detail Form
 
 Once created, the invoice opens in its detail view. The header section includes:
