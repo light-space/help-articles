@@ -17,6 +17,8 @@ Navigate via **Spend management → Bills**.
 
 Uploaded files run through AI extraction — see [AI invoice extraction](/articles/07-accounts-payable/7-5-ai-invoice-extraction.md).
 
+> **Good to know:** If the AI extracts a PO number from the bill, Light automatically matches the bill to the corresponding open purchase order for that vendor. You'll see the PO link already filled in when you open the bill in the Inbox.
+
 ### Email-to-Inbox
 
 Each entity has a forwarding email address. Email a bill attachment to that address and it lands in the Inbox.
