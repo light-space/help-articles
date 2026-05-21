@@ -106,6 +106,7 @@ Load vendor information:
    - **Terms**: Payment terms
    - **Currency**: Default invoice currency
    - **Tax ID**: Vendor tax/VAT number
+   - **Bank Recipient Name**: Recipient name that appears on payment instructions
 3. Upload file
 4. Light validates vendor IDs are unique
 5. Light creates vendor records
