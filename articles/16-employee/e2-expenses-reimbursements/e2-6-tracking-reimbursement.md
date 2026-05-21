@@ -52,6 +52,8 @@ Light sends you updates at key milestones:
 - When payment is being processed
 - When your reimbursement has been sent
 
+If you're using the Light mobile app, you'll also receive push notifications when your expense upload completes, if an upload fails, when a reimbursement is rejected, and when payment is processed.
+
 You can customize which notifications you receive by going to your Profile settings and updating your notification preferences. [Learn more here.](e1-3-setting-up-profile.md)
 
 ## What If Your Status Seems Stuck?
