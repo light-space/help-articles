@@ -53,6 +53,29 @@ Workflows have versions that track changes over time:
 
 Only one workflow version can be published at a time. The Workflows list shows the current version number, published date, and who published it for each workflow.
 
+### Viewing Version History
+
+To view previous versions of a workflow, click the version dropdown next to the workflow name in the editor. The dropdown lists all published versions in descending order, showing the version number (e.g., v1, v2) and the date each was published.
+
+When you select a previous version:
+
+- The editor displays that version's configuration as it was at that point in time
+- All nodes, conditions, and approval paths reflect the historical state
+- The workflow is **read-only** — you can review the configuration but can't make changes
+- To return to the current version and resume editing, select the most recent version from the dropdown
+
+This is helpful when you need to verify what a workflow looked like when a specific document was processed, or when you want to reference a previous configuration before making new changes.
+
+### Discarding Draft Changes
+
+If you've made changes to a workflow but haven't published them yet, you'll see a **Discard draft** button next to the Publish button. Clicking this:
+
+1. Shows a confirmation prompt (unpublished changes will be lost)
+2. Reverts the workflow to the last published version
+3. Removes any nodes, edges, or configuration changes you made since the last publish
+
+Use this when you've experimented with changes but decide not to keep them, or when you want to start over from the last published state.
+
 To publish, click the **Publish** button in the top-right corner of the workflow editor.
 
 ## Monitoring Workflows

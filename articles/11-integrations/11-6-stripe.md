@@ -62,7 +62,7 @@ When a Stripe payment syncs:
 
 This enables both automatic and manual matching.
 
-> **Note**: When syncing Stripe invoices, the original Stripe invoice number is automatically stored as a custom property on the Light invoice. This helps with reconciliation and customer inquiries that reference Stripe invoice numbers.
+> **Note**: When syncing Stripe invoices, Light preserves the original Stripe invoice number as the primary invoice number in Light. This keeps invoice numbers consistent across Stripe and Light for easier reconciliation and customer inquiries. (This applies to new imports; existing invoices retain their current numbers.)
 
 ## Handling multiple invoices
 

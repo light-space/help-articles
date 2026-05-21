@@ -67,6 +67,12 @@ Before issuing cards, you need at least one card account. To create one:
 
 Card accounts group cards together and control the funding source and entity association.
 
+## Funding Your Card Account
+
+Light card accounts are funded through Adyen. To add funds, transfer money to your Adyen wallet in the same currency as the account. Funds will be available as soon as Adyen receives and processes the transfer.
+
+The total time also depends on how long your bank takes to process the transfer — this normally shouldn't be more than 2–3 days. If it's been longer than that, we recommend contacting Adyen directly to confirm they've received the funds.
+
 ## Managing Cards
 
 ### Viewing Cards

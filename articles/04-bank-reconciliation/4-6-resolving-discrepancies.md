@@ -16,6 +16,25 @@ Bank reconciliation discrepancies occur when bank transactions don't match accou
 
 **Duplicate Transactions** - Same transaction appears twice in bank feed or GL
 
+## Investigating Discrepancies with All Transactions
+
+When you see a balance discrepancy, the **All transactions** tab shows every bank transaction for the account in one view, making it easier to pinpoint when and where the difference occurred.
+
+To investigate a discrepancy:
+
+1. Go to **Accounting → Bank reconciliation** and select the account
+2. Click the **All transactions** tab
+3. You'll see every transaction with its status:
+   - **Matched** - Transaction reconciled to a GL entry
+   - **Unmatched** - Transaction has no corresponding GL entry
+   - **Excluded** - Transaction marked as excluded from reconciliation
+4. Use the **Period** filter to narrow the date range and isolate when the discrepancy began
+5. Use the search bar to find a specific transaction by number or business partner name
+6. Review the **Opening balance** (shown at top) and **Closing balance** (shown at bottom) to verify they match your bank statement for that period
+7. Click **Export to CSV** to download the data for your records or further analysis
+
+This view helps you spot patterns—for example, if several transactions show "Unmatched" on the same day, that may indicate a batch import issue or a missing journal entry.
+
 ## Timing Differences
 
 The most common discrepancy is timing—when the bank posts a transaction before or after your GL:

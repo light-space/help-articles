@@ -115,6 +115,38 @@ Under **Settings > Guardrails > Policies**, you can create and manage spend poli
 
 Multi-factor authentication is required for all administrative and engineering access to production systems and management consoles. MFA adds a second layer of verification beyond a password, helping prevent unauthorized access even if credentials are compromised.
 
+## Session Management
+
+Light's authentication layer enforces session controls to limit exposure from unattended or hijacked sessions:
+
+- **Inactivity timeout**: Sessions expire after a period of inactivity, requiring the user to re-authenticate.
+- **Absolute session lifetime**: Sessions have a maximum lifetime regardless of activity, after which a fresh sign-in is required.
+- **Sign-out propagation**: Signing out in Light revokes the active session at the identity layer.
+
+Customers using SSO inherit session controls from their identity provider; values configured in the IdP take precedence over Light's defaults.
+
+## Account Lockout and Brute-Force Protection
+
+To protect against credential stuffing and brute-force attacks, Light's authentication layer applies:
+
+- **Failed login throttling**: Repeated failed sign-in attempts trigger progressive delays.
+- **Account lockout**: After repeated failures, the account is temporarily locked and the user is notified.
+- **Anomaly detection**: Sign-in attempts from unusual locations, devices, or IPs are flagged for additional verification or blocked.
+- **Bot and credential-stuffing protection**: Automated abuse signals are detected and blocked at the authentication layer.
+
+Customers using SSO have these protections enforced by their own identity provider in addition to Light's perimeter controls.
+
+## Password Policy
+
+For customers signing in with a Light-managed password (rather than SSO), passwords are subject to:
+
+- **Minimum length and complexity** requirements at the time of creation.
+- **Common-password screening**, rejecting known breached or weak passwords.
+- **Secure storage**, with passwords salted and hashed using a modern algorithm. Light staff cannot view customer passwords.
+- **Reset on suspicion of compromise**, with a self-service reset flow and audit logging on the change.
+
+For customers using SSO, password policy is governed by their identity provider.
+
 ## Single Sign-On (SSO)
 
 Light supports Single Sign-On so that employees can log in using their company's identity provider rather than managing a separate username and password. Light's SSO is powered by Auth0.

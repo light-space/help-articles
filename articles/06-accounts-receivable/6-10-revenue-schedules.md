@@ -36,6 +36,15 @@ Click **Add accrual** to apply, or **Update accrual** to modify an existing sche
 
 Open a contract and apply the release template on each line in the **Lines** tab using the same start/end + template flow.
 
+### Renewing Contracts with Revenue Recognition
+
+When you renew a contract that has accrual templates configured on its lines, Light automatically:
+
+- Extends the accrual end dates on contract lines that were tied to the original contract end date, matching them to the new end date
+- Creates a new deferred entry for the renewal period that spreads the additional revenue uniformly across the extended term
+
+This keeps your revenue recognition rate consistent across the original term and the renewal period. If your contract lines' accrual end dates were not tied to the contract end date (e.g., they ended earlier), those schedules remain unchanged.
+
 ## Viewing Generated Releases
 
 Once the document is posted and the schedule is active, generated entries appear under [**Accounting → Releases**](https://app.light.inc/releases) (when the Releases module is enabled for your plan).
