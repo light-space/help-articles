@@ -64,13 +64,28 @@ Create your GL account structure:
    - **Account Code**: Unique identifier (1000, 1100, 1110)
    - **Account Name**: Descriptive name (Cash, Accounts Receivable, etc.)
    - **Account Type**: Asset, Liability, Equity, Revenue, Expense
-   - **Parent Account**: (optional) Code of parent for hierarchical structure
+   - **Account Category**: Standard, Sum, or Header (see below)
+   - **Aggregation Rule**: (for Sum accounts only) Defines which accounts to roll up
 3. Upload file
 4. Light validates account codes are unique
 5. Light creates GL accounts
 6. You can now post transactions
 
-> Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes navigation easier.
+### Account categories
+
+Light supports three account categories:
+
+- **Standard**: Regular posting accounts where transactions are recorded
+- **Sum**: Roll-up accounts that aggregate balances from other accounts for reporting (no direct posting)
+- **Header**: Visual grouping labels that appear on reports with zero balance (no direct posting)
+
+### Aggregation rules for Sum accounts
+
+Sum accounts use an **aggregation rule** to define which accounts roll up into them. The rule specifies account code ranges in the format `start:end`, with multiple ranges separated by commas.
+
+For example, if you have expense accounts 60000–60999 for Operations and 62000–62999 for Administration, you could create a Sum account with the aggregation rule `60000:60999,62000:62999` to show the combined total on reports.
+
+> Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes defining aggregation rules straightforward, since you can group accounts by code range.
 
 ## Importing customer master
 
