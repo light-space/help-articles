@@ -24,6 +24,16 @@ A credit moves from Posted → Partially cleared → Cleared as it is applied to
 2. Fill in the form (customer, entity, currency, lines, etc.)
 3. Click **Create** — the credit opens in **Draft**
 
+### Tax Handling
+
+Customer credits use the tax engine configured for your company. When you add line items:
+
+- **Avatax** — the Tax code column shows a badge like **Avatax (code)** with the Avatax tax code
+- **Sphere** — the Tax code column shows a **Sphere** badge
+- **Built-in tax** — the Tax code column shows the standard tax code selector
+
+The tax engine you see matches your company's invoice tax configuration.
+
 ## Posting a Credit
 
 From the credit detail page, use the action button at the top right:
