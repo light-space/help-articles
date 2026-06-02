@@ -64,6 +64,8 @@ This enables both automatic and manual matching.
 
 > **Note**: When syncing Stripe invoices, Light preserves the original Stripe invoice number as the primary invoice number in Light. This keeps invoice numbers consistent across Stripe and Light for easier reconciliation and customer inquiries. (This applies to new imports; existing invoices retain their current numbers.)
 
+> **Note**: When importing Stripe invoices, Light uses the invoice creation date (when Stripe first created the invoice) rather than the finalization or effective date. This means imported invoices appear with the date Stripe created them, which may be earlier than when they were finalized or sent to customers.
+
 ## Handling multiple invoices
 
 If a Stripe payment covers multiple customer invoices:
