@@ -35,14 +35,26 @@ Use filters to narrow the ledger view:
 - Posting date (when it posted to GL)
 - Document date (when transaction occurred)
 - Cleared date (when it was reconciled)
+- Valuation date (for revaluation entries)
+- Created at (when the document was created in Light)
 
 **By Entity:**
 - Company entity (if multi-entity)
 
 **By Amount:**
+- Entity amount - Amount in the entity's local currency
+- Group amount - Amount in the group/reporting currency
+- Transaction amount - Original transaction amount
 - Equal to specific amount
 - Greater than / Less than
 - Amount range
+
+**By User:**
+- Created by (filter by the user who created the document)
+
+**By Ledger:**
+- Primary
+- Elimination
 
 Combine filters to find specific transactions quickly.
 
