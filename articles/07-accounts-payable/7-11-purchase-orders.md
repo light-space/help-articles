@@ -59,6 +59,8 @@ POs progress through states:
 - **BILLED**: Matched to invoice
 - **CLOSED**: Completed and archived
 
+When viewing a PO, the status badge in the header shows the current state.
+
 To change PO state:
 
 1. Open the PO
@@ -125,6 +127,12 @@ When a bill arrives, Light matches it to PO and receipt:
    - You document reason and approve or reject
 
 5. Matched bills are ready for approval and payment
+
+When a PO is open or closed, the matched invoices table shows which bills have been linked to the PO, the matched amount, and the remaining unmatched amount.
+
+## Viewing PO Documents
+
+When viewing a PO, use the **Show document** / **Hide document** toggle button to display or hide the PDF preview. This helps focus on the PO details or review the formatted document as needed.
 
 ## Controlling Spending with POs
 
