@@ -23,9 +23,10 @@ A company entity represents a distinct legal entity within your organization. Th
    - **Country**: The country where the entity is registered
    - **State**: State or region (if applicable)
    - **Local currency**: The primary currency for this entity's operations
-4. Optionally fill in **E-invoicing** details:
-   - **EAS code**: Electronic Address Scheme identifier for e-invoicing
-   - **E-invoice address**: Peppol network address if using e-invoicing
+4. Optionally add **E-invoicing** networks by clicking **+ Add network**:
+   - **Network**: Choose from Peppol, SDI, Nemhandel, Portuguese Tax Reporting, or myDATA
+   - **EAS code** and **E-invoice address**: Required for Peppol, SDI, Nemhandel, and Portuguese Tax Reporting
+   - **myDATA** (Greece): Uses VAT number as the network identifier—EAS code and e-invoice address are not required
 5. Click **Create**
 
 An entity code is automatically assigned to each new entity.
@@ -61,7 +62,12 @@ To activate expense cards, open the entity detail panel, scroll to the Cards sec
 - Ensure each entity's local currency matches its operating country when possible
 - Verify VAT and registration numbers are accurate before posting transactions
 - Use the Display name field for user-friendly names that will appear in reports and interfaces
-- Fill in e-invoicing details (EAS code and e-invoice address) if you plan to use Peppol
+- If you plan to use e-invoicing, add the relevant network for your region:
+  - **Peppol**: Common across multiple countries; requires EAS code and e-invoice address
+  - **SDI**: Italy; requires EAS code and e-invoice address
+  - **Nemhandel**: Denmark; requires EAS code and e-invoice address
+  - **Portuguese Tax Reporting**: Portugal; requires EAS code and e-invoice address
+  - **myDATA**: Greece; uses your VAT number as the network identifier (no EAS code or e-invoice address needed)
 
 ## Related articles
 
