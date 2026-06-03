@@ -61,7 +61,9 @@ Banking fields adapt based on the selected **bank country**:
 | Australia | BSB code + Account number |
 | Canada | Transit number + Account number |
 
-Additional optional fields: BIC/SWIFT, bank name, bank address.
+Additional optional fields: Bank recipient name, BIC/SWIFT, bank name, bank address.
+
+> **Bank recipient name** can also be provided by vendors through the portal self-serve form, and via CSV import using the `HEADER_BANK_RECIPIENT_NAME` column.
 
 **Step 3 – Accounting**
 
