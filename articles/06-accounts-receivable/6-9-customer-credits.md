@@ -24,6 +24,10 @@ A credit moves from Posted → Partially cleared → Cleared as it is applied to
 2. Fill in the form (customer, entity, currency, lines, etc.)
 3. Click **Create** — the credit opens in **Draft**
 
+### Tax Calculation
+
+Customer credits support tax calculation through your configured tax engine. If you use **Avatax** or **Sphere**, line items display the tax engine name as a badge in the **Tax code** column (e.g., "Avatax (P0000000)" or "Sphere"). If you use Light's built-in tax codes, you'll see a dropdown selector in that column instead.
+
 ## Posting a Credit
 
 From the credit detail page, use the action button at the top right:
@@ -57,5 +61,5 @@ From the credit detail header three-dot menu (⋮):
 
 ## Related Articles
 
-- [Invoice generation](/articles/06-accounts-receivable/6-5-invoice-generation.md)
+- [Invoice generation](/articles/06-accounts-receivable/6-9-customer-credits.md)
 - [Tracking payments](/articles/06-accounts-receivable/6-8-tracking-payments.md)
