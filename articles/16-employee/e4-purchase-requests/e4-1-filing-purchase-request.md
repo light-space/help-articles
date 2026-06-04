@@ -51,6 +51,14 @@ Follow these steps to submit a purchase request:
 
 Your request is now in the queue for your finance team to review.
 
+### Requesting a Vendor Card
+
+If you're requesting a vendor card instead of a purchase order, you'll also fill in:
+
+- **Card account**: The balance account the card will draw from
+- **Spend limit**: The interval (e.g., monthly) and amount for the card's limit
+- **Authentication phone number**: The phone number that receives authentication requests when transacting with the card. This auto-fills from your profile, but you can update it if needed.
+
 ## What Vendors Need to Know
 
 When possible, include quotes from your vendor in the purchase request. This helps your finance team:
