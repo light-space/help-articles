@@ -21,7 +21,7 @@ The API provides endpoints for managing the following resources:
 - **Accounting Documents** — List and query all accounting documents across types
 - **Attachments** — Upload, list, and manage document attachments
 - **Authorization** — OAuth 2.0 token management
-- **Bank Accounts** — Access bank account data
+- **Bank Accounts** — Create and access bank accounts (creating a bank account also creates its linked ledger account atomically)
 - **Card Transactions** — List, post, and update card transactions and receipts
 - **Cards** — Create, freeze, unfreeze, and manage corporate cards
 - **Companies** — Access company configuration (e.g., currency settings)
