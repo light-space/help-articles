@@ -65,15 +65,25 @@ At least one of debit or credit intercompany account must be set. You can click 
 
 > **Good to know:** Debit and credit totals are shown at the bottom of the lines table. The entry must balance before it can be posted.
 
+## Voiding a Posted Entry
+
+If you need to reverse a posted intercompany journal entry:
+
+1. Open the posted entry from **Accounting → Journal entries**
+2. Click **Void**
+3. Confirm the action in the dialog — all individual journal entry postings will be reversed
+
+This action cannot be undone. The entry's status changes to **Archived** and the GL impact is fully unwound.
+
 ## Statuses
 
 | Status | Description |
 |---|---|
 | **Draft** | Saved but not yet posted. Still editable, can be deleted. |
-| **Posted** | Finalised and reflected in the GL. Read-only. |
-| **Archived** | Posted entry that has been archived. All generated journal entry transactions are reversed. |
+| **Posted** | Finalised and reflected in the GL. Read-only. Can be voided. |
+| **Archived** | Posted entry that has been voided. All generated journal entry transactions are reversed. Shown as "Void" in the status filter. |
 
-> **Note:** If you need to reverse a posted intercompany entry, you can archive it. Archiving reverses all the journal entry transactions that were generated when the entry was posted, effectively unwinding the GL impact. Only posted entries can be archived - draft entries can be deleted instead.
+> **Note:** Draft entries can be deleted. Posted entries can be voided (which archives them and reverses all postings). Voiding is permanent and cannot be undone.
 
 ## Net Impact Preview
 
@@ -99,7 +109,7 @@ The intercompany journal entries list can be filtered by:
 - **Posting date** (defaults to current quarter)
 - **Valuation date**
 - **Currency**
-- **Status** (Draft / Posted)
+- **Status** (Draft / Posted / Void)
 
 Free-text search is also available.
 
