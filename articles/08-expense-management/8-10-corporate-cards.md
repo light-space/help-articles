@@ -42,7 +42,7 @@ Physical cards display a **Physical** badge on the card visual throughout Light.
 
 ### Vendor Cards
 
-Use for recurring vendor payments like subscriptions.
+Use for recurring vendor payments like subscriptions. Vendor cards are always virtual — the physical card option is not available for vendor cards.
 
 1. Click **+ Create card**
 2. Select **Vendor card**
