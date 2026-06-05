@@ -14,7 +14,7 @@ A document template defines:
 - **Description** — optional notes
 - **Type** — document type the template applies to
 - **Company entities** — which entities can use this template
-- **Invoice pattern** — number/format pattern for the document number
+- **Invoice pattern** — number/format pattern for the document number (invoice numbers are assigned sequentially with no gaps, ensuring compliance with tax jurisdictions that require continuous sequential numbering)
 - **Background color** — color used on the rendered document
 - **Reply-to email** — default reply-to when this template is used to send a document
 - **CC emails** — default CC recipients
