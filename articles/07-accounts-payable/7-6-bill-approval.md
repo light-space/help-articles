@@ -1,42 +1,39 @@
-# Bill Approval Workflows
+# Bill Approval
 
-Bill approval workflows in Light ensure appropriate oversight before payment. Light provides a predefined Bill workflow that you can customize with approval conditions based on your organization's requirements.
+Once a bill's data is complete in the Inbox, it moves to the **Approving** tab and is routed to the configured approvers. Approvers can approve or reject the bill from the detail view.
 
-[Open in Light →](https://app.light.inc/payables)
+[Open in Light →](https://app.light.inc/payables?tab=approving)
 
-## Understanding the Bill Approval Workflow
+Navigate via **Spend management → Bills → Approving**.
 
-Light includes a predefined Bill approval workflow that routes bills to the appropriate approvers based on configurable conditions. You can edit this workflow to match your organization's approval policies.
+## Approving a Bill
 
-> Good to know: You cannot create additional approval workflows—Light provides a single Bill workflow that you customize to handle all approval scenarios.
+1. Open a bill in the **Approving** tab
+2. Review the header, line items, GL coding, and attached document
+3. Use the action buttons:
+   - **Approve** — approves the bill and advances it through the workflow
+   - **Reject** — opens a dialog where you can add an optional comment, then declines the bill
 
-## Approval Conditions
+A rejected bill moves to the `DECLINED` state and appears under the **Discarded** tab.
 
-The approval workflow routes bills based on the following condition types:
+## Approval Log
 
-- **Amount**: Route bills based on total amount (e.g., bills over $10,000 require CFO approval)
-- **Entity**: Different approval rules per company entity
-- **Bill type**: Route based on the type of bill or expense category
-- **Custom properties**: Use custom fields on bills to determine routing
+Each bill has an **Approval log** showing the full audit trail of approval activity:
 
-You can combine multiple conditions to create sophisticated approval rules that match your internal controls.
+- Who was assigned as approver
+- Each approver's action (Approved / Declined / Pending / In review)
+- Timestamps and any comments added
 
-## Editing the Approval Workflow
+## Multi-Step Approval Chains
 
-### Accessing Workflow Settings
+Bills may require multiple approvers based on your organisation's policy (configured at the vendor level and in policies). The approval log shows the current step and any pending approvers.
 
-1. Navigate to **Settings (gear icon)** > **Approval Workflows**
-2. Select the **Bill** workflow
-3. Click **Edit** to modify the workflow conditions
+## What Happens After Approval
 
-### Configuring Approval Conditions
+After all required approvals are recorded, the bill transitions through:
 
-1. In the workflow editor, click **Add Condition**
-2. Select the condition type:
-   - **Amount**: Set threshold (e.g., "Amount greater than $5,000")
-   - **Entity**: Select which entities this rule applies to
-   - **Bill type**: Choose bill categories
-   - **Custom property**: Select a custom field and value
+- `APPROVED_ACCOUNTING_ENTRY_PENDING` — finalising the accounting entry
+- `READY_FOR_PAYMENT_RELEASE` — ready to be scheduled and paid
 
 3. Specify the **Approver(s)**:
    - Select specific users
@@ -180,6 +177,6 @@ Mobile approval supports fingerprint and face authentication for security.
 
 ## Related Articles
 
-- [Adding and managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md)
-- [Entering and ingesting bills](/articles/07-accounts-payable/7-4-entering-bills.md)
-- [Scheduling and executing payments](/articles/07-accounts-payable/7-7-scheduling-payments.md)
+- [Entering bills](/articles/07-accounts-payable/7-4-entering-bills.md)
+- [Scheduling payments](/articles/07-accounts-payable/7-7-scheduling-payments.md)
+- [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md)

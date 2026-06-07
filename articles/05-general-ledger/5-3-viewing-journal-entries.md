@@ -35,14 +35,26 @@ Use filters to narrow the ledger view:
 - Posting date (when it posted to GL)
 - Document date (when transaction occurred)
 - Cleared date (when it was reconciled)
+- Valuation date (for revaluation entries)
+- Created at (when the document was created in Light)
 
 **By Entity:**
 - Company entity (if multi-entity)
 
 **By Amount:**
+- Entity amount - Amount in the entity's local currency
+- Group amount - Amount in the group/reporting currency
+- Transaction amount - Original transaction amount
 - Equal to specific amount
 - Greater than / Less than
 - Amount range
+
+**By User:**
+- Created by (filter by the user who created the document)
+
+**By Ledger:**
+- Primary
+- Elimination
 
 Combine filters to find specific transactions quickly.
 
@@ -238,6 +250,8 @@ Export journal entries and GL transactions for analysis:
    - PDF - For printing/sharing
 3. Specify columns to include
 4. Download the file
+
+**For large exports:** If your filtered result contains more than 10,000 rows, Light runs the export in the background. You'll receive a notification with a download link when it's ready. Smaller exports download instantly. Exported files are available for 7 days.
 
 Use exports for detailed analysis in Excel or consolidation to other systems.
 

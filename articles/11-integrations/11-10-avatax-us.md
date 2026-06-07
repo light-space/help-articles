@@ -111,15 +111,15 @@ Light maintains certificate archive for audit trail.
 
 ## Handling returns and refunds
 
-When customers return goods or you issue credit:
+When you issue a customer credit for a return or refund:
 
-1. Create a credit note in Light
-2. Light marks it as a return/refund
-3. Light sends reversal information to AvaTax
-4. AvaTax records the tax reversal
+1. Create a customer credit in Light (linked to the original invoice or standalone)
+2. As you add line items, Light automatically calculates tax via AvaTax (just like invoices)
+3. When you post the customer credit, Light commits it to AvaTax as a return transaction
+4. AvaTax records the tax reversal in its system
 5. Your tax liability reduces by the returned amount
 
-This correctly tracks returns in tax accounting.
+If your customer credit is for an AvaTax-enabled entity and customer, tax calculation and syncing happen automatically - you don't need to manually send reversal information to AvaTax.
 
 ## Tax rate automation
 

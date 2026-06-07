@@ -35,7 +35,6 @@ To see the full permission breakdown for each role, go to **Business partners �
    - **Access role** — select one or more roles
    - **Entity** — which company entity they belong to
    - **Manager** — their direct manager in Light
-   - **Communication channel** — how they receive notifications
    - Address fields (Country, City, State, Zip) — optional
    - **Phone number** — optional
 
@@ -47,7 +46,7 @@ Light sends an invitation email to the new member. They click the link to accept
 
 ### View the team
 
-Go to **Business partners → Users** to see all users. The list shows full name, email, notification channel, roles, phone, groups, country, city, and address. Click any row to open the user's details.
+Go to **Business partners → Users** to see all users. The list shows full name, email, roles, phone, groups, country, city, and address. Click any row to open the user's details.
 
 ### Edit a user
 
