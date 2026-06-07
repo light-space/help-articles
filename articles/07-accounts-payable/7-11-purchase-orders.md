@@ -1,20 +1,23 @@
-# Purchase Orders and Procurement
+# Purchase Orders
 
-Purchase orders (POs) in Light document your intention to buy goods or services from vendors. They enable three-way matching (PO, receipt, bill) and control spending.
+Purchase orders (POs) record committed purchases with vendors before bills are received. POs are managed under **Spend management → Purchase orders**.
 
 [Open in Light →](https://app.light.inc/procurement/purchase-orders)
 
-## Understanding Purchase Orders
+Navigate via **Spend management → Purchase orders**.
 
-A PO is a contractual commitment to buy from a vendor:
+## Purchase Order States
 
-- **Quantity and Price**: What you're buying and at what price
-- **Delivery Terms**: When goods/services will be delivered
-- **Payment Terms**: When you'll pay
-- **GL Accounts**: Which accounts to charge
-- **Approvals**: Who must approve the spending
-
-POs are optional in Light AP but recommended for spend control.
+| State | Meaning |
+|---|---|
+| `IN_DRAFT` | Editable draft |
+| `APPROVED_ACCOUNTING_ENTRY_PENDING` | Approved; finalising accounting entry |
+| `OPEN` | Active and available for matching against bills |
+| `CLOSE_PENDING` | Close in progress |
+| `CLOSED` | Closed (no further matching) |
+| `CANCEL_PENDING` | Cancel in progress |
+| `CANCELLED` | Cancelled |
+| `RESET_PENDING` | Being reset to a prior state |
 
 ## Creating a Purchase Order
 
@@ -56,6 +59,8 @@ POs progress through states:
 - **BILLED**: Matched to invoice
 - **CLOSED**: Completed and archived
 
+When viewing a PO, the status badge in the header shows the current state.
+
 To change PO state:
 
 1. Open the PO
@@ -63,6 +68,12 @@ To change PO state:
 3. Select target state
 4. Light validates transition
 5. Click **Confirm**
+
+### Sending POs to Vendors
+
+When a PO is approved and syncs to your ERP (moving to APPROVED/OPEN state), Light automatically emails the vendor with the PO PDF attached. The email includes the PO number, issue date, delivery date, and description, plus your contact email for questions.
+
+Note: this only happens if the vendor has an email address on file. If your vendor is missing an email, add it in the vendor record before approving the PO.
 
 ## PO Approvals
 
@@ -116,6 +127,12 @@ When a bill arrives, Light matches it to PO and receipt:
    - You document reason and approve or reject
 
 5. Matched bills are ready for approval and payment
+
+When a PO is open or closed, the matched invoices table shows which bills have been linked to the PO, the matched amount, and the remaining unmatched amount.
+
+## Viewing PO Documents
+
+When viewing a PO, use the **Show document** / **Hide document** toggle button to display or hide the PDF preview. This helps focus on the PO details or review the formatted document as needed.
 
 ## Controlling Spending with POs
 
@@ -200,33 +217,22 @@ Cancelled POs remain in system for historical reference.
    - By time period
    - By commodity (product category)
 
-3. Identify top vendors
-4. Analyze spending patterns
-5. Export for analysis
+Once approved, the PO transitions through `APPROVED_ACCOUNTING_ENTRY_PENDING` to `OPEN` and is available for matching.
 
-### Vendor Performance
+## Matching POs to Bills
 
-1. Navigate to **Reports** > **Vendor Performance**
-2. View:
-   - On-time delivery rate
-   - Quality of goods/services
-   - Price competitiveness
-   - Responsiveness
+When entering a bill, you can link it to a PO by setting the **PO number** on the bill. Light then tracks the matched amount against the PO's open quantity.
 
-3. Use to negotiate better terms or switch vendors
+## Closing a PO
 
-## Integration with Procurement
+When all bills against a PO have been received (or the PO is no longer needed), close it from the PO detail view. It transitions through `CLOSE_PENDING` to `CLOSED`.
 
-For organizations with formal procurement:
+## Purchase Requests (PRs)
 
-1. Light integrates with procurement workflows
-2. Procurement team creates POs based on requisitions
-3. POs feed into supplier management
-4. Contracts track long-term vendor arrangements
-5. Volume discounts are tracked and applied
+Purchase requests are a separate, upstream document used to request approval to buy. PRs live under **Spend management → Purchase requests** and, once approved, can be converted into POs. PRs are an optional workflow — companies that don't need a request layer can use POs directly.
 
 ## Related Articles
 
-- [Adding and managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md)
-- [Entering and ingesting bills](/articles/07-accounts-payable/7-4-entering-bills.md)
-- [Bill approval workflows](/articles/07-accounts-payable/7-6-bill-approval.md)
+- [Entering bills](/articles/07-accounts-payable/7-4-entering-bills.md)
+- [Bill approval](/articles/07-accounts-payable/7-6-bill-approval.md)
+- [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md)

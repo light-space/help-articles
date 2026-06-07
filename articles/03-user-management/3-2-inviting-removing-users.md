@@ -25,6 +25,16 @@ The user will receive an email with a secure link to activate their account. The
 
 > Good to know: Email invitations expire after 7 days. If a user doesn't accept within this period, send a new invitation.
 
+### Controlling Welcome Emails
+
+When you create a user or update their roles, Light can send them a welcome email with onboarding information. You can control this behavior at two levels:
+
+**Organization-wide default**: Go to **Organization Settings → User emails** and use the **Send emails** toggle to set the default behavior for your entire organization. When enabled, Light automatically sends welcome emails when users are created or when their roles change.
+
+**Per-user override**: When creating or editing a user, you'll see a **Send welcome email** toggle in the user dialog. Use this to override the organization setting for a specific user. For example, if your organization default is enabled but you're making an internal role adjustment you don't want to notify the user about, toggle this off for that specific change.
+
+> Good to know: The per-user toggle always reflects your organization default unless you explicitly change it. If you want to adjust the default for all future users, change the organization setting in Organization Settings.
+
 ## Assigning Multiple Roles
 
 Users can have multiple roles simultaneously. For example, an invoice reviewer might need both **AP Clerk** and **Invoice Approver** roles. The **Access role** field in the user form accepts multiple selections — simply select additional roles as needed. The user will have the combined permissions from all selected roles.

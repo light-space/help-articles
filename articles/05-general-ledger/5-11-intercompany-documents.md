@@ -65,6 +65,16 @@ At least one of debit or credit intercompany account must be set. You can click 
 
 > **Good to know:** Debit and credit totals are shown at the bottom of the lines table. The entry must balance before it can be posted.
 
+## Voiding a Posted Entry
+
+If you need to reverse a posted intercompany journal entry:
+
+1. Open the posted entry from **Accounting → Journal entries**
+2. Click **Void**
+3. Confirm the action in the dialog — all individual journal entry postings will be reversed
+
+This action cannot be undone. The entry's status changes to **Archived** and the GL impact is fully unwound.
+
 ## Statuses
 
 | Status | Description |

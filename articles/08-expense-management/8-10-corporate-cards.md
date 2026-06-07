@@ -27,30 +27,36 @@ Use for employee expenses like travel or supplies.
 
 1. Click **+ Create card**
 2. Select **Employee card**
-3. Fill in the details:
+3. Toggle **Physical card** if you want a plastic card shipped to the cardholder. Virtual cards are issued instantly for online and contactless payments; physical cards require a shipping address and take several business days to arrive.
+4. Fill in the details:
    - **Owner**: Select the employee from the dropdown
    - **Authentication phone number**: Phone number for 3D Secure verification
    - **Card account**: Select which card account to link
    - **Card description**: A label for this card (optional)
    - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
+   - **Shipping address** (physical cards only): First name, Last name, Street, House number, Postal code, City, Country, and State or province (if applicable). The form pre-fills from the owner's profile if address information is available.
 
-4. Click **Create card**
+5. Click **Create card** (or **Order card** for physical cards)
+
+Physical cards display a **Physical** badge on the card visual throughout Light.
 
 ### Vendor Cards
 
-Use for recurring vendor payments like subscriptions.
+Use for recurring vendor payments like subscriptions. Vendor cards are always virtual — the physical card option is not available for vendor cards.
 
 1. Click **+ Create card**
 2. Select **Vendor card**
-3. Fill in the details:
+3. Toggle **Physical card** if you want a plastic card shipped to the cardholder. Virtual cards are issued instantly for online and contactless payments; physical cards require a shipping address and take several business days to arrive.
+4. Fill in the details:
    - **Owner**: Select the card owner from the dropdown
    - **Authentication phone number**: Phone number for 3D Secure verification
    - **Card account**: Select which card account to link
    - **Vendor**: Select the vendor (or click **Quick-add vendor** to create one inline)
    - **Card description**: A label for this card (optional)
    - **Limits**: Select a limit interval (Unlimited, Per transaction, Weekly, or Monthly) and enter an amount
+   - **Shipping address** (physical cards only): First name, Last name, Street, House number, Postal code, City, Country, and State or province (if applicable). The form pre-fills from the owner's profile if address information is available.
 
-4. Click **Create card**
+5. Click **Create card** (or **Order card** for physical cards)
 
 ## Card Accounts
 
@@ -66,6 +72,12 @@ Before issuing cards, you need at least one card account. To create one:
 4. Click **Create**
 
 Card accounts group cards together and control the funding source and entity association.
+
+## Funding Your Card Account
+
+Light card accounts are funded through Adyen. To add funds, transfer money to your Adyen wallet in the same currency as the account. Funds will be available as soon as Adyen receives and processes the transfer.
+
+The total time also depends on how long your bank takes to process the transfer — this normally shouldn't be more than 2–3 days. If it's been longer than that, we recommend contacting Adyen directly to confirm they've received the funds.
 
 ## Managing Cards
 
@@ -97,7 +109,8 @@ Temporarily freeze a card without closing it:
 
 To unfreeze:
 1. Click **Activate card**
-2. The card is immediately active again
+2. For physical cards, you'll see a confirmation dialog: "By activating, you confirm you are in physical possession of your card." Click **Activate** to proceed.
+3. The card is immediately active again
 
 ### Closing Cards
 

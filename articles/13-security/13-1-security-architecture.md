@@ -138,14 +138,15 @@ Light maintains an incident response plan:
 
 ## Compliance and Certifications
 
-Light maintains multiple security certifications:
+Light's compliance posture is anchored on:
 
-- **SOC 1 Type II**: Audited controls for financial reporting, relevant for customers whose financial statements rely on Light's services
-- **SOC 2 Type II**: Audited controls for security, availability, processing integrity, confidentiality, and privacy
-- **GDPR Compliance**: Full compliance with European data protection regulations
-- **CCPA Compliance**: Compliance with California privacy requirements
+- **SOC 2 Type II**: Audited controls for security, availability, processing integrity, confidentiality, and privacy. Renewal audit in progress.
+- **GDPR Compliance**: Operational compliance with EU data protection regulations, with a customer-facing DPA and a documented subprocessor list.
+- **PCI DSS 4.0.1 (in progress)**: SAQ-D Service Provider scope, audit closing May 21, 2026.
 
-> Tip: Request Light's SOC 1, SOC 2, or security audit reports directly from your Light account team for your due diligence.
+See [Compliance Certifications](/articles/13-security/13-4-compliance-certifications) for the full breakdown, including the DPA, subprocessor list, and supervisory authority.
+
+> Tip: Request Light's SOC 2 Type II report or other security documentation directly from your Light account team for your due diligence.
 
 ## Data Isolation
 

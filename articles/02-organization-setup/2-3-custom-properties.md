@@ -66,13 +66,17 @@ You can add values at any time, even after the property is already in use.
 
 Internal names cannot be changed after creation.
 
-## Archiving properties
+## Deactivating properties
 
-If a property is no longer needed:
+If a property is no longer needed, you can deactivate it. Inactive properties are removed from future transactions, but historical values are retained.
 
 1. Open the property
-2. Click **Archive** in the top-right corner
-3. The property is archived and removed from active use, but historical values are retained
+2. Click **Edit** in the top-right corner
+3. Toggle the **Active** switch OFF
+4. In the confirmation dialog, click **Deactivate**
+5. Click **Save** to apply the change
+
+To reactivate a property, toggle the **Active** switch back ON and save. Inactive properties display an **Inactive** badge.
 
 ## Applying custom properties to transactions
 
@@ -92,7 +96,7 @@ When creating or editing a transaction:
 - Keep the number of required properties reasonable to avoid data entry friction
 - Use internal names that are code-friendly (no spaces, special characters)
 - Use the Context field to document the purpose of each property and its values
-- Review property usage periodically and archive unused properties
+- Review property usage periodically and deactivate unused properties
 - Test custom properties on a sample transaction before rolling out to your team
 
 ## Related articles

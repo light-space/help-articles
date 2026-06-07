@@ -15,6 +15,17 @@ Light exports report data as CSV so you can open it in a spreadsheet application
 - Period reports: `{reportName}_{startDate}_to_{endDate}.csv`
 - Snapshot reports (e.g. Balance Sheet): `{reportName}_as_of_{endDate}.csv`
 
+### Large exports (ledger transactions)
+
+If you're exporting a large number of ledger transactions, Light may prepare the file in the background instead of downloading it immediately. When this happens:
+
+1. You'll see a message: **"Your export is being prepared. You'll be notified when it's ready."**
+2. Continue working in Light - the export runs in the background
+3. When the file is ready, a notification appears in your notification panel (top right)
+4. Click the notification to download the CSV
+
+Smaller exports download instantly as before. Background processing applies only when the dataset is large enough that preparing the file would otherwise delay your workflow.
+
 ## What the CSV contains
 
 The exported file mirrors what you see on screen:
