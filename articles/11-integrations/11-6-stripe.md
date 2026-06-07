@@ -89,6 +89,8 @@ When customers are refunded or chargebacks occur:
 
 This maintains complete audit trail of all payment activity.
 
+> **Note**: When syncing Stripe credit notes with line-level discounts or taxes, Light preserves the line amount and discount structure exactly as Stripe provides them, ensuring customer credit totals match Stripe's final amounts. This keeps your records consistent with what customers see in Stripe.
+
 ## Subscription and recurring payment tracking
 
 For SaaS with recurring Stripe subscriptions:
