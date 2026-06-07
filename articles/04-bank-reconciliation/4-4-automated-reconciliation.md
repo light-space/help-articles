@@ -29,6 +29,8 @@ A filter bar at the top lets you narrow transactions by date (e.g., "Transaction
 
 **Left panel — Bank transactions**: Shows imported bank transactions with columns for Date, Transaction name, Reference, and Amount. Each row has a checkbox for selection. The bottom of the panel shows the total count and balance of unmatched bank transactions. Above the table you can see the sync status (e.g., "Completed") and when the account was last synced (e.g., "3 hours ago Synced"). The panel also includes import/export icons and a search bar.
 
+**Setting an opening balance**: If you need to manually set a starting bank balance for a specific date (useful during initial setup, when correcting historical balances, or when bank feeds aren't available for past periods), click the **Set bank balance** button (banknote icon) in the left panel toolbar. Enter the end-of-day balance from your bank statement and the date. Light calculates forward balances from this anchor by adding subsequent transactions.
+
 **Right panel — Ledger transactions**: Shows accounting entries available for matching. You can toggle between **Open transactions** (unmatched ledger entries available for reconciliation) and **Closed transactions** (already matched or closed entries). Columns include Date, Transaction ID, Description, and Amount. This panel also has an export icon and search bar.
 
 **Action bar**: Between the filter bar and the panels, you'll find the key reconciliation actions:

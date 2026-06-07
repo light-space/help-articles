@@ -106,9 +106,9 @@ Your finance team handles communicating the PO to the vendor, but you might rece
 
 If you submitted a request but need to modify it:
 
-- **Before approval**: You can edit details or add information while it's pending
-- **During review**: Your finance or procurement team (admins) can update the request on your behalf—including description, amount, currency, vendor, and other details—if it's still under review
-- **After approval**: Contact your finance team if changes are needed—they may need to amend the purchase order
+- **While pending**: If your request is still pending approval, you can edit it yourself. Open the request and click **Edit** to update the vendor, amount, description, currency, company entity, or outcome details (PO line items or card details). Click **Save** when you're done or **Cancel** to discard changes. (The Edit button appears only if you have permission and the request hasn't been approved yet.)
+- **During review by admins**: Your finance or procurement team can also update pending requests on your behalf if you reach out to them.
+- **After approval**: Contact your finance team if changes are needed—they may need to amend the purchase order.
 
 ## Viewing Past Requests
 

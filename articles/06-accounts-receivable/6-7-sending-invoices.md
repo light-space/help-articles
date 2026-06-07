@@ -19,9 +19,11 @@ When you choose **Post & send invoice**, the email composer opens.
 |---|---|
 | **Subject** | Pre-filled from the document template's default email subject |
 | **Reply-to** | Pre-filled from the document template; comma-separated addresses |
-| **Recipients** | Customer billing email by default; comma-separated |
-| **CC** | Pre-filled from the document template's CC list |
+| **Recipients** | Pre-filled from the customer's email preferences (if configured) or the customer's primary email. Displays as editable pills - you can remove recipients or add new ones by typing and pressing Enter, comma, or space |
+| **CC** | Pre-filled from the customer's email preferences (if configured). Displays as editable pills - you can remove or add CC addresses |
 | **Custom message** | Pre-filled from the template's default message; max 750 characters |
+
+> **Note:** Customer email preferences (billing recipients and CC addresses) can be configured on the customer record. When set, these values automatically populate the Recipients and CC fields for each invoice or credit you send to that customer.
 
 ### E-invoicing Toggle
 
@@ -40,7 +42,11 @@ The e-invoice goes through these statuses (shown as a separate badge on the invo
 3. Choose the bulk post-and-send action
 4. The bulk dialog opens, letting you post and send all selected invoices in one go
 
+When customer email preferences are configured with recipient emails, bulk sends will use those. Otherwise, Light falls back to the customer's primary email address.
+
 Failures are reported per-invoice — if some invoices fail (for example, missing required fields), the others can still go through.
+
+> **Note:** When bulk sending, Light uses the recipient emails configured in each customer's email preferences if they've been set. If no email preferences are configured for a customer, the system falls back to the customer's primary email address.
 
 ## After Sending
 

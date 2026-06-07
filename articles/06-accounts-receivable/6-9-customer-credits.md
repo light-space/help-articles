@@ -1,6 +1,6 @@
 # Customer Credits
 
-Customer credits are credit documents that reduce a customer's balance. They can be applied to one or more open or partially-paid sales invoices.
+Customer credits are credit documents that reduce a customer's balance. You can apply the full credit amount or allocate a partial amount to one or more open or partially-paid sales invoices—any unallocated balance remains available for future use.
 
 [Open in Light →](https://app.light.inc/customer-credits)
 
@@ -32,6 +32,9 @@ When adding line items to a customer credit, you can apply a discount to each li
 - **Fixed-amount discount** — enter a fixed amount in the credit's currency
 
 The total discount is shown in the totals summary at the bottom of the credit, along with any tax amounts.
+### Tax Calculation
+
+Customer credits support tax calculation through your configured tax engine. If you use **Avatax** or **Sphere**, line items display the tax engine name as a badge in the **Tax code** column (e.g., "Avatax (P0000000)" or "Sphere"). If you use Light's built-in tax codes, you'll see a dropdown selector in that column instead.
 
 ## Posting a Credit
 
@@ -43,14 +46,20 @@ Once posted, the credit can be applied to invoices.
 
 ## Applying a Credit to Invoices
 
+You can apply all or part of a customer credit to one or more sales invoices. Any unallocated balance stays on the credit for later use.
+
 1. Open the posted credit
 2. Click **Apply to invoice**
-3. The dialog lists invoices for the same customer in **Open** or **Partially paid** state
-4. Pick one or more invoices and enter the amount to apply against each
-5. The dialog shows the running totals: total invoice amount, total credit, and remaining credit
-6. Confirm to apply
+3. The dialog lists invoices for the same customer and entity in **Open** or **Partially paid** state
+4. Select one or more invoices
+5. Enter the amount to apply against each invoice (any amount up to the credit's available balance)
+6. Review the running totals: total invoice amount, amount being applied, and remaining credit balance
+7. Click **Apply** to confirm
 
-The credit's state updates to **Partially cleared** or **Cleared** based on how much remains.
+**What happens next:**
+- Each selected invoice's balance decreases by the applied amount
+- The credit's state updates to **Partially cleared** if a balance remains, or **Cleared** if fully allocated
+- Partially cleared credits can be applied to additional invoices at any time
 
 ## Other Actions
 
@@ -60,5 +69,5 @@ From the credit detail header three-dot menu (⋮):
 
 ## Related Articles
 
-- [Invoice generation](/articles/06-accounts-receivable/6-5-invoice-generation.md)
+- [Invoice generation](/articles/06-accounts-receivable/6-9-customer-credits.md)
 - [Tracking payments](/articles/06-accounts-receivable/6-8-tracking-payments.md)
