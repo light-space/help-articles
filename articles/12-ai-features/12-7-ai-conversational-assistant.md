@@ -54,10 +54,10 @@ Review and act on bills directly through LCI. These tools require specific roles
 
 ### Customer Management Tools
 
-Create and update customer records through LCI. These tools require the **Company Admin** or **AR Clerk** role.
+Create and update customers directly through LCI. Requires the **Company Admin** or **AR Clerk** role.
 
-- **Create customer** — Create a new customer with name, email, country, and optional fields like customer type (business, consumer, or government), description, VAT number, business registration number, and domain. For example, say "Create a customer named Acme Corp with email info@acme.com" or "Add a new customer called Widget Inc in the US with type business."
-- **Update customer** — Update an existing customer's details including name, email, type, description, VAT number, business registration number, or domain. First use search customers to find the customer ID, then say "Update customer ABC123 to change their email to newemail@acme.com" or "Change the customer type for XYZ789 to government."
+- **Create customer** — Create a new customer with name, email, country, and optional details like customer type (business, consumer, government), VAT number, and business registration number. Example: "Create a customer named Acme Corp with email info@acme.com."
+- **Update customer** — Update an existing customer's details. Use **search customers** to find the customer ID first, then specify what to update. Example: "Update customer ABC123 to change their email address to newemail@acme.com."
 
 ### Report and Query Tools
 
@@ -249,7 +249,7 @@ LCI is accessible from the Light mobile app. The mobile interface provides the s
 
 LCI filters available tools based on your role. Here's what each role can do:
 
-**Company Admin / Controller** — Full access to all 33 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, manage assistant instructions, create and update customers, and view user details.
+**Company Admin / Controller** — Full access to all 33 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, create and update customers, manage assistant instructions, and view user details.
 
 **Invoice Approver** — Can approve and reject bills, view approval queue, get bill and user details, search bills, and use general query and navigation tools.
 
