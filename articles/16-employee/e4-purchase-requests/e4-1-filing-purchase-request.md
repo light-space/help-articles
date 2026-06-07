@@ -39,6 +39,7 @@ Follow these steps to submit a purchase request:
 - What is this purchase for? (brief description)
 - Which department or project does it belong to?
 - Who is this purchase for?
+- If your admin has configured custom properties (additional tracking dimensions), they'll appear here for you to classify the request further
 
 **Attachments (optional but helpful):**
 - Quotes from the vendor
