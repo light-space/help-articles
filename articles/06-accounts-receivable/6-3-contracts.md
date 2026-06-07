@@ -10,6 +10,8 @@ Navigate via **Revenue & Invoicing → Contracts**.
 
 The Contracts table shows: **Customer**, **Entity**, **Status**, **Description**, **Start date**, **End date**, **Renewal date**, **ARR**, **Activated at**, **Terminated at**.
 
+By default, the page shows only **Active** and **Draft** contracts. To see **Terminated** contracts or other states, adjust or clear the status filter above the table.
+
 ## Contract Lifecycle States
 
 | State | UI Label |

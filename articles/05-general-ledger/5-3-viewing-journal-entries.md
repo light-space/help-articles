@@ -239,6 +239,8 @@ Export journal entries and GL transactions for analysis:
 3. Specify columns to include
 4. Download the file
 
+**For large exports:** If your filtered result contains more than 10,000 rows, Light runs the export in the background. You'll receive a notification with a download link when it's ready. Smaller exports download instantly. Exported files are available for 7 days.
+
 Use exports for detailed analysis in Excel or consolidation to other systems.
 
 ## GL Aging Analysis
