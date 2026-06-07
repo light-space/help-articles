@@ -1,6 +1,6 @@
 # Setting Up Light Cards (KYC)
 
-Light cards are corporate payment cards issued directly by Light for seamless expense management and spending control. Setting up cards requires KYC (Know Your Customer) verification for compliance.
+Light cards are corporate payment cards issued directly by Light for seamless expense management and spending control.
 
 [Open in Light →](https://app.light.inc/user-cards)
 
@@ -31,12 +31,6 @@ Light partners with card providers to issue cards and process transactions.
 - Used for online purchases only
 - Auto-expires after single use
 - Ideal for high-risk or one-time purchases
-
-**Commercial Card**:
-- For larger organizations
-- Centrally managed by Finance
-- Stronger controls and reporting
-- Can have different limits by employee
 
 ## KYC Verification Process
 

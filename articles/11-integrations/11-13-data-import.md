@@ -64,13 +64,28 @@ Create your GL account structure:
    - **Account Code**: Unique identifier (1000, 1100, 1110)
    - **Account Name**: Descriptive name (Cash, Accounts Receivable, etc.)
    - **Account Type**: Asset, Liability, Equity, Revenue, Expense
-   - **Parent Account**: (optional) Code of parent for hierarchical structure
+   - **Account Category**: Standard, Sum, or Header (see below)
+   - **Aggregation Rule**: (for Sum accounts only) Defines which accounts to roll up
 3. Upload file
 4. Light validates account codes are unique
 5. Light creates GL accounts
 6. You can now post transactions
 
-> Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes navigation easier.
+### Account categories
+
+Light supports three account categories:
+
+- **Standard**: Regular posting accounts where transactions are recorded
+- **Sum**: Roll-up accounts that aggregate balances from other accounts for reporting (no direct posting)
+- **Header**: Visual grouping labels that appear on reports with zero balance (no direct posting)
+
+### Aggregation rules for Sum accounts
+
+Sum accounts use an **aggregation rule** to define which accounts roll up into them. The rule specifies account code ranges in the format `start:end`, with multiple ranges separated by commas.
+
+For example, if you have expense accounts 60000–60999 for Operations and 62000–62999 for Administration, you could create a Sum account with the aggregation rule `60000:60999,62000:62999` to show the combined total on reports.
+
+> Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes defining aggregation rules straightforward, since you can group accounts by code range.
 
 ## Importing customer master
 
@@ -202,6 +217,22 @@ This format works even when labels contain spaces.
 - **business partner id** — (Recommended) The UUID of an existing customer or vendor in Light. Using the business partner UUID is the recommended approach for importing customers and vendors, as it ensures accurate matching and avoids duplicate or mismatched records. If omitted, Light attempts to match by name, which may cause errors if names don't match exactly or if duplicates exist.
 
 > Good to know: Use `entry id` to group multiple lines into a single journal entry. All lines with the same `entry id` will be combined into one balanced entry. Headers with `(required)` and `(custom)` annotations from the template are automatically stripped during import.
+
+### Archiving an import
+
+If you need to remove an import from your books (for example, to correct errors or undo a test import), archive it from the import history table:
+
+1. Navigate to **Settings > Import Data** and open the journal entry import history
+2. Find the import you want to archive
+3. Click the actions menu (**⋯**) and select **Archive**
+4. If the import created journal entries, confirm the action
+
+When you archive an import:
+
+- **Draft entries** are permanently removed from the system
+- **Posted entries** are reversed with offsetting journal entries, preserving the audit trail
+
+> Important: Archive requires COMPANY_ADMIN or CONTROLLER permissions. Some entries may fail to archive if they are in closed periods, bank-reconciled, or pending approval. If archiving fails, the import status will show **Archive failed**—contact support to resolve.
 
 ## Opening balance import
 

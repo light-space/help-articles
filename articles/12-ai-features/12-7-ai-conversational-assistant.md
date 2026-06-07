@@ -24,7 +24,7 @@ LCI maintains conversation threads so follow-up questions work naturally. Thread
 
 ## Available Tools
 
-LCI includes 31 tools organized into categories. The tools available to you depend on your role.
+LCI includes 33 tools organized into categories. The tools available to you depend on your role.
 
 ### Search Tools
 
@@ -51,6 +51,13 @@ Review and act on bills directly through LCI. These tools require specific roles
 - **Update bill line** — Update a single line item on a bill, including custom properties and grouped values. Available to admins, AP clerks, and AP preparation.
 - **Get approval queue** — See your pending approval tasks (bill approvals, purchase requests) filtered by status (pending, approved, queued, rejected). Available to all roles.
 - **Get user details** — Retrieve full details of a specific user including name, email, roles, company entity, and notification channel. Available to admins, AP preparation, and invoice approvers.
+
+### Customer Management Tools
+
+Create and update customer records through LCI. These tools require the **Company Admin** or **AR Clerk** role.
+
+- **Create customer** — Create a new customer with name, email, country, and optional fields like customer type (business, consumer, or government), description, VAT number, business registration number, and domain. For example, say "Create a customer named Acme Corp with email info@acme.com" or "Add a new customer called Widget Inc in the US with type business."
+- **Update customer** — Update an existing customer's details including name, email, type, description, VAT number, business registration number, or domain. First use search customers to find the customer ID, then say "Update customer ABC123 to change their email to newemail@acme.com" or "Change the customer type for XYZ789 to government."
 
 ### Report and Query Tools
 
@@ -113,6 +120,26 @@ LCI responses can include:
 - **Reports** — Tables with columns and rows generated from your data via SQL
 - **Policy answers** — Answers to policy questions with a link to the source policy section
 - **Navigation** — Direct links to specific pages in the Light app
+
+### Skills
+
+Skills are user-created shortcuts for prompts you run frequently. When you create a skill, you give it a name (like `cash-flow` or `renew-contract`) and the prompt it runs. After that, you can trigger it by typing `/` followed by the skill name — or by clicking the **Run skill** button in the LCI toolbar.
+
+**To trigger a skill:**
+1. Type `/` in the LCI input — the skills dropdown opens and lists your skills
+2. Type part of the skill name to filter the list (e.g., `/cash` shows only skills starting with "cash")
+3. Select a skill from the list or press Enter to insert it
+
+Alternatively, click the **Run skill** button (next to the attachment button) to open the skills dropdown without typing.
+
+**If you don't have any skills yet:**
+
+When you type `/` for the first time, LCI asks: "You don't have any skills yet. Would you like to create one?" with two options:
+
+- **Yes, show me an example** — LCI fills the input with an example prompt you can send to create your first skill (e.g., "Create a skill that summarizes all my draft sales invoices and convert the sum to EUR")
+- **No thanks** — Closes the dropdown
+
+Once you've created skills, typing `/` always opens the skills list. If you type a name that doesn't match any of your skills, LCI shows "No matching skills."
 
 ### File Attachments
 
@@ -222,11 +249,11 @@ LCI is accessible from the Light mobile app. The mobile interface provides the s
 
 LCI filters available tools based on your role. Here's what each role can do:
 
-**Company Admin / Controller** — Full access to all 31 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, manage assistant instructions, and view user details.
+**Company Admin / Controller** — Full access to all 33 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, manage assistant instructions, create and update customers, and view user details.
 
 **Invoice Approver** — Can approve and reject bills, view approval queue, get bill and user details, search bills, and use general query and navigation tools.
 
-**AP Clerk** — Can submit bills for approval, update bill lines, manage assistant instructions, and use general tools.
+**AP Clerk** — Can submit bills for approval, update bill lines, manage assistant instructions, create and update customers, and use general tools.
 
 **AP Preparation** — Can update bill lines, get bill and user details, create purchase orders, manage assistant instructions, and use general tools.
 

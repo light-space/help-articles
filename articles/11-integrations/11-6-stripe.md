@@ -62,7 +62,7 @@ When a Stripe payment syncs:
 
 This enables both automatic and manual matching.
 
-> **Note**: When syncing Stripe invoices, the original Stripe invoice number is automatically stored as a custom property on the Light invoice. This helps with reconciliation and customer inquiries that reference Stripe invoice numbers.
+> **Note**: When syncing Stripe invoices, Light preserves the original Stripe invoice number as the primary invoice number in Light. This keeps invoice numbers consistent across Stripe and Light for easier reconciliation and customer inquiries. (This applies to new imports; existing invoices retain their current numbers.)
 
 ## Handling multiple invoices
 
@@ -88,6 +88,8 @@ When customers are refunded or chargebacks occur:
 5. You can then apply alternative payment or write off
 
 This maintains complete audit trail of all payment activity.
+
+> **Note**: When syncing Stripe credit notes with line-level discounts or taxes, Light preserves the line amount and discount structure exactly as Stripe provides them, ensuring customer credit totals match Stripe's final amounts. This keeps your records consistent with what customers see in Stripe.
 
 ## Subscription and recurring payment tracking
 

@@ -56,6 +56,8 @@ Light connects to your bank through secure APIs to automatically sync transactio
 
 > Tip: Your bank password is never stored in Light. Only the authentication token is saved, and it expires regularly requiring re-authentication.
 
+> Note: For Stripe bank connections, if authentication fails with a permission error (e.g., "You don't have the required permission type"), Light automatically marks the connection as "expired" and stops retrying sync attempts. Follow the reconnection flow above to resolve—you may need to regenerate your Stripe API credentials or verify API permissions in your Stripe account settings.
+
 ## Issue 2: Connection Keeps Disconnecting
 
 ### Symptoms
