@@ -12,8 +12,12 @@ Navigate via **Revenue & Invoicing → Sales invoices**.
 2. Fill in the create dialog:
    - **Customer** — required
    - **Entity** — the company entity issuing the invoice
-   - **Currency** — auto-populated from the selected entity (can be changed)
+   - **Currency** — defaults to the customer's most recent invoice currency (if available), otherwise the entity's local currency; you can change it before creating
 3. Click **Create** — the invoice opens in DRAFT state, ready for line items and details
+
+## Duplicating an Invoice
+
+If you need to create a new invoice similar to an existing one, open any invoice and click the **⋮** (three-dot menu) in the top right, then choose **Duplicate**. Light creates a new draft with the same customer, entity, currency, line items, and custom properties. You can then edit the draft as needed before posting.
 
 ## Invoice Detail Form
 
