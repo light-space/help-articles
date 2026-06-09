@@ -38,6 +38,7 @@ To add a new bank account to Light:
    - For IBAN accounts: IBAN and BIC
    - For US accounts: Routing number and account number
    - Bank country and currency
+   - For Swedish accounts: set the bank country to Sweden to reveal the optional **Bankgiro** field (see [Bankgiro for Swedish entities](#bankgiro-for-swedish-entities) below)
 8. Click **Add**
 
 ## Bank Feed Authorization
@@ -65,6 +66,22 @@ Light supports transaction feeds from:
 **AMC** (Host-to-Host) - For banks not covered via Plaid and GoCardless - note your bank may charge you a fee for setting this up. Timeline is often 2-3 months depending on the bank. 
 
 Not all banks support all providers e.g. J.P. Morgan and HSBC is not supported via Plaid in the US while Gocardless do not support J.P. Morgan in the UK. If your bank isn't available via your preferred provider, you can always upload the bank feed manually or inquire Light about options for Host-to-Host integration support.
+
+## Bankgiro for Swedish Entities
+
+Bankgiro is the primary payment method for Swedish business-to-business transactions. Swedish customers expect to see a Bankgiro number on their invoices to process payment, so adding it to your bank account lets Light display it on the documents you send.
+
+To add a Bankgiro number:
+
+1. Go to **Settings > Bank accounts**
+2. Open the bank account you want to edit (or add a new one)
+3. Set the **bank country** to Sweden — this reveals the optional **Bankgiro** field
+4. Enter your **Bankgiro** number
+5. Click **Save**
+
+Once saved, update your invoice template to display the Bankgiro number on invoices. See [Invoice templates](/articles/06-accounts-receivable/6-6-invoice-templates.md) for details.
+
+> **Note:** The Bankgiro field is optional and appears only when the bank country is set to Sweden. If you invoice internationally using BIC/IBAN only, no action is needed.
 
 ## Multi-Currency Accounts
 
