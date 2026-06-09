@@ -32,7 +32,7 @@ Status is either **Active** or **Disabled** (the underlying values are `ACTIVE` 
    - **Custom properties** (if your organisation has any configured for customers)
 3. Click **Create**
 
-The same drawer is used for editing — click any customer row in the list to open it.
+To edit a customer, click any customer row in the list. This opens a fullscreen edit page with card-style sections (Business information, Email preferences, Shipping address, E-invoicing) and a sticky header with **Cancel** and **Save** buttons.
 
 ## Customer Status
 
