@@ -19,6 +19,11 @@ Budgets are uploaded as CSV files using the template provided in the upload dial
 
 > **Good to know:** Only CSV files are accepted. Download the template from the upload dialog to ensure your file is structured correctly.
 
+> **Good to know:** When uploading a budget CSV:
+> - **Month columns** are flexible: 'Jan 2024', 'January 2024', 'Sept 2024', and '2024-01' all work, and capitalization doesn't matter (JAN, Jan, jan are all accepted).
+> - **Blank cells** are fine — if a cell is empty, that month is skipped (no need to enter zeros).
+> - **Validation errors** are reported together (up to 20 at once) so you can fix all issues in a single pass rather than one at a time.
+
 ## Budget dimensions
 
 Each uploaded scenario has up to three hierarchical dimension levels, determined by the columns in your CSV. Supported dimension types are:
