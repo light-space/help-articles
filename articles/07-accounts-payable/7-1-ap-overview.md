@@ -60,7 +60,7 @@ A bill progresses through approval-driven states. Common ones you'll see in the 
 - **Payment batches** — Group bills, schedule a payment date, send for batch approval, release
 - **Multi-entity / multi-currency** — Entity is set per bill; bill currency is independent of payment currency
 - **PO matching** — Bills can be tied to purchase orders
-- **Credit entries** — Vendor credits applied to one or more open bills
+- **Credit entries** — Vendor credits applied to one or more open bills; credit entries include a **Payments** tab showing payment history and allowing you to reverse bank payments
 - **Reimbursements** — Employee expenses flow into the same AP pipeline as a separate document type
 
 ## Related Articles
