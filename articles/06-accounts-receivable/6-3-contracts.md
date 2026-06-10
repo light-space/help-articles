@@ -45,6 +45,17 @@ Open a contract to see these tabs:
 
 Line items are added and edited in the **Lines** tab — not in the create dialog.
 
+## Editing Custom Properties After Publishing
+
+Once a contract is published, its line items are locked — except for custom properties. You can add, change, or remove a line item's custom properties (department, cost center, project code, etc.) without voiding and recreating the contract.
+
+1. Open the published contract and go to the **Lines** tab
+2. Enter edit mode on the line item you want to update
+3. Add, change, or remove its custom properties
+4. Confirm the changes when prompted, then save
+
+Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields remain locked. Every change is recorded in the contract's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
+
 ## Terminating a Contract
 
 Open a contract and use the terminate action to end it early. The contract transitions through `PENDING_TERMINATION` to `TERMINATED`, with the terminated date recorded.

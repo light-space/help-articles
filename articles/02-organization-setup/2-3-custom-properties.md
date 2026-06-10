@@ -89,6 +89,24 @@ When creating or editing a transaction:
 5. For date properties, select the date from the calendar picker
 6. When all required properties are filled, the transaction can be saved
 
+## Editing custom properties on published documents
+
+You can add, change, or remove line-item custom properties on contracts, sales invoices, and customer credits even after the document has been published. There's no need to void and recreate a document just to correct a tag.
+
+1. Open a published contract, sales invoice, or customer credit
+2. Enter edit mode on the line item you want to update
+3. Add a missing custom property, change an existing value, or remove one entirely
+4. Confirm the changes when prompted, then save
+
+A few things to keep in mind:
+
+- **Only custom properties are editable.** Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields stay locked after publishing.
+- **Changes are confirmed before saving.** A confirmation step appears before your edits are committed to the published document.
+- **Every change is tracked.** Edits appear in the document's modification history for a full audit trail.
+- **The line item re-locks after saving.** To make further changes, re-enter edit mode on the line item.
+
+No additional permission is required — editing follows your existing user permissions.
+
 ## Best practices
 
 - Plan your properties before creation to ensure consistency

@@ -53,6 +53,17 @@ You can apply all or part of a customer credit to one or more sales invoices. An
 - The credit's state updates to **Partially cleared** if a balance remains, or **Cleared** if fully allocated
 - Partially cleared credits can be applied to additional invoices at any time
 
+## Editing Custom Properties After Posting
+
+After a customer credit is posted, its line items are locked — except for custom properties. You can add, change, or remove a line item's custom properties (department, cost center, project code, etc.) without voiding and recreating the credit.
+
+1. Open the posted customer credit
+2. Enter edit mode on the line item you want to update
+3. Add, change, or remove its custom properties
+4. Confirm the changes when prompted, then save
+
+Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields stay locked. Every change is recorded in the credit's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
+
 ## Other Actions
 
 From the credit detail header three-dot menu (⋮):

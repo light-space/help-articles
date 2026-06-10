@@ -62,6 +62,17 @@ Tabs in the invoice detail include the line items, an activity log, and (if appl
 
 Invoices in **Draft** can be freely edited. Once posted (Open or beyond), edits are restricted to fields that don't affect GL impact.
 
+### Editing Custom Properties After Posting
+
+Even after an invoice is posted, you can still add, change, or remove the custom properties (department, cost center, project code, etc.) on its line items — no need to void and recreate the invoice to fix a tag.
+
+1. Open the posted invoice
+2. Enter edit mode on the line item you want to update
+3. Add, change, or remove its custom properties
+4. Confirm the changes when prompted, then save
+
+Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields stay locked. Every change is recorded in the invoice's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
+
 ## Posting an Invoice
 
 To post an invoice, open it and use the action button in the top right:
