@@ -23,6 +23,8 @@ A document template defines:
 - **Additional text** — extra text rendered on the document
 - **Show contract period** — whether to display the contract period on the rendered document
 
+> **Good to know:** Invoice PDFs automatically show a payment section on partially-paid and paid invoices, displaying payments received, credits applied, and balance due. This section appears automatically and is not controlled by template settings.
+
 ## Creating a Template
 
 1. Go to **Settings (gear icon) → Templates**
