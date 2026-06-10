@@ -243,6 +243,8 @@ Documents can be archived when no longer needed:
 
 Archive old periods' documents to keep active lists clean.
 
+> Good to know: Invoice receivables and customer credits can be unarchived back to DRAFT status if you need to reactivate or edit them. Unarchiving an archived customer credit removes any linked invoice receivables so you can re-link cleanly.
+
 ## Document Sequence
 
 Each document type has a sequence:
