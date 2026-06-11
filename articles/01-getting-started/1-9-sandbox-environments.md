@@ -58,6 +58,16 @@ You can update an existing sandbox at any time:
 - Remove users — anyone not in the updated list will be deactivated
 - Update existing users' information (matched by email address)
 
+### Resetting a sandbox
+
+If you need to start fresh with a sandbox, you can reset it from the row menu (three dots) next to any active sandbox. Choose one of three reset modes depending on what you want to keep:
+
+- **Reset to template** — Replaces all data with a fresh copy of the demo dataset. Anything you added or changed is removed. Use this when you want to start a clean demo from scratch.
+- **Wipe transactions only** — Keeps customers, vendors, products, and accounts. Removes all invoices, payments, and ledger entries. Use this when you want to keep your setup but clear out transactional data.
+- **Wipe all data** — Wipes every record except the company shell, its entities, and the admin user. Use this when you want a completely blank slate but need to keep the sandbox itself.
+
+**This action cannot be undone.** Light will ask you to confirm before proceeding. While the reset is in progress, the sandbox shows a "Resetting…" badge.
+
 ### Deactivating a sandbox
 
 When you no longer need a sandbox, you can deactivate it. This archives the sandbox company so it can no longer be accessed. This action does not affect your production environment in any way.
@@ -119,6 +129,16 @@ This means:
 - Conversely, anything done in sandbox (creating test invoices, deleting test vendors, etc.) has no impact on production
 
 The only connection between the two is a small tracking record in production that remembers which sandboxes were created and their current status. This is purely bookkeeping — no actual sandbox data flows back to production.
+
+### When should I use each reset mode?
+
+**It depends on what you want to achieve:**
+
+- **Reset to template** — Use this when you're about to run another demo or training session and want to start with clean demo data. The sandbox will look exactly like a freshly provisioned environment with the standard demo dataset.
+- **Wipe transactions only** — Use this when you've set up customers, vendors, and your chart of accounts the way you like them, but you want to clear out all the test invoices and payments you created. The master data stays; the activity gets wiped.
+- **Wipe all data** — Use this when you want a completely blank environment — no demo data, no setup, nothing. Only the company shell and admin user remain. This is the most thorough reset.
+
+All three modes are permanent and cannot be undone. If you're unsure, consider creating a new sandbox instead of resetting an existing one.
 
 ## Security
 
