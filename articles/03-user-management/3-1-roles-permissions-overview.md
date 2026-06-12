@@ -36,6 +36,8 @@ Light includes the following predefined roles:
 
 > **Important:** The **Cardholder** and **Reimbursement** roles are independent. A user with only the Cardholder role cannot access reimbursement features, and a user with only the Reimbursement role cannot access card features. If a user needs both, assign both roles.
 
+> **Note:** The SaaS Metrics dashboard is restricted to Admin users only. If other users need access to SaaS metrics data, an Admin must view and share the information with them.
+
 ## How Permissions Work
 
 You can view the full permissions matrix by navigating to **Business partners → Users** and selecting the **Access roles** tab. This shows every permission grouped by feature area (e.g., Accounting Documents, Accounting Periods, AI Config, API Keys) and which roles have access to each.
