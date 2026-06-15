@@ -96,6 +96,8 @@ Light allows you to edit accounting documents even after they've been posted:
 
 This approach preserves the immutability of the ledger while giving you flexibility to correct errors in accounting documents. You don't need to manually create reversing entries—the system handles this automatically.
 
+**Metadata-only edits:** Certain fields on posted documents don't affect the posted ledger transactions and can be edited without triggering the reverse-and-repost workflow. These include header-level custom properties and document metadata like PO numbers on sales invoices. When you edit only these fields, Light updates the document in place—no reversal occurs, and the edit works even if the document's posting date falls in a closed accounting period.
+
 ## Audit Trail
 
 Every transaction and change is logged:
