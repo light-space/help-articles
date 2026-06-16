@@ -26,6 +26,8 @@ Light sources exchange rates from two providers:
 
 You can also manually override exchange rates if needed for specific transactions or historical data imports.
 
+**Custom rate overrides:** If you've configured [custom FX rates for your company](/articles/02-organization-setup/2-10-custom-fx-rates-company) or [per entity](/articles/02-organization-setup/2-11-custom-fx-rates-entity) — for example, fixed monthly rates negotiated with your bank — FX revaluation uses those rates instead of the market rates from ECB or ExchangeRateApi. Entity-scoped rates take precedence over company-wide rates. When no custom rate exists for a currency in the revaluation period, Light falls back to the market rate. This ensures your month-end revaluation matches your bank's rates instead of creating P&L differences.
+
 ## Which Accounts Revalue?
 
 Revaluation applies to accounts that hold foreign currency balances that have not yet settled.
