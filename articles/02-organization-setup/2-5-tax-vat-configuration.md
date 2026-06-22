@@ -14,7 +14,7 @@ Light supports tax configurations for multinational operations, including multip
 2. The page displays all tax codes with columns for **Name**, **Context**, **Type**, **Rate**, and **Country**
 3. By default, the list is filtered to show only **Active** tax codes
 4. Use the **Search** bar to find specific tax codes
-5. Click **Export** to download your tax code list
+5. Click **Export** to download your tax code list as a CSV file with columns including ID, Code, Name, Context, Type, Rate, Effective Rate, Country, Entities, Status, Base Tax Tag, Tax Category, EDIFACT Code, and creation/update timestamps
 
 ## Creating a tax code
 
