@@ -83,6 +83,8 @@ Generate financial reports and query company policies.
 
 - **Create journal entry** — Create a new journal entry with debit and credit lines. Requires the **Company Admin** or **Controller** role.
 - **Create purchase order** — Create a draft purchase order with line items including descriptions, cost centers, accounts, tax codes, quantities, and unit prices. Available to admins, AP preparation, and users with the **Purchase Requester** role.
+- **Get workflow details** — Retrieve the configuration and status of a workflow (e.g., invoice approval workflow, PO approval workflow). Shows the workflow's nodes, approval steps, and current version. Example: "Show me the invoice approval workflow" or "What's the current PO workflow configuration?"
+- **Update workflow** — Modify a workflow's settings, including adding or removing approval steps and changing workflow logic. Example: "Update the PO workflow to add an approval step" or "Modify the invoice approval workflow to route bills over $10,000 to the CFO."
 
 ### Assistant Memory Tools
 
