@@ -49,6 +49,8 @@ Define how HubSpot deals become Light invoices:
 
 Light validates mappings for consistency.
 
+> **Good to know**: When configuring advanced mappings, you can access deal owner properties as nested fields. For example, if you need the deal owner's email on an invoice field, use `owner.email` in your mapping expression. Other owner properties like `owner.firstName` and `owner.lastName` are also available.
+
 ## Company and contact sync
 
 Sync HubSpot companies and contacts to Light customer data:
