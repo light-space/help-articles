@@ -46,7 +46,7 @@ How rates are stored and resolved:
 
 You can override system rates instead of using market rates:
 
-- **Override scope and precedence.** Overrides resolve in the order **entity → company → system**, and are available at daily or monthly granularity. **Document-level** rate overrides are also supported and take the highest precedence.
+- **Override scope and precedence.** Overrides resolve in the order **entity → company → system**, and are available at daily or monthly granularity. **Document-level** rate overrides take the highest precedence — on an AP, AR, or JE document, open the **FX Rates** section and toggle **Override Local Currency Rate** or **Override Group Currency Rate** to set the entity or group conversion explicitly.
 - **No hybrid cross-rates.** If only one leg of a required currency pair has an override, Light discards the override and falls back to system rates for *both* legs — a derived cross-rate is never built from mismatched sources. To be sure your custom rates apply everywhere, set a rate for every non-EUR currency you transact in, each month.
 
 For setting your own rates, see [Setting a Custom FX Rate for Your Company](/articles/02-organization-setup/2-10-custom-fx-rates-company) and [When Custom Rates Apply vs System Rates](/articles/02-organization-setup/2-12-custom-vs-system-fx-rates).
@@ -64,6 +64,48 @@ Light assigns each ledger account an exchange-rate type derived automatically fr
 This implements the standard **monetary / non-monetary distinction**: monetary balance-sheet items are carried at the closing rate, while equity and income-statement items are held at the historical rate at which they were recognized. The difference that arises between closing-rate balance-sheet items and historical-rate equity/P&L is captured as the cumulative translation adjustment (see below).
 
 > **Note on income and expenses:** Light translates income and expenses at the actual transaction-date (historical) rate of each item, **not** at a period-average rate. This is a permitted alternative under IAS 21 (the spot rate at the date of each transaction is allowed as an approximation), but it is not an average-rate method. Auditors expecting average-rate P&L translation should note this difference.
+
+## What gets revalued
+
+A revaluation is defined by two things: **which balances** are revalued (the *population*) and **which currency layer** the difference lands in (the *dimension*). Light keeps these separate.
+
+### Open items (AP / AR and accruals)
+
+Open or partially-cleared payable and receivable documents, plus released accrual lines that are still open at period end. These are revalued **per document or accrual line** at the period-end closing rate, with a link back to the source invoice/line for traceability.
+
+### Monetary accounts (bank, cash, etc.)
+
+Balance-sheet accounts you set to revalue — bank, cash, and other monetary accounts. These are revalued **per account and currency** at the closing rate, based on the account's open foreign-currency balance.
+
+### Local entity FX (functional-currency revaluation)
+
+The transaction → local dimension. Light brings the open foreign-currency balance to the period-end closing rate in the **entity's functional (local) currency** and posts the offset to the **unrealized FX gain/loss** account. This is the gain or loss that appears in the entity's own books. It is controlled per account by the **Entity revaluation settings** dropdown described below.
+
+### Group FX (presentation-currency translation → CTA)
+
+The local → group dimension. Light re-translates the local-currency balance to the **group (presentation) currency** at the closing rate and posts the offset to the **CTA** account. On a CTA posting the **local-currency amount is nil** — by design it adjusts only the group-currency balance, because it represents the translation-only difference between functional and presentation currency. It is controlled per account by the **Group revaluation settings** dropdown; an account set to *Historical* generates **no** CTA.
+
+## Setting FX behaviour per account
+
+Each ledger account has an **FX settings** section with two dropdowns that control how the account behaves at period-end. Set them when creating or editing an account in **Accounting → Chart of accounts**:
+
+| Setting | Options | What it does |
+| --- | --- | --- |
+| **Entity revaluation settings** | *Do not revalue* / *Revalue for entity* | *Revalue for entity* revalues the account's open foreign-currency balances into the entity's functional (local) currency at period-end, posting unrealized FX gain/loss. *Do not revalue* leaves the balance at its booked local amount. |
+| **Group revaluation settings** | *End of period* / *Historical* | *End of period* carries the account at the closing (end-of-period) rate and generates **CTA** on the local→group difference. *Historical* keeps it at the original posting rate, so **no CTA** is posted. |
+
+To configure an account:
+
+1. Go to **Accounting → Chart of accounts** ([open Chart of accounts](https://app.light.inc/accounting/ledger-accounts))
+2. Click **+ Create account**, or open an existing account and click **Edit**
+3. In the **FX settings** section, set **Entity revaluation settings** and **Group revaluation settings**
+4. Click **Save**
+
+**Typical settings by account type** (these follow the account classification described above):
+
+- **Monetary assets & liabilities** (AR, AP, bank, cash, intercompany): **Entity revaluation settings** = *Revalue for entity*, **Group revaluation settings** = *End of period* — revalued at the closing rate and translated to group with CTA.
+- **Equity**: *Do not revalue* + *Historical* — held at the original rate, no CTA.
+- **Revenue & expense**: *Do not revalue* + *Historical* — held at the transaction-date rate, no CTA.
 
 ## Transaction-Level Conversion (at posting)
 
@@ -108,14 +150,7 @@ Period-end revaluation is run as a controlled accounting-period close task — n
 
 ### What gets revalued
 
-| Category | Population revalued | Basis |
-| --- | --- | --- |
-| **AP / AR** | Each open or partially-cleared payable/receivable document | Per document, linked back to the source invoice |
-| **Accruals** | Released accrual lines still open at period end | Per accrual line |
-| **Other monetary accounts** | Accounts flagged for FX revaluation (bank, cash, etc.) | Per account / currency |
-| **CTA** | Accounts carried at the closing rate (assets/liabilities) | Per account, local → group |
-
-To flag an account for revaluation, enable **Revalue open balance for foreign currency transactions** when creating or editing it in the [Chart of accounts](https://app.light.inc/accounting/ledger-accounts).
+The run covers the open items and monetary accounts described under **What gets revalued** above — open AP/AR documents and accruals, plus any account whose **Entity revaluation settings** is *Revalue for entity*. Each open balance is taken at the period-end closing rate, and for any account whose **Group revaluation settings** is *End of period* the local→group difference is posted to CTA.
 
 ### How the adjustment is calculated
 
@@ -172,9 +207,12 @@ If you have multiple legal entities in Light, each entity is revalued independen
 
 ## CTA (Cumulative Translation Adjustment)
 
-The CTA arises because asset and liability accounts are re-translated to the closing rate each period, while equity and accumulated P&L remain at historical rates. The net imbalance is posted to the system **Currency Translation Adjustment** account.
+CTA captures the difference that arises because asset and liability accounts are re-translated to the closing rate each period (their **Group revaluation settings** is *End of period*), while equity and accumulated P&L stay at historical rates. The net imbalance posts to the system **Currency Translation Adjustment** account, and — as described under **Group FX** above — it adjusts only the group-currency balance (the local amount is nil).
 
-A key behavior to understand: on a CTA posting the **local-currency amount is nil** — by design it adjusts only the group-currency balance, because it represents the translation-only difference between functional and presentation currency. CTA is generated both at **period-end revaluation** (for closing-rate accounts) and at **settlement** (the group-only residual described under Realized FX above).
+CTA is generated in two places:
+
+- **Period-end revaluation** — for accounts carried at the closing rate.
+- **Settlement** — the group-only residual when a foreign-currency item clears (see **Realized FX (at settlement)** above).
 
 ## Consolidation (group level)
 
@@ -186,7 +224,7 @@ Consolidation is produced as a **report-time computation**, not as posted consol
 
 A consolidated report may be presented in local currency only if all in-scope entities share the same functional currency; otherwise it must be presented in the group base currency, which always works across mixed-currency entities. By default consolidation covers all entities in the group (or an explicitly selected set), summed on a flat basis. See [Multi-currency consolidation](/light-space/help-articles/blob/main/articles/10-reporting/10-8-multi-currency-consolidation.md) for details.
 
-## Standards Alignment
+## Summary of Standards Alignment
 
 | Area | Treatment in Light | IAS 21 / ASC 830 |
 | --- | --- | --- |
@@ -204,7 +242,7 @@ A consolidated report may be presented in local currency only if all in-scope en
 - **Revalue monthly** — Don't wait until quarter-end; catching changes regularly produces more accurate interim results
 - **Close prerequisite tasks first** — Make sure Account Payables, Account Receivables, and Journal Entries are closed before running FX revaluation
 - **Revalue all entities** — Ensure every entity with foreign currency exposure is selected when posting revaluation
-- **Flag the right accounts** — Enable **Revalue open balance for foreign currency transactions** on balance-sheet accounts that hold foreign currency
+- **Set account FX settings** — On each balance-sheet account that holds foreign currency, set **Entity revaluation settings** to *Revalue for entity* and **Group revaluation settings** to *End of period*; keep equity and P&L accounts on *Do not revalue* / *Historical*
 - **Review before closing** — Check the generated entries on the [Journal entries](https://app.light.inc/journal-entries) page before closing the period
 - **Track the Last run date** — Use the Last run column in the FX revaluation dialog to confirm all entities have been revalued for the current period
 - **Separate realized vs. unrealized** — Track both types of FX gains/losses for accurate analysis and reporting
