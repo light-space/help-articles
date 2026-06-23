@@ -56,12 +56,24 @@ Define which financial events trigger Teams messages:
    **AP notifications**:
    - Supplier bills coming due
    - Payments made
+   - Payment failures (when ACH or wire transfers fail)
+
+   **Export notifications**:
+   - CSV export started (when a large export begins processing)
+   - CSV export finished (with download link when ready)
+
+   **Approval notifications**:
+   - Bill payment batch approvals
+   - Bill reminders
+   - Invoice approvals
 
 3. For each notification, set:
    - Alert threshold (e.g., "alert if cash < $50,000")
    - Frequency (daily, weekly, or on-demand)
    - Recipient team/channel
 4. Save
+
+Note: When you first connect Teams, CSV export notifications, payment failure alerts, bill payment batch approvals, bill reminders, and invoice approvals are enabled by default - you can adjust these settings at any time.
 
 ## Daily financial summaries in Teams
 
