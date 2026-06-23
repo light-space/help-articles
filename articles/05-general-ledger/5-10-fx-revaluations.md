@@ -63,7 +63,7 @@ Light assigns each ledger account an exchange-rate type derived automatically fr
 
 This implements the standard **monetary / non-monetary distinction**: monetary balance-sheet items are carried at the closing rate, while equity and income-statement items are held at the historical rate at which they were recognized. The difference that arises between closing-rate balance-sheet items and historical-rate equity/P&L is captured as the cumulative translation adjustment (see below).
 
-> **Note on income and expenses:** Light translates income and expenses at the actual transaction-date (spot) rate of each item, **not** at a period-average rate. Under IAS 21 this is the **preferred basis** — the standard requires the spot rate at the date of each transaction and only permits a period-average rate as a practical approximation (and not at all when rates fluctuate significantly). Light applies the actual rate per item, so it is more precise than an average-rate method rather than a deviation from it; auditors expecting average-rate P&L translation should simply note the difference in approach.
+> **Note on income and expenses:** Light translates income and expenses at the actual transaction-date (spot) rate of each item, **not** at a period-average rate. Under IAS 21 this is the **preferred basis** — the standard requires the spot rate at the date of each transaction (**IAS 21.21**) and only permits a period-average rate as a practical approximation, which is inappropriate when rates fluctuate significantly (**IAS 21.22**; **IAS 21.40** for translation to the presentation currency). Light applies the actual rate per item, so it is more precise than an average-rate method rather than a deviation from it; auditors expecting average-rate P&L translation should simply note the difference in approach.
 
 ## What gets revalued
 
@@ -123,7 +123,7 @@ Realized FX gains and losses are recognized when an open foreign-currency item (
 - the item's value at the original posting-date rate, and
 - its value at the clearing-date rate,
 
-and posts the difference to the system **FX gain** / **FX loss** accounts. Where the local-to-group conversion also differs, the group-only component is posted to the **CTA** account. Sub-unit rounding differences arising from the three-currency conversion are isolated to a dedicated **rounding** account, so the double entry stays balanced in all three currencies.
+and posts the difference to the system **FX gain** / **FX loss** accounts — recognized in profit or loss per **IAS 21.28**. Where the local-to-group conversion also differs, the group-only component is posted to the **CTA** account. Sub-unit rounding differences arising from the three-currency conversion are isolated to a dedicated **rounding** account, so the double entry stays balanced in all three currencies.
 
 **Example:**
 - AR revalued: Owed 100,000 EUR, revalued to 118,000 USD at period-end
@@ -207,7 +207,7 @@ If you have multiple legal entities in Light, each entity is revalued independen
 
 ## CTA (Cumulative Translation Adjustment)
 
-CTA captures the difference that arises because asset and liability accounts are re-translated to the closing rate each period (their **Group revaluation settings** is *End of period*), while equity and accumulated P&L stay at historical rates. The net imbalance posts to the system **Currency Translation Adjustment** account, and — as described under **Group FX** above — it adjusts only the group-currency balance (the local amount is nil).
+CTA captures the difference that arises because asset and liability accounts are re-translated to the closing rate each period (their **Group revaluation settings** is *End of period*), while equity and accumulated P&L stay at historical rates. The net imbalance posts to the system **Currency Translation Adjustment** account — recognized in other comprehensive income and accumulated in a separate component of equity (**IAS 21.39(c)** and **41**) — and, as described under **Group FX** above, it adjusts only the group-currency balance (the local amount is nil).
 
 CTA is generated in two places:
 
@@ -226,14 +226,16 @@ A consolidated report may be presented in local currency only if all in-scope en
 
 ## Summary of Standards Alignment
 
-| Area | Treatment in Light | IAS 21 / ASC 830 |
-| --- | --- | --- |
-| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | Best practice |
-| Equity | Historical rate, not re-translated | Best practice |
-| Income statement | Transaction-date (spot) rate per item | Best practice |
-| Translation difference | Posted to CTA (group-only) | Best practice |
-| Realized FX on settlement | FX gain/loss vs. original rate | Best practice |
-| Consolidation translation | Report-time aggregation in group currency | Best practice |
+| Area | Treatment in Light | IAS 21 reference | Assessment |
+| --- | --- | --- | --- |
+| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | IAS 21.23(a) | Best practice |
+| Equity | Historical rate, not re-translated | IAS 21.23(b) | Best practice |
+| Income statement | Transaction-date (spot) rate per item | IAS 21.21–22; 39(b), 40 | Best practice |
+| Translation difference | Posted to CTA (group-only) | IAS 21.32, 39(c), 41 | Best practice |
+| Realized FX on settlement | FX gain/loss vs. original rate | IAS 21.28 | Best practice |
+| Consolidation translation | Report-time aggregation in group currency | IAS 21.38–39, 44–46 | Best practice |
+
+Paragraph references are to IAS 21 *The Effects of Changes in Foreign Exchange Rates*. ASC 830 (US GAAP) contains equivalent requirements.
 
 > **Tax considerations:** Some jurisdictions tax only realized FX gains/losses, and unrealized losses may not be deductible. Consult your tax advisor on the treatment of revaluation entries.
 
