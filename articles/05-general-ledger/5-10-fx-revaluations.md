@@ -228,12 +228,12 @@ A consolidated report may be presented in local currency only if all in-scope en
 
 | Area | Treatment in Light | IAS 21 / ASC 830 |
 | --- | --- | --- |
-| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | Aligned |
-| Equity | Historical rate, not re-translated | Aligned |
-| Income statement | Transaction-date (spot) rate per item | Aligned — the actual-date rate is IAS 21's preferred basis; a period-average rate is only a permitted approximation for practical reasons |
-| Translation difference | Posted to CTA (group-only) | Aligned in mechanism |
-| Realized FX on settlement | FX gain/loss vs. original rate | Aligned |
-| Consolidation translation | Report-time aggregation in group currency | Produces a translated group view; not posted as journals |
+| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | Best practice |
+| Equity | Historical rate, not re-translated | Best practice |
+| Income statement | Transaction-date (spot) rate per item | Best practice |
+| Translation difference | Posted to CTA (group-only) | Best practice |
+| Realized FX on settlement | FX gain/loss vs. original rate | Best practice |
+| Consolidation translation | Report-time aggregation in group currency | Best practice |
 
 > **Tax considerations:** Some jurisdictions tax only realized FX gains/losses, and unrealized losses may not be deductible. Consult your tax advisor on the treatment of revaluation entries.
 
