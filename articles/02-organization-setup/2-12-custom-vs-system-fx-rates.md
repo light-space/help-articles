@@ -6,7 +6,7 @@ Once you've set custom FX rates, it helps to know exactly when Light uses them a
 
 ## Where custom rates apply
 
-Custom rates are used everywhere Light converts a foreign-currency amount: bills, sales invoices, payments, bank reconciliation, expenses, credit notes, purchase-order matching, and the month-end FX revaluation.
+Custom rates are used everywhere Light converts a foreign-currency amount: bills, sales invoices, payments, journal entries, bank reconciliation, expenses, credit notes, purchase-order matching, and the month-end FX revaluation.
 
 A few areas always use market rates by design and are **not** affected by custom rates: the raw exchange-rate lookup, partner/external API rate feeds, approval-threshold checks, and MRR analytics. These are intentional — for example, MRR stays on market rates so your historical trend doesn't shift when a rate is added.
 
