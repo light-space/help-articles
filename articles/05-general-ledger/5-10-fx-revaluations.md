@@ -63,7 +63,7 @@ Light assigns each ledger account an exchange-rate type derived automatically fr
 
 This implements the standard **monetary / non-monetary distinction**: monetary balance-sheet items are carried at the closing rate, while equity and income-statement items are held at the historical rate at which they were recognized. The difference that arises between closing-rate balance-sheet items and historical-rate equity/P&L is captured as the cumulative translation adjustment (see below).
 
-> **Note on income and expenses:** Light translates income and expenses at the actual transaction-date (historical) rate of each item, **not** at a period-average rate. This is a permitted alternative under IAS 21 (the spot rate at the date of each transaction is allowed as an approximation), but it is not an average-rate method. Auditors expecting average-rate P&L translation should note this difference.
+> **Note on income and expenses:** Light translates income and expenses at the actual transaction-date (spot) rate of each item, **not** at a period-average rate. Under IAS 21 this is the **preferred basis** — the standard requires the spot rate at the date of each transaction and only permits a period-average rate as a practical approximation (and not at all when rates fluctuate significantly). Light applies the actual rate per item, so it is more precise than an average-rate method rather than a deviation from it; auditors expecting average-rate P&L translation should simply note the difference in approach.
 
 ## What gets revalued
 
@@ -230,7 +230,7 @@ A consolidated report may be presented in local currency only if all in-scope en
 | --- | --- | --- |
 | Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | Aligned |
 | Equity | Historical rate, not re-translated | Aligned |
-| Income statement | Transaction-date (historical) rate per item | Permitted alternative; not period-average |
+| Income statement | Transaction-date (spot) rate per item | Aligned — the actual-date rate is IAS 21's preferred basis; a period-average rate is only a permitted approximation for practical reasons |
 | Translation difference | Posted to CTA (group-only) | Aligned in mechanism |
 | Realized FX on settlement | FX gain/loss vs. original rate | Aligned |
 | Consolidation translation | Report-time aggregation in group currency | Produces a translated group view; not posted as journals |
