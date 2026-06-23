@@ -58,6 +58,17 @@ If you don't see @Light in your Slack workspace, your admin needs to enable the 
 
 Type your question or request as a plain message to @Light. Light shows "thinking ..." while it processes, then updates the message with the answer. You can ask follow-up questions — Light remembers the context of your conversation for up to one hour.
 
+### Using @Light in Channels
+
+You can @mention Light in any public or private channel where the bot has been invited. When you @mention Light in a channel:
+
+- **Light replies in a thread.** If you mention Light in a top-level message, Light starts a new thread anchored on your message. If you mention Light inside an existing thread, Light replies in that same thread.
+- **Each thread remembers its own conversation.** Light reads the entire Slack thread as context — every message from all participants, including Light's own earlier replies. When you or a teammate asks a follow-up question in the same thread, Light answers with full awareness of what's been said before.
+- **Multiple people can collaborate in one thread.** If Chris asks "@Light can you list my recent invoices?" and Light replies, then Jon can follow up with "@Light what's the total of those?" in the same thread — Light will reference Chris's original question and its own answer.
+- **Threads are independent.** Two different threads in the same channel don't share context. Each thread is its own conversation.
+
+Channel mentions are useful when you want teammates to see the answer, or when a group is working through a question together.
+
 ### Submitting a Receipt in Slack
 
 What happens when you upload a file depends on your roles:
@@ -178,11 +189,13 @@ If you ask about something you don't have access to, Light lets you know and sug
 
 ## Privacy
 
-Your conversations with @Light are private when sent via direct message. Only you and Light can see them. If you mention @Light in a shared channel, anyone in that channel can see the question and answer.
+Your conversations with @Light are private when sent via direct message. Only you and Light can see them. 
+
+When you @mention Light in a Slack channel, everyone in that channel can see your message and Light's reply. Each Slack thread maintains its own independent conversation context — Light reads the entire thread when you mention it, but threads don't share context with each other.
 
 Light maps your Slack or Teams identity to your Light account through your company's integration setup. The same access controls that apply in the Light web app apply in Slack and Teams.
 
-> Tip: Use direct messages with @Light for anything involving your personal expenses or financial details.
+> Tip: Use direct messages with @Light for anything involving your personal expenses or financial details. Use channel mentions when you want teammates to see the answer or when collaborating on a question together.
 
 ## Troubleshooting
 
