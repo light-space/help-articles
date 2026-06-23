@@ -226,16 +226,16 @@ A consolidated report may be presented in local currency only if all in-scope en
 
 ## Summary of Standards Alignment
 
-| Area | Treatment in Light | IAS 21 reference | Assessment |
-| --- | --- | --- | --- |
-| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | IAS 21.23(a) | Best practice |
-| Equity | Historical rate, not re-translated | IAS 21.23(b) | Best practice |
-| Income statement | Transaction-date (spot) rate per item | IAS 21.21–22; 39(b), 40 | Best practice |
-| Translation difference | Posted to CTA (group-only) | IAS 21.32, 39(c), 41 | Best practice |
-| Realized FX on settlement | FX gain/loss vs. original rate | IAS 21.28 | Best practice |
-| Consolidation translation | Report-time aggregation in group currency | IAS 21.38–39, 44–46 | Best practice |
+| Area | Treatment in Light | IAS 21 reference | ASC 830 reference | Assessment |
+| --- | --- | --- | --- | --- |
+| Monetary assets & liabilities | Closing (end-of-month) rate, revalued each period | IAS 21.23(a) | ASC 830-20-35; 830-30-45-3 | Best practice |
+| Equity | Historical rate, not re-translated | IAS 21.23(b) | ASC 830-30-45 | Best practice |
+| Income statement | Transaction-date (spot) rate per item | IAS 21.21–22; 39(b), 40 | ASC 830-30-45-3 | Best practice |
+| Translation difference | Posted to CTA (group-only) | IAS 21.32, 39(c), 41 | ASC 830-30-45-12 to 45-20 | Best practice |
+| Realized FX on settlement | FX gain/loss vs. original rate | IAS 21.28 | ASC 830-20-35-1 to 35-2 | Best practice |
+| Consolidation translation | Report-time aggregation in group currency | IAS 21.38–39, 44–46 | ASC 830-30; disposal ASC 830-30-40-1 | Best practice |
 
-Paragraph references are to IAS 21 *The Effects of Changes in Foreign Exchange Rates*. ASC 830 (US GAAP) contains equivalent requirements.
+The **Assessment** is the same under both frameworks. Paragraph references are to IAS 21 *The Effects of Changes in Foreign Exchange Rates* and ASC 830 *Foreign Currency Matters*. Under ASC 830, the transaction-to-functional layer is a **remeasurement** (transaction gains/losses recognized in net income, ASC 830-20) and the functional-to-presentation layer is a **translation** (CTA reported in other comprehensive income, ASC 830-30). On the sale or substantially complete liquidation of a foreign entity, the accumulated CTA is reclassified from equity to net income (ASC 830-30-40-1, as clarified by ASU 2013-05).
 
 > **Tax considerations:** Some jurisdictions tax only realized FX gains/losses, and unrealized losses may not be deductible. Consult your tax advisor on the treatment of revaluation entries.
 
