@@ -114,7 +114,9 @@ If you submitted a request but need to modify it:
 
 Your complete history of purchase requests is stored in Light. You can filter by:
 
-- Status (Approved, Declined, Pending)
+- Requester
+- Vendor
+- Status (Pending, Approved, Rejected, Failed)
 - Date range
 - Amount
 
