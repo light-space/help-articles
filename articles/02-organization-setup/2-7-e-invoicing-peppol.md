@@ -1,6 +1,6 @@
-# E-invoicing: Peppol and myDATA
+# E-invoicing: Peppol, myDATA, and VeriFactu
 
-This article explains how to configure e-invoicing details in Light to support electronic invoice exchange via the Peppol and myDATA networks.
+This article explains how to configure e-invoicing details in Light to support electronic invoice exchange via the Peppol, myDATA, and VeriFactu networks.
 
 [Open in Light →](https://app.light.inc/settings/entities)
 
@@ -12,10 +12,11 @@ E-invoicing is the electronic exchange of invoice documents in a standardized fo
 
 ## Supported networks
 
-Light supports e-invoicing via two networks:
+Light supports e-invoicing via three networks:
 
 - **Peppol**: Pan-European Public Procurement OnLine network, used across 40+ countries
 - **myDATA**: Greece's national e-invoicing system
+- **VeriFactu**: Spain's tax reporting e-invoicing network
 
 Each network has different onboarding and configuration requirements (see sections below).
 
@@ -39,6 +40,17 @@ myDATA is Greece's national e-invoicing network, required for businesses operati
 
 > Note: myDATA onboarding does not require uploading proof-of-ownership documents or waiting for verification. After configuring your entity's e-invoicing details, you can begin sending invoices immediately.
 
+## VeriFactu network overview
+
+VeriFactu is Spain's e-invoicing network for tax reporting compliance under Royal Decree 1619/2012. Key VeriFactu features:
+
+- **Spain-Specific**: Used for Spanish tax reporting (AEAT compliance)
+- **Tax Reporting Network**: Sends invoices to tax authorities, not to customers (no inbox or e-invoice address required)
+- **Hosted Registration**: Registration is completed through a hosted wizard provided by the e-invoicing service provider
+- **Representation Agreement**: You'll sign a representation agreement during registration to authorize Light to submit invoices on your behalf
+
+> Note: Unlike Peppol and myDATA, VeriFactu does not require an e-invoice address on your entity settings. Registration is completed through a separate hosted wizard, and invoices are sent directly for tax reporting.
+
 ## Configuring e-invoicing on entities
 
 Each company entity can have e-invoicing details configured:
@@ -51,6 +63,8 @@ Each company entity can have e-invoicing details configured:
 4. Click **Create** or **Save**
 
 > Tip: Different entities within your group can have different network registrations based on their jurisdiction.
+
+> Note: For VeriFactu, you do not need to enter an e-invoice address - registration is completed separately via the hosted wizard (see Registering on the VeriFactu network below).
 
 ## EAS codes
 
@@ -85,14 +99,29 @@ Your Peppol Identifier is unique and identifies your organization on the network
 
 > Note: Peppol onboarding requires document verification. You'll need to upload proof-of-ownership documents and wait for verification before you can send invoices via Peppol.
 
+## Registering on the VeriFactu network
+
+To send invoices via VeriFactu for Spanish tax reporting:
+
+1. Start the VeriFactu onboarding process in Light for your Spanish entity
+2. Light creates your supplier registration with the e-invoicing provider
+3. Access the **registration link** to complete onboarding through the hosted wizard
+4. Review and sign the representation agreement to authorize Light to submit invoices on your behalf
+5. Wait for registration to complete (status updates automatically)
+
+Once registered, you can send invoices through VeriFactu without entering an e-invoice address on your entity - the network handles tax reporting directly to Spanish authorities.
+
+> Note: The registration link is available on demand during the onboarding process. You'll complete the registration through the provider's hosted page, not within Light's interface.
+
 ## Best practices
 
 - Register entities for e-invoicing before mandate deadlines in your jurisdiction
-- Verify EAS codes and e-invoice addresses are correct before sending invoices
+- Verify EAS codes and e-invoice addresses are correct before sending invoices (for Peppol and myDATA)
 - Configure e-invoicing details on all entities that will participate in electronic document exchange
 - Assign the correct EDIFACT codes to tax codes used in e-invoicing transactions
 - For Peppol: maintain current service provider contact information
 - For myDATA: ensure your Greek tax registration details are up to date on your entity
+- For VeriFactu: complete the hosted registration wizard promptly to avoid delays in Spanish tax reporting
 
 ## Related articles
 
