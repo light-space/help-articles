@@ -104,6 +104,9 @@ Click a document in the list to see full details:
 - Tax information
 - Custom properties
 - Allocation details
+- Product information (product name and ID) on revenue and discount lines from sales invoices
+
+> **Note:** When viewing ledger transaction lines from customer invoices, revenue and discount lines include the product name and ID. Product names reflect the current catalog name unless overridden on the invoice line. This attribution enables net-revenue-by-product analysis. Lines like AR and aggregate sales-discount offset lines that span multiple products do not carry product information.
 
 **Related section:**
 - Linked documents (original invoice, payment, etc.)
@@ -250,6 +253,8 @@ Export journal entries and GL transactions for analysis:
    - PDF - For printing/sharing
 3. Specify columns to include
 4. Download the file
+
+Exported data includes product information (product name and ID) when available on ledger transaction lines—particularly on revenue and discount lines from sales invoices. This enables net-revenue-by-product analysis in your exported data.
 
 **For large exports:** If your filtered result contains more than 10,000 rows, Light runs the export in the background. You'll receive a notification with a download link when it's ready. Smaller exports download instantly. Exported files are available for 7 days.
 
