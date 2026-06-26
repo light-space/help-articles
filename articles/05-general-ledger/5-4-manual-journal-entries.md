@@ -43,9 +43,9 @@ To create a basic journal entry:
    - Add **Description** (optional)
    - Repeat for each account
 5. System validates that debits = credits
-6. Click **Post**
+6. Click **Post** (or **Submit for approval** if an approval workflow is published)
 
-The entry is now posted to the GL.
+The entry is now posted to the GL (or sent for approval).
 
 ## Entry Structure
 
@@ -166,15 +166,25 @@ GL accounts typically have a tax designation for proper reporting.
 
 ## Workflow Approval for Entries
 
-Depending on settings, journal entries may require approval:
+You can configure journal entries to require approval before posting. When a journal-entry approval workflow is published in **Settings → Workflows**, the **Post** button becomes **Submit for approval**, and the entry moves to **Pending approval** status instead of posting immediately.
 
-1. Entry created in DRAFT status
-2. User submits for approval
-3. Approver reviews and approves/rejects
-4. If approved, user can post
-5. If rejected, returns to DRAFT
+**To set up journal entry approval:**
 
-Large entries or special types may have approval workflows.
+1. Go to **Settings → Workflows**
+2. Find or create a **Journal entry** workflow
+3. Configure the approver(s) — typically a controller or finance manager
+4. Publish the workflow
+
+**Once a workflow is published:**
+
+- When you create a journal entry and click **Submit for approval**, the entry moves to **Pending approval** status
+- The entry appears in the assigned approver's **Tasks** inbox under **Journal entries**
+- The approver can review the entry details and click **Approve** or **Reject**
+- If approved, you can then click **Post** to finalize the entry
+- If rejected, the entry returns to **Draft** status for revision
+- While pending approval, the entry is read-only — you cannot edit fields or lines
+
+You can filter journal entries by **Pending approval** status to see which entries are awaiting review.
 
 ## Batch Journal Entries
 
