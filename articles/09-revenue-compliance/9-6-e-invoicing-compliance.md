@@ -1,4 +1,4 @@
-# E-Invoicing Compliance (Peppol)
+ic # E-Invoicing Compliance (Peppol)
 
 E-invoicing is the digital exchange of invoices between businesses and government authorities. Peppol (Pan-European Public Procurement OnLine) is the standard framework for e-invoicing across Europe and is increasingly required for tax compliance and government B2B transactions.
 
@@ -118,7 +118,7 @@ Light validates invoices against Peppol rules before transmission:
 
 **Tax validation**: Tax rates must match your configured ledger tax codes. Tax amounts must be calculated correctly. All tax lines must sum to the total tax.
 
-**Party validation**: Buyer and seller identifiers must be valid and formatted correctly for their country.
+**Party validation**: Buyer and seller identifiers must be valid and formatted correctly for their country. A business registration number is normally required for German customers, but German public-sector customers identified by a Leitweg-ID (government customer type with EAS code 0204) are exempt, since they don't have one.
 
 **Amount validation**: Net + tax must equal the invoice total (within rounding tolerance).
 
