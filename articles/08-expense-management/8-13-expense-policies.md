@@ -1,319 +1,90 @@
-# Expense Policies and Spending Limits
+# Expense Policies
 
-Expense policies define what employees can spend, on what, and under what conditions. Light enforces policies automatically through the expense submission and approval workflows.
+Expense policies document what employees can spend, on what, and under what conditions. Light's AI reviews submitted expense reports against your policies as part of the expense submission workflow.
 
 [Open in Light →](https://app.light.inc/settings/guardrails/policies)
 
 ## Understanding Expense Policies
 
-An expense policy is a set of rules governing:
+In Light, a policy is a written document — not a set of structured rules or limits configured in the app. Each policy has:
 
-- **What's eligible**: Which expense categories are reimbursable
-- **How much**: Spending limits per category or per transaction
-- **When**: When pre-approval is required
-- **How**: What documentation is required
-- **Where**: Geographic or merchant restrictions
+- **Title**: A descriptive name (e.g., "Expense Policy", "Travel Policy")
+- **Content**: The full policy text, written in the rich text editor
+- **Entities**: The company entities the policy applies to
 
-Policies can be:
+Because policies are free text, you can express any rules your organization needs — spending guidance, eligible and ineligible expense types, documentation expectations, pre-approval requirements — in plain language. Light's AI reads the policy content when reviewing expense reports, so clearly written policies lead to better automated reviews.
 
-- **Company-wide**: Applies to all employees
-- **Role-based**: Different policies for executives, employees, contractors
-- **Department-based**: Sales might have different policies than Engineering
-- **Location-based**: Different limits in different countries
+Policies are managed on the same page as other company policies. See [Company policies setup](/articles/02-organization-setup/2-8-company-policies.md) for full details on creating, editing, and managing policies.
 
-## Creating a Policy
+## Creating an Expense Policy
 
-### Step 1: Define Policy Framework
-
-1. Navigate to **Settings** > **Expense Policies**
-2. Click **Create Policy**
-3. Enter:
-   - **Policy Name**: (e.g., "Standard Employee Policy")
-   - **Description**: Purpose and scope
-   - **Effective Date**: When policy takes effect
-   - **Applies To**: Who it applies (all employees, specific role, etc.)
-
-4. Click **Create**
-
-### Step 2: Set Category Limits
-
-1. In policy, click **Add Category Limit**
-2. Select **Category** (Travel, Meals, Office Supplies, etc.)
-3. Set **Limit Type**:
-   - **Per Transaction**: Max per single receipt/purchase
-   - **Per Day**: Max per calendar day
-   - **Per Month**: Max per month
-   - **Annually**: Max per year
-
-4. Enter **Amount**: Spending limit
-5. Set **Requires Approval**:
-   - Over limit: Flag for manager review
-   - Always: Always require approval
-   - Never: Auto-approve if within limit
-
-6. Click **Add**
-
-Example:
-- **Meals**: $75 per transaction, $100 per day, $1,500 per month
-- **Travel - Hotel**: $200 per night, $1,200 per month
-- **Travel - Airfare**: $2,000 per transaction, $10,000 per year
-- **Office Supplies**: $200 per transaction, $1,000 per month
-
-### Step 3: Set Ineligible Categories
-
-Specify what cannot be reimbursed:
-
-1. Click **Add Ineligible Category**
-2. Select categories:
-   - **Alcohol** (may be restricted)
-   - **Personal Care** (haircuts, grooming)
-   - **Entertainment** (movies, entertainment other than client-related)
-   - **Gambling** (casinos, betting)
-   - **Nightclubs**
-   - **Custom**: Add other ineligible categories
-
-3. Light blocks submission of ineligible categories
-
-### Step 4: Set Documentation Requirements
-
-Specify what documentation is needed:
-
-1. Click **Add Documentation Rule**
-2. Set **Category**: What category this applies to
-3. Set **Requirement**:
-   - **Receipt Required**: Receipt image must be provided
-   - **Explanation Required**: Employee must provide business purpose
-   - **Approval Required**: Manager approval before submission
-   - **Custom Approval**: Additional person must approve
-
-4. Example:
-   - Meals: Receipt required + explanation
-   - Client entertainment: Receipt required + explanation + approver
-   - Travel: Receipt required
-
-5. Click **Add**
-
-## Enforcement and Validation
-
-### Real-Time Policy Enforcement
-
-When employee submits expense:
-
-1. Light validates against policy:
-   - **Eligible category?**: Is category allowed?
-   - **Within limit?**: Does expense exceed limit?
-   - **Documented?**: Receipt provided if required?
-   - **Explained?**: Business purpose provided if required?
-
-2. Light shows validation results:
-   - Green checkmark: Expense complies with policy
-   - Yellow warning: Exceeds limit but can be submitted
-   - Red error: Cannot submit without correction (ineligible category)
-
-### Flagging for Approval
-
-Expenses that exceed limits:
-
-1. Automatically flag for manager review
-2. Employee is notified: "This expense exceeds policy limit"
-3. Employee can:
-   - **Cancel**: Withdraw and don't submit
-   - **Request Variance**: Submit and ask manager to override policy
-   - **Resubmit**: Correct and resubmit
-
-4. If submitted despite warning:
-   - Goes to manager
-   - Manager sees flag: "This exceeds policy limit"
-   - Manager can approve or reject with reason
-
-## Policy Exceptions and Overrides
-
-### Requesting Exception
-
-Employee requesting policy exception:
-
-1. Submit expense that violates policy
-2. In notes/explanation, request exception:
-   - "Need approval for this $350 meal (exceeds $75 limit)"
-   - "This is for client entertainment with key client"
-
-3. Submit anyway
-4. Manager sees exception request and policy violation
-5. Manager can **Approve Exception** with explanation
-6. Exception is recorded for audit
-
-### Granting Standing Variance
-
-For predictable exceptions (e.g., employee frequently travels to high-cost areas):
-
-1. Navigate to **Policies** > **Variance Approvals**
-2. Click **Add Variance**
-3. Set:
-   - **Employee**: Who gets variance
-   - **Category**: What category (e.g., Meals)
-   - **Limit**: New higher limit
-   - **Duration**: How long variance lasts
-   - **Reason**: Why variance is needed
-
-4. Example: Sales VP traveling to APAC needs $150/meal limit (vs. standard $75)
-
-5. Apply variance
-6. Employee's expenses automatically allow higher limit
-
-## Policy Compliance Reporting
-
-### Monitoring Policy Violations
-
-1. Navigate to **Reports** > **Policy Compliance**
-2. View:
-   - **Total Submissions**: Expenses submitted
-   - **Compliant**: Met policy requirements
-   - **Violations**: Exceeded limits or ineligible
-   - **Violation Rate**: % of submissions violating policy
-
-3. Drill down by:
-   - Employee: Who violates most
-   - Category: Which categories are problematic
-   - Type: Exceeds limit, ineligible category, missing documentation
-
-### Trend Analysis
-
-Track policy compliance over time:
-
-1. View compliance by month
-2. Is compliance improving or deteriorating?
-3. Are specific employees consistently violating?
-4. Are specific categories consistently problematic?
-
-Use data to:
-- Identify training needs
-- Adjust policy limits (if universally too strict)
-- Take action on chronic violators
-
-## Policy Communication
-
-### Publishing Policies
-
-Ensure employees understand policies:
-
-1. Navigate to **Policies** > **Published Policies**
-2. Make policy **Public** so employees can review
-3. Link in onboarding materials
-4. Periodically remind employees
-
-### Policy Training
-
-Help employees learn policies:
-
-1. Create **Policy Guide**: Summary of key limits and rules
-2. Include examples: "Here's what's reimbursable and what's not"
-3. Distribute to employees
-4. Especially important for travel and entertainment categories
-
-## Role-Based Policies
-
-### Creating Different Policies by Role
-
-Different employee types may have different policies:
-
-**Executives** (higher limits):
-- Meals: $150 per transaction, $3,000 per month
-- Travel: $500 hotel per night
-- Air travel: First/Business class pre-approved
-
-**Employees** (standard limits):
-- Meals: $75 per transaction, $1,500 per month
-- Travel: $150 hotel per night
-- Air travel: Economy class only
-
-**Contractors** (limited reimbursement):
-- Meals: Not reimbursable except for work events
-- Travel: Pre-approval required
-- Supplies: Not reimbursable
-
-### Assigning Policies to Employees
-
-1. Navigate to **Employees**
-2. Select employee
-3. Assign **Policy**: Choose policy that applies
+1. Navigate to [**Settings (gear icon) → Guardrails → Policies**](https://app.light.inc/settings/guardrails/policies)
+2. Click **+ Create policy**
+3. Fill in the policy details:
+   - **Entities**: Select the company entities this policy applies to
+   - **Title**: Enter a descriptive title (e.g., "Expense Policy")
+   - **Content**: Write the policy rules using the rich text editor
 4. Click **Save**
 
-When employee submits, their policy is automatically applied.
+### Uploading an Existing Policy
 
-## Merchant-Level Restrictions
+If you already have a policy document:
 
-### Restricting Merchants
+1. Navigate to [**Settings (gear icon) → Guardrails → Policies**](https://app.light.inc/settings/guardrails/policies)
+2. Click **Upload**
+3. Select the document from your computer
+4. Light's AI parses the uploaded document into a policy
 
-Block certain merchants:
+## Writing Effective Expense Policies
 
-1. Click **Add Merchant Restriction**
-2. Select merchant (or merchant category)
-3. Action: Block or Allow
-4. Examples:
-   - Block: Nightclubs, casinos, alcohol retailers
-   - Allow: Specific airlines or hotel chains
+Since the AI interprets your policy text when reviewing expenses, be specific and concrete. For example, your policy content might state:
 
-5. When employee tries to submit receipt from blocked merchant:
-   - Light flags or blocks submission
-   - Requires manager approval to override
+- "Meals are reimbursable up to $75 per person per meal"
+- "Hotel stays should not exceed $200 per night in standard locations"
+- "Alcohol, entertainment, and personal care expenses are not reimbursable"
+- "All expenses require an itemized receipt and a business purpose"
+- "Air travel should be booked in economy class"
 
-## Pre-Approval Workflows
+Clear, unambiguous rules like these give the AI reviewer a solid basis for judging whether a submitted expense report complies.
 
-### Large Expenses Requiring Pre-Approval
+### Scoping Policies by Entity
 
-For planned expenses that require approval before spending:
+Policies are assigned to company entities, so different subsidiaries, regions, or divisions can have their own expense rules. When creating or editing a policy, use the **Entities** field to control where it applies.
 
-1. Configure policy: "Travel expenses over $500 require pre-approval"
-2. Employee plans trip: $800 airfare
-3. Employee submits **Pre-Approval Request**:
-   - Date of travel
-   - Business purpose
-   - Estimated cost
-   - Approver
+## How Policies Are Enforced
 
-4. Manager approves
-5. Pre-approval valid for 30 days
-6. Employee books flight
-7. When expense submitted, pre-approval noted
-8. Approval process is streamlined (already approved)
+Expense policies are enforced through the expense submission workflow:
 
-## Policy Exceptions Log
+1. An employee submits an expense report
+2. The workflow's AI review step (**Review expense report**) checks the report against the policies selected on that step
+3. Based on the outcome:
+   - **Compliant**: The expense is approved automatically
+   - **Non-compliant**: The expense is sent to the inbox for manual review
 
-Track all policy exceptions:
+To configure this, open [**Settings (gear icon) → Workflows**](https://app.light.inc/settings/workflows), edit the expense submission workflow, and select which policies the AI review step should check against.
 
-1. Navigate to **Reports** > **Exceptions Log**
-2. View all variances and overrides:
-   - Who made exception
-   - Why
-   - When granted
-   - Expiration (if applicable)
+Reviewers see the AI's assessment and can approve or reject the expense — a non-compliant flag routes the expense to a person rather than blocking it outright.
 
-3. Use to audit policy enforcement
-4. Identify if exceptions are being granted too freely
-5. Enforce consistency
+## Asking About Policies
 
-## Annual Policy Review
+Employees can ask Light's AI assistant questions about company policies (e.g., "What's the meal limit for business travel?"). The assistant answers based on the policy documents you've created.
 
-### Updating Policies
+## Expense Categories
 
-Policies should be reviewed annually:
+Reimbursement categories are managed separately from policies. Each category has a label, GL account, tax code, optional context for the AI, and entity assignments. Configure them at **Settings (gear icon) → Records → Reimbursement category** ([open in Light](https://app.light.inc/settings/reimbursement-categories)).
 
-1. Review **Policy Performance** data:
-   - How many exceptions granted?
-   - How many violations?
-   - Are limits appropriate?
+## Reviewing and Updating Policies
 
-2. Consider changes:
-   - Are limits too restrictive (causing friction)?
-   - Are limits too generous (not controlling cost)?
-   - Are any categories causing trouble?
+Policies should be reviewed periodically:
 
-3. Update policy limits and rules
+1. Check how often expenses are flagged as non-compliant and why
+2. Consider whether your written rules are too restrictive, too generous, or unclear
+3. Update the policy content in the editor
 4. Communicate changes to employees
-5. Set effective date (give notice)
 
 ## Related Articles
 
+- [Company policies setup](/articles/02-organization-setup/2-8-company-policies.md)
 - [Expense management overview](/articles/08-expense-management/8-1-expense-overview.md)
 - [Expense approval workflows](/articles/08-expense-management/8-7-expense-approval.md)
 - [Expense reports and analytics](/articles/08-expense-management/8-14-expense-reports.md)
