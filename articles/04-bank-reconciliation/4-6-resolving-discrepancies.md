@@ -89,15 +89,15 @@ A bank transaction exists but has no corresponding GL entry:
 **Example:** Bank fee charged by the bank; no GL entry created
 
 **To fix:**
-1. Go to the unmatched bank transaction
-2. Click **Create GL Entry**
-3. Enter the transaction details:
+1. Create a journal entry for the item via **Accounting → Journal entries**:
    - **Account:** Which GL account (usually Expense for fees)
    - **Amount:** The transaction amount
    - **Description:** What the transaction was for
    - **Date:** Match the bank transaction date
-4. Click **Post**
-5. Reconciliation engine automatically matches the new entry to the transaction
+2. Post the journal entry
+3. Back in **Accounting → Bank reconciliation**, on the **Unmatched** tab, select the bank transaction on the left and the new ledger entry on the right, then click **Match**
+
+> Tip: For recurring items like bank fees, select the unmatched bank transaction and click **Convert to rule**. Light will then create and match a journal entry automatically the next time a similar transaction appears.
 
 This is common for:
 - Bank fees and interest
@@ -126,9 +126,8 @@ If a transaction doesn't appear after expected settlement time:
 If the same transaction appears twice:
 
 **In bank feed:**
-- The bank or feed provider may have imported it twice
-- Check the transaction ID—if identical, it's a true duplicate
-- Mark one as "Excluded" in reconciliation
+- Light automatically detects duplicates during bank feed imports and marks them as **Excluded**
+- For transactions imported via CSV, duplicates are not detected automatically—check the transaction ID, and if identical, select the duplicate and click **Exclude**
 
 **In GL:**
 - A user may have manually entered a transaction that already came from a feed
@@ -146,15 +145,16 @@ If the same transaction appears twice:
 When amounts differ, investigate the cause:
 
 **Rounding Difference** (e.g., $100.005 becomes $100.01)
-- Acceptable; reconcile with notation of the rounding difference
+- Matching requires the selected amounts to balance exactly (the **Difference** indicator must show 0.00)
+- Post a small adjustment journal entry for the rounding difference and include it in the match
 
 **Bank Fees** (e.g., Invoice for $1,000 but you received $999.50)
 - Bank deducted $0.50 fee
-- Create a GL entry for the fee and link the bank transaction to both the invoice and fee
+- When you match the transactions and mark the difference as bank fees, Light automatically creates a journal entry for the fee against the Bank fees account and includes it in the match
 
 **FX Conversion** (multi-currency)
 - Amount in original currency differs when converted
-- This is expected; use FX adjustment GL entries
+- This is expected; Light calculates FX gains and losses automatically when the transactions are reconciled
 
 **Calculation Error**
 - Someone miscalculated; correct the GL entry
@@ -164,8 +164,8 @@ When amounts differ, investigate the cause:
 
 Items unmatched for more than 30 days need investigation:
 
-1. Go to **Accounting → Bank reconciliation → Aged Unmatched**
-2. View items by age (0-30 days, 30-60, 60+ days)
+1. Go to **Accounting → Bank reconciliation** and open the account
+2. On the **Unmatched** tab, use the date filter to show only older transactions (e.g., "Transactions before" a given date)
 3. Click an item to see details
 4. Investigate:
    - Is this a timing difference that will resolve?
@@ -191,20 +191,15 @@ If you can't fully reconcile by month-end:
 
 This approach allows you to close the period while tracking discrepancies.
 
-## Reconciliation Discrepancy Report
+## Exporting Unmatched Items
 
-Generate a report of all unmatched items:
+Export a list of all unmatched items:
 
-1. Go to **Accounting → Bank reconciliation → Reports**
-2. Click **Discrepancy Report**
-3. View:
-   - Unmatched bank transactions
-   - Unmatched GL entries
-   - Items by age
-   - Total unreconciled amount
-4. Export to CSV for investigation
+1. Go to **Accounting → Bank reconciliation** and open the account
+2. Click the **All transactions** tab and filter by status **Unmatched** (you can also export unmatched bank and ledger transactions directly from the panels on the **Unmatched** tab)
+3. Click **Export to CSV** for investigation
 
-Use this report in your reconciliation documentation.
+Use this export in your reconciliation documentation.
 
 ## Multi-Account Reconciliation
 
