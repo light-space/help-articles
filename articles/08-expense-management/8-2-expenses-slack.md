@@ -1,6 +1,6 @@
 # Submitting Expenses via Slack
 
-Submitting expenses through Slack offers the fastest, most convenient method for employees. Submit receipts without leaving Slack, approve extracted data with a click, and track reimbursement status inline.
+Submitting expenses through Slack offers the fastest, most convenient method for employees. Send receipts to the Light bot without leaving Slack, review the extracted data, and get reimbursement status updates as direct messages.
 
 [Open in Light →](https://app.light.inc/expenses)
 
@@ -8,162 +8,83 @@ Submitting expenses through Slack offers the fastest, most convenient method for
 
 ### Installation
 
-1. Navigate to **Settings** > **Integrations** > **Slack**
-2. Click **Connect Slack Workspace**
-3. Follow OAuth flow to authorize Light in your Slack workspace
-4. Select the Slack workspace to integrate
-5. Light bot is installed and ready to use
+1. Navigate to **Settings (gear icon)** → **Integrations**
+2. Click **Connect** on the Slack integration
+3. Follow the OAuth flow to authorize Light in your Slack workspace
+4. The Light bot is installed and ready to use
 
-### Configuration
+### How users are matched
 
-After installation, configure:
+There is no per-channel configuration. Light matches each Slack user to their Light account by **email address** — the email on your Slack profile must match the email on your Light user. The bot then works with you through **direct messages**.
 
-1. Select **channels** where expense bot should be active:
-   - Personal DMs (employees can DM bot privately)
-   - #expenses channel (for team submissions)
-   - Department channels
+To submit expenses via Slack you need:
 
-2. Set **notifications**: How and when to notify about approvals
+- An active Light user with the same email as your Slack account
+- The reimbursement role and an active reimbursement setup in Light
 
-3. Enable **AI auto-processing**: Automatically extract or require manual review
-
-4. Click **Save**
+If either is missing, the bot replies telling you what to fix (for example, "You are not set up for reimbursements") and to contact your admin if needed.
 
 ## Submitting an Expense via Slack
 
 ### Direct Message to Light Bot
 
-Fastest method for simple receipts:
+1. Open Slack and start a direct message with the **Light** bot
+2. Attach your receipt (image or PDF) to the message and send it — you can attach several files at once
+3. Light reacts with an hourglass while processing, then a checkmark when the receipt is uploaded (or an X if something went wrong)
+4. Light's AI extracts the details and sends you a message with what it found
 
-1. Open Slack and find the **Light** (or **Expenses**) bot
-2. Click **New Expense** or type `/expense`
-3. A modal appears to enter details:
-   - **Amount** (optional if uploading receipt)
-   - **Category**: Select from dropdown (Travel, Meals, etc.)
-   - **Description**: What was purchased
-   - **Date**: When expense occurred
+Supported file types include PDF and common image formats (JPEG, PNG, HEIC, TIFF). Files above the maximum file size are rejected with a message telling you the limit.
 
-4. Click **Add Receipt** to attach image/PDF
-5. Click **Submit**
-
-Light processes the receipt and sends you a link to review extracted data.
-
-### Posting Receipt in Channel
-
-Submit receipt in #expenses or project channel:
-
-1. In Slack, upload receipt image or PDF (using file upload button)
-2. Reply to the message with: "Hey Light, process this expense"
-3. Light bot responds asking for category and description
-4. Enter category and notes in the thread
-5. Light acknowledges and processes
-
-### Forwarding Email Receipts
-
-Forward email receipts to Light's Slack:
-
-1. In email, use the "Forward to Slack" action (if available)
-2. Forward to Light's email integration address: **expenses@light-slack.company.com**
-3. Light captures the email and sends Slack notification
-4. Click notification link to verify and submit
+> Note: If you are also a cardholder, Light first tries to match the receipt to a card transaction. If no transaction matches, the bot asks "Do you want to create a reimbursement from this item?" with **Reimbursement** and **Discard** buttons — click **Reimbursement** to create an expense.
 
 ## Reviewing Extracted Data
 
-After submitting, Light processes the receipt and sends you a message:
+After processing, Light sends you a message:
 
-**"I found the following receipt details. Does this look right?"**
+**"Here's what I got from the receipt:"**
 
 The message shows:
-- **Merchant Name**: Where you shopped
-- **Date**: When purchase occurred
-- **Amount**: How much was spent
-- **Category**: Suggested category
+- **Description**: What the expense appears to be
+- **Original amount**: The amount and currency on the receipt
+- **Reimbursement amount**: The amount converted to your reimbursement currency
 
-### Confirming or Correcting
+The expense is created as a draft. To correct any details (description, amount, date, category), open the [Expenses](https://app.light.inc/expenses) page in the Light web app and edit the draft there.
 
-**If correct:**
-1. Click **Looks Good** or react with ✓
-2. Expense is submitted for approval
-3. You'll be notified when manager approves
+If extraction fails, Light tells you "There was an issue extracting the details from the receipt" and asks you to go to the web app to fill out the missing details — best done on a computer.
 
-**If something is wrong:**
-1. Click **Edit** or **Need to Fix**
-2. Light shows a modal to correct:
-   - Merchant name
-   - Amount
-   - Date
-   - Category
-   - Add notes
+### Submitting your expense report
 
-3. Click **Fixed** to resubmit
+Draft expenses are grouped into an expense report (reimbursement). Once you are done uploading all of your receipts, you can either:
 
-### Adding Receipt Notes
+- Tell the Light bot in the DM to submit your expense report, or
+- Submit it from the [Expenses](https://app.light.inc/expenses) page in the web app
 
-Add context to help manager with approval:
-
-1. After confirming details, click **Add Notes**
-2. Describe the expense:
-   - "Client dinner with Acme Corp team"
-   - "Team office supplies for Q1 planning"
-   - "Flight to SF for customer visit"
-
-3. Click **Save**
-
-Notes are visible to manager when reviewing.
+Submitting sends the report for review through your company's approval workflow.
 
 ## Tracking Reimbursement Status
 
-After submitting, Light sends status updates:
+Light sends these status updates as Slack DMs:
 
-1. **Submitted Notification**: "Your expense for $X has been submitted to [Manager Name]"
-2. **Approval Notification**: "[Manager Name] approved your $X expense"
-3. **Reimbursement Notification**: "Your reimbursement of $X is being processed"
-4. **Payment Notification**: "Reimbursement of $X was paid to your account"
-
-Click notifications to see more details.
+1. **Upload confirmation**: "Your receipt was successfully uploaded" with the extracted details
+2. **Rejection notification**: "Your expense report was rejected", including the reason from the finance team and a link to reset your expenses
+3. **Payment notification**: "Your reimbursement has been paid" with the amount sent to your account
 
 ### Checking Status in Slack
 
-Ask Light for your expense status:
+Ask the Light bot directly — there are no special commands. In a DM, ask in natural language, for example:
 
-1. Type `/expense status` in Slack
-2. Light responds with list of your recent expenses:
-   - Pending approval
-   - Approved but not paid
-   - Paid
-   - Rejected
+- "What's the status of my reimbursement?"
+- "Which of my expenses are still in draft?"
 
-3. Click any expense to see full details (amount, date, approval notes)
+The bot answers using your data in Light. You can also mention **@Light** in a channel it has been added to and it replies in a thread.
 
 ## Batch Submitting Multiple Receipts
 
 Submit multiple expenses at once:
 
-1. In Slack, click **New Expense**
-2. Instead of uploading one receipt, select **Upload Multiple**
-3. Click **Add Receipt** multiple times to add several receipts
-4. Fill in details for first receipt
-5. Click **Next** to go to next receipt
-6. Fill in details for each
-7. Click **Submit All**
-
-Light processes all receipts together and sends one confirmation.
-
-## Sharing Expenses with Team
-
-For team expenses (shared meal, supplies):
-
-1. Submit the expense normally
-2. In the extraction confirmation, click **Share with Team**
-3. Select teammates to split the cost:
-   - Click checkboxes to select people
-   - Light shows split amount for each person
-
-4. Click **Confirm Split**
-
-Each team member is notified of their share; splits are tracked for reimbursement.
-
-> Tip: For team dinners, one person submits the receipt and it's automatically split among attendees.
+1. In your DM with the Light bot, attach several receipt files to a single message
+2. Send the message — Light processes each file and creates a draft expense per receipt
+3. When you're done uploading, submit them together as one expense report
 
 ## Receipt Photo Tips
 
@@ -173,58 +94,44 @@ For best AI extraction results:
 2. **Full Receipt**: Include entire receipt in frame, not just part
 3. **Flat Surface**: Place receipt flat before photographing (not at angle)
 4. **Focus**: Focus camera on receipt before snapping
-5. **Landscape**: Take photo in landscape orientation
-6. **Recent**: Use receipts within a few weeks (ink doesn't fade)
-
-Light's mobile app includes a guide with visual examples.
+5. **Recent**: Use receipts within a few weeks (ink doesn't fade)
 
 ## Common Issues and Troubleshooting
 
 ### Extraction Didn't Work
 
-If Light couldn't read the receipt:
+If Light couldn't read the receipt, it sends: "There was an issue extracting the details from the receipt." The receipt is still uploaded — go to the [Expenses](https://app.light.inc/expenses) page in the web app to fill out the missing details manually.
 
-1. Light sends message: "I couldn't read this receipt clearly. Can you help?"
-2. Options:
-   - **Retake Photo**: Take a better photo of same receipt
-   - **Manual Entry**: Manually enter amount, merchant, date
-   - **Ask Later**: Try resubmitting later
+### File Was Rejected
 
-3. Select option and proceed
+If a file fails validation, Light replies explaining the problem:
 
-### Receipt Image Too Blurry
+- The file exceeds the maximum file size
+- The file has an unsupported file type
 
-1. Light indicates extraction was low confidence
-2. Click **Retake Photo**
-3. Use tips above for better photo
-4. Resubmit
+Fix the file (or take a new photo) and resend the message with valid files.
 
-### Wrong Category Suggested
+### Bot Doesn't Recognize You
 
-1. In the confirmation, click **Edit**
-2. Change category to correct one
-3. Light learns from correction (future similar receipts improve)
-4. Click **Fixed** to resubmit
+If the bot replies that it could not find an active user with your Slack credentials, your Slack email doesn't match a Light account. Ask your admin to check your Light user's email address.
 
-## Slack Slash Commands
+### Wrong Details Extracted
 
-Quick commands available in Slack:
+Open the draft expense on the [Expenses](https://app.light.inc/expenses) page and correct the details before submitting your expense report.
 
-- `/expense` - Start new expense submission
-- `/expense status` - Check your expense status
-- `/expense recent` - Show last 5 submissions
-- `/expense help` - Show available commands
+## Talking to the Light Bot
 
-Type the command in any channel where Light bot is active.
+The Light bot doesn't use slash commands — it understands natural language:
+
+- **Direct messages**: Ask questions about your expenses, policies, or company data
+- **Channel mentions**: Mention **@Light** in a channel where the bot is present and it replies in a thread
 
 ## Privacy and Security
 
 Your expense submissions in Slack:
 
 - **Encrypted**: Receipts are encrypted in transit and at rest
-- **Private**: Only you and your manager can see your expenses
-- **Compliant**: GDPR, SOC 1, and SOC 2 compliant
-- **No Storage**: Receipt photos are deleted after processing (only metadata retained)
+- **Private**: The bot works with you in direct messages; expenses are visible to you and your reviewers
 
 ## Related Articles
 
