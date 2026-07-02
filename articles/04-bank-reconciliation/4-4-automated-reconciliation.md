@@ -35,7 +35,7 @@ A filter bar at the top lets you narrow transactions by date (e.g., "Transaction
 
 **Action bar**: Between the filter bar and the panels, you'll find the key reconciliation actions:
 
-- **Auto reconcile** — Runs the matching engine to automatically find and propose matches based on your reconciliation rules.
+- **Auto reconcile** — Runs the matching engine to automatically find and apply matches based on your reconciliation rules.
 - **Exclude** — Removes selected transactions from the reconciliation process (useful for bank fees, pending items, or transactions you want to handle separately).
 - **Convert to rule** — Creates a new matching rule based on the selected transaction, so similar future transactions are handled automatically.
 - **Difference** — Displays the running difference between your selected bank transaction(s) and selected ledger transaction(s). When nothing is selected, the difference shows 0.00. As you select items, the value updates dynamically.
@@ -67,6 +67,8 @@ Instead of matching transactions one by one, you can let Light's matching engine
 
 Auto reconcile uses the rules defined on the **Rules** tab (see below) to determine matches. It processes rules in order, and each unmatched bank transaction is tested against the rules until a match is found.
 
+> Good to know: Light also runs the matching engine automatically whenever new transactions are imported through a bank feed sync or a CSV import, so many transactions arrive already matched.
+
 ## Understanding Reconciliation Rules
 
 Reconciliation rules control how Light matches bank transactions to ledger entries. You can view and manage rules by clicking the **Rules** tab on the main Bank reconciliation page.
@@ -83,12 +85,13 @@ The rules table shows:
 
 Light includes several built-in rules that handle common matching scenarios:
 
-- **Register payment for open invoices** — Matches bank deposits and payments to outstanding customer and vendor invoices.
-- **Create Journal Entry for card transactions** — Automatically creates and matches journal entries for corporate card transactions.
-- **Match by bank transaction end-to-end reference** — Uses end-to-end payment references (common in SEPA and wire transfers) to find matches.
+- **Register payment for open invoice receivables** — Matches incoming bank transactions to open customer invoices when an invoice number found in the transaction matches exactly, and registers the payment.
+- **Register payment for open invoice payables** — Matches outgoing bank transactions to open vendor bills when an invoice number found in the transaction matches exactly, and registers the payment.
+- **Create Journal Entry for card balance funding transactions** — Recognizes transfers that fund a card balance account and automatically creates and matches the corresponding journal entry.
+- **Match by bank transaction end to end id** — Uses end-to-end payment references (common in SEPA and wire transfers) to find matches.
 - **Match by document number** — Matches based on invoice or document numbers found in the bank transaction reference.
 - **Match by amount and description** — Finds matches where both the amount and transaction description align with a ledger entry.
-- **Match by amount and date** — Matches transactions where the amount and date closely correspond to a ledger entry.
+- **Match by amount and date** — Matches a transaction when exactly one ledger entry has the same amount and date.
 
 System rules are created by Light and cannot be deleted, but you can create additional custom rules that run alongside them.
 
@@ -130,7 +133,7 @@ Common reasons to exclude a transaction:
 - **Duplicate entries** that shouldn't be matched.
 - **Bank fees or charges** that need to be handled through a separate journal entry process.
 
-To exclude a transaction, select it on the **Unmatched** tab and click **Exclude**. Excluded transactions can be moved back to the unmatched queue if needed.
+To exclude a transaction, select it on the **Unmatched** tab and click **Exclude**. Light also automatically marks duplicate transactions detected during bank feed imports as excluded. Excluded transactions can be moved back to the unmatched queue if needed.
 
 ## Unmatched Transactions
 
