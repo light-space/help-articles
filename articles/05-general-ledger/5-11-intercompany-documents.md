@@ -20,9 +20,9 @@ These transactions don't go outside the group, so they're eliminated during cons
 
 Before creating intercompany journal entries, configure which accounts are used for intercompany postings.
 
-1. Go to **Accounting → Chart of accounts**
-2. Open the **Intercompany config** section
-3. Click **+ Add configuration**
+1. Go to **Settings (gear icon) → Chart of accounts** (under the Records section)
+2. Open the **Intercompany rules** tab
+3. Click **+ Add intercompany rule**
 4. Fill in the fields:
 
 | Field | Description |
@@ -81,7 +81,7 @@ This action cannot be undone. The entry's status changes to **Archived** and the
 |---|---|
 | **Draft** | Saved but not yet posted. Still editable, can be deleted. |
 | **Posted** | Finalised and reflected in the GL. Read-only. |
-| **Void** | Posted entry that has been voided. All generated journal entry transactions are reversed. |
+| **Archived** | Posted entry that has been voided. All generated journal entry transactions are reversed. |
 
 > **Note:** If you need to reverse a posted intercompany entry, you can void it. Open the posted entry and click **Void** in the top-right actions. Confirm in the dialog — this action reverses all the journal entry postings that were created when the entry was posted, effectively unwinding the GL impact. Only posted entries can be voided; draft entries can be deleted instead.
 
@@ -109,7 +109,7 @@ The intercompany journal entries list can be filtered by:
 - **Posting date** (defaults to current quarter)
 - **Valuation date**
 - **Currency**
-- **Status** (Draft / Posted / Void)
+- **Status** (Draft / Posted / Archived)
 
 Free-text search is also available.
 
