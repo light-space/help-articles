@@ -1,6 +1,6 @@
 # Virtual Cards
 
-Virtual cards are single-use or limited-use card numbers generated for specific online purchases. They provide enhanced security and spending control for high-risk or one-time purchases.
+Virtual cards are digital Light cards that are issued without a physical card to ship. They provide enhanced security and spending control for online purchases, subscriptions, and vendor payments.
 
 [Open in Light →](https://app.light.inc/cards)
 
@@ -9,57 +9,50 @@ Virtual cards are single-use or limited-use card numbers generated for specific 
 Virtual cards are:
 
 - **Digital Only**: No physical card needed
-- **Single-Use**: Automatically expire after one use (or set limit)
-- **Short-Lived**: Expire in hours, days, or weeks
-- **Spending Limits**: Set specific limit for each card
-- **Merchant-Specific**: Can be restricted to single merchant or category
+- **Issued Instantly**: Ready to use as soon as the card is created
+- **Spending Limits**: Set a per-transaction, weekly, or monthly limit for each card
+- **Wallet-Ready**: Can be added to Apple Pay and Google Pay
 - **Auto-Reconcile**: Transactions feed to expense module automatically
 
 Benefits:
-- **Security**: Card number not reused, reducing fraud risk
-- **Control**: Spending limited to specific amount
-- **Privacy**: Merchant never sees company card number or full details
+- **Security**: Each card has its own unique number, so one exposed card never affects others
+- **Control**: Spending limited to the card's spending limit
 - **Compliance**: Automatic policy enforcement
 
 ## When to Use Virtual Cards
 
 Virtual cards are ideal for:
 
-- **SaaS Subscriptions**: Monthly software charges (avoid recurring charges)
+- **SaaS Subscriptions**: Monthly software charges (dedicated card per subscription)
 - **Online Purchases**: Amazon, Salesforce, etc. (single vendors)
-- **Vendor Trials**: Free trials that require card (expires after use)
+- **Vendor Trials**: Free trials that require card (freeze or close the card after the trial)
 - **Third-Party Vendors**: Less-trusted merchants
 - **High-Risk Categories**: Travel, entertainment (higher fraud risk)
 - **Contractor Payments**: Paying 1099 contractors electronically
 
 ## Requesting a Virtual Card
 
-### Self-Service Virtual Card
+### Self-Service Card Request
 
 Employees can request their own virtual cards:
 
 1. Open Light app or portal
-2. Navigate to **Cards** > **Request Virtual Card**
+2. Navigate to **Cards** and request a new card
 3. Enter:
    - **Merchant/Vendor**: Who you're buying from (e.g., "Salesforce")
    - **Purpose**: What the purchase is for (e.g., "Software subscription")
-   - **Amount**: How much you'll spend ($500)
-   - **Expiration**: How long card should last:
-     - Single-use (recommended)
-     - 7 days
-     - 30 days
-     - 90 days
+   - **Amount**: The spending limit (e.g., $500)
+   - **Limit Interval**: Per transaction, weekly, or monthly
    - **Notes**: Any special instructions
 
-4. Click **Generate Card**
+4. Submit the request
 
-Light instantly generates:
-- **Card Number**: 16-digit number unique to this request
-- **Expiration Date**: When card becomes invalid
+The request is routed through the card approval workflow. Once approved, Light issues the card with:
+- **Card Number**: 16-digit number unique to this card
+- **Expiration Date**: The card's printed expiry date
 - **CVV**: 3-digit security code
-- **Billing Address**: For online checkout
 
-5. Use immediately in online purchase
+5. View the card details securely in the app and use them for online purchases
 
 ### Manager-Requested Virtual Cards
 
@@ -69,7 +62,7 @@ For policy control, manager can request on behalf of employee:
 2. Select employee
 3. Enter card details (same as above)
 4. Light generates card
-5. Card number is shared with employee
+5. Card is assigned to the employee, who can view its details securely in the app
 6. Employee uses for purchase
 
 ### Admin Virtual Cards
@@ -78,14 +71,12 @@ Finance can issue virtual cards for specific purposes:
 
 1. Navigate to **Cards** > **Create Virtual Card**
 2. Set card type:
-   - **Personal Use**: Employee gets card for personal expenses
-   - **Vendor Payment**: Paying a specific vendor
-   - **Subscription**: Recurring service charge
+   - **Employee Card**: Card for an employee's business expenses
+   - **Vendor Card**: Card dedicated to a specific vendor or subscription
 
 3. Configure:
    - **Amount**: Spending limit
-   - **Expiration**: Days until auto-expiration
-   - **Merchant Whitelist**: Only usable at certain merchant (optional)
+   - **Limit Interval**: Per transaction, weekly, or monthly
    - **Assigned To**: Who can use this card
 
 4. Generate and distribute to employee
@@ -101,29 +92,21 @@ Finance can issue virtual cards for specific purposes:
    - **Expiration**: MM/YY format (e.g., 05/24)
    - **CVV**: 3-digit code provided
 
-4. Enter **billing address** provided with card
+4. Enter your company **billing address** if requested
 5. Complete purchase
 6. Card processes payment
 
-Card information is never saved by the merchant (one-time use).
+You can also add the card to Apple Pay or Google Pay for mobile payments.
 
 ### Handling Subscription Services
 
-For subscriptions where merchant tries to charge repeatedly:
+For recurring subscription services:
 
-1. Virtual card is set to **single-use**
-2. First charge goes through
-3. Merchant tries to charge again (auto-renewal)
-4. Card is declined (number no longer valid)
-5. Employee must:
-   - Manually authorize renewal on company card, or
-   - Request new virtual card, or
-   - Switch to manual payment
-
-Alternatively:
-1. Generate virtual card with **30 or 90-day expiration**
-2. Matches subscription billing cycle
-3. Card auto-expires at renewal (prevents surprise charges)
+1. Create a dedicated virtual vendor card for the subscription
+2. Set a **monthly** spending limit that matches the expected charge
+3. The subscription charges the same card each billing cycle
+4. Charges above the limit are declined
+5. To stop future charges, freeze or close the card
 
 ## Managing Virtual Cards
 
@@ -143,53 +126,51 @@ Alternatively:
    - CVV
    - Transaction history (if used)
 
-### Limiting Virtual Card Scope
+### Adjusting Card Limits
 
-Restrict virtual card to specific merchant:
-
-1. When generating card, set **Merchant Whitelist**
-2. Enter merchant name (e.g., "Salesforce")
-3. Card only works at that merchant
-4. Declined if used elsewhere
-
-Prevents accidental misuse.
-
-### Cancelling Unused Virtual Cards
-
-Cancel cards no longer needed:
+Company admins and controllers can adjust a card's spending limit:
 
 1. Open card details
-2. Click **Cancel**
-3. Card becomes invalid immediately
-4. Cannot be reused
+2. Edit the spending limit amount
+3. Choose the limit interval: per transaction, weekly, or monthly
+4. Transactions that would exceed the limit are declined
 
-Use if circumstances change and purchase no longer needed.
+Prevents accidental overspend.
+
+### Freezing and Closing Virtual Cards
+
+Freeze or close cards no longer needed:
+
+1. Open card details
+2. **Freeze** the card to temporarily block all transactions (it can be unfrozen later)
+3. **Close** the card to permanently deactivate it
+4. Closed cards cannot be reused
+
+Use if circumstances change and the card is no longer needed.
 
 ## Security Features
 
 ### Card Number Security
 
-- **Unique Number**: Each virtual card has unique number (no reuse)
-- **Short-Lived**: Expires after set period
+- **Unique Number**: Each virtual card has its own unique number
+- **Secure Reveal**: Card details are only revealed securely in the app
 - **Non-Transferable**: Card not usable by anyone except intended user
-- **Tokenization**: Card details not stored by merchant (encrypted token used)
+- **Tokenization**: Wallet payments use encrypted network tokens instead of the card number
 
 ### Fraud Prevention
 
 Light monitors virtual card usage:
 
 - **Spending Limit**: Card cannot exceed authorized amount
-- **Merchant Restriction**: Card only works at specified merchant
 - **Velocity Checking**: Flags multiple transactions in short time
 - **Amount Checking**: Alerts if unusually large charge
-- **Auto-Expiration**: Card automatically expires, preventing misuse
+- **Instant Freeze**: Cards can be frozen immediately if misuse is suspected
 
 ### PCI Compliance
 
 Virtual cards reduce PCI compliance burden:
 
-- **Merchant Never Sees Company Details**: Doesn't see company card or payment method
-- **No Card Storage**: Merchant cannot store number for future use
+- **Merchant Never Sees Company Details**: Doesn't see other company cards or payment methods
 - **Encrypted Transmission**: Card details encrypted in transit
 - **Reduced Liability**: Less sensitive data exposed
 
@@ -204,7 +185,7 @@ Virtual card transactions automatically appear in expense module:
    - **Merchant**: Where charge occurred
    - **Amount**: Charge amount
    - **Date**: Transaction date
-   - **Card Expiration**: Which virtual card was used
+   - **Card**: Which virtual card was used
 
 3. Can be tracked and reconciled
 
@@ -259,7 +240,7 @@ Even after card is used:
 2. View:
    - **Cards Generated**: Total created
    - **Cards Used**: How many were actually used
-   - **Unused**: Cards that expired without use
+   - **Unused**: Cards with no transactions yet
    - **Average Amount**: Typical virtual card spending
    - **By Employee**: Who uses virtual cards most
    - **By Merchant**: Most frequent vendors
