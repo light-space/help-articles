@@ -6,14 +6,12 @@ Use this checklist to quickly get Light set up and operational. Most organizatio
 
 ## Account setup
 
-- [ ] Create your Light account with your work email
-- [ ] Verify your email address
-- [ ] Set up your profile (name, job title, time zone)
-- [ ] Enable two-factor authentication for security
+- [ ] Log in to Light using the link in your welcome email (accounts are created for you by Light or your company admin)
+- [ ] Set up your profile (name, time zone)
 
 ## Organization configuration
 
-- [ ] Create your company and select base currency
+- [ ] Review your company details and base currency (set up for you by Light during onboarding)
 - [ ] Add legal entities (subsidiaries, regional offices, etc.)
 - [ ] Configure all currencies you'll use
 - [ ] Upload your company logo
@@ -29,10 +27,10 @@ Use this checklist to quickly get Light set up and operational. Most organizatio
 ## Team setup
 
 - [ ] Identify team members who need Light access
-- [ ] Invite Finance Admin (controller or finance leader)
-- [ ] Invite Finance Managers (approvers, operational staff)
-- [ ] Invite specialist users (AR, AP, accountants)
-- [ ] Invite employees for expense submission
+- [ ] Add users with the **Company admin** role (your Light administrators) — users are created by an admin and receive a welcome email
+- [ ] Add accounting staff with the **Controller** role
+- [ ] Add specialist users (**AR clerk**, **AP clerk**, **Invoice approver** roles)
+- [ ] Add employees for expense submission (**Reimbursement** and **Cardholder** roles)
 - [ ] Set approval limits and authority levels
 - [ ] Configure approval workflows
 
@@ -47,7 +45,7 @@ Use this checklist to quickly get Light set up and operational. Most organizatio
 
 ## Bank connectivity
 
-- [ ] Connect your primary operating bank account via Plaid or GoCardless
+- [ ] Connect your primary operating bank account via Plaid (US only), GoCardless, or Stripe — or import transactions manually via CSV (requires the **Company admin** role)
 - [ ] Connect any secondary bank accounts
 - [ ] Verify all accounts show correct balances
 - [ ] Map bank accounts to GL accounts for reconciliation
@@ -113,7 +111,7 @@ Use this checklist to quickly get Light set up and operational. Most organizatio
 
 **Test thoroughly.** Spend time in a test environment (or with test data) before going live. Test approval workflows, notifications, and edge cases.
 
-**Get admin training.** Ensure your Finance Admin understands settings, user management, and troubleshooting. They'll be your primary internal resource.
+**Get admin training.** Ensure your Company admin understands settings, user management, and troubleshooting. They'll be your primary internal resource.
 
 **Start small, expand gradually.** You don't need every feature on day one. Implement core AR, AP, and expense workflows first, then add bank reconciliation and advanced features.
 
