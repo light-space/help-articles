@@ -8,13 +8,18 @@ Light's mobile app allows employees to capture receipt photos while traveling an
 
 ### Downloading the App
 
-1. Open Apple App Store or Google Play Store
-2. Search for "Light Expenses"
-3. Install **Light - Expense Management**
-4. Open app and sign in with company credentials
-5. App requests permissions (camera, photo library, notifications)
-6. Grant permissions
-7. App is ready to use
+Download the Light app directly from your device's app store:
+
+- **iOS (iPhone/iPad):** [Download on the App Store](https://apps.apple.com/us/app/light-inc/id6744313804)
+- **Android:** [Get it on Google Play](https://play.google.com/store/apps/details?id=com.anonymous.lightexpo)
+
+You can also open the App Store or Google Play Store and search for **"Light Inc"**.
+
+1. Install **Light - Expense Management** from the link above
+2. Open app and sign in with company credentials
+3. App requests permissions (camera, photo library, notifications)
+4. Grant permissions
+5. App is ready to use
 
 ### Initial Setup
 
