@@ -2,7 +2,7 @@
 
 Accounting periods organize the GL by time. At period-end, you close the period to prevent new postings and prepare for financial reporting. This article explains period management and closing.
 
-[Open in Light →](https://app.light.inc/accounting-periods)
+[Open in Light →](https://app.light.inc/accounting/accounting-periods)
 
 
 ## Accounting Periods
@@ -12,42 +12,36 @@ Periods organize the GL by time:
 **Period types:**
 - Monthly (most common)
 - Quarterly
-- Annually
-- Semi-annually
-- Custom periods
+- Yearly
+
+The period interval is set in your company's accounting period configuration.
 
 **Period structure:**
-- Start date and end date
-- Status: Open, Closed, or Locked
-- Company entity (multi-entity companies have separate periods per entity)
+- Start date and end date (periods are always month-aligned)
+- Status: Open or Closed
+- Closing tasks, tracked per company entity (multi-entity companies share the same periods, but each closing task is completed per entity)
 
 ## Period Status
 
-Periods have three statuses:
+Periods have two statuses:
 
 **Open** - Documents can be posted to this period. Most periods are open while you're working in them.
 
 **Closed** - No new documents can be posted. Used for completed periods (prior months). Prevents accidental postings to old periods.
 
-**Locked** - Completely read-only. No modifications allowed. Used for audited periods.
+Within an open period, you can also lock individual document types (AP, AR, journal entries) by completing the period's closing tasks—see **Locking Document Types** below.
 
 ## Opening Periods
 
-To open a new period:
+Periods are generated in bulk for an accounting year rather than created one at a time:
 
-1. Go to **Company Settings > Accounting Periods**
-2. Click **Create Period**
-3. Enter:
-   - **Period name** (e.g., "January 2024")
-   - **Start date**
-   - **End date**
-   - **Status** (Open)
-   - **Company entity** (if multi-entity)
-4. Click **Create**
+1. Go to **Accounting → Accounting periods**
+2. Generate periods by entering a **start date** and (optionally) an **end date**
+3. The system creates the periods based on your configured interval (monthly, quarterly, or yearly)
 
-The period is now ready to accept postings.
+Generated periods are created as Open and are ready to accept postings.
 
-> Good to know: You typically open periods at the start of the month, before transactions begin posting.
+> Good to know: The date range must be month-aligned (start on the first day of a month and end on the last day of a month) and cannot exceed 12 months. Each new accounting year must start the day after the previous year ends.
 
 ## Posting Date and Period
 
@@ -65,12 +59,11 @@ The posting date determines which period a transaction belongs to.
 Sometimes you need to post to a prior (closed) period:
 
 1. Go to the period and click **Reopen**
-2. Enter your authorization/reason
-3. Period status changes to Open
-4. Post the transaction
-5. Click **Close** again to re-close
+2. Period status changes to Open—any later periods are reopened as well
+3. Post the transaction
+4. Click **Close** again to re-close
 
-Reopening is tracked in audit log, showing who reopened and why.
+Completed closing tasks are preserved when you reopen, so re-closing is quick. The system records who reopened the period and when.
 
 > Important: Closing a period prevents accidental postings, but you can always reopen for adjustments.
 
@@ -108,28 +101,31 @@ A typical month-end close process:
 To close a period:
 
 1. Ensure all activity is complete
-2. Go to **Company Settings > Accounting Periods**
-3. Find the period and click **Close**
-4. System checks:
-   - No documents are still in DRAFT
-   - All postings are complete
-   - Required closing entries are posted
-5. If checks pass, period status changes to Closed
-6. Audit log records who closed it and when
+2. Go to **Accounting → Accounting periods**
+3. Complete the period's closing tasks:
+   - **Lock AP** - locks accounts payable documents
+   - **Lock AR** - locks accounts receivable documents
+   - **Lock JE** - locks journal entries
+   - **FX revaluation** - requires the three lock tasks to be completed first
+4. Find the period and click **Close**
+5. System checks:
+   - All closing tasks are completed
+   - All previous periods are closed (periods must be closed in chronological order)
+6. If checks pass, period status changes to Closed, and the system records who closed it and when
+
+Closing tasks can be completed per company entity or for all entities at once. Only company admins and controllers can complete closing tasks and close or reopen periods.
 
 Once closed, posting to this period requires reopening.
 
-## Locking Periods
+## Locking Document Types
 
-After an external audit, lock the period:
+While a period is still open, you can lock individual document types by completing the period's lock tasks:
 
-1. Go to **Company Settings > Accounting Periods**
-2. Find the period and click **Lock**
-3. Period becomes completely read-only
-4. No modifications or postings allowed
-5. Can only be unlocked by administrator
+1. Go to **Accounting → Accounting periods**
+2. Open the period and complete a lock task (**Lock AP**, **Lock AR**, or **Lock JE**)
+3. Once a lock task is completed, documents of that type can no longer be posted to the period, even though the period itself is still open
 
-Locked periods demonstrate to auditors that data hasn't been changed post-audit.
+This lets you lock down parts of the ledger progressively during the close. Undoing a lock task removes the lock—and also reopens the FX revaluation task for that period and all later periods, since FX revaluation depends on locked balances.
 
 ## Closing Entries
 
@@ -232,16 +228,15 @@ Quarterly and year-end closes are more rigorous than monthly closes.
 
 ## Reopening Old Periods
 
-You can reopen any period:
+You can reopen any closed period:
 
-1. Go to **Company Settings > Accounting Periods**
+1. Go to **Accounting → Accounting periods**
 2. Find the period and click **Reopen**
-3. Document your reason
-4. Period status returns to Open
-5. Can now post and modify documents
-6. Re-close when done
+3. Period status returns to Open—all periods after it (and their accounting years) are reopened as well, keeping the timeline consistent
+4. Can now post and modify documents
+5. Re-close when done (completed closing tasks are preserved, so re-closing is quick)
 
-Reopening is auditable—you can see in the audit trail when periods were reopened and by whom.
+The system records when periods were reopened and by whom.
 
 ## Best Practices
 
@@ -251,7 +246,7 @@ Reopening is auditable—you can see in the audit trail when periods were reopen
 - **Review GL** - Don't just accept reports; verify GL data
 - **Get approval** - Have someone review and approve before closing
 - **Archive reports** - Keep month-end reports for audit trail
-- **Lock audited periods** - After audit, lock to prevent changes
+- **Keep audited periods closed** - Reopen only when strictly necessary
 - **Train staff** - Ensure team understands closing procedures
 
 ## Related Articles
