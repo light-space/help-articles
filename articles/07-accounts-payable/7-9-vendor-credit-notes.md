@@ -27,18 +27,18 @@ A credit moves from Posted → Partially cleared → Cleared as it's applied to 
    - **Date**
    - **Currency**
    - **Amount**
-3. Add **line items** (each with quantity, unit price, GL account, cost center, tax category)
+3. Add **line items** (each with a description, amount, GL account, cost center, tax code)
 4. Save — the credit opens in **Draft**
 
 ## Posting (Publishing) a Credit
 
-From the credit detail header, click **Publish** to post the credit. Once posted, it becomes available to apply against open bills.
+From the credit detail header, click **Publish** to post the credit. If a credit note approval workflow is published (**Settings → Workflows**), publishing submits the credit for approval instead, and it's posted once approved. Once posted, it becomes available to apply against open bills.
 
 ## Applying a Credit to a Bill
 
 1. Open a Posted credit entry
 2. Click **Apply to bill**
-3. The dialog lists open bills for the same vendor in the same currency
+3. The dialog lists open bills for the same vendor and entity in the same currency
 4. Pick the target bill and enter the application amount
 5. Confirm
 
@@ -53,7 +53,8 @@ To remove an application, click **Unlink** next to the linked bill in the credit
 ## Other Actions
 
 From the credit detail header:
-- **Archive** — archive the credit (available in Draft and Posted)
+- **Archive** — archive the credit (available in Draft and Posted; a Posted credit with linked bills must be unlinked first)
+- **Mark as paid** — record a vendor refund of the credit as a bank payment; pick the payment date, bank account, and amount
 
 ## Related Articles
 
