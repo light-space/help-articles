@@ -40,6 +40,6 @@ Approved reimbursements move into the **Scheduled** tab and are paid through the
 
 ## Related Articles
 
-- [Expenses (employee article)](/articles/15-employee/)
+- [Submitting an expense for reimbursement (employee article)](/articles/16-employee/e2-expenses-reimbursements/e2-1-submitting-expense.md)
 - [Bill approval](/articles/07-accounts-payable/7-6-bill-approval.md)
 - [Scheduling payments](/articles/07-accounts-payable/7-7-scheduling-payments.md)
