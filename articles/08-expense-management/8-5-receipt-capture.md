@@ -13,7 +13,7 @@ Download the Light app directly from your device's app store:
 - **iOS (iPhone/iPad):** [Download on the App Store](https://apps.apple.com/us/app/light-inc/id6744313804)
 - **Android:** [Get it on Google Play](https://play.google.com/store/apps/details?id=com.anonymous.lightexpo)
 
-You can also open the App Store or Google Play Store and search for **"Light Expenses"**.
+You can also open the App Store or Google Play Store and search for **"Light Inc"**.
 
 1. Install **Light - Expense Management** from the link above
 2. Open app and sign in with company credentials
