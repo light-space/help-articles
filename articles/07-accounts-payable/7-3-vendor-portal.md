@@ -6,7 +6,7 @@ The vendor portal lets vendors fill in their own business and banking informatio
 
 When you create a vendor via the **Customer Request** mode (see [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md)), Light emails the vendor a portal link. The vendor opens the link in their browser and completes the form themselves — no Light account required.
 
-The portal can also be reused to request updated banking information from an existing vendor.
+If the vendor loses the email or the link expires, you can resend the invitation — Light deactivates the old link and emails a fresh one. An outstanding invitation can also be cancelled, which invalidates the link and clears the form.
 
 ## What Vendors Can Do in the Portal
 
@@ -26,9 +26,13 @@ Each portal invitation moves through these statuses:
 
 | Status | Meaning |
 |---|---|
+| **Sending** | Invitation email is being sent |
 | **Sent** | Invitation email sent; vendor hasn't opened the link yet |
+| **Send failed** | The invitation email could not be delivered |
 | **Opened** | Vendor has opened the portal |
-| **Completed** | Vendor has submitted both required sections |
+| **Partially filled** | Vendor has completed at least one section but hasn't submitted yet |
+| **Completed** | Vendor has submitted the form |
+| **Cancelled** | The invitation was cancelled |
 
 Each section (Business Information, Payment Information) also tracks completion individually inside the portal.
 
@@ -36,7 +40,7 @@ Each section (Business Information, Payment Information) also tracks completion 
 
 When the vendor submits, their details flow back to Light:
 - The vendor record is populated with the submitted information
-- Banking changes go through the standard banking-approval flow before becoming the vendor's active details (see [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md))
+- The vendor moves from **Onboarding** to **In review** and goes through the vendor approval workflow before becoming **Active** (see [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md))
 
 ## Related Articles
 
