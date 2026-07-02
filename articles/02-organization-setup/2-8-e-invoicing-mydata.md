@@ -24,14 +24,14 @@ To enable myDATA on a Greek company entity:
 1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
 2. Click **+ Create entity** (for new entities) or click an existing Greek entity and then **Edit**
 3. Ensure the entity's country is set to **Greece**
-4. In the **E-invoicing (optional)** section, fill in:
-   - **EAS code**: The Electronic Address Scheme identifier for your Greek tax ID (typically **9930** for EU tax ID)
-   - **E-invoice address**: Your Greek VAT number registered with AADE
+4. Fill in the entity's **VAT number** (your Greek VAT number registered with AADE) and **Business registration number** — both are required for myDATA submissions
 5. Click **Create** or **Save**
+
+> Good to know: Unlike Peppol, myDATA does not use an EAS code or e-invoice address, and there is no registration or document verification step — once your entity details are configured, myDATA is ready to use.
 
 Once configured, Light automatically submits finalized invoices and credit notes to myDATA via Invopop.
 
-> Tip: Contact your Greek tax advisor or AADE if you need help determining your correct EAS code and registration details.
+> Tip: Contact your Greek tax advisor or AADE if you need help determining your correct registration details.
 
 ## Document numbering requirements
 
@@ -71,7 +71,7 @@ If you use a different VAT rate, Light will reject the invoice before submission
 
 Tax codes used in myDATA invoices **must** have an EDIFACT code configured. This classifies the tax treatment for e-invoicing:
 
-1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
+1. Go to [**Settings (gear icon) → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click **+ Create tax code** or edit an existing tax code
 3. Select the appropriate **EDIFACT (optional)** code from the dropdown:
    - **S**: Standard rate (24%, 13%, 6%, or island equivalents)
