@@ -114,7 +114,7 @@
 - 8.11 [Virtual cards](https://github.com/light-space/help-articles/blob/main/articles/08-expense-management/8-11-virtual-cards.md)
 - 8.12 [Apple Pay and Google Pay setup](https://github.com/light-space/help-articles/blob/main/articles/08-expense-management/8-12-apple-google-pay.md)
 - 8.13 [Expense policies and spending limits](https://github.com/light-space/help-articles/blob/main/articles/08-expense-management/8-13-expense-policies.md)
-- 8.14 [Expense reports and analytics](https://github.com/light-space/help-articles/blob/main/articles/08-expense-management/8-14-expense-reports.md)
+- 8.14 [Expense reports](https://github.com/light-space/help-articles/blob/main/articles/08-expense-management/8-14-expense-reports.md)
 
 ## 9. Revenue Recognition & Compliance
 - 9.1 [Revenue recognition rules overview](https://github.com/light-space/help-articles/blob/main/articles/09-revenue-compliance/9-1-revenue-recognition-overview.md)
