@@ -71,6 +71,8 @@ Once all four closing tasks are completed:
 3. Click the **Close period** button at the bottom of the page
 4. Confirm the closing
 
+The previous accounting period must already be closed before you can close a period—periods are closed in chronological order.
+
 A closed period prevents new transactions from being posted.
 
 ## Reopening tasks
@@ -82,6 +84,8 @@ If corrections are needed after closing a task:
 3. Make the necessary corrections
 4. Close the task again when complete
 
+Reopening a task also reopens the FX revaluation task for that period and all later periods, so revaluations must be run again before those periods can be closed.
+
 ## Fiscal year structure
 
 Fiscal years are displayed in reverse chronological order on the Accounting periods page. Each fiscal year's status depends on the progress of its accounting periods and their closing tasks.
@@ -89,7 +93,7 @@ Fiscal years are displayed in reverse chronological order on the Accounting peri
 ## Best practices
 
 - Complete all four closing tasks promptly after month-end to enable timely reporting
-- Run FX revaluations before closing Account Payables and Account Receivables
+- Close Account Payables, Account Receivables, and Journal Entries before running FX revaluations—Light requires all three task areas to be closed before revaluations can run
 - Plan period closing tasks in advance and assign responsibilities
 - Reopen periods only for legitimate corrections
 - Close periods in chronological order to maintain accounting integrity
