@@ -12,9 +12,9 @@ Light comes with predefined system roles. Each role grants a specific set of per
 |---|---|
 | **Company Admin** | Full access to all features, settings, and data |
 | **Controller** | Create journal entries, review GL accounts, and prepare financial reports |
-| **Invoice Approver** | Approve invoices up to configured limits |
+| **Invoice Approver** | Approve bills routed to them for approval |
 | **AP Preparation** | Prepare and process bills |
-| **AP Clerk** | Handle bill processing, vendor management, and payments |
+| **AP Clerk** | Handle bill processing, approval submission, and payments |
 | **AR Clerk** | Manage invoices, customers, and revenue |
 | **Vendor Management** | Manage vendor records and onboarding |
 | **Purchase Requester** | Submit purchase requests |
@@ -40,7 +40,7 @@ To see the full permission breakdown for each role, go to **Business partners â†
 
 4. Click **Create**
 
-Light sends an invitation email to the new member. They click the link to accept and set up their account.
+Light sends the new member a welcome email with links to the Light web and mobile apps. You can control this with the **Send welcome email** toggle when creating the user, or set an organisation-wide default in **Organization settings**.
 
 ## Manage team members
 
@@ -61,7 +61,7 @@ Go to **Business partners â†’ Users** to see all users. The list shows full name
 2. Click **Archive**
 3. Confirm
 
-Archived users cannot log in but remain in historical records and approval chains.
+Archived users cannot log in but remain in historical records. They are no longer included in approval flows.
 
 ## Groups
 
@@ -105,5 +105,5 @@ Contact Light support to enable SSO for your organisation.
 
 ## Related articles
 
-- [User management overview](/articles/03-user-management/3-1-user-management-overview.md)
+- [User roles and permissions overview](/articles/03-user-management/3-1-roles-permissions-overview.md)
 - [Inviting and removing users](/articles/03-user-management/3-2-inviting-removing-users.md)
