@@ -1,6 +1,6 @@
 # AI Receipt Categorization
 
-Light's AI automatically categorizes expenses and assigns them to GL accounts based on receipt content and merchant information. Machine learning improves accuracy over time as the system learns your spending patterns.
+Light's AI automatically categorizes expenses and assigns them to GL accounts based on receipt content and merchant information. Suggestions are based on your company's reimbursement categories, and you can guide the AI by adding context to each category.
 
 [Open in Light →](https://app.light.inc/expenses)
 
@@ -8,52 +8,26 @@ Light's AI automatically categorizes expenses and assigns them to GL accounts ba
 
 When you submit a receipt, Light's AI:
 
-1. **Analyzes Receipt Content**: Reads merchant name, items, and amount
-2. **Identifies Merchant**: Matches to known merchants (airlines, hotels, restaurants)
-3. **Predicts Category**: Based on merchant type and items
-4. **Suggests GL Account**: Maps category to appropriate GL account
-5. **Assesses Confidence**: Shows how certain the AI is about the categorization
-6. **Learns from Corrections**: Improves when you correct predictions
+1. **Analyzes Receipt Content**: Reads merchant name, line items, amounts, date, and location
+2. **Identifies Merchant**: Extracts the merchant name and website domain, and enriches recognized merchants with a clean display name and logo
+3. **Predicts Category**: Matches the expense to one of your company's reimbursement categories, using each category's context and your user context (country, user groups, cost center)
+4. **Assigns GL Account and Tax Code**: The selected category determines the GL account (and tax code, if one is set on the category)
+5. **Explains Its Work**: Records reasoning and the document location for each extracted value
+6. **Leaves Uncertain Fields Blank**: If the AI can't confidently determine a value, it leaves the field empty for you to fill in
 
-> Good to know: Light's AI achieves 92%+ accuracy on standard receipts, with accuracy improving as you submit more expenses.
+> Good to know: The AI only extracts information that is explicitly present on the receipt. If it can't confidently find a value, it leaves the field blank rather than guessing.
 
 ## Spending Categories
 
-Light includes standard categories:
+Expense categories in Light are your company's **reimbursement categories**, configured at **Settings (gear icon) → Reimbursement category**. Each category defines:
 
-**Travel**
-- Flights
-- Hotels
-- Ground transportation (taxi, Uber, parking)
-- Rental cars
-- Train/bus travel
+- **Label**: The category name shown to employees (e.g., "Travel", "Meals & Dining")
+- **GL account**: Where expenses in this category post
+- **Tax code** (optional): The tax code applied to expenses in this category
+- **Context** (optional): A description that guides the AI when matching receipts to this category
+- **Entities**: Which company entities the category applies to
 
-**Meals**
-- Restaurant meals
-- Coffee/beverages
-- Work meals/working lunches
-- Client entertainment
-
-**Office Supplies**
-- Paper, pens, office equipment
-- Computer accessories
-- Furniture and fixtures
-- Technology equipment
-
-**Professional Development**
-- Training courses
-- Conferences
-- Books and subscriptions
-- Certifications
-
-**Client Entertainment**
-- Client meals
-- Gifts under threshold
-- Event attendance for clients
-
-**Other**
-- Miscellaneous expenses
-- Unusual categories not fitting above
+In addition to the category, the AI assigns **spending tags** that describe the expense content — covering areas such as travel, meals, IT hardware, software subscriptions, training, and more. A single expense can have multiple tags when it spans categories.
 
 Your company can create custom categories tailored to your business.
 
@@ -61,97 +35,49 @@ Your company can create custom categories tailored to your business.
 
 ### Review Suggested Category
 
-After submitting receipt:
+After you upload a receipt, Light parses it and pre-fills a draft expense with the suggested category, along with the merchant, amount, date, and description.
 
-1. Light shows **Category Suggestion**:
-   - **Suggested Category**: AI's recommendation (e.g., "Travel - Hotel")
-   - **Confidence Level**: High/Medium/Low certainty
-   - **Reason**: Why Light thinks this category
+Review the suggestion:
 
-2. Review the suggestion:
-   - **Looks right**: Click **Confirm** to accept
-   - **Wrong category**: Click **Change** to select correct one
+- **Looks right**: Submit the expense as-is
+- **Wrong category**: Change to the correct category before submitting
 
 ### Overriding Suggestions
 
 If Light categorizes incorrectly:
 
-1. Tap **Change Category** or **Edit**
+1. Open the draft expense and edit the category field
 2. Browse or search available categories
-3. Select correct category
-4. Light acknowledges and learns from correction
-5. Future similar expenses improve
+3. Select the correct category
+4. To improve future suggestions, add guidance to the category's **Context** field at **Settings (gear icon) → Reimbursement category**
 
-## GL Account Mapping
+## GL Account and Tax Code Mapping
 
-Each spending category maps to GL accounts:
+Each reimbursement category maps to a single GL account and, optionally, a tax code. For example:
 
-**Travel → GL Accounts**
-- 6100 Travel Expenses
-- 6110 Airfare
-- 6120 Hotels
-- 6130 Ground Transportation
+- Travel → 6100 Travel Expenses
+- Meals → 6200 Meals & Entertainment
 
-**Meals → GL Accounts**
-- 6200 Meals & Entertainment
-- 6210 Meals & Incidentals
-- 6220 Client Entertainment
+When you categorize an expense:
 
-When you categorize expense:
-
-1. Light automatically assigns GL account based on category
-2. GL account shows on expense record
-3. Finance team can see which account expense will post to
-4. You can override GL account if needed
+1. Light automatically assigns the GL account based on the category
+2. GL account shows on the expense record
+3. Finance team can see which account the expense will post to
+4. You can override the GL account on the expense line if needed
 
 ## Merchant Recognition
 
-Light maintains database of common merchants:
+Light's AI extracts the merchant name and website domain directly from the receipt. When a domain is found, Light enriches the merchant with a clean display name and logo.
 
-**Recognized Merchants** (no category needed):
-- Delta Air Lines → Travel - Airfare
-- Hilton Hotels → Travel - Hotel
-- Uber → Travel - Ground Transportation
-- Starbucks → Meals
-- Apple → Technology (or varies by context)
+If the merchant can't be determined from the receipt, the field is left blank and you can fill it in manually.
 
-**Unrecognized Merchants**:
-- Small local businesses
-- One-time vendors
-- International merchants not in database
+## Guiding the AI
 
-Light asks you for category for unrecognized merchants.
+Light's AI doesn't retrain itself on individual corrections. Instead, you steer it explicitly:
 
-## Training the AI
-
-Light improves through your feedback:
-
-### Corrections Help Learning
-
-When you correct a category:
-
-1. Light notes: "User corrected Starbucks from Meals to Office Supplies"
-2. Context: Receipt showed office supplies, not food
-3. AI learns: In future, when Starbucks receipt shows office supplies, categorize differently
-4. Database updates: Helps other employees with similar expenses
-
-### Frequency Improves Accuracy
-
-The more you use Light:
-
-1. After 10-20 expenses: AI understands your category preferences
-2. After 50+ expenses: Accuracy approaches 95%+
-3. System adapts: Learns what **you** categorize as what
-4. Personalization: Expenses in your context are categorized better
-
-### Company-Level Learning
-
-Across your company:
-
-1. Light learns from all employee corrections
-2. All employees benefit from collective learning
-3. Common mistakes are caught early
-4. Shared merchants improve across company
+1. **Category context**: Describe what belongs in each category at **Settings (gear icon) → Reimbursement category**. The AI uses this context every time it matches a receipt to a category.
+2. **Company AI instructions**: Company-level custom instructions for the AI assistant are applied whenever a receipt is parsed.
+3. **User context**: The AI considers the submitter's country, user groups, and cost center when interpreting receipts and matching categories.
 
 ## Custom Categories
 
@@ -159,18 +85,15 @@ Across your company:
 
 For company-specific needs:
 
-1. Navigate to **Settings** > **Spending Categories**
-2. Click **Create Category**
-3. Enter:
-   - **Category Name**: (e.g., "Contractor Services")
-   - **Description**: What's included
-   - **GL Account**: Where expenses post
-   - **Spending Limit**: Max per expense (if applicable)
-   - **Requires Approval**: If over threshold
+1. Navigate to **Settings (gear icon)** → **Reimbursement category**
+2. Create a new category and enter:
+   - **Label**: The category name (e.g., "Contractor Services")
+   - **GL account**: Where expenses post
+   - **Tax code** (optional): Tax code applied to expenses in this category
+   - **Context** (optional): What's included — the AI uses this when categorizing
+   - **Entities**: Which company entities the category applies to
 
-4. Click **Create**
-
-5. AI learns the new category over time
+3. The AI includes the new category the next time it parses a receipt
 
 ### Custom Category Examples
 
@@ -181,77 +104,33 @@ For company-specific needs:
 
 Add categories that match your business.
 
-## Confidence Scores
+## When the AI Is Unsure
 
-Light shows how confident the AI is:
+Light's AI must justify every value it extracts — each field includes its reasoning and where on the document the value was found. If the AI can't do that confidently, it leaves the field blank instead of guessing.
 
-- **High (Green)**: 90%+ confident in category
-- **Medium (Yellow)**: 70-89% confident
-- **Low (Red)**: Below 70% confident
+- **Field filled in**: The value was clearly present on the receipt — review and submit
+- **Field left blank**: The AI couldn't confidently determine the value — you provide it manually
 
-### Acting on Confidence Levels
+This applies to the category as well: if no category is a good match, none is suggested and you select one yourself.
 
-**High Confidence**:
-- Trust the suggestion
-- Auto-approve if policy allows
-- Rarely needs correction
+## Policy Checks on Submission
 
-**Medium Confidence**:
-- Review the suggestion
-- Correct if needed
-- Provides feedback
+When you submit an expense report, the **Expense submission** workflow runs an AI agent review against your company's policies (configured at **Settings (gear icon) → Guardrails → Policies**):
 
-**Low Confidence**:
-- Manual category selection required
-- Light can't confidently categorize
-- You must provide the category
+- **Compliant**: The expense report is approved automatically
+- **Non-compliant**: The expense report is sent to the inbox for manual review
 
-## Policy-Based Categorization
-
-Enforce company rules through categories:
-
-### Spending Limits by Category
-
-Each category can have limits:
-
-- **Travel - Meals**: $75 per meal
-- **Client Entertainment**: $500 per event
-- **Office Supplies**: $100 per receipt
-
-Light flags expenses exceeding limits for manager review.
-
-### Pre-Approval Rules
-
-Some categories require pre-approval:
-
-- **Professional Development**: Over $500
-- **Client Entertainment**: Over $250
-- **Contractor Services**: Any amount
-
-Light routes these to manager automatically.
-
-## Merchant-Level Overrides
-
-Set category preferences by merchant:
-
-1. Navigate to **Settings** > **Merchant Rules**
-2. Add merchant name (e.g., "Starbucks")
-3. Set **default category**: What to use for this merchant
-4. Set **spending limit**: Cap per transaction
-5. Light applies rule to all Starbucks receipts from all employees
-
-Useful for common merchants with consistent spending patterns.
+See [Expense policies and spending limits](/articles/08-expense-management/8-13-expense-policies.md) for how to configure policies.
 
 ## Categorization Analytics
 
 Track categorization patterns:
 
-1. Navigate to **Reports** > **Spending by Category**
+1. Navigate to **Reports**
 2. View:
    - **Total spending** by category
    - **Trend**: Is category increasing/decreasing
    - **Top merchants**: Who employees buy from most
-   - **Accuracy**: How often AI categorization was correct
 
 3. Filter by:
    - Employee
@@ -273,22 +152,16 @@ Tips for better AI categorization:
 
 Light extracts better information from clear receipts.
 
-### Adding Descriptions
+### Adding Category Context
 
-1. When submitting, include brief note:
-   - "Client dinner - Acme Corp"
-   - "Conference registration"
-   - "Travel software subscription"
+1. Go to **Settings (gear icon)** → **Reimbursement category**
+2. Add or refine the **Context** on each category:
+   - "Client dinners and entertainment with external guests"
+   - "Conference and training registrations"
+   - "Software and SaaS subscriptions"
 
-2. AI uses description context
-3. Categorization improves
-
-### Correcting Consistently
-
-1. If Light suggests wrong category, correct it
-2. Be consistent in your corrections
-3. System learns your preferences
-4. Future suggestions improve
+3. The AI uses this context on every receipt it parses
+4. Categorization improves across the whole company
 
 ## Handling Edge Cases
 
@@ -296,13 +169,12 @@ Some expenses don't fit standard categories:
 
 **Multi-Category Expenses**:
 - Lunch with supplies shopping (Meals + Office Supplies)
-- Light lets you split across categories
-- Each portion can have different GL account
+- Light lets you split across line items
+- Each line can have its own category and GL account
 
 **One-Time Unusual Expenses**:
 - Once-off payment not fitting standard categories
-- Choose closest category or create custom
-- Light notes it as unusual for manager review
+- Choose the closest category, or ask an admin to create a custom one
 
 ## Related Articles
 
