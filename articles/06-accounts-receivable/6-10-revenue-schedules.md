@@ -8,7 +8,7 @@ Deferred revenue is driven by release templates of type **AR** (sales invoices) 
 
 1. Set up a release template once (defines method, contra account, default duration)
 2. Apply it to a sales invoice line or a contract line, with a start and end date
-3. As the period progresses, Light generates the recognition entries automatically
+3. When the document is posted, Light generates the full schedule of monthly recognition entries automatically
 
 There is no separate "Revenue schedules" page — the configuration lives on the document line.
 
