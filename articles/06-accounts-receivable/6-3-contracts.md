@@ -58,7 +58,10 @@ Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields 
 
 ## Terminating a Contract
 
-Open a contract and use the terminate action to end it early. The contract transitions through `PENDING_TERMINATION` to `TERMINATED`, with the terminated date recorded.
+Open a contract and use the terminate action to end it early. What happens depends on the termination date:
+
+- **Termination date today or in the past** — the contract moves directly to `TERMINATED`, with the terminated date recorded.
+- **Termination date in the future** — the contract enters `PENDING_TERMINATION` until that date, then completes to `TERMINATED`. While pending, the scheduled termination can be cancelled to return the contract to **Active**.
 
 ## Related Articles
 
