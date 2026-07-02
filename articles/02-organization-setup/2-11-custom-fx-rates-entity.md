@@ -22,7 +22,7 @@ As with company rates, this is set by Light support (no self-serve screen yet). 
 
 ## Things to keep in mind
 
-- The monthly, forward-looking, and EUR-reference rules are identical to company-wide rates — see [Setting a Custom FX Rate for Your Company](/articles/02-organization-setup/2-10-custom-fx-rates-company).
+- The monthly, month-scoped, and EUR-reference rules are identical to company-wide rates — see [Setting a Custom FX Rate for Your Company](/articles/02-organization-setup/2-10-custom-fx-rates-company).
 - Setting an entity rate does **not** remove the company-wide rate; it only takes precedence for that entity.
 
 ## Related articles
