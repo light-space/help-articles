@@ -13,41 +13,33 @@ A bank account operates in a single currency (the account's base currency):
 
 However, you can receive deposits or make payments in other currencies, which the bank converts to the base currency.
 
-When setting up a multi-currency account:
-
-1. Specify the **base currency** (USD, EUR, GBP, etc.)
-2. The bank provides conversion rates
-3. Light imports both the original and converted amounts
-4. FX gain/loss is calculated and posted to GL
+When setting up a bank account in Light, you specify its currency (USD, EUR, GBP, etc.). Bank providers only deliver transactions in the account's currency, so every imported bank transaction amount is already in the account currency. Any FX gain or loss is calculated automatically when the matched documents are cleared.
 
 ## Imported Transaction Data
 
-When importing a multi-currency transaction, Light captures:
+Every imported bank transaction has a single amount in the bank account's currency. For cross-currency payments, Light's AI additionally parses metadata from the transaction reference (or provider metadata), including:
 
-**Original Amount** - Transaction amount in the currency used (e.g., 100 GBP)
+**Original Amount** - Transaction amount in the currency the payer used (e.g., 100 GBP)
 
 **Original Currency** - The currency of the original amount (GBP)
 
-**Converted Amount** - Amount converted to account currency by the bank (e.g., 120 USD)
-
-**Conversion Rate** - Rate used by the bank (1.20 USD/GBP)
+**Fees** - Any bank fees mentioned in the reference
 
 **Date** - Transaction date used for FX rate determination
 
-Light uses this data to match GL entries and calculate FX differences.
+Light uses this parsed metadata to match GL entries in other currencies. Banks do not provide a conversion rate field; conversion rates come from Light's FX rate sources (see below).
 
 ## Matching Multi-Currency Transactions
 
-When matching a bank transaction to a GL entry in different currencies:
+When matching a bank transaction to a GL entry in a different currency:
 
-1. Bank transaction: 100 EUR (converted to 120 USD by bank)
-2. GL entry: Created for 100 EUR invoice
-3. Light converts both to USD using daily rates:
-   - 100 EUR × today's rate (e.g., 1.18) = 118 USD
-4. Comparison: 120 USD (bank) vs. 118 USD (GL) = $2 difference
-5. Result: Close match (difference attributable to rate volatility)
+1. Bank transaction: 120 USD on a USD account (originally a 100 EUR payment)
+2. GL entry: Created for a 100 EUR invoice
+3. Light uses the AI-parsed original amount (100 EUR) to find the matching invoice
+4. As a sanity check on the parsed data, Light converts the original amount to the account currency and requires it to be within 10% of the bank transaction amount
+5. Any remaining difference between the GL amount and the bank amount is handled as FX gain/loss when the match is cleared
 
-The system auto-matches because the amounts are sufficiently close.
+If the parsed original amount fails the 10% sanity check, the transaction is not auto-matched and is left for manual review.
 
 ## FX Adjustments
 
@@ -62,7 +54,7 @@ When the exchange rate changes between transaction date and posting date, FX gai
 - Actually received: 125 USD
 - FX Gain: 5 USD (you gained money due to GBP appreciation)
 
-Light automatically calculates and posts FX adjustments:
+Light automatically calculates and posts the FX adjustment when the match is cleared:
 
 1. GL entry for 120 USD (original posting)
 2. Bank transaction for 125 USD (actual payment)
@@ -80,7 +72,7 @@ When posting an accounting document in a foreign currency:
    - **Group currency** (consolidated reporting currency)
 4. All three amounts are stored and used in matching/reporting
 
-When reconciling, Light matches using the local currency amount.
+When reconciling, Light matches using the amount in the bank account's currency.
 
 ## FX Rate Sources
 
@@ -90,7 +82,7 @@ Light uses exchange rates from:
 
 **Daily Published Rates** - Updated daily, automatically fetched
 
-**Manual Override** - You can override rates for specific dates if needed
+**Manual Override** - You can define custom monthly rates at the company or entity level; entity-level rates take precedence over company-level rates, which take precedence over system rates
 
 Rates are determined by the **posting date** of the transaction. If you change the posting date, the FX rate changes.
 
@@ -120,22 +112,16 @@ Multi-currency pending transactions can be tricky:
 **Solution:**
 1. Don't reconcile pending transactions until they're finalized
 2. Once finalized, the bank shows the actual settled amount
-3. If rates changed, create an FX adjustment GL entry to account for the difference
+3. If rates changed, the difference is posted automatically as FX gain/loss during clearing
 
 > Good to know: Some banks show provisional FX rates for pending transactions. Always wait for the transaction to finalize before reconciling.
 
 ## Reconciliation Accuracy
 
-Due to rounding and rate changes, expect small discrepancies:
+Light does not have a configurable matching tolerance. When you reconcile a bank transaction against documents with a different amount, you choose a deviation reason for the difference:
 
-- **Acceptable:** Differences under 0.10% of the transaction amount
-- **Investigate:** Differences over 1% may indicate errors
-
-For a 100,000 USD transaction:
-- Under 100 USD difference: likely acceptable
-- Over 1,000 USD difference: investigate
-
-Adjust the tolerance in your automation rules based on your transaction volumes and acceptable thresholds.
+- **FX differences** are calculated automatically during clearing and posted to the FX gain/loss accounts
+- Selecting **Bank fees** as the deviation reason automatically creates a journal entry for the fee amount
 
 ## Group vs. Local Currency Reconciliation
 
@@ -150,16 +136,15 @@ Light handles both:
 - Group GL shows converted group currency amounts
 - FX differences roll up to group level
 
-## Currency-Specific Matching Rules
+## Automation Rules and Original Amounts
 
-Create rules for specific currency pairs:
+Automation rules can use the AI-parsed original amount of a transaction:
 
-1. Go to **Accounting → Bank reconciliation → Automation Rules**
-2. Create rule with condition: "Original Currency = GBP"
-3. Set matching criteria for GBP transactions
-4. Specify FX tolerance (e.g., allow 1% rate variation)
+1. Go to **Accounting → Bank reconciliation → Automation rules**
+2. Create a rule with conditions on bank transaction fields: account, date, amount, original amount, reference, or fees
+3. Choose the action to apply (for example, match with a journal entry)
 
-Example: "GBP to USD transactions, allow 2% difference to account for rate volatility"
+Rule conditions do not include the original currency or an FX tolerance — FX differences are handled automatically during clearing rather than through rule tolerances.
 
 ## Common Multi-Currency Scenarios
 
@@ -169,7 +154,7 @@ Example: "GBP to USD transactions, allow 2% difference to account for rate volat
 - Bank receives at rate 1.25 = 12,500 USD
 - GL entry for 10,000 GBP × 1.20 = 12,000 USD
 - Difference: 500 USD FX gain (GBP appreciated)
-- Create FX adjustment and reconcile
+- Light posts the 500 USD FX gain automatically during clearing
 
 **Scenario 2: Multi-Currency Vendor Invoice**
 - Invoice from supplier in Switzerland: 5,000 CHF
