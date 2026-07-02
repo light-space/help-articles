@@ -20,7 +20,7 @@ Conversions between EUR and one other currency are always fine — EUR is the re
 
 ## Seeing where a fallback happened
 
-The exchange-rates report shows, per currency per day, which rate was applied, and flags any conversion that fell back to market rates because a currency was missing. If a figure looks off, that's the first place to check — it usually means a currency is missing a rate for that month.
+The exchange-rates report shows the custom rates in effect for the period, and flags the dates and currency pairs where conversions fell back to market rates because a currency was missing a rate (recorded once per currency pair per day, not per individual conversion). If a figure looks off, that's the first place to check — it usually means a currency is missing a rate for that month.
 
 ## Related articles
 
