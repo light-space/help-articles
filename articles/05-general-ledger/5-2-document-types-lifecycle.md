@@ -108,14 +108,26 @@ All documents share a common structure:
 All documents follow this state machine:
 
 ```
-DRAFT → POSTED → (PARTIALLY_CLEARED) → CLEARED → ARCHIVED
+DRAFT → (APPROVAL_PENDING → APPROVED) → POSTED → (PARTIALLY_CLEARED) → CLEARED
+
+ARCHIVED (terminal)
 ```
+
+Documents that require approval pass through APPROVAL_PENDING and APPROVED before posting; documents without an approval workflow post directly from DRAFT.
 
 **DRAFT State:**
 - Document is being created or edited
 - Can be modified freely (amounts, lines, etc.)
 - Has not posted to the ledger yet
 - Not visible in financial reports
+
+**APPROVAL_PENDING State:**
+- Document has been submitted for approval
+- Awaiting completion of the approval workflow before it can be posted
+
+**APPROVED State:**
+- Approval workflow has completed successfully
+- Document is ready to be posted
 
 **POSTED State:**
 - Accounting document has posted to the ledger
@@ -140,7 +152,7 @@ DRAFT → POSTED → (PARTIALLY_CLEARED) → CLEARED → ARCHIVED
 - Document marked as closed/inactive
 - Removed from active document lists
 - Remains in system for historical/audit purposes
-- Can be reactivated if needed
+- Terminal status—an archived document cannot be reactivated
 
 ## Posting Process
 
@@ -152,7 +164,7 @@ When a document posts to the ledger:
 4. **Tax calculation** - Tax amounts calculated and posted to tax accounts
 5. **FX conversion** - Multi-currency amounts converted to local/group currencies
 6. **GL posting** - All entries posted to ledger_transaction_line table as immutable transactions
-7. **Status change** - Document status changes from DRAFT to POSTED
+7. **Status change** - Document status changes from DRAFT (or APPROVED) to POSTED
 
 Posting is atomic—either all transactions post or none do. Partial posts are not possible. Once posted, the resulting transactions on the ledger are immutable and cannot be edited or deleted.
 
@@ -180,11 +192,11 @@ To completely undo a posting:
 
 1. Open the document
 2. Click **Reverse**
-3. System creates a new document with opposite amounts:
+3. System posts reversing transactions with opposite amounts:
    - All debits become credits, all credits become debits
    - Same GL accounts, amounts, and descriptions
-   - Linked to the original for audit trail
-4. Original document remains in the ledger; reversing entry offsets it
+   - Each reversing transaction is linked to the original transaction it reverses, for audit trail
+4. Original transactions remain in the ledger; the reversing transactions offset them. The accounting document itself is either returned to DRAFT (so it can be corrected and re-posted) or archived (voided)
 
 Reversals are used when you want to document that an error occurred (for audit trail).
 
@@ -213,9 +225,9 @@ Clearing links documents but doesn't modify either—they remain as posted.
 Many documents require approval before posting:
 
 1. Document created in DRAFT status
-2. Submitted for approval (workflow starts)
+2. Submitted for approval (status changes to APPROVAL_PENDING)
 3. Approval workflow completes (approved or rejected)
-4. If approved, user posts the document
+4. If approved, status changes to APPROVED and the document can be posted
 5. If rejected, document returns to DRAFT for modification
 
 Approval workflows control who can post what documents.
@@ -234,25 +246,24 @@ Bulk posting is faster than posting individually but should be done carefully.
 
 ## Archival
 
-Documents can be archived when no longer needed:
+Draft documents that are no longer needed can be archived:
 
-1. Click **Archive** on a cleared or old document
+1. Click **Archive** on a draft document
 2. Document is hidden from active lists
-3. Remains in GL for reporting/audit
-4. Can be retrieved if needed
+3. Remains in the system for reporting/audit
 
-Archive old periods' documents to keep active lists clean.
+Only documents in DRAFT status can be archived directly. A posted document reaches ARCHIVED status by being reversed (voided) without being returned to draft. ARCHIVED is a terminal status—archived documents cannot be reactivated.
 
 ## Document Sequence
 
 Each document type has a sequence:
 
-- **Format:** DOCTYPE/ENTITY/NUMBER (e.g., AP/001/12345)
+- **Format:** DOCTYPE/ENTITY/NUMBER (e.g., AP/001/000000123, with the number zero-padded to 9 digits)
 - **Guarantees uniqueness** - No two documents have the same number
 - **Immutable** - Sequence number assigned at posting, never changes
 - **Supports reporting** - Easy reference to specific documents
 
-The sequence is company-wide (all APs share one sequence, all JEs share another).
+Sequences are maintained per document type and per company entity (e.g., each entity's APs have their own sequence, separate from its JEs).
 
 ## Multi-Line Documents
 
