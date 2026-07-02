@@ -15,41 +15,41 @@ A multi-entity company has multiple operating units:
 
 Each entity:
 - Has its own company entity record
-- Maintains its own ledger and chart of accounts
+- Maintains its own ledger, with GL accounts assigned from the company chart of accounts
 - Posts transactions independently
 - Reports separately and consolidated
 
 ## Entity Structure
 
-Set up entities in **Company Settings > Company Entities**:
+Set up entities in [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities):
 
 1. Each entity has:
    - **Name** - Legal or operating name
-   - **Code** - Short identifier (e.g., "US-01", "EU-02")
-   - **Currency** - Local currency (USD, EUR, GBP, etc.)
+   - **Code** - Automatically assigned entity code (e.g., "001", "002"), used in document numbers
+   - **Local currency** - The entity's operating currency (USD, EUR, GBP, etc.); cannot be changed after creation
    - **Address** - Legal address
    - **Parent entity** - If part of a hierarchy
    - **Status** - Active, Inactive, Hidden
 
 2. Entities can be hierarchical:
-   - Parent entity rolls up child balances
+   - Assign a parent entity to reflect your group structure
    - Useful for regional or functional groupings
 
 ## Chart of Accounts per Entity
 
-Each entity can have:
+Light maintains one chart of accounts per company, and each GL account is assigned to one or more entities:
 
-**Shared chart of accounts:**
-- All entities use the same GL account codes
+**Shared accounts:**
+- Assign accounts to all entities so they use the same GL account codes
 - Simplifies consolidation and reporting
 - Standard practice for multinational companies
 
 **Entity-specific accounts:**
-- Entities have unique accounts (unusual)
+- Assign an account to selected entities only (unusual)
 - Useful for entity-specific GL accounts (intercompany receivable)
 - More complex to consolidate
 
-Most companies use a shared chart across entities.
+Most companies share the chart of accounts across entities.
 
 ## Posting to Entities
 
@@ -62,10 +62,10 @@ When creating documents, specify the company entity:
    - Specify customer's entity
    - Posts to that entity's GL
 3. Journal Entry:
-   - Can post lines to different entities (intercompany)
-   - Each line shows its entity
+   - Posts to a single entity's GL
+   - Use an intercompany journal entry to span entities (each line specifies its entity)
 
-Documents are always posted to an entity's GL, not to a shared general ledger.
+Documents are always posted to an entity's GL, not to a shared general ledger. Document numbers include the entity code in the format DOCTYPE/ENTITY/NUMBER (e.g., AP/001/000000123), and number sequences run separately per entity and document type.
 
 ## Intercompany Transactions
 
@@ -81,22 +81,23 @@ Both entities post the transaction, creating a payable/receivable pair.
 
 For intercompany transactions, create journal entries spanning entities:
 
-1. Go to **General Ledger > Journal Entries**
-2. Create entry with lines for multiple entities
+1. Go to **Accounting → Journal entries**
+2. Click **+ Create journal entry** and select the intercompany type
 3. Each line specifies:
+   - **Company entity**
    - GL account
    - Debit/credit amount
-   - **Company entity**
-4. Entry posts to each entity's GL separately
+   - **Eliminate** - whether the line is eliminated at consolidation
+4. Entry posts to each entity's GL separately, and Light automatically adds the intercompany receivable/payable offset lines based on your intercompany account configuration
 
-System tracks which lines are intercompany for consolidation elimination.
+Lines flagged for elimination post to the Elimination ledger, which feeds the eliminations column in consolidated reports.
 
 ## Entity-Level Reporting
 
 Report on individual entity GL:
 
-1. Go to **Reports > [Report Type]**
-2. Filter by **Entity**
+1. Go to **Planning & Reports → Reports** and open a report
+2. In the **Entity** filter, select a single entity
 3. View that entity's GL, balance sheet, income statement, etc.
 4. Report contains only that entity's transactions
 
@@ -109,14 +110,12 @@ Entity-level reports are useful for:
 
 Report across all entities:
 
-1. Go to **Reports > [Report Type]**
-2. Leave **Entity** filter blank (or select "All")
-3. Select **Consolidation Method**:
-   - Sum (total across all entities, keep intercompany)
-   - Eliminate (total minus intercompany eliminations)
-4. View consolidated GL, balance sheet, income statement
+1. Go to **Planning & Reports → Reports** and open a report
+2. In the entity selector, click **Consolidated** and select the entities to include
+3. The report shows a column per entity, a **Subtotal** column, an **Eliminations** column (intercompany offsets), and a **Total** column
+4. Use **Group Crcy** to view all entities translated to the group currency
 
-Consolidated reports typically use elimination to show true group results.
+The Total column is the Subtotal minus Eliminations - the true group result.
 
 ## Intercompany Elimination
 
@@ -136,11 +135,11 @@ Elimination removes intercompany amounts to show group transactions with externa
 For multi-entity companies with different currencies:
 
 1. Each entity has a local currency (EUR, GBP, JPY, etc.)
-2. Transactions post in local currency to entity GL
-3. Group level converts all to group currency
-4. FX differences arise from consolidation conversion
+2. Every transaction posts with three amounts: the document (transaction) currency, the entity's local currency, and the company's group currency
+3. Local and group amounts are converted at posting time using the valuation date rate (official ECB rates, or a custom rate override)
+4. Translation differences are handled via FX revaluation and the currency translation adjustment (CTA) system account
 
-When consolidating, all entities are converted to group currency using consolidation date rates.
+Consolidated reports read the group currency amounts stored on each transaction, so no separate consolidation-date conversion is applied.
 
 ## Entity Hierarchy in Reports
 
@@ -152,10 +151,9 @@ Parent Entity
   └─ Child Entity B
 ```
 
-Reports can show:
-- Parent and all children combined
-- Only parent or specific child
-- Hierarchy view (rolling up balances)
+Reports let you choose which entities to include:
+- Parent and all children combined (select them together in consolidated view)
+- Only the parent or a specific child
 
 ## Transfer Pricing
 
@@ -174,12 +172,11 @@ Allocate shared costs across entities:
 
 1. Parent incurs $100,000 corporate overhead
 2. Allocate 60% to Entity A ($60,000), 40% to Entity B ($40,000)
-3. Create journal entry:
-   - Debit: Entity A Expense, Credit: Parent Clearing
-   - Debit: Entity B Expense, Credit: Parent Clearing
-   - Debit: Entity A Intercompany Payable
-   - Debit: Entity B Intercompany Payable
-4. Posts allocation to each entity's GL
+3. Create an intercompany journal entry:
+   - FROM line: Credit the parent's overhead (or clearing) account $100,000
+   - TO lines: Debit Entity A Expense $60,000 and Entity B Expense $40,000
+   - Light automatically adds the intercompany receivable/payable offset lines
+4. Posts the allocation to each entity's GL
 
 Use this for cost allocation, management accounting, or regulatory requirements.
 
@@ -187,14 +184,12 @@ Use this for cost allocation, management accounting, or regulatory requirements.
 
 For partial subsidiaries or joint ventures:
 
-1. Parent owns 70%, Outside party owns 30%
+1. Parent owns 70%, outside party owns 30%
 2. Subsidiary posts full GL transactions
-3. Consolidation calculates minority interest:
-   - Parent share: 70% of subsidiary results
-   - Minority share: 30% of subsidiary results
-4. Income statement shows minority interest as separate line
+3. Consolidated reports combine 100% of the subsidiary's results
+4. Record the minority (non-controlling) interest share via manual journal entries if required
 
-Light supports minority interest calculations in consolidated statements.
+Light does not calculate minority interest automatically; implement it with manual journal entries.
 
 ## Equity Accounting
 
@@ -222,7 +217,7 @@ Entities can be segments, or use custom properties for finer-grained segmentatio
 
 ## Best Practices
 
-- **Use consistent entity codes** - Standardize naming and coding
+- **Use consistent entity names** - Entity codes are assigned automatically; standardize display names
 - **Maintain entity hierarchy** - Reflect organizational structure in GL
 - **Document allocations** - Keep notes on why allocations are made
 - **Reconcile intercompany** - Ensure payables match receivables
