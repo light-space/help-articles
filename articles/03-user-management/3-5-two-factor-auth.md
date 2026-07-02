@@ -53,13 +53,13 @@ API keys can have one of two statuses:
 
 **Revoked** - The key has been deactivated and can no longer be used.
 
-> Important: The full key is only displayed once at creation. If lost, revoke the key and generate a new one.
+> Important: The full key is only displayed once at creation. If lost, use the **Rotate** action to generate a new key — this invalidates the previous key.
 
 ## API Key Best Practices
 
 - **Use minimal permissions** - Assign only the access role the integration needs
 - **Restrict by IP** - Use allowed IP patterns to limit where keys can be used from
-- **Rotate regularly** - Revoke and recreate keys every 90 days
+- **Rotate regularly** - Use the **Rotate** action to replace keys every 90 days; the previous key is invalidated automatically
 - **Never commit to code** - Use environment variables or secure vaults
 - **Revoke immediately** if a key is compromised
 
