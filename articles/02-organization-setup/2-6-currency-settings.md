@@ -8,9 +8,10 @@ This article explains how currencies are configured in Light, including local cu
 
 Light supports multi-currency accounting:
 
+- **Base currency**: The company-wide reporting currency, set when your company is created (it cannot be changed afterwards)
 - **Local currency**: Each company entity's operating currency, set during entity creation
 - **Transaction currency**: The currency transactions are posted in (may differ from local currency)
-- **Exchange rates**: Conversion rates between currencies for translation and revaluation
+- **Exchange rates**: Conversion rates between currencies for translation and revaluation. Light uses daily market rates by default; you can also set [custom FX rates](/articles/02-organization-setup/2-10-custom-fx-rates-company)
 
 ## Configuring local currencies for entities
 
@@ -48,7 +49,7 @@ At period end, Light can revalue balance sheet accounts to current exchange rate
 2. Click on the period you want to revalue
 3. In the Tasks view, find the **FX revaluation** task
 4. Click **Run revaluations**
-5. Light identifies all accounts with transactions in non-local currencies, calculates unrealized gain/loss, and creates adjustment journal entries
+5. Light identifies accounts enabled for revaluation that hold balances in non-local currencies, calculates unrealized gain/loss, and creates adjustment journal entries
 
 > Tip: Run FX revaluation before closing other period tasks to ensure financial statements reflect current rates.
 
@@ -70,3 +71,6 @@ Accounts can be configured to track foreign currency transactions. When creating
 - [Chart of Accounts Setup](/articles/02-organization-setup/2-2-chart-of-accounts)
 - [Fiscal Year and Accounting Periods](/articles/02-organization-setup/2-4-fiscal-year-periods)
 - [Tax and VAT Configuration](/articles/02-organization-setup/2-5-tax-vat-configuration)
+- [Setting a Custom FX Rate for Your Company](/articles/02-organization-setup/2-10-custom-fx-rates-company)
+- [Setting a Custom FX Rate per Entity](/articles/02-organization-setup/2-11-custom-fx-rates-entity)
+- [When Custom Rates Apply vs System Rates](/articles/02-organization-setup/2-12-custom-vs-system-fx-rates)
