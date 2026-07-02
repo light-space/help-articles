@@ -2,7 +2,7 @@
 
 Value Added Tax (VAT) is a consumption tax applied at each stage of production and distribution in the UK and EU. As the VAT framework is complex with multiple rates, exemptions, and reverse-charge mechanisms, Light automates VAT calculation, reporting, and HMRC submissions to ensure compliance.
 
-[Open in Light →](https://app.light.inc/invoice-receivables)
+[Open in Light →](https://app.light.inc/ledger-reports)
 
 ## Understanding VAT
 
@@ -23,12 +23,8 @@ Within the EU, digital services are subject to the customer's country VAT rate, 
 
 Light requires configuration of your VAT treatment:
 
-1. Navigate to **Settings** (gear icon in bottom-left sidebar) > **Tax codes** or **Tax Tables**
-2. Select **United Kingdom** as your primary jurisdiction
-3. Configure your VAT registration number (begins with GB)
-4. Set your VAT registration date
-5. Indicate if you're VAT-registered or below threshold
-6. Save configuration
+1. Navigate to **Settings** (gear icon in bottom-left sidebar) > **Entities** and add your VAT registration number to your UK entity (with or without the GB prefix — Light formats it correctly when communicating with HMRC)
+2. Navigate to **Settings** (gear icon in bottom-left sidebar) > **Tax codes** to review the UK tax codes and rates applied to your transactions
 
 Once configured, Light automatically applies VAT rules to all transactions.
 
@@ -103,14 +99,13 @@ Light applies reverse-charge automatically when you configure the customer or su
 HMRC requires VAT returns quarterly (or monthly if you prefer). Light prepares your VAT return automatically:
 
 1. Navigate to **Planning & Reports > Reports**
-2. Select the return period (quarter or month)
-3. Light calculates:
+2. Select the return period — Light retrieves your open VAT obligations (filing periods, due dates, and period keys) directly from HMRC
+3. Light calculates all nine boxes of the VAT return, including:
    - Total output tax (Box 1)
    - Total input tax (Box 4)
    - Net VAT owed or refundable (Box 5)
 4. Review the calculation and supporting details
-5. Click **Prepare Return** to generate the official HMRC form
-6. Submit via MTD (Making Tax Digital) portal or light's integration
+5. Submit the return — Light files it directly with HMRC through its MTD (Making Tax Digital) integration
 
 > Good to know: Light stores all supporting calculations so you can audit the return line-by-line before submission.
 
@@ -118,9 +113,9 @@ HMRC requires VAT returns quarterly (or monthly if you prefer). Light prepares y
 
 The UK implemented Making Tax Digital (MTD), requiring digital filing of VAT returns. Light integrates with HMRC's MTD system:
 
-1. Set up your HMRC credentials in **Settings** (gear icon in bottom-left sidebar) > **Integrations**
-2. Authorize Light to access your MTD account
-3. Light maintains connection to your HMRC account
+1. Connect HMRC in **Settings** (gear icon in bottom-left sidebar) > **Integrations** — you're redirected to HMRC to sign in with your Government Gateway credentials and authorize Light. Light never stores your HMRC credentials, only encrypted access tokens
+2. Each entity connects separately — the connection and VAT registration number are per entity
+3. Light maintains the connection to your HMRC account, refreshing it automatically
 4. When you file a VAT return in Light, it automatically submits to HMRC
 
 Light maintains a record of all submissions and acknowledgments from HMRC.
