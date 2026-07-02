@@ -8,31 +8,31 @@ Accounting releases control how and when transactions are recognized in your led
 
 An accounting release is a rule that breaks down a single transaction into multiple ledger entries across time. Rather than recording an amount entirely in one period, releases spread recognition according to a defined schedule.
 
-Release templates define the pattern. When you apply a template to an invoice line, Light automatically generates the corresponding ledger entries across the specified period, posting them on their scheduled dates.
+Release templates define the pattern. When you apply a template to an invoice line, Light generates the full release schedule at the moment the document is posted — a set of ledger entries dated monthly across the specified period.
 
 ## Release template components
 
 Each release template includes:
 
-**Duration and period**: The length of time over which the release occurs and how frequently entries post. A 12-month template with monthly releases creates 12 individual ledger entries.
+**Default duration**: The length of time over which the release occurs. Entries post monthly, so a 12-month release creates 12 individual ledger entries. When applying a template to a line, the start and end dates you set determine the actual period.
 
-**Release pattern**: How the amount is distributed. Light supports straight-line (equal portions each period), declining balance, and custom allocation patterns.
+**Release method**: How the amount is distributed. Light supports **straight-line** (equal portions each month, with partial adjustment for partial first and last months) and **reducing balance** (declining balance — higher amounts early, lower later). The reducing balance method is only available for **Fixed asset**, **AP**, and **JE** template types.
 
 **Balance sheet account (Contra account)**: The release template requires a **balance sheet account** — this is where the full amount is initially parked. For prepayments, this would be a prepaid asset account; for depreciation, a fixed asset account; for deferred revenue, a deferred revenue liability account. When you apply the template to a transaction line, Light automatically moves the entire amount to this balance sheet account and releases it to the expense/revenue account over time.
 
-**Currency handling**: Specify whether releases use the transaction currency, local entity currency, or group currency for each posting.
+**Currency handling**: Release amounts are calculated automatically in the transaction currency, local entity currency, and group currency for each posting — no configuration is required.
 
 ## Setting up deferred revenue releases
 
 Deferred revenue (also called unearned revenue) occurs when you receive payment before delivering goods or services. Create a release template by:
 
-1. Navigate to **Accounting > Releases** (in Platform section)
-2. Click **Create New Template**
+1. Navigate to **Settings (gear icon) → Records → Releases templates**
+2. Click **+ Create template**
 3. Enter a template name (e.g., "12-Month Deferred Revenue")
-4. Set **Release Type** to **Deferred Revenue**
-5. Define the duration (12 months for annual contracts)
+4. Set the template **Type** to **AR** (sales invoices)
+5. Define the default duration (12 months for annual contracts)
 6. Select **Straight-line** for monthly recognition
-7. Map the deferred revenue liability account and revenue recognition account
+7. Set the **Contra account** to your deferred revenue liability account — the revenue recognition account is selected on the invoice line when you apply the template
 8. Save the template
 
 > Tip: Use descriptive template names that include the duration and purpose, such as "24-Month SaaS Deferred Revenue" or "3-Year Prepaid Maintenance".
@@ -41,12 +41,12 @@ Deferred revenue (also called unearned revenue) occurs when you receive payment 
 
 Prepayments are amounts paid for future goods or services not yet delivered. Create a prepayment release template similarly:
 
-1. Navigate to **Accounting > Releases** (in Platform section)
-2. Click **Create New Template**
+1. Navigate to **Settings (gear icon) → Records → Releases templates**
+2. Click **+ Create template**
 3. Enter a template name (e.g., "Annual Prepaid Expenses")
-4. Set **Release Type** to **Prepayment**
-5. Define the recognition period
-6. Map the prepaid asset account to the corresponding expense account
+4. Set the template **Type** to **AP** (bills)
+5. Define the default duration
+6. Set the **Contra account** to your prepaid asset account — the expense account is selected on the bill line when you apply the template
 7. Save the template
 
 ## Setting up depreciation releases
@@ -55,16 +55,15 @@ Fixed assets lose value over time through use and obsolescence. In Light, fixed 
 
 Depreciation templates allocate the asset cost systematically:
 
-1. Navigate to **Accounting > Releases** (in Platform section)
-2. Click **Create New Template**
+1. Navigate to **Settings (gear icon) → Records → Releases templates**
+2. Click **+ Create template**
 3. Enter a template name (e.g., "5-Year Straight-Line Depreciation")
-4. Set **Release Type** to **Depreciation**
-5. Define the useful life (5 years = 60 months)
-6. Select depreciation method:
+4. Set the template **Type** to **Fixed asset**
+5. Define the default duration to match the useful life (5 years = 60 months)
+6. Select the release method:
    - **Straight-line**: Equal depreciation each period
-   - **Declining balance**: Higher depreciation early, lower later
-   - **Units of production**: Based on usage
-7. Map the fixed asset account to the accumulated depreciation and depreciation expense accounts
+   - **Reducing balance** (declining balance): Higher depreciation early, lower later — requires a reducing rate or residual amount
+7. Set the **Contra account** to your accumulated depreciation account — the depreciation expense account is selected on the line when you apply the template
 8. Save the template
 
 ## Applying releases to transactions
@@ -124,7 +123,7 @@ Navigate to **Spend management → Bills** and click **+ Create bill**. On the b
 
 ## Monitoring and adjusting releases
 
-View active releases in the [**Accounting → Releases**](https://app.light.inc/releases) dashboard (in Platform section). This is also the **fixed asset register** — filter the page by **Fixed asset** type to see only fixed assets and their depreciation schedules. The dashboard shows all pending and completed releases, their progress, and book values. You can:
+View active releases in the [**Accounting → Releases**](https://app.light.inc/releases) dashboard. This is also the **fixed asset register** — filter the page by **Fixed asset** type to see only fixed assets and their depreciation schedules. The dashboard shows all pending and completed releases, their progress, and book values. You can:
 
 - View the release schedule and book value chart
 - Adjust the end date or amount (adjustments create new release entries)
@@ -135,11 +134,10 @@ View active releases in the [**Accounting → Releases**](https://app.light.inc/
 
 ## Multi-entity release management
 
-For multinational organizations, release templates are defined at the company level but can be customized per entity. This allows:
+For multinational organizations, release templates are defined at the company level and shared across all entities. This allows:
 
 - Consistent release policies across all subsidiaries
-- Entity-specific depreciation methods required by local regulations
-- Centralized template governance with local flexibility
+- Centralized template governance
 
 ## Related articles
 
