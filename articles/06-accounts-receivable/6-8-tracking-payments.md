@@ -11,7 +11,7 @@ The Sales invoices list shows the state of each invoice. Open invoices that have
 | State | UI Label | Meaning |
 |---|---|---|
 | `OPEN` | **Open** | Posted; no payments received yet |
-| `PAYMENT_PENDING` | **Payment pending** | A payment is initiated but not yet cleared |
+| `PAYMENT_PENDING` | **Payment pending** | An online payment (e.g., a Stripe charge) has been initiated; the invoice stays in this state until the payment is bank reconciled |
 | `PARTIALLY_PAID` | **Partially paid** | One or more payments received; balance remaining |
 | `PAID` | **Paid** | Fully paid |
 | `ARCHIVED` | **Void** | Voided |
@@ -46,7 +46,7 @@ Each customer's overview shows an **aging widget** with these buckets:
 | **1–30 days** | 1 to 30 days past due |
 | **31–60 days** | 31 to 60 days past due |
 | **61–90 days** | 61 to 90 days past due |
-| **91+ days** | More than 90 days past due |
+| **90+ days** | More than 90 days past due |
 
 Click a bucket to drill into the underlying invoices.
 
