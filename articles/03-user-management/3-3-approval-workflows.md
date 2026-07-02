@@ -14,21 +14,23 @@ Workflows prevent unauthorized spending, catch errors early, and create an audit
 
 Light includes the following built-in workflow types:
 
-**Bill Payment** - Controls how vendor invoices (bills) move through approval before payment. Triggered when bill data changes.
+**Bill Approval** - Controls how vendor invoices (bills) move through approval before payment. Triggered when bill data changes.
 
-**Invoice-to-Cash** - Controls AR invoice creation and collection processes. Triggered when an invoice is posted.
+**Invoice Dunning** - Automates payment reminders (dunning) and collection follow-up for AR invoices. Triggered when an invoice is posted.
 
-**Credit Note Approval** - Controls how customer credit notes move through approval before being posted to the ledger. Triggered when a credit note is created.
+**Credit Note Approval** - Controls how customer credit notes move through approval before being posted to the ledger. Triggered when a credit note is submitted for posting.
 
-**Purchase Request Approval** - Routes purchase requests for approval before converting to purchase orders or bills. Triggered when a purchase request is created.
+**Purchase Request Approval** - Routes purchase requests for approval before converting to purchase orders or vendor cards. Triggered when a purchase request is created.
 
-**Vendor Card Request** - Routes corporate card requests for review and approval. Triggered when a card request is created.
+**Card Approval** - Routes vendor card requests for review and approval. Triggered when a card request is created.
 
-**Expense Reimbursement** - Routes employee expense reimbursement requests for approval. Triggered when an expense report is submitted.
+**Expense Submission** - Routes submitted employee expense reports for review before reimbursement. Triggered when an expense report is submitted.
 
-**Vendor Onboarding** - Routes new or changed vendor master data for approval. Triggered when a vendor is created or bank data changes.
+**Journal Entry Approval** - Controls how journal entries move through approval before being posted to the ledger. Triggered when a journal entry is submitted for posting.
 
-Additional workflow types may be available depending on your integrations, such as sync workflows for HubSpot, Salesforce, or HRM systems.
+**Vendor Approval** - Routes new or changed vendor master data for approval. Triggered when a vendor is created or bank data changes.
+
+Additional workflow types may be available depending on your integrations, such as sync workflows for HubSpot, Salesforce, Stripe, or HRM systems.
 
 ## Workflow Editor
 
