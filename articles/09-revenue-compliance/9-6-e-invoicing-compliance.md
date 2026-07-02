@@ -37,7 +37,7 @@ A Peppol-compliant invoice must include:
 
 Light validates all invoices against Peppol rules before submission. If validation fails, you receive detailed error messages indicating which fields don't comply.
 
-> Good to know: Different EU countries have additional Peppol rules (e.g., Italy requires Cassa Fiscale reporting, France requires specific VAT treatments). Light adapts validation based on buyer country.
+> Good to know: Different countries have additional Peppol rules (e.g., Germany requires seller contact details — see below). Light adapts validation based on buyer country.
 
 ### Seller contact information (Germany)
 
@@ -60,25 +60,23 @@ To activate Peppol e-invoicing:
    - VAT number or company registration number
    - Country
    - Complete registered address
-4. Configure your Peppol identifier (typically your VAT number)
-5. Select which entities participate in e-invoicing
-6. Save and confirm
+4. Select which entities participate in e-invoicing (registration is per entity)
+5. Complete the registration through the secure hosted registration flow. You may be asked to upload a proof-of-ownership document to verify your entity
+6. Track the registration status: **Pending verification** → **Registration pending** → **Registered** (or **Failed**)
 
-Light validates that your company data is complete and compliant before enabling Peppol submission.
+Light validates that your entity's country and VAT number are set before starting Peppol registration.
 
 ## Sending Peppol invoices
 
 Once enabled, you can submit invoices via Peppol:
 
 1. Create an AR (accounts receivable) invoice normally
-2. Verify all required fields are complete (Peppol validates automatically)
-3. Click **Post** to record in the ledger
-4. Click **Send via Peppol** to transmit digitally
-5. Light converts the invoice to Peppol XML format
-6. Light submits to your Peppol service provider
-7. You receive a transmission confirmation
+2. Make sure the customer record has the required e-invoice routing fields (EAS code, e-invoice address, e-invoice network)
+3. Post and send the invoice, enabling the **e-invoicing toggle** in the send dialog
+4. Light converts the invoice to Peppol XML format
+5. Light submits it to the Peppol network via its e-invoicing provider
 
-The invoice status changes to **Submitted** in your system. Light maintains a record of the Peppol submission ID and transmission timestamp.
+The invoice's e-invoice status badge changes to **Processing** while the submission is in flight, then **Delivered** once receipt is confirmed (or **Failed** if the submission was unsuccessful).
 
 > Tip: Pre-validate invoices before posting by clicking the **Validate** button. This identifies compliance issues early without affecting your ledger.
 
@@ -86,27 +84,27 @@ The invoice status changes to **Submitted** in your system. Light maintains a re
 
 When you submit a Peppol invoice:
 
-1. Light passes the invoice to your configured Peppol service provider (e.g., Avalara's e-invoicing service)
+1. Light passes the invoice to its e-invoicing provider
 2. The service provider transmits to a Peppol access point in the buyer's country
 3. The buyer's system receives and processes the invoice
 4. Delivery confirmation is sent back to you
 
 Light tracks invoice status through the entire transmission process:
 
-- **Submitted**: Sent to Peppol network, awaiting confirmation
+- **Not submitted**: The invoice has not been sent to the Peppol network
+- **Processing**: Sent to the Peppol network, awaiting confirmation
 - **Delivered**: Confirmed received by buyer's access point
-- **Accepted**: Buyer's system processed the invoice
-- **Rejected**: Buyer's system could not process the invoice (with error details)
+- **Failed**: The invoice could not be delivered (with error details)
 
 ## Receiving Peppol invoices
 
 If you're a buyer, you can also receive Peppol invoices from suppliers:
 
 1. Light automatically monitors your Peppol inbox
-2. Received invoices appear in **Accounting > Accounting documents** (in Platform section)
-3. You can match invoices to purchase orders
-4. Create AP (accounts payable) invoices from received Peppol data
-5. Light auto-populates invoice details from the transmitted document
+2. Received e-invoices are converted to documents and processed through the bills flow
+3. They appear as bills in **Spend management → Bills**
+4. You can match them to purchase orders
+5. Light auto-populates bill details from the transmitted document
 
 This significantly reduces manual data entry and improves three-way matching accuracy.
 
@@ -155,13 +153,13 @@ You can export Peppol invoice history for compliance reviews:
 
 **Validation errors**: Check error messages; typically missing required fields like VAT numbers or incorrect tax codes. Fix and resubmit.
 
-**Transmission failures**: Ensure your Peppol service provider is configured and connected. Contact your e-invoicing provider if issues persist.
+**Transmission failures**: Ensure your entity's e-invoicing registration is complete (status **Registered**). Contact Light support if issues persist.
 
-**Delivery rejection**: The buyer's system rejected the invoice. Light provides rejection codes. Common issues: invalid VAT number for buyer, amount mismatch, or unsupported invoice type.
+**Failed status**: The invoice could not be delivered. Light provides error details. Common issues: invalid VAT number for buyer, amount mismatch, or unsupported invoice type.
 
-**Status stuck in Submitted**: If an invoice remains "Submitted" for >24 hours, contact your Peppol service provider. Network delays can occasionally occur.
+**Status stuck in Processing**: If an invoice remains "Processing" for >24 hours, contact Light support. Network delays can occasionally occur.
 
-> Good to know: You can resubmit a rejected invoice after correcting the issue. Light doesn't duplicate ledger entries; resubmission only retransmits the Peppol data.
+> Good to know: You can resubmit a failed invoice after correcting the issue. Light doesn't duplicate ledger entries; resubmission only retransmits the Peppol data.
 
 ## Related articles
 
