@@ -52,7 +52,7 @@ The entry is now posted to the GL.
 A journal entry consists of:
 
 **Header:**
-- Description (required) - Describes what the entry is for
+- Description (optional) - Describes what the entry is for
 - Posting date (required) - When it posts
 - Company entity (required) - Which entity
 - Currency (required)
@@ -169,9 +169,9 @@ GL accounts typically have a tax designation for proper reporting.
 Depending on settings, journal entries may require approval:
 
 1. Entry created in DRAFT status
-2. User submits for approval
+2. User submits the entry for posting
 3. Approver reviews and approves/rejects
-4. If approved, user can post
+4. If approved, the entry is posted automatically
 5. If rejected, returns to DRAFT
 
 Large entries or special types may have approval workflows.
@@ -211,11 +211,11 @@ Once posted, you cannot edit directly. Instead:
 
 Once an entry is ready:
 
-1. If approval is required:
-   - Submit for approval
-   - Wait for approver
-   - Get approval or rejection
-2. Click **Post** to finalize
+1. Click **Post**
+2. If an approval workflow is active:
+   - The entry is submitted for approval
+   - Once approved, it posts automatically
+   - If rejected, it returns to draft
 3. Entry posts to GL, becomes immutable
 
 Posting is the point of no return—the entry is now in the permanent GL.
@@ -281,7 +281,7 @@ Before posting, entries are validated:
 - **Accounts exist** - All GL accounts must be valid
 - **Period open** - Cannot post to closed period
 - **Amounts entered** - Cannot have empty debit/credit
-- **Required fields** - Description, date, entity required
+- **Required fields** - Company entity and currency required; each line needs a GL account and an amount
 
 Validation prevents invalid entries from reaching the ledger.
 
