@@ -2,22 +2,22 @@
 
 This article explains how to create and manage company policies in Light. Policies help communicate your organization's rules and procedures to your team.
 
-[Open in Light →](https://app.light.inc/settings/policies)
+[Open in Light →](https://app.light.inc/settings/guardrails/policies)
 
 ## What are company policies?
 
 Company policies in Light are documents that communicate your organization's rules, procedures, and expectations. Policies can cover expense guidelines, procurement procedures, compliance requirements, and other governance topics. Policies can be assigned to specific entities so different parts of your organization follow the appropriate rules.
 
-## Navigating the Policy page
+## Navigating the Policies page
 
-1. Go to [**Settings (gear icon) → Policy**](https://app.light.inc/settings/policies) in the sidebar
+1. Go to [**Settings (gear icon) → Guardrails → Policies**](https://app.light.inc/settings/guardrails/policies) in the sidebar
 2. The page displays all policies with columns for **Title**, **Entities**, **Last edited**, and **Edited by**
 3. Use the **+ Create policy** button to add a new policy
 4. Use the **Upload** button to upload an existing policy document
 
 ## Creating a policy
 
-1. Navigate to [**Settings (gear icon) → Policy**](https://app.light.inc/settings/policies)
+1. Navigate to [**Settings (gear icon) → Guardrails → Policies**](https://app.light.inc/settings/guardrails/policies)
 2. Click **+ Create policy**
 3. Fill in the policy details:
    - **Entities**: Select the company entities this policy applies to
@@ -29,7 +29,7 @@ Company policies in Light are documents that communicate your organization's rul
 
 You can upload an existing policy document instead of creating one from scratch:
 
-1. Navigate to [**Settings (gear icon) → Policy**](https://app.light.inc/settings/policies)
+1. Navigate to [**Settings (gear icon) → Guardrails → Policies**](https://app.light.inc/settings/guardrails/policies)
 2. Click **Upload**
 3. Select a document file from your computer
 4. Light processes the uploaded document
