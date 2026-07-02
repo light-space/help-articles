@@ -14,7 +14,7 @@ There is no self-serve screen in this version — to set a custom rate, contact 
 
 - **Currency** — the currency you want to pin (e.g. USD, GBP, CZK). It must not be EUR (see below).
 - **Rate** — expressed as **how much one unit of the currency is worth in EUR**. For example, "1 CZK = 0.04 EUR." This is the same direction Light shows rates elsewhere.
-- **Month** — the month the rate applies from.
+- **Month** — the month the rate applies to.
 
 Support will confirm the rate back to you before it takes effect.
 
@@ -23,13 +23,13 @@ Support will confirm the rate back to you before it takes effect.
 ## How custom rates behave
 
 - **Monthly.** One rate per currency per month. A rate can't change part-way through a month — set a new rate for the next month instead.
-- **Forward-looking.** A rate applies to transactions dated on or after the 1st of its month. Already-posted journal entries are never recalculated, so closed periods don't move.
+- **Month-scoped.** A rate applies to transactions dated in its month only — it doesn't carry forward to later months, so set a rate for each month you want covered. Already-posted journal entries are never recalculated, so closed periods don't move.
 - **EUR is the reference currency.** You give each currency's value in EUR, and Light derives the cross-rates between your currencies from that. EUR itself can't be overridden — it's the anchor.
 - **Set every currency you use.** For a conversion between two non-EUR currencies (e.g. USD ↔ GBP), both currencies need a custom rate that month. If only one does, Light uses market rates for that whole conversion — see [When Custom Rates Apply vs System Rates](/articles/02-organization-setup/2-12-custom-vs-system-fx-rates).
 
 ## Checking which rate was applied
 
-Light records, for every conversion, whether your custom rate or the market rate was used. The exchange-rates report shows this per currency per day — check there (or ask support) to confirm your rates are being applied as expected.
+The exchange-rates report shows the custom rates in effect for a date range, plus any days where a conversion fell back to market rates because one of its currencies was missing a custom rate. Check there (or ask support) to confirm your rates are being applied as expected.
 
 ## Related articles
 
