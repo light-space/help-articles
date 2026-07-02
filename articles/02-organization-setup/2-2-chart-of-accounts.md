@@ -10,7 +10,7 @@ Your Chart of Accounts is the complete list of all accounts available for postin
 
 ## Navigating the Accounts page
 
-The Accounts page is located at [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) in the sidebar. The page has three tabs:
+The Accounts page is located at [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section). The page has three tabs:
 
 - **Chart of accounts**: View, search, and manage all GL accounts
 - **Account defaults**: Configure system account mappings (e.g., Rounding, FX loss, FX gain, Bank fees)
@@ -22,10 +22,11 @@ The top-right actions include **Build**, **Upload**, and **Export** buttons, alo
 
 Each account in Light has the following properties:
 
-- **Account number**: A unique numeric identifier (e.g., 100100, 200100)
+- **Account number**: A unique 6-digit numeric identifier (e.g., 100100, 200100)
 - **Account name**: A descriptive name (e.g., "Cash", "Accounts Receivable")
-- **Account status**: Active or Inactive
+- **Account status**: Active or Disabled
 - **Entities**: Which company entities this account is available in
+- **Currency**: The account currency, required for bank and cash & equivalents accounts
 - **Account category**: The category classification (e.g., Standard)
 - **Aggregation rule**: Optional rule for how the account aggregates in reporting
 - **Account group**: The financial grouping (e.g., Other current asset, Accounts receivable, Intangible asset)
@@ -34,13 +35,14 @@ Each account in Light has the following properties:
 
 ## Creating a new account
 
-1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
 2. Click **+ Create account**
 3. Fill in the account details:
    - **Account number**: Enter a unique account number
    - **Account name**: Enter a descriptive name
-   - **Account status**: Select Active or Inactive
+   - **Account status**: Select Active or Disabled
    - **Entities**: Choose which entities this account applies to
+   - **Currency**: For bank and cash & equivalents accounts, select the account currency
    - **Account category**: Select the appropriate category
    - **Aggregation rule**: Optionally enter an aggregation rule
    - **Account group**: Select the account group (e.g., Other current asset, Revenue, Expense)
@@ -52,7 +54,7 @@ Each account in Light has the following properties:
 
 To bulk-import accounts:
 
-1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
 2. Click the **Upload** button in the top-right actions
 3. Prepare your accounts file in the supported format (CSV or Excel)
 4. Upload your prepared file
@@ -64,22 +66,22 @@ To bulk-import accounts:
 
 ## Editing accounts
 
-1. Go to [**Accounting → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
 2. Search for the account you need to modify
 3. Click the account to open its detail view
 4. Click **Edit** to update the account fields
 5. Make your changes and save
 
-Account numbers cannot be changed after creation. To renumber accounts, you'll need to deactivate the old account and create a new one with the correct number.
+The account number, account group, category, and currency can only be changed while the account has no posted activity. Once the account has been used in transactions or accounting documents, these fields are locked — to renumber a used account, deactivate the old account and create a new one with the correct number.
 
 ## Account activation and deactivation
 
-Accounts can be set to Active or Inactive using the **Account status** field:
+Accounts can be set to Active or Disabled using the **Account status** field:
 
 - **Active**: Available for posting new transactions
-- **Inactive**: Archived accounts retained for historical reference
+- **Disabled**: Archived accounts retained for historical reference
 
-To deactivate an account, open the account, click Edit, change Account status to Inactive, and save. Inactive accounts retain all historical transaction data but won't appear in transaction posting dropdowns.
+To deactivate an account, open the account, click Edit, change Account status to Disabled, and save. Disabled accounts retain all historical transaction data but won't appear in transaction posting dropdowns. Accounts that were deactivated in a connected external ERP cannot be manually reactivated in Light.
 
 ## Account defaults
 
@@ -106,7 +108,7 @@ Click the **Export** button in the top-right actions on the Chart of accounts ta
 - Choose appropriate account groups for accurate financial statement classification
 - Use the Context field to document the purpose of each account
 - Configure account defaults before posting transactions
-- Avoid duplicate account numbers within the same entity
+- Account numbers must be unique across your company
 
 ## Related articles
 
