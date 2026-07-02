@@ -16,7 +16,7 @@ Light includes the following predefined roles:
 
 **Controller** - Access to financial reports, ledger management, and accounting period closing. Ideal for your finance controller or accounting manager.
 
-**AP Clerk** - Access to accounts payable functions including invoice entry, approval workflows, and payment management. Can view AP-specific data only.
+**AP Clerk** - Access to accounts payable functions including invoice entry, approval workflows, and payment management. Also grants access to view financial reports and to view and post card transactions.
 
 **AP Preparation** - Limited AP access for data entry and document preparation without approval authority. Useful for administrative staff preparing invoices.
 
@@ -33,6 +33,8 @@ Light includes the following predefined roles:
 **Report Viewer** - Read-only access to financial reports and dashboards. Ideal for stakeholders who need visibility without transaction access.
 
 **Purchase Requester** - Access to create and manage purchase orders. Limited to procurement workflows.
+
+**Auditor** - Read-only access to all company data for audit purposes. Auditors can view documents, transactions, reports, and configuration across the platform but cannot create, edit, approve, or post anything.
 
 > **Important:** The **Cardholder** and **Reimbursement** roles are independent. A user with only the Cardholder role cannot access reimbursement features, and a user with only the Reimbursement role cannot access card features. If a user needs both, assign both roles.
 
