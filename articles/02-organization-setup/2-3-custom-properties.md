@@ -16,7 +16,9 @@ Light supports several field types for custom properties:
 
 - **Single select**: Choose one value from a predefined list
 - **Multiple select**: Choose multiple values from a predefined list
+- **Number**: Numeric value entry
 - **Text**: Free-form text entry
+- **Boolean**: Yes/no value
 - **Date**: Date selection for time-based attributes
 
 ## Viewing custom properties
@@ -38,7 +40,7 @@ Light supports several field types for custom properties:
    - **Internal name**: A system reference name (auto-generated from label, cannot be changed later)
    - **Context**: Optional description of the property's purpose
    - **Required**: Toggle on if this property must be filled in
-   - **Field type**: Select the data type (Single select, Multiple select, Text, or Date)
+   - **Field type**: Select the data type (Single select, Multiple select, Number, Text, Boolean, or Date)
 4. Click **Create**
 
 ## Adding values to a select property
@@ -52,7 +54,6 @@ For single select and multiple select properties, you need to add the available 
    - **Label**: How the value appears to users
    - **Internal name**: System reference name
    - **Context**: Optional description of this value
-   - **User groups**: Optionally restrict this value to specific user groups
 5. Repeat for each value users can select
 
 You can add values at any time, even after the property is already in use.
