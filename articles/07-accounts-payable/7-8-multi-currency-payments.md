@@ -2,6 +2,8 @@
 
 Each bill in Light carries its own currency, independent of the company entity's functional currency or the bank account the payment is made from. Light handles FX conversion in the background based on the bill currency, the paying bank account, and the payment date.
 
+[Open in Light →](https://app.light.inc/payables)
+
 ## How Currency Is Set on a Bill
 
 - A bill's **currency** is captured when the bill is created (from the uploaded document, vendor default, or manual entry)
@@ -11,11 +13,12 @@ Each bill in Light carries its own currency, independent of the company entity's
 ## How Payment Currency Works
 
 When a bill is paid:
-- The **From account** (the company bank account on the bill) determines the payment currency
-- If the bill currency matches the bank account currency, the payment goes out at face value
-- If the bill currency differs from the bank account currency, Light calculates the equivalent amount using the FX rate for the payment date
+- The payment is always sent in the **bill currency** — the vendor receives the amount stated on the bill
+- The **From account** (the company bank account on the bill) determines the currency your account is debited in
+- If the bill currency matches the bank account currency, the account is debited at face value
+- If the bill currency differs from the bank account currency, the bank or payment provider converts the amount at execution, and Light books the actual debited amount in the account currency
 
-The FX conversion is computed automatically when payment is entered/released — there is no manual FX rate override in the payment entry dialog.
+The FX conversion happens automatically when the payment is executed — there is no manual FX rate override in the payment entry dialog. For accounting conversions (and when a bill is marked as paid manually without an executed payment), Light applies its exchange rate for the payment date: ECB reference rates by default, with any company- or entity-level exchange rate overrides taking precedence.
 
 ## Bills Listed in Multiple Currencies
 
@@ -27,7 +30,7 @@ Each company bank account is denominated in a specific currency (see **Settings 
 
 ## FX Gain / Loss Posting
 
-When a bill in one currency is paid from a bank account in another currency, the difference between the bill's posted amount and the actual converted amount creates an FX gain or loss. This is posted automatically by Light's accounting engine based on your company's FX configuration.
+When a bill in one currency is paid from a bank account in another currency, the difference between the bill's posted value and its value on the payment date creates a realized FX gain or loss. This is posted automatically by Light's accounting engine when the payment clears the bill, to the system FX gain and FX loss accounts.
 
 For period-end FX revaluation across open AP balances, see the FX revaluation tools in the accounting module.
 
