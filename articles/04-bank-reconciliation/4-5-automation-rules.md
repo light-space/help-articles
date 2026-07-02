@@ -8,151 +8,118 @@ Reconciliation automation rules control how Light matches bank transactions to a
 
 Light includes two types of rules:
 
-**System Rules** - Built-in rules that match common scenarios. You can enable/disable but not modify them.
+**System Rules** - Built-in rules created by Light that match common scenarios. They cannot be modified or deleted.
 
 **User Rules** - Custom rules you create for your specific business scenarios.
 
-System rules typically handle:
-- Open invoice matching (AR invoices)
-- Open payable matching (AP invoices)
-- End-to-end payment matching (payment creation through posting)
-- Reference number matching (invoice/check numbers)
-- Amount and date matching (fuzzy matching with tolerance)
+Light's system rules are:
+- **Match by document number** - Matches based on invoice or document numbers found in the bank transaction reference
+- **Match by amount and description** - Finds matches where both the amount and transaction description align with a ledger entry
+- **Register payment for open invoice receivables** - Matches incoming bank transactions to open customer invoices and registers the payment
+- **Register payment for open invoice payables** - Matches outgoing bank transactions to open vendor bills and registers the payment
+- **Create Journal Entry for card balance funding transactions** - Recognizes transfers that fund a card balance account
+- **Match by bank transaction end to end id** - Uses end-to-end payment references (common in SEPA and wire transfers)
+- **Match by amount and date** - Matches a transaction when exactly one ledger entry has the same amount and date
 
 ## Creating Custom Rules
 
 Create custom matching rules for specific needs:
 
-1. Go to **Accounting > Bank reconciliation** to manage automation rules
-2. Click **Create Rule**
-3. Enter rule **name** and **description**
-4. Define the rule's **matching criteria and action**
-5. Set the **order** (when to apply relative to other rules)
-6. Click **Save**
+1. Go to **Accounting → Bank reconciliation** and open the **Rules** tab
+2. Click **+ Create rule**
+3. Enter the rule **Name**
+4. In the **When** field, describe in natural language when the rule should apply (e.g., "When the transaction reference contains 'RENT'")
+5. Select the **Action** to perform when the rule matches
+6. Fill in the **Details** for the entry the rule creates (business partner, GL account, description, tax code, etc.)
+7. Click **Validate & Save**
 
-Rules are evaluated in order (lowest order number first), and the first matching rule applies.
+Light parses your natural-language description into structured matching conditions. Rules are evaluated in order, and the first matching rule applies.
+
+You can also create a rule directly from an unmatched transaction using **Convert to rule** on the reconciliation view, which pre-fills the rule based on the selected transaction.
 
 ## Rule Conditions
 
-Rules use conditions to determine which transactions they apply to:
+Conditions are generated from your natural-language **When** description. They can reference the following bank transaction fields:
 
-**Amount Conditions:**
-- Exact amount
-- Amount range
-- Amount above/below threshold
+- **Amount** - The transaction amount
+- **Original amount** - The amount in the original currency, for converted transactions
+- **Fees** - Transaction fees
+- **Date** - The transaction date
+- **Reference** - The transaction reference/description text
+- **Bank account** - The ledger bank account the transaction belongs to
 
-**Date Conditions:**
-- Specific date
-- Date range
-- Days since transaction
-
-**Reference Conditions:**
-- Contains specific text
-- Starts with or ends with
-- Invoice/check number match
-
-**Transaction Type:**
-- Debit (withdrawal)
-- Credit (deposit)
-- Both
+Supported comparisons are equals, not equals, greater than (or equal), less than (or equal), and—for reference text—contains.
 
 Conditions are combined with AND/OR logic for complex scenarios.
 
 ## Rule Actions
 
-Each rule specifies an action—what to match to:
+Each rule specifies an action—what to create and match when the conditions are met:
 
-**Match with Journal Entry** - Match to general ledger journal entries with:
-- Specific ledger accounts
+**Match with Journal Entry** - Create and match a journal entry with:
+- A specific GL account, description, tax code, and accrual settings
+- An optional business partner
 - Custom property values
-- Amount and date criteria
 
-**Match with Customer Credit** - For customer payments that offset AR invoices:
-- Specify customer or all customers
-- Link to customer credit GL accounts
+**Match with Customer Credit** - For customer payments recorded as customer credits:
+- Specify the product and optional tax code
+- Optionally link a specific customer
 
-**Match with Credit Note** - For vendor credit memos that offset AP invoices:
-- Specify vendor or all vendors
-- Link to credit note GL accounts
+**Match with Credit Note** - For vendor credits that offset AP:
+- Specify the description and optional tax code
+- Optionally link a specific vendor
 
-**Match with Open Invoice** - For payments that match specific invoices:
-- Match to unpaid AR or AP invoices
-- Use reference number if available
+Matching payments to open AR or AP invoices is handled automatically by the built-in system rules, so you don't need a custom rule for that.
 
 ## Example Rules
 
 **Rule: International Wire Transfers**
-- Condition: Amount > $50,000 AND Description contains "Wire"
+- When: Amount is greater than $50,000 and the reference contains "Wire"
 - Action: Match with Journal Entry to International Receivables account
-- Order: 1
 
 **Rule: Daily Stripe Deposits**
-- Condition: Description contains "Stripe" AND Date = Today
+- When: Reference contains "Stripe"
 - Action: Match with Journal Entry to Stripe Clearing account
-- Order: 2
 
-**Rule: Vendor Checks**
-- Condition: Description contains "Check" OR Reference matches invoice number
+**Rule: Vendor Refunds**
+- When: Reference contains a specific vendor name
 - Action: Match with Credit Note
-- Order: 3
-
-**Rule: Customer ACH Deposits**
-- Condition: Amount between $1-$100,000 AND Debit/Credit = Credit
-- Action: Match with Open Invoice (AR)
-- Order: 4
 
 ## Rule Order and Priority
 
-Rules are applied in ascending order by their order number:
+Rules run in a fixed order: system rules first, then custom rules in the order they were created. Each new custom rule is added at the end of the list.
 
-- **Order 1** - Most specific rules (exact amounts, specific vendors)
-- **Order 2-5** - Medium specificity rules
-- **Order 10+** - Catch-all rules (any amount, all vendors)
+A transaction stops evaluation once a matching rule is found, so:
 
-A transaction stops evaluation once a matching rule is found. To prevent overlapping:
+- Each transaction is matched at most once
+- Earlier rules take precedence over later ones
 
-- Put most specific rules first (lower order number)
-- Put broad catch-all rules last (higher order number)
+Write specific conditions in your rules to prevent a broad rule from matching transactions it shouldn't.
 
-For example, if you have "Wire transfers" and "All transactions," put the wire rule first.
+## Reviewing a Rule Before Saving
 
-## Testing Rules
+When you create or edit a rule, Light parses your natural-language description and shows the resulting conditions so you can verify them before saving. Review the parsed conditions carefully—if they don't reflect your intent, refine the wording of the **When** description and validate again.
 
-Before activating a rule, test it:
+This prevents the rule from incorrectly matching unintended transactions.
 
-1. Go to **Accounting > Bank reconciliation** to manage automation rules
-2. Find the rule and click **Test**
-3. Select or create test transactions
-4. View which transactions match the rule
-5. Verify the matching is correct
+## Archiving Rules
 
-Testing prevents the rule from incorrectly matching unintended transactions.
+To remove a custom rule:
 
-## Disabling and Archiving Rules
+1. Find the rule in the **Rules** tab
+2. Click **Archive**
+3. The rule stops applying and is removed from the active list
 
-You can disable rules without deleting them:
-
-1. Find the rule in the list
-2. Click **Disable** (system rules) or **Deactivate** (custom rules)
-3. The rule stops applying but remains for reference
-
-To permanently remove:
-
-1. Click **Archive**
-2. The rule is hidden but can be restored if needed
+System rules cannot be archived or modified.
 
 ## Rule Statistics
 
-View rule usage and effectiveness:
+The rules table shows usage information for each rule:
 
-1. Go to **Accounting → Bank reconciliation → Rule Statistics**
-2. View for each rule:
-   - **Runs** - How many times the rule has been evaluated
-   - **Matches** - How many transactions were matched
-   - **Success rate** - % of transactions correctly matched
-   - **Last run** - When the rule last applied
+- **Runs** - How many times the rule has matched and been applied
+- **Last run** - When the rule last applied
 
-Use statistics to optimize your rules—if a rule never matches, consider disabling it.
+Use this to review your rules—if a rule never runs, consider refining or archiving it.
 
 ## Conflict Resolution
 
@@ -160,71 +127,45 @@ If multiple rules could match the same transaction:
 
 - **First rule wins** - The first matching rule (by order) applies
 - **No double-matching** - Each transaction is matched at most once
-- **Manual override** - You can clear an auto-match and manually match differently
-
-If you find rules conflicting, adjust the order so the more specific rule comes first.
-
-## Amount Tolerance
-
-For rules with amount fuzzy-matching:
-
-**Exact match** - Amounts must be identical
-
-**Rounding tolerance** - Allow differences up to $0.01 (for rounding)
-
-**Fee tolerance** - Allow differences up to stated fee amount (for bank fees)
-
-**Percentage tolerance** - Allow difference up to X% of amount
-
-For example, a rule might allow FX transactions to differ by 2% due to conversion rates.
+- **Manual override** - You can undo an auto-match and manually match differently
 
 ## Reference Number Matching
 
-Many rules use reference number matching:
+The built-in **Match by document number** system rule matches document numbers found in the bank transaction reference to accounting documents:
 
-**Invoice number** - Matches bank transaction reference to invoice number in GL
+**Invoice number** - Matches bank transaction reference to an invoice number
 
-**Check number** - For check payments, matches check number in bank feed to GL
+**Document number** - Matches other document numbers appearing in the reference text
 
-**External reference** - Custom reference field you define
-
-When the bank description contains the invoice/check number, the system can automatically identify the matching GL entry.
+When the bank description contains the document number, the system can automatically identify the matching entry.
 
 ## Vendor/Customer Specific Rules
 
 Some rules apply only to specific business partners:
 
-1. Create the rule with condition: "Vendor ID = [specific vendor]"
-2. Match to that vendor's GL accounts
-3. Repeat for other vendors needing specific treatment
+1. Create a rule whose **When** description identifies the partner's transactions (e.g., "reference contains 'ACME'")
+2. In the rule's **Details**, set the business partner and the GL account to use
+3. Repeat for other vendors or customers needing specific treatment
 
-This is useful for vendors with unique payment patterns or GL accounts.
-
-## Recurring vs. One-Time Rules
-
-**Recurring rules** - Apply continuously (e.g., monthly rent payment)
-
-**One-time rules** - Apply once for a specific period (e.g., special project)
-
-Set an expiration date on one-time rules so they stop applying automatically.
+This is useful for business partners with unique payment patterns or GL accounts.
 
 ## Audit Trail of Matches
 
 Track which rule matched each transaction:
 
-1. Go to **Accounting → Bank reconciliation → Cleared Transactions**
-2. View matched transactions and see which rule matched them
-3. If a match was made by rule X but was incorrect, disable rule X and manually match
+1. Go to **Accounting → Bank reconciliation**, open the bank account, and click the **Matched** tab
+2. View matched transactions and see how they were matched
+3. If a match made by a rule was incorrect, undo the match, and refine or archive the rule
 
 This helps identify problematic rules.
 
 ## Best Practices
 
-- **Start simple** - Begin with 3-5 core rules before adding complexity
-- **Test before deployment** - Always test rules on sample data
-- **Monitor effectiveness** - Review rule statistics monthly
-- **Keep specific rules first** - Prevent overly-broad rules from matching unintended transactions
-- **Document rules** - Use descriptive names and notes explaining the rule's purpose
+- **Start simple** - Begin with a few core rules before adding complexity
+- **Review parsed conditions** - Always check the conditions Light generates from your description before saving
+- **Monitor effectiveness** - Review rule run counts regularly
+- **Write specific conditions** - Prevent overly-broad rules from matching unintended transactions
+- **Document rules** - Use descriptive names explaining the rule's purpose
 - **Review quarterly** - As business patterns change, update rules
 - **Archive old rules** - Clean up rules that are no longer needed
 
