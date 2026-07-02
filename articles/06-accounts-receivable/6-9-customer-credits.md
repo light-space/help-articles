@@ -55,14 +55,14 @@ You can apply all or part of a customer credit to one or more sales invoices. An
 
 ## Editing Custom Properties After Posting
 
-After a customer credit is posted, its line items are locked — except for custom properties. You can add, change, or remove a line item's custom properties (department, cost center, project code, etc.) without voiding and recreating the credit.
+After a customer credit is posted, its amounts are locked — but custom properties are not. You can add, change, or remove a line item's custom properties (department, cost center, project code, etc.) without voiding and recreating the credit.
 
 1. Open the posted customer credit
 2. Enter edit mode on the line item you want to update
 3. Add, change, or remove its custom properties
 4. Confirm the changes when prompted, then save
 
-Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields stay locked. Every change is recorded in the credit's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
+Amounts and quantities stay locked. Line descriptions, GL accounts, and tax codes can also be modified on a posted credit. Every change is recorded in the credit's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
 
 ## Other Actions
 
@@ -72,5 +72,5 @@ From the credit detail header three-dot menu (⋮):
 
 ## Related Articles
 
-- [Invoice generation](/articles/06-accounts-receivable/6-9-customer-credits.md)
+- [Invoice generation](/articles/06-accounts-receivable/6-5-invoice-generation.md)
 - [Tracking payments](/articles/06-accounts-receivable/6-8-tracking-payments.md)
