@@ -1,6 +1,6 @@
 # Submitting Expenses via Teams
 
-Microsoft Teams users can submit expenses directly from Teams without leaving their chat application. The Light bot integrates with Teams to handle receipt processing and approval tracking inline.
+Microsoft Teams users can submit expenses directly from Teams without leaving their chat application. Send receipts to the Light bot in a chat, and Light handles receipt processing and keeps you updated with status messages.
 
 [Open in Light →](https://app.light.inc/expenses)
 
@@ -8,174 +8,84 @@ Microsoft Teams users can submit expenses directly from Teams without leaving th
 
 ### Installation
 
-1. Navigate to **Settings** > **Integrations** > **Microsoft Teams**
-2. Click **Connect Teams**
-3. Follow OAuth flow to authorize Light in your Teams organization
-4. Select the Teams workspace to integrate
-5. Light bot is installed and ready
+1. Navigate to **Settings (gear icon)** → **Integrations**
+2. Click **Connect** on the Microsoft Teams integration
+3. A Microsoft **admin consent** flow opens — a Microsoft 365 administrator must approve Light for your organization
+4. Once consent is granted, your Microsoft tenant is linked to your Light company and the Light bot is ready to use
 
-### Configuration
+### How users are matched
 
-After installation, configure:
+There is no per-channel configuration. Light matches each Teams user to their Light account by **email address** — the email on your Microsoft 365 account must match the email on your Light user. The bot then works with you through **chat messages**.
 
-1. Select **channels** where expense bot should be active:
-   - Private DMs (employees can DM bot directly)
-   - #expenses team channel
-   - Department or project channels
+To submit expenses via Teams you need:
 
-2. Set **notification preferences**:
-   - When to notify about expense status
-   - Who gets notifications
+- An active Light user with the same email as your Microsoft 365 account
+- The reimbursement role and an active reimbursement setup in Light
 
-3. Enable **auto-processing**:
-   - Automatically process receipts, or
-   - Require manual confirmation first
-
-4. Click **Save**
+If either is missing, the bot replies telling you what to fix (for example, "You are not set up for reimbursements" or "You are missing the required roles to use this feature") and to contact your admin if needed.
 
 ## Submitting an Expense via Teams
 
-### Direct Message to Light Bot
+### Chat with the Light Bot
 
-Fastest method for submitting receipts:
+1. Open Teams and start a chat with the **Light** bot
+2. Attach your receipt (image or PDF) to the message and send it — you can attach several files at once, or paste an image directly into the chat
+3. Light replies "Processing your file(s)..." and updates the message as it works
+4. Light's AI extracts the details and sends you a card with what it found
 
-1. Open Teams and find **Light** or **Expenses** bot in your contacts
-2. Click **New Expense** or type `/expense`
-3. An adaptive card appears with entry fields:
-   - **Receipt File**: Click to attach image/PDF
-   - **Amount**: Dollar amount (pre-filled if receipt has it)
-   - **Category**: Dropdown with spending categories
-   - **Description**: What was purchased
-   - **Date**: When expense occurred
+Supported file types include PDF and common image formats (JPEG, PNG, HEIC, TIFF). Files above the maximum file size are rejected with a message telling you the limit.
 
-4. Fill in details and click **Submit**
-
-Light processes the receipt and sends an update card showing extracted data.
-
-### Posting in Team Channel
-
-Submit expense in team or project channel:
-
-1. In Teams channel, click the **attachments** icon
-2. Upload receipt image (JPG, PNG) or PDF
-3. In the message, mention **@Light Expenses** and describe:
-   - "Process this receipt for software subscription"
-
-4. Light bot responds asking to confirm extraction
-5. Click **Looks Good** or **Edit** to correct
-6. Expense is submitted for approval
-
-### Sharing Meeting Receipts
-
-For expenses during Teams meetings:
-
-1. During meeting, share receipt screen or upload file
-2. Teams message automatically captures for Light
-3. Light processes and asks for confirmation
-4. Confirm in Teams chat, stay in meeting
-
-No need to leave the meeting to submit.
+> Note: If you are also a cardholder, Light first tries to match the receipt to a card transaction. If no transaction matches, the bot asks "We couldn't match the receipt to a card transaction. Do you want to create a reimbursement from this item?" with **Reimbursement** and **Discard** buttons — click **Reimbursement** to create an expense.
 
 ## Reviewing Extracted Data in Teams
 
-After submitting, Light sends an update card:
+After processing, Light sends a card:
 
-**"Receipt processed - Please confirm details"**
+**"Your receipt was successfully uploaded."**
 
 The card displays:
-- **Merchant**: Shop or restaurant name
-- **Date**: Purchase date
-- **Amount**: Total cost
-- **Category**: Suggested spending category
-- **Buttons**: "Looks Good" or "Edit"
+- **Description**: What the expense appears to be
+- **Original amount**: The amount and currency on the receipt
+- **Reimbursement amount**: The amount converted to your reimbursement currency
+- A **View expenses** button that opens Light
 
-### Confirming Extraction
+The expense is created as a draft. To correct any details (description, amount, date, category), open the [Expenses](https://app.light.inc/expenses) page in the Light web app and edit the draft there.
 
-**If correct:**
-1. Click **Looks Good**
-2. Card updates: "Submitted for approval"
-3. Card shows status of manager approval
+If extraction fails, Light tells you "There was an issue extracting the details from the receipt" — the receipt is still uploaded, and the card includes an **Open Light** button so you can fill out the missing details in the web app.
 
-**If needs correction:**
-1. Click **Edit**
-2. Modal appears with editable fields
-3. Correct merchant, amount, date, or category
-4. Click **Fixed** to resubmit
-5. Light sends new update card to confirm
+### Submitting your expense report
 
-### Adding Context
+Draft expenses are grouped into an expense report (reimbursement). Once you are done uploading all of your receipts, you can either:
 
-Before confirming, add notes about the expense:
+- Tell the Light bot in the chat to submit your expense report, or
+- Submit it from the [Expenses](https://app.light.inc/expenses) page in the web app
 
-1. On the confirmation card, click **Add Notes**
-2. Type description of the expense:
-   - "Client dinner with Acme Corp"
-   - "Travel for customer visit"
-   - "Office supplies for Q1"
-
-3. Click **Add**
-4. Notes appear on card for manager to see
+Submitting sends the report for review through your company's approval workflow.
 
 ## Tracking Reimbursement Status
 
-Light sends status updates via Teams:
+Light sends these status updates as Teams messages:
 
-1. **Submitted**: "Expense submitted to [Manager]"
-2. **Approved**: "[Manager] approved your $X expense"
-3. **Requested Changes**: "[Manager] needs clarification on your expense"
-4. **Paid**: "Reimbursement of $X was deposited"
-
-Click cards to see full details.
+1. **Upload confirmation**: "Your receipt was successfully uploaded" with the extracted details
+2. **Rejection notification**: "Your expense report was rejected", including the reason from the finance team and a link to reset your expenses
+3. **Payment notification**: "Your reimbursement has been paid" with the amount sent to your account
 
 ### Checking Your Expense Status
 
-Ask Light for updates anytime:
+Ask the Light bot directly — there are no special commands. In the chat, ask in natural language, for example:
 
-1. DM Light bot or type in team channel: `/expense status`
-2. Light responds with card listing:
-   - Pending approval (how long pending)
-   - Approved but not paid
-   - Paid (with payment reference)
-   - Denied (with reason)
+- "What's the status of my reimbursement?"
+- "Which of my expenses are still in draft?"
 
-3. Click any expense to expand and see details
+The bot shows "thinking ..." while it works, then answers using your data in Light.
 
-## Batch Submitting Multiple Expenses
+## Batch Submitting Multiple Receipts
 
-Submit multiple receipts in Teams:
+Submit multiple expenses at once:
 
-1. In DM with Light, click **New Expense**
-2. Select **Multiple Receipts** option
-3. Attach multiple files (or upload one, then click **Add Another**)
-4. Fill in details for first receipt
-5. Click **Next** to move to second receipt
-6. Repeat for all receipts
-7. Click **Submit All**
-
-Light processes all at once; you get one confirmation card.
-
-## Team Expense Splits
-
-For expenses shared by multiple people:
-
-1. Submit expense normally
-2. In confirmation card, click **Share with Team Members**
-3. Select teammates to split with (checkboxes)
-4. Light calculates individual shares
-5. Click **Confirm Split**
-
-Each team member gets notification of their share. Each person is reimbursed their portion.
-
-## Adaptive Cards and Rich Experience
-
-Teams messages show as adaptive cards with:
-
-- **Visual data**: Amount, date, category shown prominently
-- **Quick actions**: Approve, reject, or edit with single click
-- **Context**: Notes from employee visible without opening new window
-- **Real-time updates**: Card updates as status changes
-
-No need to click to another app to see expense details.
+1. In your chat with the Light bot, attach several receipt files to a single message
+2. Send the message — Light processes each file and creates a draft expense per receipt
+3. When you're done uploading, submit them together as one expense report
 
 ## Receipt Attachment Best Practices
 
@@ -184,65 +94,38 @@ For best AI extraction:
 1. **Quality**: Take clear photo with good lighting (natural light preferred)
 2. **Angle**: Photo should be straight-on, not at angle
 3. **Framing**: Full receipt in frame, not cropped
-4. **Format**: JPG, PNG (best) or PDF (also works)
-5. **Size**: File size less than 5MB
-
-Light's guidance dialog in Teams shows photo examples.
-
-## Teams Notifications
-
-Control how you're notified about expense status:
-
-1. Go to Teams **Settings** > **Notifications**
-2. Find **Light Expenses**
-3. Choose notification style:
-   - Banner and feed
-   - Banner only
-   - Feed only
-   - Quiet (read in Teams only, no notification)
-
-4. Save preferences
+4. **Format**: JPEG, PNG, HEIC, TIFF, or PDF
 
 ## Troubleshooting Common Issues
 
-### Receipt Couldn't Be Read
+### Extraction Didn't Work
 
-Light message: "I couldn't process this receipt. Can you help?"
+If Light couldn't read the receipt, it sends: "There was an issue extracting the details from the receipt." The receipt is still uploaded — go to the [Expenses](https://app.light.inc/expenses) page in the web app to fill out the missing details manually.
 
-Options:
-- **Retake Photo**: Click to provide better photo
-- **Manual Entry**: Type details instead
-- **Try Later**: Resubmit the same file later
+### File Was Rejected
 
-Click option and continue.
+If a file fails validation, Light replies explaining the problem:
 
-### Wrong Category Assigned
+- The file exceeds the maximum file size
+- The file has an unsupported file type
 
-1. In confirmation card, click **Edit**
-2. Change Category dropdown to correct one
-3. Light learns from the change
-4. Click **Fixed**
+Fix the file (or take a new photo) and resend the message with valid files. If the upload itself fails, Light asks you to try submitting again or contact an admin for assistance.
 
-### Double Submission
+### Bot Doesn't Recognize You
 
-If you accidentally submit the same receipt twice:
+If the bot replies that you are not set up, your Microsoft 365 email may not match a Light account, or you may be missing the reimbursement role or reimbursement setup. Ask your admin to check your Light user.
 
-1. Light detects duplicate
-2. Sends message: "This looks like a duplicate. Should I skip it?"
-3. Click **Skip** to discard second copy
-4. Only original is processed
+### Wrong Details Extracted
+
+Open the draft expense on the [Expenses](https://app.light.inc/expenses) page and correct the details before submitting your expense report.
 
 ## Mobile Teams App
 
-Submitting via Teams mobile:
+Submitting via Teams mobile works the same way as on desktop:
 
-1. Open Light bot in Teams mobile app
-2. Click **New Expense**
-3. **Camera button** to take receipt photo in-app
-4. Fill in amount, category, description
-5. Click **Submit**
-
-All same functionality as desktop Teams.
+1. Open your chat with the **Light** bot in the Teams mobile app
+2. Attach a receipt photo (or take one with your camera) and send it
+3. Light processes it and replies with the extracted details
 
 ## Related Articles
 
