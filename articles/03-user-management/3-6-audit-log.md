@@ -32,7 +32,7 @@ The Log tab displays a table with the following columns:
 
 **Action** - The type of change (e.g., Updated)
 
-**Property** - Which field was changed (e.g., Ledger Account Label, Tax Code, Business Partner Name)
+**Property** - Which field was changed (e.g., Ledger Account Label, Ledger Tax Code, Business Partner Name)
 
 **Value** - The new value or the before/after change (e.g., "Inventory → Accounts Payable")
 
