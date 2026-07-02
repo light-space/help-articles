@@ -10,7 +10,7 @@ Light supports tax configurations for multinational operations, including multip
 
 ## Navigating the Tax codes page
 
-1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes) in the sidebar
+1. Go to [**Settings (gear icon) → Records → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. The page displays all tax codes with columns for **Name**, **Context**, **Type**, **Rate**, and **Country**
 3. By default, the list is filtered to show only **Active** tax codes
 4. Use the **Search** bar to find specific tax codes
@@ -18,7 +18,7 @@ Light supports tax configurations for multinational operations, including multip
 
 ## Creating a tax code
 
-1. Navigate to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
+1. Navigate to [**Settings (gear icon) → Records → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click **+ Create tax code**
 3. Fill in the **General** section:
    - **Active** toggle: Enable or disable the tax code
@@ -27,15 +27,15 @@ Light supports tax configurations for multinational operations, including multip
    - **Type**: Select **Sales** or **Purchase**
    - **EDIFACT** (optional): Select an EDIFACT code if applicable for e-invoicing
    - **Rate**: The tax rate as a percentage
-   - **Effective rate**: The effective tax rate if different from the nominal rate
    - **Country**: Select the country where this tax code applies
-   - **Base report tag**: Select the reporting tag for tax return classification
+   - **Base tax tag**: Select the tax tag for tax return classification
    - **Entities**: Choose which entities this tax code applies to
    - **Context** (optional): Add a description of this tax code's purpose
 4. Configure **Posting rules**:
    - Click **+ Add posting rule** to add a rule
-   - Set the **Percentage of tax**, **Account**, and **Report tag** for each rule
+   - Set the **Percentage of tax**, **Account**, and **Tax tag** for each rule
    - Posting rules determine which GL accounts receive the tax amounts
+   - The **Effective rate** shown for a tax code is calculated automatically from the rate and the posting rule percentages
 5. Click **Create tax code**
 
 ## Tax code structure
@@ -56,7 +56,7 @@ Each company entity can have VAT details configured:
 
 ## Editing tax codes
 
-1. Go to [**Accounting → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
+1. Go to [**Settings (gear icon) → Records → Tax codes**](https://app.light.inc/accounting/ledger-tax-codes)
 2. Click on the tax code you want to modify
 3. Click **Edit** to update the tax code fields
 4. Make your changes and save
