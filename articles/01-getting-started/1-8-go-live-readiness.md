@@ -23,8 +23,8 @@ Successful go-live requires careful planning and testing. This article helps you
 Your Light instance is ready for go-live when it includes:
 
 **User and permissions**
-- At least one Finance Admin user who understands settings and can manage the system
-- Finance Manager or Specialist users for each functional area (AR, AP, GL, Bank)
+- At least one **Company Admin** user who understands settings and can manage the system
+- Users with the appropriate role for each functional area (**Controller** for GL, **AP Clerk** for payables, **AR Clerk** for receivables)
 - Approval authority clearly defined with limits set per role
 - Test users to verify workflows before go-live
 
@@ -210,7 +210,7 @@ If any variance exists, investigate and resolve before cutover. Most discrepanci
 - [ ] Enable full access in Light for all users
 - [ ] Send team communication confirming go-live
 - [ ] Post-close legacy system
-- [ ] Have Finance Admin on standby for 2-3 hours
+- [ ] Have a Company Admin on standby for 2-3 hours
 - [ ] Monitor for critical issues
 
 **First week post-go-live**
@@ -273,7 +273,7 @@ After go-live stabilizes (typically 2-4 weeks), optimize:
 ## Post-cutover system maintenance
 
 **Weeks 1-4 post-go-live (Stabilization)**
-- Finance Admin actively monitoring
+- Company Admin actively monitoring
 - Daily GL reconciliation
 - Weekly meeting to discuss issues and learnings
 - Defer non-critical enhancements
