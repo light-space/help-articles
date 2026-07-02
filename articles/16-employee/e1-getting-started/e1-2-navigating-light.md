@@ -35,6 +35,15 @@ Click your profile icon (top right) to access settings, notification preferences
 
 Light works great on mobile too. Open it in your phone's browser, and you'll get a simplified version of the same features. Perfect for submitting an expense on the go with a quick receipt photo.
 
+### Download the Mobile App
+
+For the best experience on the go, download the Light app to your phone:
+
+- **iOS (iPhone/iPad):** [Download on the App Store](https://apps.apple.com/us/app/light-inc/id6744313804)
+- **Android:** [Get it on Google Play](https://play.google.com/store/apps/details?id=com.anonymous.lightexpo)
+
+Sign in with your company credentials (SSO or email and password), then you can capture receipts, submit expenses, and approve requests from anywhere. See [Mobile Receipt Capture](../../08-expense-management/8-5-receipt-capture.md) for a full walkthrough.
+
 ## Next Steps
 
 New to Light? Head to [Setting Up Your Profile](e1-3-setting-up-profile.md) to add your banking details. Ready to submit your first expense? Jump to [Submitting an Expense for Reimbursement](../e2-expenses-reimbursements/e2-1-submitting-expense.md).
@@ -46,3 +55,4 @@ New to Light? Head to [Setting Up Your Profile](e1-3-setting-up-profile.md) to a
 - [Using Light with Slack and Microsoft Teams](e1-4-using-light-with-slack-and-teams.md)
 - [Submitting an Expense for Reimbursement](../e2-expenses-reimbursements/e2-1-submitting-expense.md)
 - [Tracking Your Reimbursement Status](../e2-expenses-reimbursements/e2-6-tracking-reimbursement.md)
+- [Mobile Receipt Capture](../../08-expense-management/8-5-receipt-capture.md)
