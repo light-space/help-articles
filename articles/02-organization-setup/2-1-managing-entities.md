@@ -24,11 +24,11 @@ A company entity represents a distinct legal entity within your organization. Th
    - **State**: State or region (if applicable)
    - **Local currency**: The primary currency for this entity's operations
 4. Optionally fill in **E-invoicing** details:
-   - **Network**: Choose from Peppol, SDI, Nemhandel, myDATA, or Portuguese Tax Reporting
+   - **Network**: Choose from Peppol, SDI, Nemhandel, myDATA, VeriFactu, or Portuguese Tax Reporting
    - **EAS code**: Electronic Address Scheme identifier (required for most networks)
    - **E-invoice address**: Network-specific address (required for most networks)
    
-   > **Note**: If you select myDATA (Greece), Light uses your VAT number as the network identifier — you don't need to fill in EAS code or e-invoice address fields.
+   > **Note**: If you select myDATA (Greece) or VeriFactu (Spain), you don't need to fill in EAS code or e-invoice address fields. For myDATA, Light uses your VAT number as the network identifier.
 
 5. Click **Create**
 
@@ -65,7 +65,7 @@ To activate expense cards, open the entity detail panel, scroll to the Cards sec
 - Ensure each entity's local currency matches its operating country when possible
 - Verify VAT and registration numbers are accurate before posting transactions
 - Use the Display name field for user-friendly names that will appear in reports and interfaces
-- Fill in e-invoicing details if you plan to use e-invoicing networks (EAS code and e-invoice address are required for most networks, except myDATA which uses your VAT number)
+- Fill in e-invoicing details if you plan to use e-invoicing networks (EAS code and e-invoice address are required for most networks, except myDATA and VeriFactu)
 
 ## Related articles
 
