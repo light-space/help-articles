@@ -12,19 +12,15 @@ For multinational companies, revenue recognition becomes more complex when deali
 
 ## Key revenue recognition scenarios
 
-Light supports four primary revenue recognition scenarios:
+Light supports two primary revenue recognition scenarios:
 
-**Straight-line recognition** involves spreading revenue evenly across a defined period. This is common for service contracts where performance obligations are satisfied gradually over time.
+**Straight-line recognition** spreads revenue evenly across a defined period, with a partial adjustment for the first and last months when the period does not start or end exactly on month boundaries. This is common for service contracts and subscriptions where performance obligations are satisfied gradually over time. You set this up by applying a release template to the relevant line, together with a recognition start and end date. When the document is posted, Light generates the full monthly release schedule as deferred entries (DE documents).
 
-**Milestone-based recognition** ties revenue recording to specific events or achievements. This applies to project-based work, software development contracts, or SaaS with usage-based components.
-
-**Percentage-of-completion** allows you to recognize revenue as a project progresses based on effort expended or milestones achieved. This is typical for long-term construction or professional services contracts.
-
-**Point-in-time recognition** records revenue immediately when control of goods or services transfers to the customer, such as product sales.
+**Point-in-time recognition** records revenue immediately when the invoice is posted, such as for product sales. This is the default behavior for any invoice line without a release template.
 
 ## Configuring revenue recognition rules
 
-You configure revenue recognition rules by setting up accounting release templates for each revenue scenario. These templates define the start date, end date, duration, and release pattern. Once configured, you apply them to individual invoice lines when creating invoices.
+You configure revenue recognition rules by setting up accounting release templates under **Settings → Releases templates** ([Releases templates](https://app.light.inc/release-templates)). Each template defines the release type (sales invoice or contract), the recognition method, the deferred revenue account, and an optional default duration. Contract templates additionally require a contract asset account. Once configured, you apply a template to individual invoice or contract lines, setting the recognition start and end dates on each line. You can track the resulting release schedules under **Accounting → Releases** ([Releases](https://app.light.inc/releases)).
 
 > Good to know: Revenue recognition rules are applied at the document line level, giving you granular control over which invoice items follow specific recognition patterns.
 
