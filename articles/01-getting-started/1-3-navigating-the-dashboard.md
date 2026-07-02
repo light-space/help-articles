@@ -21,7 +21,7 @@ The main navigation menu groups features by financial function:
 - **Personal** - Home (dashboard), Tasks, Expenses, Cards
 - **Revenue & Invoicing** - Sales invoices, Customer credits, Contracts, Products, Customers
 - **Spend management** - Bills, Credit entries, Reimbursements, Cards, Purchase orders, Vendors
-- **Accounting** - Releases, Transactions, Journal entries, Accounting documents, Bank reconciliation, Chart of accounts, Accounting periods, Tax codes
+- **Accounting** - Releases, Transactions, Journal entries, Accounting documents, Bank reconciliation, Accounting periods
 - **Planning & Reports** - Reports, Budget
 - **Business partners** - Customers, Vendors, Users
 - **Settings** - Organization and team configuration (gear icon)
@@ -65,9 +65,9 @@ Core accounting records and controls:
 - **Releases** - Post batches of transactions to GL
 - **Accounting documents** - View source documents
 - **Bank reconciliation** - Match bank transactions to GL entries
-- **Chart of accounts** - View and manage GL accounts
 - **Accounting periods** - Manage fiscal periods
-- **Tax codes** - Configure tax categorization
+
+The **Chart of accounts** and **Tax codes** pages are found under **Settings → Records**.
 
 ### Planning & Reports
 Financial analysis and planning:
@@ -76,12 +76,11 @@ Financial analysis and planning:
 
 ### Settings
 Configure your organization and preferences:
-- **Organization** - Company information, logo, and base currency
-- **Entities** - Add, edit, or manage legal entities
-- **Users** - Invite team members and manage access
-- **Roles** - Define custom roles and permissions
-- **Integrations** - Connect external tools and services
-- **Custom Properties** - Add custom fields for tracking
+- **General** - API keys, Integrations, Organization settings, Profile, Workflows, Jobs
+- **Records** - Bank accounts, Chart of accounts, Custom properties, Entities, Reimbursement category, Releases templates, Tax codes, Tax tables, Templates
+- **Guardrails** - Payables and Policies guardrails
+
+To invite team members and manage access, go to **Business partners → Users**.
 
 ## Searching and filtering
 
