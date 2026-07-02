@@ -41,7 +41,7 @@ Light covers the full accounting lifecycle:
 - Custom properties and tagging for financial analysis
 
 **Bank Reconciliation**
-- Automated bank feed connectivity via Plaid, GoCardless, Stripe, and Airwallex
+- Automated bank feed connectivity via Plaid, GoCardless, Stripe, and direct bank connections
 - AI-assisted transaction matching
 - Exception handling and variance investigation
 - Bank import and CSV upload support
