@@ -22,24 +22,26 @@ Light corporate cards can be added to Apple Pay (iPhone/Apple Watch) and Google 
 ### Step 1: Verify Card in Light App
 
 1. Open Light app
-2. Navigate to **Cards** > **My Cards**
-3. Select the physical card to add to Apple Pay
+2. Navigate to [**Cards**](https://app.light.inc/user-cards)
+3. Select the card to add to Apple Pay (both physical and virtual cards can be added)
 4. Ensure card is **activated**
 
 ### Step 2: Add Card to Apple Wallet
 
-**On iPhone/iPad:**
+**From the Light app (recommended):**
+Open the card's details drawer in the Light mobile app and tap **Add to wallet**. The card is provisioned directly to Apple Wallet without entering any card details.
+
+**Manually on iPhone/iPad:**
 1. Open **Wallet** app
 2. Tap **+** (add card)
 3. Choose **Credit or Debit Card**
-4. Tap **Light** or **[Card Issuer]** if prompted
-5. Follow on-screen prompts to add card:
-   - Last 4 digits
+4. Enter the card details (you can reveal the full card number, expiration date, and CVV in the Light app):
+   - Card number
    - Expiration date
    - CVV (verification code)
 
-6. Verify with Face ID or Touch ID
-7. Card is added to Wallet
+5. Verify with Face ID or Touch ID
+6. Card is added to Wallet
 
 **On Apple Watch:**
 1. Open **Watch** app on iPhone
@@ -67,8 +69,8 @@ Light corporate cards can be added to Apple Pay (iPhone/Apple Watch) and Google 
 ### Step 1: Verify Card in Light App
 
 1. Open Light app
-2. Navigate to **Cards** > **My Cards**
-3. Select physical card to add
+2. Navigate to [**Cards**](https://app.light.inc/user-cards)
+3. Select the card to add (both physical and virtual cards can be added)
 4. Ensure card is **activated**
 
 ### Step 2: Add to Google Pay
@@ -77,15 +79,14 @@ Light corporate cards can be added to Apple Pay (iPhone/Apple Watch) and Google 
 1. Open **Google Pay** app
 2. Tap **Add payment method** or **+**
 3. Choose **Credit or Debit Card**
-4. Select **Light** or card issuer if prompted
-5. Enter card details:
+4. Enter the card details (you can reveal the full card number, expiration date, and CVV in the Light app):
    - Card number
    - Expiration date
    - CVV (if prompted)
    - Cardholder name
 
-6. Verify with fingerprint or pattern
-7. Card is added
+5. Verify with fingerprint or pattern
+6. Card is added
 
 **Setting as Default (optional):**
 1. In Google Pay, find your card
@@ -152,6 +153,8 @@ If card is lost or suspected fraudulent:
 3. Card is disabled for payment immediately
 4. Can be re-enabled later
 
+You can also freeze the card in Light. A frozen card is declined everywhere, including Apple Pay and Google Pay, until it is unfrozen.
+
 ### Removing Card
 
 Permanently remove card from device:
@@ -190,10 +193,8 @@ All Apple Pay/Google Pay transactions:
 For Apple Pay transactions:
 
 1. Receipt may print at register or appear as email
-2. Or Light automatically captures from card processor
-3. Receipt is optional (Light has card transaction record)
-
-4. But optional receipt can be uploaded if needed for detailed information
+2. Light may prompt you to upload the receipt (for example, as a reply to the card transaction notification in Slack)
+3. Upload the receipt to the transaction in Light if your company's policy requires it
 
 ## Limits and Controls
 
@@ -201,9 +202,9 @@ For Apple Pay transactions:
 
 Apple Pay/Google Pay respect same spending limits as physical card:
 
-- **Transaction Limit**: Max per single transaction (e.g., $5,000)
-- **Daily Limit**: Max per day (e.g., $10,000)
-- **Monthly Limit**: Max per month (e.g., $50,000)
+- **Per-transaction limit**: Max per single transaction (e.g., $5,000)
+- **Weekly limit**: Max per week (e.g., $10,000)
+- **Monthly limit**: Max per month (e.g., $50,000)
 
 Transactions exceeding limits are declined.
 
@@ -232,22 +233,22 @@ Solutions:
 **Issue**: Payment declined at terminal despite having funds
 
 Causes:
-1. **Spending limit exceeded**: Transaction exceeds daily/monthly limit
+1. **Spending limit exceeded**: Transaction exceeds per-transaction, weekly, or monthly limit
 2. **Merchant blocked**: Policy blocks this merchant/category
 3. **Device issue**: NFC may not be working
-4. **Card deactivated**: Card may have been temporarily suspended
+4. **Card frozen**: Card may have been frozen in Light
 
 Solutions:
 1. Check spending limits in Light
 2. Verify merchant is allowed
 3. Ensure NFC is enabled (Android)
-4. Contact support if card appears suspended
+4. Contact support if card appears frozen
 
 ### Lost Phone
 
 If phone is lost:
 
-1. **Immediately**: Disable card in Light app (if you have access)
+1. **Immediately**: Freeze the card in Light (if you have access)
 2. **Or contact**: Light support to freeze card
 3. **Remove card**: Once you get a new phone, remove old card from any cloud backup
 4. **Request new physical card**: Get replacement card shipped
