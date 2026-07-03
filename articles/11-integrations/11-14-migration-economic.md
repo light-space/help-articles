@@ -22,11 +22,10 @@ The process typically takes 2-4 weeks depending on data volume and complexity.
 Light can import from E-Conomic:
 
 - **Chart of accounts**: GL accounts and structure
-- **Customers**: Contact information, payment terms
+- **Customers**: No file import — create customers individually in Light or via the API
 - **Suppliers**: Vendor information, payment terms
 - **Invoices**: Outstanding AR invoices (unmatched payments)
 - **Bills**: Outstanding AP bills (unpaid)
-- **Payments**: Customer payments and supplier payments (if needed for audit trail)
 - **Budgets**: Budget data (if applicable)
 
 What typically doesn't transfer:
@@ -34,6 +33,7 @@ What typically doesn't transfer:
 - **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a **Fixed Asset** release template on the lines. The fixed asset register lives at [**Accounting → Releases**](https://app.light.inc/releases) — filter by **Fixed asset** type to view only fixed assets. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions >1 year old (migrated via opening balances instead)
 - Closed invoices/bills (migrated via GL balances)
+- Payment history (reflected in opening balances and outstanding document balances instead)
 - Internal notes (not easily portable)
 
 ## Pre-migration steps
@@ -79,10 +79,7 @@ Create mapping between E-Conomic and Light account structure.
 
 **Customer mapping**:
 
-E-Conomic exports customer data in its format. Light needs:
-- Customer ID, Name, Contact, Email, Address, Terms
-
-Transform using Excel or Python script to match Light requirements.
+Light does not support importing customers from a file. Use your E-Conomic customer export as a reference to create customers individually at [Business partners → Customers](https://app.light.inc/customers) with **+ Create customer**, or create them programmatically via the API.
 
 **Invoice and bill migration**:
 
@@ -128,18 +125,23 @@ Transform E-Conomic data to Light format:
 
 Once transformed, import to Light:
 
-1. Follow Light's data import process (**Settings (gear icon) > Import Data**)
+1. Each import lives on the page for the records it creates — there is no single central import screen:
+   - **Chart of accounts**: [Settings (gear icon) → Chart of accounts](https://app.light.inc/accounting/ledger-accounts) (CSV or Excel)
+   - **Vendors**: [Business partners → Vendors](https://app.light.inc/vendors) (CSV upload with column mapping)
+   - **Journal entries**: [Accounting → Journal entries](https://app.light.inc/journal-entries) (bulk CSV, including opening balances)
+   - **Sales invoices, bills, credit notes, customer credits**: the corresponding page for each document type (separate CSV import per type)
+   - **Budgets**: [Planning & Reports → Budget](https://app.light.inc/budget)
 2. Import in this order:
    - Chart of accounts (so accounts exist for other data)
-   - Customers and vendors
+   - Vendors (customers are created individually or via the API)
    - Opening balances (GL accounts initialized)
    - Outstanding invoices (AR)
    - Outstanding bills (AP)
    - Budgets (if applicable)
 3. Validate each import before proceeding to next
-4. Use Light's import preview to verify data looks correct
+4. Light validates each file and reports errors so you can review and fix lines before completing
 
-Light guides you through each import type.
+See [Data import and migration tools](11-13-data-import.md) for detailed steps per import type.
 
 ## Validation after import
 
