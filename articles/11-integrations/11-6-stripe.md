@@ -1,6 +1,6 @@
 # Stripe Integration
 
-Stripe is the leading online payment processor for e-commerce and SaaS businesses. Light's Stripe integration automatically syncs payments, refunds, and subscription data directly to your ledger, creating a complete audit trail and eliminating manual payment entry.
+Stripe is the leading online payment processor for e-commerce and SaaS businesses. Light's Stripe integration syncs your Stripe invoices, payments, and credit notes into Light in real time, keeps customers and products aligned across both systems, and can also charge Light sales invoices through Stripe.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
@@ -8,13 +8,15 @@ Stripe is the leading online payment processor for e-commerce and SaaS businesse
 
 The Stripe integration enables:
 
-- **Payment sync**: Successful customer payments automatically post to cash receipts
-- **Refund sync**: Customer refunds automatically post as reversals
-- **Subscription tracking**: Recurring subscription payments tracked for revenue recognition
-- **Currency handling**: Multi-currency payments automatically converted
-- **Reconciliation**: Bank deposits matched to Stripe settlements
-
-This creates an automated payment-to-cash-receipt workflow.
+- **Invoice sync**: Finalized Stripe invoices are automatically created as sales invoices in Light and opened
+- **Payment sync**: When a Stripe invoice is paid, the payment is recorded on the matching Light sales invoice
+- **Credit note sync**: Stripe credit notes are created and posted as customer credits in Light
+- **Void handling**: Voiding an invoice or credit note in Stripe voids the matching record in Light
+- **Customer sync**: Customers are automatically created in Light from Stripe invoice data
+- **Product sync**: Stripe products are matched to Light products, or created automatically when missing
+- **Document sync**: The original Stripe invoice and credit note PDFs are attached to the Light records
+- **Bank feed**: Your Stripe balance can be connected as a bank feed for reconciliation
+- **Invoice charging**: Light sales invoices can be charged through Stripe using a saved payment method
 
 ## Setting up Stripe integration
 
@@ -28,216 +30,80 @@ To connect Stripe:
 6. Click **Authorize**
 7. Light confirms connection and enables sync
 
-Next, configure what data to sync.
+Once connected, syncing is automatic — Light receives events from Stripe via webhooks, so there is no sync schedule to configure and no manual sync to run.
 
-## Configuring payment sync
+## How invoice sync works
 
-Define how Stripe payments become Light cash receipts:
+The integration is event-driven. When something happens in Stripe, Light reacts immediately:
 
-1. Navigate to **Settings > Integrations > Stripe > Payment Mapping**
-2. Select **Sync Payments**: Toggle on
-3. Configure mapping:
-   - **Stripe Charge Amount** → **Light Receipt Amount**
-   - **Stripe Customer ID** → **Light Customer** (match Stripe customer to Light customer)
-   - **Stripe Invoice ID** → **Light AR Invoice** (link payment to invoice if exists)
-   - **Stripe Metadata** → **Light Custom Properties** (if using Stripe metadata)
-4. Configure filters:
-   - Payment status: Only sync successful payments (exclude pending)
-   - Currency: Only sync specific currencies (or all)
-   - Amount threshold: Only sync payments above minimum (e.g., > $1)
-5. Save configuration
+1. **Invoice finalized in Stripe**: Light checks whether the customer already exists (matched by Stripe customer ID). If not, Light creates the customer from the Stripe invoice's customer name, email, and billing country. Light then creates the sales invoice — including lines, quantities, amounts, taxes, and billing periods — and opens it.
+2. **Invoice paid in Stripe**: Light records a payment on the matching sales invoice for the amount paid.
+3. **Invoice voided in Stripe**: Light voids the matching sales invoice.
 
-Light validates the mapping.
-
-## Payment matching and reconciliation
-
-When a Stripe payment syncs:
-
-1. Light reads the payment amount and customer
-2. Light searches for a matching AR invoice (by customer and amount)
-3. If found, Light automatically applies payment to invoice
-4. If not found, Light creates a cash receipt without invoice linkage
-5. Payment appears as a line on bank reconciliation
-6. You can manually link to invoice if needed
-
-This enables both automatic and manual matching.
+Invoices are matched by the Stripe invoice ID, so payments and voids always land on the right record.
 
 > **Note**: When syncing Stripe invoices, Light preserves the original Stripe invoice number as the primary invoice number in Light. This keeps invoice numbers consistent across Stripe and Light for easier reconciliation and customer inquiries. (This applies to new imports; existing invoices retain their current numbers.)
 
-## Handling multiple invoices
+## Product matching
 
-If a Stripe payment covers multiple customer invoices:
+When a synced Stripe invoice references products:
 
-1. Light receives the payment
-2. Light attempts to match (may match first invoice only)
-3. Create a manual payment allocation:
-   - Split the Stripe payment across invoices
-   - Light allocates portions to each invoice
-   - All invoices marked paid when fully allocated
-
-> Tip: Use Stripe metadata to include invoice numbers with payments, enabling cleaner automatic matching.
-
-## Refund and chargeback handling
-
-When customers are refunded or chargebacks occur:
-
-1. Stripe records the refund
-2. Light syncs the refund
-3. Light creates a reversal of the original cash receipt
-4. AR aging automatically updates (invoice marked unpaid)
-5. You can then apply alternative payment or write off
-
-This maintains complete audit trail of all payment activity.
-
-> **Note**: When syncing Stripe credit notes with line-level discounts or taxes, Light preserves the line amount and discount structure exactly as Stripe provides them, ensuring customer credit totals match Stripe's final amounts. This keeps your records consistent with what customers see in Stripe.
-
-## Subscription and recurring payment tracking
-
-For SaaS with recurring Stripe subscriptions:
-
-1. Configure **Subscription Sync**: Toggle on
-2. Light tracks active subscriptions:
-   - Subscription ID
-   - Customer
-   - Monthly recurring value (MRR)
-   - Renewal date
-3. When subscription renews, Light automatically:
-   - Creates new AR invoice (if using invoice-based billing)
-   - Records payment as cash receipt
-   - Updates revenue recognition (if using deferred revenue)
-
-This automates subscription billing entirely.
+- If a Light product is already linked to the Stripe product, the invoice line uses it
+- A Stripe product can be linked explicitly by adding a `light_product_id` entry to the product's metadata in Stripe, pointing at the Light product's ID
+- If no linked product exists, Light creates the product automatically with Stripe as its external source
+- If the product exists in Light but is priced in a different currency, the invoice currency is added to the product's pricing
 
 > **Note**: When syncing Stripe invoices that include line-level discounts, Light captures the discount amount explicitly on each invoice line. The line amount represents the pre-discount subtotal, and the discount is shown separately, matching how Stripe represents discounted invoices.
 
-## Multi-currency payments
+## Credit note sync
 
-Stripe processes payments in multiple currencies. Light handles:
+When a credit note is created in Stripe:
 
-1. Stripe payment in foreign currency (e.g., EUR 100)
-2. Light records transaction in transaction currency (EUR 100)
-3. Light calculates local currency using Stripe's FX rate (EUR 100 = GBP 85 at 0.85 rate)
-4. Light records to cash account in local currency
+1. Light receives the event in real time
+2. Light creates a customer credit for the matching customer, referencing the Stripe credit note
+3. Light posts the customer credit
+4. The Stripe credit note PDF is attached to the customer credit
 
-This ensures accurate multi-currency reporting.
+Voiding the credit note in Stripe voids the customer credit in Light.
 
-## Sync frequency
+> **Note**: When syncing Stripe credit notes with line-level discounts or taxes, Light preserves the line amount and discount structure exactly as Stripe provides them, ensuring customer credit totals match Stripe's final amounts. This keeps your records consistent with what customers see in Stripe.
 
-Configure how often Light checks Stripe for new payments:
+## Charging invoices through Stripe
 
-1. Navigate to **Settings > Integrations > Stripe > Sync Settings**
-2. Select frequency:
-   - **Real-time**: Via webhook (immediate, as payment completes)
-   - **Hourly**: Check hourly
-   - **Daily**: Check once daily
-3. Save
+The integration also works in the other direction — Light can collect payment for sales invoices via Stripe:
 
-Real-time (webhook) is ideal for quick cash visibility. Daily is sufficient for most organizations.
+1. Set the invoice's (or contract's) payment type to **Stripe**
+2. The customer saves a payment method through a secure Stripe checkout link
+3. Light charges the saved payment method for the invoice's remaining balance
+4. The invoice moves to **Payment pending**
+5. When the Stripe payout is reconciled against your bank account, the invoice is marked paid
 
-## Monitoring Stripe sync
+Contracts with the Stripe payment type charge their generated invoices automatically.
 
-Track integration activity:
+## Stripe as a bank feed
 
-1. Navigate to **Settings > Integrations > Stripe > Sync History**
-2. View all past syncs:
-   - Date/time
-   - Number of payments synced
-   - Number of refunds synced
-   - Errors (if any)
-3. Click any sync to see details:
-   - Which payments were processed
-   - Which invoices were matched
-   - Which failed and why
+Your Stripe balance can act as a bank feed in Light, so Stripe activity flows into bank reconciliation like any other bank account:
 
-This helps identify issues.
+1. Connect the Stripe integration first — the bank feed requires it
+2. Add Stripe as a bank feed provider
+3. Light imports your Stripe balance and balance transactions
+4. Reconcile Stripe payouts and charges alongside your other bank accounts
 
-## Manual sync trigger
+## Disconnecting Stripe
 
-Sync immediately without waiting for scheduled time:
-
-1. Navigate to **Settings (gear icon) > Integrations > Stripe**
-2. Click **Sync Now**
-3. Light immediately checks Stripe and syncs new payments
-4. See summary of results
-
-Useful when you need to reconcile immediately.
-
-## Bank settlement sync
-
-Stripe typically deposits settlements to your bank account:
-
-1. Stripe accumulates charges throughout the day
-2. Stripe deposits net amount to your bank account (typically daily)
-3. Bank integration syncs deposit
-4. Stripe integration syncs individual charges
-5. Reconcile: Stripe charges aggregate to bank deposit
-
-This ensures ledger matches bank statement.
-
-## Handling Stripe fees
-
-Stripe charges processing fees. Configure how to record:
-
-**Option 1 - Record as expense**:
-- Each Stripe charge includes the fee
-- Light records net amount as cash receipt
-- Light records fee as operating expense (merchant fees account)
-
-**Option 2 - Gross recording**:
-- Light records gross revenue
-- Separately records Stripe fee as expense
-
-Configure in Stripe mapping settings which approach you prefer.
-
-## Testing Stripe sync
-
-Before relying on Stripe integration:
-
-1. Create a test payment in Stripe (test mode)
-2. Verify Light receives and syncs the payment
-3. Check that amount, customer, and accounts are correct
-4. Test refund processing
-5. Verify bank reconciliation matches
-
-Once confident, enable for production.
+You can disconnect the integration from **Settings (gear icon) > Integrations**, or by removing Light's access from your Stripe dashboard. Either way, Light marks the connection inactive and stops syncing. Records already synced remain in Light.
 
 ## Troubleshooting Stripe sync
 
-**Payments not syncing**: Check sync status, verify filter criteria, ensure payment status is "completed" (not pending or failed).
+**Invoices not syncing**: Verify the integration shows as connected. Only finalized Stripe invoices sync — draft invoices in Stripe are not imported.
 
-**Wrong customer assigned**: Verify customer mapping, check for duplicate customers in Light with similar names.
+**Wrong customer assigned**: Customers are matched by Stripe customer ID. Check whether the customer was previously imported under a different Stripe customer.
 
-**Refund not processing**: Verify refund syncing is enabled, check that original payment is marked in Light, test manual refund entry.
+**Product not linked**: Verify the `light_product_id` metadata on the Stripe product points to a valid Light product ID.
 
-**Connection failed**: Re-authorize Stripe integration, verify your Stripe account has API access enabled.
+**Connection failed**: Re-authorize the Stripe integration from **Settings (gear icon) > Integrations**.
 
-**Currency conversion errors**: Verify FX rate mapping, check Stripe settings for currency handling.
-
-## Subscription management
-
-For SaaS companies using Stripe subscriptions:
-
-1. Light automatically tracks subscription billing
-2. Upcoming renewal dates are visible in Light
-3. Failed renewals alert for collection follow-up
-4. Churn tracking updates automatically
-5. MRR and ARR calculations incorporate Stripe subscriptions
-
-This enables full visibility into subscription metrics.
-
-## Reporting on Stripe data
-
-Analyze Stripe payments in Light reporting:
-
-1. Create custom reports showing:
-   - Revenue by source (Stripe, other payment methods)
-   - Subscription revenue vs. one-time
-   - Refund rate and reasons
-   - Average payment processing time
-2. Export for analysis
-3. Benchmark against industry
-
-> Tip: Use Stripe reporting alongside Light reporting for complete financial visibility.
+**Charge failed**: Verify the customer has saved a payment method via the Stripe checkout link and that the invoice's payment type is set to Stripe.
 
 ## Related articles
 
