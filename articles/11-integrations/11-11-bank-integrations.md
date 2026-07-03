@@ -1,6 +1,6 @@
 # Bank Integrations Overview
 
-Bank integrations connect your financial institution accounts directly to Light, automatically syncing transactions for cash management and reconciliation. Rather than manually entering deposits and payments, bank feeds provide real-time visibility and streamlined reconciliation.
+Bank integrations connect your financial institution accounts directly to Light, automatically syncing transactions for cash management and reconciliation. Rather than manually entering deposits and payments, bank feeds provide up-to-date visibility and streamlined reconciliation.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
@@ -8,9 +8,9 @@ Bank integrations connect your financial institution accounts directly to Light,
 
 Bank integrations provide:
 
-- **Transaction feeds**: Automatic daily or real-time transaction downloads
+- **Transaction feeds**: Automatic daily or twice-daily transaction downloads
 - **Multi-currency accounts**: Support for accounts in different currencies
-- **Balance updates**: Real-time account balance visibility
+- **Balance updates**: Account balance visibility
 - **Reconciliation support**: Transaction matching and reconciliation
 - **Multi-bank support**: Connect accounts from multiple financial institutions
 - **Cash forecasting**: Use transaction data for cash planning
@@ -19,22 +19,21 @@ This automates cash posting and reconciliation.
 
 ## Supported banks
 
-Light supports connections with:
+Light connects to banks through four feed providers:
 
-- **Major banks**: Chase, Bank of America, Citibank, Wells Fargo (US)
-- **International banks**: HSBC, Barclays, Santander, ING, Deutsche Bank
-- **Online banks**: Revolut, Wise, N26
-- **Business platforms**: Stripe, Airwallex, Square, PayPal
-- **Via aggregators**: Plaid (covers 12,000+ institutions)
+- **GoCardless** (Europe and UK): Covers European and UK banks, including Revolut, Wise, Starling, and traditional banks
+- **Plaid** (US): Connects to thousands of institutions in the United States
+- **Stripe**: Imports Stripe balance transactions (requires the Stripe integration)
+- **AMC** (host-to-host): Direct bank connections for banks such as HSBC, J.P. Morgan Chase, Nordea, and SEB — setup typically takes 2-3 months and your bank may charge a fee
 
-If your bank isn't directly supported, use Plaid to connect.
+Not all banks support all providers. If your bank isn't available through a feed provider, you can upload transactions manually via CSV or contact Light about host-to-host integration support.
 
 ## Setting up a bank connection
 
 To connect a bank account:
 
-1. Navigate to **Settings (gear icon) > Bank Connections**
-2. Click **Connect Bank**
+1. Navigate to **Settings (gear icon) → Bank accounts**
+2. Add the bank account, then click **Authorize Feed**
 3. Search for your bank name
 4. Click your bank (you're redirected to the bank's secure login)
 5. Sign in to your online banking (Light never sees your password)
@@ -44,19 +43,16 @@ To connect a bank account:
 
 Light then begins receiving daily transaction feeds.
 
+> Note: Only users with the Company admin role can manage bank connections.
+
 ## Transaction feed frequency
 
-Configure how often Light receives updates:
+Bank feeds sync on a set schedule:
 
-1. Navigate to **Settings > Bank Connections > [Bank] > Sync Settings**
-2. Select frequency:
-   - **Real-time**: Updates throughout the day (if bank supports)
-   - **Daily**: Once daily (typical end-of-business)
-   - **Weekly**: Once weekly (sufficient for some users)
-3. Select time for scheduled syncs (if not real-time)
-4. Save
+- **Daily**: Once per day (the default for most banks)
+- **Twice a day**: Available for certain banks and account types
 
-Real-time is ideal for cash visibility; daily is sufficient for most reconciliation needs.
+You can also trigger a manual sync from the account details by clicking **Sync Now** without waiting for the scheduled sync. Daily syncing is sufficient for most reconciliation needs.
 
 ## Transaction matching and posting
 
@@ -77,7 +73,7 @@ Light uses amount, date, and description for matching.
 
 Reconcile GL accounts to bank statements:
 
-1. Navigate to **Ledger > Bank Reconciliation**
+1. Navigate to **Accounting → Bank reconciliation**
 2. Select bank account
 3. Light displays:
    - GL balance (from Light ledger)
@@ -163,18 +159,17 @@ When you transfer between your own accounts:
 
 1. You create GL entries showing withdrawal from one account and deposit to another
 2. Bank feeds show both transactions
-3. Light recognizes as transfer (eliminates in reporting, doesn't double-count)
-4. Reconciliation shows transfer matches between accounts
+3. During reconciliation, match each bank transaction to its corresponding GL entry
 
-Light prevents double-counting internal transfers.
+Matching both sides prevents double-counting internal transfers.
 
 ## Troubleshooting bank connections
 
-**Connection failed**: Re-authorize with your bank, verify online banking credentials, check if bank requires additional authentication.
+**Connection failed or expired**: Bank connections expire periodically and show an **Expired** status. Renew the connection from **Settings (gear icon) → Bank accounts** and re-authorize with your bank; verify online banking credentials and check if your bank requires additional authentication.
 
 **Transactions not syncing**: Check sync status in Light, verify bank account is configured for export, contact bank if feed not updating.
 
-**Duplicate transactions**: Verify bank feed isn't importing duplicates (some banks send corrected and original), check Light matching to prevent double-posting.
+**Duplicate transactions**: Light automatically marks duplicated feed transactions as **Excluded** so they don't affect reconciliation. If you still see duplicates (some banks send corrected and original versions), exclude them manually.
 
 **Missing transactions**: Check date range of feed, verify transaction hasn't been filtered out, contact bank if transaction should have appeared.
 
@@ -184,7 +179,7 @@ Light prevents double-counting internal transfers.
 
 Be aware of bank feed limitations:
 
-- Most banks provide 90-365 days of history (older data may not be available)
+- Transaction history depends on the provider: GoCardless connections to UK banks are limited to 90 days, and Plaid imports 90 days by default (up to 730 days for some institutions)
 - Some smaller transactions may be batched/grouped
 - Holiday processing may delay posting by 1-2 days
 - Wire transfers show in some banks, not others
@@ -214,17 +209,6 @@ For organizations with accounts at multiple banks:
 5. Consolidated cash visibility
 
 This consolidates multi-bank cash management.
-
-## Fraud and exception detection
-
-Light can flag unusual transactions:
-
-1. Unusually large transaction (configure threshold)
-2. Transaction outside normal hours (configure expected transaction times)
-3. Transactions to new counterparties
-4. Unusual frequency of similar transactions
-
-Configure exception alerts in bank connection settings.
 
 ## Related articles
 
