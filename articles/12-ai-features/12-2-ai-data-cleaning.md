@@ -1,58 +1,48 @@
 # AI-Powered Data Cleaning
 
-Light's AI engine continuously cleans, validates, and improves the quality of your financial data. This article explains how AI identifies errors and suggests corrections to keep your records accurate.
+Light helps keep your financial records accurate by screening uploaded documents, flagging duplicate bills, enriching vendor and bank data, and using AI to clean up data during imports. This article explains what each of these capabilities does and how you stay in control.
 
 [Open in Light →](https://app.light.inc/dashboard)
 
-## How AI Data Cleaning Works
+## Non-Bill Document Detection
 
-As data enters Light through various sources—manual entry, imports, bank feeds, or document uploads—the AI validation layer processes it to detect quality issues. The system uses pattern recognition and business rules to identify anomalies that might indicate errors.
+When you upload a document to your payables inbox, Light's AI checks whether it is actually a bill, invoice, or credit note that belongs in accounts payable. Documents that are clearly something else — such as marketing flyers, contracts without an amount due, screenshots, shipping labels, or unreadable files — are flagged, and a warning banner explains why the document does not look like a bill.
 
-### Error Detection
+The detection is deliberately conservative: a document is only flagged when the AI is highly confident it is not a bill, so real bills are not held up.
 
-Light's AI automatically detects common data quality issues:
+## Duplicate Bill Detection
 
-- **Duplicate entries**: The system recognizes when the same transaction or vendor appears multiple times with slight variations (e.g., "Acme Inc" vs "Acme Inc.")
-- **Format inconsistencies**: Catches mismatched currency formats, date inconsistencies, or malformed reference numbers
-- **Outlier amounts**: Flags transactions that deviate significantly from typical spending patterns
-- **Incomplete records**: Identifies missing required fields like vendor names, amounts, or account codes
-- **Invalid vendor data**: Detects vendor names that don't match known merchants or databases
+Light automatically flags duplicate bills so the same invoice is not processed twice:
 
-### Correction Suggestions
+- A bill is treated as a duplicate when another bill from the same vendor has the same invoice (document) number
+- Duplicates are moved to a **Duplicated** state instead of continuing through your approval workflow, with a reference to the bill they match
+- If the original bill is later cancelled or archived, the oldest duplicate automatically returns to **Draft** so a legitimate bill is never lost
 
-When AI detects a potential error, it presents you with suggested corrections. For example:
+Duplicate matching is deterministic — it is based on an exact vendor and document number match, not on AI guesses — so you get consistent, predictable results.
 
-- For duplicate vendor entries, Light suggests merging related records
-- For formatting issues, Light proposes the corrected format
-- For categorization mismatches, Light suggests the appropriate expense category
-- For missing data, Light may auto-populate based on similar historical records
+## Vendor and Bank Data Enrichment
 
-> Tip: You can review and approve AI suggestions before they're applied. This gives you control while still benefiting from automation.
+Light enriches records so they are complete and consistent without manual research:
 
-## Data Validation Rules
+- **Vendor enrichment**: When vendors are created (for example from parsed documents or card transactions), Light looks up brand data such as the vendor's website domain, logo, and address, combining external brand databases with AI
+- **Bank details enrichment**: Bank details extracted from documents are enriched and structured with AI assistance
 
-Light's AI operates within a set of business validation rules:
+## AI-Assisted Import Cleaning
 
-- Amounts must fall within reasonable ranges for transaction types
-- Currency codes must be valid and match the company's operational currencies
-- Dates must be logical (transaction dates cannot be in the future)
-- Vendor names must follow consistent formatting
-- Account codes must exist in your chart of accounts
+When you migrate data into Light through CSV imports, AI helps clean and structure it:
 
-If data violates these rules, AI flags it for review with a clear explanation of the issue.
+- **Chart of accounts import**: AI maps the columns in your file to Light's account fields and processes the rows into structured ledger accounts, including account types and categories. Rows the AI cannot map are handled by fallback logic instead of failing the whole import.
+- **Vendor import**: AI maps your file's columns — including custom properties — to Light's vendor fields.
 
-## Continuous Improvement
+AI-suggested column mappings are validated against your actual file and company configuration before they are used, and imported lines are created as drafts so you can review them before running the import.
 
-The AI learns from corrections you make. When you reject a suggestion or manually fix an error, Light uses that feedback to improve future validation. Over time, the system becomes more accurate at detecting issues specific to your company's data patterns and terminology.
+## Review and Control
 
-## Manual Override
+You maintain full control over your data:
 
-You maintain full control over your data. You can:
-
-- Accept all AI suggestions
-- Selectively approve or reject individual suggestions
-- Manually enter corrections without following AI suggestions
-- Disable specific types of validation if they don't apply to your workflows
+- AI-extracted and AI-mapped values are suggestions — you can review and edit them before records are posted
+- Import lines stay in draft until you run the import
+- Bills flagged as duplicates or non-bill documents remain visible so you can verify and resolve them yourself
 
 ## Related Articles
 
