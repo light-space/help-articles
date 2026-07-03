@@ -32,17 +32,15 @@ In most cases, the AI matches everything perfectly. You can always adjust detail
 
 ## Multiple Receipts
 
-If you made multiple purchases on the same day or have multiple itemized receipts for one transaction, you can attach multiple files to a single transaction.
+Each card transaction holds a single receipt file. If you have several pages or images for one purchase, combine them into a single PDF before uploading. To swap a receipt, remove the existing one from the transaction and attach the new file.
 
 ## What Happens If You Don't Attach a Receipt
 
-Your finance team will send you reminders if receipts are missing. Here's the timeline:
+Light notifies you as soon as a card transaction goes through and a receipt is missing. If your company has Slack or Microsoft Teams connected, you'll get a "We are missing a receipt from your card transaction" message — just upload the receipt directly in that thread and Light will attach it to the transaction.
 
-- **Within 7 days**: Light sends you a friendly reminder
-- **After 14 days**: Your finance team may reach out directly
-- **After 30 days**: The transaction may be flagged for follow-up
+If your company has the Gmail integration enabled, Light can also fetch the receipt from your inbox automatically.
 
-To keep things smooth and avoid delays, attach receipts within a few days of your purchase.
+To keep things smooth and avoid delays, attach receipts as soon as you can after your purchase.
 
 ## Tips for Receipt Photos
 
@@ -50,6 +48,7 @@ To keep things smooth and avoid delays, attach receipts within a few days of you
 - Capture the entire receipt including the total amount
 - Use good lighting so text is easy to read
 - PDF receipts (like from email) work great too
+- Supported file types: PDF, JPEG, PNG, HEIC, HEIF, and TIFF
 
 ## Related Articles
 
