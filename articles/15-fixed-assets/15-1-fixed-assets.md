@@ -6,7 +6,7 @@ Light treats fixed assets as a specialized form of accounting release.
 
 ## How fixed assets work in Light
 
-A fixed asset in Light is a posted document line (a journal entry, AP bill, or AR sales invoice line) that has a **Fixed Asset** release template applied to it. When the document posts:
+A fixed asset in Light is a posted document line (a journal entry or AP bill line) that has a **Fixed Asset** release template applied to it. When the document posts:
 
 1. Light capitalizes the line amount to the **additions account** defined on the template (the asset account on the balance sheet).
 2. Light schedules depreciation entries from the **contra account** (the depreciation/accumulated depreciation account on the template) to the expense account on the line, according to the template's method and duration.
@@ -20,11 +20,10 @@ The fixed asset register lives at [**Accounting → Releases**](https://app.ligh
 
 For each asset you can see:
 
-- Cost (original capitalized amount)
-- Accumulated depreciation to date
+- Initial value (the original capitalized amount)
 - Remaining book value
-- Depreciation method and remaining periods
-- Source document (the JE, bill, or invoice that created the asset)
+- Release progress and start/end dates
+- Source document (the JE or bill that created the asset)
 - Posted and pending release entries
 
 Open a row to view the full depreciation schedule and book value chart. This view is the audit-ready supporting subledger for the fixed asset accounts on the balance sheet.
@@ -33,13 +32,13 @@ Open a row to view the full depreciation schedule and book value chart. This vie
 
 Before entering assets, configure at least one Fixed Asset template. Templates are reusable — most organizations create one per asset class (e.g., "5-Year Furniture", "3-Year Laptops", "10-Year Buildings").
 
-1. Navigate to [**Accounting → Release templates**](https://app.light.inc/release-templates)
+1. Navigate to **Settings (gear icon) → Records → [Releases templates](https://app.light.inc/release-templates)**
 2. Click **+ New**
 3. Set **Type** to **Fixed asset**
 4. Fill in:
    - **Name** — descriptive (e.g., "5-Year Straight-Line — Furniture")
    - **Method** — **Straight line with partial adjustment** or **Reducing balance**
-   - **Additions account** — the balance sheet asset account where the cost is capitalized (required for Fixed asset templates)
+   - **Additions account** — the balance sheet asset account where the cost is capitalized
    - **Contra account** — the accumulated depreciation account (the contra-asset account that depreciation credits against)
    - **Default Duration (months)** — useful life in months (e.g., 60 for 5 years)
    - **Initial Amount Percentage** — for straight-line, the percentage applied in the first period
@@ -50,12 +49,11 @@ Before entering assets, configure at least one Fixed Asset template. Templates a
 
 ## Entering a fixed asset
 
-Fixed assets can be entered from any of three document types, depending on how the asset was acquired:
+Fixed assets can be entered from either of two document types, depending on how the asset was acquired:
 
 | Acquisition | Document type |
 |---|---|
 | Purchased from a vendor | AP bill |
-| Sold/transferred to a customer entity | AR sales invoice |
 | Capitalized internally, transferred, or migrated from a legacy system | Manual journal entry |
 
 In each case, the workflow is the same: enter the document line as you normally would, but apply a **Fixed Asset** release template on the line.
@@ -80,10 +78,6 @@ Use a journal entry when there is no vendor invoice — for example, migrating o
 2. On the asset line, set the GL Account to the depreciation expense account and apply a **Fixed Asset** release template with the appropriate start and end dates
 3. Balance the entry against the offsetting account (cash, suspense, intercompany, etc.)
 4. Post the entry
-
-### From an AR sales invoice
-
-Used for inter-entity transfers or sales where the asset is being recognized on the receiving entity. The line behavior mirrors the bill flow — apply the Fixed Asset template via the **Accrual template** field on the invoice line.
 
 ## Example: $12,000 office furniture purchase
 
@@ -125,7 +119,7 @@ This recreates the asset in Light's register at its current book value and resum
 
 Once a release has posted entries, you cannot delete it — Light's ledger is immutable. To handle changes:
 
-- **Adjustments to useful life or amount**: Edit the release; Light creates new release entries that net against future scheduled entries
+- **Adjustments to useful life or amount**: Modify the posted source document line (change the release template, dates, or amount); Light reverses the affected entries, re-posts the document, and regenerates the release schedule
 - **Disposals**: Post a manual journal entry that writes off remaining book value (Dr accumulated depreciation, Dr loss on disposal, Cr the additions account) and stop further depreciation by ending the release at the disposal date
 - **Impairments**: Post a manual journal entry recognizing the impairment loss against the additions account, then adjust the release schedule to depreciate the new lower book value over the remaining useful life
 
