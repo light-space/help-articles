@@ -28,21 +28,20 @@ Every report has a currency selector with two options:
 
 ## How Group Crcy translation works
 
-Translation from local to group currency happens server-side automatically using the exchange rates stored against each transaction. There are no translation rate settings to configure in the report UI — the translated amounts are calculated from the rates recorded at posting time.
+Light does not re-translate balances at report time. The group-currency amount of every line is calculated and stored when the document posts, using the exchange rates in effect at that time. There are no translation rate settings to configure in the report UI — Group Crcy reports simply sum the stored group-currency amounts.
 
 For consolidated reports, all per-entity columns, the Subtotal, and the Consolidated column are shown in the group currency.
 
 ## FX revaluations
 
-Unrealized FX gains and losses on open balances (e.g. a foreign currency receivable whose value has changed since it was recorded) are handled through the **FX Revaluation** module, which is separate from reporting.
+Unrealized FX gains and losses on open balances (e.g. a foreign currency receivable whose value has changed since it was recorded) are handled through the **FX revaluation** period-close task, which is separate from reporting.
 
-To create an FX revaluation:
+To run an FX revaluation:
 
-1. Navigate to **Accounting → Transactions**
-2. Open the FX revaluation section
-3. Set the **Valuation date** — Light uses the exchange rate on this date to revalue open balances
-4. Set the **Posting date** and optionally a description
-5. Light calculates the gain or loss per account line and generates the revaluation document
+1. Navigate to **Accounting → Accounting periods** ([open Accounting periods](https://app.light.inc/accounting/accounting-periods))
+2. Open the period you want to close and find the **FX revaluation** task
+3. Click **Run revaluations** and select the entities to revalue
+4. Click **Post revaluation** — Light revalues open balances at the period-end closing rate, calculates the gain or loss per line, and generates the revaluation document dated at period end
 
 FX revaluation entries post to the ledger as accounting documents and appear in reports once posted.
 
