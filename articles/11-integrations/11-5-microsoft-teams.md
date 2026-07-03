@@ -1,6 +1,6 @@
 # Microsoft Teams Integration
 
-Microsoft Teams is the enterprise messaging and collaboration platform used by many organizations. Light's Teams integration sends real-time financial notifications and enables approval workflows directly within Teams, just like the Slack integration.
+Microsoft Teams is the enterprise messaging and collaboration platform used by many organizations. Light's Teams integration lets employees submit receipts, approve invoices, and chat with the Light assistant directly in Teams, and delivers real-time notifications about financial events as personal messages from the Light bot.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
@@ -8,257 +8,71 @@ Microsoft Teams is the enterprise messaging and collaboration platform used by m
 
 The Teams integration enables:
 
-- **Financial alerts**: Notifications for overdue invoices, low cash, budget overages
-- **Approval workflows**: Request and approve transactions in Teams
-- **Daily summaries**: Automated daily financial summaries
-- **Custom notifications**: Configure which events trigger Teams messages
-- **Interactive cards**: Click actions in Teams (approve, view details)
-
-This integrates Light's financial alerts into your existing Teams communication.
+- **Receipt submission**: Send a receipt to the Light bot in a Teams chat and it's processed automatically
+- **Invoice approvals**: Approve or reject invoices directly in Teams with interactive adaptive cards
+- **AI assistant**: Ask the Light assistant questions in a chat with the bot
+- **Notifications**: Personal messages about expense uploads, rejected expense reports, paid reimbursements, invoice approval requests and reminders, and more
 
 ## Setting up Teams integration
 
 To connect Teams:
 
-1. Navigate to **Settings (gear icon) > Integrations > Microsoft Teams**
-2. Click **Connect**
-3. You're redirected to Microsoft to authorize
-4. Sign in with your Microsoft 365 account
-5. Select the Teams workspace and channel where notifications appear
-6. Review permissions Light is requesting
-7. Click **Authorize**
-8. Light confirms the connection and sends a test message
+1. Navigate to **Settings (gear icon) → Integrations**
+2. Find the **Microsoft Teams** integration and click to connect
+3. You're redirected to Microsoft to grant admin consent — this step must be completed by a Microsoft 365 administrator for your organization
+4. Review the permissions and accept
 
-Next, configure which notifications you want.
+Granting consent links your Microsoft tenant to your Light organization. Light matches Teams users to Light users by email address, so each person's Microsoft account email must match the email on their Light account.
 
-## Configuring Teams notifications
+## Submitting receipts in Teams
 
-Define which financial events trigger Teams messages:
+Employees can submit receipts by sending them to the Light bot in a chat:
 
-1. Navigate to **Settings > Integrations > Teams > Notifications**
-2. Toggle on notifications:
+1. Open a chat with the Light bot in Teams
+2. Attach the receipt file (or paste an image) and send it
+3. Light replies with "Processing your file(s)..." while it works
+4. If the receipt matches a card transaction, it's attached to that transaction automatically
+5. If no card transaction matches and you're set up for reimbursements, Light asks "Do you want to create a reimbursement from this item?" with **Reimbursement** and **Discard** buttons
+6. Once processed, Light sends a card with the extracted details — description, original amount, and reimbursement amount — and a **View expenses** button that opens your expenses in Light
 
-   **Invoice notifications**:
-   - Invoice created
-   - Invoice overdue (configurable threshold)
-   - Invoice paid
+## Asking the Light assistant
 
-   **Cash notifications**:
-   - Daily cash summary
-   - Low cash alert (with configurable threshold)
-   - Large transaction alert
+You can chat with the Light assistant from Teams: send the Light bot a question in a chat (for example, about your expenses or reimbursement status). The bot replies with "thinking ..." and then updates the message with its answer.
 
-   **Budget notifications**:
-   - Budget variance (when actual exceeds budget by configured %)
-   - Category overage
-   - Department spending limits
+## Invoice approvals in Teams
 
-   **AP notifications**:
-   - Supplier bills coming due
-   - Payments made
+When an invoice requires your approval, Light sends you a Teams message with the invoice details and interactive buttons:
 
-3. For each notification, set:
-   - Alert threshold (e.g., "alert if cash < $50,000")
-   - Frequency (daily, weekly, or on-demand)
-   - Recipient team/channel
-4. Save
+1. The approver receives an adaptive card with the invoice information
+2. Click **Approve** to approve the invoice, or **Reject** to reject it
+3. You can also click **Add a comment** to attach a note to the approval before deciding
+4. Light can share the invoice document with you in Teams — accept the file consent prompt to receive the PDF
+5. Light records the decision and the approval workflow proceeds
 
-## Daily financial summaries in Teams
+Light also sends approval reminders, and supports bulk invoice approvals and payment batch approvals in Teams.
 
-Automate daily financial updates:
+## Notifications
 
-1. Navigate to **Teams > Daily Summary**
-2. Select **Enable Daily Summary**
-3. Choose what to include:
-   - Cash position and movement
-   - Revenue (daily total)
-   - Expenses (daily total)
-   - Net income
-   - Top transactions
-   - Budget variance summary
-4. Set delivery time (e.g., 8am weekdays)
-5. Select destination channel
-6. Save
+Light sends notifications to users as personal messages from the Light bot, including:
 
-Your team receives a daily financial snapshot in Teams without manual work.
+- Receipt or expense upload completed or failed
+- Expense report rejected
+- Reimbursement paid
+- Invoice approval requests and reminders
+- Card transaction and task updates, and other workflow events
 
-## Overdue invoice notifications in Teams
-
-Track AR aging in Teams:
-
-1. Configure **Invoice Overdue** notification
-2. Set threshold: Alert at 30 days past due (or your preference)
-3. Teams message includes:
-   - Customer name
-   - Invoice number and amount
-   - Days past due
-   - Link to invoice in Light
-4. Team member clicks "View Invoice" to open Light
-5. Or click "Send Reminder" to trigger customer payment reminder
-
-This ensures AR doesn't fall through the cracks.
-
-## Low cash warnings
-
-Critical alerts for cash management:
-
-1. Configure **Low Cash Alert**
-2. Set threshold: Alert when cash drops below specified amount
-3. Teams message shows:
-   - Current cash balance
-   - Daily burn rate
-   - Runway (estimated days until cash runs out)
-   - Forecast based on committed AR/AP
-   - Suggested actions (reduce spending, accelerate collections)
-4. Enable escalation: Escalate to CFO after 24 hours if not addressed
-
-This prevents cash emergencies through real-time visibility.
-
-## Budget variance alerts in Teams
-
-Monitor departmental spending:
-
-1. Configure **Budget Variance** notification
-2. Set threshold: Alert when actual exceeds budget by 10% (configurable)
-3. Filter by department or account
-4. Teams message includes:
-   - Department/account name
-   - Budgeted vs. actual amount
-   - Variance percentage
-   - YTD spending trend
-   - Link to variance report
-5. Department manager can acknowledge in Teams
-
-This drives spending accountability through visible alerts.
-
-## Approval workflows in Teams
-
-Enable approval workflows within Teams:
-
-1. When a transaction requires approval, Teams notifies the approver
-2. Approval card appears in Teams with:
-   - Transaction summary (type, amount, description)
-   - "Approve" and "Deny" buttons
-3. Approver clicks button
-4. Light records approval with timestamp and user
-5. Transaction status updates (proceeds or returns to creator)
-
-This eliminates back-and-forth emails.
-
-## Interactive Teams cards
-
-Teams messages support rich formatting:
-
-**Approval card**:
-- Shows transaction details clearly
-- Approve/Deny buttons
-- Link to full details in Light
-- Comment field for feedback
-
-**Alert card**:
-- Shows metric (cash, overdue AR, budget variance)
-- Threshold and current value
-- Visual indicator (green/yellow/red)
-- Action link
-
-**Summary card**:
-- Daily financial snapshot
-- Multiple metrics at a glance
-- Drill-down links to Light
-
-## Customizing notification messages
-
-Control what appears in Teams:
-
-1. Navigate to **Teams > Message Templates**
-2. For each notification type, customize:
-   - Message title
-   - Content fields
-   - Color and formatting
-   - Action buttons
-   - Call-to-action
-3. Use template variables ({{customer_name}}, {{amount}}, {{days_overdue}})
-4. Preview how message will appear
-5. Save
-
-Keep messages clear and actionable.
-
-## Channel organization
-
-Structure Teams for financial notifications:
-
-1. Create dedicated channels:
-   - **#finance-alerts**: Critical alerts (low cash, major transactions)
-   - **#daily-summary**: Daily financial reports
-   - **#ap-approvals**: Payable invoice approvals
-   - **#ar-aging**: Overdue receivables tracking
-   - **#budget-variance**: Spending alerts
-2. Configure notifications to post to appropriate channels
-3. Users follow channels relevant to their role
-
-This prevents notification overwhelm and keeps channels focused.
-
-## Managing notification volume
-
-If you're receiving too many notifications:
-
-1. Increase alert thresholds (e.g., alert only when > $50,000 instead of > $10,000)
-2. Reduce frequency (weekly instead of daily)
-3. Use Daily Summary instead of individual alerts
-4. Disable less critical notification types
-5. Filter by department or entity
-
-Balance insight with signal-to-noise ratio.
-
-## Testing the integration
-
-Before relying on Teams notifications:
-
-1. Navigate to **Teams > Test Connection**
-2. Send a test message to verify connectivity
-3. Check that message appears in your Teams channel
-4. Click on message to verify links to Light work
-5. If using approval workflows, test approval process
-
-This ensures the integration is working before critical alerts depend on it.
+Notifications are delivered to each user individually based on their matched email address — there is no per-channel notification configuration. Users can turn notification categories on or off per channel in their notification preferences in Light.
 
 ## Troubleshooting Teams integration
 
-**Messages not appearing**: Verify Light is authorized in Teams, check that notification is enabled, verify the channel exists and Light has permission to post.
+**Messages or receipts not processed**: Make sure your Microsoft account email matches the email on your Light account — Light matches users by email. Also make sure you're sending receipts in a chat with the Light bot.
 
-**Wrong channel**: Verify channel name in notification settings, ensure Light app can access that channel.
+**Notifications not appearing**: Verify the Teams integration is connected under **Settings (gear icon) → Integrations** and that the notification category is enabled in your notification preferences.
 
-**Integration disconnected**: Re-authorize Teams integration through Settings, verify your Microsoft 365 account hasn't revoked Light permissions.
-
-**Approval not working**: Ensure approver has Light account, verify approval workflow is configured, test with manual approval trigger.
-
-**Too many notifications**: Adjust thresholds to reduce volume, consider consolidating into Daily Summary.
-
-## Monitoring Teams activity
-
-Track Teams integration usage:
-
-1. Navigate to **Settings > Integrations > Teams > Activity**
-2. View:
-   - Messages sent (count, content, timestamps)
-   - Failed messages (with error details)
-   - User interactions (approvals, denials)
-   - Effectiveness (are users acting on notifications?)
-
-Use this to optimize notification configuration.
-
-## Exporting Teams conversation history
-
-Archive important notifications:
-
-1. In Teams channel, use Teams' export feature to save channel history
-2. Includes all Light notifications
-3. Useful for audit trail and compliance
-
-Light also maintains server-side records of all notifications sent.
+**Integration disconnected**: Re-connect the Teams integration from **Settings (gear icon) → Integrations** — a Microsoft 365 administrator must grant consent again.
 
 ## Related articles
 
 - [Integrations overview](11-1-integrations-overview.md)
 - [Slack integration](11-4-slack.md)
-- [Real-time dashboards and KPIs](../10-reporting/10-12-dashboards-kpis.md)
+- [Submitting expenses via Teams](../08-expense-management/8-3-expenses-teams.md)
