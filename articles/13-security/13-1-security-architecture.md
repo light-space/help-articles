@@ -72,9 +72,9 @@ Light supports multiple authentication methods:
 
 Light implements role-based access control (RBAC):
 
-- **Global Roles**: Admin, Finance Manager, Accountant, Employee, etc.
-- **Data-Level Controls**: Fine-grained permissions on entities, departments, and currencies
-- **Function-Level Controls**: Permissions on specific operations like approving expenses or posting journal entries
+- **Roles**: Company admin, Controller, AP clerk, AR clerk, Invoice approver, AP preparation, Vendor management, Purchase requester, Cardholder, Reimbursement, Report viewer, and Auditor
+- **Entity-Level Controls**: Roles can be scoped to specific company entities, so users only access the entities they are assigned to
+- **Function-Level Controls**: Every operation is checked against resource-specific authorization policies (e.g., approving expenses or posting journal entries)
 
 Your administrators configure roles and permissions based on your company's structure and approval workflows.
 
@@ -152,7 +152,7 @@ See [Compliance Certifications](/articles/13-security/13-4-compliance-certificat
 
 Light ensures strict data isolation between companies:
 
-- Each company's data is **logically separated** using tenant identifiers in a shared database architecture, with application queries scoped by tenant ID to prevent cross-tenant access
+- Each company's data is **logically separated** using tenant identifiers in a shared database architecture, enforced by **database-level row-level security (RLS)**: every database connection is scoped to a single company, and the database itself rejects reads or writes of another company's rows
 - No company can access another company's data, even through administrative access
 - Database-level controls prevent cross-company data leakage
 
