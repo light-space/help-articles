@@ -75,14 +75,14 @@ Light is headquartered in Denmark. Its supervisory data protection authority is 
 
 ### Data Subject Access Requests (DSARs)
 
-Light supports customers in fulfilling data subject access requests by enabling them to access, export, and delete personal data stored in their tenant. Under the DPA, Light provides reasonable assistance to the customer. The customer remains the Data Controller and is responsible for responding directly to data subjects.
+Light supports customers in fulfilling data subject access requests. Admins can view and update user profile data in the app and export business records (invoices, journal entries, reports, and more) to CSV. Requests to export or delete a specific person's data are handled by Light on request. Under the DPA, Light provides reasonable assistance to the customer. The customer remains the Data Controller and is responsible for responding directly to data subjects.
 
 ### Key GDPR Capabilities
 
 Light provides:
 
-- **Data Export**: Users and admins can export all personal data
-- **Right to Deletion**: Users can request deletion of their data
+- **Data Export**: Admins can export business records to CSV from the app; personal data exports for DSARs are fulfilled by Light on request
+- **Right to Deletion**: Deletion of personal data can be requested through Light; admins can deactivate users directly in the app
 - **Data Processing Agreements (DPA)**: Standard DPA available for all customers
 - **Sub-processor Management**: All sub-processors are listed and compliant
 - **Breach Notification**: Light notifies you within 36 hours if a breach occurs
