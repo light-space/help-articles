@@ -25,8 +25,9 @@ Each task clearly shows what type of approval it is and key details right in the
 You don't have to check Light constantly. We'll let you know when you have new tasks:
 
 - **In-app** — See the badge counter on your Tasks icon
-- **Email** — Get a notification email when items are assigned to you
-- **Slack** — If your company uses Slack, you'll get a notification there too
+- **Slack** — If your company uses Slack, you'll get a notification there when a task is assigned to you
+- **Microsoft Teams** — If your company uses Teams, you'll get a notification there instead
+- **Push notifications** — Get browser or mobile push notifications if you've enabled them
 
 You can adjust your notification preferences in your personal settings if you'd like more or less frequent updates.
 
