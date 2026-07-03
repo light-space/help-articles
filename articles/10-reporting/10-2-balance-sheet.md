@@ -30,9 +30,9 @@ The balance sheet always balances: Total Assets = Total Liabilities + Total Equi
 Generate your balance sheet:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select reporting date (must be month-end or year-end for standard reporting)
+2. Select the as-of date (the balance sheet is a snapshot report showing balances as of that date)
 3. Select entities to include (single entity or consolidated)
-4. Select currency (transaction, local, or group)
+4. Select currency (**Entity Crcy** or **Group Crcy**)
 5. Click **Generate**
 
 Light displays the balance sheet formatted by asset, liability, and equity classifications.
@@ -81,15 +81,15 @@ Indicates the proportion of debt versus equity financing. High ratios indicate m
 
 Measures how efficiently you use assets to generate profit.
 
-Light can calculate these ratios automatically. Configure in custom reports.
+In custom table reports, you can add ratio lines using the **PERCENT** formula, which divides one set of report lines by another. See [Custom reports and filters](10-9-custom-reports.md).
 
 ## Multi-period balance sheet analysis
 
 Compare balance sheet to prior periods:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select periods to compare (current, prior year, budget)
-3. Light displays accounts side-by-side with changes and variances
+2. Use the **Comparison** filter to add a prior period (1, 3, 6, 9, or 12 months back) or a prior year (1, 2, or 3 years back)
+3. Light displays the periods side-by-side
 4. Click any account to drill into transactions
 
 This helps identify significant balance sheet movements requiring investigation.
@@ -110,29 +110,13 @@ Light automatically eliminates inter-company transactions in consolidated report
 Report your balance sheet in different currencies:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select **Currency**: Transaction, Local, or Group
+2. Select **Currency**: **Entity Crcy** (local) or **Group Crcy** (group)
 3. Light displays amounts in your selected currency
 
 For multinational companies with subsidiaries in different currencies:
-- Each subsidiary's balance sheet appears in its local currency
-- Consolidated balance sheet appears in group currency
-- Light applies period-end exchange rates for currency translation
-
-## Classified vs. unclassified balance sheets
-
-Light supports both formats:
-
-**Classified balance sheet** (standard format) organizes into current vs. non-current:
-- Provides insight into liquidity
-- Facilitates analysis of working capital
-- Required for most external reporting
-
-**Unclassified balance sheet** lists all accounts without classification:
-- Used in some jurisdictions
-- Shows raw account listing
-- Less analytically useful
-
-Select your preferred format in report settings.
+- Select **Entity Crcy** to view an entity's balance sheet in its own functional currency — this option is not available when the selected entities have different local currencies
+- Select **Group Crcy** to translate all entities to the group currency, as required for consolidation
+- Group-currency amounts are recorded on each ledger line when it is posted, so translated balances build up from transaction-date rates (adjusted by any FX revaluations you run)
 
 ## Fixed asset detail
 
@@ -154,7 +138,7 @@ If your company recognizes deferred taxes:
 3. Show the net deferred tax position on the balance sheet
 4. Maintain detailed schedules of timing differences
 
-Light can automatically calculate deferred taxes. Configure deferred tax accounts in your chart of accounts.
+Configure deferred tax accounts in your chart of accounts and post deferred tax adjustments as journal entries.
 
 ## Off-balance-sheet items
 
@@ -176,7 +160,7 @@ Comprehensive balance sheet reporting includes footnotes:
 4. Subsequent events: Items occurring after balance sheet date
 5. Commitments: Contractual obligations
 
-Light maintains a footnote library. Attach relevant footnotes to your balance sheet report.
+Prepare footnotes outside Light as part of your financial statement package, using exported report data to support the underlying schedules.
 
 ## Quarterly vs. annual balance sheets
 
@@ -197,11 +181,10 @@ Light maintains all historical balances, enabling easy generation at any frequen
 Export balance sheet for external distribution or analysis:
 
 1. Generate the balance sheet report
-2. Click **Export**
-3. Select format: PDF, Excel, or CSV
-4. Light generates formatted output ready for distribution
+2. Click the export button
+3. Light downloads a CSV file containing all rows and columns as displayed
 
-The balance sheet maintains your company branding and formatting in PDF format.
+You can open the CSV in Excel or Google Sheets for further formatting and distribution. Drilldown transaction lines can also be exported as CSV.
 
 ## Related articles
 
