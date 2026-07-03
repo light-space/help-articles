@@ -1,6 +1,6 @@
 # Light Command Interface (LCI)
 
-Light's Command Interface (LCI) is an AI assistant built into the platform that lets you interact with your financial data through natural language. Powered by the Model Context Protocol (MCP), LCI can search bills and vendors, approve invoices, generate financial reports using text-to-SQL, answer policy questions, request vendor cards, submit expenses for reimbursement, and navigate the platform — from the web app, mobile app, Slack, or Microsoft Teams.
+Light's Command Interface (LCI) is an AI assistant built into the platform that lets you interact with your financial data through natural language. Powered by the Model Context Protocol (MCP), LCI can search bills and vendors, approve invoices, generate financial reports using text-to-SQL, answer policy questions, freeze or unfreeze cards, submit expenses for reimbursement, and navigate the platform — from the web app, mobile app, Slack, or Microsoft Teams.
 
 [Open in Light →](https://app.light.inc/dashboard)
 
@@ -18,13 +18,13 @@ When you send a command to LCI, the system runs an iterative loop:
 2. The AI model decides which tools to call and with what parameters.
 3. LCI executes the tools against Light's data and collects the results.
 4. The model reviews the results and may call additional tools if needed.
-5. After up to five rounds of tool calls, LCI returns a text response along with any structured data (entity lists, reports, navigation links).
+5. After up to ten rounds of tool calls (the final round always produces a text answer), LCI returns a text response along with any structured data (entity lists, reports, navigation links).
 
-LCI maintains conversation threads so follow-up questions work naturally. Threads are reused for one hour, then a new thread is created.
+LCI maintains conversation threads so follow-up questions work naturally. In Slack direct messages, the most recent thread is reused for one hour, then a new thread is created.
 
 ## Available Tools
 
-LCI includes 33 tools organized into categories. The tools available to you depend on your role.
+LCI includes more than 80 tools organized into categories. The tools available to you depend on your role and on the channel you're using (for example, chart tools are only offered where charts can be rendered). The list below highlights commonly used tools — LCI also includes tools for sales invoices, customer credits, contracts, journal entries, card transactions, expenses, documents and templates, workflows, skills, and messaging.
 
 ### Search Tools
 
@@ -45,11 +45,10 @@ Search across Light's financial data using natural language filters.
 Review and act on bills directly through LCI. These tools require specific roles.
 
 - **Get bill details** — Retrieve full bill details including line items. Available to admins, AP preparation, and invoice approvers.
-- **Approve bill** — Approve a bill that's pending your approval. Requires the **Invoice Approver** role.
-- **Reject bill** — Reject a bill with a note explaining why. Requires the **Invoice Approver** role.
+- **Approve task** — Approve or reject a task that's pending your approval, with an optional note (for example, the reason for a rejection). Covers bill approvals, purchase request approvals, credit note approvals, vendor approvals, and card approvals. Only the task's assignee can complete it.
 - **Submit bill for approval** — Submit a draft bill into the approval workflow. Requires the **AP Clerk** role.
-- **Update bill line** — Update a single line item on a bill, including custom properties and grouped values. Available to admins, AP clerks, and AP preparation.
-- **Get approval queue** — See your pending approval tasks (bill approvals, purchase requests) filtered by status (pending, approved, queued, rejected). Available to all roles.
+- **Update bill** — Update a bill or reimbursement: change header fields, update line items, or delete line items. Available to admins, AP clerks, and AP preparation.
+- **Search user tasks** — See the tasks assigned to you, covering every approval type in your task queue: bill approvals, vendor approvals, card approvals, card transactions, credit note approvals, and purchase requests. Available to all roles.
 - **Get user details** — Retrieve full details of a specific user including name, email, roles, company entity, and notification channel. Available to admins, AP preparation, and invoice approvers.
 
 ### Customer Management Tools
@@ -64,25 +63,25 @@ Create and update customers directly through LCI. Requires the **Company Admin**
 Generate financial reports and query company policies.
 
 - **Create report** — Describe the report you want in natural language (e.g., "Show me total spending by vendor for Q4 2025"). LCI generates a SQL query, executes it, and returns the results as a table. If the first query has errors, LCI retries up to three times with error feedback.
-- **Edit report** — Refine an existing report by describing what to change (e.g., "Add a column for percentage of total" or "Filter to only vendors over $10,000").
+- **Edit report** — Refine an existing report by describing what to change (e.g., "Add a column for percentage of total" or "Filter to only vendors over $10,000"). Available in channels that can render charts (the web app).
 - **Query policy** — Ask questions about your company's policies (e.g., "What's our travel expense policy?" or "What are the approval thresholds?"). LCI searches all uploaded company policies and returns an answer with a link to the source policy section.
-- **Get database schema** — Retrieve schema information for context when building reports.
 
 ### Navigation and Help Tools
 
-- **Navigate to entity** — Get a direct link to a specific entity in Light's UI (bill, vendor, report, etc.). LCI supports 32 entity types including bills, invoices, vendors, customers, accounts, transactions, purchase orders, reimbursements, and more.
+- **Navigate to entity** — Get a direct link to a specific entity in Light's UI (bill, vendor, report, etc.). LCI supports more than 40 entity types including bills, invoices, vendors, customers, accounts, transactions, purchase orders, reimbursements, and more.
 - **Get help articles** — List available help center articles.
 - **Read help article** — Read the full content of a specific help article.
 
 ### Expense and Card Tools
 
 - **Submit expenses** — Submit all of a user's current draft expenses for reimbursement in a single command. LCI validates the user's address and reimbursement configuration before submitting. Requires the **Reimbursement** role.
-- **Create vendor card request** — Request a new vendor card (card intent) for approval. The user specifies the vendor, spending limit, limit interval, and a business justification. LCI automatically resolves the user's phone number and card balance account. Available to admins and users with the **Cardholder** role.
+- **Manage cards** — Search your cards, get card details, and freeze or unfreeze a card.
+- **Card transactions** — Search card transactions, get transaction details, and attach receipts to card transactions.
 
 ### Business Process Tools
 
 - **Create journal entry** — Create a new journal entry with debit and credit lines. Requires the **Company Admin** or **Controller** role.
-- **Create purchase order** — Create a draft purchase order with line items including descriptions, cost centers, accounts, tax codes, quantities, and unit prices. Available to admins, AP preparation, and users with the **Purchase Requester** role.
+- **Create purchase request** — Create a purchase request (PR) with a description, amount, and vendor. The request is submitted for review and goes through an approval workflow. Available to users with purchase request permissions, such as the **Purchase Requester** role.
 
 ### Assistant Memory Tools
 
@@ -109,7 +108,7 @@ LCI maintains a conversation thread so you can ask follow-up questions. For exam
 >
 > **LCI:** I've approved bill INV-2025-0142 from Acme Corp for $4,200.
 
-Threads are reused for one hour. After that, a new thread starts automatically.
+Each conversation is stored as a thread with an automatically generated title. You can keep asking follow-up questions in the same thread, or start a new conversation at any time.
 
 ### Response Types
 
@@ -118,6 +117,7 @@ LCI responses can include:
 - **Text** — A natural language answer to your question
 - **Entity lists** — Clickable lists of bills, vendors, customers, or other entities that link to their detail pages
 - **Reports** — Tables with columns and rows generated from your data via SQL
+- **Charts** — Chart visualizations (e.g., bar, line, pie) of your data
 - **Policy answers** — Answers to policy questions with a link to the source policy section
 - **Navigation** — Direct links to specific pages in the Light app
 
@@ -167,6 +167,8 @@ Message @Light in Slack — either in a direct message or by mentioning @Light i
 
 When you send a message, Light shows progress updates ("thinking ...", "gathering data ...", "typing ...") and then replaces them with the final answer.
 
+In direct messages, LCI reuses your most recent conversation thread for one hour, then starts a new one. When you mention @Light in a channel, LCI uses that Slack thread's messages as context instead — every participant sees the same conversation.
+
 ### Setup
 
 1. Navigate to **Settings (gear icon) → Integrations → Slack**
@@ -176,7 +178,7 @@ When you send a message, Light shows progress updates ("thinking ...", "gatherin
 
 ### What You Can Do
 
-Everything the LCI orchestrator supports works in Slack: searching bills, approving invoices, generating reports, querying policies, and more. The same role-based permissions apply — you can only access data your role permits.
+Most of what the LCI orchestrator supports works in Slack: searching bills, approving invoices, generating reports, querying policies, and more. Channel-dependent capabilities — chart visualizations and in-app navigation responses — are only available in the web and mobile apps. The same role-based permissions apply — you can only access data your role permits.
 
 ### Invoice Approval Threads
 
@@ -243,25 +245,25 @@ When a user first opens the @Light app home in Slack, Light checks whether they 
 
 ## Using LCI on Mobile
 
-LCI is accessible from the Light mobile app. The mobile interface provides the same command capabilities but with a simplified response format optimized for smaller screens (text blocks only, no complex tables). Mobile users also receive push notifications for expense processing results and reimbursement status updates.
+LCI is accessible from the Light mobile app. The mobile interface provides the same command capabilities, including in-app navigation, but without chart visualizations (charts are available in the web app). Mobile users also receive push notifications for expense processing results and reimbursement status updates.
 
 ## Roles and Permissions
 
 LCI filters available tools based on your role. Here's what each role can do:
 
-**Company Admin / Controller** — Full access to all 33 tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase orders, request vendor cards, create and update customers, manage assistant instructions, and view user details.
+**Company Admin / Controller** — Full access to all tools. Can search across all data, approve or reject bills, generate reports, query policies, create journal entries and purchase requests, manage cards, create and update customers, manage assistant instructions, and view user details.
 
 **Invoice Approver** — Can approve and reject bills, view approval queue, get bill and user details, search bills, and use general query and navigation tools.
 
-**AP Clerk** — Can submit bills for approval, update bill lines, manage assistant instructions, create and update customers, and use general tools.
+**AP Clerk** — Can submit bills for approval, update bills, manage assistant instructions, create and update customers, and use general tools.
 
-**AP Preparation** — Can update bill lines, get bill and user details, create purchase orders, manage assistant instructions, and use general tools.
+**AP Preparation** — Can update bills, get bill and user details, create purchase requests, manage assistant instructions, and use general tools.
 
-**Cardholder** — Can request vendor cards with spending limits, view the approval queue, search across financial data, and use navigation and help tools. Receives missing receipt notifications for card transactions.
+**Cardholder** — Can view and manage their cards (including freezing and unfreezing), attach receipts to card transactions, view the approval queue, search across financial data, and use navigation and help tools. Receives missing receipt notifications for card transactions.
 
 **Reimbursement** — Can submit draft expenses for reimbursement, search across financial data, and use navigation and help tools. Receives notifications for receipt processing and reimbursement status updates.
 
-**Purchase Requester** — Can create purchase orders, search purchase orders and requests, and use general tools.
+**Purchase Requester** — Can create purchase requests, search purchase orders and requests, and use general tools.
 
 **Vendor Management** — Can manage assistant instructions and use general search and navigation tools.
 
@@ -300,7 +302,7 @@ Some tasks are better handled in Light's full web interface:
 - Multi-step workflows that require interactive forms (creating complex bills with many line items)
 - Bulk operations (batch approvals are not yet supported via LCI)
 - Configuration changes to accounting settings, chart of accounts, or approval workflows
-- Tasks that exceed five tool-call rounds in a single request
+- Tasks that exceed ten tool-call rounds in a single request
 
 For these, LCI can navigate you to the right page in Light with a direct link.
 
