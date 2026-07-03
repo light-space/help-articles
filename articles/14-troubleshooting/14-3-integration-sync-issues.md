@@ -2,7 +2,7 @@
 
 This article covers troubleshooting for third-party integrations with CRM systems, Slack, payment processors, and other connected services.
 
-[Open in Light →](https://app.light.inc/dashboard)
+[Open in Light →](https://app.light.inc/settings/integrations)
 
 ## Integration Overview
 
@@ -16,7 +16,7 @@ Light connects with many external systems to automate your workflows. This artic
 2. Review the list of connected apps
 3. A **green checkmark** or "Connected" status means it's working
 4. A **red icon** or "Error" status indicates a problem
-5. Click the integration to view detailed status and logs
+5. Click the integration to view detailed status
 
 ### Common Integration States
 
@@ -36,27 +36,31 @@ Light connects with many external systems to automate your workflows. This artic
 
 ### Solutions
 
-1. **Verify Bot Is in Channel**:
+1. **Verify Your Email Matches**:
+   - Light identifies you by matching your Slack account's email address to your Light user email
+   - If the email on your Slack profile differs from the email you use to sign in to Light, the bot cannot resolve your user and won't respond
+   - Update one of the emails so they match, or ask your admin to check
+2. **Verify Bot Is in Channel**:
    - Open the Slack channel where you're trying to use Light
    - Click channel name at top
    - Look for Light in the members list
    - If missing, click **Add Members** and add Light
-2. **Use Correct Mention**:
+3. **Use Correct Mention**:
    - Type exactly: **@Light** (capital L)
    - Incorrect capitalization or spacing won't work
    - Use single space between @ and Light
-3. **Check Bot Permissions**:
+4. **Check Bot Permissions**:
    - Go to your Slack workspace settings
    - Click on Light's app
    - Verify it has permission to read and respond in channels
    - Enable missing permissions
-4. **Reinstall Slack Integration**:
+5. **Reinstall Slack Integration**:
    - Go to Light > **Settings** > **Integrations** > **Slack**
    - Click **Disconnect**
    - Click **Connect to Slack** again
    - Authorize Light to access your Slack workspace
    - The bot should now respond
-5. **Check Slack Workspace**:
+6. **Check Slack Workspace**:
    - Verify Light is installed in the right Slack workspace
    - Go to **App Directory** in Slack
    - Search for Light
@@ -78,15 +82,15 @@ Light connects with many external systems to automate your workflows. This artic
    - Go to **Settings** > **Integrations** > **[CRM Name]**
    - Check if sync is toggled **On**
    - If off, click to enable
-2. **Check Sync Frequency**:
-   - Syncs may be scheduled for specific times
-   - Review sync settings to see when sync runs
-   - If last sync was many days ago, manual sync needed
+2. **Know the Sync Schedule**:
+   - Sync schedules are managed by Light and are not configurable per company
+   - Salesforce syncs run automatically roughly every 20 minutes
+   - HubSpot imports run once per hour, and exports to HubSpot run once per hour on a separate schedule
+   - If data is older than that, trigger a manual sync or check the connection
 3. **Manually Trigger Sync**:
-   - Click the CRM integration
-   - Look for **Sync Now** or **Force Sync** button
-   - Click it to immediately sync latest data
-   - Wait a few minutes for sync to complete
+   - For Salesforce, open the integration and trigger a manual sync to immediately import the latest data
+   - For HubSpot, manual syncs can only be run by Light — contact support if you need one
+   - Wait a few minutes for the sync to complete
 4. **Verify API Connection**:
    - Click the integration to view connection status
    - If showing error, credentials may have expired
@@ -97,10 +101,10 @@ Light connects with many external systems to automate your workflows. This artic
    - Go to your CRM account settings
    - Verify Light's connected app has necessary permissions
    - Grant any missing permissions
-6. **Review Sync Logs**:
-   - Click the integration to view error logs
-   - Logs show specific reasons for sync failures
-   - Common issues include permission errors or API limits
+6. **Review Workflow Runs**:
+   - CRM records are processed through workflows (for example, Salesforce deals are turned into contracts by a workflow)
+   - Go to **Settings** > **Workflows** and open the relevant workflow to review its runs
+   - Failed runs show the specific reason a record didn't sync, such as permission errors or API limits
 
 ## Issue 3: Payment Processor Webhook Not Firing
 
@@ -108,39 +112,24 @@ Light connects with many external systems to automate your workflows. This artic
 
 - Payments show in processor but not in Light
 - Light doesn't get notified of new transactions
-- "Webhook error" appears in integration logs
 
 ### Solutions
 
-1. **Verify Webhook Is Enabled**:
+1. **Check Connection Status**:
    - Go to **Settings** > **Integrations** > **[Payment Processor]**
-   - Check webhook configuration
-   - Ensure webhook URL is correct
-   - Webhook should be marked as active
-2. **Test Webhook Connection**:
-   - Most processors have a "Test Webhook" option
-   - Click the test button to verify connection
-   - If test fails, check URL and try again
-3. **Check Light's Webhook URL**:
-   - Copy the webhook URL shown in Light
-   - Go to your payment processor settings
-   - Verify the URL in processor matches Light's URL exactly
-   - URLs are case-sensitive
-4. **Verify Webhook Events**:
-   - In processor settings, verify which events trigger webhook
-   - Ensure payment events are enabled
-   - Some processors require specific event selection
-5. **Reconnect Integration**:
-   - If webhooks keep failing, disconnect and reconnect
+   - Verify the connection shows as active
+   - Webhooks are configured automatically by Light when you connect — there is no webhook URL to set up or maintain yourself
+2. **Verify the Event Exists in the Processor**:
+   - Check the processor's own dashboard to confirm the payment or event actually occurred
+   - Light receives events as they happen after the integration is connected; records created before connecting may not appear automatically
+3. **Reconnect Integration**:
+   - If events stop arriving, disconnect and reconnect
    - Go to **Settings** > **Integrations**
    - Click **Disconnect** on the processor
-   - Click **Connect** to set up fresh
-   - Verify webhook is automatically configured
-6. **Check Firewall**:
-   - Your company's firewall may block processor webhooks
-   - Ask IT to whitelist the payment processor's IP addresses
-   - Some processors publish their IP ranges
-   - Allow inbound webhooks from processor domain
+   - Click **Connect** to set up fresh and re-authorize Light
+4. **Contact Support**:
+   - If events are confirmed in the processor but still missing in Light, contact support
+   - Include the transaction ID and approximate time so the delivery can be traced
 
 ## Issue 4: Currency or Amount Conversion Issues
 
@@ -152,11 +141,9 @@ Light connects with many external systems to automate your workflows. This artic
 
 ### Solutions
 
-1. **Check Account Currency Settings**:
-   - Verify the account/integration currency is correct
-   - Go to **Settings** > **Integration** > **Currency**
-   - Select the correct currency
-   - Save changes and resync
+1. **Check Entity Currency Settings**:
+   - Verify your entity's base currency is correct under **Settings** > **Entities**
+   - Amounts from integrations are recorded in their original currency and converted to your base currency
 2. **Verify Exchange Rate Source**:
    - Light uses market exchange rates
    - Historical transactions use rates from transaction date
@@ -190,26 +177,11 @@ Light connects with many external systems to automate your workflows. This artic
    - Same transaction usually has similar timestamps
    - Check if amounts, dates, and descriptions match
 2. **Delete Obvious Duplicates**:
-   - Look at sync logs to identify duplicate
    - Keep the more complete/accurate record
    - Delete the duplicate
-   - This prevents future duplication
-3. **Check Sync Deduplication**:
-   - Some integrations deduplicate automatically
-   - Go to **Settings** > **Integration** > **Sync Options**
-   - Verify deduplication is enabled
-   - Resync to apply deduplication
-4. **Review Sync Mapping**:
-   - Integration may be mapping fields incorrectly
-   - Click integration to check field mapping
-   - Ensure key fields (ID, date, amount) map correctly
-   - Fix mapping if needed and resync
-5. **Reset and Sync**:
-   - If duplication is widespread
-   - Go to **Settings** > **Integration**
-   - Click **Clear History** or **Reset**
-   - Reconnect and perform fresh sync
-   - This clears duplicates from history
+3. **Contact Support**:
+   - Light's integrations match records against their ID in the source system, so duplicates should not normally occur
+   - If duplication is widespread or keeps recurring after cleanup, contact support with example records
 
 ## Issue 6: Data Not Appearing in Light
 
@@ -222,24 +194,22 @@ Light connects with many external systems to automate your workflows. This artic
 ### Solutions
 
 1. **Check Sync Direction**:
-   - Some integrations are one-way only
-   - Go to **Settings** > **Integration**
-   - Verify sync direction includes the data you need
+   - Some integrations sync one way only, or have separate import and export directions (for example, HubSpot)
+   - Verify the direction you need is enabled on the integration
    - If one-way, you may need to import manually
 2. **Verify Permissions**:
    - Light may not have permission to access the data
    - Go to your connected system
    - Check Light's app permissions
    - Enable "read" permission for the data type
-3. **Check Data Filters**:
-   - Integration may be filtering what syncs
-   - Go to **Settings** > **Integration** > **Filters**
-   - Adjust date range or record type filters
-   - Verify you're not filtering out the data
+3. **Review Workflow Runs**:
+   - Imported records are processed through workflows before they appear in Light
+   - Go to **Settings** > **Workflows** and check the runs for the relevant workflow
+   - A failed or skipped run explains why a record didn't appear
 4. **Manual Trigger**:
-   - Click integration and select **Sync Now**
+   - For Salesforce, trigger a manual sync from the integration
    - Wait several minutes for sync to complete
-   - If still missing, check integration logs for errors
+   - If still missing, check the workflow runs for errors
 5. **Check If Data Meets Criteria**:
    - Some integrations only sync certain records
    - Example: Only syncing paid invoices, not open ones
@@ -256,29 +226,18 @@ Light connects with many external systems to automate your workflows. This artic
 
 ### Solutions
 
-1. **Check Sync Load**:
-   - Large syncs can temporarily slow Light
-   - Go to **Settings** > **Integration** > **Sync Schedule**
-   - If syncing frequently, try less frequent syncs
-   - Off-peak hours: run syncs outside business hours
-2. **Reduce Sync Scope**:
-   - Syncing lots of historical data is heavy
-   - Go to **Settings** > **Integration** > **Filters**
-   - Filter to recent data only
-   - Exclude unnecessary record types
-3. **Split into Multiple Integrations**:
-   - If syncing from one source creates bottleneck
-   - Create separate connections for different data types
-   - Spread syncs across different times
-4. **Check Browser Performance**:
+1. **Allow Initial Syncs to Finish**:
+   - Syncs run in the background on Light's servers on fixed schedules
+   - A large initial import can take a while to process; data appears progressively
+   - Sync schedules and scope are managed by Light and are not configurable per company
+2. **Check Browser Performance**:
    - Clear browser cache
    - Close unnecessary tabs
    - Restart browser
    - Use modern browser (Chrome, Edge)
-5. **Contact Support**:
+3. **Contact Support**:
    - If performance issues persist
    - Provide details on what's slow
-   - Support can optimize integration settings
 
 ## Issue 8: Credentials Expired
 
