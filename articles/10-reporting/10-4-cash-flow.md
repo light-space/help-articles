@@ -33,7 +33,7 @@ This shows capital expenditure and investment strategy.
 
 This shows how you fund your business.
 
-The statement begins with cash at period start, adds/subtracts changes from three activity categories, and ends with cash at period end. The ending cash matches the cash balance on your balance sheet.
+The statement starts from net income, shows the cash movements from the three activity categories, and ends with the total cash movement for the period, which matches the change in cash on your balance sheet.
 
 > Good to know: A profitable company can have negative cash flow if it collects receivables slowly or invests heavily in assets.
 
@@ -44,7 +44,7 @@ Generate your cash flow statement:
 1. Navigate to **Planning & Reports → Reports**
 2. Select period (month, quarter, or year)
 3. Select entities to include (single entity or consolidated)
-4. Select currency (transaction, local, or group)
+4. Select the currency view: **Entity Crcy** (local currency) or **Group Crcy** (group currency)
 5. Click **Generate**
 
 Light displays the cash flow statement organized by operating, investing, and financing activities.
@@ -53,27 +53,14 @@ Light displays the cash flow statement organized by operating, investing, and fi
 
 Operating cash flow shows cash generated from your core business:
 
-**Reconciliation method** (most common):
+Light uses the **indirect method**: the statement starts with net income from the P&L and adjusts for changes in working capital:
 
-Start with net income from P&L. Net income is accrual-based, so adjust for non-cash items:
-
-- Add back depreciation (non-cash expense)
-- Add back amortization (non-cash expense)
-- Add back loss on asset disposal
-- Subtract gain on asset disposal
-- Adjust for changes in working capital:
-  - Increase in receivables = cash outflow (more time to collect)
-  - Decrease in receivables = cash inflow (faster collection)
-  - Increase in inventory = cash outflow (more inventory purchased)
-  - Decrease in inventory = cash inflow (inventory sold)
-  - Increase in payables = cash inflow (more time to pay)
-  - Decrease in payables = cash outflow (earlier payment)
+- Change in accounts receivable: increase in receivables = cash outflow (more time to collect), decrease = cash inflow (faster collection)
+- Change in accounts payable: increase in payables = cash inflow (more time to pay), decrease = cash outflow (earlier payment)
+- Change in inventories: increase in inventory = cash outflow (more inventory purchased), decrease = cash inflow (inventory sold)
+- Change in other working capital
 
 Light automatically calculates these adjustments from your ledger.
-
-**Direct method** (less common):
-
-Directly sum all cash inflows and outflows from operations without starting from net income.
 
 > Tip: Operating cash flow should generally be positive and greater than net income. If operating cash flow is negative, investigate why.
 
@@ -132,15 +119,13 @@ Shows what percentage of profit is converted to cash. >100% indicates working ca
 
 Shows investment intensity relative to sales.
 
-Light can calculate these metrics automatically.
-
 ## Multi-period cash flow analysis
 
 Compare cash flow to prior periods:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select periods to compare (current, prior year)
-3. Light displays cash flows side-by-side with changes
+2. Select a comparison period: 1, 3, 6, 9, or 12 months, or 1, 2, or 3 years back
+3. Light displays cash flows side-by-side
 4. Click any line to drill into transactions
 
 This identifies cash flow trends and movements.
@@ -156,20 +141,6 @@ Tie up in inventory, receivables, and payables.
 **Cash conversion cycle** = Days Inventory Outstanding + Days Sales Outstanding - Days Payable Outstanding
 
 Shows how long cash is tied up in operations. Shorter cycles are better.
-
-Light can calculate these metrics from balance sheet and transaction data.
-
-## Capital expenditure forecasting
-
-Use historical CapEx to forecast future needs:
-
-1. Navigate to **Planning & Reports → Reports**
-2. View CapEx by category (equipment, buildings, vehicles)
-3. Identify replacement cycles
-4. Project future CapEx needs
-5. Plan for financing
-
-This supports budgeting and strategic planning.
 
 ## Multi-entity cash flow
 
@@ -187,25 +158,13 @@ Light automatically handles these consolidation mechanics.
 Report cash flow in different currencies:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select **Currency**: Transaction, Local, or Group
+2. Select the currency view: **Entity Crcy** or **Group Crcy**
 3. Light displays amounts in your selected currency
 
 For multinational companies:
 - Each subsidiary's cash flow in its local currency
 - Consolidated cash flow in group currency
-- Light translates using average exchange rates for the period
-
-## Cash position and liquidity
-
-Monitor your cash position:
-
-1. Navigate to **Planning & Reports → Reports**
-2. View cash balance by account
-3. Identify cash in restricted accounts
-4. Project future cash positions based on committed obligations
-5. Plan for cash shortfalls or surpluses
-
-Light integrates with your bank accounts for real-time cash visibility.
+- Light uses the local and group currency amounts recorded on each transaction at posting time
 
 ## Dividend coverage
 
@@ -215,8 +174,6 @@ Assess your ability to pay dividends:
 
 Shows how many times over you can fund dividends from operations. >2.0x is generally healthy.
 
-Light calculates this automatically when you track dividend payments.
-
 ## Debt service coverage
 
 For borrowers, lenders evaluate your ability to service debt:
@@ -225,8 +182,6 @@ For borrowers, lenders evaluate your ability to service debt:
 
 (Debt service = principal + interest payments)
 
-Light calculates this automatically when you track debt payments.
-
 ## Tax payment analysis
 
 Understand your tax cash outflows:
@@ -234,20 +189,8 @@ Understand your tax cash outflows:
 1. Navigate to **Planning & Reports → Reports**
 2. View tax payments made during the period
 3. Compare to tax expense on P&L (may differ due to timing)
-4. Estimate future tax payments
 
-This supports cash forecasting and tax planning.
-
-## Cash flow footnotes
-
-Comprehensive cash flow reporting includes footnotes:
-
-1. **Accounting policies**: Method used (direct vs. reconciliation)
-2. **Significant changes**: Explanations for material movements
-3. **Non-cash activities**: Significant non-cash transactions (stock issuance, asset exchange)
-4. **Restrictions on cash**: Restrictions or conditions on cash use
-
-Light maintains a footnote library. Attach relevant footnotes to your cash flow.
+This supports tax planning.
 
 ## Exporting cash flow statement
 
@@ -255,10 +198,7 @@ Export cash flow for external distribution:
 
 1. Generate the cash flow statement
 2. Click **Export**
-3. Select format: PDF, Excel, or CSV
-4. Light generates formatted output
-
-The cash flow statement maintains your company branding in PDF format.
+3. Light generates a CSV file
 
 ## Related articles
 
