@@ -39,6 +39,7 @@ Each user is assigned one or more access roles that determine what they can see 
 - **Reimbursement** — Submits and tracks expense reimbursements.
 - **Vendor management** — Manages vendor records and onboarding.
 - **Report viewer** — Read-only access to reports and dashboards.
+- **Auditor** — Read-only audit access to all data across the platform.
 
 To assign roles, open a user's detail form from **Business partners > Users**, then select the desired role(s) from the **Access role** dropdown.
 
