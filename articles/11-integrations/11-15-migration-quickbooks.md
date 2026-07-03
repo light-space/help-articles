@@ -22,12 +22,11 @@ The process typically takes 3-6 weeks depending on data volume and complexity.
 
 Light can import from QuickBooks:
 
-- **Chart of accounts**: GL accounts, structure, and balances
-- **Customers**: Names, addresses, contact info, payment terms, credit limits
+- **Chart of accounts**: GL accounts and structure (balances are entered separately via opening balance journal entries)
+- **Customers**: No file import — create customers individually in Light or via the API
 - **Vendors**: Names, addresses, contact info, payment terms
 - **Invoices**: Outstanding AR invoices (unmatched payments recommended)
 - **Bills**: Outstanding AP bills (unpaid)
-- **Payments**: Customer payments and vendor payments (optional)
 - **Journal entries**: Adjusting entries as needed
 - **Budgets**: Budget data (if using QuickBooks budgeting)
 - **Classes/Cost centers**: For allocation to departments
@@ -37,6 +36,7 @@ What typically doesn't transfer:
 - **Fixed assets**: Light does not support direct import of a fixed asset register. Instead, enter fixed assets by creating journal entries, bills, or sales invoices with a **Fixed Asset** release template on the lines. The fixed asset register lives at [**Accounting → Releases**](https://app.light.inc/releases) — filter by **Fixed asset** type to view only fixed assets. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) for setup details.
 - Historical transactions > 1-2 years (migrated via GL opening balances)
 - Closed invoices/bills (migrated to GL totals)
+- Payment history (reflected in opening balances and outstanding document balances instead)
 - QuickBooks reports (recreate in Light)
 - Time tracking data (if not integrated with GL)
 
@@ -101,7 +101,7 @@ Create mapping for all accounts before transformation.
 Transform QuickBooks data to Light format:
 
 1. **Accounts**: Convert QB account types and names to Light account codes and structure
-2. **Customers**: Extract QB customer master (name, address, contact, terms) into Light format
+2. **Customers**: Light does not support importing customers from a file. Use your QB customer export as a reference to create customers individually at [Business partners → Customers](https://app.light.inc/customers) with **+ Create customer**, or create them programmatically via the API
 3. **Vendors**: Extract QB vendor master into Light format
 4. **Invoices**: Transform QB invoices to Light format:
    - Map QB account to Light account
@@ -129,7 +129,7 @@ Build Excel templates for data transformation:
 | AR | AR | 1200 | AR | 25000 |
 | AP | AP | 2010 | AP | 10000 |
 
-**Template 2: Customer Import**
+**Template 2: Customer Mapping** (reference for manual or API creation)
 
 | QB Customer ID | Name | Contact | Email | Address | Terms | Credit Limit |
 |--|--|--|--|--|--|--|
@@ -169,19 +169,23 @@ This ensures GL balances are correct.
 
 Once transformed, import data:
 
-1. Follow Light's data import process (**Settings (gear icon) > Import Data**)
+1. Each import lives on the page for the records it creates — there is no single central import screen:
+   - **Chart of accounts**: [Settings (gear icon) → Chart of accounts](https://app.light.inc/accounting/ledger-accounts) (CSV or Excel)
+   - **Vendors**: [Business partners → Vendors](https://app.light.inc/vendors) (CSV upload with column mapping)
+   - **Journal entries**: [Accounting → Journal entries](https://app.light.inc/journal-entries) (bulk CSV, including opening balances)
+   - **Sales invoices, bills, credit notes, customer credits**: the corresponding page for each document type (separate CSV import per type)
+   - **Budgets**: [Planning & Reports → Budget](https://app.light.inc/budget)
 2. Import in order:
    - Chart of accounts first
-   - Customers
-   - Vendors
+   - Vendors (customers are created individually or via the API)
    - Opening balances (GL)
    - Outstanding invoices (AR)
    - Outstanding bills (AP)
    - Budgets (if applicable)
 3. Validate each import before proceeding
-4. Review Light's import preview carefully
+4. Light validates each file and reports errors so you can review and fix lines before completing
 
-Light validates data during import.
+See [Data import and migration tools](11-13-data-import.md) for detailed steps per import type.
 
 ## Validation after import
 
