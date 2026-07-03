@@ -6,7 +6,7 @@ Your Light corporate card is a convenient way to pay for work expenses directly.
 
 ## Activating Your Card
 
-When you first receive your Light card, you'll need to activate it before you can use it. Open the Light app, go to **Cards**, and follow the activation steps. You'll verify your card details and set up any additional security preferences.
+When you first receive your physical Light card, you'll need to activate it before you can use it. Open the Light app, go to **Cards**, select your card, and click **Activate card**. You'll confirm that you have the card in your possession, and the card becomes active right away. Virtual cards don't require activation.
 
 ## Viewing Your Card Details
 
@@ -22,13 +22,13 @@ Keep your card number private and never share it outside of work purchases.
 
 ## Checking Your Spending Limit
 
-Your spending limit is set by your finance team and shows the maximum amount you can spend on your card. You can see your:
+Your spending limits are set by your finance team (company admins or controllers). Your card can have limits of three types:
 
-- Total spending limit
-- Amount spent so far this month
-- Remaining available balance
+- **Per transaction** — the maximum amount for a single purchase
+- **Weekly** — the maximum you can spend in a week
+- **Monthly** — the maximum you can spend in a month
 
-All of this is visible on your **Cards** page. If you're getting close to your limit, you'll see a warning in the app.
+You can see the limits that apply to your card on your **Cards** page. If you need a limit changed, reach out to your finance team.
 
 ## Viewing Recent Transactions
 
