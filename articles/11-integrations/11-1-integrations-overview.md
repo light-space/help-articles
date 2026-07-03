@@ -36,6 +36,7 @@ Light provides native integrations with popular platforms:
 
 **Payments**:
 - Stripe: Sync transactions, payouts, refunds
+- Airwallex: Outgoing payments from your Airwallex virtual bank accounts
 
 **Tax & Compliance**:
 - AvaTax (US): Automated sales tax calculation and reporting
@@ -47,8 +48,11 @@ Light provides native integrations with popular platforms:
 - Slack: Notifications and alerts
 - Microsoft Teams: Notifications and alerts
 
+**Email**:
+- Gmail: Automatic receipt fetching and matching for card transactions
+
 **Banking**:
-- Bank feed: Direct account feeds, balance updates via GoCardless and Plaid's APIs. Payments are not prebuilt. 
+- Bank feed: Direct account feeds, balance updates via GoCardless, Plaid, and Stripe's APIs. Payments are not prebuilt.
 
 ## Non-prebuilt integrations
 **Payments via your banks**
@@ -90,14 +94,14 @@ For each integration, configure what data to sync:
 **Salesforce integration**:
 - Sync opportunities to AR invoices
 - Map Salesforce opportunity fields to Light invoice fields
-- Configure: Account → Company Entity, Amount → Invoice Total, etc.
+- Configure: Account → Customer, Amount → Invoice Total, etc.
 - Sync frequency: Real-time (as opportunity closes) or nightly
 
 **Stripe integration**:
 - Sync successful payments to cash receipts
 - Sync refunds to credit notes
 - Map Stripe data to Light: Customer ID, Amount, Currency
-- Sync frequency: Daily
+- Sync frequency: Real-time (via webhook) or daily
 
 **HubSpot integration**:
 - Sync deals to AR invoices
@@ -144,13 +148,7 @@ For most integrations, starting fresh is recommended. You can manually import ol
 
 ## Conflict resolution
 
-If the same data exists in both systems, decide which takes priority:
-
-- **Source-preferred**: Updates in source system overwrite Light
-- **Light-preferred**: Updates in Light overwrite source system
-- **Manual review**: Conflicts flagged for human review before sync
-
-Configure conflict resolution per integration. Most commonly, source system is preferred (Light acts as ledger receiving data).
+If the same data exists in both systems, the source system takes priority. Each sync workflow runs in a single direction (for example, Salesforce → Light or Stripe → Light), with Light acting as the ledger receiving data.
 
 ## Rate limiting and performance
 
@@ -243,9 +241,9 @@ Example: When a customer pays in Stripe, Stripe webhook immediately notifies Lig
 
 Light supports webhooks for:
 - Stripe (payment notifications)
-- Salesforce (opportunity updates)
-- HubSpot (deal updates)
 - Bank feeds (transaction notifications)
+
+Salesforce and HubSpot data syncs run on a schedule rather than via webhooks.
 
 ## Related articles
 
@@ -254,6 +252,11 @@ Light supports webhooks for:
 - [Slack integration](11-4-slack.md)
 - [Microsoft Teams integration](11-5-microsoft-teams.md)
 - [Stripe integration](11-6-stripe.md)
+- [Airwallex integration](11-7-airwallex.md)
 - [HRM integration (Finch)](11-8-hrm-finch.md)
+- [HMRC connection (UK)](11-9-hmrc-uk.md)
+- [AvaTax integration (US)](11-10-avatax-us.md)
+- [Bank integrations overview](11-11-bank-integrations.md)
+- [Gmail integration](11-17-gmail.md)
 - [Abacum integration](11-18-abacum.md)
 - [API access and custom integrations](11-12-api-access.md)
