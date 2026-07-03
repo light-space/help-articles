@@ -6,58 +6,41 @@ Your Light card comes with a spending limit set by your company's finance team. 
 
 ## Understanding Your Spending Limit
 
-Your spending limit is the maximum amount you can spend on your Light card during a specific period (usually monthly). You can see your:
+Your spending limit is the maximum amount you can spend on your Light card. Limits can be set:
 
-- **Total limit**: Your monthly spending ceiling
-- **Amount spent**: How much you've charged so far this month
-- **Remaining balance**: How much you can still spend before hitting your limit
+- **Per transaction**: A maximum amount for any single purchase
+- **Weekly**: A ceiling on your total spending each week
+- **Monthly**: A ceiling on your total spending each month
 
-All of this information is visible on your **Cards** page in Light.
+Your card's limits are visible on your **Cards** page in Light. If no limit is set on your card, a default limit configured by your company may apply.
 
 ## What Happens When You Reach Your Limit
 
-If you try to make a purchase that would exceed your spending limit, the transaction will be **declined**. This is a built-in safety feature—your card simply won't process the charge.
+If you try to make a purchase that would exceed your spending limit, the transaction will be **declined**. This is a built-in safety feature—your card simply won't process the charge. You'll receive a notification when a card transaction is declined.
 
 **Don't panic if this happens.** Contact your finance team or manager to discuss:
 - Whether the purchase is necessary
 - If your limit needs adjustment
 - An alternative way to complete the purchase
 
-## Categories That May Be Blocked
+## Other Reasons a Transaction May Be Declined
 
-Your finance team may have restricted certain spending categories on your card for compliance or policy reasons. Examples might include:
+Besides spending limits, a transaction can also be declined if your card is **frozen**. A frozen card blocks all new transactions until it is unfrozen. If your card was frozen and you believe it shouldn't be, contact your finance team.
 
-- International purchases
-- High-risk merchants
-- Certain types of services or products
-- Specific vendors
+## Requesting a Limit Change
 
-If a category is blocked and you need an exception, reach out to your finance team to request approval.
+Card limits can only be changed by your company's admins or finance team—you cannot adjust your own limit in Light. If you regularly hit your spending limit or have a large purchase coming up, reach out to your finance team or manager and explain:
 
-## Requesting a Limit Increase
+- Why you need more spending capacity
+- Details about the purchase (amount, vendor, business reason)
 
-If you regularly hit your spending limit or have a one-time large purchase coming up, you can request an increase:
-
-1. Open Light and go to **Cards**
-2. Tap your card and select **Request Limit Increase**
-3. Explain why you need more spending capacity
-4. Provide details about the purchase (amount, vendor, business reason)
-5. Submit for approval
-
-Your finance team will review the request and let you know if it's approved. This usually takes 1-2 business days.
-
-## Temporary vs. Permanent Limit Increases
-
-- **Temporary increase**: Valid for a specific purchase or time period
-- **Permanent increase**: Raises your ongoing monthly limit
-
-Be clear about which you need when you submit your request.
+They can update your card's limits directly in Light.
 
 ## Tips for Managing Your Limit
 
-- **Check your balance regularly**: Tap **Cards** to see how much you've spent and how much is available
-- **Plan ahead**: If you know you'll make a large purchase, request an increase before you need it
-- **Keep receipts ready**: Attaching receipts promptly helps your finance team process reimbursements faster if needed
+- **Know your limits**: Open **Cards** to see the limits set on your card
+- **Plan ahead**: If you know you'll make a large purchase, ask for a limit change before you need it
+- **Keep receipts ready**: Attaching receipts promptly helps your finance team review and process your card transactions faster
 - **Communicate with your manager**: Let them know about major purchases so there are no surprises
 
 ## Policy Reminders
