@@ -25,19 +25,16 @@ Light imports key **organisational employee data** from your HRM, including:
 
 ## Sync frequency
 
-Sync frequency depends on your HRM provider.
+Light receives employee update notifications from Finch automatically and processes them throughout the day — no manual sync is needed.
 
-Light will automatically pull employee data:
-
-- **Daily** (every 24 hours), or
-- **Weekly** (every 7 days)
+How often Finch refreshes data from your HRM system depends on your HRM provider (typically daily or weekly).
 
 ## User behavior in Light
 
 When the HRM sync runs:
 
 - **New employees** are automatically added to the **Users** list in Light
-- **Removed employees** are automatically deactivated or removed
+- **Deactivated or terminated employees** are automatically deactivated in Light (users are never deleted)
 - A **default base role** is automatically assigned to all new users created via HRM sync
 
 ## Integration steps
@@ -48,9 +45,9 @@ Go to **Settings (gear icon) → Integrations → Add Integration → HRM**
 
 1. Log in using your **HRM admin credentials**
 
-### Step 2 — Internal configuration in Finch
+### Step 2 — Internal configuration by Light
 
-After the HRM connection is established, Light configures data mapping in **Finch** using **three key inputs** provided by the customer (see below).
+After the HRM connection is established, Light configures the data mapping in the **HRM sync workflow** in Light using **three key inputs** provided by the customer (see below).
 
 This setup is performed **internally by Light** — customers do not configure this step.
 
@@ -79,7 +76,7 @@ They will appear under **Users** after the next scheduled sync.
 ## Key points
 
 - Light connects to HRM systems via **Finch**
-- Employees are **auto-created and removed** in Light based on HRM data
+- Employees are **auto-created and deactivated** in Light based on HRM data
 - **Three customer inputs** are required per integration
 - **Payroll data** is not included in the sync
 
