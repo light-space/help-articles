@@ -1,17 +1,19 @@
 # Capturing Receipts on Mobile
 
-On the road? Light works great on your phone. Snap a photo of your receipt right when you get it, and Light's AI reads it instantly. Here's how.
+On the road? Light works great on your phone. Snap a photo of your receipt right when you get it, and Light's AI reads it automatically. Here's how.
 
 [Open in Light →](https://app.light.inc/expenses)
 
 ## Access Light on Mobile
 
+Light has a mobile app for iOS and Android where you can capture receipts and manage your expenses on the go. Install it and log in with your Light credentials.
+
+Prefer not to install an app? Light also works in your phone's browser:
+
 1. Open your phone's web browser (Safari on iPhone, Chrome on Android)
 2. Go to **app.light.inc**
 3. Log in with your credentials
 4. Light will display in a mobile-optimized view
-
-Light doesn't require a separate app—just use your browser. It's responsive and works smoothly on any device.
 
 ## Taking a Receipt Photo
 
@@ -30,7 +32,7 @@ Light doesn't require a separate app—just use your browser. It's responsive an
 
 ## Submitting Your Receipt
 
-1. In Light on your mobile browser, tap **Expenses** in the sidebar
+1. In the Light mobile app—or in Light in your mobile browser—tap **Expenses**
 2. Tap **"+ New Expense"** or **"Submit Expense"**
 3. Tap the **camera or attachment button**
 4. Choose **"Take a Photo"** (to snap one now) or **"Choose from Library"** (to upload a photo you already took)
@@ -47,9 +49,9 @@ Light doesn't require a separate app—just use your browser. It's responsive an
 2. If something's wrong, tap that field and edit it
 3. Add a description if you want (e.g., "Client meeting lunch")
 4. Make sure the category is right
-5. Tap **"Submit for Approval"**
+5. Tap **"Submit for Approval"**—this submits all of your draft expenses together as a single reimbursement
 
-That's it—your expense is submitted from your phone.
+That's it—your expenses are submitted from your phone.
 
 ## Quick Tips
 
