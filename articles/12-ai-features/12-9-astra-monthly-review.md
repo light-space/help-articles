@@ -10,51 +10,43 @@ Astra's monthly review runs automatically on the first day of each month at 4 AM
 
 ## What You Receive
 
-The close memo is a single message with a 4-line headline and six sections:
+The close memo is a single message with six numbered sections, in this order:
 
-**Headline:**
-- Close memo · {month}
-- Three things that changed
-- One thing to watch
+1. **Executive summary**  
+   Three to five sentences: headline P&L number, EBITDA, cash, and anything from sections 5 or 6 that needs flagging.
 
-**Sections:**
-1. **Structural shifts** → CFO  
-   Customer concentration, vendor concentration, segment mix, headcount-adjusted ratios compared to prior months.
+2. **P&L summary**  
+   A variance table (actual / budget / variance / prior month) followed by short driver paragraphs for any line that moved materially. If no budget is provided in Company Memory, the memo benchmarks against the prior month and the trailing-6-month average instead.
 
-2. **Trend breaks** → Controller  
-   Series that crossed thresholds or changed direction compared to trailing months.
+3. **Material journal entries**  
+   A table of significant entries posted in the period (JE number, description, amount, rationale), including any prior-period error and its materiality assessment.
 
-3. **Collections & AR posture** → AR lead  
-   Aging patterns, collection activity, customer payment behavior.
+4. **Balance sheet — key movements**  
+   Cash walk, AR aging and DSO, deferred revenue waterfall, accrued expenses composition, intercompany, working capital shifts.
 
-4. **Spend, vendors, commitments** → AP lead  
-   Vendor spend patterns, new commitments, recurring spend changes.
+5. **Open reconciling items**  
+   Anything not tied out at close: what it is, the amount, the diagnostic, and the expected resolution date.
 
-5. **Controls & manual activity** → Controller  
-   Manual journal entries, approval queue patterns, control exceptions.
+6. **Controls & compliance**  
+   Confirmation that scheduled control checks ran across cash, AR, AP, payroll, intercompany, revenue recognition, and tax, with findings (or "no findings").
 
-6. **What I flagged this month and what happened to it** → CFO  
-   Status of findings Astra raised during daily and weekly runs: resolved, dismissed, recurring, or ignored.
-
-Each section is brief (typically under 120 words) and includes specific numbers, comparison periods, and data sources. If a section has nothing material to report, Astra states "Nothing material this month" and moves on.
+Prose is kept terse — roughly 500–800 words total, with tables on top of that — and every numerical claim includes the number, the comparison period, and where it came from. If a section has nothing material to report, Astra states "Nothing material this month" and moves on.
 
 ## Where You Read It
 
 Astra delivers the close memo through your configured notification channel — the same channel used for other Astra findings. The channel is specified in Company Memory (the instructions you provide to Astra).
 
-If you receive Astra notifications in Slack, the close memo arrives as a direct message from @Light. If you receive them in Microsoft Teams, it arrives from the Light bot. If you receive them in the web app, the memo appears in your notification feed.
+If you receive Astra notifications in Slack, the close memo arrives as a direct message from @Light. If you receive them in Microsoft Teams, it arrives from the Light bot.
 
 ## Who Should Care
 
-The monthly close memo is designed for:
+The monthly close memo is the durable record of the period for the CFO, controller, and segment finance leads:
 
-- **CFO** — Structural shifts, trend breaks, summary of what Astra flagged and what happened
-- **Controller** — Trend breaks, controls and manual activity
-- **AR lead** — Collections and AR posture
-- **AP lead** — Spend, vendors, and commitments
-- **Segment finance leads** — Structural shifts and trends relevant to their segment
+- **CFO** — Executive summary, P&L variance and drivers, balance sheet movements
+- **Controller** — Material journal entries, open reconciling items, controls and compliance
+- **Segment finance leads** — P&L drivers and movements relevant to their segment
 
-Each section is tagged with its primary owner in the memo header.
+The memo never attributes work or remediation items to named individuals — Astra writes in its own voice about the checks and reconciliations it performed.
 
 ## What the Memo Covers
 
@@ -66,13 +58,14 @@ The monthly review draws on Astra's full view of your closed financials:
 - Astra's own memory: observations, flags, dismissals, and resolutions from hourly, daily, and weekly runs over the prior 13 months
 - Approval queues, manual journal entry log, control exceptions
 
-Astra compares the closed month against trailing months (typically 6–13 months) to identify what changed, what stopped, and what matters.
+Astra compares the closed month against the budget provided in Company Memory. If no budget is provided, it benchmarks against the prior month and the trailing-6-month average instead — it never invents targets.
 
 ## What the Memo Is Not
 
-- **Not a P&L recap.** Reporting tools already provide this. The close memo focuses on what changed and why it matters, not raw financial statement totals.
-- **Not a recommendations document.** The memo observes with evidence. It does not prescribe actions unless Astra has earned that trust through prior cycles.
-- **Not comprehensive.** The memo surfaces the 6–10 things that matter, not everything notable. Materiality beats completeness.
+- **Not a full P&L recap.** The memo includes a variance summary, but only lines that moved materially get commentary — no four-page recap of every line item, and no re-explaining what you already saw in the dashboard.
+- **Not a recommendations document.** The memo observes with evidence and lets humans conclude. It does not prescribe actions.
+- **Not comprehensive.** Each section keeps only items where the magnitude matters, someone can act on it, or the pattern is genuinely new. Materiality beats completeness.
+- **Not a thread.** A single artifact, delivered once, complete.
 
 ## Good to Know
 
@@ -80,7 +73,7 @@ Astra compares the closed month against trailing months (typically 6–13 months
 - The memo references specific entity IDs (bills, invoices, vendors, journal entries) from Light's data. Click through to view the entity details in the platform.
 - If two data sources disagree on a number, Astra states the conflict explicitly rather than choosing one.
 - If Astra lacks a baseline for comparison (for example, your first few months in Light), the memo states "no prior baseline" rather than inventing one.
-- The monthly review runs whether or not you have daily or weekly Astra runs enabled. It operates independently.
+- The monthly review is part of the same per-company Astra enablement as the daily and weekly runs — if Astra is enabled for your company, all scheduled runs are active. There is no separate toggle for the monthly review.
 
 ## Related Articles
 
