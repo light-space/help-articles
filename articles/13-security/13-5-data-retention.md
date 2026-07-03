@@ -84,7 +84,7 @@ You can request deletion of your data through Light's data deletion procedures (
 
 ### 4. Download Your Data
 
-You can download a complete export of your company's data at any time.
+You can export your company's data as CSV files from the relevant pages in Light. For a complete export, contact Light support.
 
 ### 5. Port Your Data
 
@@ -98,21 +98,23 @@ To delete individual transactions, documents, or records:
 
 1. Navigate to the record you want to delete
 2. Click **Delete** or the delete icon
-3. Confirm the deletion (reversals may be required instead of deletion)
+3. Confirm the deletion
 4. The record is marked for deletion
 5. Data is removed from backups as they expire
 
-### Deleting User Data
+Note: Posted records (accounting documents, journal entries, and other ledger transactions) cannot be deleted — the ledger is immutable. Archive the record or post a reversal instead.
 
-To delete a user's personal data (not company data):
+### Deactivating Users
 
-1. Go to **Admin** > **Users**
+Light deactivates users rather than deleting them, which preserves the audit trail:
+
+1. Go to **Business partners** → [Users](https://app.light.inc/users)
 2. Select the user
-3. Click **Delete User**
-4. Confirm the action
-5. User account is deactivated and personal data is flagged for deletion
+3. Deactivate the user
 
-Note: User's financial activity records remain for audit compliance.
+To request deletion of a user's personal data, contact Light support.
+
+Note: The user's financial activity records remain for audit compliance.
 
 ### Complete Account Deletion
 
@@ -134,8 +136,8 @@ Upon request, Light will provide **written certification** of the destruction of
 Under GDPR, you have the right to erasure (the "right to be forgotten"):
 
 1. Identify personal data that needs to be deleted
-2. Submit erasure request in **Settings** > **Privacy**
-3. Specify reason for deletion
+2. Submit your erasure request to Light support
+3. Specify the reason for deletion
 4. Light processes erasure within 30 days
 5. Personal data is deleted while retaining necessary financial records
 
@@ -145,15 +147,14 @@ Note: Some financial data may need to be retained for legal or tax compliance, e
 
 ### Exporting Your Company Data
 
-To export all company data:
+Light does not have a single all-in-one export page. Instead, you export each data area to CSV from its own page:
 
-1. Go to **Admin** > **Data Export**
-2. Click **Request Export**
-3. Select what to include (transactions, invoices, customers, etc.)
-4. Format is CSV
-5. Light prepares your export (typically within 24 hours)
-6. Download your data
-7. Export is available for 7 days, then deleted
+1. Navigate to the page for the data you want to export (e.g., [Transactions](https://app.light.inc/ledger-transactions), [Bills](https://app.light.inc/payables), [Customers](https://app.light.inc/customers))
+2. Click **Export** to start a CSV export
+3. Light prepares the export in the background and notifies you when it is ready
+4. Download your data — the download link expires after **7 days**
+
+For a complete export of all company data, contact Light support.
 
 ### Exporting Specific Reports
 
@@ -184,9 +185,8 @@ Light supports data portability, allowing you to move your data to another syste
 Light exports data in widely-supported formats:
 
 - **CSV**: For spreadsheets and databases
-- **Excel**: For analysis and modeling
-- **JSON**: For system integration
-- **PDF**: For documentation and archival
+- **JSON**: Via the Light API, for system integration
+- **PDF**: For generated documents such as invoices
 
 ### Mapping Tools
 
