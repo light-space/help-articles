@@ -9,10 +9,9 @@ Light provides flexible data import capabilities for bringing data from spreadsh
 Light supports importing:
 
 - **Chart of accounts**: GL accounts and account structure
-- **Customer and vendor master**: Customer and vendor information
-- **Historical transactions**: Past invoices, bills, payments (with limits)
-- **Opening balances**: GL account balances as of transition date
-- **Inventory**: Products and SKUs
+- **Vendor master**: Vendor information (customers are created individually or via the API)
+- **Historical transactions**: Past sales invoices, bills, credit notes, and customer credits — each via its own CSV import
+- **Journal entries**: Bulk journal entries, including opening balances
 - **Budgets**: Budget data for planning
 
 This enables comprehensive data setup.
@@ -23,13 +22,9 @@ This enables comprehensive data setup.
 
 Data must be in structured format:
 
-**Excel (.xlsx)**: Recommended format, most flexible
+**CSV (.csv)**: Used by most imports (journal entries, vendors, transactions, budgets)
 
-**CSV (.csv)**: Tab or comma-delimited text
-
-**JSON**: For API-based imports
-
-**Fixed-width text**: Legacy format (rarely needed)
+**Excel (.xlsx)**: Supported for chart of accounts imports
 
 File requirements:
 
@@ -42,18 +37,22 @@ Prepare a sample file following Light's import template.
 
 ## Accessing import tools
 
-Start an import:
+Each import lives on the page for the records it creates, rather than a single central import screen:
 
-1. Navigate to **Settings (gear icon) > Import Data**
-2. Click **New Import**
-3. Select import type (Chart of Accounts, Customers, Transactions, etc.)
-4. Download import template (shows required and optional fields)
-5. Fill template with your data
-6. Upload file
-7. Light validates and previews
-8. Confirm and import
+- **Chart of accounts**: [Settings (gear icon) → Chart of accounts](https://app.light.inc/accounting/ledger-accounts)
+- **Vendors**: [Business partners → Vendors](https://app.light.inc/vendors)
+- **Journal entries**: [Accounting → Journal entries](https://app.light.inc/journal-entries)
+- **Historical transactions** (sales invoices, bills, credit notes, customer credits): the corresponding page for each document type
 
-Light guides you through each step.
+The general flow is the same everywhere:
+
+1. Open the page for the record type you want to import
+2. Open the upload/import action
+3. Download the import template (shows required and optional fields)
+4. Fill the template with your data
+5. Upload the file
+6. Light validates the file and reports any errors
+7. Review the imported records
 
 ## Importing chart of accounts
 
@@ -61,13 +60,16 @@ Create your GL account structure:
 
 1. Download COA template
 2. Fill in:
-   - **Account Code**: Unique identifier (1000, 1100, 1110)
-   - **Account Name**: Descriptive name (Cash, Accounts Receivable, etc.)
-   - **Account Type**: Asset, Liability, Equity, Revenue, Expense
-   - **Account Category**: Standard, Sum, or Header (see below)
-   - **Aggregation Rule**: (for Sum accounts only) Defines which accounts to roll up
-3. Upload file
-4. Light validates account codes are unique
+   - **Account code**: Unique identifier (1000, 1100, 1110) — required
+   - **Account name**: Descriptive name (Cash, Accounts Receivable, etc.) — required
+   - **Account category**: Standard, Sum, or Header (see below) — required
+   - **Entity codes**: Which company entities the account belongs to — required
+   - **Status**: Account status — required
+   - **Account type**: Specific type such as Bank, Accounts receivable, or Cost of sales, grouped under the Asset, Liability, Equity, Revenue, and Expense classifications
+   - **Currency**: Account currency (optional)
+   - **Aggregation rule**: (for Sum accounts only) Defines which accounts to roll up
+3. Upload file (CSV or Excel)
+4. Light validates the file and lets you review and fix lines before completing
 5. Light creates GL accounts
 6. You can now post transactions
 
@@ -87,61 +89,48 @@ For example, if you have expense accounts 60000–60999 for Operations and 62000
 
 > Good to know: Use consistent numbering for account codes (e.g., 1000s = assets, 2000s = liabilities). This makes defining aggregation rules straightforward, since you can group accounts by code range.
 
-## Importing customer master
+## Customers
 
-Load customer information:
-
-1. Download customer template
-2. Fill in:
-   - **Customer ID**: Unique identifier (Acme, ACME-001)
-   - **Customer Name**: Full company name
-   - **Contact Name**: Primary contact person
-   - **Email**: Customer email
-   - **Billing Address**: Full address
-   - **Phone**: Customer phone
-   - **Terms**: Payment terms (Net 30, Net 60)
-   - **Currency**: Default invoice currency
-3. Upload file
-4. Light validates customer IDs are unique
-5. Light creates customer records
-6. Customers are ready for AR invoicing
+Light does not currently support importing customers from a file. Create customers individually at [Business partners → Customers](https://app.light.inc/customers) with **+ Create customer**, or create them programmatically via the API. See [API access and custom integrations](11-12-api-access.md).
 
 ## Importing vendor master
 
 Load vendor information:
 
-1. Download vendor template
-2. Fill in:
-   - **Vendor ID**: Unique identifier
-   - **Vendor Name**: Full company name
-   - **Contact Name**: Primary contact
-   - **Email**: Vendor email
-   - **Payment Address**: Full address
-   - **Phone**: Vendor phone
-   - **Terms**: Payment terms
-   - **Currency**: Default invoice currency
-   - **Tax ID**: Vendor tax/VAT number
-3. Upload file
-4. Light validates vendor IDs are unique
+1. Download the vendor upload template from [Business partners → Vendors](https://app.light.inc/vendors)
+2. Fill in the columns you need, including:
+   - **Name**: Full company name
+   - **Description**: Free-text description
+   - **Email**, **Phone**, **Website**
+   - **Country**, **City**, **Address**, **Zipcode**
+   - **VAT ID**: Vendor tax/VAT number
+   - **Bank details**: Bank name, country, account number, BIC, domestic account number/code, Swedish Bankgiro/Plusgiro, recipient name
+   - **Currency**: Default currency
+   - **Entity codes** and **Default entity code**: Which company entities the vendor belongs to
+   - **Ledger account code**: Default expense account
+   - **Tax code**: Default tax code
+3. Upload file — Light maps your file's columns to these fields, and you can review the mapping
+4. Light validates each line; lines with errors are reported so you can fix them
 5. Light creates vendor records
 6. Vendors ready for AP invoicing
 
 ## Importing historical transactions
 
-Migrate past transactions from old system:
+Migrate past transactions from your old system. Each document type has its own CSV import with its own template:
 
-1. Download transaction template
-2. For each transaction, fill in:
-   - **Document Type**: AP, AR, JE, etc.
-   - **Date**: Transaction date
-   - **Amount**: Total amount
-   - **Customer/Vendor**: (for AR/AP)
-   - **Description**: Transaction description
-   - **Line items**: Account, amount, tax treatment
-3. Upload file
-4. Light validates amounts balance (debits = credits)
-5. Light creates transactions in draft status
-6. You review and approve before posting
+- **Sales invoices** (AR)
+- **Bills** (AP)
+- **Credit notes**
+- **Customer credits**
+
+For each import:
+
+1. Download the CSV template for that document type — required columns are annotated with `(required)`
+2. Fill in the transaction data (dates, amounts, currency, business partner, account codes, tax codes, line items)
+3. Upload the file — the import is processed as a background job
+4. Light validates each entry; failed entries are collected in a downloadable error report
+5. Choose whether imported documents are posted immediately or left for review
+6. Journal entries are imported separately via the journal entry CSV upload (see below)
 
 This migrates transaction history.
 
@@ -186,7 +175,7 @@ The template dynamically reflects your company's configuration, so you can fill 
 | `group currency rate` | FX rate for group currency |
 | `ledger name` | e.g., PRIMARY, ELIMINATION |
 | `target entity code` | For intercompany entries |
-| `accounting release template` | Template name or UUID for amortization |
+| `accounting release template name` | Template name for amortization (or use `accounting release template id` with a UUID) |
 | `accounting release start date` | Amortization start |
 | `accounting release end date` | Amortization end |
 | Custom property columns | Use the label name (e.g., "Cost Center") or internal name |
@@ -222,7 +211,7 @@ This format works even when labels contain spaces.
 
 If you need to remove an import from your books (for example, to correct errors or undo a test import), archive it from the import history table:
 
-1. Navigate to **Settings > Import Data** and open the journal entry import history
+1. Go to [Accounting → Journal entries](https://app.light.inc/journal-entries) and open the journal entry import history
 2. Find the import you want to archive
 3. Click the actions menu (**⋯**) and select **Archive**
 4. If the import created journal entries, confirm the action
@@ -236,16 +225,13 @@ When you archive an import:
 
 ## Opening balance import
 
-Set GL account starting balances:
+Opening balances are imported as a journal entry using the journal entry CSV upload described above:
 
-1. Download opening balance template
-2. Fill in:
-   - **Account Code**: GL account
-   - **Balance**: Opening balance amount (positive or negative)
-3. Upload file
-4. Light validates balances sum correctly (for each GL side)
-5. Light creates opening balance JE
-6. All GL accounts initialized with correct starting balances
+1. Prepare a CSV where all lines share the same `entry id`, dated as of your transition date
+2. Enter each GL account's opening balance as a debit or credit line against its `account code`
+3. Ensure total debits equal total credits
+4. Upload the file
+5. Light creates the opening balance journal entry, which you can review before posting
 
 This sets up accounting starting position.
 
@@ -261,43 +247,30 @@ Light validates all imports:
 
 If validation fails, Light provides error report showing exactly what to fix.
 
-## Import preview
+## Reviewing before completion
 
-Before committing, review import preview:
+Chart of accounts and vendor imports include a mapping and review step:
 
-1. After uploading file, Light shows preview
-2. Review first 10-20 rows to verify data looks correct
-3. Check that field mapping is correct (columns mapped to right fields)
-4. If preview looks good, confirm
-5. If issues, cancel and fix file
+1. After you upload the file, Light maps your file's columns to Light fields
+2. Review that the mapping is correct (columns mapped to right fields)
+3. Review the imported lines and fix any lines with validation errors
+4. Complete the import
 
-The preview catches most errors before they're created.
+This catches most errors before records are created.
 
 ## Handling import errors
 
 If import fails validation:
 
-1. Light displays error report
-2. Error report shows:
-   - Row number with error
-   - Field that failed
-   - Error message (duplicate, wrong type, etc.)
+1. Light records an error for each failed entry
+2. Download the error report, which shows:
+   - The entry that failed
+   - The error message (missing value, invalid value, unbalanced entry, etc.)
 3. Fix the issue in your file
-4. Re-upload and re-validate
+4. Re-upload
 5. Once validation passes, import succeeds
 
 Iterative approach ensures clean data import.
-
-## Bulk updates
-
-Update existing data in bulk:
-
-1. Export current data from Light (e.g., customer list)
-2. Make updates in Excel
-3. Upload updated file
-4. Light matches to existing records and updates
-
-This enables bulk changes without manual entry.
 
 ## Multi-currency import
 
@@ -310,46 +283,28 @@ When importing with multiple currencies:
 
 This handles multi-currency imports.
 
-## Scheduled imports
+## Import history
 
-Automate recurring imports from external systems:
+Light keeps a history of each import:
 
-1. Navigate to **Settings > Import > Scheduled Imports**
-2. Create scheduled import:
-   - File location (SFTP, cloud storage, API endpoint)
-   - Import frequency (daily, weekly, monthly)
-   - File format and field mapping
-3. Light automatically imports on schedule
-4. Failures trigger alerts for investigation
+- File name
+- Import status (in progress, completed, failed)
+- User who triggered the import
+- Date/time of import
+- Error count, with a downloadable error report
 
-This automates ongoing data sync.
+Each import type (journal entries, vendors, chart of accounts, transactions) has its own import history on its page.
 
-## Import audit trail
+## Undoing an import
 
-Light maintains complete audit of all imports:
+If an import creates bad data, you can undo it from the import history:
 
-1. Navigate to **Settings > Import > Audit Trail**
-2. View:
-   - Date/time of import
-   - File name and size
-   - Number of records imported
-   - User who triggered import
-   - Changes made
-3. Export audit trail for compliance
+1. Find the import in the import history
+2. Delete (or archive, for journal entry imports) the import
+3. Light removes the documents created by the import — draft documents are deleted, and posted documents are reversed to preserve the audit trail
+4. Fix the import file and re-import
 
-This provides evidence of data integrity.
-
-## Rollback failed imports
-
-If an import creates bad data:
-
-1. Navigate to **Settings > Import > [Failed Import]**
-2. Click **Rollback**
-3. Light reverses all changes from that import
-4. Accounts return to pre-import state
-5. Fix the import file and re-import
-
-This enables recovery from failed imports.
+The undo runs as a background job; the import status shows whether it succeeded or failed.
 
 ## Best practices for importing
 
@@ -358,8 +313,6 @@ This enables recovery from failed imports.
 **Validate data**: Verify source data is clean before importing (no duplicates, required fields populated).
 
 **Plan mapping**: Understand which source fields map to which Light fields.
-
-**Backup first**: Create a backup before bulk imports (in case rollback needed).
 
 **Schedule off-peak**: Import during off-peak times to avoid impacting users.
 
