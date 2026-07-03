@@ -47,9 +47,9 @@ Total revenue shows your top-line financial performance.
 Generate your P&L statement:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select period (month, quarter, or year)
+2. Select the reporting period (start and end dates)
 3. Select entities to include (single entity or consolidated)
-4. Select currency (transaction, local, or group)
+4. Select currency (**Entity Crcy** or **Group Crcy**)
 5. Click **Generate**
 
 Light displays the P&L formatted by revenue, expense, and profit categories.
@@ -94,7 +94,7 @@ Shows bottom-line profitability. Industry-specific benchmarks exist.
 
 **Operating leverage**: How much expenses increase relative to revenue growth.
 
-Light can calculate these metrics automatically in custom P&L reports.
+In custom table reports, you can add ratio lines using the **PERCENT** formula, which divides one set of report lines by another. See [Custom reports and filters](10-9-custom-reports.md).
 
 ## Revenue recognition on the P&L
 
@@ -121,7 +121,7 @@ This matching principle ensures P&L reflects the cost of earning revenue in each
 Compare P&L to prior periods:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select periods to compare (current period, prior year, budget)
+2. Use the **Comparison** filter to add a prior period (1, 3, 6, 9, or 12 months back) or a prior year (1, 2, or 3 years back)
 3. Light displays revenue, expenses, and profit side-by-side
 4. Shows variances and percentage changes
 5. Click any line to drill into supporting transactions
@@ -144,21 +144,21 @@ Light automatically eliminates inter-company transactions in consolidated report
 Report P&L in different currencies:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select **Currency**: Transaction, Local, or Group
+2. Select **Currency**: **Entity Crcy** (local) or **Group Crcy** (group)
 3. Light displays amounts in your selected currency
 
 For multinational companies:
-- Each subsidiary's P&L in its local currency
-- Consolidated P&L in group currency
-- Light applies average exchange rates for currency translation
+- Select **Entity Crcy** to view an entity's P&L in its own functional currency — this option is not available when the selected entities have different local currencies
+- Select **Group Crcy** to translate all entities to the group currency, as required for consolidation
+- Group-currency amounts are recorded on each ledger line when it is posted, so translated results build up from transaction-date rates
 
 ## Segment reporting
 
 Analyze P&L by business segment:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select segments: By department, customer, geography, or product line
-3. Light displays revenue and expenses by segment
+2. Filter by **Custom properties** — any custom property values configured in your organisation (e.g., department, geography, or product line)
+3. Light displays revenue and expenses for the selected segment
 4. Identify which segments drive profitability
 
 This supports strategic planning and resource allocation.
@@ -176,37 +176,34 @@ Light tracks cost center on every transaction, enabling detailed analysis.
 
 ## Budget vs. actual comparison
 
-Compare actual P&L to budget:
+Budget comparison is done on the [Budget](https://app.light.inc/budget) page rather than in ledger reports:
 
-1. Navigate to **Planning & Reports → Reports**
-2. Select **Budget vs. Actual**
-3. Light shows actual results vs. budget for each line item
-4. Calculates variances in dollars and percentages
-5. Highlights significant variances for investigation
+1. Navigate to **Planning & Reports → Budget**
+2. Upload a budget scenario as a CSV file
+3. The budget overview shows actuals vs. planned amounts per period, with YTD variance and planned-accuracy statistics
+4. Click any cell in the budget table to drill into the underlying ledger transactions
 
-Investigate variances >10% to understand performance drivers.
+See [Budget scenarios](10-10-budget-scenarios.md) for details. Investigate variances >10% to understand performance drivers.
 
 ## Year-to-date (YTD) reporting
 
 View cumulative P&L from year start:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select **Period**: Year-to-date
+2. Set the date range from the start of your fiscal year to today
 3. Light shows cumulative revenue and expenses since year start
 
 Compare YTD performance to budget or prior year for mid-year assessment.
 
 ## Pro forma P&L and forecasting
 
-Project future P&L based on assumptions:
+Light does not generate P&L projections. To maintain a forecast:
 
-1. Navigate to **Planning & Reports → Reports**
-2. Input growth assumptions for revenue
-3. Input cost assumptions for major expense categories
-4. Light projects P&L for next 12 months
-5. Stress-test with different assumptions
+1. Build your projection outside Light (e.g., in a spreadsheet), using exported P&L data as the baseline
+2. Upload the projection as a budget scenario CSV on the [Budget](https://app.light.inc/budget) page
+3. Compare actual results against the forecast as the year progresses
 
-Use for planning and to communicate with lenders or investors.
+You can maintain multiple scenarios simultaneously — for example a base plan and a stress-tested downside case. Use for planning and to communicate with lenders or investors. See [Budget scenarios](10-10-budget-scenarios.md).
 
 ## P&L footnotes and disclosure
 
@@ -218,7 +215,7 @@ Comprehensive P&L reporting includes footnotes:
 4. **Related party transactions**: Transactions with affiliated parties
 5. **Subsequent events**: Items occurring after period-end
 
-Light maintains a footnote library. Attach relevant footnotes to your P&L.
+Prepare footnotes outside Light as part of your financial statement package, using exported report data to support the underlying schedules.
 
 > Tip: Separate discontinued operations and one-time items from continuing operations for clearer performance analysis.
 
@@ -227,11 +224,10 @@ Light maintains a footnote library. Attach relevant footnotes to your P&L.
 Export P&L for external distribution or analysis:
 
 1. Generate the P&L report
-2. Click **Export**
-3. Select format: PDF, Excel, or CSV
-4. Light generates formatted output ready for distribution
+2. Click the export button
+3. Light downloads a CSV file containing all rows and columns as displayed
 
-The P&L maintains your company branding in PDF format.
+You can open the CSV in Excel or Google Sheets for further formatting and distribution. Drilldown transaction lines can also be exported as CSV.
 
 ## Related articles
 
