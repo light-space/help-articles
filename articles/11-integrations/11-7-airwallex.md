@@ -115,8 +115,6 @@ Light does not charge any integration fees or transaction fees for this integrat
 
 **"Bank account not valid" error**: The bank account must be set up as a virtual bank account with Airwallex as the provider. Contact support if you need help configuring bank accounts.
 
-**"Country mismatch" error**: Your company entity country must match one of the countries configured in your Airwallex account. Check your entity settings in Light or your Airwallex account configuration.
-
 **Payments not processing**: Verify the bank account mapping is set to active (toggle is on). Check that your Airwallex account has sufficient funds. Ensure beneficiary details are valid.
 
 ## Related articles
