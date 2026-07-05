@@ -68,11 +68,13 @@ Each row/column cell uses a single-line formula editor with autocomplete. Light 
 | `ACTSUM` | `ACTSUM(REVENUE, -COST_OF_SALES)` | Same as ACT but summarised |
 | `ACTCUR` | `ACTCUR(BANK, CARD, CASH_AND_EQUIVALENTS)` | Sums accounts by type in their account currency (for bank/cash accounts) |
 | `TAXTAG` | `TAXTAG(UK_0, -UK_4)` | Sums amounts by tax tag (only available when a country is set on the template) |
+| `PERCENT` | `PERCENT(A1,-A2;A1)` | Divides a numerator sum by a denominator sum (each a comma-separated, signable list of cells, separated by `;`) and renders the result as a percentage — useful for ratios like gross margin % |
 
 **Tips:**
 - Prefix an argument with `-` to subtract it (e.g. `ACP(4, -5)` adds account-code-4 and subtracts account-code-5)
 - Use `SUM` to reference other cells in the template — for example `SUM(A1, A2, A3)` to total three rows
-- Autocomplete activates as you type and shows context-sensitive suggestions (account types inside `ACT()`, cell references inside `SUM()`, tax tags inside `TAXTAG()`)
+- Autocomplete activates as you type and shows context-sensitive suggestions (account types inside `ACT()`, cell references inside `SUM()`, tax tags inside `TAXTAG()`, and cell references inside `PERCENT()`)
+- `PERCENT` cells render with a `%` suffix and, unlike other cell types, aren't clickable/drillable — there's no single set of underlying transactions to open, since the value is a ratio derived from other cells
 
 ## Saving and reusing templates
 
@@ -90,7 +92,7 @@ Open any saved Table report from the reports list. Use the filters at the top to
 - **Comparison** — compare against 1–12 prior months or 1–3 prior years
 - **Custom properties** — filter by any custom property value
 
-Click any cell value to drill into the underlying ledger transactions.
+Click any cell value to drill into the underlying ledger transactions. The exception is `PERCENT` cells — these display their percentage but aren't clickable.
 
 ## Duplicating a report
 
