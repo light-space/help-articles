@@ -2,109 +2,78 @@
 
 Light cards are corporate payment cards issued directly by Light for seamless expense management and spending control.
 
-[Open in Light →](https://app.light.inc/user-cards)
+[Open in Light →](https://app.light.inc/cards)
 
 ## Understanding Light Cards
 
 Light cards are:
 
 - **Physical Cards**: Issued to employees for in-person and online purchases
-- **Virtual Cards**: Single-use card numbers for online vendors
-- **Instant Load**: Funds available immediately after loading
-- **Spend Control**: Limits can be set per card or per employee
+- **Virtual Cards**: Digital cards issued instantly for online and contactless payments
+- **Account Funded**: Cards spend from card accounts you fund by bank transfer
+- **Spend Control**: Limits can be set per card, with default limits per card account
 - **Auto-Reconciliation**: Card transactions automatically feed to expense module
 
-Light partners with card providers to issue cards and process transactions.
+Light partners with Adyen to issue cards and process transactions. Cards can be issued to entities in the **United States**, **United Kingdom**, and **European Union**.
 
 ## Card Types
 
 **Physical Card**:
-- Credit card style (Visa or Mastercard)
+- Mastercard
 - Issued in employee's name
 - Can be used in stores, online, ATM
 - PIN protected
-- Typically $5,000-$25,000 limit
+- Spending limits configurable per card
 
 **Virtual Card**:
-- Single-use card number
+- Digital card number, issued instantly
 - No physical card
-- Used for online purchases only
-- Auto-expires after single use
-- Ideal for high-risk or one-time purchases
+- Used for online and contactless payments
+- Spending limits configurable per card
+- Ideal for employee expenses or recurring vendor payments like subscriptions
 
 ## KYC Verification Process
 
-Before issuing a card, Light must verify the employee:
+KYC (Know Your Customer) verification happens at the **company entity** level, not per employee. Before an entity can issue cards, it must be verified as a card customer. Only company admins can start card onboarding.
 
-### Step 1: Employee Information Collection
+### Step 1: Start Onboarding for an Entity
 
-1. Employee opens Light app or portal
-2. Navigates to **Cards** > **Request Card**
-3. Provides information:
-   - **Full Legal Name**: As it appears on ID
-   - **Date of Birth**: Required for verification
-   - **Social Security Number** (US) or equivalent: For identity verification
-   - **Home Address**: Current residential address
-   - **Phone Number**: For verification calls
-   - **Employment Status**: Full-time, contractor, etc.
+1. A company admin enables cards for the company entity
+2. Light registers the entity with Adyen, creating a legal entity and account holder
+3. The entity's card customer status moves from **Pre-onboarding** to **Onboarding**
 
-4. Click **Continue**
+### Step 2: Complete Verification with Adyen
 
-### Step 2: Identity Verification
+1. Light generates a hosted onboarding link for the entity
+2. The admin opens the link and completes Adyen's hosted onboarding, providing:
+   - Company legal name and registered address
+   - Registration number / Tax ID
+   - Beneficial ownership information (required for AML compliance)
+   - Supporting documents (e.g., proof of registration, identification for beneficial owners)
 
-Light verifies identity through:
+3. Documents are submitted directly to Adyen for review
+4. Adyen may request additional information if verification is uncertain
 
-**Option 1: Automated Verification**
-1. Light checks against databases (credit bureaus, ID verification services)
-2. Typically instant or within 1 hour
-3. Light notifies employee: "Verified" or "Manual review needed"
+### Step 3: Activation
 
-**Option 2: Manual Verification**
-1. If automated verification fails or uncertain
-2. Light sends request for document upload:
-   - **Government ID**: Driver's license, passport, national ID
-   - **Proof of Address**: Utility bill, bank statement, lease agreement
+1. Once verification is complete, the entity's card customer status becomes **Active**
+2. You can then create card accounts, fund them, and issue cards
 
-3. Employee uploads documents
-4. Light compliance team reviews (typically 24-48 hours)
-5. Approved or additional information requested
+### Card Customer Statuses
 
-### Step 3: Company Information
+| Status | Description |
+|---|---|
+| **Pre-onboarding** | Card onboarding has been started but the entity is not yet registered with the card provider |
+| **Onboarding** | The entity is registered with Adyen and verification is in progress |
+| **Active** | Verification is complete — the entity can issue cards |
 
-1. Light collects **company details**:
-   - Company legal name
-   - Company address
-   - Tax ID / EIN
-   - Industry type
+### Employee Requirements
 
-2. Light verifies company is legitimate
-3. Typically instant
+Individual employees do not go through KYC. To receive a card, an employee only needs:
 
-### Step 4: Beneficial Ownership (If Applicable)
-
-For larger organizations:
-
-1. Light may request **beneficial ownership** information
-2. Who are the actual owners of the company
-3. Required for AML (Anti-Money Laundering) compliance
-4. Already available if company incorporated
-
-### Step 5: Approval and Card Issuance
-
-1. Once KYC approved:
-   - Employee receives notification: "Your card has been approved"
-   - Card is shipped (physical card: 5-7 business days)
-   - Virtual card available immediately
-
-2. Card arrives with:
-   - PIN (mailed separately for security)
-   - Welcome package
-   - Usage guidelines
-
-3. Employee activates card in app:
-   - Confirm receipt
-   - Set PIN (physical card)
-   - Review limits and settings
+- An active user in Light (the card owner)
+- An **authentication phone number** for 3D Secure verification
+- A shipping address (physical cards only)
 
 ## KYC Compliance
 
@@ -115,67 +84,61 @@ Light must comply with regulations:
 **AML Regulations**: Monitor for suspicious activity
 **GDPR/Privacy**: Protect personal data
 
-KYC process ensures compliance. Light deletes personal identifying documents after verification (keeps only approval status).
+KYC process ensures compliance. Verification documents are submitted directly to Adyen through the hosted onboarding flow — Light does not store them.
 
 ## Card Setup After Approval
 
+### Funding Your Card Account
+
+Before cards can be used, the card account must be funded. Transfer money to your Adyen wallet in the same currency as the account. Funds are available as soon as Adyen receives and processes the transfer — depending on your bank, this normally shouldn't take more than 2–3 days.
+
 ### Activating Physical Card
 
-1. Receive physical card in mail (5-7 business days)
-2. Open Light app
-3. Navigate to **Cards** > **My Cards**
-4. Click **Activate Card**
-5. Enter card number (last 4 digits)
-6. Verify arrival date
-7. Create PIN (separate mail or in app)
-8. Card is active and ready to use
+1. Receive physical card in mail (takes several business days)
+2. Open Light
+3. Navigate to **Cards** and open the card
+4. Click **Activate card**
+5. Confirm you are in physical possession of the card
+6. View your PIN securely in the app
+7. Card is active and ready to use
 
 ### Setting Up Virtual Card
 
-1. In app, navigate to **Cards** > **Request Virtual Card**
-2. Enter:
-   - **Merchant**: Who you're buying from (optional, for reference)
-   - **Card Purpose**: What you're buying
-   - **Amount**: Limit for this virtual card (e.g., $500)
-   - **Expiration**: When card expires (e.g., next 30 days)
+1. Go to the [Cards](https://app.light.inc/cards) page and click **+ Create card**
+2. Select **Employee card** or **Vendor card** (vendor cards are always virtual)
+3. Fill in:
+   - **Owner**: Who the card belongs to
+   - **Authentication phone number**: For 3D Secure verification
+   - **Card account**: Which card account to link
+   - **Vendor** (vendor cards only): The vendor the card is for
+   - **Limits**: Limit interval and amount
 
-3. Light generates:
-   - **Card Number**: 16 digits (valid for single use)
-   - **Expiration Date**: When card expires
-   - **CVV**: Security code
+4. Click **Create card**
 
-4. Use in online checkout
-5. Card self-destructs after single transaction
+Virtual cards are issued instantly. The card number, expiration date, and CVV can be revealed securely in the app. Virtual cards remain valid until closed — spending is controlled through the limits you set.
 
 ## Card Limits and Controls
 
-### Setting Personal Spending Limits
+### Setting Spending Limits
 
-Employees can set their own card limits:
+Card limits are managed by company admins and controllers:
 
-1. In app, navigate to **Cards** > **[Card Name]**
-2. Click **Settings**
-3. Set limits:
-   - **Daily Limit**: Max per calendar day (e.g., $1,000)
-   - **Monthly Limit**: Max per month (e.g., $10,000)
-   - **Single Transaction Limit**: Max per purchase (e.g., $5,000)
-   - **Merchant Restrictions**: Block certain types (e.g., no gambling, nightclubs)
+1. Navigate to [**Cards**](https://app.light.inc/cards?tab=cards)
+2. Open the card details drawer
+3. Click **Edit**
+4. Set a limit with an interval:
+   - **Per transaction**: Max per purchase
+   - **Weekly**: Max per week
+   - **Monthly**: Max per month
+   - Or leave the card **Unlimited**
 
-4. Click **Save**
+5. Click **Save**
 
-### Admin-Level Controls (Finance Team)
+Employees can view their cards and limits under **Cards** in the Personal section, but only admins and controllers can change limits.
 
-Finance controls limits for all cards:
+### Default Limits per Card Account
 
-1. Navigate to **Cards** > **Manage Cards**
-2. View all employee cards
-3. For each card, set:
-   - **Card Limit**: Maximum on card
-   - **Department Limit**: Max for entire department
-   - **Merchant Categories**: Allowed/blocked categories
-   - **Geographic Limits**: Only allow in specific countries
-
-4. Limits override employee settings (admin limits are stricter)
+Admins can also set a **default limit** (interval and amount) on a card account, which applies to cards under that account.
 
 ## Card Activity and Reconciliation
 
@@ -183,12 +146,12 @@ Finance controls limits for all cards:
 
 Transactions automatically feed to expense module:
 
-1. Open app, navigate to **Cards** > **Recent Activity**
+1. Open Light, navigate to [**Cards → Transactions**](https://app.light.inc/cards?tab=transactions)
 2. View all recent transactions:
    - Merchant name
    - Amount and currency
    - Date and time
-   - Status (pending, cleared)
+   - Status (authorized, captured, refunded, posted)
 
 3. Transactions show in Expense Management automatically
 4. Categorized by AI
@@ -212,14 +175,14 @@ Alerts trigger:
 
 ### Lost or Stolen Card
 
-1. Contact Light immediately (app chat or phone)
-2. Light freezes card instantly (stops transactions)
+1. Freeze the card immediately in Light (or contact support)
+2. Freezing stops all transactions instantly
 3. Report details:
    - When lost
    - Suspected fraud (if applicable)
 
-4. Card is cancelled
-5. New card shipped (5-7 business days)
+4. Card is closed
+5. New card shipped (takes several business days)
 6. Meanwhile:
    - Use virtual cards for online purchases
    - Or corporate account for emergencies
@@ -232,17 +195,16 @@ Alerts trigger:
 
 ### Expired Card
 
-1. New card automatically shipped 30 days before expiration
-2. Typically arrives before expiration
-3. Activate new card in app
-4. Old card automatically disabled
+1. Request a new card before expiration
+2. Activate new card in app
+3. Old card is closed
 
 ## Employee Card Offboarding
 
 When employee leaves company:
 
 1. Employee returns physical card
-2. Light cancels card immediately
+2. Light closes card immediately
 3. Any pending transactions are reviewed
 4. Final expenses are reimbursed if needed
 5. Card activity is archived
