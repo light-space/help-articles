@@ -27,10 +27,17 @@ Each uploaded scenario has up to three hierarchical dimension levels, determined
 |---|---|
 | Account | GL account |
 | Account code | GL account code |
+| Account ID | GL account ID |
 | Account label | GL account label |
-| Business partner | Customer or vendor |
-| Company entity | Legal entity |
+| Account type | GL account type |
+| Business partner ID | Customer or vendor ID |
+| Business partner name | Customer or vendor name |
+| Company entity ID | Legal entity ID |
+| Company entity name | Legal entity name |
 | Custom property | Any custom property group configured in your organisation |
+| Tax code | Tax code |
+| Tax ID | Tax ID |
+| Tax type | Tax type |
 
 Dimensions are read-only after upload. To change dimensions, upload a new scenario.
 
@@ -70,14 +77,13 @@ The **Overview** tab shows how your actuals compare to the selected budget scena
 
 ### Actuals vs. planned chart
 
-A bar chart showing per-period data with three series:
+A bar chart showing per-period data with two series:
 - **Actual** — what was recorded in the ledger (dark blue bars)
-- **Approved** — approved budget amounts (light blue bars)
 - **Planned** — the uploaded budget figure (white line)
 
 ### Budget table
 
-The table below the chart shows the full breakdown by account and period. Click any cell to drill into the underlying ledger transactions for that figure.
+The table below the chart shows the full breakdown by the scenario's dimensions and period. Click any cell to drill into the underlying ledger transactions for that figure.
 
 ## Related articles
 
