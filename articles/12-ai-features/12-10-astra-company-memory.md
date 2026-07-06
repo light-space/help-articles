@@ -87,7 +87,7 @@ Changes to Company Memory take effect immediately on Astra's next scheduled run.
 
 - **Memory is shared across all Astra analysis types** — Directives you write for daily health checks also apply to weekly reviews, monthly close memos, and introspection runs
 - **Astra's own blocks grow over time** — Introspection consolidation appends new insights as Astra learns. This is intentional and helps Astra build institutional knowledge
-- **If memory grows too large, Astra prunes during consolidation** — Only Astra-generated blocks (`[astra:*]`) are pruned. Admin content is never automatically removed
+- **Astra prunes its own blocks sparingly during consolidation** — Pruning is not based on memory size; Astra only removes its own (`[astra:*]`) blocks when they are clearly outdated (e.g., resolved items more than a few days old), superseded, or duplicates. Admin content is never automatically removed
 - **Company Memory is plain text** — No special schema, no YAML, no JSON. Write in natural language
 
 ## Related Articles
