@@ -6,7 +6,7 @@ Bank feeds automatically import transactions from your connected bank accounts i
 
 ## What is a Bank Feed?
 
-A bank feed is an automated connection that pulls transaction data from your bank and imports it into Light. Instead of manually downloading transactions and importing them, the feed runs automatically on a schedule and new transactions appear in Light within minutes.
+A bank feed is an automated connection that pulls transaction data from your bank and imports it into Light. Instead of manually downloading transactions and importing them, the feed runs automatically on a schedule and new transactions appear in Light after each sync.
 
 Bank feeds eliminate manual work, reduce errors, and enable faster reconciliation.
 
@@ -14,29 +14,29 @@ Bank feeds eliminate manual work, reduce errors, and enable faster reconciliatio
 
 Bank feeds are enabled when you authorize a bank connection:
 
-1. Go to **Settings > Bank accounts**
+1. Go to **Settings → Bank accounts**
 2. Select a bank account
 3. If status shows "Linked", the feed is active
 4. Transactions will begin importing on the next sync
 
-Most banks sync feeds daily. Some premium connections sync twice daily.
+Feeds sync daily or twice daily, depending on the sync interval chosen for each account when the feed is set up.
 
 ## Transaction Import Frequency
 
 Light syncs transactions at:
 
-**Daily** - Most common. Transactions import once per day, typically early morning
+**Daily** - Most common. Transactions import once per day
 
-**Twice Daily** - For certain banks and account types. Provides more recent data for active accounts
+**Twice Daily** - Provides more recent data for active accounts
 
-You can see the next scheduled sync time in the account details. You can also manually trigger a sync by clicking **Sync Now** without waiting for the scheduled time.
+You can see the sync interval in the account details. You can also manually trigger a sync by clicking **Sync Now** without waiting for the scheduled time.
 
 ## First Transaction Date
 
 When setting up a bank feed, specify the **first transaction date**:
 
 - **Recent date** (last 3 months) - Recommended for accounts already reconciled in your prior system
-- **Early date** (full history) - Import all available history (typically 2-3 years)
+- **Early date** (full history) - Import all available history (up to 2 years for most banks; UK banks are limited to 90 days)
 
 Older transactions available from the bank depend on your account type and bank's retention policy.
 
@@ -54,13 +54,13 @@ You can manually change status if needed.
 
 ## Original Amount and Fees
 
-For multi-currency transactions, Light captures:
+Where available (for example on Stripe feeds), Light captures:
 
 **Original Amount** - Amount in the transaction's original currency (if different from account currency)
 
 **Fees** - Bank fees associated with the transaction
 
-These are tracked separately from the converted amount for accurate FX accounting.
+These are tracked separately from the booked amount and are used when matching transactions.
 
 ## Transaction Metadata
 
@@ -82,7 +82,7 @@ This metadata helps match transactions to accounting entries.
 
 If you need to troubleshoot a feed:
 
-1. Go to **Settings > Bank accounts**
+1. Go to **Settings → Bank accounts**
 2. Find the account and click **Manage Feed**
 3. View feed status and history
 4. Click **Sync Now** to manually trigger an import
@@ -100,13 +100,11 @@ Bank feed connections may expire:
 
 **Why** - Banks require periodic re-authorization for security
 
-**Timeline** - Usually 6-12 months, varies by bank
+**Timeline** - Varies by bank and provider; UK bank connections are limited to 90 days
 
 **What happens** - Feed stops importing when expired
 
 **How to fix** - Go to the account and click **Re-authorize**, follow the authorization flow at your bank
-
-> Good to know: You'll receive notifications 30 days before expiration so you can re-authorize in advance.
 
 ## Handling Feed Issues
 
@@ -117,7 +115,7 @@ Bank feed connections may expire:
 
 **Duplicate transactions**
 - Sometimes a transaction may appear twice during sync
-- Light's matching engine typically deduplicates automatically
+- Light automatically detects duplicates and marks them as **Excluded**
 - If duplicates remain, mark one as "Excluded"
 
 **Missing transactions**
@@ -134,32 +132,29 @@ Bank feed connections may expire:
 
 When transactions occur in a currency different from the account:
 
-1. Light imports the transaction amount in the original currency
-2. The amount is converted to the account's base currency using the daily exchange rate
-3. Both amounts are recorded for audit purposes
-4. FX gain/loss is calculated if rates changed between transaction date and reconciliation
+1. The bank converts the amount, and the feed imports the booked amount in the account's currency
+2. Where available, the original currency amount is captured as transaction metadata (provided by the feed or extracted from the transaction reference)
+3. Both amounts can then be used during reconciliation
 
 When matching to accounting entries, Light uses FX conversion to determine if amounts match despite currency differences.
 
-## Archiving Bank Feeds
+## Disconnecting a Bank Feed
 
-You can archive a bank feed if the account is no longer used:
+You can disconnect a bank feed if the account is no longer used:
 
-1. Go to **Settings > Bank accounts**
-2. Find the account and click **Actions**
-3. Click **Archive Feed**
-4. Confirm
+1. Go to **Settings → Bank accounts**
+2. Open the bank connection
+3. Remove the linked account from the connection, or delete the connection entirely
 
-Archived feeds stop importing but remain in the system for historical reference.
+Disconnecting stops future imports. Transactions that were already imported remain in Light.
 
-## Reactivating a Feed
+## Reconnecting a Feed
 
-To reactivate an archived feed:
+To resume importing for a disconnected account:
 
-1. Go to **Settings > Bank accounts** and find the account
-2. Click **Reactivate Feed**
-3. Re-authorize the bank connection
-4. The feed resumes importing new transactions
+1. Go to **Settings → Bank accounts** and find the account
+2. Link the account to a bank connection again, re-authorizing the connection if needed
+3. The feed resumes importing new transactions
 
 ## Best Practices
 
