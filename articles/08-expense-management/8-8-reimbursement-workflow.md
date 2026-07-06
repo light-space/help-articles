@@ -16,100 +16,90 @@ Reimbursement is distinct from corporate card settlement (card is billed directl
 
 ## Reimbursement Workflow States
 
-Approved expenses progress through states:
+Individual expenses move through these statuses:
 
-1. **APPROVED**: Manager approved, awaiting Finance processing
-2. **IN_DRAFT**: Finance is preparing reimbursement batch
-3. **SUBMITTED_FOR_REVIEW**: Finance submitted to payment system
-4. **PAYMENT_PROCESSED**: Payment executed to employee
-5. **CLEARED**: Reimbursement complete and reconciled
+1. **IN_DRAFT**: Employee is preparing the expense
+2. **SUBMITTED_FOR_REVIEW**: Expense has been submitted as part of a reimbursement
+3. **CANCELLED**: Expense was cancelled
+
+When an employee submits, their draft expenses are grouped into a single reimbursement (expense report), which progresses through these states:
+
+1. **IN_PROGRESS**: Reimbursement submitted, processing started
+2. **SUCCEEDED**: A reimbursement bill was created in AP
+3. **FAILED**: Processing failed — the expenses return to draft so they can be resubmitted
+4. **REJECTED**: The reimbursement was declined during review
+5. **RESET**: A rejected reimbursement was reset — its expenses return to draft so the employee can correct and resubmit them
 
 ## Automatic Reimbursement
 
-Light can automatically process approved expenses:
+Light can automatically process submitted expense reports using the expense submission workflow:
 
-1. Configure in **Settings** > **Automation** > **Reimbursement**
-2. Enable **Auto-Process Approved Expenses**
-3. Set options:
-   - **Timing**: Process daily, weekly, or on-demand
-   - **Minimum Amount**: Only pay if batch exceeds (e.g., $100)
-   - **Maximum Amount**: Safety limit per batch
-   - **Day of Week**: Which day to process (e.g., Fridays)
+1. Configure the workflow in **Settings** → **Workflows**
+2. When an employee submits an expense report, Light's AI agent reviews it against your expense policies
+3. Based on the review:
+   - **Compliant**: The reimbursement is approved automatically
+   - **Non-compliant**: The reimbursement is sent to the Inbox for manual review
 
 4. Light automatically:
-   - Creates reimbursement bill in AP
-   - Routes to payment processing
-   - Pays employee on schedule
+   - Creates a reimbursement bill in AP
+   - Routes it to approval and payment processing
 
-With automation, approved expenses are paid automatically. No Finance intervention needed.
+Light can also automatically submit reimbursement bills for approval once all approvers are set (enabled per company — contact Light to turn this on).
+
+With automation, compliant expense reports are processed without Finance intervention.
 
 ## Manual Reimbursement Processing
 
 For more control, process reimbursements manually:
 
-### Creating Reimbursement Batch
+### Reviewing Submitted Reimbursements
 
-1. Navigate to **Reimbursements** > **Approved**
-2. View all approved expenses awaiting reimbursement
-3. Filter to expenses ready to pay:
-   - **By employee**: Pay one person at a time
-   - **By date**: Pay weekly or monthly batches
-   - **By amount**: Batch similar amounts together
-
-4. Select expenses (checkboxes)
-5. Click **Create Reimbursement Batch**
-6. Light shows:
-   - List of selected expenses
+1. Navigate to **Reimbursements**
+2. View all submitted reimbursements
+3. Each reimbursement groups one employee's submitted expenses
+4. Open a reimbursement to see:
+   - List of included expenses
    - Total to reimburse
-   - Each employee's amount
-
-7. Click **Create Batch**
+   - The employee to pay
 
 ### Creating AP Bill for Reimbursement
 
-1. Light creates an **AP bill** for the batch:
-   - **Vendor**: The employee (as User vendor)
-   - **Amount**: Total of all selected expenses
-   - **Line items**: Individual expenses from the batch
-   - **GL accounts**: Posted to appropriate accounts based on category
+1. Light automatically creates an **AP bill** for each submitted reimbursement:
+   - **Payee**: The employee (paid as an individual, not a vendor)
+   - **Amount**: Total of the submitted expenses
+   - **Line items**: Individual expense line items
+   - **GL accounts**: Each line is coded to the GL account of its reimbursement category
 
-2. Bill appears in **AP** > **Bills** > **Reimbursements**
-3. Bill shows status: **DRAFT**
+2. Bill appears in **Bills** and on the **Reimbursements** page
+3. Bill shows status: **Draft** and lands in the Inbox for review (unless auto-approved)
 
-### Posting the Bill
+### Approving the Bill
 
 1. Open the reimbursement bill
 2. Review amounts and GL accounts
-3. Click **Post** when ready
-4. GL entries are created
-5. Bill moves to **POSTED** state
+3. Submit it for approval when ready
+4. Once approved, accounting entries are created and the bill becomes ready for payment
 
 ### Creating Payment
 
-1. After posting, click **Create Payment**
+1. After approval, schedule the payment
 2. Light shows payment details:
-   - Employee banking information
+   - Employee banking information from their reimbursement profile
    - Amount to pay
-   - Payment method (default from employee setup)
 
-3. Confirm payment method:
-   - **Direct deposit**: ACH to employee bank account
-   - **Check**: Mail check to employee
-   - **Other**: Credit card or other method
+3. Payments are sent as bank transfers to the bank details in the employee's reimbursement profile:
+   - Reimbursement currency and bank country
+   - IBAN (with BIC), or
+   - Local account number and routing/bank code (e.g., US account and routing number)
 
-4. Click **Schedule Payment** or **Execute Payment**
+4. Payments are grouped into payment batches for release
 
 ### Executing Payment
 
 1. If scheduled, payment executes on set date
-2. If immediate, Light processes payment now:
-   - For ACH: Submits ACH file to your bank
-   - For Check: Prints check (if configured)
-   - For other methods: Routes accordingly
-
-3. Employee receives notification: "Reimbursement of $X is being processed"
-4. Bank processes payment (1-3 days typical)
-5. Employee receives funds
+2. Light initiates a bank transfer using the appropriate payment rail (domestic or international)
+3. Bank processes payment (1-3 days typical)
+4. Employee receives funds and a notification: "Your reimbursement has been paid"
 
 ## Reimbursement by Employee
 
@@ -131,18 +121,18 @@ View what each employee is owed:
 
 ## Grouping Reimbursements
 
-Batch multiple employees' expenses together:
+Pay multiple employees' reimbursements together:
 
-1. Select expenses from multiple employees
+1. Each reimbursement produces its own AP bill (one per employee)
 2. Light shows:
    - Employee 1: $345
    - Employee 2: $120
    - Employee 3: $890
    - Total batch: $1,355
 
-3. Create single AP bill for entire batch
-4. Post and pay all at once
-5. Individual employees are reimbursed separately
+3. Payments are grouped into a single payment batch
+4. Release the batch to pay all at once
+5. Each employee receives their own bank transfer
 
 ## Advance Payments
 
@@ -178,12 +168,11 @@ Ensure all approved expenses are reimbursed:
 If payment hasn't reached employee:
 
 1. Check bank status:
-   - For ACH: Typically 1-3 business days
-   - For checks: 5-10 business days (mail time)
+   - Bank transfers typically take 1-3 business days
 
 2. If delayed:
-   - Confirm bank received ACH file
-   - Check for checks returned due to invalid account info
+   - Confirm the payment batch was released
+   - Check for payments returned due to invalid bank account details
    - Follow up with bank
 
 3. Reissue payment if needed
@@ -252,12 +241,12 @@ For companies with fewer expenses:
 Employees can track their reimbursements:
 
 1. Login to Light app or portal
-2. Navigate to **My Reimbursements**
+2. Navigate to **Expenses**
 3. View:
-   - Pending approval (waiting for manager)
-   - Approved and scheduled (waiting for payment)
+   - Draft expenses (not yet submitted)
+   - Submitted (waiting for review and payment)
    - Paid (with payment date and amount)
-   - Declined (with reason)
+   - Rejected (a rejected reimbursement can be reset, returning its expenses to draft for correction and resubmission)
 
 4. See expected payment date
 5. Can open tickets if payment not received
