@@ -2,7 +2,7 @@
 
 Light's AI engine processes receipt uploads to automatically capture spending details and assign expense categories. This article explains how to capture receipts and how Light categorizes them.
 
-[Open in Light →](https://app.light.inc/dashboard)
+[Open in Light →](https://app.light.inc/expenses)
 
 ## Overview
 
@@ -12,27 +12,27 @@ Light's mobile app and web interface make it easy to capture receipts on the go.
 
 When you upload a receipt, Light's AI parsing engine captures:
 
-- **Vendor/Merchant Name**: Who you spent money with (e.g., Starbucks, United Airlines)
-- **Transaction Amount**: The total amount spent and original currency
+- **Vendor/Merchant Name**: Who you spent money with (e.g., Starbucks, United Airlines), plus the merchant's website domain when visible on the receipt
+- **Transaction Amount**: The total gross amount paid (including taxes) and the original currency
 - **Date**: When the purchase was made
-- **Line Items**: Individual items purchased (if detailed on the receipt)
-- **Tax Amount**: Separate capture of tax charges when available
-- **Payment Method**: Type of payment (cash, card, etc.) if visible
+- **Location**: The city and country of the purchase
+- **Descriptions**: A detailed description of the receipt contents (including individual items when the receipt is itemized) and a concise summary of the expense purpose
+- **Category and Spending Tags**: A suggested reimbursement category and spending tags describing the expense content
 
-Light stores this information and links it to your user profile for easy tracking.
+The AI only extracts information that is explicitly present on the receipt. If it can't confidently determine a value, it leaves the field blank for you to fill in. Light stores this information and links it to your user profile for easy tracking.
 
 ## Automatic Expense Categorization
 
-Light's AI automatically assigns expense categories based on the merchant and items purchased. The categorization system:
+Light's AI automatically suggests an expense category based on the receipt content. The categorization system:
 
-- Recognizes common merchant types (airlines, hotels, restaurants, office supplies, etc.)
-- Analyzes line items to determine the true nature of the expense
-- Applies tax codes based on category and location
-- Accounts for your company's spending policies
+- Matches the expense to one of your company's **reimbursement categories**, configured at **Settings (gear icon) → Reimbursement category**
+- Uses each category's **Context** description and your user context (country, user groups, cost center) to pick the best match
+- Analyzes the receipt contents to determine the true nature of the expense
+- Applies the GL account (and tax code, if one is set) defined on the selected category
 
-For example, if you upload a receipt from a restaurant, Light may categorize it as "Meals and Entertainment." If you upload a receipt from an office supply store, it's categorized as "Office Supplies."
+For example, if you upload a receipt from a restaurant and your company has a "Meals & Dining" category, Light suggests that category. If no category is a good match, none is suggested and you select one yourself.
 
-> Good to know: Light's merchant recognition includes thousands of common vendors globally, so categorization works whether you're spending locally or while traveling.
+> Good to know: Light extracts the merchant name and website domain directly from the receipt. When a domain is found, Light enriches the merchant with a clean display name and logo — so recognition works whether you're spending locally or while traveling.
 
 ## How to Upload Receipts
 
@@ -47,7 +47,7 @@ For example, if you upload a receipt from a restaurant, Light may categorize it 
 
 ### Web Interface
 
-1. Navigate to the **Expenses** or **Receipts** section
+1. Navigate to the **Expenses** page
 2. Click **Upload Receipt**
 3. Select a receipt image or PDF from your computer
 4. Light processes and displays the extracted data
@@ -64,7 +64,7 @@ After Light extracts the receipt data:
 4. Select the appropriate category from the list or search for it
 5. Click **Save**
 
-Light learns from your corrections, improving categorization accuracy for future receipts from the same vendor.
+Light doesn't retrain itself on individual corrections. To improve future suggestions for similar expenses, add guidance to the category's **Context** field at **Settings (gear icon) → Reimbursement category** — the AI uses this context every time it parses a receipt.
 
 ## Receipt Quality Tips
 
@@ -80,25 +80,19 @@ Receipts with blurry text, extreme angles, or poor lighting may require manual e
 
 ## Tax Code Assignment
 
-Light automatically assigns tax codes based on:
+Tax codes come from your company's reimbursement categories. Each category, configured at **Settings (gear icon) → Reimbursement category**, maps to a GL account and, optionally, a tax code.
 
-- Expense category
-- Country/region of purchase
-- Local tax regulations configured for your company
+When Light assigns a category to your receipt, the tax code set on that category is applied to the expense. This helps ensure accurate tax reporting and expense deductions.
 
-For example, if you upload a meal receipt from a location with specific VAT treatment, Light applies the appropriate tax code. This helps ensure accurate tax reporting and expense deductions.
+## Guiding the AI
 
-## Recurring Expenses
+Light's AI parses each receipt independently — it doesn't remember previous receipts or build vendor-specific rules. Instead, you steer it explicitly:
 
-If you frequently spend at the same merchant (e.g., regular coffee shop visits), Light remembers:
+- **Category context**: Describe what belongs in each category at **Settings (gear icon) → Reimbursement category**
+- **Company AI instructions**: Company-level custom instructions for the AI assistant are applied whenever a receipt is parsed
+- **User context**: The AI considers the submitter's country, user groups, and cost center when interpreting receipts and matching categories
 
-- Your preferred categorization for that vendor
-- The typical amount range for your transactions
-- Any tax code preferences
-
-This makes subsequent receipts from the same vendor even faster to process.
-
-> Tip: Batch upload receipts from a trip or week. Light processes them efficiently and groups them together, making expense review easier.
+> Tip: Batch upload receipts from a trip or week. Light processes each one automatically, making expense review easier.
 
 ## Related Articles
 
