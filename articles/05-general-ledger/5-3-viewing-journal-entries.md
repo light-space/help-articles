@@ -9,7 +9,7 @@ Light provides flexible tools to search, filter, and view journal entries and al
 
 To view all accounting documents and transactions:
 
-1. Go to **General Ledger** or **Accounting > Ledger**
+1. Go to **Accounting → Transactions**
 2. You see a list of all accounting documents
 3. Filter and search to find specific items
 4. Click a document to view details
@@ -29,12 +29,11 @@ Use filters to narrow the ledger view:
 - etc.
 
 **By Status:**
-- Draft, Posted, Partially Cleared, Cleared, Archived
+- Draft, Approval pending, Approved, Posted, Partially cleared, Cleared, Archived
 
 **By Date Range:**
 - Posting date (when it posted to GL)
 - Document date (when transaction occurred)
-- Cleared date (when it was reconciled)
 - Valuation date (for revaluation entries)
 - Created at (when the document was created in Light)
 
@@ -67,13 +66,9 @@ Search using text or numbers:
 - Description
 - Business partner name (vendor, customer)
 - GL account name/code
-- Custom properties
+- Tax code
 
-**Search type:**
-- Contains (default)
-- Equals exactly
-- Starts with
-- Ends with
+Search matches partial text, so searching part of a document number or description returns all matching results.
 
 Example: Search "invoice" to find all invoice-related documents.
 
@@ -162,7 +157,7 @@ Trial balance is useful for reconciliation and audit purposes.
 
 Drill into a specific GL account:
 
-1. Go to **General Ledger > GL Accounts**
+1. Go to **Settings → Chart of accounts**
 2. Find the account and click it
 3. See:
    - Opening and closing balance
@@ -187,7 +182,7 @@ This hierarchical view makes it easy to understand account structures.
 
 View documents that haven't posted yet:
 
-1. Go to **Ledger > Unposted Documents** or filter Status = DRAFT
+1. Go to **Accounting → Accounting documents** and filter Status = Draft
 2. See documents waiting to be posted
 3. Review before posting or posting in bulk
 
@@ -211,9 +206,9 @@ Use this to focus on items needing reconciliation work.
 
 For journal entries specifically:
 
-1. Go to **General Ledger > Journal Entries**
+1. Go to **Accounting → Journal entries**
 2. Filter by:
-   - Entry type (manual vs. automatic)
+   - Status (Draft, Approval pending, Approved, Posted, Archived)
    - GL account affected
    - Posted period
    - Description keywords
@@ -247,31 +242,14 @@ This helps with cost allocation and project-based analysis.
 Export journal entries and GL transactions for analysis:
 
 1. Use list **Export** button to export filtered results
-2. Choose format:
-   - Excel - Full spreadsheet
-   - CSV - For import elsewhere
-   - PDF - For printing/sharing
-3. Specify columns to include
-4. Download the file
+2. The export downloads as a CSV file
+3. Custom properties are included as additional columns
 
 Exported data includes product information (product name and ID) when available on ledger transaction lines—particularly on revenue and discount lines from sales invoices. This enables net-revenue-by-product analysis in your exported data.
 
 **For large exports:** If your filtered result contains more than 10,000 rows, Light runs the export in the background. You'll receive a notification with a download link when it's ready. Smaller exports download instantly. Exported files are available for 7 days.
 
 Use exports for detailed analysis in Excel or consolidation to other systems.
-
-## GL Aging Analysis
-
-For AR and AP accounts, view aging:
-
-1. Go to **Reports > AR Aging** or **AP Aging**
-2. See invoices grouped by age:
-   - Current (due within 0-30 days)
-   - 30-60 days overdue
-   - 60-90 days overdue
-   - 90+ days overdue
-
-Aging analysis helps identify collection/payment issues.
 
 ## Reconciliation Status
 
