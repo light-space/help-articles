@@ -37,17 +37,17 @@ This article covers the top 10 most common issues Light users encounter and prov
 ### Solutions
 
 1. **Check Connection Status**:
-   - Go to **Bank Accounts**
+   - Go to **Settings** (gear icon) → **Bank accounts**
    - Look for red warning icons next to account names
    - Click the account to view connection status
 2. **Reconnect Bank Account**:
    - Click the account with sync issues
-   - Select **Reconnect** or **Reauthenticate**
+   - Select **Renew connection**
    - Re-enter bank login credentials through secure connection
    - Complete any multi-factor authentication
 3. **Wait for Sync**:
-   - Bank feeds can take 4-24 hours to sync
-   - Light syncs multiple times per day
+   - Bank feeds sync automatically once or twice a day, depending on the feed's sync interval
+   - New transactions can take up to 24 hours to appear
    - Don't add transactions manually if waiting for sync
 4. **Check Bank Connection Limits**:
    - Some banks limit API connections
@@ -78,9 +78,8 @@ This article covers the top 10 most common issues Light users encounter and prov
    - Ensure text is horizontal (not angled)
    - Handwritten invoices may need manual entry
 4. **Manually Correct After Extraction**:
-   - Light learns from corrections
-   - Edit extracted fields before saving
-   - Future invoices from same vendor will be more accurate
+   - Review and edit extracted fields before saving
+   - Set defaults (such as a default ledger account) on the vendor record so future invoices from the same vendor are coded correctly
 5. **Contact Support for Complex Invoices**:
    - Submit sample invoices that consistently fail
    - Light support can configure custom extraction rules
@@ -101,10 +100,9 @@ This article covers the top 10 most common issues Light users encounter and prov
    - Click the category field
    - Select the correct category from dropdown
    - Save the transaction
-2. **Update Merchant Recognition**:
-   - Light learns merchant types from your categorizations
-   - Manually assigning categories teaches the AI
-   - Future purchases from same vendor will be auto-categorized correctly
+2. **Set Vendor Defaults**:
+   - Set a default ledger account on the vendor record
+   - Future purchases from the same vendor will be categorized using that default
 3. **Check Available Categories**:
    - Your company may have custom categories
    - Ensure you're selecting from your company's defined list
@@ -206,7 +204,7 @@ This article covers the top 10 most common issues Light users encounter and prov
    - Confirm posting date matches report date range
 5. **Change Report View**:
    - Try a different report type or format
-   - Export data to Excel for manual review
+   - Export data to CSV for manual review
    - Contact support if specific reports consistently fail
 
 ## Issue 8: Getting "Insufficient Permission" Errors
@@ -220,7 +218,7 @@ This article covers the top 10 most common issues Light users encounter and prov
 ### Solutions
 
 1. **Verify Your Role**:
-   - Click your **Profile** in top right
+   - Go to **Settings** (gear icon) → **Profile**
    - Check your assigned role
    - Certain roles have limited permissions
 2. **Request Access**:
@@ -235,9 +233,8 @@ This article covers the top 10 most common issues Light users encounter and prov
    - Permissions update instantly but may not reflect immediately
    - Clear cookies and refresh page
    - Sign out and back in to pick up new permissions
-5. **Temporary Delegation**:
-   - Ask someone with permission to complete the action
-   - Or ask approver to delegate authority to you temporarily
+5. **Ask a Colleague**:
+   - Ask someone with the required permission to complete the action
 
 ## Issue 9: Integration Is Not Working
 
@@ -250,7 +247,7 @@ This article covers the top 10 most common issues Light users encounter and prov
 ### Solutions
 
 1. **Verify Integration Is Active**:
-   - Go to **Settings** > **Integrations**
+   - Go to **Settings** → **Integrations**
    - Look for your integration in the list
    - Check status indicator (green = connected, red = error)
 2. **Check Credentials**:
