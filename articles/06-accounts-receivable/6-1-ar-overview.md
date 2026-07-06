@@ -28,6 +28,7 @@ A sales invoice (AR document) progresses through these states:
 | `PAYMENT_PENDING` | **Payment pending** | Payment initiated but not yet cleared |
 | `PARTIALLY_PAID` | **Partially paid** | Some payments received |
 | `PAID` | **Paid** | Fully paid |
+| `REVERSED` | **Reversed** | Reversed by a reversal credit note and reissued as a new invoice; terminal |
 | `ARCHIVED` | **Void** | Voided / archived |
 
 Each invoice also tracks an **e-invoice status** (when e-invoicing is enabled for the entity), shown as a separate badge.
@@ -57,7 +58,7 @@ Light supports multi-entity AR:
 - **Posting and sending** — post-only or post & send by email, with optional e-invoicing
 - **Bulk actions** for posting and sending multiple invoices at once
 - **Customer credits** to issue refunds and apply to invoices
-- **Customer aging widget** on each customer's record showing 0–30 / 31–60 / 61–90 / 91+ days
+- **Customer aging widget** on each customer's record showing Current / 1–30 / 31–60 / 61–90 / 90+ days
 - **Activity log** on each invoice
 - **Bank reconciliation** for matching incoming payments to open invoices
 
