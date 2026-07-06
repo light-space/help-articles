@@ -2,7 +2,7 @@
 
 Year-end close is the annual accounting process that closes all revenue and expense accounts and transfers net income to retained earnings. This article explains the year-end closing process.
 
-[Open in Light →](https://app.light.inc/accounting-periods)
+[Open in Light →](https://app.light.inc/accounting/accounting-periods)
 
 
 ## What is Year-End Closing?
@@ -64,19 +64,19 @@ After these entries:
 
 ## Creating Closing Entries in Light
 
-Light provides automated closing entry generation:
+Light generates and posts closing entries automatically when you close an accounting year:
 
-1. Go to **General Ledger > Year-End Closing**
-2. Click **Generate Closing Entries**
-3. Select the **fiscal year** to close
-4. System automatically:
-   - Identifies all revenue and expense accounts
+1. Go to **Accounting → Accounting periods**
+2. Close all periods in the fiscal year—an accounting year cannot be closed while any of its periods are still open
+3. Close the accounting year, either for **all entities** or only for **selected entities**
+4. Light automatically:
+   - Identifies all P&L (revenue and expense) accounts with activity in the year
    - Calculates their year-to-date balances
-   - Generates closing journal entries
-   - Creates income summary entry
-   - Transfers to retained earnings
-5. Review the generated entries
-6. Click **Post** to post all closing entries
+   - Generates a year closing (YC) document per entity that zeroes out each P&L account
+   - Posts the offsetting net income (or loss) directly to the Retained Earnings account
+5. The closing entries are posted automatically, dated the first day after the fiscal year ends
+
+If you close the year for only some entities, the year remains partially closed until it has been closed for every entity. Entities with no P&L activity in the year are skipped—no closing entry is created for them.
 
 > **Note:** If any P&L accounts with non-zero balances for the year are disabled, Light will prompt you to confirm before posting. You can proceed to complete the year-end close with disabled accounts, or cancel and re-enable the accounts first.
 
@@ -105,6 +105,8 @@ Most closing processes use an Income Summary account:
 
 **Not needed:** Some companies skip Income Summary and close directly to Retained Earnings
 
+**In Light:** The automated year-end close does not use an Income Summary account—it posts the offset for the year's net income or loss directly to Retained Earnings.
+
 Check your accounting policy—some companies require Income Summary, others don't.
 
 ## Pre-Closing Adjustments
@@ -124,17 +126,13 @@ These must all post before closing, or results will be incorrect.
 
 For multi-entity companies:
 
-1. **Close each entity separately**
-   - Create closing entries for Entity A, Entity B, etc.
-   - Each entity's own Income Summary and Retained Earnings
+1. **Each entity is closed separately**
+   - Light creates a separate closing entry for Entity A, Entity B, etc., posting to each entity's own Retained Earnings account
+   - You can close the year for all entities at once or entity by entity; the year stays partially closed until all entities are closed
 2. **At group level**
    - Consolidation process combines entities
    - Eliminates intercompany amounts
    - Shows consolidated retained earnings
-
-Or, if using consolidated chart:
-1. Create single closing entry for consolidated GL
-2. Allocates results back to individual entities if needed
 
 ## Retained Earnings
 
