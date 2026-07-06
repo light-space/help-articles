@@ -33,9 +33,9 @@ Light integrates with Slack to deliver notifications to your team's Slack worksp
 1. Go to [**Settings (gear icon) → Integrations**](https://app.light.inc/settings/integrations)
 2. Find the **Slack** integration
 3. Follow the setup instructions to connect your Slack workspace
-4. Once connected, Light can send notifications to designated Slack channels
+4. Once connected, Light sends notifications as direct messages to each user's matching Slack account
 
-> Good to know: The [Integrations](https://app.light.inc/settings/integrations) page also includes connections for **HubSpot** and **Banks**, but Slack is the primary channel for team notifications.
+> Good to know: Light also integrates with **Microsoft Teams** as an alternative messaging channel — like Slack, it delivers notifications as direct messages to each user. The [Integrations](https://app.light.inc/settings/integrations) page also includes connections for **HubSpot** and **Banks**.
 
 ## Profile settings
 
@@ -52,7 +52,7 @@ Your profile contains personal settings that affect how you interact with Light:
 ## Best practices
 
 - Configure web app notifications to receive push alerts for events that matter to you
-- Connect the Slack integration to keep your team informed of important events in real time
+- Connect the Slack or Microsoft Teams integration to keep your team informed of important events in real time
 - Use the "Test notifications" button to verify your web app push notifications are working
 - Check the Integrations page periodically to ensure your connections remain active
 - Keep your profile contact information up to date so Light can reach you when needed
