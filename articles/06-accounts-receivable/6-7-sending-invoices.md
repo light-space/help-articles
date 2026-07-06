@@ -42,11 +42,11 @@ The e-invoice goes through these statuses (shown as a separate badge on the invo
 3. Choose the bulk post-and-send action
 4. The bulk dialog opens, letting you post and send all selected invoices in one go
 
-When customer email preferences are configured with recipient emails, bulk sends will use those. Otherwise, Light falls back to the customer's primary email address.
+When bulk posting and sending, each invoice is emailed to its customer's primary email address. The subject, reply-to, and CC are taken from the invoice's document template, falling back to the customer's email preferences where the template doesn't define them.
 
 Failures are reported per-invoice — if some invoices fail (for example, missing required fields), the others can still go through.
 
-> **Note:** When bulk sending, Light uses the recipient emails configured in each customer's email preferences if they've been set. If no email preferences are configured for a customer, the system falls back to the customer's primary email address.
+> **Note:** When bulk re-sending invoices that are already open (for example, payment reminders), Light uses the recipient emails configured in each customer's email preferences if they've been set. If no email preferences are configured for a customer, the system falls back to the customer's primary email address.
 
 ## After Sending
 
