@@ -13,7 +13,7 @@ Connecting bank accounts enables:
 - **Real-time visibility** - See current bank balances and recent activity
 - **Payment scheduling** - Use Light to initiate payments directly from your bank
 
-Light supports connections to major banks in US, Europe, and Asia through providers like Plaid, GoCardless, Airwallex and Host-to-Host integrations.
+Light supports connections to major banks in US, Europe, and Asia through providers like Plaid, GoCardless, Stripe and Host-to-Host (AMC) integrations.
 
 ## Before You Start
 
@@ -58,9 +58,9 @@ To enable automatic transaction imports, authorize Light to access your bank acc
 
 Light supports transaction feeds from:
 
-**Plaid** (North America) - Connects to thousands of banks in the United States
+**Plaid** (United States) - Connects to thousands of banks in the United States
 
-**GoCardless** (Europe, UK) - Covers European and UK banks including revolut, Wise, Starling, and traditional banks
+**GoCardless** (Europe, UK) - Covers European and UK banks including Revolut, Wise, Starling, and traditional banks
 
 **Stripe** (Payment Processing) - For Stripe payment accounts
 
@@ -114,7 +114,7 @@ Each bank account is mapped to a **ledger account** for posting to your general 
 
 The mapping is checked when posting—if the account doesn't exist, posting will fail.
 
-> Good to know: Use the same ledger account for multiple bank accounts at the same bank (e.g., all Chase accounts use Checking 1010). This simplifies reconciliation and reporting.
+> Good to know: Each bank account must be mapped to its own unique ledger account code — Light will reject a ledger account code that is already in use by another bank account. Use a consistent numbering scheme (e.g., 1010, 1011, 1012 for accounts at the same bank) to keep reconciliation and reporting easy to follow.
 
 ## Account Status
 
@@ -132,19 +132,18 @@ If a connection expires (your bank requires periodic re-authorization), you'll s
 
 To change the display name of a bank account in Light:
 
-1. Go to **Accounting → Chart of accounts**
-2. Find the ledger account associated with your bank account
-3. Click on the account to open its details
-4. Update the **Account name** field
-5. Click **Save**
+1. Go to **Settings > Bank accounts**
+2. Open the bank account you want to rename
+3. Update the **Name** field
+4. Click **Save**
 
 The updated name will appear in bank reconciliation and throughout Light.
 
-> Note: Bank account names are managed through the Chart of Accounts, not through Settings > Bank accounts. The bank account settings page is used for connection details and feed authorization, while the COA controls how the account appears in your financial records.
+> Note: The bank account name is separate from the label of its linked ledger account. Renaming the ledger account in **Chart of accounts** changes how it appears in your financial records, but the bank account name shown in bank reconciliation is managed in Settings > Bank accounts.
 
 ## Re-authorizing Bank Feeds
 
-Bank feed authorizations may expire after a period (6-12 months depending on the bank):
+Bank feed authorizations may expire after a period set by your bank (for example, UK banks limit access to a maximum of 90 days per authorization):
 
 1. Go to **Settings > Bank accounts**
 2. Find the account with status "Expired"
@@ -171,7 +170,7 @@ You can re-authorize later if you change your mind.
 
 **"Connection times out"** - Try again later. Your bank's servers may be temporarily unavailable.
 
-**"Connection succeeded but no transactions appear"** - Transactions typically appear within 1 hour. If longer, check that your account has recent activity and the connection status shows "Linked".
+**"Connection succeeded but no transactions appear"** - Bank feeds sync on a schedule (daily or twice a day depending on the feed), so it can take up to a day for the first transactions to appear. If it takes longer, check that your account has recent activity and the connection status shows "Linked".
 
 ## Bank Account Validation
 
