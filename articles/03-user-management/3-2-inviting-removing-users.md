@@ -16,14 +16,11 @@ New users are created from the Users page. Follow these steps to add a user:
    - **Address**, **Country**, **State**, **City**, and **Zip / postcode** (optional)
    - **Phone number** (optional)
 4. Select their **Entity** (the entity they'll work in primarily)
-5. Select their **Communication channel** (Slack, MS Teams, or Web App)
-6. Select their **Access role** (one or more roles based on their responsibilities)
-7. Optionally assign a **Manager** (for approval workflow routing)
-8. Click **Create**
+5. Select their **Access role** (one or more roles based on their responsibilities)
+6. Optionally assign a **Manager** (for approval workflow routing)
+7. Click **Create**
 
-The user will receive an email with a secure link to activate their account. They'll set their own password and can start using Light immediately after activation.
-
-> Good to know: Email invitations expire after 7 days. If a user doesn't accept within this period, send a new invitation.
+The user's account is active as soon as it's created — there is no separate invitation to accept or activation step. Depending on your welcome email settings (see below), Light sends the new user a welcome email tailored to their roles, with links to the web app and mobile apps to help them get started.
 
 ### Controlling Welcome Emails
 
