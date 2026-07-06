@@ -34,7 +34,7 @@ FX revaluation entries record this unrealized gain or loss and adjust GL balance
 Light sources exchange rates from two providers:
 
 - **European Central Bank (ECB)** — The primary source, providing daily reference rates that are ingested automatically.
-- **OpenExchangeRates** — A commercial provider used for currency pairs not published by the ECB, ensuring coverage for less common currencies.
+- **ExchangeRate-API** — A commercial provider used for currencies not published by the ECB, ensuring coverage for less common currencies.
 
 How rates are stored and resolved:
 
@@ -71,7 +71,7 @@ A revaluation is defined by two things: **which balances** are revalued (the *po
 
 ### Open items (AP / AR and accruals)
 
-Open or partially-cleared payable and receivable documents, plus released accrual lines that are still open at period end. These are revalued **per document or accrual line** at the period-end closing rate, with a link back to the source invoice/line for traceability.
+Open or partially-cleared payable and receivable documents, plus released accrual lines that are still open at period end. These are revalued **per document or accrual line** at the period-end closing rate, with a link back to the source invoice/line for traceability. Documents that were **fully cleared during the period** are also included in the run — this is how prior periods' unrealized revaluations on those documents are reversed once the gain or loss has become realized at clearing.
 
 ### Monetary accounts (bank, cash, etc.)
 
@@ -163,9 +163,9 @@ FX adjustment    = Revalued balance − current carrying amount
 
 ### How it posts
 
-- A **single FX accounting document is created per run**, dated at period end and posted immediately — it is never left in draft.
+- **FX accounting documents are created per entity** — one for each revaluation population with balances to adjust (Accounts Payable, Accounts Receivable, accruals, other revalued accounts, and CTA) — dated at period end and posted immediately; they are never left in draft.
 - The monetary account is adjusted to its revalued amount; the offsetting entry is posted to the system **unrealized FX gain/loss** account, or to the **CTA** account for the local-to-group translation component.
-- Each revaluation line carries a link back to its source document/line, supporting line-level traceability.
+- AP/AR and accrual revaluation lines carry a link back to their source document/line, supporting line-level traceability. Account-level revaluations (other monetary accounts and CTA) are posted per account and currency, without a document link.
 
 Revaluation runs are **idempotent** (protected against duplicate posting) and can be archived or reversed through a controlled reversal that reverses the underlying accounting document. The full history of revaluation documents is retained.
 
@@ -196,7 +196,7 @@ The **Last run** column in the entities list shows the date of the most recent r
 
 ## Reopening or Reversing a Revaluation
 
-If an FX revaluation task has already been completed for a period, the action button changes from **Run revaluations** to **Reopen**. Reopening reverses the underlying accounting document through a controlled reversal so you can re-run the revaluation if adjustments are needed. Because runs are idempotent, re-running will not double-post, and the history of revaluation documents is retained for audit.
+If an FX revaluation task has already been completed for a period, the action button changes from **Run revaluations** to **Reopen**. Reopening marks the task (and any dependent tasks) as no longer completed so you can re-run the revaluation if adjustments are needed — it does not by itself reverse the posted entries. To back out a posted revaluation, archive the individual FX revaluation document; archiving reverses the underlying accounting document through a controlled reversal. Because a re-run takes previously posted revaluations into account, it will not double-post, and the history of revaluation documents is retained for audit.
 
 ## Multi-Entity Revaluation
 
