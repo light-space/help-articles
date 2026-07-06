@@ -15,7 +15,7 @@ Light's Accounts Payable (AP) covers the bill-to-payment workflow: capturing ven
 | **Purchase orders** | [/procurement/purchase-orders](https://app.light.inc/procurement/purchase-orders) | POs that match against bills |
 | **Purchase requests** | [/procurement/purchase-requests](https://app.light.inc/procurement/purchase-requests) | PR-to-PO workflow |
 
-All appear under **Spend management** in the sidebar.
+All appear under **Spend management** in the sidebar, except **Purchase requests**, which are accessed from the **Purchase orders** page.
 
 ## Bills List — Tabs
 
