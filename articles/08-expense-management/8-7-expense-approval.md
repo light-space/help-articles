@@ -8,69 +8,59 @@ Expense approval workflows ensure submitted expenses are reviewed and approved b
 
 An approval workflow defines:
 
-- **Approval levels**: How many levels of review (1, 2, or 3+)
-- **Approvers**: Who reviews at each level (usually managers)
-- **Escalation**: What happens if approver doesn't respond (escalate to manager's manager)
-- **Rules**: When different rules apply (e.g., approvers vary by department)
+- **Approval steps**: How many approval nodes a submission passes through (1, 2, or 3+)
+- **Approvers**: Who reviews at each step — specific users, user groups, the requester's manager, or the manager of the previous approver
+- **AI agent review**: Light can review expense reports against your expense policies and auto-approve compliant ones
+- **Conditions**: When different approval paths apply (e.g., approvers vary by amount or entity)
 
 Most organizations use **manager approval**: Employee submits, manager approves, Finance processes reimbursement.
 
 ## Default Approval Workflow
 
-Light includes standard workflow:
+Light includes a default **Expense Reimbursement** workflow, triggered when an expense report is submitted:
 
-- **Level 1**: Employee's direct manager reviews and approves
-- **Escalation**: If manager doesn't approve within 3 days, escalate to their manager
+- **AI agent review**: Light reviews the expense report against your expense policies
+- **Compliant**: The expense report is approved automatically
+- **Non-compliant**: The expense report is sent to the inbox for manual review
 
-You can customize or create additional workflows.
+You can customize this workflow in the visual editor.
 
 ## Setting Up Approval Workflows
 
-### Creating a Workflow
+### Opening the Workflow Editor
 
-1. Navigate to **Settings** > **Approval Workflows**
-2. Click **Create Workflow**
-3. Enter **Workflow Name** (e.g., "Standard Expense Approval")
-4. Choose **Default**: Whether this applies to all expenses
-5. Click **Create**
+1. Navigate to **Settings → Workflows** ([Open in Light →](https://app.light.inc/settings/workflows))
+2. Click the **Expense Reimbursement** workflow to open its visual editor
+3. Use the toolbar at the bottom to add **Action** or **Condition** nodes
+4. Connect nodes to define the approval flow
+5. Click **Publish** to activate your changes — draft workflows don't apply to new submissions
 
-### Adding Approval Levels
+### Adding Approval Steps
 
-1. In the workflow, click **Add Level**
-2. Set the **Level Number** (1, 2, 3, etc.)
-3. Specify **Approvers**:
-   - **By Role**: All managers, all team leads (flexible if people leave)
-   - **By User**: Specific people (for fixed authority)
-   - **By Department**: Different approvers per department
+1. In the visual editor, add an approval node
+2. Specify **Approvers**:
+   - **Specific users**: Fixed people with approval authority
+   - **User groups**: Members of a group can approve
+   - **Manager of requester**: The submitting employee's manager
+   - **Manager of previous approver**: For chained, multi-level approvals
 
-4. Set approval **Authority**:
-   - **All expenses**: Approver reviews everything
-   - **By Amount**: Different approvers for different thresholds (e.g., amounts under $1,000 vs. over)
-
-5. Set **Timeout** and **Escalation**:
-   - Days before escalation (e.g., 3 days)
-   - Who to escalate to (manager of manager, VP, etc.)
-
-6. Click **Add Level**
+3. Mark each approver as required or optional
+4. Each approval node branches into **if approved** and **if rejected** paths — connect each to the next step
+5. To vary approvers by amount or other criteria, route submissions into different approval nodes using condition nodes
 
 ### Conditional Approval Rules
 
-For complex scenarios, define rules:
+For complex scenarios, add condition nodes:
 
-1. Click **Add Rule**
-2. Set the **condition** (IF):
-   - If Department = Engineering
-   - If Expense Amount > $500
-   - If Category = International Travel
-   - If Employee Level = Contractor
+1. In the visual editor, add a **Condition** node
+2. Set the **condition** (IF), for example:
+   - If Amount > $500
+   - If Entity = [specific entity]
+   - If Reimbursement submitter = [specific user]
+   - If a custom property has a certain value
 
-3. Set the **action** (THEN):
-   - Then Assign to [Manager/Finance]
-   - Then Require 2 Approvals
-   - Then Require VP Approval
-
-4. Set **Rule Priority**: Order of evaluation
-5. Click **Add Rule**
+3. Connect each branch — including the "else" default path — to the appropriate approval step
+4. Conditions are evaluated in order, and the first match determines the path
 
 ## Manager Approval Process
 
@@ -86,7 +76,7 @@ Click notification to open expense for review.
 
 ### Reviewing an Expense
 
-1. Click notification or navigate to **Approvals** > **Pending**
+1. Click the notification or navigate to **Tasks** ([Open in Light →](https://app.light.inc/user-tasks))
 2. View expense details:
    - **Receipt image**: See what was purchased
    - **Amount and merchant**: What was spent and where
@@ -100,7 +90,7 @@ Click notification to open expense for review.
    - **Reasonableness**: Is the amount appropriate?
    - **Accuracy**: Is category correct?
 
-4. Click **Approve** or **Request Changes**
+4. Click **Approve** or **Reject**
 
 ### Approval Actions
 
@@ -111,17 +101,6 @@ Click notification to open expense for review.
 4. Expense moves to payment queue
 5. Employee gets notification: "Your expense was approved"
 
-**Request Changes or Clarification**:
-1. Click **Request Changes** or **Need Clarification**
-2. Type specific request:
-   - "What business purpose was this for?"
-   - "This seems high. Please explain."
-   - "Receipt is unclear. Can you provide original?"
-
-3. Click **Send Request**
-4. Employee receives request and can respond
-5. After response, expense returns to your queue for re-review
-
 **Reject Expense**:
 1. Click **Reject**
 2. Provide reason:
@@ -130,14 +109,14 @@ Click notification to open expense for review.
    - "Already reimbursed in error"
 
 3. Click **Confirm Rejection**
-4. Employee is notified with reason
-5. Employee can revise and resubmit or dispute
+4. Employee is notified with the reason
+5. Employee can reset the rejected expense report, which moves its expenses back to draft so they can revise and resubmit
 
 ## Batch Approvals
 
 Approve multiple expenses at once:
 
-1. Navigate to **Approvals** > **Pending**
+1. Navigate to **Tasks** ([Open in Light →](https://app.light.inc/user-tasks))
 2. View all expenses awaiting your approval
 3. Scan quickly to spot issues
 4. Select multiple legitimate expenses (checkboxes)
@@ -146,19 +125,6 @@ Approve multiple expenses at once:
 7. Click **Approve All**
 
 All selected expenses are approved together.
-
-## Delegation
-
-Temporarily delegate approval authority:
-
-1. Navigate to **Approval Settings**
-2. Click **Delegate Approvals**
-3. Select **Delegate To**: Person taking over
-4. Set **Duration**: Until what date
-5. Select **Approval Levels**: Which approvals to delegate
-6. Click **Delegate**
-
-Delegated person receives all notifications until delegation expires.
 
 ## Finance Review (Optional)
 
@@ -175,44 +141,14 @@ Some organizations have Finance review before reimbursement:
 
 This adds control but increases processing time.
 
-## Escalation and Timeouts
-
-### Escalation Triggers
-
-If approver doesn't respond:
-
-1. Clock starts when expense is assigned to approver
-2. Default timeout: 3 days (configurable)
-3. If not approved by timeout:
-   - Escalate to escalation target (usually manager's manager)
-   - Escalation target is notified
-
-4. Escalation target can approve or return to original approver
-
-### Escalation Notification
-
-Original approver is notified that expense was escalated:
-
-- "Expense XYZ has been escalated. VP needs your feedback."
-- Creates urgency for approval
-
-### Adjusting Timeouts
-
-By workflow or by department:
-
-1. In Workflow settings, set **Timeout Days**
-2. Or by rule: Engineering might have 2-day timeout, others have 5 days
-3. Short timeouts (2-3 days): Fast processing but may frustrate approvers
-4. Long timeouts (7+ days): Less pressure but slower for employees
-
 ## Approval Dashboard
 
 Manager view of all expenses awaiting approval:
 
-1. Navigate to **My Approvals** or **Approvals** in app
+1. Navigate to **Tasks** ([Open in Light →](https://app.light.inc/user-tasks))
 2. See:
    - **Pending count**: How many expenses waiting for you
-   - **Overdue**: Expenses past your timeline (if escalation is set)
+   - **Overdue**: Tasks past their due date
    - **By employee**: Grouped by who submitted
    - **By amount**: Sorted by expense amount
 
@@ -231,31 +167,18 @@ Manager view of all expenses awaiting approval:
 Approve expenses on the go:
 
 1. Open Light mobile app
-2. Navigate to **Approvals**
+2. Navigate to **Tasks**
 3. View pending expenses
 4. Tap any expense to see:
    - Receipt photo
    - Full details
    - Employee notes
 
-5. Tap **Approve** or **Request Changes**
+5. Tap **Approve** or **Reject**
 6. Add comment if needed
 7. Confirm
 
 Mobile approval supports fingerprint/face authentication for security.
-
-## Escalation Analytics
-
-Monitor approval workflow health:
-
-1. Navigate to **Reports** > **Approval Metrics**
-2. View:
-   - **Average approval time**: How long expenses take to approve
-   - **Escalation rate**: % of expenses escalated
-   - **Rejection rate**: % of expenses rejected
-   - **Bottleneck approvers**: Who slows down workflow
-
-3. Use to identify problems and improve process
 
 ## Related Articles
 
