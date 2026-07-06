@@ -21,16 +21,16 @@ If these don't work, reach out to your company's IT or finance team to confirm y
 **This usually means one of two things:**
 
 - **File is too large** — Try compressing the image or converting it to a smaller format
-- **Wrong file format** — Light accepts JPG, PNG, and PDF. If you have another format, convert it first
+- **Wrong file format** — Light accepts PDF, JPEG, PNG, HEIC, HEIF, and TIFF. If you have another format, convert it first
 
-**Quick fix:** Try uploading a JPG version of your receipt instead. JPGs are usually smaller and always work.
+**Quick fix:** Try uploading a JPEG version of your receipt instead. JPEGs are usually smaller and always work.
 
 ## Card transaction not showing
 
-**Don't worry—this is normal.** Card transactions can take 1-2 days to appear in Light after you swipe or tap.
+**Card transactions usually appear in Light shortly after you pay**, as soon as the payment is authorized. If a payment is declined, you'll get a notification explaining why.
 
-If it's been more than 2 days and you still don't see it, check that:
-- The transaction went through (check your card issuer's app)
+If some time has passed and you still don't see the transaction, check that:
+- The payment actually went through (Light is your card issuer—if in doubt, check with the merchant)
 - You're looking in the right time period
 - The amount matches what you remember
 
@@ -38,7 +38,7 @@ Still stuck? Contact your finance team.
 
 ## Expense rejected
 
-**Your expense was sent back.** Look at the comment the approver left—it explains what went wrong.
+**Your expense report was rejected.** The rejection notification includes the reason from your finance team—it explains what went wrong.
 
 Common reasons:
 
@@ -47,7 +47,7 @@ Common reasons:
 - Description is missing or too vague
 - Category was wrong
 
-**Next steps:** Fix the issue and resubmit. If you're not sure what's wrong, ask your approver directly.
+**Next steps:** Use the link in the rejection notification to reset your expense report, then fix the issue and resubmit. If you're not sure what's wrong, ask your finance team.
 
 ## Approval task missing
 
