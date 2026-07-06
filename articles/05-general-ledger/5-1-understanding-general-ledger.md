@@ -17,43 +17,45 @@ The GL is where AP invoices, AR invoices, payments, journal entries, and other d
 
 ## Ledger Accounts (Chart of Accounts)
 
-The ledger organizes transactions by account type:
+Every ledger account has a 6-digit account code and one of five classifications:
 
-**Asset Accounts** - What you own (1000-1999)
+**Asset Accounts** - What you own
 - Cash, Bank Accounts, Accounts Receivable, Inventory
 
-**Liability Accounts** - What you owe (2000-2999)
+**Liability Accounts** - What you owe
 - Accounts Payable, Loans, Accrued Expenses
 
-**Equity Accounts** - Owner's stake (3000-3999)
-- Common Stock, Retained Earnings, Contributed Capital
+**Equity Accounts** - Owner's stake
+- Contributed Capital, Retained Earnings
 
-**Revenue Accounts** - Money earned (4000-4999)
-- Product Revenue, Service Revenue, Other Income
+**Revenue Accounts** - Money earned
+- Revenue, Non-Operating Income, Interest Income
 
-**Expense Accounts** - Money spent (5000-5999)
-- Salaries, Rent, Cost of Goods Sold, Utilities
+**Expense Accounts** - Money spent
+- Personnel Costs, Cost of Sales, General and Administrative Expenses
 
 The chart of accounts is your company's GL structure. All posting flows through these accounts.
 
 ## Account Hierarchy
 
-Ledger accounts can be organized hierarchically:
+Ledger accounts come in three categories that structure the chart of accounts:
 
-**Parent accounts** - Summary level (e.g., "Expenses")
+**Standard accounts** - Regular accounts that transactions are posted to
 
-**Sub-accounts** - Detail level (e.g., "Salaries", "Rent", "Utilities")
+**Header accounts** - Organizational headings only; no transactions can be posted to them
 
-Reporting rolls up from sub-accounts to parents, allowing both detailed and summary views.
+**Sum accounts** - Aggregate the balances of a range of account codes for summary reporting
+
+Header and sum accounts serve reporting purposes only, allowing both detailed and summary views.
 
 ## Ledger Transactions
 
 Transactions in the ledger record the actual debit and credit:
 
 **Components:**
-- **Account** - Which GL account (e.g., Cash 1010)
-- **Debit amount** - If this account is being increased (assets, expenses)
-- **Credit amount** - If this account is being decreased (liabilities, revenue)
+- **Account** - Which GL account (e.g., a 6-digit code like Cash 100000)
+- **Debit amount** - Increases asset and expense accounts
+- **Credit amount** - Increases liability, equity, and revenue accounts
 - **Date** - When the transaction occurred
 - **Reference** - Link to the source document (invoice, payment, etc.)
 
@@ -88,7 +90,7 @@ Financial documents flow through Light and post to the ledger:
 
 When posting a document in a foreign currency:
 
-**Original amount** - The transaction's original currency (e.g., 1,000 EUR)
+**Document amount** - The amount in the document's original currency (e.g., 1,000 EUR)
 
 **Local amount** - Converted to company entity's local currency using daily rates
 
@@ -110,17 +112,15 @@ Tax is automatically calculated during posting and posted to dedicated tax accou
 
 Advanced ledger account capabilities:
 
-**Account types** - Asset, Liability, Equity, Revenue, Expense, etc.
+**Account classifications** - Asset, Liability, Equity, Revenue, Expense
 
-**Account categories** - For reporting (Operating Expenses, COGS, etc.)
+**Account types** - Granular types within each classification (e.g., Bank, Accounts Receivable, Cost of Sales, Personnel Cost)
 
-**Reconciliation accounts** - For clearing (Accounts Payable offset, Accounts Receivable clearing)
+**Reconciliation accounts** - Accounts Payable and Accounts Receivable accounts used for clearing open documents
 
-**Parent-child relationships** - For hierarchy and roll-up reporting
+**Header and sum accounts** - For hierarchy and roll-up reporting
 
-**Active/Inactive** - Archive accounts no longer in use
-
-**Reporting codes** - For regulatory reporting (GAAP, IFRS, tax codes)
+**Active/Inactive** - Disable accounts no longer in use
 
 ## Posting Rules
 
@@ -143,6 +143,10 @@ If any rule is violated, posting fails with an error message.
 Document status affects GL interaction:
 
 **DRAFT** - No GL impact. Can be freely edited.
+
+**APPROVAL_PENDING** - Awaiting approval before it can be posted. No GL impact.
+
+**APPROVED** - Approved and ready to be posted. No GL impact.
 
 **POSTED** - GL transactions created. Immutable. Cannot edit directly.
 
