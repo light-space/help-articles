@@ -14,7 +14,7 @@ Common accrual examples include:
 
 **Accrued revenue**: You complete a service contract in December but invoice the customer in January. Create an accrual in December to recognize the revenue when earned.
 
-In Light, accruals are typically created as journal entries (JE) or deferred entries (DE) that reverse automatically in the following period. This prevents double-counting when you record the official invoice or expense document.
+In Light, accruals are typically created as journal entries (JE). When the official invoice or expense document arrives, reverse the accrual entry to prevent double-counting. Alternatively, apply a release template to a journal entry line (with start and end dates) so the amount is recognized across the correct periods automatically.
 
 ## Prepayments in detail
 
@@ -58,26 +58,24 @@ Depreciation allocates the cost of a fixed asset over its useful life. Unlike ac
 
 **Straight-line depreciation**: The asset cost is divided equally across the useful life. A machine costing GBP 50,000 with a 10-year life depreciates GBP 5,000 annually.
 
-**Declining balance depreciation**: A fixed percentage is applied to the remaining book value each period, resulting in higher depreciation early and lower depreciation later. This matches how many assets (vehicles, equipment) lose value faster initially.
-
-**Units of production depreciation**: Asset depreciation is based on actual usage. An asset depreciates in proportion to units produced, kilometers driven, or operating hours.
+**Reducing balance depreciation** (declining balance): A fixed percentage is applied to the remaining book value each period, resulting in higher depreciation early and lower depreciation later. This matches how many assets (vehicles, equipment) lose value faster initially. This method requires a reducing rate or residual amount and is available for **Fixed asset**, **AP**, and **JE** template types.
 
 When setting up depreciation, Light requires:
 
 - Asset cost (capitalized amount)
-- Useful life (in years or production units)
-- Salvage value (if any)
+- Useful life (release start and end dates, or a default duration)
+- Residual (salvage) value, if any
 - Depreciation method
 - Fixed asset account and accumulated depreciation account
 - Depreciation expense account
 
-Depreciation templates automatically post entries on a monthly or quarterly schedule, eliminating manual calculations.
+Depreciation templates automatically post entries on a monthly schedule, eliminating manual calculations. The full release schedule is generated when the document is posted.
 
 ## Deferred entries for complex scenarios
 
-For revenue recognition scenarios that don't fit standard prepayment or deferred revenue templates, Light provides deferred entries (DE). These are transactional documents that record the full accounting treatment of complex scenarios.
+For contract-based revenue recognition, Light provides deferred entries (DE). These are accounting documents that record deferred amounts and release them over time using release templates.
 
-Deferred entries can link to parent documents (like AP invoices) and create child accounting entries automatically. This enables sophisticated revenue recognition arrangements that require multi-account mappings or conditional logic.
+Deferred entries are linked to a parent revenue contract and are created automatically as part of contract accounting. Their lines carry a release template with start and end dates, and the full release schedule is generated when the entry is posted.
 
 ## Interaction with financial reporting
 
