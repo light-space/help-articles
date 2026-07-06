@@ -6,13 +6,13 @@ Light integrates AI throughout the platform to automate financial workflows, red
 
 ## AI Across Light
 
-Light leverages advanced AI models (OpenAI, Google Cloud AI, and AWS AI services) through a unified GenAI framework that provides intelligent automation across multiple financial processes.
+Light leverages advanced AI models (OpenAI GPT, Google Gemini, and Anthropic Claude via AWS Bedrock) through a unified GenAI framework that provides intelligent automation across multiple financial processes.
 
 ### Document Parsing and Data Extraction
 
 When you upload invoices, bills, receipts, or other financial documents, Light's AI-powered parsing engine automatically extracts key financial data. The system uses optical character recognition (OCR) combined with large language models to read document content, even from images and PDFs. Extracted data includes vendor names, invoice amounts, dates, line items, account codes, and tax information.
 
-This eliminates manual typing and reduces the risk of data entry errors. The AI learns from corrections you make, improving accuracy over time.
+This eliminates manual typing and reduces the risk of data entry errors. All extracted values remain fully editable, so you can review and correct them before anything is posted.
 
 ### Receipt Capture and Categorization
 
@@ -24,11 +24,11 @@ The AI parsing module uses GenAI function handlers to extract structured data fr
 
 ### Data Cleaning and Validation
 
-Light's AI cleans and validates financial data in real time. The system detects anomalies, flags potential errors, and suggests corrections. Examples include identifying duplicate entries, catching inconsistent vendor names, and flagging amounts that fall outside normal spending patterns for a user or department.
+Light validates and enriches financial data as it enters the system. Uploaded documents that are not valid bills are detected by AI before they enter your payables workflow, and duplicate bills are automatically flagged based on vendor and document number. AI is also used to enrich vendor and bank details from parsed documents.
 
 ### Reconciliation Assistance
 
-The bank reconciliation engine is powered partly by AI. Light suggests transaction matches based on amounts, dates, and reference patterns. The AI learns from your previous reconciliation decisions to improve future suggestions, making the reconciliation process faster over time.
+The bank reconciliation engine is powered partly by AI. Light's AI parses bank transaction descriptions into structured metadata (such as invoice references and counterparty details), and matching rules then use that metadata — together with amounts, dates, and references — to suggest matches. You can also create reconciliation automation rules by describing them in plain language, and AI converts your description into structured rule conditions.
 
 ### Natural Language Queries in Slack
 
@@ -40,12 +40,12 @@ Through Light's Slack integration, you can ask natural language questions about 
 
 Light uses a modular AI architecture:
 
-- **GenAI Integration**: Provides a unified interface supporting multiple AI providers (OpenAI, Google Cloud AI, AWS AI services)
+- **GenAI Integration**: Provides a unified interface supporting multiple AI providers (OpenAI, Google, and AWS Bedrock)
 - **AI Parsing Module**: Handles document parsing and data extraction with specialized handlers for different document types
 - **AI Commons**: Manages AI configuration, prompts, threads, and conversation history
-- **Provider Flexibility**: You can configure which AI models Light uses, depending on your privacy and performance preferences
+- **Per-feature model selection**: Light selects the AI provider and model for each feature independently, so every use case runs on the model best suited to it
 
-The platform routes requests intelligently between providers based on capability requirements and your configuration settings.
+The platform routes each request to the provider and model configured by Light for that specific use case.
 
 ## AI Privacy and Control
 
@@ -53,10 +53,10 @@ Light processes financial documents using AI in a secure manner:
 
 - All documents are encrypted during transmission and storage
 - AI processing respects your data isolation requirements
-- You control which AI providers are enabled in your instance
+- Light manages which AI providers and models are used for each feature
 - Processing is logged and auditable
 
-Light does **not** own, train, or fine-tune AI models. The underlying models are provided by third-party services (OpenAI, Google Cloud AI, AWS AI services) and remain the property of those providers. Light owns the application-level logic, integrations, orchestration, and product features built around those services.
+Light does **not** own, train, or fine-tune AI models. The underlying models are provided by third-party services (OpenAI, Google, and Anthropic via AWS Bedrock) and remain the property of those providers. Light owns the application-level logic, integrations, orchestration, and product features built around those services.
 
 Customer data is **not** used for AI model training, or fine-tuning. Customer data is used only for runtime inference to deliver AI-assisted features — your data never leaves the inference pipeline.
 
@@ -94,7 +94,7 @@ To put it in practical terms, here are some common tasks where AI makes a measur
 
 - **Bill processing**: A finance team processing 200 invoices per month can expect AI extraction to handle roughly 80-90% of data entry automatically, reducing manual work from hours to minutes of review.
 - **Expense reports**: Employees submit a photo of a receipt and the AI fills in vendor, amount, category, and tax code — typically within seconds.
-- **Month-end reconciliation**: AI-suggested matches can reduce reconciliation time significantly by surfacing high-confidence matches first, letting your team focus on the exceptions.
+- **Month-end reconciliation**: Automated matching can reduce reconciliation time significantly by handling transactions that meet your matching rules, letting your team focus on the exceptions.
 - **Ad hoc reporting**: Instead of navigating reports and applying filters, a quick Slack message to @Light gets you the answer in natural language.
 
 > Tip: Start by letting AI handle the high-volume, repetitive tasks (receipt processing, invoice data entry) and then expand to reconciliation and reporting as your team gets comfortable with the suggestions.
