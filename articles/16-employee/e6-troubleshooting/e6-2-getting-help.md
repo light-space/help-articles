@@ -27,7 +27,13 @@ If your company has connected Light to Slack or Microsoft Teams, you can mention
 
 ## Contact Light support
 
-If you need help from a person — for example, something isn't working and the AI answers aren't solving it — email the Light support team.
+If you need help from a person — for example, something isn't working and the AI answers aren't solving it — you can ask the AI assistant to create a support ticket, or email the Light support team.
+
+### Ask the AI assistant to create a support ticket
+
+The in-app assistant — and **@light** in Slack or Microsoft Teams — can create a support ticket for you. It drafts the ticket (subject, description, and priority: **Low**, **Medium**, or **High**) and asks you to confirm before submitting. Once you confirm, the ticket is sent to the Light support team with a summary of your conversation attached, and you receive the ticket number. The support team will follow up with you directly.
+
+### Email support
 
 **Email:** `help@light.inc`
 
@@ -35,7 +41,7 @@ A support agent will respond to your request.
 
 ## What to include in your report
 
-When you email Light support, help us help you faster by including:
+When you contact Light support, help us help you faster by including:
 
 - **What you were trying to do** — Be specific ("I tried to upload a receipt for an expense" instead of "upload isn't working")
 - **What happened** — Describe the error or unexpected behavior
