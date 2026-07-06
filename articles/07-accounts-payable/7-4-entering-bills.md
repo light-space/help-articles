@@ -21,7 +21,7 @@ Uploaded files run through AI extraction — see [AI invoice extraction](/articl
 
 ### Email-to-Inbox
 
-Each entity has a forwarding email address. Email a bill attachment to that address and it lands in the Inbox.
+Your organization has a dedicated bill forwarding email address. Email a bill attachment to that address and it lands in the Inbox.
 
 ### Manual Entry
 
@@ -45,7 +45,7 @@ Once in the Inbox, open a bill to fill in or edit:
 
 **Line items** — for each line:
 - Description
-- Quantity, unit price, amount
+- Net amount, tax amount, and total amount
 - GL account
 - Tax code
 - Cost center / custom dimensions
