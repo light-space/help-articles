@@ -50,20 +50,20 @@ For long-duration recognition periods, you may experience significant FX volatil
 - Variance analysis can isolate FX impacts from operational changes
 - Multi-month releases don't create artificial timing mismatches
 
-If you need to adjust revenue for subsequent FX movements, create a separate FX revaluation (FX) document rather than modifying the original revenue release.
+If you need to adjust for subsequent FX movements, use the FX revaluation period task, which creates separate FX revaluation (FX) documents rather than modifying the original revenue release.
 
 ## Handling FX revaluations
 
 An FX revaluation document (FX type) records unrealized gains or losses from currency fluctuations. When held-to-maturity revenue or payables experience FX changes, FX documents systematically adjust reporting values.
 
-To create an FX revaluation:
+FX revaluation documents are generated automatically by the FX revaluation task when closing an accounting period:
 
-1. Navigate to **Accounting > Transactions** and create a new document
-2. Select document type **FX**
-3. Enter the transaction currency and amounts
-4. Select the revaluation type: **Monetary Assets** or **Monetary Liabilities**
-5. Specify the affected accounts and amounts
-6. Light automatically creates offsetting entries to P&L (unrealized gains/losses)
+1. Navigate to Accounting → **Accounting periods**
+2. Run the **FX revaluation** task for the period and the entities you are closing
+3. Light revalues open receivables and payables, accruals, and balances on accounts with **Revaluate FX Balance** enabled, and records a currency translation adjustment (CTA) for group currency
+4. Light automatically creates offsetting entries to P&L (unrealized gains/losses)
+
+Generated FX documents appear under Accounting → **Transactions**, where you can review or archive them.
 
 ## Multi-entity consolidation with deferred revenue
 
@@ -102,7 +102,7 @@ Revenue recognition on the P&L appears in transaction currency initially, then t
 
 **Lock rates consistently**: Decide whether to use spot rates, monthly average rates, or forward rates, then apply consistently across all entities.
 
-**Separate FX movements**: Use FX documents to record unrealized gains/losses rather than adjusting revenue recognition, maintaining audit trail clarity.
+**Separate FX movements**: Let the FX revaluation task record unrealized gains/losses in FX documents rather than adjusting revenue recognition, maintaining audit trail clarity.
 
 **Document rate source**: Maintain a schedule of which rates were used for which transactions to support audit procedures.
 
