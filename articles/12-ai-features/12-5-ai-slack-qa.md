@@ -16,20 +16,22 @@ Light's AI processes your natural language questions and translates them into qu
 
 ### Installation
 
-1. Go to Light's Settings or Integration menu
-2. Select **Slack Integration**
-3. Click **Connect to Slack**
+1. Navigate to **Settings (gear icon) → Integrations → Slack**
+2. Click **Connect**
+3. You're redirected to Slack to authorize
 4. Authorize Light to access your Slack workspace
-5. Light creates a user account in your Slack workspace
+5. The Light app (bot) is added to your Slack workspace
 
 ### Basic Usage
 
 Once Light is installed in your Slack workspace:
 
-1. Mention @Light in any Slack channel or direct message
+1. Send Light a direct message, or mention @Light in a channel
 2. Ask your financial question in plain language
-3. Light processes your question and responds with the answer
-4. Light's response includes relevant data tables, charts, or summaries
+3. Light processes your question and responds with the answer — for channel mentions, the reply is posted in a thread
+4. Light's response includes relevant data and summaries
+
+> Good to know: In a direct message, Light remembers your recent conversation, so you can ask follow-up questions. When you mention @Light inside a channel thread, Light reads the earlier messages in that thread as context for its answer.
 
 ## Example Questions
 
@@ -74,7 +76,7 @@ Light understands variations of these questions and responds intelligently.
 - "Reconciliation status"
 - "Open items by category"
 
-> Good to know: Light understands context. If you ask "Show me last month's spending" in February, Light knows you mean January. If you ask "Travel spend" without a time period, Light shows you the current month by default.
+> Good to know: Light understands context. If you ask "Show me last month's spending" in February, Light knows you mean January. If your question is ambiguous, Light may ask you to clarify the time period.
 
 ## Permissions and Access
 
@@ -91,9 +93,11 @@ Light respects your access controls:
 Light's responses typically include:
 
 - **Summary**: A brief answer to your question
-- **Data Table**: Detailed line-by-line data if relevant
-- **Chart**: Visual representation if helpful for analysis
+- **Details**: Line-by-line data if relevant, formatted as Slack text
+- **Source**: A link to the relevant policy section when your question is answered from a company policy
 - **Clarifications**: Questions if Light needs to clarify what you asked
+
+Slack responses are text-based. Charts and visual report views are available in Light's web interface.
 
 ## Limitations
 
@@ -122,6 +126,7 @@ Sensitive questions can be asked in direct messages for extra privacy.
 ### Light Doesn't Respond
 
 - Verify Light is installed in your Slack workspace
+- Make sure your Slack account email matches the email of your Light user account — this is how Light identifies you
 - Ensure you have access to the financial data you're asking about
 - Try rephrasing your question more simply
 
@@ -138,6 +143,6 @@ Sensitive questions can be asked in direct messages for extra privacy.
 
 ## Related Articles
 
-- How Light uses AI
-- AI-assisted reconciliation
+- [How Light uses AI](12-1-how-light-uses-ai.md)
+- [AI-assisted reconciliation](12-6-ai-reconciliation.md)
 - [Light Command Interface (LCI)](12-7-ai-conversational-assistant.md)
