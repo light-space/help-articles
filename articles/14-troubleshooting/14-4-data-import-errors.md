@@ -14,21 +14,22 @@ Before troubleshooting errors, understand the required format:
 
 ### Basic Requirements
 
-- **Format**: CSV text file (not Excel .xlsx)
+- **Format**: CSV text file for most imports (the chart of accounts import also accepts Excel files)
 - **Encoding**: UTF-8 (standard text encoding)
 - **Line Endings**: Unix (LF) preferred, but Windows (CRLF) is accepted
 - **Column Headers**: First row must contain column names
 - **Data Types**: Values must match expected types for columns
 
+Imports in Light are started from the page for each record type (for example **Journal entries**, **Bills**, **Vendors**, or a bank account) — there is no central import page. Each import type expects its own set of columns.
+
 ### Common Column Names
 
-- **Transactions**: date, amount, description, account, reference
-- **Invoices**: invoice_number, vendor_name, amount, date, due_date
-- **Payments**: date, amount, payee, account, reference
-- **Customers**: name, email, phone, address, tax_id
-- **Vendors**: name, email, phone, address, tax_id
+- **Bank transactions**: Date, Payer/Payee Name, Transaction Id, Reference, Amount, Memo (Date and Amount are required)
+- **Journal entries**: Entry Id, Date, Currency, Debit, Credit, Account Code, Entry Description, Line Description, Business Partner Name, plus optional columns such as Tax Code and Tax Amount
+- **Bills**: Invoice Id, Company Entity Code, Currency, Pay From Account, Invoice Date, Invoice Total, Vendor Name, Status, Ledger Account Code, Tax Code, Amount
+- **Vendors** and **chart of accounts**: column headers are mapped automatically by AI, so exact header names are not required
 
-> Tip: When in doubt, export sample data from Light to see the expected CSV format.
+> Tip: When in doubt, download the template from the import dialog on the relevant page to see the expected format. Required columns are marked with **(required)** in the template.
 
 ## Issue 1: "File Format Not Recognized"
 
@@ -81,18 +82,18 @@ Before troubleshooting errors, understand the required format:
 1. **Verify Column Headers**:
    - Open CSV in text editor
    - Check the header row (first row)
-   - Column names must match exactly what Light expects
-   - Column names are case-sensitive
-   - Extra spaces in column names cause errors
+   - Column names must match what Light expects
+   - Column names are not case-sensitive, and leading or trailing spaces are trimmed
+   - Spaces and underscores in column names are interchangeable (e.g., "account code" and "Account_Code" both work)
 2. **Check Required Columns**:
-   - Different document types require different columns
-   - Transactions require: date, amount, account
-   - Invoices require: invoice_number, vendor, amount, date
+   - Different record types require different columns
+   - Bank transactions require: Date, Amount
+   - Bill imports require: Invoice Id, Company Entity Code, Currency, Pay From Account, Invoice Date, Invoice Total, Vendor Name, Status, Ledger Account Code, Tax Code, Amount
    - Verify your file has the minimum required columns
 3. **Export Template**:
    - Light can provide a template CSV
-   - Go to **Import** > **Download Template**
-   - Use the template to understand correct column names
+   - Download the template from the import dialog on the relevant page (for example the journal entry import)
+   - Use the template to understand correct column names — required columns are marked with **(required)**
    - Copy your data into the template structure
 4. **Rename Columns**:
    - If your CSV uses different column names, rename them
@@ -116,12 +117,12 @@ Before troubleshooting errors, understand the required format:
 ### Solutions
 
 1. **Check Data Types**:
-   - **Dates**: Must be YYYY-MM-DD format (2024-01-15)
+   - **Dates**: YYYY-MM-DD (2024-01-15) works for all imports; bank transaction, bill, sales invoice, credit note, and customer credit imports also accept DD/MM/YYYY, DD.MM.YYYY, and DD-MM-YYYY. MM/DD/YYYY is not supported
    - **Amounts**: Numbers only, no currency symbols ($100 is wrong, 100 is right)
-   - **Numbers**: No commas (1000 not 1,000)
+   - **Numbers**: Thousands-separator commas are stripped automatically (1,000 is read as 1000), but commas as decimal separators are not supported
    - **Text**: Anything can be text (no special handling)
 2. **Fix Date Format**:
-   - Convert all dates to YYYY-MM-DD
+   - Convert all dates to YYYY-MM-DD (accepted by every import)
    - Excel: Format column as YYYY-MM-DD, then export
    - Spreadsheet trick: Change format first, then export CSV
 3. **Fix Amount Format**:
@@ -186,10 +187,11 @@ Before troubleshooting errors, understand the required format:
 ### Solutions
 
 1. **Check Date Format**:
-   - Must be YYYY-MM-DD
+   - Use YYYY-MM-DD — this works for every import
    - January must be "01", not "1"
    - September 15, 2024 should be "2024-09-15"
-   - Don't use other formats like MM/DD/YYYY
+   - Bank transaction and bill/invoice imports also accept DD/MM/YYYY, DD.MM.YYYY, and DD-MM-YYYY
+   - Don't use US-style MM/DD/YYYY — it is not supported
 2. **Verify Dates Are Logical**:
    - Dates can't be in the future (or very far future)
    - Dates shouldn't be before 1900
@@ -242,7 +244,7 @@ Before troubleshooting errors, understand the required format:
 5. **Decimal Points**:
    - Use period (.) for decimal, not comma
    - "1000.50" is correct
-   - "1000,50" may be wrong depending on locale
+   - "1000,50" is not supported — commas are treated as thousands separators and removed
 
 ## Issue 7: "Invalid Vendor/Customer" or "Reference Not Found"
 
@@ -275,10 +277,9 @@ Before troubleshooting errors, understand the required format:
    - CSV: name, email, phone, address
    - Do this before importing related transactions
 5. **Use Natural Keys**:
-   - Some imports use vendor name instead of ID
-   - Light can look up and create vendors automatically
-   - Ensure "Auto-create if missing" is enabled
-   - Vendor is created if it doesn't exist
+   - Bill imports match vendors by name, so the vendor name in the CSV must match an existing vendor exactly
+   - Vendors are not created automatically during a bill import
+   - Import or create missing vendors first from the [Vendors](https://app.light.inc/vendors) page, then re-run the import
 
 ## Issue 8: "Row Rejected" or "Validation Error"
 
@@ -336,9 +337,9 @@ Before troubleshooting errors, understand the required format:
    - Expand date range
    - Re-run search
 3. **Verify Import Completed**:
-   - Go to **Settings** > **Import History**
-   - Look for your import in the list
-   - Click to see import details and logs
+   - Open the import history on the page you imported into (for example **Journal entries** or **Bills**)
+   - Each import is listed with its filename, status, who uploaded it, and an error count
+   - Download the error report to see which rows failed and why
    - Check if all rows were successfully imported
 4. **Review Import Summary**:
    - After import completes, review summary
@@ -346,9 +347,9 @@ Before troubleshooting errors, understand the required format:
    - If some rows failed, see details why
    - Fix those rows and re-import
 5. **Check Posting Status**:
-   - Imported data may be pending approval
-   - Go to **Pending Approvals**
-   - Approve imported transactions if required
+   - Imported journal entries are created as drafts unless you chose to post them during import
+   - Filter the [Journal entries](https://app.light.inc/journal-entries) page by the **Draft** status to find them
+   - Bill imports use the **status** column in the CSV (draft, posted, or paid) to determine each record's status
 
 ## Issue 10: "File Too Large" or "Upload Timeout"
 
