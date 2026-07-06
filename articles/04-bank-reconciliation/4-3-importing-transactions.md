@@ -8,110 +8,88 @@ In addition to automatic bank feeds, you can manually import bank transactions f
 
 To manually import transactions from a CSV file:
 
-1. Go to **Settings > Bank accounts**
+1. Go to **Settings → Bank accounts**
 2. Find the account and click **Import Transactions**
 3. Click **Upload File** and select your CSV file
-4. Review the column mapping (shown below)
-5. Click **Import** to process the file
+4. Click **Import** to process the file
 
-The system validates the file format and attempts to map CSV columns to transaction fields.
+The system validates the file format and matches CSV columns to transaction fields by their header names.
 
 ## CSV File Format
 
-Your CSV must include these required columns:
+Your CSV must include a header row with these required columns:
 
-**Date** - Transaction date (format: YYYY-MM-DD or M/D/YYYY)
+**Date** - Transaction date (format: YYYY-MM-DD, DD/MM/YYYY, DD.MM.YYYY, or DD-MM-YYYY)
 
-**Amount** - Transaction amount in the account's currency
-
-**Description/Name** - Payee or description
-
-**Reference** - Optional reference number or memo
-
-**Type/Sign** - D for debit (withdrawal), C for credit (deposit), or +/- signs
+**Amount** - Transaction amount in the account's currency. Use a positive amount for money in and a negative amount for money out. The amount cannot be zero.
 
 Additional optional columns:
 
+- **Payer/Payee Name** - Payer or payee name
+- **Reference** - Reference number
 - **Transaction ID** - Unique identifier from your bank
-- **Original Amount** - For multi-currency (before conversion)
-- **Fees** - Bank fees
-- **Balance** - Running account balance
+- **Memo** - Free-text memo
 
-## Column Mapping
+## Column Names
 
-If your CSV columns have non-standard names, map them:
+Light matches CSV columns by their header names, so headers must use the names listed above. Header matching is case-insensitive, and both comma and semicolon delimiters are detected automatically.
 
-1. After uploading, you see a mapping interface
-2. Drag CSV column names to match Light fields
-3. Mark required columns to map before proceeding
-4. Click **Confirm Mapping**
-
-Light learns your CSV format and pre-fills the mapping for future imports.
+If your bank's export uses different column names, rename the headers in the file before uploading. Light provides a downloadable CSV template you can use as a starting point.
 
 ## Transaction Validation
 
 Light validates each transaction before importing:
 
-- **Date format** - Must be valid date
-- **Amount format** - Must be valid number
-- **Debit/Credit sign** - Must be D/C or +/-
-- **Required fields** - Date, amount, and description must be present
+- **Date format** - Must be a valid date in one of the supported formats
+- **Amount format** - Must be a valid, non-zero number
+- **Required columns** - The Date and Amount columns must be present
 
-If validation fails, you'll see which rows have errors. Fix the CSV and re-upload.
+If validation fails, you'll see which rows have errors (e.g., "Invalid date on row 3"). No transactions are imported until all errors are fixed - correct the CSV and re-upload.
 
 ## Handling Duplicates
 
-Light checks for duplicate transactions using:
+Light does not automatically detect duplicates in CSV imports - uploading the same transactions twice creates duplicates. Review your file before uploading, and avoid overlapping date ranges between imports.
 
-- **Date + Amount + Description** - Must match exactly
-- **Transaction ID** - If provided, must be unique
+For bank feed imports, duplicate transactions are detected automatically and marked as **Excluded** so they don't affect reconciliation.
 
-If a transaction already exists in Light, the import skips it with a notification. This prevents duplicate posting.
-
-You can force reimport if needed, but duplicates will be created.
+If you accidentally import duplicates from a CSV, exclude them on the Bank reconciliation page.
 
 ## Data Cleansing
 
 Light applies some data cleansing during import:
 
 - **Whitespace trimming** - Removes leading/trailing spaces
-- **Amount normalization** - Handles various decimal separators (. or ,)
-- **Date parsing** - Interprets common date formats
+- **Amount normalization** - Thousands separators written as commas (e.g., "1,000.50") are removed automatically
+- **Date parsing** - Interprets the supported date formats listed above
 
-For amounts with thousands separators (e.g., "1,000.50"), remove separators before uploading.
+Use a period (.) as the decimal separator in amounts, and remove any currency symbols.
 
-## Batch Processing
+## Import Processing
 
-For large files (1,000+ transactions), import runs in the background:
+Imports run in the background:
 
 1. Upload the file
-2. You see a background job ID
-3. Transactions import over a few minutes
-4. Notifications update you on progress
-5. Once complete, transactions appear in your account
-
-Check **Background Jobs** to monitor large imports.
+2. The import processes in the background
+3. The sync status is shown above the bank transactions list on the Bank reconciliation page
+4. Once complete, transactions appear in your account
 
 ## Transaction Post-Processing
 
 After import, transactions are available for reconciliation:
 
-1. Go to **Banking > Bank Accounts > [Account Name]**
-2. View imported transactions
-3. Match them to accounting entries
-4. Mark as reconciled
+1. Go to **Accounting → Bank reconciliation** and select the account
+2. Imported transactions appear with the **Unmatched** status
+3. Light automatically runs auto-reconciliation after each import
+4. Match any remaining unmatched transactions to accounting entries
 
-Reconciliation happens separately from import (covered in other articles).
+Reconciliation is covered in more detail in other articles.
 
 ## Importing to Multiple Accounts
 
-To import for multiple accounts:
+Each import applies to a single bank account. To import for multiple accounts:
 
 1. Create separate CSV files for each account
 2. Upload each file to its corresponding account
-3. Or, use a single CSV with an account field and specify mapping
-
-Multi-account CSV must include an "Account" or similar column to distinguish which transactions go to which account.
 
 ## Handling Historical Data
 
@@ -123,61 +101,41 @@ When importing years of historical data:
 4. **Reconcile by period** - Reconcile each month as you import it
 5. **Build up to current** - Once historical data is imported, ongoing imports are easier
 
-For multi-year imports, plan for a few hours of processing time depending on file size.
+## Excluding Incorrect Transactions
 
-## Correcting Imported Transactions
+Imported bank transactions can't be edited or deleted individually. If a transaction was imported incorrectly:
 
-If you need to correct an imported transaction:
+1. Select it on the **Bank reconciliation** page
+2. Click **Exclude** - the transaction is marked **Excluded** and removed from reconciliation
+3. If needed, re-import a corrected version from an updated CSV
 
-1. Open the transaction
-2. Edit the **Description**, **Amount**, or other details
-3. Click **Save**
-
-Only certain fields can be edited. If you need to change the date or transaction ID, you may need to delete and re-import.
-
-## Deleting Imported Transactions
-
-To remove an incorrectly imported transaction:
-
-1. Open the transaction
-2. Click **Delete**
-3. Confirm deletion
-
-Once deleted, the transaction is removed from reconciliation. If you accidentally deleted a transaction, you can re-import it from your CSV.
+You can undo an exclusion at any time to bring the transaction back into reconciliation.
 
 ## File Format Examples
 
-**CSV with standard columns:**
+**CSV with required columns:**
 ```
-Date,Description,Amount,Type
-2024-01-15,Office Supplies Co,500.00,D
-2024-01-16,Customer Payment,2500.00,C
+Date,Payer/Payee Name,Amount
+2024-01-15,Office Supplies Co,-500.00
+2024-01-16,Customer Payment,2500.00
 ```
 
 **CSV with additional details:**
 ```
-Date,Description,Amount,Sign,TransactionID,Fees
-2024-01-15,Wire Transfer OUT,10000.00,-,WIR-12345,0.00
-2024-01-16,ACH Deposit,5000.00,+,ACH-67890,0.00
-```
-
-**CSV with multi-currency:**
-```
-Date,Amount,Currency,OrigAmount,OrigCurrency,Description
-2024-01-15,535.00,USD,500.00,EUR,Wire from Munich
+Date,Payer/Payee Name,Amount,Reference,Transaction ID,Memo
+15/01/2024,Wire Transfer OUT,-10000.00,WIR-12345,TXN-001,Vendor payment
+16/01/2024,ACH Deposit,5000.00,ACH-67890,TXN-002,Customer deposit
 ```
 
 ## Troubleshooting Import Issues
 
-**"Date format not recognized"** - Use YYYY-MM-DD or M/D/YYYY format consistently
+**"Invalid date on row X"** - Use YYYY-MM-DD, DD/MM/YYYY, DD.MM.YYYY, or DD-MM-YYYY format consistently
 
-**"Amount values not valid"** - Remove currency symbols and thousands separators
+**"Invalid amount on row X"** - Remove currency symbols, use a period as the decimal separator, and make sure the amount isn't zero
 
-**"File too large"** - Split into multiple files (max 50,000 rows per file)
+**"Missing required headers"** - The file must include Date and Amount columns with those exact header names
 
 **"Encoding error"** - Save CSV as UTF-8 (not UTF-16 or other encodings)
-
-**"Duplicates rejected"** - This is intentional to prevent duplicate posting; use force reimport if certain
 
 ## Scheduling Regular Imports
 
@@ -197,7 +155,7 @@ This keeps your Light account current even without automated feeds.
 - **Import frequently** - Weekly or monthly prevents large backlogs
 - **Reconcile immediately** - Don't wait weeks to reconcile imported transactions
 - **Keep original export files** - Archive your bank exports for audit trail
-- **Document mapping** - Keep notes on which CSV columns map to Light fields
+- **Start from the template** - Use Light's CSV template so column names match
 
 ## Related Articles
 
