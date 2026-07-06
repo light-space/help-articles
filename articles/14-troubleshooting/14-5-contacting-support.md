@@ -25,7 +25,18 @@ In-app chat is best for:
 - General usage help
 - Non-urgent troubleshooting
 
-> Note: In-app chat is powered by AI and provides instant answers. For complex issues that require human assistance, email support instead.
+> Note: In-app chat is powered by AI and provides instant answers. For issues that require human assistance, you can ask the assistant to create a support ticket (see below) or email support.
+
+### Support Tickets via the AI Assistant
+
+If the assistant cannot resolve your issue, or you ask it to, it can create a support ticket for the Light support team directly from the conversation.
+
+1. Describe the issue in the chat (or ask the assistant to create a support ticket)
+2. The assistant drafts the ticket for you — subject, description, and priority (**Low**, **Medium**, or **High**)
+3. Review the draft and confirm, or request changes before it is submitted
+4. Once confirmed, the ticket is created and you receive the ticket number
+
+The assistant includes a summary of your conversation with the ticket, so the support team has full context. If you are experiencing an error, sharing screenshots, relevant URL links, or a screen recording can help the team resolve it more quickly. The support team will follow up with you directly.
 
 ### @light in Slack or Microsoft Teams
 
@@ -38,7 +49,7 @@ If your organization has connected Light to Slack or Microsoft Teams, you can as
 
 This is great for getting quick answers without leaving your communication tool.
 
-> Note: @light in Slack and Teams is powered by AI. For issues that require a human support agent, email support instead.
+> Note: @light in Slack and Teams is powered by AI. For issues that require a human support agent, ask @light to create a support ticket, or email support.
 
 ### Email Support
 
