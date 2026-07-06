@@ -1,132 +1,95 @@
 # AI-Assisted Reconciliation
 
-Light's AI engine helps match bank transactions with accounting entries, speeding up the reconciliation process. This article explains how AI-assisted reconciliation works and how to use it effectively.
+Light combines a deterministic, rule-based matching engine with targeted AI assistance to speed up bank reconciliation. This article explains what the matching engine does, where AI actually helps, and how to use both effectively.
 
-[Open in Light →](https://app.light.inc/dashboard)
+[Open in Light →](https://app.light.inc/bank-reconciliation)
 
 ## Overview
 
-Bank reconciliation matches transactions from your bank with entries in your accounting system. Light's AI automates much of this work by suggesting matches based on amounts, dates, reference patterns, and historical precedent.
+Bank reconciliation matches transactions from your bank with entries in your accounting system. In Light, the matching itself is done by a deterministic rules engine — a fixed set of system rules plus any custom rules you create. AI plays three specific supporting roles:
 
-## How AI Matching Works
+1. **Parsing bank transaction metadata** — extracting structured data (document identifiers, fees, original amounts, end-to-end payment IDs) from raw bank transaction references so the matching rules have clean data to work with.
+2. **Creating custom rules from natural language** — you describe a rule in plain language, and AI converts it into structured matching conditions.
+3. **Suggesting rules from transactions** — when you convert an unmatched transaction into a rule, AI suggests the rule description based on the transaction's details.
 
-Light's AI uses multiple matching strategies to identify which bank transactions correspond to which accounting entries:
+Matches found by the engine are applied directly — matched transactions move to the **Matched** tab. There is no suggestion queue, confidence score, or accept/reject step; if a match made by a rule is incorrect, you can undo it and match manually.
 
-### Amount-Based Matching
+## How Matching Works
 
-The system recognizes when a bank transaction amount matches the total of one or more accounting entries. For example, if a bank credit of $5,000 matches the total of three invoices being paid ($2,000 + $2,500 + $500), Light suggests this group as a match.
+When you click **Auto reconcile** (or after a bank import completes), Light evaluates each unmatched bank transaction against the active matching rules, in order, until one produces a match. The built-in system rules are:
 
-### Date-Based Matching
+- **Match by document number** - Matches based on invoice or document numbers found in the bank transaction reference
+- **Match by amount and description** - Finds matches where both the amount and transaction description align with a ledger entry
+- **Register payment for open invoice receivables** - Matches incoming bank transactions to open customer invoices and registers the payment
+- **Register payment for open invoice payables** - Matches outgoing bank transactions to open vendor bills and registers the payment
+- **Create Journal Entry for card balance funding transactions** - Recognizes transfers that fund a card balance account
+- **Match by bank transaction end to end id** - Uses end-to-end payment references (common in SEPA and wire transfers)
+- **Match by amount and date** - Matches a transaction when exactly one ledger entry has the same amount and date
 
-Light considers transaction dates and posting dates. Accounting entries may post before the corresponding bank transaction clears. The AI accounts for typical clearing delays and suggests matches even when dates are off by a few days.
+These rules are deterministic: the same transaction and ledger data always produce the same result. The engine is deliberately conservative — for example, amount-based rules only match when exactly one candidate entry qualifies, so an ambiguous transaction stays unmatched for you to review rather than being matched incorrectly.
 
-### Reference Pattern Matching
+See [Automated bank reconciliation](../04-bank-reconciliation/4-4-automated-reconciliation.md) for the full reconciliation workflow.
 
-The system analyzes reference numbers, invoice numbers, and payment IDs. If an accounting entry contains a reference number that appears in the bank transaction description, Light recognizes this as a strong match indicator.
+## AI Transaction Metadata Parsing
 
-### Historical Learning
+Bank transaction references are often messy — a single text field may contain an invoice number, a payment reference, fees, and an original currency amount. When transactions are imported, Light's AI parses each transaction's reference text and extracts:
 
-Light learns from your previous reconciliations. When you confirm a match:
+- **Identifiers** — invoice numbers, document numbers, and payment references
+- **Fees** — transaction fees embedded in the reference
+- **Original amount** — the amount in the original currency, for converted transactions
+- **End-to-end ID** — the payment's end-to-end reference
 
-- Light notes the pattern that led to the match
-- Future transactions following similar patterns are matched automatically
-- The system becomes more accurate at predicting your reconciliation behavior
+The extracted values are validated with sanity checks against the transaction's actual amount before being stored. The matching rules then use this structured metadata — for example, **Match by document number** looks up the extracted identifiers against your invoice and document numbers.
 
-> Good to know: AI matching considers your company's typical payment behavior. If you always batch-pay invoices, the AI learns this and suggests batch matches accordingly.
+This is where AI adds accuracy: it turns unstructured bank data into structured fields, while the matching decision itself remains rule-based and predictable.
 
-## Automated Reconciliation Rules
+## Creating Rules with Natural Language
 
-Beyond real-time suggestions, Light supports automated reconciliation rules:
+Custom matching rules are defined in natural language, and Light's AI converts your description into structured conditions:
 
-### System Rules
+1. Go to **Accounting → Bank reconciliation** and open the **Rules** tab
+2. Click **+ Create rule**
+3. Enter the rule **Name**
+4. In the **When** field, describe in plain language when the rule should apply (e.g., "When the transaction reference contains 'RENT'")
+5. Select the **Action** to perform when the rule matches (e.g., create and match a journal entry)
+6. Fill in the **Details** for the entry the rule creates (business partner, GL account, description, tax code, etc.)
+7. Click **Validate & Save**
 
-Light includes pre-configured rules that work for most companies:
+Light parses your description into conditions on fields like amount, date, reference, and bank account. The parsed conditions are shown to you before saving — always review them to confirm they reflect your intent, and refine the wording if they don't.
 
-- **Match by invoice number**: If bank descriptions contain invoice numbers, auto-match to the corresponding accounting entries
-- **Match open invoices**: Automatically match bank transactions to outstanding vendor invoices
-- **Exact amount matches**: Auto-reconcile when amounts match exactly with minimal date variance
+Once saved, the rule runs deterministically during auto reconcile — the AI is only involved when the rule is created or edited, not each time it runs.
 
-### Custom Rules
+See [Reconciliation automation rules](../04-bank-reconciliation/4-5-automation-rules.md) for full details on conditions and actions.
 
-You can create custom rules for your specific scenarios:
+## Convert to Rule
 
-1. Navigate to **Reconciliation Settings**
-2. Click **Create Automation Rule**
-3. Define the rule criteria (amount ranges, vendor, account, etc.)
-4. Light applies the rule to unmatched transactions
+When you find an unmatched transaction that will recur (rent, payroll, subscriptions), you can turn it into a rule directly:
 
-### AI-Powered Rules
+1. On the **Unmatched** tab, select the bank transaction
+2. Click **Convert to rule**
+3. Light's AI suggests a rule description based on the transaction's details
+4. Review and adjust the suggestion, then validate and save
 
-For advanced scenarios, you can describe a rule in natural language and let Light's AI generate the matching logic:
+Similar future transactions are then handled automatically during auto reconcile.
 
-1. Click **Create AI Rule**
-2. Describe your rule in plain language (e.g., "Match expense reports where the amount and date are within 1 day")
-3. Light's AI parses your description and creates the matching logic
-4. The rule runs automatically on unmatched transactions
+## Manual Matching
 
-## Using AI Match Suggestions
+For transactions the rules couldn't match:
 
-### Reviewing Suggestions
+1. On the **Unmatched** tab, select one or more bank transactions on the left panel
+2. Select the matching ledger entry (or entries) on the right panel
+3. Check that the **Difference** indicator shows 0.00
+4. Click **Match** to confirm
 
-1. Navigate to **Bank Reconciliation** for your account
-2. Light displays unmatched bank transactions with suggested matches
-3. Each suggestion shows the matched accounting entries and a confidence score
-4. Review the details to verify the suggestion is correct
+Manual matches are recorded like any other match. Light does not learn matching behavior from your manual decisions — to automate a recurring pattern, use **Convert to rule** or create a custom rule.
 
-### Accepting Suggestions
+## Clearing Open Invoices
 
-To accept a suggested match:
+The **Register payment for open invoice** system rules handle bank transactions that pay outstanding invoices:
 
-1. Click the suggestion to expand details
-2. Verify the amounts, dates, and references align
-3. Click **Accept and Reconcile**
-4. Light creates the reconciliation and marks both items as matched
-
-### Rejecting Suggestions
-
-If a suggestion is incorrect:
-
-1. Click **Reject** or skip to the next suggestion
-2. Light removes this suggestion and notes your feedback
-3. The AI learns from your rejection to avoid similar suggestions
-
-### Manual Matching
-
-For transactions Light couldn't match:
-
-1. Click **Manual Match**
-2. Search or browse accounting entries to find the right match
-3. Select the entries and click **Confirm Match**
-4. Light records the match and learns the pattern
-
-## Reconciliation Workflow
-
-A typical reconciliation session using AI:
-
-1. **Review**: Look at unmatched transactions and AI suggestions
-2. **Accept**: Quickly accept high-confidence matches (typically 80%+ accuracy)
-3. **Review**: Carefully review lower-confidence suggestions
-4. **Manual Match**: For remaining items, manually find matches or mark as unmatched
-5. **Document**: Note any timing differences or exceptions for your records
-
-## Improving AI Accuracy
-
-AI reconciliation accuracy improves when you:
-
-- Confirm matches that are correct (even if manually entered)
-- Reject suggestions that are wrong
-- Use consistent reference numbering in your accounting entries
-- Include meaningful descriptions in bank transactions (when possible)
-- Reconcile regularly (monthly or weekly) rather than in large batches
-
-## Clearing Invoices with AI
-
-Light's AI can also help when reconciling against unpaid invoices:
-
-1. The system identifies outstanding invoices matching bank transactions
-2. Light suggests clearing (marking invoices as paid) and reconciling in one step
-3. You review the suggestions and confirm
-4. Light creates the accounting entries and matches them to the bank transaction
+1. During auto reconcile, the engine looks up open customer invoices or vendor bills using the identifiers parsed from the bank transaction
+2. When a matching open invoice is found, Light registers the payment and reconciles it against the bank transaction in one step
+3. The invoice is marked as paid and the match appears on the **Matched** tab
 
 ## Exception Handling
 
@@ -139,8 +102,15 @@ Sometimes transactions don't match:
 
 > Tip: Use Light's reconciliation reports to identify reconciliation exceptions and trends. This helps identify process improvements.
 
+## Best Practices
+
+- **Run Auto reconcile first** — let the rules engine handle the straightforward matches, then focus on the exceptions
+- **Use consistent reference numbering** — the document number rule works best when your invoice numbers appear in bank transaction references
+- **Review parsed rule conditions** — always check the conditions Light generates from your natural-language description before saving
+- **Reconcile regularly** — weekly or monthly reconciliation keeps the unmatched queue manageable
+
 ## Related Articles
 
-- How Light uses AI
-- Bank reconciliation basics
-- Common reconciliation issues
+- [How Light uses AI](12-1-how-light-uses-ai.md)
+- [Automated bank reconciliation](../04-bank-reconciliation/4-4-automated-reconciliation.md)
+- [Reconciliation automation rules](../04-bank-reconciliation/4-5-automation-rules.md)
