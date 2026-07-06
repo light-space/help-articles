@@ -1,6 +1,6 @@
 # Issuing and Managing Corporate Cards
 
-Light corporate cards provide employees and vendors with virtual payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
+Light corporate cards provide employees and vendors with virtual and physical payment cards for business expenses. Cards integrate with expense management for automatic reconciliation and spending control.
 
 [Open in Light →](https://app.light.inc/cards)
 
@@ -42,7 +42,7 @@ Physical cards display a **Physical** badge on the card visual throughout Light.
 
 ### Vendor Cards
 
-Use for recurring vendor payments like subscriptions. Vendor cards are always virtual — the physical card option is not available for vendor cards.
+Use for recurring vendor payments like subscriptions.
 
 1. Click **+ Create card**
 2. Select **Vendor card**
@@ -150,10 +150,9 @@ Card transactions appear automatically in the **Transactions** tab:
 
 Card reconciliation works as follows:
 
-1. Individual transactions are posted to the GL once captured
-2. The card issuer submits a bill (typically monthly) with all charges
-3. Light creates an AP bill grouping the card charges
-4. The finance team verifies the transactions match and pays the card issuer bill through the normal AP payment process
+1. Individual transactions are posted to the GL once captured (or refunded)
+2. Each posted transaction includes an offsetting line against the ledger account of the card account it belongs to
+3. Because card accounts are prepaid — funded by bank transfer to your Adyen wallet — there is no monthly card issuer bill to pay through Accounts Payable
 
 ## Reporting
 
