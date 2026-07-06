@@ -16,6 +16,7 @@ A document template defines:
 - **Company entities** — which entities can use this template
 - **Invoice pattern** — number/format pattern for the document number
 - **Background color** — color used on the rendered document
+- **Logo** — logo image displayed on the rendered document
 - **Reply-to email** — default reply-to when this template is used to send a document
 - **CC emails** — default CC recipients
 - **Default email subject** — subject line used when sending
@@ -50,11 +51,10 @@ Invoices display the payment details from the bank account on the document so yo
 
 ### Showing a Bankgiro Number (Swedish Entities)
 
-Bankgiro is the primary payment method for Swedish business-to-business transactions, and Swedish customers expect to see it on their invoices. If your Swedish entity has a Bankgiro number set on its bank account, you can display it on invoices alongside (or instead of) the BIC/IBAN and account number fields.
+Bankgiro is the primary payment method for Swedish business-to-business transactions, and Swedish customers expect to see it on their invoices. If your Swedish entity has a Bankgiro number set on its bank account, it is displayed on invoices alongside the BIC/IBAN and account number fields.
 
-1. Make sure the **Bankgiro** number is entered on the bank account — set the bank country to Sweden in **Settings > Bank accounts** to reveal the field. See [Connecting bank accounts](/articles/04-bank-reconciliation/4-1-connecting-bank-accounts.md).
-2. Update your invoice template to show the Bankgiro number in the payment details
-3. Save the template — future invoices that use it will display the Bankgiro number
+1. Make sure the **Bankgiro** number is entered on the bank account — set the bank country to Sweden in **Settings (gear icon) → Bank accounts** to reveal the field. See [Connecting bank accounts](/articles/04-bank-reconciliation/4-1-connecting-bank-accounts.md).
+2. Future invoices automatically show the Bankgiro number in the payment details — no template changes are needed
 
 ## Related Articles
 
