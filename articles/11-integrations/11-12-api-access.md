@@ -22,6 +22,8 @@ The API provides endpoints for managing the following resources:
 - **Attachments** — Upload, list, and manage document attachments
 - **Authorization** — OAuth 2.0 token management
 - **Bank Accounts** — Create and access bank accounts (creating a bank account also creates its linked ledger account atomically)
+- **Card Balance Accounts** — Access card balance accounts, statements, and total spend
+- **Card Customers** — Retrieve the card integration public key
 - **Card Transactions** — List, post, and update card transactions and receipts
 - **Cards** — Create, freeze, unfreeze, and manage corporate cards
 - **Companies** — Access company configuration (e.g., currency settings)
@@ -30,10 +32,12 @@ The API provides endpoints for managing the following resources:
 - **Custom Properties** — Access custom property groups
 - **Customer Credits** — Manage customer credit documents
 - **Customers** — Create, list, activate, and archive customers
+- **Entities** — List company entities
+- **Exchange** — Retrieve currency exchange rates
 - **Expenses** — List expenses and submit reimbursements
 - **Invoice Approvals** — Retrieve invoice approval status
 - **Invoice Payables** — Create, approve, decline, mark as paid, and manage bills and their line items
-- **Invoices** — Create, update, open, reset, and send sales invoices
+- **Invoice Receivables** — Create, update, open, reset, and send sales invoices
 - **Journal Entries** — Create journal entries programmatically
 - **Ledger Transactions** — Query ledger transaction lines
 - **Ledger Accounts** — List the chart of accounts
@@ -206,14 +210,14 @@ The API returns standard HTTP status codes:
 
 1. CRM closes a deal and records the customer
 2. API creates a customer via `POST /v1/customers` (or looks up existing via `GET /v1/customers`)
-3. API creates an invoice via `POST /v1/invoices` with customer and line items
-4. API opens the invoice via `POST /v1/invoices/{id}/open`
-5. API sends the invoice email via `POST /v1/invoices/{id}/send-email`
+3. API creates an invoice via `POST /v1/invoice-receivables` with customer and line items
+4. API opens the invoice via `POST /v1/invoice-receivables/{id}/open`
+5. API sends the invoice email via `POST /v1/invoice-receivables/{id}/send-email`
 
 **Example 3: Financial reporting dashboard**
 
 1. Dashboard queries ledger accounts via `GET /v1/ledger-accounts`
-2. Retrieves transaction lines via `GET /v1/ledger-transactions/lines` with date filters
+2. Retrieves transaction lines via `GET /v1/ledger-transaction-lines` with date filters
 3. Aggregates data for custom visualizations
 4. Refreshes on a schedule, respecting rate limits
 
