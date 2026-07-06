@@ -63,14 +63,11 @@ When clearing involves FX differences:
 
 **GL entries:**
 1. Invoice posts: Debit AR $120,000, Credit Sales $120,000
-2. FX revaluation: Debit FX Loss $2,000, Credit AR $2,000 (GL now $118,000)
-3. Payment received: Debit Cash $118,000, Credit AR $118,000
-4. AR now shows zero; amounts are cleared
+2. Payment received: Debit Cash $118,000, Credit AR $118,000
+3. Clearing posts an FX adjustment automatically: Debit FX loss $2,000, Credit AR $2,000
+4. AR now shows zero; the invoice and payment are cleared
 
-Or, without revaluation:
-1. Invoice posts: $120,000
-2. Payment posts: $118,000
-3. Clearing shows match at $118,000 with $2,000 FX loss recorded in clearing entry
+The realized FX gain or loss is always calculated against the original posting rate of the invoice. Any period-end revaluation booked in the meantime uses the separate unrealized FX gain/loss account and does not change the realized amount recognized at clearing — see [FX revaluations](/mnt/help-articles/articles/05-general-ledger/5-10-fx-revaluations.md).
 
 ## Realized vs. Unrealized FX Gains/Loss
 
@@ -92,46 +89,43 @@ Most FX transactions have both unrealized (during holding period) and realized (
 
 When clearing foreign currency items:
 
-**Entry for realized FX gain/loss:**
-- Debit/Credit: Cash account (actual amount received)
-- Debit/Credit: AR/AP account (to adjust for FX)
-- Debit/Credit: FX Realized Gain/Loss account (the difference)
+**Payment entry:**
+- Debit/Credit: Cash account (actual amount received or paid)
+- Debit/Credit: AR/AP account (at the payment-date rate)
 
-This entry records:
-- How much cash actually came in
+**FX adjustment entry (posted automatically with the clearing):**
+- Debit: FX loss account, or Credit: FX gain account (the difference vs. the original posting rate)
+- Offsetting line on the AR/AP account
+
+The FX adjustment is a separate ledger transaction linked to the clearing event, so together the entries record:
+- How much cash actually came in or went out
 - The FX impact vs. original posting
 - The cleared status of the documents
 
+Sub-unit rounding differences from converting between transaction, local, and group currency are posted to a dedicated rounding account so the entries stay balanced in all three currencies.
+
 ## CTA (Cumulative Translation Adjustment)
 
-CTA arises when translating foreign subsidiary GL:
+CTA captures translation differences between an entity's local (functional) currency and the group (presentation) currency. At clearing, Light posts a CTA adjustment when the group-currency difference on the cleared item is not fully explained by the local-currency FX gain or loss translated to group currency.
 
 **Scenario:**
-- Subsidiary in UK operates in GBP
-- Parent in US reports in USD
-- UK subsidiary assets: 1,000,000 GBP
-- Convert at start of year: 1.30 USD/GBP = 1,300,000 USD posted
-- At year-end: 1.28 USD/GBP = 1,280,000 USD actual
-- CTA: 20,000 USD loss (GBP weakened)
+- An invoice and its payment clear with a given FX difference in local currency
+- The local-to-group rate moved between posting and clearing
+- The remaining group-currency difference is posted to CTA
 
 **GL entry for CTA:**
-- Debit: CTA account (equity)
-- Credit: Asset account (to reduce from 1,300,000 to 1,280,000)
+- Debit/Credit: Currency translation adjustment account (system account)
+- Offsetting line on the AR/AP account
 
-CTA is part of equity and flows through Other Comprehensive Income (OCI).
+A CTA line always carries a nil local-currency amount — it adjusts only the group-currency balance, because it represents a translation-only difference. CTA is part of equity and flows through Other Comprehensive Income (OCI). CTA is also generated at period-end revaluation for accounts carried at the closing rate — see [FX revaluations](/mnt/help-articles/articles/05-general-ledger/5-10-fx-revaluations.md).
 
-## CTA Reversal
+## Reversing a Clearing
 
-When a CTA item settles or is disposed:
+If documents were cleared in error, the clearing can be reversed:
 
-**Scenario:**
-- Subsidiary sold to third party
-- UK assets previously had CTA of (20,000) USD loss
-- Upon sale, CTA is realized
-- Entry: Debit Gain on Sale, Credit CTA (reversal)
-- Gain on Sale now includes the CTA
-
-When you sell/liquidate a subsidiary, its CTA flows to realized gains/losses.
+- Reversing a clearing also reverses the FX and CTA adjustment transactions that were posted with it
+- The cleared documents return to **Posted** (or stay **Partially cleared** if other clearings remain)
+- The original entries are never modified — reversals are posted as offsetting transactions, preserving the audit trail
 
 ## Deferred Tax on FX
 
@@ -194,19 +188,18 @@ Sometimes clearing amounts don't match:
 
 **Resolution:**
 1. Identify reason for discrepancy
-2. Create FX or other adjustment if legitimate
-3. Clear the matched amount
-4. Record remaining as pending or excluded
+2. For bank fees, select **Bank fees** as the deviation reason — Light automatically creates a Bank fees journal entry for the difference
+3. FX and rounding differences are calculated and posted automatically as part of the clearing
+4. For partial payments, clear the matched amount — the document stays **Partially cleared** until the remainder is settled
 
 ## Automatic Clearing
 
 Light can automatically clear matching items:
 
 **Rules trigger clearing when:**
-- Bank transaction amount = Invoice amount
-- Dates are within tolerance
-- Accounts match
-- Reference numbers match
+- An identifier extracted from the bank transaction matches an open invoice number
+- The payment's end-to-end ID or reference matches a posted document
+- Amount and date, or amount and description, match a ledger transaction
 
 Automatic clearing saves manual work but requires proper GL setup and matching rules.
 
