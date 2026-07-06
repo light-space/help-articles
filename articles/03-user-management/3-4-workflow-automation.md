@@ -8,11 +8,17 @@ Beyond basic approval workflows, Light supports advanced workflow automation wit
 
 Workflows in Light are built using a visual flow editor with the following building blocks:
 
+**Trigger Node** - The starting point of every workflow, where documents enter when the workflow is triggered.
+
 **Condition Nodes** - Branch logic that routes documents to different approval paths based on conditions (amount, document type, vendor, cost center, custom fields). Each condition node can have multiple branches plus an "else" default path.
 
 **Approval Nodes** - Stop points where users must approve or reject before the workflow continues. Each approval node shows two outgoing paths: "if approved" and "if rejected."
 
-**Action Nodes** - Execute specific operations like creating records, sending notifications, or updating document fields.
+**Action Nodes** - Execute specific operations like creating or updating records, posting documents, or sending notifications.
+
+**Timer Nodes** - Pause the workflow for a set duration before continuing.
+
+**Agent Review Nodes** - Use AI to review documents against your policies, with "if compliant" and "if non-compliant" branches.
 
 You add nodes to your workflow using the **Action** and **Condition** buttons in the toolbar at the bottom of the visual editor.
 
@@ -22,11 +28,11 @@ Use condition nodes to route documents to different approval paths:
 
 1. Open a workflow from **Settings → Workflows**
 2. Click **Condition** in the bottom toolbar to add a condition node
-3. Define conditions — specify field name, operator (equals, greater than, contains), and values
+3. Define conditions — specify field name, operator (equals, not equals, greater than, greater than or equal, less than, less than or equal, in), and values
 4. Each condition creates a branch for documents matching it, plus an "else" path for everything else
 5. Connect each branch to appropriate approval or action nodes
 
-For example, the Bill Payment workflow might route based on: amount thresholds (e.g., Amount < GBP 20,000), vendor name, bill type (e.g., Reimbursement), cost center (e.g., Finance & Ops), or line item classifications (e.g., External subcontracting).
+For example, the Bill Approval workflow might route based on: amount thresholds (e.g., Amount < GBP 20,000), vendor name, bill type (e.g., Reimbursement), cost center (e.g., Finance & Ops), or line item classifications (e.g., External subcontracting).
 
 Conditions can be combined for complex routing scenarios with multiple branches from a single condition node.
 
