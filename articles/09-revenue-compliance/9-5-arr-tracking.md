@@ -2,7 +2,7 @@
 
 Annual Recurring Revenue (ARR) is a critical metric for subscription-based and SaaS businesses. It represents the predictable revenue you can expect to receive from existing contracts over one year. Light provides native ARR tracking, automatically calculating and reporting this metric from your subscription agreements.
 
-[Open in Light →](https://app.light.inc/invoice-receivables)
+[Open in Light →](https://app.light.inc/contracts)
 
 ## Understanding ARR
 
@@ -24,8 +24,8 @@ Light automatically calculates MRR from your subscription contracts:
 - Sum all active subscription contracts in a period
 - Exclude one-time payments and usage-based amounts
 - Account for billing frequency (annual, monthly) and normalize to monthly
-- Exclude churned contracts (those with end dates)
-- Consider contract value before taxes and discounts
+- Exclude churned contracts after their end date
+- Consider contract line value after discounts and before taxes
 
 For example, if you have:
 - Contract A: EUR 1,000/month
@@ -42,62 +42,53 @@ ARR changes as contracts are added, renewed, or churned. Light tracks these move
 
 **Expansion ARR** is the incremental revenue from existing customers through upsells or additional purchases.
 
-**Churn ARR** is revenue lost from contracts that ended or were significantly reduced.
+**Contraction ARR** is revenue reduced by existing customers through downgrades (price or quantity decreases).
 
-**Renewal ARR** is revenue from contracts that were renewed.
+**Churn ARR** is revenue lost from contracts that ended.
 
-Your net ARR growth = New ARR + Expansion ARR - Churn ARR + Renewal ARR
+Your net ARR growth = New ARR + Expansion ARR - Contraction ARR - Churn ARR
 
-> Good to know: Tracking these components separately provides insights into whether growth comes from new customers, existing customer expansion, or churn reduction.
+> Good to know: Tracking these components separately provides insights into whether growth comes from new customers, existing customer expansion, or churn reduction. Light also derives net revenue retention (NRR) and gross revenue retention (GRR) from these movements.
 
 ## Configuring ARR tracking in Light
 
-ARR tracking is enabled automatically for AR (accounts receivable) invoices with recurring revenue characteristics:
+ARR tracking is calculated automatically from your contracts:
 
-1. Navigate to **Planning & Reports > Reports** for ARR tracking
-2. Verify that AR invoices are configured with:
-   - Billing frequency (monthly, quarterly, annual)
-   - Contract start and end dates
-   - Recurring revenue indicator
-3. Light automatically aggregates recurring invoice amounts into ARR
+1. Navigate to **Revenue & Invoicing → Contracts**
+2. Verify that each contract has:
+   - A customer, entity, and currency
+   - Billing start date (and end date, if applicable)
+   - Contract lines for recurring products with a billing frequency (monthly, quarterly, half-yearly, or yearly)
+3. Publish the contract — Light automatically aggregates its recurring contract lines into MRR and ARR
 
-For enhanced tracking, associate invoices with subscription contracts:
-
-1. Create or edit an AR invoice
-2. Link to the corresponding subscription contract
-3. Mark the invoice as recurring revenue
-4. Include the contract duration and billing frequency
+One-time contract lines are excluded from MRR and ARR. See [ARR and SaaS metrics](../10-reporting/10-13-arr-saas-metrics.md) for the contract fields involved.
 
 ## ARR reporting and dashboards
 
-Light provides multiple views of ARR data:
+Light provides multiple views of ARR data on the **SaaS Metrics dashboard**:
 
-**ARR Summary Dashboard** shows:
+**Metric charts and stats** show:
 - Current ARR and MRR
-- YoY and QoQ growth rates
-- New, expansion, and churn ARR for the period
-- ARR by customer segment or business line
+- New, expansion, contraction, churned, and net new MRR for the period
+- Net revenue retention (NRR) and gross revenue retention (GRR)
+- Average revenue per account (ARPA) and active customers
+- Revenue metrics such as billed, recognized, and deferred revenue, outstanding AR, and cash collected
 
-**ARR Cohort Analysis** tracks cohorts of customers acquired in the same period:
-- Showing which acquisition cohorts generate highest lifetime value
-- Revealing cohort retention and churn patterns
-- Identifying seasonal trends in customer acquisition and churn
+**Customer drilldown** breaks each period down to customer level, classifying every customer as new, expansion, contraction, churn, or retained.
 
-**ARR Forecast** projects future ARR based on:
-- Current contracts and renewal dates
-- Historical churn rates
-- Pipeline of anticipated new contracts
+**AI summaries** generate a natural-language executive summary across the charts and stats you select.
+
+You can save your own charts and arrange them into a personalized dashboard view.
 
 ## Multi-currency ARR reporting
 
-For multinational companies, ARR can be reported in transaction currency, local currency, or group currency:
+For multinational companies, ARR can be reported in local currency (per entity) or group currency:
 
-1. Navigate to **Planning & Reports > Reports** for ARR tracking
-2. Click **Currency Settings**
-3. Select your reporting currency (transaction, local, or group)
-4. Light recalculates ARR using appropriate period-end FX rates
+1. Open the SaaS Metrics dashboard
+2. Select your reporting currency (local or group)
+3. Light converts each contract's MRR using system exchange rates captured as of the contract's billing start
 
-When reporting ARR in multiple currencies, use consistent rate sources (typically month-end rates) to avoid calculation inconsistencies.
+Because rates are fixed at the contract's billing start, historical MRR and ARR figures stay stable — later exchange rate changes do not retroactively shift past periods.
 
 > Tip: Report ARR in your group currency for board/investor presentations and in local currency for subsidiary-level operational reporting.
 
@@ -105,13 +96,13 @@ When reporting ARR in multiple currencies, use consistent rate sources (typicall
 
 When customers upgrade, downgrade, or churn mid-period, Light adjusts ARR calculations:
 
-**Upgrades (expansion)**: Create a new AR invoice for the incremental amount and mark it as expansion revenue.
+**Upgrades (expansion)**: Increase the price or quantity on the contract's lines, or add new recurring lines. Light classifies the incremental MRR as expansion.
 
-**Downgrades**: Create a credit note (CN) to reduce contracted amount and mark churn.
+**Downgrades (contraction)**: Reduce the price or quantity on the contract's lines. Light classifies the reduction as contraction.
 
-**Churn**: End-date the contract in the subscription tracking system.
+**Churn**: Terminate the contract. Light removes its MRR from the termination date.
 
-Light automatically recalculates ARR in real-time as these changes are recorded.
+Light automatically recalculates ARR as these contract changes are published.
 
 ## ARR vs. GAAP revenue recognition
 
