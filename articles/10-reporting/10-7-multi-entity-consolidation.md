@@ -12,8 +12,8 @@ When you select multiple entities and switch to consolidated view, the report di
 |---|---|
 | **[Entity name]** | One column per selected entity showing that entity's figures |
 | **Subtotal** | Sum of all individual entity columns |
-| **Eliminations** | Intercompany amounts flagged for elimination (see [Intercompany documents](/articles/05-general-ledger/5-11-intercompany-documents.md)) |
-| **Consolidated** | Subtotal minus Eliminations — the final consolidated figure |
+| **Eliminations** | Reversing entries that offset intercompany amounts flagged for elimination (see [Intercompany documents](/articles/05-general-ledger/5-11-intercompany-documents.md)) |
+| **Consolidated** | Subtotal plus Eliminations — the final consolidated figure. Elimination amounts carry the opposite sign of the amounts they eliminate, so adding them removes the intercompany effect |
 
 ## Running a consolidated report
 
@@ -59,7 +59,7 @@ Drilldown results can be filtered further and exported as CSV.
 
 ## How eliminations are calculated
 
-Eliminations are driven by the **Intercompany configuration** set up in **Accounting → Chart of accounts**. Lines flagged with the **Eliminate** toggle in intercompany journal entries are included in the Eliminations column. For more detail, see [Intercompany documents](/articles/05-general-ledger/5-11-intercompany-documents.md).
+Eliminations are driven by the **Intercompany configuration** set up in **Settings → Chart of accounts**. Lines flagged with the **Eliminate** toggle in intercompany journal entries generate reversing entries on a dedicated elimination ledger, offset against the system elimination account — these are what appear in the Eliminations column. For more detail, see [Intercompany documents](/articles/05-general-ledger/5-11-intercompany-documents.md).
 
 ## Related articles
 
