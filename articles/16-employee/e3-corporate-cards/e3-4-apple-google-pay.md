@@ -9,7 +9,7 @@ Adding your Light corporate card to Apple Pay or Google Pay makes it easy to pay
 ### Adding Your Light Card to Apple Pay
 
 1. Open the **Light** app and go to **Cards**
-2. Find your physical Light card
+2. Find your Light card—both physical and virtual cards can be added
 3. Tap **Add to Apple Wallet** (or the Apple Pay button)
 4. Follow Apple's setup steps to verify your card
 5. Your Light card now appears in Apple Wallet
@@ -29,17 +29,20 @@ Once your Light card is in Apple Wallet, you can:
 - Authenticate if needed
 - Payment is processed instantly
 
-Apple Pay works with your physical Light card—it's just a digital version for convenience.
+Apple Pay works with both physical and virtual Light cards—it's just a digital version for convenience.
 
 ## Google Pay (Android)
 
 ### Adding Your Light Card to Google Pay
 
-1. Open the **Light** app and go to **Cards**
-2. Find your physical Light card
-3. Tap **Add to Google Pay** (or the Google Pay button)
-4. Verify your card information
-5. Your Light card is now in Google Pay
+Adding your Light card to Google Pay is done manually through the Google Wallet app:
+
+1. Open the **Light** app and go to **Cards** to view your card details—both physical and virtual cards can be added
+2. Open the **Google Wallet** app on your Android device
+3. Tap **Add to Wallet** and choose **Payment card**
+4. Enter your Light card details
+5. Follow Google's verification steps
+6. Your Light card is now in Google Pay
 
 ### Using Google Pay at Stores
 
@@ -71,7 +74,7 @@ If you need to remove your Light card from Apple Pay or Google Pay:
 2. Find your Light card
 3. Select **Remove Card**
 
-You can always re-add it later through the Light app.
+You can always re-add it later—through the Light app for Apple Pay, or through the Google Wallet app for Google Pay.
 
 ## Related Articles
 
