@@ -23,7 +23,11 @@ Click a row to navigate to the account detail page. Use the **Add funds** button
 
 ### Balance by bank accounts
 
-Shows your total cash balance across all bank accounts as a donut chart, with a breakdown per account sorted by balance. Displays the time of the last update. The **Bank reconciliation** button navigates to the bank reconciliation page. Requires the `home.viewAllBalances` permission.
+Shows your total cash balance across all bank accounts and card accounts as a donut chart, with a breakdown per account sorted by balance. Balances are converted to your company's base currency. Displays the time of the last update. The **Bank reconciliation** button navigates to the bank reconciliation page. Requires the `home.viewAllBalances` permission.
+
+### Top vendors
+
+Shows your top vendors ranked by amount spent, with year-to-date and month-to-date spend, the change in rank, and the month-to-date change percentage for each vendor. You can filter the list by entity. Visible only to users who can view vendors.
 
 ## Layout
 
