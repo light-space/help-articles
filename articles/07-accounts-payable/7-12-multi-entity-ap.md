@@ -17,7 +17,7 @@ See [Managing vendors](/articles/07-accounts-payable/7-2-managing-vendors.md) fo
 When entering a bill:
 - The **Entity** field is required
 - The vendor list filters to vendors assigned to the selected entity
-- The bill's currency defaults from the entity's functional currency but can be changed
+- The bill keeps the currency of the vendor's invoice (the document currency); amounts are converted to the entity's local currency (and your group currency) when the bill is posted
 - GL account, tax code, and From account defaults flow in from the vendor's entity-specific defaults (when set)
 
 ## Filtering Bills by Entity
