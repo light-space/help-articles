@@ -38,11 +38,12 @@ Navigate to **Revenue & Invoicing → Contracts** to see all contracts. The list
 |---|---|
 | **Draft** | Contract created but not yet published |
 | **Active** | Contract is live and generating invoices |
+| **Pending termination** | Termination is scheduled for a future date; it can be cancelled (returning the contract to Active) or completed |
 | **Terminated** | Contract has been ended |
 
 ## SaaS Metrics dashboard
 
-The SaaS Metrics dashboard provides visualizations and summaries of your contract performance, ARR trends, and other subscription metrics. You can add charts, stats, and AI-generated summaries to create a personalized view of your metrics.
+The SaaS Metrics dashboard provides visualizations and summaries of your contract performance, ARR trends, and other subscription metrics. MRR and ARR on this dashboard are calculated from the recurring lines of published contracts — recurring amounts are normalized to a monthly value after discounts, and ARR is MRR × 12 — rather than from the manually entered estimated contract value. One-time lines are excluded. You can add charts, stats, and AI-generated summaries to create a personalized view of your metrics.
 
 ### Adding AI summary widgets
 
@@ -62,7 +63,7 @@ To add and configure an AI summary:
 6. Click **Apply** to generate the summary.
 7. Click **Save** in the top-right corner to save your dashboard changes.
 
-Once configured, the AI summary widget displays a natural language summary of your selected metrics. Summaries are cached for 1 hour and personalized to your dashboard layout—if you and a colleague select different charts, you'll see different summaries.
+Once configured, the AI summary widget displays a natural language summary of your selected metrics. Summaries are cached for 24 hours and personalized to your dashboard layout—if you and a colleague select different charts, you'll see different summaries.
 
 To regenerate a summary at any time, hover over the summary widget and click the **Regenerate summary** icon (circular arrow). This bypasses the cache and generates a fresh summary based on the current data and filters.
 
