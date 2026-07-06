@@ -2,7 +2,7 @@
 
 This article covers the most common bank connection problems and how to fix them.
 
-[Open in Light →](https://app.light.inc/dashboard)
+[Open in Light →](https://app.light.inc/settings/bank-accounts)
 
 ## Overview
 
@@ -12,7 +12,7 @@ Light connects to your bank through secure APIs to automatically sync transactio
 
 ### Checking Connection Status
 
-1. Go to **Bank Accounts** in the main menu
+1. Go to **Settings** (gear icon) → **Bank accounts**
 2. Look for your account in the list
 3. A **green checkmark** means the connection is working
 4. A **red warning icon** means there's a problem
@@ -20,26 +20,25 @@ Light connects to your bank through secure APIs to automatically sync transactio
 
 ### Common Status Messages
 
-- **Connected**: Bank feed is syncing normally
-- **Disconnected**: Connection was lost; requires reconnection
-- **Authentication Failed**: Bank credentials are invalid or expired
-- **Rate Limited**: Too many sync requests; will retry automatically
-- **Bank Maintenance**: Bank's API is down for maintenance
-- **Invalid Credentials**: Stored bank login is no longer valid
+- **Linked**: The bank connection is active and syncing normally
+- **Expired**: The connection's authorization has expired; renew the connection to resume syncing
+- **Active** / **Inactive** (feed status): Light automatically sets a bank feed to Inactive when the provider reports an error for that account
+
+> Note: Only company admins can manage bank connections.
 
 ## Issue 1: Authentication Failed
 
 ### Symptoms
 
-- Status shows "Authentication Failed" or "Invalid Credentials"
+- Connection status shows "Expired"
 - Transactions stopped syncing
 - Red error icon on bank account
 
 ### Solutions
 
-1. **Reconnect the Account**:
-   - Click the bank account with error
-   - Click **Reconnect** or **Reauthenticate**
+1. **Renew the Connection**:
+   - Click the bank account with the error
+   - Click **Renew connection**
    - This opens a secure connection to your bank
 2. **Re-enter Bank Credentials**:
    - Log in with your current bank username and password
@@ -77,10 +76,10 @@ Light connects to your bank through secure APIs to automatically sync transactio
    - Go to **Settings** > **Security** or **Connected Apps**
    - Verify Light is listed and access is enabled
    - Some banks auto-disable access after inactivity
-3. **Reduce Sync Frequency** (if available):
-   - Frequent syncs may trigger security blocks
-   - In **Bank Account Settings**, reduce sync frequency
-   - Try daily or weekly syncs instead of hourly
+3. **Understand Sync Frequency**:
+   - Light syncs bank feeds once or twice a day
+   - Sync frequency is managed by Light and is not user-configurable
+   - Light's sync cadence will not trigger bank security blocks on its own
 4. **Contact Bank Support**:
    - Explain you're using Light (a financial management platform)
    - Ask if your account has any restrictions on third-party access
@@ -88,7 +87,7 @@ Light connects to your bank through secure APIs to automatically sync transactio
 5. **Try Manual Import**:
    - If API connection keeps failing, use CSV import
    - Download transactions from your bank as CSV
-   - Upload to Light manually or set up recurring import
+   - Upload the CSV to the specific bank account in Light
 
 ## Issue 3: Transactions Not Syncing
 
@@ -101,9 +100,8 @@ Light connects to your bank through secure APIs to automatically sync transactio
 ### Solutions
 
 1. **Wait for Next Sync**:
-   - Light syncs multiple times daily
-   - New transactions usually appear within 4 hours
-   - Allow up to 24 hours for some banks
+   - Light syncs bank feeds once or twice a day
+   - Allow up to 24 hours for new transactions to appear
    - Don't add transactions manually if waiting for sync
 2. **Force Manual Sync**:
    - Click the account with sync issues
@@ -117,9 +115,8 @@ Light connects to your bank through secure APIs to automatically sync transactio
    - Some banks require checking a consent box
 4. **Check Posting Dates**:
    - Bank transactions post at different times
-   - Pending transactions usually appear before they post
-   - Posted transactions appear within 24 hours of posting
-   - Future-dated transactions won't sync until date arrives
+   - Light imports booked (posted) transactions only—pending transactions won't appear until your bank books them
+   - Each sync re-checks the last 7 days, so transactions that were pending and later booked are picked up automatically
 5. **Check Your Account**:
    - Verify you're connecting the right account
    - Check account number matches your bank statement
@@ -140,12 +137,10 @@ Light connects to your bank through secure APIs to automatically sync transactio
    - Note the account number and type shown
    - Compare to your actual bank account
    - Reconnect if you're connected to the wrong account
-2. **Clear Duplicates**:
-   - Duplicates sometimes occur during reconnection
-   - Don't delete yet—identify which are duplicates
-   - Usually earlier or later-dated version is the duplicate
-   - Delete the obvious duplicate
-   - Keep the more complete transaction record
+2. **Duplicates Are Handled Automatically**:
+   - During bank feed imports, Light detects duplicate transactions and marks them as Excluded automatically
+   - You don't need to delete duplicates manually
+   - If you spot a duplicate that wasn't excluded, contact Light support
 3. **Check Filters**:
    - You may be filtering to wrong account
    - Go to **Bank Accounts** and click the right account
@@ -185,6 +180,8 @@ Light connects to your bank through secure APIs to automatically sync transactio
    - Use this app password when reconnecting Light
    - This prevents your main password from being a friction point
 
+> Note: For UK banks connected through open banking, bank authorizations are capped at 90 days by regulation. After 90 days the connection shows as "Expired" and must be renewed—this is expected behavior, not an error.
+
 ## Issue 6: Bank Feed Doesn't Cover Entire Date Range
 
 ### Symptoms
@@ -205,8 +202,8 @@ Light connects to your bank through secure APIs to automatically sync transactio
    - Some business accounts provide longer history
 3. **Import Historical Data Manually**:
    - Download historical transactions from bank as CSV
-   - Go to **Bank Accounts** > **Import CSV**
-   - Upload the file with older transactions
+   - Go to **Settings** (gear icon) → **Bank accounts** and select the account
+   - Upload the file with older transactions to that account
    - Light imports and reconciles them
 4. **Check Account Age**:
    - If account is recently opened, less history may be available
@@ -272,20 +269,17 @@ Light connects to your bank through secure APIs to automatically sync transactio
 
 ### Symptoms
 
-- Status shows "Rate Limited" or "API Error"
-- Error mentions "too many requests"
+- Sync fails with an error mentioning "too many requests"
 - Syncs keep failing with throttling message
 
 ### Solutions
 
-1. **Reduce Sync Frequency**:
-   - Some banks limit sync frequency
-   - Click the bank account
-   - Reduce sync frequency to daily or weekly
-   - This prevents hitting rate limits
+1. **Avoid Repeated Manual Syncs**:
+   - Light's automatic syncs run only once or twice a day, which stays within provider limits
+   - Repeatedly triggering manual syncs can contribute to rate limits
+   - Wait for the automatic sync instead of forcing repeated manual syncs
 2. **Wait for Automatic Retry**:
-   - Light automatically retries after rate limit
-   - Usually retries within 1 hour
+   - Light automatically retries at the next scheduled sync
    - Don't manually retry repeatedly (makes it worse)
 3. **Contact Bank**:
    - Some banks have tiered rate limits based on account type
@@ -294,7 +288,7 @@ Light connects to your bank through secure APIs to automatically sync transactio
 4. **Switch to Manual Import**:
    - If API rate limits are blocking sync
    - Use CSV import instead
-   - Schedule weekly CSV imports from your bank
+   - Download a CSV from your bank and import it manually as needed
 
 ## Issue 10: Still Having Trouble?
 
