@@ -64,10 +64,10 @@ Good for receipts photographed earlier or forwarded by others.
 
 ## AI Receipt Extraction on Mobile
 
-After capturing or uploading, Light processes on device:
+After capturing or uploading, Light processes the receipt:
 
-1. Light analyzes photo locally (on your phone) for privacy
-2. Takes 3-10 seconds depending on image complexity
+1. The photo is securely uploaded and analyzed by Light's AI
+2. Takes a few seconds depending on image complexity
 3. Shows progress indicator: "Analyzing receipt..."
 4. When complete, shows **Extraction Preview**:
    - **Merchant**: Shop or restaurant name
@@ -147,21 +147,6 @@ Light pre-selects based on merchant (e.g., airline → Travel) but you can overr
 
 4. Tap **Continue** when done
 
-## Splitting Expenses
-
-For expenses shared with others:
-
-1. After selecting category, tap **Split with Others**
-2. Search for teammates by name or email
-3. Select people to split with (checkboxes)
-4. Light shows calculated split:
-   - Original amount
-   - Number of people
-   - Amount per person
-
-5. Tap **Confirm Split**
-6. Each person gets notified of their share
-
 ## Cost Center and Project Assignment
 
 Assign expense to department or project:
@@ -234,13 +219,12 @@ Control notification preferences:
 1. Open app **Settings**
 2. Navigate to **Notifications**
 3. Toggle notification types:
-   - Expense submitted
-   - Approval received
-   - Payment processed
-   - Manager requests
+   - Reimbursement updates
+   - Card authorizations
+   - Card declines
+   - Tasks
 
-4. Set **Quiet Hours**: No notifications during certain times
-5. Save settings
+4. Save settings
 
 ## Photo Tips for Best Results
 
