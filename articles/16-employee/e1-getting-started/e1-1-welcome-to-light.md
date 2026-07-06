@@ -22,7 +22,7 @@ Need to buy something for work? Request it through Light, and get clarity on whe
 
 Light uses **Single Sign-On (SSO)** for easy, secure access. Just click "Log in" and authenticate with your company email. If your company doesn't use SSO, you'll log in with your email address and a password.
 
-Your first time? Your admin will send you an invitation link. Click it, set up your account, and you're ready to go.
+Your first time? Your admin creates your account for you—there's nothing to activate or set up. You'll receive a welcome email from Light with links to the web app and the iOS and Android mobile apps. Just open Light and log in with your company email.
 
 ## Next Steps
 
