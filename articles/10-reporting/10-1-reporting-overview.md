@@ -16,13 +16,15 @@ Light includes pre-built system reports for the four primary financial statement
 
 **Trial Balance** lists all GL accounts and their debit/credit balances. Used to verify posting accuracy.
 
+Beyond the four primary statements, Light also includes a **General Ledger** system report and country-specific **VAT return** reports for Denmark, the UK, and Sweden.
+
 System reports are read-only and cannot be edited or deleted.
 
 ## Report types
 
 Light has three types of reports you can create:
 
-**Table** — A custom report template built with a formula-based row and column structure. You define up to 5 columns (A–E) with editable labels and build rows using formula references and tax tags. Rows can be hierarchical (parent/child). This is the format used by all system financial statements.
+**Table** — A custom report template built with a formula-based row and column structure. You define up to 6 columns (A–F) with editable labels and build rows using formula references and tax tags. Rows can be hierarchical (parent/child). This is the format used by all system financial statements.
 
 **Pivot table** — A flexible cross-tabulation of your ledger data. You choose dimensions (rows and columns) and a measure (transaction amount, local amount, or group amount), then apply filters. Useful for ad hoc analysis across entities, accounts, currencies, business partners, and custom properties.
 
@@ -98,7 +100,7 @@ All reports support two currency views:
 
 ## Home dashboard
 
-The **Home** page (`/dashboard`) provides a summary view with fixed widgets showing your bank account balances, pending tasks, card accounts, and a budget YTD accuracy summary. This is a read-only overview and is not customisable.
+The **Home** page (`/dashboard`) provides a summary view with fixed widgets showing your bank account and card balances, pending tasks, and your top vendors by spend. This is a read-only overview and is not customisable.
 
 ## Related articles
 
