@@ -9,15 +9,16 @@ When you upload a bill (PDF, image, or CSV) to Light, the document is run throug
    - Vendor (matched against your vendor list)
    - Invoice number, invoice date, due date
    - Currency and totals
-   - Line items (description, quantity, unit price, amount)
+   - Line items (description and amount — for invoices with a quantity column, the AI extracts the final line amount, not quantity or price per item)
    - Tax amounts (where present on the document)
+   - Suggested GL account and tax code for each line, based on your chart of accounts and the vendor's defaults
 3. The bill appears in the **Inbox** with the extracted data pre-filled
 4. Open the bill to review the extracted fields side-by-side with the original document (PDF viewer is shown alongside the form)
 5. Edit any field that needs correction
 
 ## Supported File Types
 
-PDF, JPG, JPEG, PNG, TIFF/TIF. CSV is also accepted but it is treated as structured input — no extraction is needed.
+PDF, JPG, JPEG, PNG, TIFF/TIF, HEIC/HEIF. CSV is also accepted but it is treated as structured input — no extraction is needed.
 
 ## When the Vendor Isn't Recognised
 
