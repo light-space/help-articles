@@ -2,7 +2,7 @@
 
 A purchase request lets you get approval from your finance or procurement team before making a large purchase or buying from a new vendor. It's a simple process that protects both you and your company.
 
-[Open in Light →](https://app.light.inc/procurement/purchase-orders)
+[Open in Light →](https://app.light.inc/procurement/purchase-requests)
 
 ## When to File a Purchase Request
 
@@ -20,7 +20,7 @@ Check with your manager if you're unsure whether you need a purchase request.
 
 Follow these steps to submit a purchase request:
 
-1. Open Light and navigate to **Purchase Orders** in the main menu
+1. Open Light and navigate to **Purchase orders** in the main menu
 2. Tap **+ New Purchase Request**
 3. Fill in the following details:
 
@@ -32,7 +32,7 @@ Follow these steps to submit a purchase request:
 
 **Vendor information:**
 - Vendor or company name
-- Contact information (email or phone)
+- Contact email (used to send the purchase order once approved)
 - Any vendor account info you have
 
 **Business details:**
@@ -79,17 +79,18 @@ If you don't know the exact price, provide your best estimate. Your finance team
 
 If you need to add more information after submitting, you can:
 
-1. Go to **Purchase Orders**
+1. Go to **Purchase orders**
 2. Find your pending request
-3. Tap **Add Details** or **Add Attachment**
-4. Update the information
+3. Add attachments with any extra documentation
+
+Editing the request details themselves (amount, vendor, description) after submission requires additional permissions. If you can't edit the request yourself, ask your finance team or a company admin to update it for you.
 
 ## Timeline
 
 - **Submit request**: Immediately in Light
 - **Review by finance**: Usually 1-2 business days
 - **Approval or questions**: You'll be notified via email or in the Light app
-- **After approval**: Purchase order is created and ready to share with your vendor
+- **After approval**: Your purchase order is created and ready to share with your vendor (or your vendor card is issued, if that's what you requested)
 
 ## Tips for Fast Approval
 
@@ -101,7 +102,7 @@ If you need to add more information after submitting, you can:
 
 ## Requests Get Declined?
 
-If your request is declined or put on hold, your finance team will tell you why. Common reasons include:
+If your request is declined, your finance team will tell you why. Common reasons include:
 
 - Missing information
 - Vendor not approved by your company
