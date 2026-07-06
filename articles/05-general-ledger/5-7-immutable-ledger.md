@@ -90,11 +90,14 @@ Light allows you to edit accounting documents even after they've been posted:
 2. Make your changes (e.g., correct a cost center, update an amount, change a GL account)
 3. Save your changes
 4. The accounting document engine automatically:
-   - Reverses the original transactions on the general ledger
+   - Reverses any clearings on the document, then reverses the original transactions on the general ledger
    - Creates new transactions reflecting your changes
+   - Re-applies the clearings after re-posting (if changed amounts mean a clearing can no longer be applied, the modification fails with an error)
    - Maintains full audit trail of both sets of transactions
 
 This approach preserves the immutability of the ledger while giving you flexibility to correct errors in accounting documents. You don't need to manually create reversing entries—the system handles this automatically.
+
+**Note:** If a published approval workflow applies to a document type (for example, journal entry approvals), editing posted documents of that type in place is blocked—an in-place edit would reverse and re-post the entry without going through approval. In that case, reverse the entry and post a corrected one, which routes through the approval workflow.
 
 ## Audit Trail
 
@@ -190,6 +193,7 @@ When you discover an error in a posted accounting document:
 The accounting document engine handles all the reversal logic automatically, so you don't need to manually create reversing journal entries.
 
 For prior period errors:
+- If the original accounting period has been closed, the system rejects posting to it—corrections must be posted to an open period
 - Consider whether you need to correct in the original period or the current period
 - Consult your accounting policies for prior period adjustments
 - The system maintains full audit trail regardless of when corrections are made
