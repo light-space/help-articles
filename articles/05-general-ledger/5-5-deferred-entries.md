@@ -39,7 +39,7 @@ Navigate to [**Settings (gear icon) → Releases templates**](https://app.light.
 
 ### Creating a Release Template
 
-1. Go to [**Accounting → Release templates**](https://app.light.inc/release-templates)
+1. Go to [**Settings (gear icon) → Releases templates**](https://app.light.inc/release-templates)
 2. Click **+ New**
 3. Fill in the fields:
    - **Name**: Descriptive name (e.g., "12-Month Insurance")
