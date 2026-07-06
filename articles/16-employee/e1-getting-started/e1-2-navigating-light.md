@@ -9,7 +9,7 @@ Light's interface is designed to get you where you need to go quickly. Let's wal
 When you log into Light, you'll see a sidebar on the left with your main navigation options. Here's what each section does:
 
 **Home (/dashboard)**
-Your home page shows you an overview of your activity: recent expenses, pending approvals if you're a manager, upcoming card statements, and quick actions to get started. It's your at-a-glance view of everything happening in your Light account.
+Your home page shows you an at-a-glance overview: your pending tasks and your card accounts. Depending on your permissions, you may also see company-wide widgets such as account balances and top vendors by spend.
 
 **Tasks (/user-tasks)**
 This is your to-do list. You'll see expenses waiting for your review (if you manage people), purchase requests that need approval, and any other action items that need your attention. Click on any task to handle it.
