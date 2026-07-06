@@ -14,58 +14,45 @@ Expense policies are your company's guidelines for spending. They typically cove
 - **Approval chains**: Who needs to approve what (your manager, finance team, etc.)
 - **Special rules**: Restrictions for certain types of expenses (e.g., alcohol only for client entertainment, not personal meals)
 
+In Light, your admin stores these policies as documents. When you submit an expense, Light's AI reviews it against those policy documents.
+
 ## Checking Your Company's Policies
 
-Your admin sets up policies in Light. To view them:
+Your admin manages policy documents in Light under **Settings → Guardrails → Policies**. As an employee, the easiest way to check a policy is to ask Light's AI assistant, for example:
 
-1. Log into Light
-2. Go to **Expenses** (/expenses)
-3. Look for a **"Company Policies"** or **"Policy Details"** link (usually on the Expenses page or in help)
-4. You'll see:
-   - All reimbursable categories
-   - Spending limits for each
-   - Receipt requirements
-   - Any special rules
+- "What's our policy on client meals?"
+- "Do I need a receipt for expenses under $25?"
+- "Can I expense a hotel upgrade?"
 
-**Can't find the policies?** Ask your manager or admin. They can send you a copy or point you to where they're documented.
+The assistant answers based on your company's policy documents and shows you which policy the answer comes from.
 
-## How Light Helps You Stay Compliant
+**Can't find the answer?** Ask your manager or admin. They can send you a copy of the policy or point you to where it's documented.
 
-Before you submit an expense, Light checks it against your company's policies. If something doesn't match:
+## How Light Reviews Your Expenses
 
-**Light flags it in yellow or red:**
-- **Yellow flag**: Warning—Light detected a potential issue, but you can still submit (e.g., it's close to the limit)
-- **Red flag**: Policy violation—Light won't let you submit until you fix it (e.g., it exceeds the limit or missing receipt)
+When you submit an expense, Light's AI reviews it against your company's policy documents:
 
-**Common policy violations:**
-- Amount exceeds the limit for that category
-- Category not approved by your company
+- **Compliant**: If your expense follows the policies, it can be approved automatically and moves on to payment.
+- **Non-compliant**: If the AI finds a potential policy issue, your expense is sent to your finance team's inbox for manual review.
+
+**Common reasons an expense gets flagged:**
+- Amount exceeds a limit described in the policy
+- The type of expense isn't reimbursable under the policy
 - Missing receipt when one is required
-- Alcohol on a personal meal (only allowed for client entertainment)
-- International expense when not pre-approved
+- Alcohol on a personal meal (if only allowed for client entertainment)
 
 ## What Happens If You Violate a Policy?
 
-**Before you submit**: Light stops you and explains the issue. You can either:
-- **Fix it** (change the amount or category)
-- **Request an exception** (ask for approval even though it violates policy)
-- **Cancel and try again**
+If the AI review flags your expense as non-compliant, it isn't rejected automatically. Instead, it goes to your finance team, who will review it and either:
 
-**If you request an exception**: Your manager or admin gets a notification that you're asking for special approval. They can approve it anyway or ask you to change it. This might take an extra day or two.
+- **Approve it anyway** (e.g., if there's a valid reason for the exception)
+- **Reject it** and ask you to fix and resubmit it
 
-**After you submit (if a violation slips through)**: Your manager or finance team might reject it and ask you to resubmit correctly. It's faster to follow policies the first time.
-
-## Special Approval for Big Expenses
-
-Some companies require extra approval for large expenses. If your expense is above a certain threshold:
-1. Light will flag it
-2. You can still submit
-3. It goes to your manager first, then to a finance team member for final approval
-4. This might add a day or two to the approval process
+It's faster to follow policies the first time—compliant expenses can be approved without waiting for manual review.
 
 ## Personal Expenses & Non-Reimbursable Items
 
-Your company won't reimburse personal expenses. If you accidentally submit one, your manager will reject it. Common non-reimbursable expenses include:
+Your company won't reimburse personal expenses. If you accidentally submit one, it will be flagged during review and likely rejected. Common non-reimbursable expenses include:
 - Groceries for personal use
 - Gym memberships
 - Personal entertainment
@@ -73,34 +60,26 @@ Your company won't reimburse personal expenses. If you accidentally submit one, 
 
 When in doubt, ask your manager before you submit.
 
-## Different Policies for Different Roles
+## Different Policies for Different Entities
 
-Some companies have different policies based on your job or level:
-- **Executives** might have higher spending limits
-- **Sales team** might have different meal and entertainment rules
-- **Remote workers** might have different policies than office-based teams
-
-Light will apply the right policy to your account automatically. You'll only see limits and categories that apply to you.
+If your company operates multiple entities, policies can apply to specific entities. Light's AI reviews your expense against the policy documents that apply to your entity—you don't need to figure out which policy is relevant.
 
 ## Policy Updates
 
-Your admin might update policies from time to time (e.g., raising limits during budget season, adding new categories). When policies change:
-- Light will notify you in the app
-- Your old expenses won't be affected
-- New submissions will follow the new policies
+Your admin might update policy documents from time to time (e.g., raising limits during budget season, adding new rules). Your old expenses won't be affected—new submissions are reviewed against the current policies.
 
 ## Tips for Staying Compliant
 
-- **Read your company's policies first**: Know what's OK to expense before you spend
+- **Know your company's policies**: Ask Light's AI assistant or read your company's policy documents before you spend
 - **Check expense categories**: Make sure you're using the right category for your purchase
 - **Keep good receipts**: Most policies require them, and Light needs them to read the details
 - **Submit soon after purchase**: Expenses are easier to document while details are fresh
-- **When in doubt, ask**: If you're not sure if something's reimbursable, ask your manager before you submit
+- **When in doubt, ask**: If you're not sure if something's reimbursable, ask Light's AI assistant or your manager before you submit
 
 ## Questions About a Policy?
 
 If a policy doesn't make sense or seems unclear:
-1. Log into Light and find the specific policy that's confusing
+1. Ask Light's AI assistant—it answers based on your company's policy documents and shows the source
 2. Ask your manager or admin what it means
 3. If you think it's a mistake, contact your finance team
 
