@@ -1,6 +1,6 @@
 # Scheduling and Releasing Payments
 
-Once a bill is approved, it moves into the payment workflow. Light groups approved bills into **payment batches** that you submit for batch approval, then release.
+Once a bill is approved, it moves into the payment workflow. When a payment guardrail is configured, Light groups approved bills into **payment batches** that you submit for batch approval, then release. Without a payment guardrail, approved bills are scheduled for payment directly.
 
 [Open in Light →](https://app.light.inc/payables?tab=scheduled)
 
@@ -20,13 +20,13 @@ To prepare a payment batch:
 
 ## Payment Batch States
 
-After submission, the batch (and the bills inside it) move through these states:
+After submission, the batch itself is simply pending, approved, or declined, while the bills inside it move through these states:
 
 | State | Meaning |
 |---|---|
-| `PENDING_PAYMENT_APPROVAL` | Batch is awaiting approval by the configured approver(s) |
-| `PAYMENT_PAUSED` | Batch (or specific bill) has been paused |
-| `SCHEDULED` | Batch is approved and scheduled for the chosen payment date |
+| `PENDING_PAYMENT_APPROVAL` | Bill is in a batch awaiting approval by the configured approver(s) |
+| `PAYMENT_PAUSED` | The bill's payment has been paused (pausing and resuming happen per bill, not per batch) |
+| `SCHEDULED` | Payment is approved and scheduled for the chosen payment date |
 | `PAYMENT_PENDING` | Payment has been initiated with the bank |
 | `PARTIALLY_PAID` | Some matched payment posted; balance remaining |
 | `PAID` / `COMPLETED` | Payment fully settled |
