@@ -33,12 +33,12 @@ In this example, debits (75,000) don't equal credits (110,000), indicating error
 Generate your trial balance:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select as-of date (must be month-end or year-end)
-3. Select entities to include (single entity or consolidated)
-4. Select currency (transaction, local, or group)
-5. Click **Generate**
+2. Open the **Trial Balance** report
+3. Select the as-of date
+4. Select entities to include (single entity or consolidated)
+5. Select currency: **Entity Crcy** (local) or **Group Crcy** (group)
 
-Light displays the trial balance with all GL accounts and balances.
+Light displays the trial balance with all GL accounts and balances. The Trial Balance is a built-in system report — it cannot be edited or deleted.
 
 ## Accounts with zero balances
 
@@ -59,22 +59,13 @@ If your trial balance doesn't balance:
 4. Verify that all month-end accruals have been recorded
 5. Look for unmatched bank reconciliations
 
-Light provides a trial balance variance calculator:
-
-1. Generate trial balance
-2. Click **Check for Errors**
-3. Light identifies common errors:
-   - Unposted transactions
-   - Duplicate postings
-   - Accounts without matching double entries
-
 ## Trial balance by subsidiary
 
 For multi-entity organizations:
 
-1. Generate trial balance
-2. Filter by **Entity**
-3. View trial balance for each subsidiary separately
+1. Open the trial balance
+2. Select the entities to include, or switch to **Consolidated** view
+3. In consolidated view, Light shows a column per entity plus **Subtotal**, **Elimination**, and **Total** columns
 4. Each subsidiary's trial balance should balance
 
 This helps identify which entity (if any) has posting errors.
@@ -84,8 +75,10 @@ This helps identify which entity (if any) has posting errors.
 View trial balance in different currencies:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select **Currency**: Transaction, Local, or Group
+2. Select **Currency**: **Entity Crcy** (local) or **Group Crcy** (group)
 3. Light displays accounts in your selected currency
+
+> Note: Entity currency cannot be used when the selected entities have different local currencies.
 
 This is useful for:
 - Verifying currency conversion accuracy
@@ -122,8 +115,6 @@ Two versions exist:
 - Includes only permanent (balance sheet) accounts
 - Starting point for next period
 
-Light can generate both versions.
-
 ## Trial balance and account reconciliation
 
 Use the trial balance to plan account reconciliations:
@@ -155,7 +146,7 @@ Light does this automatically, but understanding the connection is important.
 Compare trial balances across periods:
 
 1. Navigate to **Planning & Reports → Reports**
-2. Select periods to compare (current month, prior month, prior year)
+2. Add a **Comparison** period: 1, 3, 6, 9, or 12 months back, or 1, 2, or 3 years back
 3. Light displays account balances side-by-side
 4. Shows period-over-period changes
 5. Highlights accounts with significant changes
@@ -168,8 +159,8 @@ Drill into any trial balance account:
 
 1. Click any account on the trial balance
 2. Light shows all transactions posted to that account
-3. Filter by date, description, or transaction type
-4. Export transaction detail
+3. Filter by posting date, currency, amount, document type, or entity
+4. Export transaction detail as CSV
 
 This enables rapid error-finding and substantiation.
 
@@ -203,10 +194,11 @@ Light supports all these procedures with built-in workflows.
 
 Export trial balance for external auditors or further analysis:
 
-1. Generate trial balance
-2. Click **Export**
-3. Select format: PDF, Excel, or CSV
-4. Light generates output with all accounts and balances
+1. Open the trial balance
+2. Click the export button
+3. Light downloads a CSV file with all accounts and balances
+
+You can open the CSV in Excel or Google Sheets for further analysis.
 
 External auditors typically request the trial balance to start their audit procedures.
 
