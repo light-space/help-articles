@@ -12,7 +12,7 @@ Navigate via **Revenue & Invoicing → Sales invoices**.
 2. Fill in the create dialog:
    - **Customer** — required
    - **Entity** — the company entity issuing the invoice
-   - **Currency** — defaults to the customer's most recent invoice currency (if available), otherwise the entity's local currency; you can change it before creating
+   - **Currency** — defaults to the currency of the customer's most recent issued invoice (if available), otherwise the entity's local currency; you can change it before creating
 3. Click **Create** — the invoice opens in DRAFT state, ready for line items and details
 
 ## Duplicating an Invoice
@@ -57,10 +57,11 @@ Tabs in the invoice detail include the line items, an activity log, and (if appl
 | `PARTIALLY_PAID` | **Partially paid** | Some payment received |
 | `PAID` | **Paid** | Fully paid |
 | `ARCHIVED` | **Void** | Voided |
+| `REVERSED` | **Reversed** | Reversed via reverse & reissue (a reversal credit note); locked from further changes |
 
 ## Editing an Invoice
 
-Invoices in **Draft** can be freely edited. Once posted (Open or beyond), edits are restricted to fields that don't affect GL impact.
+Invoices in **Draft** can be freely edited. Once posted (Open or beyond), amounts can no longer be changed and edits are restricted to a limited set of fields.
 
 ### Editing Custom Properties After Posting
 
@@ -71,7 +72,7 @@ Even after an invoice is posted, you can still add, change, or remove the custom
 3. Add, change, or remove its custom properties
 4. Confirm the changes when prompted, then save
 
-Amounts, tax codes, descriptions, and other revenue- or ledger-impacting fields stay locked. Every change is recorded in the invoice's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
+Amounts, quantities, and prices stay locked. Beyond custom properties, the same posted-invoice modification flow also lets you update line descriptions, ledger accounts, and tax codes, as well as header fields such as posting date, document date, description, and PO number. Every change is recorded in the invoice's modification history, and the line item re-locks after saving. See [Custom Properties](/articles/02-organization-setup/2-3-custom-properties.md) for more.
 
 ## Posting an Invoice
 
