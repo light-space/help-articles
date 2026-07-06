@@ -8,15 +8,15 @@ This article walks you through creating your company and configuring the initial
 
 When you complete your profile, you'll be prompted to create your first company:
 
-1. Go to **Settings (gear icon) > Entities** (or follow the onboarding prompt)
+1. Go to **Settings (gear icon) → Entities** (or follow the onboarding prompt)
 2. Click **+ Create company**
 3. Enter the following information:
    - **Company name** - Your legal company name
    - **Base currency** - Your primary operating currency (e.g., USD, EUR, GBP)
-   - **Country** - Your company's primary country of incorporation
    - **Logo** (optional) - Upload your company logo for branded reports and communications
-   - **Invoice email** - A dedicated inbox for receiving customer invoices (Light monitors this)
+   - **Invoice email** - A dedicated inbox for receiving vendor invoices (Light monitors this)
    - **Receipt email** (optional) - For receiving transaction receipts
+   - **Contract email** (optional) - For receiving contracts
 
 4. Click **Create company**
 
@@ -28,10 +28,9 @@ Your company is now set up. Light uses the base currency you select as the defau
 
 Most multinational organizations need multiple legal entities for tax, regulatory, or operational reasons. Light handles multi-entity operations natively.
 
-1. Go to **Settings (gear icon) > Entities**
+1. Go to **Settings (gear icon) → Entities**
 2. Click **+ Create entity**
 3. Enter the following details:
-   - **Entity code** - A short identifier (e.g., "US-CORP", "UK-LTD", "DE-GMBH")
    - **Display name** - How the entity appears in reports and dropdowns
    - **Legal name** - The registered legal name for compliance
    - **Local currency** - The operating currency for this entity
@@ -42,38 +41,39 @@ Most multinational organizations need multiple legal entities for tax, regulator
 
 4. Click **Create entity**
 
+Light automatically assigns each entity a sequential entity code when it is created.
+
 Repeat for each legal entity you need to manage in Light.
 
 ## Configure currency support
 
-Light supports unlimited currencies for international operations:
+Light supports unlimited currencies for international operations. There is no separate currency list to maintain — currency support follows from your setup:
 
-1. Go to **Settings > Organization > Currencies**
-2. Click **Add currency**
-3. Select the currency codes you need (e.g., USD, EUR, GBP, CNY)
-4. Click **Save**
+- Your company's **base currency** (set at company creation) is used for reporting and consolidation
+- Each entity's **local currency** is set when you create the entity
 
-You can now:
-- Create bank accounts in any configured currency
+You can:
+- Create bank accounts in any currency
 - Record transactions in any currency with automatic FX conversion
 - Run consolidated reports across all currencies
 
-> **Tip:** Configure all currencies you plan to use upfront. While you can add currencies later, it's easier to plan ahead if you know your global footprint.
+> **Tip:** Choose each entity's local currency carefully when you create it, based on where that entity operates.
 
 ## Set up chart of accounts
 
 Light comes with a default chart of accounts template, but you'll likely customize it for your organization:
 
-1. Go to **Accounting > Chart of accounts** ([Open in Light →](https://app.light.inc/accounting/ledger-accounts))
+1. Go to **Settings (gear icon) → Chart of accounts** ([Open in Light →](https://app.light.inc/accounting/ledger-accounts))
 2. Review the default accounts (Assets, Liabilities, Equity, Revenue, Expenses)
 3. Add custom accounts by clicking **+ Create account** and entering:
    - **Account code** - Unique identifier (e.g., "1000", "4010")
    - **Account name** - Display name
    - **Account type** - Asset, Liability, Equity, Revenue, or Expense
-   - **Currency** - Which currencies this account supports
+   - **Currency** - The account currency (required for bank and cash accounts)
+   - **Company entities** - Which entities the account is available for
    - **Description** - Notes on account usage
 
-4. Organize accounts into sub-accounts by dragging them under parent accounts
+4. Organize your chart with header and sum accounts to group related accounts in reports
 
 You can import accounts from a CSV if you're migrating from a legacy system. Contact support for templates.
 
@@ -81,13 +81,12 @@ You can import accounts from a CSV if you're migrating from a legacy system. Con
 
 Expense categories map receipts and card transactions to GL accounts:
 
-1. Go to **Personal > Expenses** (or **Settings (gear icon) > Reimbursement categories**)
+1. Go to **Settings (gear icon) → Reimbursement category**
 2. Click **+ Create category**
 3. Enter:
    - **Category name** - e.g., "Office Supplies", "Travel", "Marketing"
    - **GL account** - Which GL account to post to when expenses are categorized here
-   - **Budget limit** (optional) - Monthly or annual limit
-   - **Approval requirements** - Who must approve expenses in this category
+   - **Tax code** (optional) - Default tax code for expenses in this category
    - **Company entities** - Which entities can use this category
 
 4. Click **Create**
@@ -98,7 +97,7 @@ Expense categories map receipts and card transactions to GL accounts:
 
 Set up how expenses and bills are approved:
 
-1. Go to **Settings (gear icon) > Workflows**
+1. Go to **Settings (gear icon) → Workflows**
 2. Click **+ Create workflow**
 3. Configure:
    - **Workflow name** - e.g., "Standard Expense Approval"
@@ -119,7 +118,7 @@ Assign workflows to specific:
 
 Connect your existing tools during setup:
 
-1. Go to **Settings (gear icon) > Integrations**
+1. Go to **Settings (gear icon) → Integrations**
 2. Click **Connect** next to each tool you want to integrate:
    - **Slack** - For approvals and notifications
    - **Salesforce** - Sync customers, opportunities, and revenue
