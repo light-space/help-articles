@@ -1,6 +1,6 @@
 # Approving or declining vendors
 
-When someone proposes a new vendor to work with, it typically needs approval before they can be added to your company's vendor list. Here's how to review and approve—or decline—a vendor.
+When someone proposes a new vendor to work with, it typically needs approval before they can be added to your company's vendor list. The same review process kicks in when someone changes an existing vendor's bank details. Here's how to review and approve—or decline—a vendor.
 
 [Open in Light →](https://app.light.inc/user-tasks)
 
@@ -38,6 +38,15 @@ Common reasons to decline:
 - Banking information looks suspicious
 - Tax ID doesn't match or seems invalid
 - You have concerns about the legitimacy of the business
+
+## Reviewing bank detail changes
+
+You may also get a task when someone updates the bank details of a vendor that's already approved. The new details are held as a pending change and don't take effect until you decide:
+
+- **Approve** — The new bank details replace the vendor's current ones and are used for future payments.
+- **Decline** — The change is discarded and the vendor keeps their current bank details.
+
+Bank detail changes deserve extra scrutiny—a fraudulent account change is one of the most common ways companies are tricked into paying the wrong account. If in doubt, verify the change directly with a known contact at the vendor before approving.
 
 ## Why vendor approval matters
 
