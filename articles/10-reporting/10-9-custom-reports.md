@@ -27,9 +27,7 @@ At the top of the editor, configure the template properties:
 | Option | Description |
 |---|---|
 | **Range** | User picks a start and end date when running the report |
-| **Monthly** | Report is scoped to a single calendar month |
-| **Quarterly** | Report is scoped to a single quarter |
-| **Yearly** | Report is scoped to a full year |
+| **Snapshot** | Report shows balances as of a single date — only an end date is required (used for point-in-time reports like the balance sheet) |
 
 ## Building the row structure
 
@@ -48,7 +46,7 @@ Rows can be nested to create parent/child groupings. Child rows are indented vis
 
 ## Working with columns
 
-New templates start with a single column (**A**). You can add up to 5 columns (A–E).
+New templates start with a single column (**A**). You can add up to 6 columns (A–F).
 
 - Click **+** in the last column header to add a new column
 - Click the column letter (e.g. **A.**) to open the column menu:
@@ -68,10 +66,12 @@ Each row/column cell uses a single-line formula editor with autocomplete. Light 
 | `ACTSUM` | `ACTSUM(REVENUE, -COST_OF_SALES)` | Same as ACT but summarised |
 | `ACTCUR` | `ACTCUR(BANK, CARD, CASH_AND_EQUIVALENTS)` | Sums accounts by type in their account currency (for bank/cash accounts) |
 | `TAXTAG` | `TAXTAG(UK_0, -UK_4)` | Sums amounts by tax tag (only available when a country is set on the template) |
+| `PERCENT` | `PERCENT(A1, -A2; A3)` | Divides the numerator cells by the denominator cells and shows the result as a percentage — a `;` separates the numerator from the denominator |
 
 **Tips:**
 - Prefix an argument with `-` to subtract it (e.g. `ACP(4, -5)` adds account-code-4 and subtracts account-code-5)
 - Use `SUM` to reference other cells in the template — for example `SUM(A1, A2, A3)` to total three rows
+- `SUM` and `PERCENT` can only reference cells that contain an amount — they cannot reference empty cells or cells whose formula is a `PERCENT`
 - Autocomplete activates as you type and shows context-sensitive suggestions (account types inside `ACT()`, cell references inside `SUM()`, tax tags inside `TAXTAG()`)
 
 ## Saving and reusing templates
@@ -87,7 +87,7 @@ Open any saved Table report from the reports list. Use the filters at the top to
 - **Entity** — single entity, multiple entities, or Consolidated view
 - **Date range** — determined by the template's Period setting
 - **Currency** — Entity Crcy (local) or Group Crcy (group)
-- **Comparison** — compare against 1–12 prior months or 1–3 prior years
+- **Comparison** — compare against 1, 3, 6, 9, or 12 prior months, or 1, 2, or 3 prior years
 - **Custom properties** — filter by any custom property value
 
 Click any cell value to drill into the underlying ledger transactions.
