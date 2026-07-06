@@ -1,73 +1,67 @@
 # Submitting Expenses via Email
 
-Don't have Light open? No problem. You can submit expenses by forwarding your receipt to Light's expense email address. Light will process it and you'll see it in the app.
+Don't have Light open? No problem. You can email receipts for your **card purchases** to your company's receipt email address, and Light automatically matches them to your card transactions.
 
 [Open in Light →](https://app.light.inc/expenses)
 
+> Good to know: Email submission is for **card transaction receipts** only. To submit an out-of-pocket expense for reimbursement, use the Light web app, mobile app, Slack, or Microsoft Teams instead.
+
 ## How It Works
 
-Light monitors a dedicated email address. You send your receipt, Light's AI reads it, and the expense shows up in your Light account automatically.
+Your organization has a single, company-specific **receipt email address** (it looks something like **receipts@...**). When you send an email to that address:
 
-## Step 1: Get Your Company's Expense Email Address
+1. Light identifies your company from the receipt address the email was sent to
+2. Light identifies you by matching your **sender email address** to your Light user account
+3. Light's AI reads each attachment and matches it to one of your card transactions
+4. When a match is found, the receipt is attached to that card transaction automatically
 
-Your admin will give you Light's expense email address (it looks something like **expenses@light.yourcompany.com** or similar). If you don't have it, ask your admin or check your company's internal documentation.
+## Step 1: Get Your Company's Receipt Email Address
 
-## Step 2: Forward or Attach Your Receipt
+Ask your admin for your company's receipt email address if you don't have it. There is one address for the whole organization — there are no separate per-department addresses.
 
-1. Find your receipt email (from the merchant) or take a screenshot/photo of it
-2. Compose a new email to Light's expense address
-3. **Attach the receipt** as an image (JPG, PNG) or PDF
-4. **In the email body**, add any context (optional):
-   - What the expense was for (e.g., "Client dinner in NYC")
-   - Who you were with (if relevant)
-   - Any project or cost center it should be assigned to
-5. Send the email
+## Step 2: Send Your Receipt
 
-## Step 3: Review in Light
+1. Find your receipt email (from the merchant) or take a photo/screenshot of a paper receipt
+2. Compose a new email (or forward the merchant's email) to your company's receipt email address
+3. **Attach the receipt** as a PDF or image (JPEG, PNG, HEIC, HEIF, TIFF)
+4. Send it from the email address associated with your Light user account
 
-Within a few minutes, Light's AI processes your receipt and the expense appears in your Light account under Expenses (/expenses). You'll see:
-- The extracted merchant name
-- Amount
-- Date
-- AI-suggested category
+You can attach multiple receipts to one email — each attachment is processed and matched separately.
 
-## Step 4: Confirm & Submit
+> Good to know: Light reads the receipt attachment itself — the email subject line and body text are not used for processing. Make sure the receipt is attached as a file; a forwarded email without an attached receipt cannot be matched.
 
-1. Log into Light and go to **Expenses**
-2. Find the expense that came in via email (it might say "Draft" or "Pending Review")
-3. Review the details the AI extracted
-4. Make any edits if needed (fix the category, add a description, etc.)
-5. Click **"Submit for Approval"**
-6. Your manager gets notified and can approve it
+## Step 3: Check the Transaction in Light
+
+Light does not send a reply or confirmation email. To verify the receipt was attached, open the card transaction in Light — if the match succeeded, the receipt appears on the transaction. If no matching card transaction is found, the receipt is not stored, and you'll need to attach it another way (see Troubleshooting below).
 
 ## Why Use This Method
 
 - **No app needed**: Works from your email client on any device
-- **Flexible**: Send receipts throughout the day, process them when you have time
-- **Digital receipts**: Works with email receipts from online purchases too
+- **Digital receipts**: Forward email receipts from online purchases directly
+- **Automatic matching**: Light's AI finds the right card transaction for you
 
 ## Pro Tips
 
-- **Include context in the email**: A note like "Q1 conference registration" helps you remember what it was for later
-- **Use clear subject lines**: "Expense: Office Supplies" helps you organize
-- **Attach one receipt per email**: It's easier for Light to process one receipt at a time
+- **Send from your work email**: The sender address must be recognized for your company — use the email address on your Light account. Admins can ask Light to approve additional sender addresses or domains (useful for automatic forwarding rules)
+- **Wait for the transaction**: Submit the receipt after the card transaction appears in Light, so there is a transaction to match against
+- **One receipt per attachment**: Attach each receipt as its own file
 
 ## Troubleshooting
 
-**"I don't know the expense email address"**
-Ask your admin for the Light expense email address. It's usually in a setup guide or company resource.
+**"I don't know the receipt email address"**
+Ask your admin for your company's Light receipt email address.
 
-**"My expense hasn't appeared yet"**
-Wait a few minutes for Light to process it. If it still doesn't show up after 10 minutes, check that you:
-- Sent it to the correct email address
-- Attached a readable receipt image or PDF
-- Included your account in the recipient field
+**"My receipt doesn't appear on the transaction"**
+- Check that you sent it from the email address on your Light user account
+- Check that you used the correct receipt email address
+- Check that the card transaction is already visible in Light
+- Check that the receipt was attached as a file (PDF or supported image format) and is legible
 
-**"Light got the details wrong"**
-No problem. When you see it in Light, click on it and edit the details before you submit. You're never locked into what the AI reads.
+**"There was no card transaction to match"**
+If the receipt can't be matched to a card transaction, it isn't stored. Attach it directly to the transaction in the Light app once the transaction appears, or use Slack, Teams, or the mobile app.
 
-**"I sent it but can't find it"**
-Log into Light and go to **Expenses** (/expenses). Scroll through your list—it might be marked as a draft. If you still can't find it, contact your admin.
+**"This was an out-of-pocket expense, not a card purchase"**
+Email submission only works for card transaction receipts. Submit out-of-pocket expenses on the [Expenses](https://app.light.inc/expenses) page, or via Slack, Teams, or the mobile app.
 
 ## Related Articles
 
