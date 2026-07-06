@@ -2,9 +2,11 @@
 
 Light's AR works across multiple legal entities. Each sales invoice and contract is associated with one entity, and the AR list and reports can be filtered by entity.
 
+[Open in Light →](https://app.light.inc/invoice-receivables)
+
 ## Entity Selection on Documents
 
-**Sales invoices**: When creating an invoice, an **Entity** selector is shown alongside the customer. The currency defaults from the entity's functional currency.
+**Sales invoices**: When creating an invoice, an **Entity** selector is shown alongside the customer. The currency defaults from the customer's most recent issued invoice; if the customer has no issued invoices yet, it falls back to the entity's local currency.
 
 **Contracts**: The contract creation dialog also requires an **Entity** to be picked. Currency defaults from the entity.
 
@@ -16,7 +18,7 @@ The Sales invoices list filters can narrow results to one or more entities. The 
 
 ## Currency
 
-Each invoice or contract carries its own currency, which defaults from the selected entity but can be changed. Multi-currency reporting is handled at the report level (see the Reports module).
+Each invoice or contract carries its own currency, which can be changed when creating the document. For invoices, the default follows the customer's most recent issued invoice, falling back to the entity's local currency. Multi-currency reporting is handled at the report level (see the Reports module).
 
 ## Customer Aging Across Entities
 
