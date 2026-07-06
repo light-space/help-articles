@@ -70,9 +70,9 @@ Before cutover, validate:
 - Account structure matches business organization
 
 **Customer/Vendor Validation**:
-- All active customers and vendors imported
+- All active customers and vendors present in Light (vendors can be imported via CSV at [**Vendors**](https://app.light.inc/vendors); customers must be created manually, via the API, or through a CRM integration — customers referenced in a sales invoice import must already exist in Light)
 - Contact information correct
-- Payment terms and credit limits set
+- Vendor payment details (bank account information) set
 
 **AR/AP Validation**:
 - AR aging matches legacy system
@@ -89,7 +89,7 @@ Before cutover, validate:
 - Fixed asset register reviewed at [**Accounting → Releases**](https://app.light.inc/releases), filtered by **Fixed asset** type
 - Book values match legacy system
 
-Use Light's reconciliation reports to validate.
+Use Light's reports at [**Reports**](https://app.light.inc/ledger-reports) — including the trial balance and aged receivables/payables reports — to validate.
 
 ## Establishing Light processes
 
@@ -171,7 +171,7 @@ Your first close in Light:
 1. **Month-end procedures**: Follow Light's established processes
 2. **Reconciliations**: Bank, AR, AP, GL
 3. **Accruals**: Record accruals per Light process
-4. **Close**: Post closing entries, prepare trial balance
+4. **Close**: Complete the closing tasks (lock AP, AR, and journal entries; run FX revaluation) and close the period at [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods) — periods must be closed in chronological order
 5. **Reporting**: Generate management and statutory reports
 6. **Validation**: Compare results to legacy system results (if available)
 7. **Adjustments**: Record any adjustments needed
@@ -274,3 +274,4 @@ Document metrics and celebrate wins.
 - [Data migration from E-Conomic](11-14-migration-economic.md)
 - [Data import and migration tools](11-13-data-import.md)
 - [Audit-ready record keeping](../09-revenue-compliance/9-9-audit-ready-records.md)
+- [Go-live readiness](../01-getting-started/1-8-go-live-readiness.md)
