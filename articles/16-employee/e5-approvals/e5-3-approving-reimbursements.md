@@ -1,6 +1,6 @@
 # Approving or declining reimbursements
 
-When a team member submits an expense for reimbursement, you might be asked to review and approve it. Here's how to check expenses and decide whether to approve, request changes, or decline.
+When a team member submits an expense for reimbursement, you might be asked to review and approve it. Approval tasks only appear on your Tasks page when your company's expense submission workflow assigns them to you—by default, Light's AI agent reviews submitted expenses against your company's policies automatically. Here's how to check expenses and decide whether to approve or decline.
 
 [Open in Light →](https://app.light.inc/user-tasks)
 
@@ -28,17 +28,11 @@ If your company has specific rules (like a per-meal limit or pre-approval for ce
 
 ## Approve the expense
 
-If everything checks out, click **Approve**. The employee will be notified and the reimbursement will be processed according to your company's schedule.
-
-## Request changes
-
-If the expense is close to approval but something's off, you can click **Request Changes** instead of outright declining. Add a comment explaining what you need (a clearer receipt, clarification on the business purpose, etc.).
-
-The employee will see your request and can make adjustments and resubmit.
+If everything checks out, click **Approve**. You can add an optional note with your decision. The employee will be notified and the reimbursement will be paid out through a payment batch to the bank details in their reimbursement profile.
 
 ## Decline the expense
 
-Click **Decline** if the expense doesn't meet your company's policy. Always add a comment explaining why—the employee needs to understand what went wrong so they can learn and resubmit if appropriate.
+Click **Decline** if the expense doesn't meet your company's policy. Always add a note explaining why—the employee is notified with the reason and receives a link to reset their expense report. Resetting moves the expenses back to draft so they can fix the issue (for example, attach a clearer receipt or clarify the business purpose) and resubmit.
 
 Common reasons to decline:
 
