@@ -27,7 +27,7 @@ Light records all transactions in the general ledger with complete detail:
 - **Account mappings**: Clear traceability from transaction to general ledger account
 - **Balance verification**: Trial balance always balances (assets = liabilities + equity)
 
-Your audit team can access the complete ledger with drill-down capability from summary financial statements to individual transactions.
+Your audit team can access the complete ledger with drill-down capability from summary financial statements to individual transactions. You can grant external auditors read-only access by assigning them the **Auditor** role.
 
 > Good to know: Light maintains a transaction-immutable ledger. Once posted, transactions cannot be deleted (only reversed with an offsetting entry), providing strong audit evidence.
 
@@ -43,8 +43,7 @@ Light logs all financial activities with full audit trail:
 
 **Modified transactions** show:
 - Original posting details
-- Each modification (edit date, user, changes made)
-- Reason for modification (if required)
+- Each modification (edit date, user, and field-level changes with old and new values)
 - Final current state
 
 **Approvals and authorizations** show:
@@ -64,9 +63,7 @@ Attach supporting documents to transactions in Light:
 4. Light stores documents with full metadata:
    - Uploaded by (user ID)
    - Upload date/time
-   - File name and size
-   - Content hash (for verification)
-5. Retrieved documents display as read-only (preventing tampering)
+   - File name and file type
 
 Your audit team can access original documents directly from Light without hunting through email or file systems.
 
@@ -85,16 +82,10 @@ Light reports inter-company transactions separately and provides elimination doc
 
 Reconcile bank accounts regularly:
 
-1. Navigate to **Accounting > Bank reconciliation** (in Platform section)
+1. Navigate to **Accounting → Bank reconciliation**
 2. Upload your bank statement
 3. Match transactions to bank statement lines
-4. Light documents:
-   - Date of reconciliation
-   - Who performed the reconciliation
-   - Exceptions identified and resolved
-   - Timing differences explained
-5. Sign off the reconciliation
-6. Archive the signed reconciliation
+4. Light records each match, including who performed the reconciliation and when
 
 Maintain monthly reconciliations. Your audit team will request these.
 
@@ -115,7 +106,7 @@ Light maintains specific documentation for tax compliance:
 - Tax positions taken and supporting documentation
 - Transfer pricing documentation (if applicable)
 
-Navigate to **Planning & Reports > Reports** to access all tax-related records.
+Navigate to **Planning & Reports → Reports** to access all tax-related records.
 
 ## Accounting policy documentation
 
@@ -146,7 +137,7 @@ Maintain records in Light rather than spreadsheets:
 - Version control in spreadsheets is unreliable
 - Consolidation spreadsheets are prone to formula errors
 
-Use Light's reporting features for all analysis. Export to Excel for presentation, but maintain calculations and supporting detail in Light's audit-trail system.
+Use Light's reporting features for all analysis. Export reports to CSV for presentation, but maintain calculations and supporting detail in Light's audit-trail system.
 
 > Good to know: Your auditors expect to audit transactional detail in Light, not formulas in spreadsheets.
 
