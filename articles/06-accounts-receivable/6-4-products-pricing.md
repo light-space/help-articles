@@ -84,7 +84,7 @@ The **Default tax code** field on a product accepts either:
 Products imported from external systems show a "Generated from [source]" indicator at the top of the product form, with a button to copy the source ID. Supported sources include:
 - **Salesforce**
 - **Hubspot**
-- **Chargebee**
+- **Stripe**
 
 For these products, some fields may be controlled by the source system.
 
