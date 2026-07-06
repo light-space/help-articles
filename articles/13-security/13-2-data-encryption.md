@@ -57,16 +57,16 @@ All communication between your browser or mobile app and Light uses HTTPS:
 Light's APIs use encrypted communication:
 
 - **Protocol**: HTTPS/TLS for all API requests
-- **Authentication**: OAuth 2.0 tokens with encryption
+- **Authentication**: API keys or OAuth 2.0 tokens, always transmitted over TLS
 - **Validation**: Requests are validated to prevent tampering
-- **Logging**: All API calls are logged with full encryption of request/response bodies
+- **Logging**: API requests are logged with sensitive headers and query parameters redacted; credentials are never written to logs
 
 ### Integration Security
 
 When Light communicates with external services (banks, payment processors, CRM systems):
 
 - **End-to-End**: Data is encrypted from Light to the external service
-- **Validation**: SSL certificate pinning and mutual authentication prevent interception
+- **Validation**: Outbound connections use TLS with full certificate validation, and inbound webhooks are verified with signatures before processing
 - **Audit Trail**: All integration communication is logged and audited
 
 ## Data in Use
@@ -77,7 +77,6 @@ Even while data is being processed, sensitive information remains encrypted:
 
 - **Sensitive Fields**: Highly sensitive data (API keys, credentials, SSN numbers if any) are encrypted at the application level
 - **Processing**: The application only decrypts data when necessary to perform operations
-- **Memory Protection**: Decrypted data is cleared from memory as soon as processing completes
 - **No Logging**: Sensitive data is never logged in plaintext
 
 ## Encryption Key Management
@@ -88,7 +87,7 @@ Light rotates encryption keys regularly:
 
 - **Frequency**: Master keys are rotated annually
 - **New Keys**: Keys used for new data are different from those used for older data
-- **Seamless**: Key rotation happens automatically without affecting your access
+- **Seamless**: Keys can be rotated without downtime and without affecting your access
 
 ### Key Access Control
 
@@ -108,21 +107,18 @@ Keys used for backup recovery:
 
 ## Regional Data Storage
 
-Light offers regional data storage to meet compliance requirements:
+Light stores your data in the European Union:
 
-- **Data Location**: Your company's data is stored in your selected region (US, EU, APAC)
-- **Replication**: Backups and failover copies may be in nearby regions for disaster recovery
-- **Compliance**: Regional storage meets GDPR and other regional requirements
-- **Control**: Your administrator chooses the region during onboarding
+- **Data Location**: All customer data is hosted on AWS infrastructure in the EU (Ireland, eu-west-1)
+- **Replication**: Backups and failover copies are kept across multiple availability zones within the region for disaster recovery
+- **Compliance**: EU data storage supports GDPR requirements
 
 ## Field-Level Encryption
 
 Certain sensitive fields receive additional encryption layers:
 
-- **API Keys & Tokens**: Third-party API keys and OAuth tokens are encrypted separately
-- **Bank Credentials**: Bank login credentials (when stored) are encrypted with additional protection
-- **Tax IDs**: Company and individual tax identifiers are separately encrypted
-- **Custom Sensitive Data**: You can designate custom fields as sensitive for additional encryption
+- **API Keys & Tokens**: OAuth tokens and API credentials for third-party integrations (such as Gmail, Salesforce, HubSpot, and HR or tax providers) are encrypted at the application level before storage
+- **Card Security Data**: Card 3-D Secure credentials are encrypted with versioned keys, so keys can be rotated without downtime while older data stays readable
 
 ## Data Disposal
 
