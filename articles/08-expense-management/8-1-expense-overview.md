@@ -15,7 +15,7 @@ Expense management is the complete workflow from when an employee spends money o
 5. **Reimbursement**: Finance processes reimbursement or settles card
 6. **Reporting**: Analyze spending patterns and policy compliance
 
-Light integrates with corporate card providers and expense submission channels for seamless workflow.
+Light issues corporate cards and supports multiple expense submission channels for a seamless workflow.
 
 ## Key Concepts
 
@@ -27,7 +27,7 @@ Light integrates with corporate card providers and expense submission channels f
 
 **Policies** define rules (meal limits, pre-approval requirements, ineligible categories). Light enforces policies and flags violations.
 
-**Corporate Cards** can be physical (issued to employee) or virtual (single-use numbers). Card expenses automatically feed to the expense module.
+**Corporate Cards** can be physical (issued to employee) or virtual (issued instantly for online and contactless payments). Card transactions are managed under **Cards**, separately from out-of-pocket expenses — employees attach receipts to card transactions instead of submitting them for reimbursement.
 
 > Good to know: Light uses AI to extract receipt data with 90%+ accuracy, reducing manual data entry for employees and saving Finance time on review.
 
@@ -40,7 +40,7 @@ Employees can submit expenses through multiple channels:
 - **Email**: Forward receipts to a company email address
 - **Mobile App**: Capture receipt photos and submit on the go
 - **Web App**: Upload receipts and enter details manually
-- **Corporate Card**: Automatic import from card provider
+- **Corporate Card**: Card transactions appear automatically under [Cards](https://app.light.inc/user-cards) — no expense submission needed, just attach the receipt
 
 Choose the method that fits your employee workflow best.
 
@@ -60,21 +60,22 @@ Choose the method that fits your employee workflow best.
 
 Expenses progress through states:
 
-- **CREATED**: Submitted by employee, awaiting review
+- **CREATED**: Receipt uploaded, AI extraction in progress
 - **IN_DRAFT**: Employee reviewing AI extraction
-- **SUBMITTED_FOR_REVIEW**: Waiting for manager approval
-- **CANCELLED**: Rejected or withdrawn by employee
-- Approved → Reimbursement → CLEARED
+- **SUBMITTED_FOR_REVIEW**: Submitted as part of a reimbursement request, awaiting approval
+- **CANCELLED**: Withdrawn by employee
+
+Once submitted, expenses are grouped into a reimbursement request that progresses through its own statuses: **IN_PROGRESS**, **SUCCEEDED**, **FAILED**, or **REJECTED**.
 
 ## Corporate Cards
 
-Light integrates with major corporate card providers:
+Light issues corporate cards directly to your employees:
 
 - **Physical Cards**: Issued to employees, used for in-person and online purchases
-- **Virtual Cards**: Single-use card numbers for online purchases
+- **Virtual Cards**: Issued instantly for online purchases
 - **Mobile Wallets**: Apple Pay and Google Pay for contactless payments
 
-Card transactions automatically appear in the expense module for categorization and approval.
+Card transactions automatically appear under **Cards** for receipt matching, categorization, and posting — separate from out-of-pocket expense submission.
 
 ## Multi-Channel Submission
 
@@ -145,12 +146,7 @@ Reimbursement is processed by Finance on a regular schedule (weekly, bi-weekly, 
 
 ### Corporate Card Settlement
 
-For card expenses, Light can:
-- Automatically approve if policy-compliant
-- Bulk approve into reimbursement for manager sign-off
-- Export to card provider for reconciliation
-
-Card issuer processes payment to vendor; employee doesn't need reimbursement.
+Card transactions don't enter the reimbursement pipeline — payment settles from the company's card account, so the employee doesn't need reimbursement. Employees attach receipts to their card transactions, and Finance categorizes and posts the transactions to the ledger.
 
 ## Spend Analytics
 
