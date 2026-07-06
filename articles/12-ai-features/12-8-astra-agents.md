@@ -1,99 +1,82 @@
-# Astra Agents (Settings → Agents)
+# Astra Agents
 
-Astra Agents are specialized AI assistants you can configure to handle specific tasks in Light — parsing bills, processing reimbursements, managing intake requests, extracting contract data, and powering the LCI conversational assistant. Each agent can follow custom instructions you provide, so the AI processes your documents and responds to commands according to your company's workflows and policies.
+Astra is Light's autonomous financial operations agent. It works in the background — without anyone typing a prompt — monitoring your company's books, investigating issues, and reporting findings to the people you designate. Astra runs several types of scheduled analyses, each with a different scope and cadence, and remembers what it learns between runs.
 
-[Open in Light →](https://app.light.inc/settings/assistant)
+[Open in Light →](https://app.light.inc/dashboard)
 
 ## Overview
 
-The **Agents** settings page (formerly called "Memory") lets you configure five specialized agents. Each agent has a dedicated instructions field where you can provide guidance the AI will follow when performing that agent's tasks.
+Unlike LCI (Light's conversational assistant), Astra is not something you chat with. It runs on its own schedule as a dedicated AI agent for your company. On each run, Astra:
 
-Access **Settings (gear icon) → Agents** to view all configured agents. The page displays a card for each agent type. Click a card to open the detail page and add or edit instructions.
+1. Reads your **Company Memory** — the instructions your admins have written for it — plus its own notes from previous runs
+2. Reviews a feed of recent platform errors (failed sales invoices, bills, card transactions, reimbursements, and batch operations)
+3. Investigates using Light's internal tools — searching bills, invoices, expenses, journal entries, and more — before drawing any conclusions
+4. Produces **findings** (issues worth your attention) and **observations** (notes it logs for future reference)
+5. Delivers findings as a message to the recipients named in Company Memory
 
-## The Five Agent Types
+Astra is enabled per company by Light. If Astra isn't active for your company, contact Light support.
 
-Light includes five agent types, each responsible for a different area of work:
+## The Analysis Types
 
-**Bill parsing** — Guides how the AI extracts and structures data from vendor invoices and bills. Use this to specify how certain vendors should be handled, how to treat specific line items, or where to route charges.
+Astra runs four types of analyses:
 
-**Contract parsing** — Guides how the AI extracts data from contracts and agreement documents.
+**Daily health check** — Astra's core monitoring run. It reviews recent activity and error states, investigates anything unusual, and reports material issues. The cadence is adaptive: at the end of each health check, Astra itself decides when to check back based on your company's transaction volume, open items, and upcoming deadlines — anywhere from every 10 minutes to once every 24 hours (6 hours by default).
 
-**Intake** — Guides how the AI processes general document intake requests submitted by users.
+**Weekly review** — Runs every Monday at 3 AM UTC. Astra looks at the week's activity, compares it week-over-week, and cross-references recurring issues from its observations, reporting only significant patterns.
 
-**Reimbursement parsing** — Guides how the AI extracts details from receipts and expense submissions. Use this to define how specific merchants or categories should be classified.
+**Monthly deep review** — Runs on the first day of each month at 4 AM UTC. Astra produces the monthly close memo, a structured record of the prior period for finance leaders. See [Astra Monthly Review](12-9-astra-monthly-review.md).
 
-**LCI assistant** — Guides how the LCI conversational assistant responds to your requests in the web app, Slack, Teams, or mobile. Use this to set tone, preferred formatting, or company-specific context LCI should keep in mind.
+**Introspection consolidation** — Runs daily at 1 AM UTC. Astra reviews what it has learned across prior runs and consolidates durable insights into Company Memory as tagged blocks (`[astra:insight]`, `[astra:pattern]`, `[astra:resolved]`). This is the only run type where Astra writes to Company Memory. Observations older than 90 days are pruned. See [Configuring Company Memory in Astra](12-10-astra-company-memory.md).
 
-## Configuring Agent Instructions
+## Findings and Delivery
 
-Each agent can have one set of custom instructions. Instructions apply company-wide — all users in your organization will have documents processed and commands handled according to the instructions you set.
+Each finding Astra reports includes:
 
-**To configure an agent:**
+- **Severity** — Info, Warning, or Critical
+- **Category** — for example payment, invoice, approval, or bank feed
+- **Title and description** — what Astra found, what it did, and what it recommends
+- **Actions taken** — anything Astra already executed, such as creating a support ticket
+- **Entity references** — links to the specific bills, invoices, expenses, card transactions, or other records it investigated
 
-1. Navigate to **Settings (gear icon) → Agents**
-2. Click the card for the agent you want to configure
-3. Type your instructions in the **Instructions** field
-4. Click **Save**
+Findings are delivered as a direct message to the recipients named in Company Memory, over the channel specified there (for example Slack or email). If Company Memory doesn't name a recipient, Astra records its findings but doesn't send messages.
 
-The instructions field is a multi-line text area. You can provide as much guidance as needed. If an agent has no instructions, Light processes documents and requests using default behavior.
+Astra avoids repeating itself: findings it already reported in the last 24 hours are not re-sent unless something meaningful has changed. When an issue calls for it, Astra can also open a support ticket with Light on your behalf and reference the ticket in its finding.
 
-**To update instructions:**
+## Configuring Astra
 
-1. Open the agent detail page
-2. Edit the text in the **Instructions** field
-3. Click **Save**
+Astra's configuration surface is **Company Memory** — plain-text instructions your admins write that Astra treats as authoritative on every run. Use it to tell Astra who should receive findings and on which channel, company-specific context, and custom workflows. See [Configuring Company Memory in Astra](12-10-astra-company-memory.md) for details.
 
-When you save, the new instructions replace any previous instructions for that agent. There's no version history — only the most recent instructions are active.
+> Good to know: Astra's Company Memory is distinct from **Assistant Instructions**, which guide how Light's AI parses specific document types (bills, contracts, intake documents, and reimbursements). Assistant Instructions don't affect Astra's monitoring runs.
 
-**To remove all instructions:**
+## Run History
 
-1. Open the agent detail page
-2. Clear all text from the **Instructions** field
-3. Click **Save**
+Every Astra run is logged with its analysis type, start and completion time, result, findings count, and a summary. Each run also keeps a full transcript — the instructions Astra received, the tool calls it made, and its final analysis — so admins can audit exactly what Astra did and why.
 
-The agent will revert to default behavior.
-
-## Permissions
-
-- **View agents** — Users with the **assistant.view** permission can access the Agents page and view configured instructions.
-- **Edit agents** — Users with the **assistant.edit** permission (typically admins, AP clerks, AP preparation, and vendor management) can create and update agent instructions.
-
-If you don't have edit permission, the instructions field will be read-only and the **Save** button will be disabled.
-
-## Agent Enforcement Capabilities
-
-Agents have access to certain enforcement tools to maintain compliance and data quality. For example, agents can **freeze or unfreeze cards** when needed — such as when a cardholder repeatedly fails to upload required receipts or when a card transaction violates policy.
-
-These enforcement actions are logged and visible to admins. Card freeze/unfreeze actions appear in the card's activity history.
+Users with finance roles (such as company admin, controller, auditor, AP preparation, AR clerk, or invoice approver) can also trigger an Astra analysis on demand rather than waiting for the next scheduled run.
 
 ## Good to Know
 
-- **One instruction set per agent** — Each agent type can have only one set of instructions per company. When you save new instructions, they replace the previous instructions immediately.
-- **Instructions apply company-wide** — All users' documents and requests will follow the same agent instructions. You cannot configure different instructions for different teams or entities.
-- **Agents vs. LCI tools** — Agents are specialized AI assistants for specific tasks (parsing, intake, conversational responses). LCI tools are the individual actions the LCI assistant can perform (searching bills, approving invoices, generating reports). LCI tools respect the LCI assistant agent's instructions when responding to user requests.
-- **No examples provided** — Instructions are freeform text. Light doesn't enforce a specific format. Write instructions in plain language describing how the agent should behave for your use case.
+- **Astra acts as its own user** — Runs are performed by a dedicated AI agent principal for your company, not by any human user's account.
+- **Investigation before communication** — Astra is instructed to always investigate with real data before reporting, and to include specific numbers and entity references in its findings.
+- **Company Memory wins** — Instructions in Company Memory override Astra's default behavior. If Astra is doing something you don't want, write a directive in Company Memory.
+- **Bounded runs** — Each analysis has a hard cap on the number of tool calls, after which Astra summarizes what it found so far.
 
 ## Troubleshooting
 
-### Instructions Aren't Being Followed
+### Not Receiving Astra Findings
 
-- Verify the instructions were saved. Open the agent detail page and confirm your text appears in the **Instructions** field.
-- Instructions take effect immediately after saving. Documents processed or requests handled after you save will follow the new instructions.
-- Very complex or contradictory instructions may confuse the AI. Try simplifying to clear, specific directives.
+- Confirm Astra is enabled for your company (it's activated per company by Light).
+- Check that Company Memory names a recipient and channel for findings. Without a named recipient, Astra logs findings but sends nothing.
+- Astra doesn't re-send findings it already reported in the last 24 hours unless something changed — silence may just mean nothing new.
 
-### Can't Edit Instructions
+### Astra Reports Too Often (or Not Often Enough)
 
-- Check your role. The **assistant.edit** permission is required to modify agent instructions. Ask your admin to grant this permission if needed.
-- If the **Save** button is disabled, you don't have edit permissions.
-
-### Instructions Disappeared
-
-- Instructions are saved per agent type. If you're looking at a different agent card, you won't see the instructions from another agent.
-- Only the most recent instructions are stored. If someone else on your team edited the same agent, their save replaced your previous instructions.
+- The daily health check cadence is adaptive and set by Astra based on your company's activity. You can guide it with a directive in Company Memory (for example, which issues matter and which don't).
+- Weekly and monthly runs are fixed-schedule and can't be moved.
 
 ## Related Articles
 
+- [Astra Monthly Review](12-9-astra-monthly-review.md)
+- [Configuring Company Memory in Astra](12-10-astra-company-memory.md)
 - [Light Command Interface (LCI)](12-7-ai-conversational-assistant.md)
 - [How Light Uses AI](12-1-how-light-uses-ai.md)
-- [AI-Assisted Bill Parsing](../06-accounts-payable/6-3-ai-bill-parsing.md) *(if exists)*
-- [Expense Submission](../08-expense-management/8-1-expense-submission.md) *(if exists)*
