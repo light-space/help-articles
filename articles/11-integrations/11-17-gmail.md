@@ -30,18 +30,19 @@ To connect Gmail:
 5. Review the permissions Light is requesting
 6. Click **Allow**
 7. Light confirms the connection and redirects you back to the integrations page
+8. Toggle **Enable Email Fetching** on — Light runs a connectivity check to verify access before activating receipt fetching for the company
 
-The Gmail integration is now connected for your company.
+The Gmail integration is now connected and active for your company.
 
 ## How receipt matching works
 
 Once the integration is activated:
 
-1. Light fetches emails from Gmail accounts across your company on a recurring basis
+1. When a corporate card transaction is made, Light searches the cardholder's Gmail inbox for matching receipt emails
 2. Emails containing receipt attachments (typically PDFs) are identified
-3. AI analyzes each receipt to extract the merchant name, transaction amount, and date
-4. Light matches the extracted data against your company's card transactions
-5. When a match is found, the receipt is attached to the transaction and accounting fields are auto-populated — including ledger account, tax code, and any custom properties
+3. AI compares each candidate receipt against the transaction's merchant name, amount, currency, and date
+4. When a match is found, the receipt is attached to the transaction and accounting fields are auto-populated — including ledger account, tax code, and any custom properties
+5. If no matching receipt is found right away, Light automatically retries several times over the following minutes, since receipt emails often arrive shortly after the transaction
 
 This runs automatically in the background. Your team doesn't need to manually upload receipts or fill in transaction details for matched spend.
 
