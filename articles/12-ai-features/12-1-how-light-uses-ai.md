@@ -6,7 +6,7 @@ Light integrates AI throughout the platform to automate financial workflows, red
 
 ## AI Across Light
 
-Light leverages advanced AI models (OpenAI GPT, Google Gemini, and Anthropic Claude via AWS Bedrock) through a unified GenAI framework that provides intelligent automation across multiple financial processes.
+Light leverages a combination of its own proprietary fine-tuned models and advanced third-party foundation models (OpenAI GPT, Google Gemini, and Anthropic Claude via AWS Bedrock) through a unified GenAI framework that provides intelligent automation across multiple financial processes.
 
 ### Document Parsing and Data Extraction
 
@@ -40,12 +40,12 @@ Through Light's Slack integration, you can ask natural language questions about 
 
 Light uses a modular AI architecture:
 
-- **GenAI Integration**: Provides a unified interface supporting multiple AI providers (OpenAI, Google, and AWS Bedrock)
+- **GenAI Integration**: Provides a unified interface supporting Light's proprietary models alongside multiple third-party AI providers (OpenAI, Google, and AWS Bedrock)
 - **AI Parsing Module**: Handles document parsing and data extraction with specialized handlers for different document types
 - **AI Commons**: Manages AI configuration, prompts, threads, and conversation history
-- **Per-feature model selection**: Light selects the AI provider and model for each feature independently, so every use case runs on the model best suited to it
+- **Per-feature model selection**: Light selects the model for each feature independently — proprietary or third-party — so every use case runs on the model best suited to it
 
-The platform routes each request to the provider and model configured by Light for that specific use case.
+The platform routes each request to the model configured by Light for that specific use case, whether that is one of Light's proprietary models or a third-party foundation model.
 
 ## AI Privacy and Control
 
@@ -56,7 +56,7 @@ Light processes financial documents using AI in a secure manner:
 - Light manages which AI providers and models are used for each feature
 - Processing is logged and auditable
 
-Light uses data to fine-tune its own **proprietary models and LLMs**, improving the accuracy of AI-assisted features over time. These fine-tuned models are owned and operated by Light. Foundation models are provided by third-party services (OpenAI, Google, and Anthropic via AWS Bedrock) and remain the property of those providers; Light owns the fine-tuned models, application-level logic, integrations, orchestration, and product features built around those services.
+Light's AI features run on a combination of models. Light uses data to fine-tune its own **proprietary models and LLMs**, improving the accuracy of AI-assisted features over time — these fine-tuned models are owned and operated by Light. For some features, Light additionally uses foundation models provided by third-party services (OpenAI, Google, and Anthropic via AWS Bedrock), which remain the property of those providers. Light owns its fine-tuned models along with the application-level logic, integrations, orchestration, and product features built around the platform.
 
 Customer data is **never** used by third parties for model training or fine-tuning. Data sent to third-party AI providers is used only for runtime inference to deliver AI-assisted features — those providers do not train or fine-tune their models on your data.
 
