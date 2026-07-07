@@ -292,7 +292,7 @@ When you upsert an instruction via the API or LCI, the system automatically repl
 - All LCI requests are authenticated — the `LciPolicy` requires a valid session
 - Conversation threads are stored per user and per company with full audit trail
 - Slack and Teams messages are processed through Light's secure integration layer
-- Customer data is never used for AI model training or fine-tuning
+- Customer data may be used to fine-tune Light's proprietary models, but is never used by third parties for training or fine-tuning
 - In Slack and Teams, user identity is resolved via OAuth tokens — LCI maps Slack/Teams users to their Light accounts
 
 ## Limitations

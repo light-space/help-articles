@@ -46,7 +46,7 @@ For consistently problematic invoices (unusual formats, poor image quality, hand
 
 ## How Light Uses Past Invoices
 
-Light does not train AI models on your data or corrections. Instead, when a bill arrives from a vendor you already work with, Light gives the AI your most recent completed bills from that vendor as examples. Account and tax code suggestions for regular vendors therefore follow the way you coded their previous invoices.
+Light may use your data to fine-tune its own proprietary models, but your data is never used by third parties for training or fine-tuning. In addition, when a bill arrives from a vendor you already work with, Light gives the AI your most recent completed bills from that vendor as examples. Account and tax code suggestions for regular vendors therefore follow the way you coded their previous invoices.
 
 ## Extraction Accuracy Tips
 
