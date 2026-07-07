@@ -56,9 +56,9 @@ Light processes financial documents using AI in a secure manner:
 - Light manages which AI providers and models are used for each feature
 - Processing is logged and auditable
 
-Light does **not** own, train, or fine-tune AI models. The underlying models are provided by third-party services (OpenAI, Google, and Anthropic via AWS Bedrock) and remain the property of those providers. Light owns the application-level logic, integrations, orchestration, and product features built around those services.
+Light uses data to fine-tune its own **proprietary models and LLMs**, improving the accuracy of AI-assisted features over time. These fine-tuned models are owned and operated by Light. Foundation models are provided by third-party services (OpenAI, Google, and Anthropic via AWS Bedrock) and remain the property of those providers; Light owns the fine-tuned models, application-level logic, integrations, orchestration, and product features built around those services.
 
-Customer data is **not** used for AI model training, or fine-tuning. Customer data is used only for runtime inference to deliver AI-assisted features — your data never leaves the inference pipeline.
+Customer data is **never** used by third parties for model training or fine-tuning. Data sent to third-party AI providers is used only for runtime inference to deliver AI-assisted features — those providers do not train or fine-tune their models on your data.
 
 ### Data used in AI processing
 
@@ -70,7 +70,7 @@ Runtime AI processing may use customer-provided data such as:
 - Company entity details
 - User-entered prompts or workflow context
 
-This data is used solely to deliver AI-assisted product features such as parsing, prefilling, and summarization.
+This data is used to deliver AI-assisted product features such as parsing, prefilling, and summarization, and to fine-tune Light's proprietary models. It is never used by third parties for training or fine-tuning.
 
 ## AI Governance and Human Oversight
 
