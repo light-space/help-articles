@@ -4,6 +4,26 @@ Light's MCP integration lets you use AI tools to query your financial data, sear
 
 Your AI model runs on your machine. Light only receives the individual tool calls you trigger and returns the results. No conversation history or AI output is ever sent to Light.
 
+**Which method to use:** If you use Claude.ai or the Claude desktop app, connect with the Light connector below, you just sign in with your Light account. If you use Claude Code, OpenCode, n8n, or another coding or terminal client, use a personal token instead (further down).
+
+---
+
+## Connect from Claude.ai or Claude Desktop
+
+Light is available as a connector inside Claude, so there is nothing to install and no token to paste. You add Light and sign in with your Light account.
+
+Make sure your account is enabled for MCP first (contact your account manager if it is not). You can connect from Claude.ai or the Claude desktop app.
+
+1. In Claude, open **Settings → Connectors**
+2. Find **Light** in the list of connectors
+3. Click **Connect**
+4. Sign in with your Light account and approve access
+5. The Light tools appear in Claude
+
+You connect as yourself, so Claude only sees what your Light role already allows. Claude never sees your password, and you can disconnect at any time from **Settings → Connectors**, which revokes access.
+
+To check it worked, ask Claude "What Light tools do you have?" It should list them. Then try a read-only one, for example "Show my open bills in Light."
+
 ---
 
 ## Prerequisites
