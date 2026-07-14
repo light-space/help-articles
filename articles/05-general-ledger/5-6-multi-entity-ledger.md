@@ -77,6 +77,10 @@ When entities transact with each other:
 
 Both entities post the transaction, creating a payable/receivable pair.
 
+**Settling bills against an intercompany or clearing account:**
+
+When paying a supplier bill, you're not limited to settling from a bank account. A ledger account can be marked payment-eligible (for example, an intercompany loan, due-to/due-from, or clearing account) and selected as the payment account instead. Settlement posts in the bill's currency with no FX conversion, which is useful when one entity is fronting a bill on behalf of another and you want to track the balance through an intercompany account rather than cash.
+
 ## Creating Intercompany Entries
 
 For intercompany transactions, create journal entries spanning entities:
