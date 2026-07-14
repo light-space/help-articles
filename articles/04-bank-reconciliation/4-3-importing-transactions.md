@@ -50,7 +50,7 @@ If validation fails, you'll see which rows have errors (e.g., "Invalid date on r
 
 Light does not automatically detect duplicates in CSV imports - uploading the same transactions twice creates duplicates. Review your file before uploading, and avoid overlapping date ranges between imports.
 
-For bank feed imports, duplicate transactions are detected automatically and marked as **Excluded** so they don't affect reconciliation.
+For bank feed imports, duplicate transactions are detected automatically and excluded from reconciliation. These duplicates are hidden from the Bank reconciliation page entirely (they no longer appear with an **Excluded** status), so you won't see them or accidentally un-exclude them and cause a balance mismatch.
 
 If you accidentally import duplicates from a CSV, exclude them on the Bank reconciliation page.
 
