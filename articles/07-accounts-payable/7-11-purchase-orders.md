@@ -90,6 +90,7 @@ Notes:
 - The bill's vendor must match the PO's vendor.
 - When a bill arrives with a recognisable PO number (for example, extracted from the invoice document), Light automatically matches it to that vendor's open PO with the same number.
 
+When viewing an open or closed PO, the matched invoices table displays which invoices have been matched to the PO, showing invoice number, match date, matched amount, and invoice total. The table also shows the remaining unmatched amount on the PO, making it easy to track partial matching and outstanding commitments.
 When a PO is open or closed, the matched invoices table shows which bills have been linked to the PO, the matched amount, and the remaining unmatched amount.
 
 ## Viewing PO Documents
