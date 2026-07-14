@@ -51,6 +51,8 @@ Once in the Inbox, open a bill to fill in or edit:
 - Cost center / custom dimensions
 - Amortization (release template start/end date — see [Deferred entries](/articles/05-general-ledger/5-5-deferred-entries.md))
 
+> **Good to know:** All bills tables (Inbox, Approving, Paid, Archived, Scheduled) show a **Matched PO** column with the linked purchase order number. Hover over the PO number to navigate to the PO details.
+
 ## Duplicate Detection
 
 When a bill is ingested, Light flags potential duplicates. The flagged bill shows a duplicate indicator and may move to the `DUPLICATED` state, where it can be reviewed before being kept or discarded.
