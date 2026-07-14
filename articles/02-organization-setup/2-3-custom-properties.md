@@ -108,6 +108,10 @@ A few things to keep in mind:
 
 No additional permission is required — editing follows your existing user permissions.
 
+## Filtering by custom properties
+
+On the Bills list, you can add a **Custom properties** filter to narrow results by a header-level custom property. Only **active** single-select or multi-select properties assigned to bills at the header level are available to filter on — line-level properties, other field types (Number, Text, Boolean, Date), and inactive properties won't appear in the filter's options.
+
 ## Best practices
 
 - Plan your properties before creation to ensure consistency
