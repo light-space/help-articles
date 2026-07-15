@@ -45,6 +45,16 @@ Navigate to **Revenue & Invoicing → Contracts** to see all contracts. The list
 
 The SaaS Metrics dashboard provides visualizations and summaries of your contract performance, ARR trends, and other subscription metrics. MRR and ARR on this dashboard are calculated from the recurring lines of published contracts — recurring amounts are normalized to a monthly value after discounts, and ARR is MRR × 12 — rather than from the manually entered estimated contract value. One-time lines are excluded. You can add charts, stats, and AI-generated summaries to create a personalized view of your metrics.
 
+### Customizing stat cards
+
+While in edit mode, hover over a stat card and click the settings (cog) icon to open its customization options:
+
+- **Title** — rename the card to whatever label makes sense for your team; leave it blank to use the default name.
+- **Show sparkline** — toggle off to hide the trend line and fit the card into a narrower column.
+- **Show net change** — toggle off to hide the subtitle showing the change versus the previous period.
+
+Hiding the sparkline lets stat cards sit closer together, so you can fit more of them per row.
+
 ### Adding AI summary widgets
 
 When you switch the dashboard to edit mode, you can add an AI summary widget that generates natural language summaries of your selected charts and stats.
