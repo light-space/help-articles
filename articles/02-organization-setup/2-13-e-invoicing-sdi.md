@@ -31,7 +31,7 @@ SDI delivers incoming invoices based on the Codice Destinatario registered with 
 4. Choose the **Codice Destinatario** option and enter `JKKZDGR`
 5. Confirm with **Conferma**
 
-Incoming invoices now appear in Light automatically. Until you complete this step, they keep arriving through your current channel.
+Incoming invoices now appear in Light automatically. Until you complete this step, supplier invoices won't reach Light.
 
 > Important: Registering `JKKZDGR` replaces any previously registered Codice Destinatario. Complete the switch before decommissioning your old invoicing channel.
 
