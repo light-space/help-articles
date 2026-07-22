@@ -38,6 +38,7 @@
 - 2.10 [Setting a custom FX rate for your company](https://github.com/light-space/help-articles/blob/main/articles/02-organization-setup/2-10-custom-fx-rates-company.md)
 - 2.11 [Setting a custom FX rate per entity](https://github.com/light-space/help-articles/blob/main/articles/02-organization-setup/2-11-custom-fx-rates-entity.md)
 - 2.12 [When custom rates apply vs system rates](https://github.com/light-space/help-articles/blob/main/articles/02-organization-setup/2-12-custom-vs-system-fx-rates.md)
+- 2.13 [Italian SDI e-invoicing](https://github.com/light-space/help-articles/blob/main/articles/02-organization-setup/2-13-e-invoicing-sdi.md)
 
 ## 3. User Management & Permissions
 - 3.1 [User roles and permissions overview](https://github.com/light-space/help-articles/blob/main/articles/03-user-management/3-1-roles-permissions-overview.md)
