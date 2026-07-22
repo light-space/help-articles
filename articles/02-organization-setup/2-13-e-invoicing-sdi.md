@@ -15,7 +15,7 @@ SDI (Sistema di Interscambio) is Italy's mandatory e-invoicing system, operated 
 5. Choose a **Registration type**: **Sending and receiving** (default) or **Sending only**
 6. Click **Next**
 
-Registration is fully automatic, with no document verification step. It shows as **Processing** while the registration completes, then turns **Active**. If it fails, the onboarding details show the reason. Fix it (for example, an invalid Partita IVA) and click **Retry registration**.
+Registration is fully automatic, with no document verification step. It shows as **Processing** while the registration completes, then turns **Active**. If it fails, the onboarding details show the reason. Fix it (for example, an invalid Partita IVA) and start the registration again by clicking **Add** in the entity's **E-invoicing** section.
 
 > Good to know: SDI does not use an EAS code or e-invoice address, so these fields stay empty on your entity. This is expected.
 
