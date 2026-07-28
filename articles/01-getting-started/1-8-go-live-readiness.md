@@ -104,6 +104,8 @@ If you're transitioning from a legacy system (NetSuite, SAP, Xero, QuickBooks, e
 
 > **Good to know:** Light provides CSV import templates for most entities. Ask your implementation specialist for templates that match your legacy system's export format.
 
+> **Good to know:** Contracts, invoices (payable and receivable), and journal entries that were brought over from your legacy system show a read-only **Migration cutoff date** field on their detail page, so you always have a quick reference for the cutoff date used when that record was migrated.
+
 ### Step 0 — Lock snapshot exports
 
 Once month-end close is complete in the legacy system, prepare frozen data packages and hand them to the implementation team:
