@@ -160,6 +160,8 @@ Salesforce opportunity line items (opportunity products) sync automatically:
    - **Salesforce Discount** → **Light Discount**
 3. Light creates the contract or invoice with multiple lines matching the Salesforce structure
 
+> Note: If you use standard Salesforce Quotes (not CPQ), Quote Line Items are also available as a mapping source in the workflow's mapping nodes, alongside Opportunity Line Items. This is useful when a product only exists on a quote line rather than directly on the opportunity.
+
 ## Forecasting and reporting
 
 Use synced data for reporting:
