@@ -127,6 +127,8 @@ While a period is still open, you can lock individual document types by completi
 
 This lets you lock down parts of the ledger progressively during the close. Undoing a lock task removes the lock—and also reopens the FX revaluation task for that period and all later periods, since FX revaluation depends on locked balances.
 
+> Good to know: Card transactions don't have their own lock task—completing **Lock AP** also blocks posting, resetting, or reversing card transactions in that period. If you need to make card transaction corrections after locking AP, undo the **Lock AP** task first.
+
 ## Closing Entries
 
 At period-end, create closing entries:
