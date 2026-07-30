@@ -1,11 +1,3 @@
-# Italian SDI e-invoicing
-
-SDI (Sistema di Interscambio) is Italy's mandatory e-invoicing system, operated by the Italian tax authority (Agenzia delle Entrate). Light sends and receives SDI invoices through its integration with Invopop. This article covers registering an Italian entity with SDI and routing incoming invoices to Light.
-
-[Open in Light →](https://app.light.inc/settings/entities)
-
-> Good to know: SDI is specific to Italy. For cross-border EU e-invoicing, see the [Peppol article](/articles/02-organization-setup/2-7-e-invoicing-peppol).
-
 ## Registering your entity with SDI
 
 1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities) and open your Italian entity
@@ -34,6 +26,12 @@ SDI delivers incoming invoices based on the Codice Destinatario registered with 
 Incoming invoices now appear in Light automatically. Until you complete this step, supplier invoices won't reach Light.
 
 > Important: Registering `JKKZDGR` replaces any previously registered Codice Destinatario. Complete the switch before decommissioning your old invoicing channel.
+
+## Invoicing individual consumers (B2C)
+
+If you're invoicing an Italian individual through SDI, set the customer's type to **Consumer** and enter their personal **Codice Fiscale** in the customer's **VAT number** field — Light doesn't have a separate personal fiscal-code field yet, so this is where SDI expects to find it for consumer invoices and credit notes.
+
+> Warning: SDI invoicing to Government/public-administration customers is not ready to go live yet. Split-payment VAT (art. 17-ter) isn't fully supported end-to-end, so hold off on sending live SDI invoices or credit notes to public-administration customers until this is announced as supported.
 
 ## Related articles
 
