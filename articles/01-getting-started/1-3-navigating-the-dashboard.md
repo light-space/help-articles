@@ -49,6 +49,8 @@ Manage customer invoices and revenue:
 - **Contracts** - Track customer contracts and terms
 - **Products** - Manage products and pricing
 
+Click the **Revenue & Invoicing** section header in the left sidebar to open its overview page. It brings together AR aging, invoice status, and upcoming cash-in stats in one view, along with a **Create** menu for quickly adding invoices, customers, contracts, or products.
+
 ### Spend management
 Handle vendor bills and payments:
 - **Bills** - Upload, approve, and pay vendor bills
