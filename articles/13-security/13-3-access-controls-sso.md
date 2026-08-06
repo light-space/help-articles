@@ -114,7 +114,18 @@ Under **Settings > Guardrails > Policies**, you can create and manage spend poli
 
 ## Multi-Factor Authentication (MFA)
 
-Multi-factor authentication is required for all administrative and engineering access to production systems and management consoles. MFA adds a second layer of verification beyond a password, helping prevent unauthorized access even if credentials are compromised.
+MFA adds a second layer of verification beyond a password, helping prevent unauthorized access even if credentials are compromised.
+
+Within Light, multi-factor authentication is required for all administrative and engineering access to production systems and management consoles.
+
+### MFA for your users
+
+Light also applies its own MFA step to users signing in to the application:
+
+- **Authenticator app**: Users verify with a one-time password from an authenticator app such as Google Authenticator.
+- **Applies in addition to SSO**: Signing in through your identity provider does not replace Light's MFA step. If your identity provider also enforces MFA, users complete both.
+- **Remember this device**: Users can choose to be remembered, which suppresses the prompt on subsequent sign-ins until the session reaches its inactivity or maximum lifetime (see [Session Management](#session-management)).
+- **Lost devices**: Recovery codes are not enabled. A user who loses their authenticator device needs an administrator to reset their MFA enrolment.
 
 ## Session Management
 
@@ -124,7 +135,7 @@ Light's authentication layer enforces session controls to limit exposure from un
 - **Absolute session lifetime**: Sessions have a maximum lifetime regardless of activity, after which a fresh sign-in is required.
 - **Sign-out propagation**: Signing out in Light revokes the active session at the identity layer.
 
-Customers using SSO inherit session controls from their identity provider; values configured in the IdP take precedence over Light's defaults.
+These session controls are enforced by Light for all users, including those signing in through SSO. Your identity provider governs how users authenticate, but it does not extend Light's session lifetime — once a Light session reaches its inactivity or maximum limit, the user is returned to your identity provider for a fresh sign-in.
 
 ## Account Lockout and Brute-Force Protection
 
@@ -163,6 +174,12 @@ SSO is configured at the organization level in coordination with Light's team �
 3. The user attributes you'd like mapped (e.g., email, first name, last name).
 
 Light's team will configure the connection on the Auth0 backend and test it with you before going live.
+
+### User Provisioning
+
+SSO controls how users authenticate — it does not create their Light accounts. Users are **not** provisioned automatically on first sign-in, so each user must already exist in Light before they can sign in through SSO.
+
+Create users in advance under **Business partners > Users**, using the same email address they will present from your identity provider. A user who authenticates successfully at your identity provider but has no matching Light account will be denied access.
 
 ### SAML Configuration
 
