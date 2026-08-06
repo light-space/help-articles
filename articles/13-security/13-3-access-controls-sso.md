@@ -124,7 +124,8 @@ Light also applies its own MFA step to users signing in to the application:
 
 - **Authenticator app**: Users verify with a one-time password from an authenticator app such as Google Authenticator.
 - **Applies in addition to SSO**: Signing in through your identity provider does not replace Light's MFA step. If your identity provider also enforces MFA, users complete both.
-- **Remember this device**: Users can choose to be remembered, which suppresses the prompt on subsequent sign-ins until the session reaches its inactivity or maximum lifetime (see [Session Management](#session-management)).
+- **Who is prompted**: MFA is required for users holding any role beyond **Reimbursement** and **Invoice approver**. A user whose access is limited to those two roles is not prompted for a second factor.
+- **Remember this device**: Users can choose to be remembered, which suppresses the prompt on subsequent sign-ins for a limited period.
 - **Lost devices**: Recovery codes are not enabled. A user who loses their authenticator device needs an administrator to reset their MFA enrolment.
 
 ## Session Management
@@ -177,9 +178,12 @@ Light's team will configure the connection on the Auth0 backend and test it with
 
 ### User Provisioning
 
-SSO controls how users authenticate — it does not create their Light accounts. Users are **not** provisioned automatically on first sign-in, so each user must already exist in Light before they can sign in through SSO.
+SSO controls how users authenticate — it does not create their Light accounts. Light does **not** support just-in-time (JIT) provisioning from your identity provider: users are not created on first sign-in, so each user must already exist in Light before they can sign in through SSO. A user who authenticates successfully at your identity provider but has no matching Light account will be denied access.
 
-Create users in advance under **Business partners > Users**, using the same email address they will present from your identity provider. A user who authenticates successfully at your identity provider but has no matching Light account will be denied access.
+Users can be created in either of two ways:
+
+- **Manually**, under **Business partners > Users**, using the same email address they will present from your identity provider.
+- **Automatically from your HR system.** Light's HRM integration imports employees, keeps their active/inactive status in step, and assigns a default role — so joiners and leavers are handled without manual steps. See [HRM Integration (Finch)](/articles/11-integrations/11-8-hrm-finch).
 
 ### SAML Configuration
 
