@@ -1,5 +1,3 @@
-# Astra Agents
-
 Astra is Light's autonomous financial operations agent. It works in the background — without anyone typing a prompt — monitoring your company's books, investigating issues, and reporting findings to the people you designate. Astra runs several types of scheduled analyses, each with a different scope and cadence, and remembers what it learns between runs.
 
 [Open in Light →](https://app.light.inc/dashboard)
@@ -27,6 +25,10 @@ Astra runs four types of analyses:
 **Monthly deep review** — Runs on the first day of each month at 4 AM UTC. Astra produces the monthly close memo, a structured record of the prior period for finance leaders. See [Astra Monthly Review](12-9-astra-monthly-review.md).
 
 **Introspection consolidation** — Runs daily at 1 AM UTC. Astra reviews what it has learned across prior runs and consolidates durable insights into Company Memory as tagged blocks (`[astra:insight]`, `[astra:pattern]`, `[astra:resolved]`). This is the only run type where Astra writes to Company Memory. Observations older than 90 days are pruned. See [Configuring Company Memory in Astra](12-10-astra-company-memory.md).
+
+## Custom Agents (Beta)
+
+Beyond Light's four built-in analyses, any company can now create its own scheduled AI agents from **Settings > Assistant > Agents**, using the **Create agent** button. Custom agents run on a schedule you define and are separate from Astra — they don't share Astra's Company Memory or investigate the same error feed. Creating or editing a custom agent requires the Company Admin role; this feature is currently in Beta and may still change.
 
 ## Findings and Delivery
 
