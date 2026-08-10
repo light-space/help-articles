@@ -4,6 +4,8 @@ Light's MCP integration lets you use AI tools to query your financial data, sear
 
 Your AI model runs on your machine. Light only receives the individual tool calls you trigger and returns the results. No conversation history or AI output is ever sent to Light.
 
+> **Good to know:** the tool list also includes agent-management tools, letting your AI client create, search, update, and delete your custom AI agents in Light. These are available to every account, not just a limited set of companies.
+
 **Which method to use:** If you use Claude.ai or the Claude desktop app, connect with the Light connector below, you just sign in with your Light account. If you use Claude Code, OpenCode, n8n, or another coding or terminal client, use a personal token instead (further down).
 
 ---
