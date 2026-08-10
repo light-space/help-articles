@@ -61,6 +61,8 @@ Drilldown results can be filtered further and exported as CSV.
 
 Eliminations are driven by the **Intercompany configuration** set up in **Settings → Chart of accounts**. Lines flagged with the **Eliminate** toggle in intercompany journal entries generate reversing entries on a dedicated elimination ledger, offset against the system elimination account — these are what appear in the Eliminations column. For more detail, see [Intercompany documents](/articles/05-general-ledger/5-11-intercompany-documents.md).
 
+> **Note:** Eliminations are scoped to the entities you've selected. If you run a consolidation over a subgroup of entities (rather than all of them), an intercompany elimination only applies when both entities it involves are included in that subgroup — it won't cancel out a balance against an entity that's outside the report. Similarly, group-level elimination entries with no specific counterpart entity (such as FX/CTA translation entries) only appear when your consolidation includes every entity in the company.
+
 ## Related articles
 
 - [Reporting overview](10-1-reporting-overview.md)
