@@ -4,6 +4,8 @@ A purchase request lets you get approval from your finance or procurement team b
 
 [Open in Light →](https://app.light.inc/procurement/purchase-requests)
 
+> **Good to know:** Anyone at your company can file a purchase request—no special role is required. You'll only see purchase requests you created, that were raised on your behalf, or that you need to approve; you won't see every request across the company.
+
 ## When to File a Purchase Request
 
 You should file a purchase request when:
@@ -38,7 +40,7 @@ Follow these steps to submit a purchase request:
 **Business details:**
 - What is this purchase for? (brief description)
 - Which department or project does it belong to?
-- Who is this purchase for?
+- Who is this purchase for? (this defaults to you as the request owner; only company admins can name someone else)
 - If your admin has configured custom properties (additional tracking dimensions), they'll appear here for you to classify the request further
 
 **Attachments (optional but helpful):**
@@ -83,7 +85,7 @@ If you need to add more information after submitting, you can:
 2. Find your pending request
 3. Add attachments with any extra documentation
 
-Editing the request details themselves (amount, vendor, description) after submission requires additional permissions. If you can't edit the request yourself, ask your finance team or a company admin to update it for you.
+As the request's creator, you can also edit the details themselves (amount, vendor, description) yourself—tap **Edit** on your request while it's still pending review. If someone else filed the request on your behalf, only they or a company admin can make those changes.
 
 ## Timeline
 
@@ -109,7 +111,7 @@ If your request is declined, your finance team will tell you why. Common reasons
 - Amount exceeds budget
 - Policy issue
 
-Reach out to your manager or finance team to discuss next steps and resubmit if needed.
+If you created the request, you can fix the issue yourself and send it back for approval: open the rejected request, tap **Edit**, update the details, then tap **Save & resubmit**. Otherwise, reach out to your manager or finance team to discuss next steps.
 
 ## Related Articles
 
