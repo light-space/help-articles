@@ -17,8 +17,8 @@ Light supports three types of integrations:
 - Requires technical setup but maximum flexibility
 
 **Workflow integrations**: Trigger actions in other systems based on Light events.
-- Examples: Send Slack notification when invoice is overdue, create Jira ticket for dispute
-- Connects Light to communication and project management tools
+- Example: Send a Slack notification when an invoice is overdue
+- Connects Light to communication tools
 
 ## Pre-built integrations
 
@@ -29,20 +29,21 @@ Light provides native integrations with popular platforms:
 - HubSpot: Sync deals, contacts, companies
 
 **FP&A**:
-- Abacum: Sync ERP data via S3 bucket for financial planning and analysis
+- Abacum: Sync balance sheet, trial balance, and ledger transaction CSV files into the FP&A tool via S3 bucket for financial planning and analysis. You can define backfilling dates.
 
 **HRM & Payroll**:
-- Finch: Sync headcount, payroll data, company structure
+- Finch: Syncs users, manager relationships, and entities into Light, keeping your Users list current. See [HRM integration (Finch)](11-8-hrm-finch.md) for exactly what syncs.
 
 **Payments**:
-- Stripe: Sync transactions, payouts, refunds
+- Stripe: Sync transactions, payouts, refunds for the AR side
 - Airwallex: Outgoing payments from your Airwallex virtual bank accounts
 
 **Tax & Compliance**:
 - AvaTax (US): Automated sales tax calculation and reporting
 - Sphere (US): Automated sales tax calculation and reporting
-- Avalara E-Invoicing: Peppol compliance and transmission
+- E-Invoicing via Invopop: E-invoicing compliance and transmission across Europe and more regions. Contact Light for full scope.
 - HMRC (UK): VAT returns and filings
+- Skattestyrelsen (DK): VAT returns and filings
 
 **Messaging**:
 - Slack: Notifications and alerts
@@ -52,31 +53,31 @@ Light provides native integrations with popular platforms:
 - Gmail: Automatic receipt fetching and matching for card transactions
 
 **Banking**:
-- Bank feed: Direct account feeds, balance updates via GoCardless, Plaid, and Stripe's APIs. Payments are not prebuilt.
+- Bank feed: Direct account feeds, balance updates via GoCardless, Plaid, and Stripe's APIs. Payments are not prebuilt, so it requires project and configuration — talk to your Light sales contact.
 
 ## Non-prebuilt integrations
+
 **Payments via your banks**
-- AP and Reimbursement- Payments: SFTP or Host-to-Host connections via AMC Banking.
+- AP and Reimbursement Payments: Connects to AMC Banking, which handles the connection to your bank (SEB, J.P. Morgan, HSBC, and others) on Light's behalf via SOAP over HTTPS.
 
 ## Setting up integrations
 
 For most integrations, the process is:
 
-1. Navigate to **Settings (gear icon) > Integrations**
-2. Find the integration you want (Salesforce, Stripe, Slack, etc.)
-3. Click **Connect**
-4. You're redirected to the third-party system to authorize
-5. You grant Light permission to access your data
-6. Light confirms the connection is active
-7. Configure sync settings (frequency, data to sync, mappings)
+1. Navigate to **Settings (gear icon) → Integrations**
+2. Click **+ Add integration** and find the one you want (Salesforce, Stripe, Slack, etc.)
+3. You're redirected to the third-party system to authorize (for OAuth-based integrations), or asked to enter credentials directly (for API-key based ones)
+4. You grant Light permission to access your data
+5. Light confirms the connection is active
+6. For integrations that support it, configure sync settings (frequency, data to sync, mappings). Simpler integrations like Slack, Teams, and Gmail just need to be connected or enabled, with no further configuration.
 
-Once configured, the integration runs automatically.
+Once set up, the integration runs automatically.
 
 > Good to know: Light stores integration credentials securely and never displays them. You can disconnect any time.
 
 ## OAuth and secure authentication
 
-Light uses industry-standard OAuth for secure authentication. When you connect an integration:
+Most integrations use industry-standard OAuth for secure authentication. When you connect one of these integrations:
 
 1. Light redirects you to the third-party system
 2. You log in (Light never sees your password)
@@ -87,9 +88,11 @@ Light uses industry-standard OAuth for secure authentication. When you connect a
 
 This is the same authentication method major tech companies use. Your credentials are never shared with Light.
 
+A few integrations authenticate differently: AvaTax connects using an app-managed OAuth client (no browser sign-in step involved), and Sphere connects using an API key. Your Light representative sets these up as part of onboarding that integration.
+
 ## Data mapping and synchronization
 
-For each integration, configure what data to sync:
+For each integration, configure with your Light representative what data to sync:
 
 **Salesforce integration**:
 - Sync opportunities to AR invoices
@@ -108,27 +111,28 @@ For each integration, configure what data to sync:
 - Sync contact creation to customer master data
 - Map fields appropriately
 
+**HRM integration**:
+- Default Base Role = e.g. Reimbursement Only
+- HRM field Entity = Entity in Light
+- HRM field Sub-department = e.g. User Group in Light
+
 ## Testing integrations
 
-Before relying on an integration, test it:
+Before relying on an integration for critical data, it's worth confirming it's working as expected:
 
-1. Set up the integration in test mode
-2. Create test data in the source system
-3. Sync and verify data appears correctly in Light
-4. Check field mappings and calculations
-5. Once confident, enable for production use
+1. Connect the integration
+2. Sync a small amount of data first
+3. Check field mappings and calculations against the source system
+4. Once confident, rely on it for ongoing syncs
 
-Light provides test mode for most integrations.
+Testing support varies by integration. A few providers, like Avalara and Airwallex, offer their own sandbox environments — check the specific integration if this matters to you.
 
 ## Monitoring integration health
 
 Light tracks integration status:
 
-1. Navigate to **Settings (gear icon) > Integrations** to check status
-2. View each integration's status:
-   - Connected: Active and working
-   - Paused: Disabled but can be re-enabled
-   - Error: Connection failed, needs attention
+1. Navigate to **Settings (gear icon) → Integrations** to check status
+2. View each integration's status. Status values vary by integration — for example Stripe shows Active/Inactive, Slack/Teams/Gmail show Connected/Not connected, and sync-based integrations like Finch show states such as Syncing, Paused, or Initial sync running.
 3. Click any integration to see:
    - Last successful sync
    - Last error (if failed)
@@ -139,37 +143,21 @@ If an integration shows error, investigate and reconnect.
 
 ## Syncing historical data
 
-When first connecting an integration, decide whether to sync historical data:
-
-- **Start fresh**: Only sync new data from today forward (faster setup)
-- **Import history**: Sync all historical data (may take longer, but complete data set)
-
-For most integrations, starting fresh is recommended. You can manually import old data if needed.
+Historical data handling varies by integration. Most integrations (like Salesforce) start syncing from the moment you connect them, without a historical import. Some, like Finch, let you set a start date for how far back to sync. Check the specific integration's setup for what's available.
 
 ## Conflict resolution
 
-If the same data exists in both systems, the source system takes priority. Each sync workflow runs in a single direction (for example, Salesforce → Light or Stripe → Light), with Light acting as the ledger receiving data.
+Most sync workflows run in a single direction (for example, Salesforce → Light or Stripe → Light), with Light acting as the ledger receiving data. HubSpot is an exception — it syncs in both directions (Light ↔ HubSpot). Check the specific integration's documentation for its sync direction before relying on it for two-way data consistency.
 
 ## Rate limiting and performance
 
-Integrations respect platform rate limits:
-
-- Don't sync too frequently (every 5 minutes is reasonable; every 30 seconds is excessive)
-- Batch operations to reduce API calls
-- Light automatically handles retries if rate limits are hit
-
-Configure sync frequency to balance currency with system performance.
+Each integration syncs on a fixed schedule set by Light (for example, Salesforce roughly every 20 minutes, HubSpot hourly), tuned to respect that platform's API rate limits. If a rate limit is hit, Light automatically retries.
 
 ## Audit trail on integrations
 
-Light logs all integration activity:
+Light tracks the timestamp of each integration's last successful sync. Syncs run on a schedule (cron-driven) rather than being manually triggered by a user in most cases.
 
-- Sync timestamp and duration
-- Number of records synced
-- Errors or warnings
-- User who triggered the sync (if manual)
-
-Navigate to **Settings (gear icon) > Integrations** to review activity logs.
+Navigate to **Settings (gear icon) → Integrations** to see each integration's last sync time.
 
 ## Common integration workflows
 
@@ -182,30 +170,23 @@ Salesforce → Light → Bank
 5. Bank integration matches payment to invoice
 6. Cash posting completes the lead-to-cash cycle
 
-**Payroll integration**:
-Payroll (on roadmap via Finch) → Light
-1. Employees paid by payroll processor
-2. Finch integration syncs payroll data to Light
-3. Light automatically creates JE to record payroll expense
-4. GL reflects latest headcount and expense
+**HRM and Payroll integration**:
+Finch syncs employee and organizational data (not payroll) into Light, keeping your Users list current as employees join, change roles, or leave.
 
-Most companies performs a simple monthly journal upload.
+For the payroll expense itself:
+1. Employees are paid by your payroll processor
+2. Most companies record payroll expense with a simple monthly journal entry upload
+3. GL reflects the latest payroll expense
+
+See [HRM integration (Finch)](11-8-hrm-finch.md) for exactly what data does sync.
 
 **Tax compliance**:
-Light → AvaTax → Tax Authority
+Light → AvaTax or Sphere → GL
 1. Create AR invoice in Light with tax codes
-2. AvaTax integration calculates applicable tax
-3. Light posts tax to GL
-4. AvaTax integration prepares tax return
-5. Light submits to tax authority
+2. AvaTax or Sphere calculates the applicable tax
+3. Light posts the tax to your GL
 
-Light → Sphere → Tax Authority
-1. Create AR invoice in Light with tax codes
-2. Sphere integration calculates applicable tax
-3. Light posts tax to GL
-4. Sphere integration prepares tax return
-5. Light submits to tax authority
-
+AvaTax and Sphere calculate and record tax — they don't file returns with a tax authority. For UK VAT, Light's HMRC integration is the one that actually files returns directly with HMRC. See [HMRC connection (UK)](11-9-hmrc-uk.md).
 
 ## Common integration issues and troubleshooting
 
@@ -223,13 +204,7 @@ Light provides detailed error messages to help diagnose issues.
 
 ## API rate limits
 
-When syncing large data sets, respect API rate limits:
-
-- Most vendors allow 1,000-10,000 API calls per hour
-- Light batches operations to minimize calls
-- If rate limited, Light queues requests and retries
-
-Configure sync frequency appropriately for your data volume.
+Light's API enforces rate limits of 300 requests per minute per user and 100,000 requests per day per company (both configurable per company on request). Light batches operations to minimize calls, and automatically queues and retries requests that hit a limit.
 
 ## Webhook integrations
 
@@ -247,16 +222,16 @@ Salesforce and HubSpot data syncs run on a schedule rather than via webhooks.
 
 ## Related articles
 
-- [Salesforce integration](11-2-salesforce.md)
-- [HubSpot integration](11-3-hubspot.md)
-- [Slack integration](11-4-slack.md)
-- [Microsoft Teams integration](11-5-microsoft-teams.md)
-- [Stripe integration](11-6-stripe.md)
-- [Airwallex integration](11-7-airwallex.md)
-- [HRM integration (Finch)](11-8-hrm-finch.md)
-- [HMRC connection (UK)](11-9-hmrc-uk.md)
-- [AvaTax integration (US)](11-10-avatax-us.md)
-- [Bank integrations overview](11-11-bank-integrations.md)
-- [Gmail integration](11-17-gmail.md)
-- [Abacum integration](11-18-abacum.md)
-- [API access and custom integrations](11-12-api-access.md)
+- [Salesforce integration](https://help.light.inc/integrations/salesforce)
+- [HubSpot integration](https://help.light.inc/integrations/hubspot)
+- [Slack integration](https://help.light.inc/integrations/slack)
+- [Microsoft Teams integration](https://help.light.inc/integrations/microsoft-teams)
+- [Stripe integration](https://help.light.inc/integrations/stripe)
+- [Airwallex integration](https://help.light.inc/integrations/airwallex)
+- [HRM integration (Finch)](https://help.light.inc/integrations/hrm-finch)
+- [HMRC connection (UK)](https://help.light.inc/integrations/hmrc-uk)
+- [AvaTax integration (US)](https://help.light.inc/integrations/avatax-us)
+- [Bank integrations overview](https://help.light.inc/integrations/bank-integrations)
+- [Gmail integration](https://help.light.inc/integrations/gmail)
+- [Abacum integration](https://help.light.inc/integrations/abacum)
+- [API access and custom integrations](https://help.light.inc/integrations/api-access)
