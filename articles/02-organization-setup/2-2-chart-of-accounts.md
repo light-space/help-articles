@@ -6,73 +6,74 @@ This article explains how to prepare and upload your Chart of Accounts in Light,
 
 ## What is a Chart of Accounts?
 
-Your Chart of Accounts is the complete list of all accounts available for posting transactions in Light. It defines your GL account structure and determines how financial data flows through your general ledger. Light supports multi-entity, multi-currency accounting with a flexible account structure.
+Your Chart of Accounts is the complete list of all accounts available for posting transactions in Light. It determines how transactions roll up on your financial statements.
 
 ## Navigating the Accounts page
 
-The Accounts page is located at [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section). The page has three tabs:
+The Accounts page is located at **Settings (gear icon) → Chart of accounts**, under Records. The page has three tabs:
 
 - **Chart of accounts**: View, search, and manage all GL accounts
-- **Account defaults**: Configure system account mappings (e.g., Rounding, FX loss, FX gain, Bank fees)
-- **Intercompany rules**: Set up rules for intercompany transactions
+- **Account defaults**: Assign accounts for system-level postings (rounding, FX gain/loss, bank fees)
+- **Intercompany rules**: Configure intercompany transaction handling
 
-The top-right actions include **Build**, **Upload**, and **Export** buttons, along with **+ Create account** and **+ Add intercompany rule**.
+Top-right actions on the Chart of accounts tab:
+
+- **+ Create account**
+- **+ Add intercompany rule**
+- **Upload**
+- **⋯** (overflow menu): **Export**, **Build**
 
 ## Account fields
 
-Each account in Light has the following properties:
+Fields appear in this order on the account form:
 
-- **Account number**: A unique 6-digit numeric identifier (e.g., 100100, 200100)
-- **Account name**: A descriptive name (e.g., "Cash", "Accounts Receivable")
+- **Account number**: A unique 6-digit numeric identifier, enforced by Light
+- **Account name**: A descriptive label (e.g., "Cash," "Accounts Receivable")
 - **Account status**: Active or Disabled
-- **Entities**: Which company entities this account is available in
-- **Currency**: The account currency, required for bank and cash & equivalents accounts
-- **Account category**: The category classification (e.g., Standard)
-- **Aggregation rule**: Optional rule for how the account aggregates in reporting
-- **Account group**: The financial grouping (e.g., Other current asset, Accounts receivable, Intangible asset)
-- **Revalue open balance for foreign currency transactions**: Checkbox to enable FX revaluation for this account
-- **Context** (optional): A description of the account's purpose
+- **Entities**: Which entities can post to this account
+- **Account category**: Standard, Header, or Sum. Standard accounts take postings. Header and Sum accounts give the chart of accounts its structure and roll-up. See **Account categories** below.
+- **Aggregation rule**: Required for Sum accounts only, disabled (must be empty) for all other account types. Format is comma-separated numeric ranges, each `startcode:endcode` (6-digit account numbers, start ≤ end) — for example `100000:200000` or `100000:200000,300000:400000`.
+- **Account group**: Financial grouping (e.g., Other current asset, Accounts receivable, Cost of Sales, Operating Expense). Required for Standard accounts.
+- **Currency**: Appears only when Account group is set to Cash and cash equivalents, and is required there. Bank accounts don't use this field on this form.
+- **FX settings**: Two dropdowns — **Entity revaluation settings** (Revalue / Do not revalue) and **Group revaluation settings**. Revaluation applies to Standard accounts.
+- **Context** (optional): A note on the account's purpose
+
+## Account categories
+
+Every account is one of three categories, and the category sets what the account does:
+
+- **Standard**: Your working accounts. Documents and journal entries post to these, and these are the accounts that appear when you pick an account anywhere in Light.
+- **Header**: A heading that labels a section of the chart of accounts. It carries a zero balance and sits in account-number order.
+- **Sum**: Totals the balances of the Standard accounts whose account numbers fall inside its **Aggregation rule** ranges. Light calculates the total when a report runs, so it always reflects current balances.
+
+Category also drives two other fields: **Account group** is required for Standard accounts, and FX revaluation applies to Standard accounts.
 
 ## Creating a new account
 
-1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Click **+ Create account**
-3. Fill in the account details:
-   - **Account number**: Enter a unique account number
-   - **Account name**: Enter a descriptive name
-   - **Account status**: Select Active or Disabled
-   - **Entities**: Choose which entities this account applies to
-   - **Currency**: For bank and cash & equivalents accounts, select the account currency
-   - **Account category**: Select the appropriate category
-   - **Aggregation rule**: Optionally enter an aggregation rule
-   - **Account group**: Select the account group (e.g., Other current asset, Revenue, Expense)
-   - **Revalue open balance for foreign currency transactions**: Check if this account should be revalued
-   - **Context** (optional): Add a description of the account's purpose
+3. Enter, in order: account number, name, status, entities, category, aggregation rule (if applicable), account group, currency (if applicable), FX settings (if applicable), context (optional)
 4. Click **Create account**
 
 ## Uploading your Chart of Accounts
 
 To bulk-import accounts:
 
-1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
-2. Click the **Upload** button in the top-right actions
-3. Prepare your accounts file in the supported format (CSV or Excel)
-4. Upload your prepared file
-5. Light validates the structure and displays any errors
-6. Review the preview to confirm accounts will be created correctly
-7. Complete the upload to import all accounts
-
-> Tip: Start with a clean, validated file to avoid upload errors. Light provides validation feedback to help identify issues before final import.
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
+2. Click **Upload**
+3. Use the provided template. File format: **CSV**.
+4. Review the preview. This shows exactly what will be created before anything is written to your Chart of Accounts.
+5. Confirm to complete the import. All valid rows are created in one batch.
 
 ## Editing accounts
 
-1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts) (under the Records section)
+1. Go to [**Settings (gear icon) → Chart of accounts**](https://app.light.inc/accounting/ledger-accounts)
 2. Search for the account you need to modify
 3. Click the account to open its detail view
 4. Click **Edit** to update the account fields
 5. Make your changes and save
 
-The account number, account group, category, and currency can only be changed while the account has no posted activity. Once the account has been used in transactions or accounting documents, these fields are locked — to renumber a used account, deactivate the old account and create a new one with the correct number.
+Once an account has posted activity, account number, account group, category, and currency lock. To change a used account's number, deactivate it and create a new one with the correct number.
 
 ## Account activation and deactivation
 
@@ -81,34 +82,36 @@ Accounts can be set to Active or Disabled using the **Account status** field:
 - **Active**: Available for posting new transactions
 - **Disabled**: Archived accounts retained for historical reference
 
-To deactivate an account, open the account, click Edit, change Account status to Disabled, and save. Disabled accounts retain all historical transaction data but won't appear in transaction posting dropdowns. Accounts that were deactivated in a connected external ERP cannot be manually reactivated in Light.
+To deactivate an account, open the account, click **Edit**, change Account status to Disabled, and save. Disabled accounts retain all historical transaction data but drop out of posting dropdowns. Accounts deactivated by a connected external ERP can't be reactivated manually in Light — reactivate from the ERP.
 
 ## Account defaults
 
-The [**Account defaults**](https://app.light.inc/accounting/ledger-accounts) tab configures which accounts are used for system-level postings:
+The [**Account defaults**](https://app.light.inc/accounting/ledger-accounts) tab assigns accounts for system-level postings:
 
-- **Rounding**: Account for rounding gain/loss
-- **FX loss** / **FX gain**: Accounts for realized foreign exchange gains and losses
-- **FX unrealized**: Account for unrealized FX gains and losses
-- **Sales discount**: Account for sales discounts
-- **Bank fees**: Account for bank charges
-- **Bank clearing**: Clearing account for bank transactions
-- **Currency translation adjustment**: Account for currency translation differences
-- **Elimination**: System elimination account for consolidation
+- **Rounding**
+- **FX loss** / **FX gain**
+- **FX unrealized**
+- **Sales discount**
+- **Bank fees**
+- **Bank clearing**
+- **Currency translation adjustment**
+- **Elimination**
 
 ## Exporting your Chart of Accounts
 
-Click the **Export** button in the top-right actions on the Chart of accounts tab to download your complete account list.
+**⋯** menu → **Export**. Exports your full Chart of Accounts, including account number, name, status, entities, category, group, and currency for every account. Use this to:
+
+- back up your account structure before a bulk edit
+- share your Chart of Accounts with an auditor or external accountant
+- compare against your ERP's chart of accounts when reconciling systems
 
 ## Best practices
 
 - Use consistent account numbering across your organization (e.g., all assets starting with 1)
-- Create meaningful account names that are clear to users
-- Assign accounts to the correct entities to control where they appear
-- Choose appropriate account groups for accurate financial statement classification
-- Use the Context field to document the purpose of each account
-- Configure account defaults before posting transactions
-- Account numbers must be unique across your company
+- Assign accounts only to the entities that need them
+- Account group determines financial statement classification — set it deliberately
+- Configure Account defaults before posting any transactions
+- Account numbers are unique company-wide
 
 ## Related articles
 
