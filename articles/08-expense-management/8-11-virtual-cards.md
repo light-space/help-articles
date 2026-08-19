@@ -148,6 +148,8 @@ Freeze or close cards no longer needed:
 
 Use if circumstances change and the card is no longer needed.
 
+> Note: When you deactivate an employee or vendor user, Light automatically freezes all of that user's active virtual and physical cards - you don't need to remember to freeze them manually. If you later reactivate the user, their cards stay frozen; an admin still needs to unfreeze them from the card details before they can be used again.
+
 ## Security Features
 
 ### Card Number Security
