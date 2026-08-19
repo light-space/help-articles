@@ -35,7 +35,7 @@ Create custom matching rules for specific needs:
 
 Light parses your natural-language description into structured matching conditions. Rules are evaluated in order, and the first matching rule applies.
 
-You can also create a rule directly from an unmatched transaction using **Convert to rule** on the reconciliation view, which pre-fills the rule based on the selected transaction.
+You can also create a rule directly from unmatched transactions using **Convert to rule** on the reconciliation view, which pre-fills the rule based on the selected transaction(s). Select up to 20 bank transactions at once so Light can find the common pattern across them and suggest a more general rule, rather than an exact match based on a single transaction.
 
 ## Rule Conditions
 
