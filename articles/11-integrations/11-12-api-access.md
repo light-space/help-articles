@@ -20,7 +20,7 @@ The API provides endpoints for managing the following resources:
 
 - **Accounting Documents** — List and query all accounting documents across types
 - **Attachments** — Upload, list, and manage document attachments
-- **Authorization** — OAuth 2.0 token management
+- **Authorization** — the OAuth 2.0 authorization flow, rather than a queryable resource like the others (see **Authentication** below)
 - **Bank Accounts** — Create and access bank accounts (creating a bank account also creates its linked ledger account atomically)
 - **Card Balance Accounts** — Access card balance accounts, statements, and total spend
 - **Card Customers** — Retrieve the card integration public key
@@ -60,7 +60,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 To create an API key:
 
 1. Log in to Light and navigate to **Settings > API Keys**
-2. Click **Create Key**
+2. Click **Create key**
 3. Copy and securely store the generated API key — it will not be shown again
 
 Light API keys are linked to roles the same way user accounts are. The roles assigned to the API key determine what actions the key can perform.
@@ -167,10 +167,10 @@ Results are paginated. Use the `limit` parameter to control page size (default: 
 
 ## Rate limits
 
-The Light API enforces two rate limits:
+The Light API enforces two rate limits. These are the standard defaults — Light can agree different limits with your company:
 
-- **300 requests per minute** per API key or OAuth token (applied individually to each user in your organization)
-- **100,000 requests per day** per organization (resets at midnight UTC, shared across all users)
+- **300 requests per minute** per user. Every API key and OAuth token belonging to one user draws on that same allowance, so adding keys does not add capacity
+- **100,000 requests per day** across your whole organization, shared by all users, resetting at midnight UTC
 
 Exceeding a limit returns a `429 Too Many Requests` response with these headers:
 
