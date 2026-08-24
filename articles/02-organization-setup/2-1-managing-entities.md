@@ -11,18 +11,16 @@ A company entity represents a distinct legal entity within your organization. Th
 ## Creating a new entity
 
 1. Navigate to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities) (under the Records section)
-2. Click **+ Create entity**
+2. Click **Create entity**
 3. Fill in the entity details:
-   - **Display name**: The name as it appears in Light (e.g., "US Headquarters")
-   - **Legal name**: The official legal name registered with authorities
+   - **Display name** (required): The name as it appears in Light (e.g., "US Headquarters")
+   - **Legal name** (required): The official legal name registered with authorities
+   - **Country** (required): The country where the entity is registered
+   - **State**: State or region (if applicable)
+   - **Local currency** (required): The primary currency for this entity's operations
    - **VAT** (optional): The entity's VAT identification number
    - **Business reg. number** (optional): Legal registration or company number
-   - **Street** (optional): Street address
-   - **Zip / postcode** (optional): Postal code
-   - **City** (optional): City name
-   - **Country**: The country where the entity is registered
-   - **State**: State or region (if applicable)
-   - **Local currency**: The primary currency for this entity's operations
+   - **Street**, **Zip / postcode**, **City** (all optional): Registered address
 4. Optionally fill in **E-invoicing** details:
    - **Network**: Choose from Peppol, SDI, Nemhandel, myDATA, VeriFactu, or Portuguese Tax Reporting
    - **EAS code**: Electronic Address Scheme identifier (required for most networks)
@@ -37,7 +35,7 @@ An entity code is automatically assigned to each new entity.
 ## Viewing entity details
 
 1. Go to [**Settings (gear icon) → Entities**](https://app.light.inc/settings/entities)
-2. The entity list displays columns for **Entity code**, **Name**, **Currency**, **VAT**, and **Cards**
+2. The entity list displays columns for **Entity code**, **Name**, **Currency**, **Country**, **VAT**, **Business reg. number**, **Cards**, and **Status**
 3. Click on any entity to open its detail panel, which shows all configured fields
 
 ## Editing entity details
@@ -56,7 +54,7 @@ Each entity has a **Cards** section that manages expense card onboarding for tha
 
 - **Not onboarded**: The entity has not yet been set up for expense cards
 - **In process**: Card onboarding is underway
-- **Active**: Expense cards are enabled for this entity
+- **Verified**: Expense cards are enabled for this entity
 
 To activate expense cards, open the entity detail panel, scroll to the Cards section, and follow the onboarding steps to provide legal documents and set limits.
 
