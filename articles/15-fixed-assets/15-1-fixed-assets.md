@@ -9,7 +9,7 @@ Light treats fixed assets as a specialized form of accounting release.
 A fixed asset in Light is a posted document line (a journal entry or AP bill line) that has a **Fixed Asset** release template applied to it. When the document posts:
 
 1. Light capitalizes the line amount to the **additions account** defined on the template (the asset account on the balance sheet).
-2. Light schedules depreciation entries from the **contra account** (the depreciation/accumulated depreciation account on the template) to the expense account on the line, according to the template's method and duration.
+2. Light schedules depreciation entries from the **Depreciations Account** (the accumulated depreciation account on the template) to the expense account on the line, according to the template's method and duration.
 3. The asset appears in the fixed asset register and continues posting depreciation each period until the schedule is complete.
 
 This means the same engine that handles prepayments and deferred revenue also handles fixed assets — you just pick a different template type. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) and [Deferred entries](../05-general-ledger/5-5-deferred-entries.md) for the underlying mechanics.
@@ -39,10 +39,11 @@ Before entering assets, configure at least one Fixed Asset template. Templates a
    - **Name** — descriptive (e.g., "5-Year Straight-Line — Furniture")
    - **Method** — **Straight line with partial adjustment** or **Reducing balance**
    - **Additions account** — the balance sheet asset account where the cost is capitalized
-   - **Contra account** — the accumulated depreciation account (the contra-asset account that depreciation credits against)
+   - **Depreciations Account** — the accumulated depreciation account (the contra-asset account that depreciation credits against)
    - **Default Duration (months)** — useful life in months (e.g., 60 for 5 years)
    - **Initial Amount Percentage** — for straight-line, the percentage applied in the first period
    - **Reducing Rate Percentage** — for reducing balance, the rate applied each period
+   - **Accumulate past amounts** *(optional)* — catches up depreciation for periods that have already elapsed before the asset was entered; useful when setting up an asset partway through its life
 5. Click **Create**
 
 > Tip: Use descriptive template names that include duration and asset class. This makes the template list easy to scan when entering assets later.
@@ -104,16 +105,26 @@ After 60 months, the asset has $0 remaining book value and the depreciation sche
 
 ## Migrating an existing fixed asset register
 
-Light does not support direct import of a fixed asset register from a legacy system. To migrate:
+Light does not support direct import of a fixed asset register from a legacy system. You have two options:
 
-1. For each asset in the legacy register, calculate the **remaining net book value** as of the cutover date (cost minus accumulated depreciation already posted in the legacy system)
-2. Create a manual journal entry per asset (or one consolidated JE per asset class) that:
-   - Debits the line with the **remaining net book value** as the amount
-   - Sets the GL Account to the depreciation expense account
-   - Applies a **Fixed Asset** release template whose duration equals the **remaining useful life** at cutover
-3. Post the entry
+**Option 1 — enter the remaining book value.** For each asset in the legacy register, calculate the **remaining net book value** as of the cutover date (cost minus accumulated depreciation already posted in the legacy system), then create a manual journal entry per asset (or one consolidated JE per asset class) that:
 
-This recreates the asset in Light's register at its current book value and resumes depreciation over the remaining useful life. Verify the register at [**Accounting → Releases**](https://app.light.inc/releases) (filtered by **Fixed asset** type) matches the legacy register before going live. See [Go-live readiness](../01-getting-started/1-8-go-live-readiness.md) for the broader cutover sequence.
+1. Debits the line with the **remaining net book value** as the amount
+2. Sets the GL Account to the depreciation expense account
+3. Applies a **Fixed Asset** release template whose duration equals the **remaining useful life** at cutover
+4. Post the entry
+
+This recreates the asset in Light's register at its current book value and resumes depreciation over the remaining useful life.
+
+**Option 2 — enter the original cost with a cutoff date.** If you'd rather not calculate remaining book value by hand:
+
+1. Enter the asset at its full original cost, using the standard AP bill or journal entry workflow above
+2. Apply the Fixed Asset template using the asset's **full original useful life** (not the remaining life)
+3. Set a **migration cutoff date** on the entry
+
+Light suppresses any depreciation postings that would have fallen before that date, so the schedule picks up cleanly from the cutover point going forward.
+
+Either way, verify the register at [**Accounting → Releases**](https://app.light.inc/releases) (filtered by **Fixed asset** type) matches the legacy register before going live. See [Go-live readiness](../01-getting-started/1-8-go-live-readiness.md) for the broader cutover sequence.
 
 ## Adjustments, disposals, and impairments
 
