@@ -32,7 +32,7 @@ Employees can submit receipts by sending them to the Light bot in a chat:
 2. Attach the receipt file (or paste an image) and send it
 3. Light replies with "Processing your file(s)..." while it works
 4. If the receipt matches a card transaction, it's attached to that transaction automatically
-5. If no card transaction matches and you're set up for reimbursements, Light asks "Do you want to create a reimbursement from this item?" with **Reimbursement** and **Discard** buttons
+5. If no card transaction matches: if you have both cardholder and reimbursement roles, Light asks "Do you want to create a reimbursement from this item?" with **Reimbursement** and **Discard** buttons. If you only have the reimbursement role, Light skips straight to this prompt
 6. Once processed, Light sends a card with the extracted details — description, original amount, and reimbursement amount — and a **View expenses** button that opens your expenses in Light
 
 ## Asking the Light assistant
@@ -58,10 +58,14 @@ Light sends notifications to users as personal messages from the Light bot, incl
 - Receipt or expense upload completed or failed
 - Expense report rejected
 - Reimbursement paid
-- Invoice approval requests and reminders
+- Invoice approval requests and reminders, including bulk and payment-batch approvals
+- Purchase order opened, and purchase order matched to a bill
+- Purchase request approval result
+- Payment failure
+- CSV import or journal entry import finished
 - Card transaction and task updates, and other workflow events
 
-Notifications are delivered to each user individually based on their matched email address — there is no per-channel notification configuration. Users can turn notification categories on or off per channel in their notification preferences in Light.
+Notifications are delivered to each user individually based on their matched email address. Users can turn notification categories on or off per channel in their notification preferences in Light.
 
 ## Troubleshooting Teams integration
 
