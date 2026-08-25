@@ -6,7 +6,7 @@ By default, Light converts foreign-currency amounts using daily market rates, so
 
 ## What a custom rate does
 
-A custom rate (an "FX rate override") pins the conversion rate for one currency, for one month, across your whole company. Once set, every flow that converts that currency — bills, sales invoices, payments, bank reconciliation, expenses, credit notes, purchase-order matching, and the month-end FX revaluation — uses your rate instead of the market rate.
+A custom rate pins the conversion rate for one currency, for one month. It can be set for your whole company or scoped to a single entity — if both exist for the same currency and month, the entity-level rate takes priority. Once set, every flow that converts that currency — bills, sales invoices, payments, bank reconciliation, expenses, credit notes, purchase-order matching, and the month-end FX revaluation — uses your rate instead of the market rate.
 
 ## How to set one
 
@@ -15,6 +15,7 @@ There is no self-serve screen in this version — to set a custom rate, contact 
 - **Currency** — the currency you want to pin (e.g. USD, GBP, CZK). It must not be EUR (see below).
 - **Rate** — expressed as **how much one unit of the currency is worth in EUR**. For example, "1 CZK = 0.04 EUR." This is the same direction Light shows rates elsewhere.
 - **Month** — the month the rate applies to.
+- **Scope** — whether the rate should apply across your whole company, or just one entity.
 
 Support will confirm the rate back to you before it takes effect.
 
@@ -29,7 +30,7 @@ Support will confirm the rate back to you before it takes effect.
 
 ## Checking which rate was applied
 
-The exchange-rates report shows the custom rates in effect for a date range, plus any days where a conversion fell back to market rates because one of its currencies was missing a custom rate. Check there (or ask support) to confirm your rates are being applied as expected.
+Light keeps track of which rate was applied to each transaction, including cases where a conversion fell back to the market rate. There's no self-serve screen for viewing this yet — if you want to confirm a specific conversion used your custom rate rather than the market rate, ask Light support and they can check for you.
 
 ## Related articles
 
