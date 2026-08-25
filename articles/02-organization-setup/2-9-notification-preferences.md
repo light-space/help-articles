@@ -1,63 +1,62 @@
 # Notification Preferences
 
-This article explains how notifications work in Light and how to configure integrations for receiving alerts.
+Light keeps you in the loop, and choosing how you hear from it takes just a few minutes. You decide which alerts reach you and where — inside Light, in Slack, in Microsoft Teams, or on your phone.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
-## Understanding notifications in Light
+## Configure web push notifications
 
-Light notifies you about important events related to your work, such as tasks requiring your attention, approval requests, and updates to documents you're involved with. Notifications appear within the Light application as part of your workflow.
+Web push notifications appear inside Light while you're using it.
 
-## Web app notifications
+1. Open Light and go to **Settings (gear icon) → Profile**
+2. In the **Notifications** section, click **Web push notifications**
+3. Turn on **Enable push notifications**
+4. Click **Send notification** to confirm alerts reach you
+5. Turn on the categories you want to receive:
+   - **Bill approvals**: approval requests, reminders, and payment batch approvals
+   - **Card transactions**: authorizations and declines
+   - **Procurement**: purchase request and purchase order updates
+   - **Payments**: payment status and processing updates
+   - **Reimbursements**: rejections, setup required, status changes
+   - **Tasks**: task updates and rejected requests
+   - **Imports & exports**: data import and export completion or errors
+6. Click **Save**
 
-You can configure push notifications within the Light web app to stay updated on events that involve you. To manage your web app notification preferences:
+## Connect Slack or Microsoft Teams
 
-1. Go to [**Settings (gear icon) → Profile**](https://app.light.inc/settings/profile)
-2. In the **Notifications** section, click **Web app**
-3. In the dialog that opens, configure your preferences:
-   - **Enable push notifications**: Turn web app push notifications on or off
-   - **Test notifications**: Send yourself a test notification to confirm it works
-   - **Bill approvals**: Toggle notifications for approval requests, reminders, and payment batch approvals
-   - **Card transactions**: Toggle notifications for authorizations and declines
-   - **Invoice approvals**: Toggle notifications for invoice approval requests
-   - **Reimbursements**: Toggle notifications for reimbursement updates (rejections, setup required, status changes)
-   - **Tasks**: Toggle notifications for task updates and rejected requests
-4. Click **Save** to apply your changes
+Slack and Microsoft Teams each deliver notifications as direct messages to the account matching your Light login. Connect one or both:
 
-> Good to know: Web app notifications are separate from the Slack integration. You can use both to stay informed through different channels.
+1. Open Light and go to **Settings (gear icon) → Integrations**
+2. Click **+ Add integration**
+3. Select **Slack** or **Microsoft Teams**
+4. Follow the setup steps to connect your workspace
+5. Once connected, Light sends notifications as direct messages to your matching account
 
-## Slack integration
+After connecting, set which categories each channel delivers the same way as web push: go to **Settings (gear icon) → Profile → Notifications** and click **Slack** or **Microsoft Teams** to open that channel's preference dialog.
 
-Light integrates with Slack to deliver notifications to your team's Slack workspace. To configure the Slack integration:
+The Integrations page also lists connections for **HubSpot** and **Banks**, unrelated to notification delivery.
 
-1. Go to [**Settings (gear icon) → Integrations**](https://app.light.inc/settings/integrations)
-2. Find the **Slack** integration
-3. Follow the setup instructions to connect your Slack workspace
-4. Once connected, Light sends notifications as direct messages to each user's matching Slack account
+## Mobile notifications
 
-> Good to know: Light also integrates with **Microsoft Teams** as an alternative messaging channel — like Slack, it delivers notifications as direct messages to each user. The [Integrations](https://app.light.inc/settings/integrations) page also includes connections for **HubSpot** and **Banks**.
+The Light mobile app has its own preference dialog, separate from web push, Slack, and Microsoft Teams. Configure it from **Settings (gear icon) → Profile → Notifications → Mobile** on your phone or tablet.
 
-## Profile settings
+## Profile tabs
 
-Your profile contains personal settings that affect how you interact with Light:
+**Settings (gear icon) → Profile** organizes your personal settings into tabs:
 
-1. Go to [**Settings (gear icon) → Profile**](https://app.light.inc/settings/profile)
-2. The profile page includes tabs for:
-   - **Contact Information**: Your personal contact details
-   - **Notifications**: Your web app notification preferences (see [Web app notifications](#web-app-notifications) above)
-   - **User settings**: General user preferences
-   - **Reimbursement details**: Your reimbursement configuration
-   - **Organization details**: Information about your organization
-
-## Best practices
-
-- Configure web app notifications to receive push alerts for events that matter to you
-- Connect the Slack or Microsoft Teams integration to keep your team informed of important events in real time
-- Use the "Test notifications" button to verify your web app push notifications are working
-- Check the Integrations page periodically to ensure your connections remain active
-- Keep your profile contact information up to date so Light can reach you when needed
+- **Contact Information**: your personal contact details
+- **Notifications**: the channel preferences covered above
+- **User preferences**: general account preferences
+- **Reimbursement details**: your reimbursement configuration
+- **Organization details**: information about your organization
+- **Claude MCP**: manage Claude's connection to your Light account
+- **MCP tokens**: create and revoke tokens for MCP integrations
 
 ## Related articles
 
 - [Company Policies](/articles/02-organization-setup/2-8-company-policies)
 - [Managing Entities](/articles/02-organization-setup/2-1-managing-entities)
+
+---
+
+*Also searched as: notification settings, push notifications, alert settings, Slack notifications, Microsoft Teams notifications, mobile notifications, bill approval alerts, payment notifications, how to connect Slack to Light.*
