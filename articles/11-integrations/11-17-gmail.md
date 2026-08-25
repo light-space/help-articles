@@ -9,11 +9,11 @@ Gmail is Google's email platform used by millions of businesses. Light's Gmail i
 The Gmail integration enables:
 
 - **Automatic receipt fetching**: Light scans your company's Gmail accounts for emailed receipts related to card transactions
-- **Manual receipt forwarding**: Team members can forward receipt emails to your company's dedicated inbox at `$company_name@receipts.light.inc` to have them matched to card transactions
+- **Manual receipt forwarding**: Team members can forward receipt emails to your company's dedicated Light receipts address to have them matched to card transactions. Find your company's exact address under **Settings > Integrations > Gmail** in the Light app
 - **AI-powered receipt matching**: Receipts are analyzed using AI to extract merchant name, transaction amount, and date, then matched to the corresponding card transaction
 - **Auto-populated accounting**: Once a receipt is matched, Light automatically fills in the ledger account, tax code, and custom properties on the transaction
 - **Company-wide setup**: An admin connects and activates the integration once for the entire company — no action required from individual team members
-- **Secure access**: Uses Google OAuth 2.0 and Google Workspace service account delegation with read-only Gmail access
+- **Read-only, encrypted access**: Light connects using Google OAuth 2.0 with read-only Gmail access, and stores encrypted, auto-refreshing access tokens rather than any Google password
 
 This eliminates manual receipt chasing and data entry for corporate card spend.
 
@@ -26,7 +26,7 @@ To connect Gmail:
 1. Navigate to **Settings (gear icon) > Integrations > Gmail**
 2. Click **Connect**
 3. You're redirected to Google to authorize access
-4. Sign in with a Google Workspace admin account for your organization
+4. Sign in with the Google account that should connect to Gmail for your company. For company-wide receipt scanning, this is usually your Google Workspace admin, since domain-wide mailbox access is normally authorized at that level
 5. Review the permissions Light is requesting
 6. Click **Allow**
 7. Light confirms the connection and redirects you back to the integrations page
@@ -42,7 +42,7 @@ Once the integration is activated:
 2. Emails containing receipt attachments (typically PDFs) are identified
 3. AI compares each candidate receipt against the transaction's merchant name, amount, currency, and date
 4. When a match is found, the receipt is attached to the transaction and accounting fields are auto-populated — including ledger account, tax code, and any custom properties
-5. If no matching receipt is found right away, Light automatically retries several times over the following minutes, since receipt emails often arrive shortly after the transaction
+5. If no matching receipt is found right away, Light keeps retrying automatically, since receipt emails often land a little after the transaction itself. Retries space out over time, starting around 2 minutes apart and stretching to as long as 15 minutes between attempts
 
 This runs automatically in the background. Your team doesn't need to manually upload receipts or fill in transaction details for matched spend.
 
@@ -50,7 +50,7 @@ This runs automatically in the background. Your team doesn't need to manually up
 
 In addition to automatic fetching, team members can forward receipt emails directly to Light for matching:
 
-1. Forward any receipt email to `$company_name@receipts.light.inc` (replace `$company_name` with your company's Light subdomain)
+1. Forward the receipt email to your company's dedicated Light receipts address. You'll find the exact address under **Settings > Integrations > Gmail** in the Light app
 2. Light receives the forwarded email and extracts receipt data using AI
 3. The receipt is matched to the corresponding card transaction based on merchant, amount, and date
 4. Once matched, accounting fields are auto-populated on the transaction
@@ -87,7 +87,7 @@ Light takes email security seriously:
 - **Encrypted credentials**: All access tokens and refresh tokens are encrypted at rest
 - **Automatic token refresh**: Credentials refresh automatically without manual re-authorization
 - **Read-only access**: Email fetching uses the Gmail read-only scope — Light cannot send, delete, or modify emails
-- **Service account delegation**: Access is granted at the domain level by your Google Workspace admin, with no credentials stored per individual user
+- **Per-user and domain-level access**: Light stores an encrypted access token for the connecting user, and, where your Workspace admin has configured domain-wide delegation, Light can access mailboxes across the domain under that same read-only scope
 - **Company isolation**: Email data and credentials are strictly isolated between companies
 
 Your Google Workspace admin can revoke Light's access at any time from the Google Admin Console or from within Light's integration settings.
