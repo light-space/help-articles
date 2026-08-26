@@ -1,5 +1,20 @@
 # Fixed asset register
 
+> **What is this page about:** How fixed assets work in Light, setting up a Fixed Asset release template, recording assets from an AP bill or journal entry, viewing the fixed asset register, migrating an existing register, and handling adjustments, disposals, and impairments.
+
+## On this page
+
+- How fixed assets work in Light
+- The fixed asset register
+- Setting up a Fixed Asset release template
+- Entering a fixed asset
+- Example: $12,000 office furniture purchase
+- Migrating an existing fixed asset register
+- Adjustments, disposals, and impairments
+- Multi-currency considerations
+- Reporting
+- Related articles
+
 Light treats fixed assets as a specialized form of accounting release.
 
 [Open in Light →](https://app.light.inc/releases)
@@ -12,7 +27,7 @@ A fixed asset in Light is a posted document line (a journal entry or AP bill lin
 2. Light schedules depreciation entries from the **Depreciations Account** (the accumulated depreciation account on the template) to the expense account on the line, according to the template's method and duration.
 3. The asset appears in the fixed asset register and continues posting depreciation each period until the schedule is complete.
 
-This means the same engine that handles prepayments and deferred revenue also handles fixed assets — you just pick a different template type. See [Configuring releases](../09-revenue-compliance/9-2-configuring-releases.md) and [Deferred entries](../05-general-ledger/5-5-deferred-entries.md) for the underlying mechanics.
+This means the same engine that handles prepayments and deferred revenue also handles fixed assets — you just pick a different template type. See Configuring releases and Deferred entries for the underlying mechanics.
 
 ## The fixed asset register
 
@@ -33,7 +48,7 @@ Open a row to view the full depreciation schedule and book value chart. This vie
 Before entering assets, configure at least one Fixed Asset template. Templates are reusable — most organizations create one per asset class (e.g., "5-Year Furniture", "3-Year Laptops", "10-Year Buildings").
 
 1. Navigate to **Settings (gear icon) → Records → [Releases templates](https://app.light.inc/release-templates)**
-2. Click **+ New**
+2. Click **Create release template**
 3. Set **Type** to **Fixed asset**
 4. Fill in:
    - **Name** — descriptive (e.g., "5-Year Straight-Line — Furniture")
@@ -87,19 +102,19 @@ To record office furniture purchased from a vendor for $12,000, depreciated stra
 **Bill line:**
 
 | Field | Value |
-|-------|-------|
+|---|---|
 | Description | Office furniture |
 | Amount | $12,000 |
-| GL Account | 500500 — Office Furniture (depreciation expense) |
+| GL Account | Depreciation Expense — Furniture |
 | Template | "5-Year Furniture" (Fixed Asset, 60 months, straight-line) |
 
 **Initial posting (when the bill is posted):**
-- Dr 800800 — Furniture and Assets $12,000 (additions account)
+- Dr Fixed Assets — Furniture $12,000 (additions account)
 - Cr Accounts Payable $12,000
 
 **Monthly depreciation (repeated 60 times):**
-- Dr 500500 — Office Furniture $200 (expense)
-- Cr 800800 — Accumulated Depreciation — Furniture $200
+- Dr Depreciation Expense — Furniture $200 (expense)
+- Cr Accumulated Depreciation — Furniture $200
 
 After 60 months, the asset has $0 remaining book value and the depreciation schedule is complete.
 
@@ -124,7 +139,7 @@ This recreates the asset in Light's register at its current book value and resum
 
 Light suppresses any depreciation postings that would have fallen before that date, so the schedule picks up cleanly from the cutover point going forward.
 
-Either way, verify the register at [**Accounting → Releases**](https://app.light.inc/releases) (filtered by **Fixed asset** type) matches the legacy register before going live. See [Go-live readiness](../01-getting-started/1-8-go-live-readiness.md) for the broader cutover sequence.
+Either way, verify the register at [**Accounting → Releases**](https://app.light.inc/releases) (filtered by **Fixed asset** type) matches the legacy register before going live. See Go-live readiness for the broader cutover sequence.
 
 ## Adjustments, disposals, and impairments
 
@@ -134,22 +149,22 @@ Once a release has posted entries, you cannot delete it — Light's ledger is im
 - **Disposals**: Post a manual journal entry that writes off remaining book value (Dr accumulated depreciation, Dr loss on disposal, Cr the additions account) and stop further depreciation by ending the release at the disposal date
 - **Impairments**: Post a manual journal entry recognizing the impairment loss against the additions account, then adjust the release schedule to depreciate the new lower book value over the remaining useful life
 
-For full transactional control over complex scenarios, see [Manual journal entries](../05-general-ledger/5-4-manual-journal-entries.md).
+For full transactional control over complex scenarios, see Manual journal entries.
 
 ## Multi-currency considerations
 
-Fixed Asset release templates honor the multi-currency rules of the underlying release framework. Cost is capitalized at the transaction-date FX rate, and depreciation entries post at the rate appropriate to your accounting policy (transaction, local, or group). FX revaluation of fixed asset balances follows the standard FX revaluation process — see [FX revaluations](../05-general-ledger/5-10-fx-revaluations.md).
+Fixed Asset release templates honor the multi-currency rules of the underlying release framework. Cost is capitalized at the transaction-date FX rate, and depreciation entries post at the rate appropriate to your accounting policy (transaction, local, or group). FX revaluation of fixed asset balances follows the standard FX revaluation process — see FX revaluations.
 
 ## Reporting
 
 The fixed asset section of the balance sheet summarizes capitalized cost and accumulated depreciation across all fixed asset accounts. For per-asset detail behind those balances, use the fixed asset register at [**Accounting → Releases**](https://app.light.inc/releases) filtered by **Fixed asset** type.
 
-For audit support, the register is the supporting subledger that should reconcile to the fixed asset and accumulated depreciation accounts on the trial balance — see [Audit-ready record keeping](../09-revenue-compliance/9-9-audit-ready-records.md) and [Trial balance](../10-reporting/10-5-trial-balance.md).
+For audit support, the register is the supporting subledger that should reconcile to the fixed asset and accumulated depreciation accounts on the trial balance — see Audit-ready record keeping and Trial balance.
 
 ## Related articles
 
-- [Configuring releases: depreciation, prepayments, deferred revenue](../09-revenue-compliance/9-2-configuring-releases.md)
-- [Accruals, prepayments, deferred revenue, and depreciation](../09-revenue-compliance/9-3-accruals-prepayments.md)
-- [Deferred entries (accruals and deferrals)](../05-general-ledger/5-5-deferred-entries.md)
-- [Balance sheet](../10-reporting/10-2-balance-sheet.md)
-- [Go-live readiness and minimum viable setup](../01-getting-started/1-8-go-live-readiness.md)
+- [Configuring releases: depreciation, prepayments, deferred revenue](https://light.inc/help/revenue-compliance/configuring-releases)
+- [Accruals, prepayments, deferred revenue, and depreciation](https://light.inc/help/revenue-compliance/accruals-prepayments)
+- [Deferred entries (accruals and deferrals)](https://light.inc/help/general-ledger/deferred-entries)
+- [Balance sheet](https://light.inc/help/reporting/balance-sheet)
+- [Go-live readiness and minimum viable setup](https://light.inc/help/getting-started/go-live-readiness)
