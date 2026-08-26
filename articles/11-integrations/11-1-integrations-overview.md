@@ -4,6 +4,26 @@ Light's strength lies in its ability to connect seamlessly with other business s
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
+**On this page**
+
+- Integration types
+- Pre-built integrations
+- Non-prebuilt integrations
+- Setting up integrations
+- OAuth and secure authentication
+- Data mapping and synchronization
+- Testing integrations
+- Monitoring integration health
+- Syncing historical data
+- Conflict resolution
+- Rate limiting and performance
+- Audit trail on integrations
+- Common integration workflows
+- Common integration issues and troubleshooting
+- API rate limits
+- Webhook integrations
+- Related articles
+
 ## Integration types
 
 Light supports three types of integrations:
@@ -29,10 +49,10 @@ Light provides native integrations with popular platforms:
 - HubSpot: Sync deals, contacts, companies
 
 **FP&A**:
-- Abacum: Sync balance sheet, trial balance, and ledger transaction CSV files into the FP&A tool via S3 bucket for financial planning and analysis. You can define backfilling dates.
+- Abacum: Sync balance sheet, trial balance and ledger trx .csv files into the FP&A tool via S3 bucket for financial planning and analysis. Client can define backfilling dates.
 
 **HRM & Payroll**:
-- Finch: Syncs users, manager relationships, and entities into Light, keeping your Users list current. See [HRM integration (Finch)](11-8-hrm-finch.md) for exactly what syncs.
+- Finch: Syncs users, manager relationship, and entities into Light keeping your Users list current. See HRM Integration (Finch) for exactly what syncs
 
 **Payments**:
 - Stripe: Sync transactions, payouts, refunds for the AR side
@@ -53,23 +73,23 @@ Light provides native integrations with popular platforms:
 - Gmail: Automatic receipt fetching and matching for card transactions
 
 **Banking**:
-- Bank feed: Direct account feeds, balance updates via GoCardless, Plaid, and Stripe's APIs. Payments are not prebuilt, so it requires project and configuration — talk to your Light sales contact.
+- Bank feed: Direct account feeds, balance updates via GoCardless, Plaid, and Stripe's APIs. Payments are not prebuilt so it requires project and configuration (talk with your Light sales on this topic).
 
 ## Non-prebuilt integrations
 
 **Payments via your banks**
-- AP and Reimbursement Payments: Connects to AMC Banking, which handles the connection to your bank (SEB, J.P. Morgan, HSBC, and others) on Light's behalf via SOAP over HTTPS.
+- AP and Reimbursement Payments: connects to AMC Banking, which handles the connection to your bank (SEB, J.P. Morgan HSBC, and others) on Light's behalf.
 
 ## Setting up integrations
 
 For most integrations, the process is:
 
-1. Navigate to **Settings (gear icon) → Integrations**
-2. Click **+ Add integration** and find the one you want (Salesforce, Stripe, Slack, etc.)
+1. Navigate to **Settings (gear icon) > Integrations**
+2. Click **Add integration** and find the one you want (Salesforce, Stripe, Slack, etc.)
 3. You're redirected to the third-party system to authorize (for OAuth-based integrations), or asked to enter credentials directly (for API-key based ones)
 4. You grant Light permission to access your data
 5. Light confirms the connection is active
-6. For integrations that support it, configure sync settings (frequency, data to sync, mappings). Simpler integrations like Slack, Teams, and Gmail just need to be connected or enabled, with no further configuration.
+6. For integrations that support it, configure sync settings (frequency, data to sync, mappings), simpler integrations like Slack, Teams, and Gmail just need to be connected or enabled, with no further configuration
 
 Once set up, the integration runs automatically.
 
@@ -112,7 +132,7 @@ For each integration, configure with your Light representative what data to sync
 - Map fields appropriately
 
 **HRM integration**:
-- Default Base Role = e.g. Reimbursement Only
+- Default Base Role = *e.g. Reimbursement Only*
 - HRM field Entity = Entity in Light
 - HRM field Sub-department = e.g. User Group in Light
 
@@ -125,14 +145,14 @@ Before relying on an integration for critical data, it's worth confirming it's w
 3. Check field mappings and calculations against the source system
 4. Once confident, rely on it for ongoing syncs
 
-Testing support varies by integration. A few providers, like Avalara and Airwallex, offer their own sandbox environments — check the specific integration if this matters to you.
+Testing support varies by integration. A few providers, like Avalara and Airwallex, offer their own sandbox environments, check the specific integration if this matters to you.
 
 ## Monitoring integration health
 
 Light tracks integration status:
 
-1. Navigate to **Settings (gear icon) → Integrations** to check status
-2. View each integration's status. Status values vary by integration — for example Stripe shows Active/Inactive, Slack/Teams/Gmail show Connected/Not connected, and sync-based integrations like Finch show states such as Syncing, Paused, or Initial sync running.
+1. Navigate to **Settings (gear icon) > Integrations** to check status
+2. View each integration's status. Status values vary by integration, for example Stripe shows Active/Inactive, Slack/Teams/Gmail show Connected/Not connected, and sync-based integrations like Finch show states such as Syncing, Paused, or Initial sync running
 3. Click any integration to see:
    - Last successful sync
    - Last error (if failed)
@@ -147,7 +167,7 @@ Historical data handling varies by integration. Most integrations (like Salesfor
 
 ## Conflict resolution
 
-Most sync workflows run in a single direction (for example, Salesforce → Light or Stripe → Light), with Light acting as the ledger receiving data. HubSpot is an exception — it syncs in both directions (Light ↔ HubSpot). Check the specific integration's documentation for its sync direction before relying on it for two-way data consistency.
+Most sync workflows run in a single direction (for example, Salesforce → Light or Stripe → Light), with Light acting as the ledger receiving data. HubSpot is an exception, it syncs in both directions (Light ↔ HubSpot). Check the specific integration's documentation for its sync direction before relying on it for two-way data consistency.
 
 ## Rate limiting and performance
 
@@ -174,11 +194,11 @@ Salesforce → Light → Bank
 Finch syncs employee and organizational data (not payroll) into Light, keeping your Users list current as employees join, change roles, or leave.
 
 For the payroll expense itself:
-1. Employees are paid by your payroll processor
+1. Employees paid by payroll processor
 2. Most companies record payroll expense with a simple monthly journal entry upload
 3. GL reflects the latest payroll expense
 
-See [HRM integration (Finch)](11-8-hrm-finch.md) for exactly what data does sync.
+See HRM integration (Finch) for exactly what data does sync.
 
 **Tax compliance**:
 Light → AvaTax or Sphere → GL
@@ -186,7 +206,7 @@ Light → AvaTax or Sphere → GL
 2. AvaTax or Sphere calculates the applicable tax
 3. Light posts the tax to your GL
 
-AvaTax and Sphere calculate and record tax — they don't file returns with a tax authority. For UK VAT, Light's HMRC integration is the one that actually files returns directly with HMRC. See [HMRC connection (UK)](11-9-hmrc-uk.md).
+AvaTax and Sphere calculate and record tax, they don't file returns with a tax authority. For UK VAT, Light's HMRC integration is the one that actually files returns directly with HMRC, see HMRC connection (UK).
 
 ## Common integration issues and troubleshooting
 
@@ -222,16 +242,16 @@ Salesforce and HubSpot data syncs run on a schedule rather than via webhooks.
 
 ## Related articles
 
-- [Salesforce integration](https://help.light.inc/integrations/salesforce)
-- [HubSpot integration](https://help.light.inc/integrations/hubspot)
-- [Slack integration](https://help.light.inc/integrations/slack)
-- [Microsoft Teams integration](https://help.light.inc/integrations/microsoft-teams)
-- [Stripe integration](https://help.light.inc/integrations/stripe)
-- [Airwallex integration](https://help.light.inc/integrations/airwallex)
-- [HRM integration (Finch)](https://help.light.inc/integrations/hrm-finch)
-- [HMRC connection (UK)](https://help.light.inc/integrations/hmrc-uk)
-- [AvaTax integration (US)](https://help.light.inc/integrations/avatax-us)
-- [Bank integrations overview](https://help.light.inc/integrations/bank-integrations)
-- [Gmail integration](https://help.light.inc/integrations/gmail)
-- [Abacum integration](https://help.light.inc/integrations/abacum)
-- [API access and custom integrations](https://help.light.inc/integrations/api-access)
+- [Salesforce integration](https://light.inc/help/integrations/salesforce)
+- [HubSpot integration](https://light.inc/help/integrations/hubspot)
+- [Slack integration](https://light.inc/help/integrations/slack)
+- [Microsoft Teams integration](https://light.inc/help/integrations/microsoft-teams)
+- [Stripe integration](https://light.inc/help/integrations/stripe)
+- [Airwallex integration](https://light.inc/help/integrations/airwallex)
+- [HRM integration (Finch)](https://light.inc/help/integrations/hrm-finch)
+- [HMRC connection (UK)](https://light.inc/help/integrations/hmrc-uk)
+- [AvaTax integration (US)](https://light.inc/help/integrations/integrations-avatax-us)
+- [Bank integrations overview](https://light.inc/help/integrations/bank-integrations)
+- [Gmail integration](https://light.inc/help/integrations/gmail)
+- [Abacum integration](https://light.inc/help/integrations/abacum)
+- [API access and custom integrations](https://light.inc/help/integrations/api-access)
