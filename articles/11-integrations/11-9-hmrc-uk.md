@@ -4,6 +4,26 @@ HMRC (His Majesty's Revenue and Customs) is the UK tax authority. Light's HMRC i
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
+## What is this page about
+
+This page covers connecting Light to HMRC, preparing and filing a VAT return through Making Tax Digital, the UK tax codes Light seeds for you, and what to do with a submitted return that turns out to be wrong. Read it if your UK entity files VAT through Light.
+
+**On this page**
+
+- Integration capabilities
+- Setting up HMRC connection
+- VAT return preparation
+- Making Tax Digital (MTD) filing
+- VAT tax codes
+- Quarterly vs. monthly filing
+- VAT in multi-entity organisations
+- Monitoring filing deadlines
+- Adjusting submitted returns
+- VAT penalties and interest
+- Troubleshooting HMRC connection
+- Exporting reports for auditors
+- Related articles
+
 ## Integration capabilities
 
 The HMRC integration enables:
@@ -22,16 +42,16 @@ To connect HMRC:
 
 1. Navigate to **Settings (gear icon) > Integrations**
 2. Find **HMRC** and click to connect, opening the **Create HMRC connection** dialog
-3. Click **Create**, then you're redirected to HMRC to authorize
+3. Click **Create**, then you're redirected to HMRC to authorise
 4. Sign in with your Government Gateway credentials
 5. Two-factor authentication required (security code via email or phone)
 6. Review permissions Light is requesting to access your tax account
-7. Authorize on HMRC's site
+7. Authorise on HMRC's site
 8. Light confirms connection is active
 
-Once connected, Light can retrieve your VAT obligations and file returns. Light never stores your HMRC credentials — only encrypted access tokens, which are refreshed automatically.
+Once connected, Light can retrieve your VAT obligations and file returns. Light never stores your HMRC credentials, only encrypted access tokens, which are refreshed automatically.
 
-> Good to know: The connection is per entity, and the entity must have its VAT registration number set in **Settings (gear icon) > Entities** (with or without the GB prefix — Light formats it correctly when communicating with HMRC).
+> Good to know: The connection is per entity, and the entity must have its VAT registration number set in **Settings (gear icon) > Entities**, with or without the GB prefix, since Light formats it correctly when communicating with HMRC.
 
 ## VAT return preparation
 
@@ -87,9 +107,9 @@ Light checks that a tax code is used correctly at a structural level, such as ba
 
 Your VAT filing frequency is determined by your registration with HMRC — there is no separate frequency setting in Light.
 
-## VAT in multi-entity organizations
+## VAT in multi-entity organisations
 
-For organizations with multiple UK entities:
+For organisations with multiple UK entities:
 
 1. Each entity has separate HMRC registration (VAT number)
 2. Each entity files a separate VAT return
@@ -97,16 +117,6 @@ For organizations with multiple UK entities:
 4. Light has no VAT group feature. If your entities hold an actual VAT group registration with HMRC, talk to your Light representative about how to handle group filing, since it isn't a self-service configuration in the product today
 
 Light supports entity-level VAT reporting and general financial consolidation across entities, but not VAT group filing specifically.
-
-## Monitoring filing deadlines
-
-Light tracks HMRC deadlines:
-
-1. Navigate to **Planning & Reports → Reports**
-2. View your open VAT obligations retrieved from HMRC, including upcoming return due dates
-3. Once filed, HMRC records the return against the obligation
-
-This prevents missed deadlines and penalties.
 
 ## Adjusting submitted returns
 
@@ -126,7 +136,7 @@ HMRC charges penalties for late filing and late payment, plus interest on underp
 
 **Filing deadline missed**: Check your open obligations in **Planning & Reports → Reports** and file as soon as possible.
 
-**Error in a submitted return**: Correct it per HMRC's rules — in your next return if below HMRC's thresholds, otherwise report directly to HMRC.
+**Error in a submitted return**: correct it per HMRC's rules. Below HMRC's thresholds, correct it in your next return; otherwise, report it to HMRC directly.
 
 ## Exporting reports for auditors
 
@@ -140,6 +150,6 @@ Combine the individual CSV exports as needed for auditor review.
 
 ## Related articles
 
-- [Tax compliance — HMRC (UK) and VAT](../09-revenue-compliance/9-7-hmrc-vat.md)
-- [Integrations overview](11-1-integrations-overview.md)
-- [E-invoicing compliance (Peppol)](../09-revenue-compliance/9-6-e-invoicing-compliance.md)
+- [Tax compliance — HMRC (UK) and VAT](https://light.inc/help/revenue-compliance/hmrc-vat)
+- [Integrations overview](https://light.inc/help/integrations/integrations-overview)
+- [E-invoicing compliance (Peppol)](https://light.inc/help/revenue-compliance/e-invoicing-compliance)
