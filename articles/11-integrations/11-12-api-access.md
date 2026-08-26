@@ -1,53 +1,71 @@
 # API Access and Custom Integrations
 
-For integrations beyond Light's pre-built connectors, Light provides a REST API enabling custom integrations with any system. The API allows creating and managing transactions, accessing financial data, and automating accounting workflows.
+Light's REST API covers integrations beyond the pre-built connectors. Use it to create and manage transactions, read your financial data, and automate accounting workflows from any system.
 
 [Open API documentation →](https://docs.light.inc)
 
+## What is this page about
+
+This page covers how to authenticate against the Light API, which resources it exposes, how to create and query records, and the rate limits and error codes to build around. It assumes you are comfortable making HTTP requests and reading JSON.
+
+**On this page**
+
+- API overview
+- Available API resources
+- Authentication
+- Creating transactions via API
+- Querying data
+- Rate limits
+- Error handling
+- Custom integration examples
+- Troubleshooting
+- API documentation and support
+- Related articles
+
 ## API overview
 
-The Light API is organized around REST and uses standard HTTP response codes, authentication, and verbs. Most endpoints accept and return JSON-encoded data in **camelCase** format. The base URL for all API requests is:
+The Light API is organised around REST and uses standard HTTP response codes, authentication, and verbs. Most endpoints accept and return JSON-encoded data in **camelCase** format. The base URL for all API requests is:
 
-```
+```javascript
 https://api.light.inc
 ```
 
-Some fields use enumerated (enum) values to represent specific states or types. While these enums are documented, they are not guaranteed to be exhaustive — new enum values may be introduced over time. To maintain forward compatibility, always handle unexpected or unknown enum values gracefully rather than relying on exhaustive matching.
+Some fields use enumerated (enum) values to represent specific states or types. Light documents these enums and may add new values over time, so handle unknown enum values gracefully rather than relying on exhaustive matching.
 
 ## Available API resources
 
 The API provides endpoints for managing the following resources:
 
-- **Accounting Documents** — List and query all accounting documents across types
-- **Attachments** — Upload, list, and manage document attachments
-- **Authorization** — the OAuth 2.0 authorization flow, rather than a queryable resource like the others (see **Authentication** below)
-- **Bank Accounts** — Create and access bank accounts (creating a bank account also creates its linked ledger account atomically)
-- **Card Balance Accounts** — Access card balance accounts, statements, and total spend
-- **Card Customers** — Retrieve the card integration public key
-- **Card Transactions** — List, post, and update card transactions and receipts
-- **Cards** — Create, freeze, unfreeze, and manage corporate cards
-- **Companies** — Access company configuration (e.g., currency settings)
-- **Contracts** — Create, publish, renew, terminate, and manage contracts
-- **Credit Notes** — Create, list, and link credit notes to invoice payables
-- **Custom Properties** — Access custom property groups
-- **Customer Credits** — Manage customer credit documents
-- **Customers** — Create, list, activate, and archive customers
-- **Entities** — List company entities
-- **Exchange** — Retrieve currency exchange rates
-- **Expenses** — List expenses and submit reimbursements
-- **Invoice Approvals** — Retrieve invoice approval status
-- **Invoice Payables** — Create, approve, decline, mark as paid, and manage bills and their line items
-- **Invoice Receivables** — Create, update, open, reset, and send sales invoices
-- **Journal Entries** — Create journal entries programmatically
-- **Ledger Transactions** — Query ledger transaction lines
-- **Ledger Accounts** — List the chart of accounts
-- **Products** — Manage product catalog
-- **Purchase Orders** — Create, close, cancel, and manage purchase orders and lines
-- **User Comments** — Create, list, and manage comments on records
-- **Users** — List users, manage reimbursement configuration
-- **Vendors** — Create, list, update, and manage vendors
+- **Accounting Documents**: list and query all accounting documents across types
+- **Attachments**: upload, list, and manage document attachments
+- **Authorization**: the OAuth 2.0 authorisation flow, rather than a queryable resource like the others. See Authentication below
+- **Bank Accounts**: create and access bank accounts. Creating a bank account also creates its linked ledger account atomically
+- **Card Balance Accounts**: access card balance accounts, statements, and total spend
+- **Card Customers**: retrieve the card integration public key
+- **Card Transactions**: list, post, and update card transactions and receipts
+- **Cards**: create, freeze, unfreeze, and manage corporate cards
+- **Companies**: access company configuration, such as currency settings
+- **Contracts**: create, publish, renew, terminate, and manage contracts
+- **Credit Notes**: create, list, and link credit notes to invoice payables
+- **Custom Properties**: access custom property groups
+- **Customer Credits**: manage customer credit documents
+- **Customers**: create, list, activate, and archive customers
+- **Entities**: list company entities
+- **Exchange**: retrieve currency exchange rates
+- **Expenses**: list expenses and submit reimbursements
+- **Invoice Approvals**: retrieve invoice approval status
+- **Invoice Payables**: create, approve, decline, mark as paid, and manage bills and their line items
+- **Invoice Receivables**: create, update, open, reset, and send sales invoices
+- **Journal Entries**: create journal entries programmatically
+- **Ledger Transactions**: query ledger transaction lines
+- **Ledger Accounts**: list the chart of accounts
+- **Products**: manage your product catalogue
+- **Purchase Orders**: create, close, cancel, and manage purchase orders and lines
+- **User Comments**: create, list, and manage comments on records
+- **Users**: list users, manage reimbursement configuration
+- **Vendors**: create, list, update, and manage vendors
 
-For full endpoint details, see the [API Reference](https://docs.light.inc) (click "API Reference" in the top navigation).
+For full endpoint details, see the API Reference (click "API Reference" in the top navigation).
 
 ## Authentication
 
@@ -61,13 +79,13 @@ To create an API key:
 
 1. Log in to Light and navigate to **Settings > API Keys**
 2. Click **Create key**
-3. Copy and securely store the generated API key — it will not be shown again
+3. Copy the generated API key and store it securely, since Light shows it once
 
 Light API keys are linked to roles the same way user accounts are. The roles assigned to the API key determine what actions the key can perform.
 
 To authenticate with an API key, include the `Authorization` header using **Basic** authentication:
 
-```
+```javascript
 Authorization: Basic YOUR_API_KEY
 ```
 
@@ -81,27 +99,27 @@ For integrations that act on behalf of users, Light supports the OAuth 2.0 autho
 2. You'll receive a `client_id` and `client_secret`, and provide Light with your redirect URI
 3. Initiate the flow by directing users to:
 
-```
+```javascript
 https://api.light.inc/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI
 ```
 
-4. After authorization, exchange the authorization code for an access token:
+1. After authorization, exchange the authorization code for an access token:
 
-```
+```javascript
 curl -X POST https://api.light.inc/oauth/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
 ```
 
-5. Use the returned access token in subsequent requests:
+1. Use the returned access token in subsequent requests:
 
-```
+```javascript
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 The response also includes a `refresh_token` and `expires_in` value. When the access token expires, refresh it:
 
-```
+```javascript
 curl -X POST https://api.light.inc/oauth/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=refresh_token&refresh_token=YOUR_REFRESH_TOKEN&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
@@ -109,7 +127,7 @@ curl -X POST https://api.light.inc/oauth/token \
 
 Store your tokens securely and update the refresh token after each refresh, as the old one is invalidated.
 
-For a full implementation example (Node.js/Express), see the [OAuth Callback example](https://docs.light.inc/examples/oauth-callback) in the API documentation.
+For a full implementation example (Node.js/Express), see the OAuth Callback example in the API documentation.
 
 ## Creating transactions via API
 
@@ -117,7 +135,7 @@ A common use case is creating invoice payables (bills) from an external system.
 
 **Example**: Create a bill in Light from your procurement system
 
-```
+```javascript
 curl -X POST https://api.light.inc/v1/invoice-payables \
   -H "Authorization: Basic YOUR_API_KEY" \
   -H "Content-Type: application/json;charset=UTF-8" \
@@ -138,7 +156,7 @@ Retrieve existing records using GET endpoints with sorting, filtering, and pagin
 
 **Example**: List accounting documents sorted by date
 
-```
+```javascript
 curl -X GET "https://api.light.inc/v1/accounting-documents/accounting-documents?sort=documentDate:desc&limit=50" \
   -H "Authorization: Basic YOUR_API_KEY"
 ```
@@ -167,17 +185,17 @@ Results are paginated. Use the `limit` parameter to control page size (default: 
 
 ## Rate limits
 
-The Light API enforces two rate limits. These are the standard defaults — Light can agree different limits with your company:
+The Light API enforces two rate limits. These are the standard defaults, and Light can agree different limits with your company:
 
 - **300 requests per minute** per user. Every API key and OAuth token belonging to one user draws on that same allowance, so adding keys does not add capacity
-- **100,000 requests per day** across your whole organization, shared by all users, resetting at midnight UTC
+- **100,000 requests per day** across your whole organisation, shared by all users, resetting at midnight UTC
 
 Exceeding a limit returns a `429 Too Many Requests` response with these headers:
 
-- `X-RateLimit-Limit` — Maximum capacity
-- `X-RateLimit-Remaining` — Remaining capacity
-- `X-RateLimit-Reset` — Unix timestamp when the limit resets
-- `Retry-After` — Recommended seconds to wait before retrying
+- `X-RateLimit-Limit`: maximum capacity
+- `X-RateLimit-Remaining`: remaining capacity
+- `X-RateLimit-Reset`: Unix timestamp when the limit resets
+- `Retry-After`: recommended seconds to wait before retrying
 
 Best practices for staying within limits: monitor `X-RateLimit-Remaining` before large operations, implement exponential backoff on retries, respect the `Retry-After` header, and spread scheduled jobs across different times.
 
@@ -187,13 +205,13 @@ If your use case requires higher limits, contact Light support at **help@light.i
 
 The API returns standard HTTP status codes:
 
-- **200 OK** — Request successful
-- **400 Bad Request** — Invalid request (malformed data or missing required fields)
-- **401 Unauthorized** — API credentials invalid or missing
-- **403 Forbidden** — Insufficient permissions for the requested action
-- **404 Not Found** — Resource not found
-- **429 Too Many Requests** — Rate limit exceeded (check `Retry-After` header)
-- **500 Internal Server Error** — Server error (contact Light support with request details)
+- **200 OK**: request successful
+- **400 Bad Request**: invalid request, such as malformed data or missing required fields
+- **401 Unauthorized**: API credentials invalid or missing
+- **403 Forbidden**: insufficient permissions for the requested action
+- **404 Not Found**: resource not found
+- **429 Too Many Requests**: rate limit exceeded, check the `Retry-After` header
+- **500 Internal Server Error**: server error, contact Light support with the request details
 
 ## Custom integration examples
 
@@ -218,7 +236,7 @@ The API returns standard HTTP status codes:
 
 1. Dashboard queries ledger accounts via `GET /v1/ledger-accounts`
 2. Retrieves transaction lines via `GET /v1/ledger-transaction-lines` with date filters
-3. Aggregates data for custom visualizations
+3. Aggregates data for custom visualisations
 4. Refreshes on a schedule, respecting rate limits
 
 ## Troubleshooting
@@ -235,12 +253,12 @@ The API returns standard HTTP status codes:
 
 ## API documentation and support
 
-- **Full API reference**: [docs.light.inc](https://docs.light.inc) — includes endpoint details, request/response schemas, and code examples
+- **Full API reference**: [docs.light.inc](https://docs.light.inc), which includes endpoint details, request and response schemas, and code examples
 - **Support**: Contact **help@light.inc** for API integration help or to request OAuth 2.0 setup or higher rate limits
 
 ## Related articles
 
-- [Integrations overview](11-1-integrations-overview.md)
-- [Data import and migration tools](11-13-data-import.md)
-- [Data migration from E-Conomic](11-14-migration-economic.md)
-- [Data migration from QuickBooks](11-15-migration-quickbooks.md)
+- [Integrations overview](https://light.inc/help/integrations/integrations-overview)
+- [Data import and migration tools](https://light.inc/help/integrations/data-import)
+- [Data migration from E-Conomic](https://light.inc/help/integrations/migration-economic)
+- [Data migration from QuickBooks](https://light.inc/help/integrations/migration-quickbooks)
