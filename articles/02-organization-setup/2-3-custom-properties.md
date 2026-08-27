@@ -112,6 +112,10 @@ No additional permission is required — editing follows your existing user perm
 
 On the Bills list, you can add a **Custom properties** filter to narrow results by a header-level custom property. Only **active** single-select or multi-select properties assigned to bills at the header level are available to filter on — line-level properties, other field types (Number, Text, Boolean, Date), and inactive properties won't appear in the filter's options.
 
+## Viewing custom properties on lists
+
+Custom properties can be shown as columns directly on list views, so you don't have to open each record to see their values. This is available on the Customers list, as well as on Invoices and Customer Credits — click **Columns** and add the custom property you want displayed.
+
 ## Best practices
 
 - Plan your properties before creation to ensure consistency
