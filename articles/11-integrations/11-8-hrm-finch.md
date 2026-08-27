@@ -1,14 +1,29 @@
 # HRM Integration (Finch)
 
-This article explains how to integrate your HRM (Human Resource Management) system with Light using Finch — including what data is synced, what information we need from you, and how the activation process works.
+Light connects to your HRM (Human Resource Management) system through Finch, so your employee directory keeps your Light users up to date.
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
+## What is this page about
+
+This page covers how Light connects to your HRM system through Finch, which employee details arrive in Light, how often they refresh, and what Light needs from you to set the connection up. Read it before you start so you know what to have ready.
+
+**On this page**
+
+- How Light connects to HRM systems
+- Data synced into Light
+- Sync frequency
+- User behaviour in Light
+- Integration steps
+- What Light needs from you
+- Key points
+- Related articles
+
 ## How Light connects to HRM systems
 
-Light connects to HRM systems through **Finch**, a secure third-party connector that lists more than **200 supported HRM providers** worldwide.
+Light connects to HRM systems through **Finch**, a secure third-party connector that lists more than 200 supported HRM providers worldwide.
 
-You or your Customer Success Manager (CSM) can check provider compatibility here: [Finch Integrations](https://www.tryfinch.com/integrations)
+Check your own provider on Finch's list: [Finch Integrations](https://www.tryfinch.com/integrations). Your Customer Success Manager can confirm compatibility if you are unsure.
 
 ## Data synced into Light
 
@@ -30,11 +45,11 @@ Light can also carry an HRM field such as department, team, or business unit int
 
 Finch notifies Light whenever an employee record changes, and Light processes those updates every 20 minutes.
 
-Your first load of employees arrives on a separate initial sync, which runs as soon as Finch finishes its first pull of your organization data. How long that takes depends on your provider.
+Your first load of employees arrives on a separate initial sync, which runs as soon as Finch finishes its first pull of your organisation data. How long that takes depends on your provider.
 
 How often Finch refreshes data from your HRM system after that also depends on your provider, typically daily or weekly.
 
-## User behavior in Light
+## User behaviour in Light
 
 When the HRM sync runs:
 
@@ -44,7 +59,7 @@ When the HRM sync runs:
 
 ## Integration steps
 
-### Step 1 — Connect your HRM in Light
+### Step 1: Connect your HRM in Light
 
 1. Go to **Settings (gear icon) → Integrations**
 2. Click **Add integration**, then choose **HRM**
@@ -52,13 +67,13 @@ When the HRM sync runs:
 4. Click **Confirm** to open the Finch login widget
 5. Sign in with your **HRM admin credentials**
 
-### Step 2 — Light configures the mapping
+### Step 2: Light configures the mapping
 
 Light's team then sets up the data mapping in the **HRM sync workflow**, using the details you supply below. This includes which HRM field identifies each employee's entity, which role new users receive, and any group mapping you have asked for.
 
-### Step 3 — First sync
+### Step 3: First sync
 
-Once the mapping is in place, Finch's first pull of your organization data triggers the initial sync and your employees appear under **Users**.
+Once the mapping is in place, Finch's first pull of your organisation data triggers the initial sync and your employees appear under **Users**.
 
 ## What Light needs from you
 
@@ -66,15 +81,19 @@ Once the mapping is in place, Finch's first pull of your organization data trigg
    - Which HRM field should Light use to identify each employee's **Entity**?
    - Examples: "Country of Employment", "Legal Entity", "Location"
    - Give the **exact field name**
-
 2. **Group mapping field (optional)**
    - To carry department, team, or business unit information into Light, name the HRM field that holds it
    - Light maps that field onto user **groups**
    - Examples: "Department", "Team", "Business Unit"
-
 3. **A different default role (optional)**
    - New users receive the invoice approver role unless you ask for another one
    - Tell Light which role you want new synced users to start with
+
+**General rule**
+
+| HRM Field name | HRM Field value | ⇒ | Light Field Name | Light Field value |
+|---|---|---|---|---|
+| | | ⇒ | | |
 
 ## Key points
 
@@ -87,5 +106,5 @@ Once the mapping is in place, Finch's first pull of your organization data trigg
 
 ## Related articles
 
-- [Integrations overview](11-1-integrations-overview.md)
-- [User roles and permissions](../03-user-management/3-1-roles-permissions-overview.md)
+- [Integrations overview](https://light.inc/help/integrations/integrations-overview)
+- [User roles and permissions](https://light.inc/help/user-management/roles-permissions-overview)
