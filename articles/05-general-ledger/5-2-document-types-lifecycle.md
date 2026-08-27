@@ -254,6 +254,8 @@ Draft documents that are no longer needed can be archived:
 
 Only documents in DRAFT status can be archived directly. A posted document reaches ARCHIVED status by being reversed (voided) without being returned to draft. ARCHIVED is a terminal status—archived documents cannot be reactivated.
 
+> Good to know: Invoice receivables and customer credits can be unarchived back to DRAFT status if you need to reactivate or edit them. Unarchiving an archived customer credit removes any linked invoice receivables so you can re-link cleanly.
+
 ## Document Sequence
 
 Each document type has a sequence:
