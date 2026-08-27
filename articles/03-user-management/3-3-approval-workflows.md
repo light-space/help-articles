@@ -62,6 +62,8 @@ Approval nodes are stop points where designated users must approve or reject a d
 - **If approved** - The document proceeds to the next step
 - **If rejected** - The document is sent back or routed to an alternative path
 
+> **Good to know:** Each approval node must be able to resolve to at least one eligible, active approver. If a submitted document (for example, a credit note) reaches a node where no approver can be found, Light now rejects the submission with an error naming the broken approval step, instead of leaving it stuck pending indefinitely. If you see this error, check that the users or roles assigned to that node are active and correctly configured.
+
 ## Publishing Workflows
 
 Workflows exist in **draft** and **published** states:
@@ -85,6 +87,7 @@ The Workflows list shows the published date, who published it, and the current v
 - **Test before publishing** - Run test documents through workflows before publishing
 - **Monitor versions** - Track which version is published and review changes
 - **Review quarterly** - As your organization changes, revisit approval rules to ensure they still fit
+- **Verify approvers stay active** - If a user assigned to an approval node is deactivated or removed, make sure the node still has a valid approver, or submissions routed to it will be rejected
 
 ## Related Articles
 
