@@ -4,6 +4,17 @@ Microsoft Teams is the enterprise messaging and collaboration platform used by m
 
 [Open in Light →](https://app.light.inc/settings/integrations)
 
+**On this page**
+
+- Integration capabilities
+- Setting up Teams integration
+- Submitting receipts in Teams
+- Asking the Light assistant
+- Invoice approvals in Teams
+- Notifications
+- Troubleshooting Teams integration
+- Related articles
+
 ## Integration capabilities
 
 The Teams integration enables:
@@ -77,6 +88,6 @@ Notifications are delivered to each user individually based on their matched ema
 
 ## Related articles
 
-- [Integrations overview](11-1-integrations-overview.md)
-- [Slack integration](11-4-slack.md)
-- [Submitting expenses via Teams](../08-expense-management/8-3-expenses-teams.md)
+- [Integrations overview](https://light.inc/help/integrations/integrations-overview)
+- [Slack integration](https://light.inc/help/integrations/slack)
+- [Submitting expenses via Teams](https://light.inc/help/employee-expenses-reimbursements/employee-expenses-via-teams)

@@ -1,118 +1,134 @@
 # Gmail Integration
 
-Gmail is Google's email platform used by millions of businesses. Light's Gmail integration automatically fetches receipt emails from your team's inboxes and matches them to corporate card transactions, using AI to extract merchant details, amounts, and dates — then auto-populates the accounting data on each transaction.
+> **What's this page about: **The Gmail integration connects your company's Gmail to the Light app so it can find receipt emails on its own, match them to corporate card transactions, and fill in the accounting details, the ledger account, tax code, and any custom properties, without anyone re-entering the data by hand.
 
-[Open in Light →](https://app.light.inc/settings/integrations)
+**On this page**
 
-## Integration capabilities
+- What the Gmail integration does
+- Setting up the Gmail integration
+- How receipt matching works
+- Forwarding receipts manually
+- Reviewing matched receipts
+- Checking connection status
+- Security and data access
+- Troubleshooting
+- Disabling the integration
 
-The Gmail integration enables:
+## What the Gmail integration does
 
-- **Automatic receipt fetching**: Light scans your company's Gmail accounts for emailed receipts related to card transactions
-- **Manual receipt forwarding**: Team members can forward receipt emails to your company's dedicated Light receipts address to have them matched to card transactions. Find your company's exact address under **Settings > Integrations > Gmail** in the Light app
-- **AI-powered receipt matching**: Receipts are analyzed using AI to extract merchant name, transaction amount, and date, then matched to the corresponding card transaction
-- **Auto-populated accounting**: Once a receipt is matched, Light automatically fills in the ledger account, tax code, and custom properties on the transaction
-- **Company-wide setup**: An admin connects and activates the integration once for the entire company — no action required from individual team members
-- **Read-only, encrypted access**: Light connects using Google OAuth 2.0 with read-only Gmail access, and stores encrypted, auto-refreshing access tokens rather than any Google password
+Gmail is Google's email platform. Light's Gmail integration scans your company's Gmail for receipt emails, matches each one to the right corporate card transaction using AI, and posts the accounting entries automatically.
 
-This eliminates manual receipt chasing and data entry for corporate card spend.
+[Open Gmail settings in Light →](https://app.light.inc/settings/integrations)
 
-## Setting up Gmail integration
+The integration handles:
 
-A company admin sets up the Gmail integration on behalf of the entire organization. No action is required from individual team members.
+- **Automatic receipt fetching.** Light scans connected Gmail accounts for receipt emails tied to card transactions, so nobody has to go looking for them.
+- **Manual receipt forwarding.** Anyone on the team can forward a receipt email to your company's dedicated Light receipts address to get it matched, useful for receipts that land in a personal inbox or don't get picked up automatically. Find your company's exact address under **Settings > Integrations > Gmail** in the Light app.
+- **AI-powered receipt matching.** Light reads each receipt (including PDF attachments) to pull out the merchant name, amount, currency, and date, then matches it to the corresponding card transaction.
+- **Auto-populated accounting.** Once a receipt is matched, Light fills in the ledger account, tax code, and any custom properties on the transaction, the same fields your accounting team would otherwise enter by hand.
+- **Company-wide setup.** One admin connects Gmail once for the whole company. Individual team members don't need to do anything.
+- **Read-only, encrypted access.** Light connects using Google OAuth 2.0 with read-only Gmail access, and stores encrypted, auto-refreshing access tokens rather than any Google password.
+
+This removes the manual chasing and re-keying that corporate card spend usually creates: no forwarding receipts around, no typing merchant names or amounts into the ledger by hand.
+
+## Setting up the Gmail integration
+
+One admin sets up the Gmail integration for the whole company. No one else needs to take any action.
 
 To connect Gmail:
 
-1. Navigate to **Settings (gear icon) > Integrations > Gmail**
-2. Click **Connect**
-3. You're redirected to Google to authorize access
-4. Sign in with the Google account that should connect to Gmail for your company. For company-wide receipt scanning, this is usually your Google Workspace admin, since domain-wide mailbox access is normally authorized at that level
-5. Review the permissions Light is requesting
-6. Click **Allow**
-7. Light confirms the connection and redirects you back to the integrations page
-8. Toggle **Enable Email Fetching** on — Light runs a connectivity check to verify access before activating receipt fetching for the company
+1. In the Light app, go to **Settings (gear icon) > Integrations > Gmail**.
+2. Click **Connect**.
+3. Light redirects you to Google to authorize access.
+4. Sign in with the Google account that should connect to Gmail for your company. For company-wide receipt scanning, this is usually your Google Workspace admin, since domain-wide mailbox access is normally authorized at that level.
+5. Review the permissions Light is requesting, then click **Allow**.
+6. Light confirms the connection and redirects you back to the integrations page in the Light app.
+7. Toggle **Enable Email Fetching** on. Light runs a connectivity check first and only activates fetching once that check passes.
 
-The Gmail integration is now connected and active for your company.
+Once this finishes, the Gmail integration is connected and active for your company.
 
 ## How receipt matching works
 
-Once the integration is activated:
+Once the integration is active, for every corporate card transaction:
 
-1. When a corporate card transaction is made, Light searches the cardholder's Gmail inbox for matching receipt emails
-2. Emails containing receipt attachments (typically PDFs) are identified
-3. AI compares each candidate receipt against the transaction's merchant name, amount, currency, and date
-4. When a match is found, the receipt is attached to the transaction and accounting fields are auto-populated — including ledger account, tax code, and any custom properties
-5. If no matching receipt is found right away, Light keeps retrying automatically, since receipt emails often land a little after the transaction itself. Retries space out over time, starting around 2 minutes apart and stretching to as long as 15 minutes between attempts
+1. Light searches the cardholder's Gmail inbox for a matching receipt email.
+2. It identifies emails with receipt attachments, typically PDFs.
+3. AI compares each candidate receipt against the transaction's merchant name, amount, currency, and date.
+4. On a match, Light attaches the receipt to the transaction and auto-populates the accounting fields: ledger account, tax code, and any custom properties.
+5. If no match turns up right away, Light keeps retrying automatically, since receipt emails often land a little after the transaction itself. Retries space out over time, starting around 2 minutes apart and stretching to as long as 15 minutes between attempts.
 
-This runs automatically in the background. Your team doesn't need to manually upload receipts or fill in transaction details for matched spend.
+This runs in the background. Your team doesn't need to upload receipts or fill in transaction details by hand for anything Light matches.
 
 ## Forwarding receipts manually
 
-In addition to automatic fetching, team members can forward receipt emails directly to Light for matching:
+Alongside automatic fetching, anyone on the team can forward a receipt directly to Light for matching:
 
-1. Forward the receipt email to your company's dedicated Light receipts address. You'll find the exact address under **Settings > Integrations > Gmail** in the Light app
-2. Light receives the forwarded email and extracts receipt data using AI
-3. The receipt is matched to the corresponding card transaction based on merchant, amount, and date
-4. Once matched, accounting fields are auto-populated on the transaction
+1. Forward the receipt email to your company's dedicated Light receipts address. You'll find the exact address under **Settings > Integrations > Gmail** in the Light app.
+2. Light receives the forwarded email and extracts the receipt data using AI.
+3. Light matches the receipt to the corresponding card transaction by merchant, amount, and date.
+4. Once matched, Light auto-populates the accounting fields on the transaction.
 
-This is useful when:
-- A receipt email wasn't automatically detected
-- You receive receipts on a personal email account
-- You want to ensure a specific receipt is processed immediately
+This is worth using when:
+
+- A receipt email wasn't picked up automatically.
+- The receipt landed in a personal email account instead of a company inbox.
+- You want a specific receipt processed right away, without waiting on the automatic scan.
 
 ## Reviewing matched receipts
 
 After Light matches a receipt to a card transaction:
 
-1. Open the card transaction in Light
-2. The matched receipt is attached to the transaction
-3. Review the auto-populated accounting data (ledger account, tax code, custom properties)
-4. Adjust any fields if needed, or approve the transaction as-is
+1. Open the transaction in the Light app.
+2. The matched receipt is attached to it.
+3. Review the auto-populated accounting data: ledger account, tax code, and any custom properties.
+4. Adjust any field if it needs a correction, or approve the transaction as-is.
 
-If Light couldn't find a match or the AI extraction needs correction, you can manually upload a receipt or edit the transaction details.
+If Light couldn't find a match, or the AI extraction needs correction, upload the receipt manually or edit the transaction details directly.
 
-## Connection status
+## Checking connection status
 
-Admins can check the status of the Gmail integration at any time:
+Admins can check the Gmail integration's status at any time:
 
-1. Navigate to **Settings (gear icon) > Integrations > Gmail**
-2. View the connection status: **Connected** or **Not Connected**
-3. View the email fetching status: **Enabled** or **Disabled**
+1. In the Light app, go to **Settings (gear icon) > Integrations > Gmail**.
+2. Check the connection status: **Connected** or **Not Connected**.
+3. Check the email fetching status: **Enabled** or **Disabled**.
 
-## Security and privacy
+## Security and data access
 
-Light takes email security seriously:
+- **OAuth 2.0.** Light never sees or stores your Google password.
+- **Encrypted tokens.** Access and refresh tokens are encrypted at rest.
+- **Automatic token refresh.** Credentials refresh on their own; no manual re-authorization.
+- **Read-only access.** Email fetching uses Gmail's read-only scope. Light can't send, delete, or modify anything in your Gmail.
+- **Per-user and domain-level access.** Light stores an encrypted access token for the connecting user, and, where your Workspace admin has configured domain-wide delegation, Light can access mailboxes across the domain under that same read-only scope.
+- **Company isolation.** Email data and credentials are kept separate between companies. One company's connection can't see another's data.
 
-- **OAuth 2.0**: Industry-standard authorization — Light never sees or stores any Google passwords
-- **Encrypted credentials**: All access tokens and refresh tokens are encrypted at rest
-- **Automatic token refresh**: Credentials refresh automatically without manual re-authorization
-- **Read-only access**: Email fetching uses the Gmail read-only scope — Light cannot send, delete, or modify emails
-- **Per-user and domain-level access**: Light stores an encrypted access token for the connecting user, and, where your Workspace admin has configured domain-wide delegation, Light can access mailboxes across the domain under that same read-only scope
-- **Company isolation**: Email data and credentials are strictly isolated between companies
+Your Google Workspace admin can revoke Light's access at any time, either from the Google Admin Console or from the integration settings inside the Light app.
 
-Your Google Workspace admin can revoke Light's access at any time from the Google Admin Console or from within Light's integration settings.
+## Troubleshooting the Gmail integration
 
-## Troubleshooting Gmail integration
+**Connection fails during authorization.** Confirm you're signing in with the Google account intended for this integration, check that third-party app access is enabled in your Google Admin Console, and clear your browser cookies before retrying.
 
-**Connection fails during authorization**: Verify you're signing in with the correct Google Workspace admin account, check that third-party app access is enabled in your Google Admin Console, and try clearing your browser cookies before retrying.
+**Connectivity check fails when activating.** This usually means domain-wide delegation hasn't been configured correctly for Light's service account. Verify the service account email, client ID, and granted scopes with your Google Workspace admin.
 
-**Connectivity check fails when activating**: This means domain-wide delegation hasn't been configured correctly for Light's service account. Verify the service account email, client ID, and granted scopes with your Google Workspace admin.
+**Receipts aren't matching to transactions.** Confirm email fetching is enabled for the company, and check that the receipt emails actually exist in the relevant inbox. Matching depends on AI reading the receipt, so an unusual receipt format can occasionally miss an automatic match.
 
-**Receipts not being matched to transactions**: Confirm email fetching is enabled for the company and check that receipt emails exist in team members' inboxes. Matching depends on AI extraction — if the receipt format is unusual, the match may not be automatic.
-
-**Connection shows "Not Connected" unexpectedly**: The OAuth credentials may have expired or been revoked. Navigate to **Settings > Integrations > Gmail** and click **Connect** to re-authorize.
+**Connection shows "Not Connected" unexpectedly.** The OAuth credentials have likely expired or been revoked. Go to **Settings > Integrations > Gmail** in the Light app and click **Connect** to re-authorize.
 
 ## Disabling the integration
 
-To disable Gmail integration:
+To turn off the Gmail integration:
 
-1. Navigate to **Settings (gear icon) > Integrations > Gmail**
-2. Toggle **Enable Email Fetching** to off to stop receipt fetching across the company
+1. In the Light app, go to **Settings (gear icon) > Integrations > Gmail**.
+2. Toggle **Enable Email Fetching** off. This stops receipt fetching across the company.
 
-Previously matched receipts and auto-populated accounting data remain on transactions for historical reference.
+Receipts already matched, and the accounting data already posted from them, stay on their transactions. Nothing already matched gets undone.
 
 ## Related articles
 
-- [Integrations overview](11-1-integrations-overview.md)
-- [Slack integration](11-4-slack.md)
-- [API access and custom integrations](11-12-api-access.md)
+- [Integrations overview](https://help.light.inc/integrations/integrations-overview)
+- [Slack integration](https://help.light.inc/integrations/slack)
+- [API access and custom integrations](https://help.light.inc/integrations/api-access)
+
+---
+
+*Also searched as: connect Gmail to Light, sync Gmail receipts, auto-fetch receipts from email, forward receipts to Light, Gmail OAuth setup, disconnect Gmail integration, Gmail integration troubleshooting.*
