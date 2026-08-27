@@ -1,6 +1,19 @@
 # Fiscal Year and Accounting Periods
 
-This article explains how to configure fiscal years, accounting periods, and period closing tasks in Light. Proper period configuration ensures accurate closing procedures and period-based reporting.
+> **What is this page about:** How to configure fiscal years and accounting periods in Light, generate periods on any month boundary, complete closing tasks in the required order (some tasks must precede others), and close periods for accurate reporting.
+
+## On this page
+
+- Understanding fiscal years and accounting periods
+- Navigating accounting periods in Light
+- Configuring fiscal years in Light
+- Generating accounting periods in Light
+- Period closing tasks in Light
+- Closing a period in Light
+- Reopening tasks in Light
+- Fiscal year structure in Light
+- Best practices for fiscal years and accounting periods in Light
+- Related articles
 
 [Open in Light →](https://app.light.inc/accounting/accounting-periods)
 
@@ -8,9 +21,9 @@ This article explains how to configure fiscal years, accounting periods, and per
 
 A **fiscal year** is your organization's accounting year, which may differ from the calendar year. An **accounting period** is a subdivision of the fiscal year (typically monthly) during which transactions are grouped for reporting and closing purposes.
 
-## Navigating accounting periods
+## Navigating accounting periods in Light
 
-1. Go to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods) in the sidebar
+1. Go to [Accounting → Accounting periods](https://app.light.inc/accounting/accounting-periods) in the sidebar
 2. The page displays fiscal years as collapsible sections
 3. Expand a fiscal year to see its accounting periods
 4. Each period shows columns for **Period** (month name), **Start date**, **End date**, and **Status**
@@ -22,7 +35,7 @@ The fiscal year labels reflect your configuration:
 
 The status column shows how many closing tasks have been completed (e.g., "2/4 tasks done", "0/4 tasks done").
 
-## Configuring fiscal years
+## Configuring fiscal years in Light
 
 When generating accounting periods, you can configure your fiscal year to start and end on any month boundary.
 
@@ -39,16 +52,16 @@ When generating accounting periods, you can configure your fiscal year to start 
 - **Calendar year**: Select Jan 2025 – Dec 2025 → labeled "2025"
 - **Partial year**: Select Jan 2025 – Jul 2025 → labeled "2025 Jan–Jul"
 
-## Generating accounting periods
+## Generating accounting periods in Light
 
-1. Navigate to [**Accounting → Accounting periods**](https://app.light.inc/accounting/accounting-periods)
+1. Navigate to [Accounting → Accounting periods](https://app.light.inc/accounting/accounting-periods)
 2. Click **+ Generate next period**
 3. Select your fiscal year start and end months using the month range picker
 4. Light automatically generates monthly periods based on your selection
 
 Your fiscal year can start in any month—not just January. For example, you can generate an April to March fiscal year or an October to September fiscal year.
 
-## Period closing tasks
+## Period closing tasks in Light
 
 Each accounting period has a set of closing tasks that must be completed before the period can be closed. To view and manage tasks:
 
@@ -65,7 +78,7 @@ Each accounting period has a set of closing tasks that must be completed before 
 
 Account Payables, Account Receivables, and Journal Entries can be closed in any order relative to each other. **FX revaluation** is the exception—it can only be run after all three of those are closed, and after the previous period's FX revaluation is done.
 
-## Closing a period
+## Closing a period in Light
 
 Once all four closing tasks are completed:
 
@@ -78,7 +91,7 @@ The previous accounting period must already be closed before you can close a per
 
 A closed period prevents new transactions from being posted.
 
-## Reopening tasks
+## Reopening tasks in Light
 
 If corrections are needed after closing a task:
 
@@ -89,21 +102,20 @@ If corrections are needed after closing a task:
 
 Reopening a task may also reopen the FX revaluation task for later periods you've already run, so revaluations must be run again before those periods can be closed.
 
-## Fiscal year structure
+## Fiscal year structure in Light
 
 Fiscal years are displayed in reverse chronological order on the Accounting periods page. Each fiscal year's status depends on the progress of its accounting periods and their closing tasks.
 
-## Best practices
+## Best practices for fiscal years and accounting periods in Light
 
 - Complete all four closing tasks promptly after month-end to enable timely reporting
 - Close Account Payables, Account Receivables, and Journal Entries before running FX revaluations—revaluations can only run once those three are closed and the prior period's revaluation is done
-- Run FX revaluation at every period close, **in period order** — you cannot revalue a period until the prior one's FX revaluation is complete
 - Plan period closing tasks in advance and assign responsibilities
 - Reopen periods only for legitimate corrections
 - Close periods in chronological order to maintain accounting integrity
 
 ## Related articles
 
-- [Managing Entities](/articles/02-organization-setup/2-1-managing-entities)
-- [Chart of Accounts Setup](/articles/02-organization-setup/2-2-chart-of-accounts)
-- [Tax and VAT Configuration](/articles/02-organization-setup/2-5-tax-vat-configuration)
+- [Managing Entities](https://light.inc/help/organization-setup/managing-entities)
+- [Chart of Accounts Setup](https://light.inc/help/organization-setup/chart-of-accounts)
+- [Tax and VAT Configuration](https://light.inc/help/organization-setup/tax-vat-configuration)
