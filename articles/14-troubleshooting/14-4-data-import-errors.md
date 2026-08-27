@@ -281,6 +281,10 @@ Imports in Light are started from the page for each record type (for example **J
    - Vendors are not created automatically during a bill import
    - Import or create missing vendors first from the [Vendors](https://app.light.inc/vendors) page, then re-run the import
 
+### Vendor bank details rejected on import (INVALID_BIC / UNSUPPORTED_IBAN_COUNTRY)
+
+If a vendor CSV import fails with an `INVALID_BIC` or `UNSUPPORTED_IBAN_COUNTRY` error, Light has checked the bank account number and BIC columns for that vendor row and found them invalid — this check now runs for CSV imports as well as manual create/edit and the vendor portal. Check the row's bank account number column: it must be a properly formatted IBAN (correct length and checksum for its country) for `INVALID_BIC`/`UNSUPPORTED_IBAN_COUNTRY` to clear, and the BIC column must be 8 or 11 characters matching a valid bank/country code. Rows that only include domestic bank account fields (not IBAN/BIC) aren't affected. If the vendor already had invalid bank details before this check was added, importing a row that doesn't touch the bank columns for that vendor won't trigger validation — only rows that add or change the bank account number or BIC are checked.
+
 ## Issue 8: "Row Rejected" or "Validation Error"
 
 ### Symptoms
