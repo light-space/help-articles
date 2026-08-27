@@ -1,10 +1,36 @@
 # Connecting your first bank account
 
-This article walks you through connecting a bank account to Light. Once an account is connected, you get real-time transaction visibility, automated reconciliation, and streamlined cash management.
+> **What is this page about:** How to connect your first bank account to Light so you can sync transactions automatically, reconcile faster, and monitor cash in real time. Covers connecting via Plaid, GoCardless, Stripe, Airwallex, and AMC, importing statements manually via CSV, and how to map accounts to your GL for reconciliation.
 
 > **Scope:** This guide covers connecting a bank account so its transactions flow into Light for reconciliation and cash visibility. It sets up a **read-only data feed** — it does **not** enable sending or initiating payments (including host-to-host payment files) from your bank.
 
+## On this page
+
+- Before you start
+- Connection methods
+  - Connect via Plaid
+  - Connect via GoCardless
+  - Connect via Stripe
+  - Connect via Airwallex
+  - Connect via AMC
+- Import via CSV
+- Manage account details
+- Verify account connection
+- Map bank accounts to GL
+- Connect multiple accounts in Light
+- Troubleshooting connection issues
+  - Connection failed or timed out
+  - Transactions aren't appearing
+  - Account shows balance but no transactions
+  - Can't find my bank
+  - Duplicate account appears
+- Set up reconciliation in Light
+- Next steps
+- Related articles
+
 [Open in Light →](https://app.light.inc/settings/bank-accounts)
+
+This article walks you through connecting a bank account to Light. Once an account is connected, you get real-time transaction visibility, automated reconciliation, and streamlined cash management.
 
 ## Before you start
 
@@ -119,7 +145,7 @@ For banks not supported by any of the live feed providers above, you can bring i
 1. Go to **Settings (gear icon) → Bank accounts** and click **Add account**
 2. In the **Add bank account** drawer, fill in **Entity**, **Bank country**, **Name**, **Bank provider**, **Currency**, and **Ledger account code** (plus optional BIC, IBAN, or account number), then click **Add**
 3. Export a statement from your bank as a CSV file
-4. Import the file (see [Importing bank statements](../04-bank-reconciliation/4-3-importing-transactions.md) for full details)
+4. Import the file (see **Importing bank statements** for full details)
 
 Unlike Plaid, GoCardless, Stripe, Airwallex, and AMC, a CSV import is a one-time upload, not an ongoing feed — you'll need to repeat the import to bring in new transactions.
 
@@ -183,17 +209,25 @@ Light displays all connected accounts in a centralized view, making it easy to m
 
 Start by checking your internet connection. Some banks temporarily deny third-party connections for security, so it's worth trying again in a few minutes. If it still won't connect, contact your bank to make sure third-party access is enabled on your account.
 
+---
+
 **Transactions aren't appearing?**
 
 Check whether the account shows a red "Inactive: …" or "Account no longer available…" note in Settings → Bank accounts — that means the feed needs renewing. Some banks also take up to 24 hours to deliver the first transaction feed, so if it's been less than a day, give it a bit more time. If it's been longer, reconnect the feed via **Connect bank**.
+
+---
 
 **Account shows balance but no transactions?**
 
 This is normal during initial setup. Light fetches 90 days of history, which takes a few moments — check **Accounting → Bank reconciliation** for balance and transaction status. Feeds refresh daily or every 12 hours, so allow at least one full sync cycle before contacting support.
 
+---
+
 **Can't find my bank?**
 
 Try searching by your bank's abbreviation (e.g., "JPM" for JPMorgan) — different regions may have separate entries for the same bank. If your bank still isn't listed, use CSV import or contact support to request coverage from an additional provider.
+
+---
 
 **Duplicate account appears?**
 
@@ -209,7 +243,7 @@ Once your account is connected:
 2. Go to **Accounting → Bank reconciliation** to start matching transactions to GL entries
 3. Light's AI automatically suggests matches based on amount, date, and description
 
-See [Automated reconciliation](../04-bank-reconciliation/4-4-automated-reconciliation.md) for detailed instructions on the reconciliation process.
+See Bank reconciliation for detailed instructions on the reconciliation process.
 
 ## Next steps
 
@@ -221,6 +255,5 @@ With your bank account connected, you can:
 
 ## Related articles
 
-- [Bank feeds](../04-bank-reconciliation/4-2-bank-feeds.md)
-- [Importing bank statements](../04-bank-reconciliation/4-3-importing-transactions.md)
-- [Automated reconciliation](../04-bank-reconciliation/4-4-automated-reconciliation.md)
+- [Bank reconciliation](https://light.inc/help/bank-reconciliation/automated-reconciliation)
+- [Setting default bank accounts](https://light.inc/help/bank-reconciliation/connecting-bank-accounts)
