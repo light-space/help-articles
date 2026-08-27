@@ -45,6 +45,12 @@ Open a contract to see these tabs:
 
 Line items are added and edited in the **Lines** tab — not in the create dialog.
 
+### Total Contract Value Display
+
+At the top of the contract detail view, the **Total contract value** stat card shows the contract's total value. Hover over the card and click the small edit icon to toggle between **Net** (excluding VAT) and **Gross** (including VAT) display.
+
+This is a company-wide setting that affects how total contract value is shown across all contracts. Net is the default.
+
 ## Editing Custom Properties After Publishing
 
 Once a contract is published, its line items are locked — except for custom properties. You can add, change, or remove a line item's custom properties (department, cost center, project code, etc.) without voiding and recreating the contract.
