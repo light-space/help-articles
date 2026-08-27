@@ -97,6 +97,8 @@ In the bill payment details page, select the Airwallex connection from the **Pay
 
 Once a payment is initiated through Airwallex, Light automatically checks for status updates every 15 minutes.
 
+> **Note**: Light also monitors completed payments for up to 7 days to detect late reversals—when the receiving bank rejects a transfer after Airwallex initially accepted it. If this happens, Light automatically reverts the bill to UNPAID status so you can retry the payment.
+
 ### Retrying failed payments
 
 If a bill payment fails after Airwallex initially accepted the transfer, the bill returns to **UNPAID** status with a payment failure indicator. In this scenario, a **Retry payment** action appears in the bill details menu (three-dot icon in the top-right).
