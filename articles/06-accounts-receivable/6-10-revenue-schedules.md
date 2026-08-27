@@ -32,6 +32,8 @@ On a sales invoice line, click the **Accrual template** field. A popover opens w
 
 Click **Add accrual** to apply, or **Update accrual** to modify an existing schedule. **Remove** removes the accrual entirely.
 
+> **Note:** If you don't set an explicit start date, the schedule defaults to beginning on the document's **posting date** (the accounting-relevant date when the transaction hits your books), not the document date (which can be earlier, like the invoice issue date).
+
 ## Applying a Schedule on a Contract
 
 Open a contract and apply the release template on each line in the **Lines** tab using the same start/end + template flow.
