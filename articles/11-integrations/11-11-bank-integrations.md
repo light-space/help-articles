@@ -19,11 +19,12 @@ This automates cash posting and reconciliation.
 
 ## Supported banks
 
-Light connects to banks through four feed providers:
+Light connects to banks through several feed providers:
 
 - **GoCardless** (Europe and UK): Covers European and UK banks, including Revolut, Wise, Starling, and traditional banks
 - **Plaid** (US): Connects to thousands of institutions in the United States
 - **Stripe**: Imports Stripe balance transactions (requires the Stripe integration)
+- **Airwallex**: Imports transactions for bank accounts mapped to your Airwallex integration (requires an active Airwallex bank account mapping)
 - **AMC** (host-to-host): Direct bank connections for banks such as HSBC, J.P. Morgan Chase, Nordea, and SEB — setup typically takes 2-3 months and your bank may charge a fee
 
 Not all banks support all providers. If your bank isn't available through a feed provider, you can upload transactions manually via CSV or contact Light about host-to-host integration support.
