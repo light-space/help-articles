@@ -1,89 +1,84 @@
 # Two-Factor Authentication and Security
 
-Two-factor authentication (2FA) adds an extra security layer by requiring users to provide two forms of identification before accessing Light. This article explains 2FA and other security features.
+> **What's this page about:** How sign-in security works in Light, including two-factor authentication, password resets, API keys, and where your profile and security settings live.
 
 [Open in Light →](https://app.light.inc/settings/profile)
 
-## What is Two-Factor Authentication?
+**On this page:**
 
-2FA requires two independent verification methods to log in:
+- Two-factor authentication and password reset
+- API keys
+- Profile settings
+- Security best practices
 
-1. **Something you know** - Your password
-2. **Something you have** - A code from your phone (authenticator app or SMS)
+Light protects your account with two-factor authentication (2FA) and delegates sign-in to a dedicated authentication provider, so your credentials never sit inside Light's own systems.
 
-Even if someone obtains your password, they cannot access your account without the second factor. This significantly reduces the risk of unauthorized account access.
+## Two-factor authentication and password reset
 
-## Enabling 2FA
+Light handles sign-in, 2FA, and password reset through its authentication provider, separate from Light's application settings. You won't find a 2FA toggle inside Light itself.
 
-Light uses a secure authentication provider to manage login and 2FA. Two-factor authentication is configured through the login flow rather than from within the Light application settings. Contact your company administrator to enable 2FA requirements for your organization.
+With 2FA turned on, signing in takes two steps: your password, plus a one-time code from an authenticator app (SMS may also be available, depending on your organization's setup).
 
-Once 2FA is enabled for your account, you will be prompted for a verification code each time you log in with your email and password.
+If your organization wants 2FA enabled, contact Light support. This is configured at the organization level by Light, not by a local admin setting inside the product.
 
-## Password Reset
+**To reset your password:**
 
-If you forget your password:
+1. Open Light and select **Log in**
+2. On the sign-in screen, choose the password reset option
+3. Enter your email address
+4. Open the email you receive and select the reset link
+5. Set a new password and log in to Light
 
-1. Click **Forgot password?** on the login page
-2. Enter your email address
-3. Click the link in the email you receive
-4. Set a new password
-5. Log in with your new password
+If you're locked out and can't complete this by email, contact Light support.
 
-If you're locked out and cannot reset via email, contact your company administrator.
+## API keys
 
-## API Keys
+Light uses API keys for programmatic access and integrations. Manage them in Light under **Settings → API keys** ([Open in Light →](https://app.light.inc/settings/api-keys)).
 
-Light uses API keys for programmatic access and integrations. API keys are managed under **Settings → API keys** ([Open in Light →](https://app.light.inc/settings/api-keys)).
+The API keys page lists, for each key: name, an obfuscated version of the key, Roles, status, creation date, who created it, and who revoked it (if applicable).
 
-The API keys page shows all keys with their name, key prefix, assigned role, status, and creation date.
+**To create an API key:**
 
-To create an API key:
+1. In Light, go to **Settings → API keys**
+2. Select **Create key** (shown with a plus icon)
+3. Enter a **Name** (for example, "Salesforce Integration")
+4. Select the **Access role** the key needs
+5. Optionally, set **Allowed IP patterns** to restrict which IPs can use the key
+6. Select **Create**
+7. Copy the key and store it securely. Light shows the full key only once.
 
-1. Go to **Settings → API keys**
-2. Click **+ Create key**
-3. Enter a **Name** for the key (e.g., "Salesforce Integration")
-4. Select an **Access role** to define what permissions the key has
-5. Optionally specify **Allowed IP patterns** to restrict which IPs can use the key
-6. Click **Create**
-7. Copy the key and store it securely — you'll only see the full key once
+A key's status is either **Active** (valid and usable) or **Revoked** (deactivated, can no longer be used).
 
-API keys can have one of two statuses:
+If you lose a key, use **Rotate** to generate a new one. This invalidates the previous key immediately.
 
-**Active** - The key is valid and can be used for API calls.
+**Recommended practice:** rotate keys periodically (for example, every 90 days), restrict IPs where possible, and revoke a key immediately if it's compromised. These are security recommendations, not requirements enforced by Light.
 
-**Revoked** - The key has been deactivated and can no longer be used.
+## Profile settings
 
-> Important: The full key is only displayed once at creation. If lost, use the **Rotate** action to generate a new key — this invalidates the previous key.
+Manage your profile in Light under **Settings → Profile** ([Open in Light →](https://app.light.inc/settings/profile)). It has seven sections. Six are visible to every authenticated user, with no role restrictions:
 
-## API Key Best Practices
+- **Contact information**: first name, last name, email, phone number, and address (street, city, state, ZIP/postal code, country)
+- **Notifications**: your notification preferences
+- **User preferences**: appearance (light/dark mode), numeric format, date format, CSV data separator, and sidebar behavior
+- **Claude MCP**: connect Claude to your Light workspace
+- **MCP tokens**: manage tokens used for MCP connections
+- **Organization details**: read-only view of your assigned access roles, entity, level, and groups
 
-- **Use minimal permissions** - Assign only the access role the integration needs
-- **Restrict by IP** - Use allowed IP patterns to limit where keys can be used from
-- **Rotate regularly** - Use the **Rotate** action to replace keys every 90 days; the previous key is invalidated automatically
-- **Never commit to code** - Use environment variables or secure vaults
-- **Revoke immediately** if a key is compromised
+The seventh section, **Reimbursement details** (bank information for expense reimbursements: bank country, IBAN, BIC/SWIFT, account details), only appears for users explicitly assigned the **Reimbursement** access role. This is a literal match on that specific role — having a broad role like Superuser or Company admin doesn't grant access on its own; the Reimbursement role has to be assigned directly.
 
-## Profile Settings
+## Security best practices
 
-Your personal profile is managed under **Settings → Profile** ([Open in Light →](https://app.light.inc/settings/profile)), which includes:
-
-**Contact Information** - Your name, email, phone number, and address details.
-
-**User Settings** - Preferences for appearance (light/dark mode), numeric format, CSV data separator, and sidebar behavior.
-
-**Reimbursement Details** - Bank information for expense reimbursements (bank country, IBAN, BIC/SWIFT, account details).
-
-**Organization Details** - Read-only view of your assigned access roles, entity, level, and groups.
-
-## Best Practices
-
-- **Use strong passwords** - Mix of character types and sufficient length
-- **Rotate API keys** - Every 90 days minimum
-- **Report incidents** - Immediately report suspicious activity to your admin
-- **Restrict API key IPs** - Limit API key usage to known IP ranges
+- Use a strong, unique password
+- Rotate API keys periodically and restrict them by IP where possible
+- Report suspicious account activity to your admin immediately
+- Revoke any API key you suspect is compromised right away
 
 ## Related Articles
 
-- [User roles and permissions overview](/mnt/help-articles/articles/03-user-management/3-1-roles-permissions-overview.md)
-- [Inviting and removing users](/mnt/help-articles/articles/03-user-management/3-2-inviting-removing-users.md)
-- [Audit log and activity history](/mnt/help-articles/articles/03-user-management/3-6-audit-log.md)
+- [User roles and permissions overview](https://help.light.inc/user-management/roles-permissions-overview)
+- [Inviting and removing users](https://help.light.inc/user-management/inviting-removing-users)
+- [Audit log and activity history](https://help.light.inc/user-management/audit-log)
+
+---
+
+*Also searched as: 2FA, two-step verification, MFA, multi-factor authentication, forgot password, reset password, can't log in, login help, API key, API token, revoke API key, rotate API key, create API key, profile settings, account settings, security settings, notification settings, CSV data separator.*
