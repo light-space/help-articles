@@ -26,6 +26,8 @@ A document template defines:
 
 > **Good to know:** Invoice PDFs automatically show a payment section on partially-paid and paid invoices, displaying payments received, credits applied, and balance due. This section appears automatically and is not controlled by template settings.
 
+> **Good to know:** Type `{number}` anywhere in the **Default email subject** or **Default email message** to have Light automatically insert the invoice's number when the email is sent (for example, "Invoice {number} is due"). Only the single-brace form works — `{{number}}` is not supported and is sent to customers exactly as typed.
+
 ## Creating a Template
 
 1. Go to **Settings (gear icon) → Templates**
