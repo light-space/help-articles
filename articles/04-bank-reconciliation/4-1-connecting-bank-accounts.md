@@ -37,9 +37,8 @@ To add a new bank account to Light:
 7. Enter account details:
    - For IBAN accounts: IBAN and BIC
    - For US accounts: Routing number and account number
-   - For Swedish accounts: IBAN, BIC, and Bankgiro (7-8 digits, optional) - the Bankgiro appears on customer invoices to facilitate payments
+   - For Swedish accounts: IBAN, BIC, and optionally **Bankgiro** (7-8 digits) - set the bank country to Sweden to reveal this field (see [Bankgiro for Swedish entities](#bankgiro-for-swedish-entities) below)
    - Bank country and currency
-   - For Swedish accounts: set the bank country to Sweden to reveal the optional **Bankgiro** field (see [Bankgiro for Swedish entities](#bankgiro-for-swedish-entities) below)
 8. Click **Add**
 
 ## Bank Feed Authorization
