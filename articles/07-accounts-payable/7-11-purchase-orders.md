@@ -78,19 +78,33 @@ Configure the routing in **Settings → Workflows** under the purchase request a
 
 ## Matching Bills to POs
 
-Light matches bills (vendor invoices) directly to POs by amount — there is no separate goods-receipt step:
+Before you pay a bill, three things have to agree: what you ordered, what actually arrived, and what the vendor is charging you. Light checks all three. That's three-way matching, and it happens without anyone chasing anyone.
 
-1. Create or receive the bill in AP
-2. Link it to a PO (see Entering Bills article)
-3. Light records the bill against the PO and tracks the **matched amount** and **remaining amount** in the PO's currency (foreign-currency bills are converted using your company's exchange rates)
+**What you ordered** is the purchase order. **What you're charged** is the bill. The third one has always been the hard part — did the goods actually turn up? Light asks the one person who knows: whoever requested the purchase.
 
-Notes:
+### How a bill gets matched
+
+1. **The bill is linked to a PO.** When the invoice carries a recognisable PO number, Light matches it automatically to that vendor's open PO with the same number. Otherwise you link it yourself when entering the bill (see Entering Bills article).
+2. **Light asks the requester whether it arrived.** They get a short confirmation request — in Slack, or in Light under **Tasks** — showing the vendor, the PO, and what was ordered. One question: did you get this?
+3. **They answer in a click.** **Confirm receipt** if everything arrived. **Flag an issue** if it didn't — short delivery, damaged goods, wrong item, nothing at all. Either way they can attach a photo, a delivery note or a signed packing slip, and add a note.
+4. **Finance sees the answer on the bill.** A confirmed receipt is recorded against the purchase order and shown alongside the bill, so whoever approves and pays it knows the goods landed before the money leaves.
+
+Until someone answers, the receipt sits as **Pending** on the PO and on the bill. Nothing slips through quietly, and nobody has to remember to ask.
+
+Not everything is a box on a loading dock. For services, the question is simply whether the work was done — same request, same click.
+
+### When something is wrong
+
+A flagged issue travels with the bill. The approver sees it, along with the requester's note and anything they attached, which means the conversation with the vendor happens before you pay rather than after.
+
+### What Light tracks on the PO
+
+Light records the bill against the PO and tracks the **matched amount** and the **remaining amount** in the PO's currency; foreign-currency bills are converted using your company's exchange rates. When a PO is open or closed, the matched invoices table shows which bills have been linked to it, the matched amount, and the remaining unmatched amount.
+
+Two rules worth knowing:
 
 - A bill can be matched to only one PO at a time; matching it to a different PO moves the match.
 - The bill's vendor must match the PO's vendor.
-- When a bill arrives with a recognisable PO number (for example, extracted from the invoice document), Light automatically matches it to that vendor's open PO with the same number.
-
-When a PO is open or closed, the matched invoices table shows which bills have been linked to the PO, the matched amount, and the remaining unmatched amount.
 
 ## Viewing PO Documents
 
@@ -117,15 +131,9 @@ To cancel a PO:
 
 Draft POs are cancelled immediately; open POs pass through `CANCEL_PENDING` while the cancellation syncs. Cancelled POs remain in the system for historical reference. If goods were already received, you're still liable for payment.
 
-Once approved, the PO transitions through `APPROVED_ACCOUNTING_ENTRY_PENDING` to `OPEN` and is available for matching.
-
-## Matching POs to Bills
-
-When entering a bill, you can link it to a PO by setting the **PO number** on the bill. Light then tracks the matched amount and the remaining unmatched amount on the PO.
-
 ## Closing a PO
 
-When all bills against a PO have been received (or the PO is no longer needed), close it from the PO detail view. It transitions through `CLOSE_PENDING` to `CLOSED`.
+When every bill against a PO has been received and receipted (or the PO is no longer needed), close it from the PO detail view. It transitions through `CLOSE_PENDING` to `CLOSED`.
 
 ## Purchase Requests (PRs)
 
