@@ -1,68 +1,67 @@
 # User Roles and Permissions Overview
 
-Light uses a role-based access control system to manage what actions users can perform in your company. This article explains the available roles and their permissions.
+> **What is this page about:** How user roles and permissions work in Light, from the roles you can assign to how access adds up, where to review it, and who can make changes.
 
 [Open in Light →](https://app.light.inc/users?tab=roles)
 
-## Understanding Roles
+## On this page
 
-Roles define a set of permissions that determine what users can do in Light. Each user is assigned one or more roles, and their access is based on the combination of all assigned roles. Roles are company-wide, meaning they apply across all entities in your company.
+- Understanding Light user roles
+- Available Light user roles
+- How Light permissions work
+- MCP permissions in Light
+- Entities and permissions in Light
+- Assigning and modifying user roles in Light
 
-## Available Roles
+## Understanding Light User Roles
 
-Light includes the following predefined roles:
+A role is a bundle of permissions. You assign one or more roles to each person in the Light app, and their access is the combination of everything those roles allow. Roles apply company-wide: once someone has a role, it works the same way across every entity in your company.
 
-**Admin** - Full system access with complete control over all features, configurations, and user management. Only assign this to administrators who need unrestricted access.
+## Available Light User Roles
 
-**Controller** - Access to financial reports, ledger management, and accounting period closing. Ideal for your finance controller or accounting manager.
+- **Admin**: full system access, with control over every feature, configuration, and user in the company. Reserve this for people who need unrestricted access.
+- **Controller**: for your finance controller or accounting manager. Grants access to financial reports, ledger management, and closing accounting periods.
+- **AP Clerk**: covers day-to-day accounts payable work, including entering, editing, and submitting invoices, and managing payments. Also grants access to view financial reports and to view and post card transactions. Does not include invoice approval. That's handled by whoever is assigned as the Invoice Approver on a given document.
+- **AP Preparation**: a lighter version of AP Clerk for staff who prepare invoices and documents but don't need approval authority.
+- **Invoice Approver**: authority to approve invoices and payments up to a configured threshold. Works with your approval workflows to control how documents move forward.
+- **AR Clerk**: handles accounts receivable, including creating invoices, managing customers, and registering payments.
+- **Cardholder**: access to corporate card features in Light. Includes viewing and disputing your own card transactions. Scoped to the cardholder's own activity, not company-wide card usage. Does not include expense reimbursement; assign the Reimbursement role for that.
+- **Vendor Management**: create, edit, and approve changes to vendor records and payment details.
+- **Reimbursement**: submit your own expenses and track the status of your own reimbursements. Scoped to the individual, not the team. Does not include corporate card access; assign the Cardholder role for that.
+- **Report Viewer**: read-only access to financial reports and dashboards. For stakeholders who need visibility but shouldn't touch transactions.
+- **Purchase Requester**: create and manage purchase orders. Scoped to procurement workflows only.
+- **Auditor**: read-only access to documents, transactions, reports, and configuration across the platform. Can view everything but can't create, edit, approve, or post.
 
-**AP Clerk** - Covers day-to-day accounts payable work, including entering, editing, and submitting invoices, and managing payments. Also grants access to view financial reports and to view and post card transactions. Does not include invoice approval — that's handled by whoever is assigned as the Invoice Approver on a given document.
+**Cardholder and Reimbursement are independent roles.** Someone with only Cardholder can't touch reimbursements. Someone with only Reimbursement can't touch card features. Assign both roles if a person needs both.
 
-**AP Preparation** - Limited AP access for data entry and document preparation without approval authority. Useful for administrative staff preparing invoices.
+## How Light Permissions Work
 
-**Invoice Approver** - Authority to approve invoices and payments within configured thresholds. Works with approval workflows to control document progression.
+To see what each role can and can't do:
 
-**AR Clerk** - Access to accounts receivable functions including invoice creation, customer management, and payment registration.
+1. Open the Light app and go to **Business partners → Users**
+2. Open the **Access roles** tab
 
-**Cardholder** - Access to corporate card features in Light. Includes viewing and disputing your own card transactions. Scoped to the cardholder's own activity, not company-wide card usage. This role does not grant access to expense reimbursement features — users who also need reimbursement must be assigned the **Reimbursement** role separately.
+This lists every permission by feature area (for example, Accounting Documents, Accounting Periods, AI Config, API Keys) and shows which roles have access to each one.
 
-**Vendor Management** - Authority to create, edit, and approve vendor master data changes. Manages vendor information and payment details.
+Permissions stack. If a person has more than one role, they get the combined permissions of all of them. If none of a person's roles grant a permission, they can't do that thing. There is no partial or implied access.
 
-**Reimbursement** - Submit your own expenses and track the status of your own reimbursements. Scoped to the individual, not the team. This role does not grant access to corporate card features — users who also need card access must be assigned the **Cardholder** role separately.
+## MCP (Model Context Protocol) Permissions in Light
 
-**Report Viewer** - Read-only access to financial reports and dashboards. Ideal for stakeholders who need visibility without transaction access.
+If your team connects to Light through MCP, the same role-based rules apply there. Going through MCP grants no extra access beyond the Light app.
 
-**Purchase Requester** - Access to create and manage purchase orders. Limited to procurement workflows.
-
-**Auditor** - Read-only access to all company data for audit purposes. Auditors can view documents, transactions, reports, and configuration across the platform but cannot create, edit, approve, or post anything.
-
-> **Important:** The **Cardholder** and **Reimbursement** roles are independent. A user with only the Cardholder role cannot access reimbursement features, and a user with only the Reimbursement role cannot access card features. If a user needs both, assign both roles.
-
-## How Permissions Work
-
-You can view the full permissions matrix by navigating to **Business partners → Users** and selecting the **Access roles** tab. This shows every permission grouped by feature area (e.g., Accounting Documents, Accounting Periods, AI Config, API Keys) and which roles have access to each.
-
-Permissions are cumulative, meaning a user with multiple roles has the combined permissions of all their roles. If a role doesn't explicitly grant a permission, the user cannot perform that action.
-
-## MCP (Model Context Protocol) Permissions
-
-Light's MCP integration uses the same role-based access controls as the rest of the platform. When a user connects to Light via MCP, their permissions are determined by their assigned roles—the same roles that control their access in the Light web app.
-
-This means:
-
-- **Role-bound access** - MCP users can only perform actions their roles permit. A user with the **AP Clerk** role can access accounts payable functions via MCP, but not AR or admin functions.
-- **Tool visibility** - Users only see MCP tools that are available to their role. Tools for features outside their permissions are not exposed.
-- **No elevated privileges** - MCP does not grant any additional permissions beyond what the user already has in Light.
+- **Role-bound access**: a person using MCP can only do what their roles already allow in Light. For example, an AP Clerk connected via MCP can work with accounts payable, but not AR or admin functions.
+- **Tool visibility**: people only see the MCP tools that match their role. A tool outside their permissions won't appear.
+- **No shortcuts**: MCP never grants privileges beyond what a person already has inside Light.
 
 MCP access is currently an early-access feature. It must be turned on for your company before anyone can connect. Once enabled, access within MCP is still governed entirely by existing roles.
 
-## Entities and Permissions
+## Entities and Permissions in Light
 
-Roles in Light are company-wide and apply across all entities. It is not currently possible to scope a user's role or permissions to specific entities. For example, if a user has the **AP Clerk** role, they will have AP Clerk permissions in all entities within the company.
+Roles apply across your whole company, not to individual entities. There is currently no way to grant a role for one entity only (for example, AP Clerk access for Entity A but not Entity B). Wherever a role applies, it applies everywhere.
 
-> **Note:** If you need to restrict users to specific entities, consider creating separate Light companies for each business unit that requires isolated access.
+To limit certain people to specific parts of the business, set up separate Light companies for each business unit that needs isolated access.
 
-## Assigning and Modifying Roles
+## Assigning and Modifying User Roles in Light
 
 Only people with the Admin role can assign or change roles for others.
 
@@ -78,14 +77,14 @@ The person receives a welcome email when their access roles change.
 
 A person can hold any number of roles at once. There's no system-enforced limit, and no combination of roles is blocked, including Cardholder and Reimbursement. Treating those two as a deliberate pairing (assign both if someone needs both) is a recommended practice, not a restriction the platform enforces.
 
-Follow the principle of least privilege: assign only the roles a person needs to do their job. Reviewing roles periodically (for example, quarterly) is good practice for keeping access aligned with people's actual responsibilities, though this isn't a scheduled or automated feature in Light. The **Access roles** tab (see "How Permissions Work" above) is available any time you want to check current access.
+Follow the principle of least privilege: assign only the roles a person needs to do their job. Reviewing roles periodically (for example, quarterly) is good practice for keeping access aligned with people's actual responsibilities, though this isn't a scheduled or automated feature in Light. The **Access roles** tab (see "How Light Permissions Work" above) is available any time you want to check current access.
 
 ## Related Articles
 
-- [Inviting and removing users](3-2-inviting-removing-users.md)
-- [Understanding and managing workflow automation](3-4-workflow-automation.md)
-- [Setting up approval workflows](3-3-approval-workflows.md)
-- [Two-factor authentication and security](3-5-two-factor-auth.md)
+- [Inviting and Removing Users](https://help.light.inc/user-management/inviting-removing-users)
+- [Understanding and Managing Workflow Automation](https://help.light.inc/user-management/workflow-automation)
+- [Setting Up Approval Workflows](https://help.light.inc/user-management/approval-workflows)
+- [Two-Factor Authentication and Security](https://help.light.inc/user-management/two-factor-auth)
 
 ---
 
