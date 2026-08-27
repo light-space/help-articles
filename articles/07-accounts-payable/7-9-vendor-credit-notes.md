@@ -1,4 +1,4 @@
-# Credit Entries (Vendor Credits)
+th# Credit Entries (Vendor Credits)
 
 A credit entry represents a credit from a vendor — for returned goods, billing corrections, or refunds. Credit entries are managed under **Credit entries** and can be applied to one or more open vendor bills.
 
@@ -32,7 +32,11 @@ A credit moves from Posted → Partially cleared → Cleared as it's applied to 
 
 ## Posting (Publishing) a Credit
 
-From the credit detail header, click **Publish** to post the credit. If a credit note approval workflow is published (**Settings → Workflows**), publishing submits the credit for approval instead, and it's posted once approved. Once posted, it becomes available to apply against open bills.
+From the credit detail header, click **Publish** to post the credit. If a credit note approval workflow is published (**Settings → Workflows**), publishing submits the credit for approval instead, and it's posted once approved.
+
+If an approver rejects the submission, the credit returns to **Draft** so you can edit and resubmit it — it's no longer automatically archived. The rejection appears as a **Declined** entry on the credit's activity timeline.
+
+Once posted, it becomes available to apply against open bills.
 
 ## Applying a Credit to a Bill
 
