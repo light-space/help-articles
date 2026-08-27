@@ -1,5 +1,18 @@
 # Inviting and Removing Users
 
+> **What is this page about:** How to create, update, and deactivate user accounts in Light, and how to manage their roles, welcome emails, and groups.
+
+## On this page
+
+- Creating a new user
+- Controlling welcome emails
+- Assigning multiple roles
+- Changing user details and roles
+- Deactivating users
+- User groups
+- Best practices for managing users
+- Related articles
+
 Add new team members to Light and manage user access as your organization grows. This article covers creating users, setting their roles, and removing access when needed.
 
 [Open in Light →](https://app.light.inc/users)
@@ -21,7 +34,7 @@ New users are created from the Users page. Follow these steps to add a user:
 6. Optionally assign one or more **Managers** (for approval workflow routing)
 7. Click **Create**
 
-The user's account is active as soon as it's created — there is no separate invitation to accept or activation step. Depending on your welcome email settings (see below), Light sends the new user a welcome email tailored to their roles, with links to the web app and mobile apps to help them get started.
+The user's account is active as soon as it's created. There is no separate invitation to accept or activation step. Depending on your welcome email settings (see below), Light sends the new user a welcome email tailored to their roles, with links to the web app and mobile apps to help them get started.
 
 ### Controlling Welcome Emails
 
@@ -35,7 +48,7 @@ When you create a user or update their roles, Light can send them a welcome emai
 
 ## Assigning Multiple Roles
 
-Users can have multiple roles simultaneously. For example, an invoice reviewer might need both **AP Clerk** and **Invoice Approver** roles. The **Access role** field in the user form accepts multiple selections — simply select additional roles as needed. The user will have the combined permissions from all selected roles.
+Users can have multiple roles simultaneously. For example, an invoice reviewer might need both **AP Clerk** and **Invoice Approver** roles. The **Access role** field in the user form accepts multiple selections, simply select additional roles as needed. The user will have the combined permissions from all selected roles.
 
 ## Changing User Details and Roles
 
@@ -63,15 +76,15 @@ Deactivated users cannot log in, but their historical data and audit trail remai
 
 ## User Groups
 
-In addition to roles, users can be organized into **groups** for access control and approval routing. To manage groups:
+In addition to roles, users can be organized into **groups** for access control and approval routing. To create a group:
 
 1. Go to **Business partners → Users**
 2. Select the **Groups** tab
 3. Click **+ Create group**, choose a **Level**, and continue through the setup steps to finish creating it. Or click an existing group to manage its members.
 
-Groups have a name, description, a required **Level**, and a member list. You can also assign users to groups directly from their user detail page via the **Groups** field. See [Setting up approval workflows](3-3-approval-workflows.md) for details on using groups in approvals.
+Groups have a name, description, a required **Level**, and a member list. You can also assign users to groups directly from their user detail page via the **Groups** field. See Setting up approval workflows for details on using groups in approvals.
 
-## Best Practices
+## Best Practices for Managing Users
 
 - **Principle of least privilege**: Assign only the roles users need. Remove roles users no longer need.
 - **Review regularly**: Audit user access quarterly as job responsibilities change.
@@ -80,6 +93,6 @@ Groups have a name, description, a required **Level**, and a member list. You ca
 
 ## Related Articles
 
-- [User roles and permissions overview](3-1-roles-permissions-overview.md)
-- [Setting up approval workflows](3-3-approval-workflows.md)
-- [Two-factor authentication and security](3-5-two-factor-auth.md)
+- [User roles and permissions overview](https://light.inc/help/user-management/roles-permissions-overview)
+- [Setting up approval workflows](https://light.inc/help/user-management/approval-workflows)
+- [Two-factor authentication and security](https://light.inc/help/user-management/two-factor-auth)

@@ -1,46 +1,56 @@
 # Filing a Purchase Request
 
-A purchase request lets you get approval from your finance or procurement team before making a large purchase or buying from a new vendor. It's a simple process that protects both you and your company.
+> **What is this page about:** How to file a purchase request in Light, from when you need one to how approvals, vendor cards, editing, and declines work.
 
 [Open in Light →](https://app.light.inc/procurement/purchase-requests)
 
+## On this page
+
+- When to file a purchase request in Light
+- How to file a purchase request in Light
+- Requesting a vendor card in Light
+- Vendor quotes and approval speed
+- Editing or adding to a request after submission
+- Timeline
+- If a request is declined
+
 ## When to File a Purchase Request
 
-You should file a purchase request when:
+File a purchase request (PO request) in Light when:
 
 - You need approval before making a purchase
 - Your purchase exceeds your card's spending limit
 - You're buying from a new or unfamiliar vendor
 - Your company requires pre-approval for certain purchases
-- You need to order items in bulk or at high cost
+- You're ordering in bulk or at high cost
 
-Check with your manager if you're unsure whether you need a purchase request.
+Check with your manager if you're unsure whether a purchase needs one.
 
-## How to File a Purchase Request
+## How to File a Purchase Request in Light
 
 Filing a request doesn't require you to have a manager assigned. If your company's approval workflow routes approval to the requester's manager, though, submitting without one blocks the request, with the error "No user or user group was selected as approver." If that applies to your company, ask your admin to assign you a manager in People settings before you submit.
 
-1. Open Light and go to **Purchase requests**, under the **Spend management** menu
-2. Select **Create purchase request**
-3. Add each item in the line-item table: **Description**, **Account**, **Quantity**, and **Unit price**. Light calculates the total for you
-4. Enter the vendor's details: name, contact email (this is where the purchase order goes once approved), and any vendor account information you already have
+1. Open Light and go to **Purchase requests**, under the **Spend management** menu.
+2. Select **Create purchase request**.
+3. Add each item in the line-item table: **Description**, **Account**, **Quantity**, and **Unit price**. Light calculates the total for you.
+4. Enter the vendor's details: name, contact email (this is where the purchase order goes once approved), and any vendor account information you already have.
 5. Fill in the business details:
    - **Description** of the purchase
    - **Entity**, the legal entity the purchase belongs to
    - **Request owner**, who the purchase is for
    - Any custom properties your admin has configured will also appear here
-6. Attach anything that helps finance review faster: vendor quotes, pricing documents, specs, or other supporting documents. This step is optional
-7. Review the details, then select **Submit for approval**
+6. Attach anything that helps finance review faster: vendor quotes, pricing documents, specs, or other supporting documents. This step is optional.
+7. Review the details, then select **Submit for approval**.
 
 Your request now sits in your finance team's review queue.
 
-### Requesting a Vendor Card
+### Requesting a Vendor Card Instead
 
-If you're requesting a vendor card instead of a purchase order, you'll also fill in:
+If you need a vendor card rather than a purchase order, also fill in:
 
-- **Card account**: The balance account the card will draw from
-- **Spend limit**: The interval (e.g., monthly) and amount for the card's limit
-- **Authentication phone number**: The phone number that receives authentication requests when transacting with the card. This auto-fills from your profile, but you can update it if needed.
+- **Card account**: the balance account the card draws from
+- **Spend limit**: an interval, such as monthly, and an amount
+- **Authentication phone number**: the number that receives authentication requests for transactions on the card. This auto-fills from your profile, but you can change it.
 
 ## Vendor Quotes Speed Up Approval
 
@@ -53,10 +63,10 @@ A vendor quote lets finance verify pricing, compare vendors, and set up payment 
 
 ## Timeline
 
-- **Submit request**: Immediately in Light
-- **Review by finance**: Usually 1-2 business days
-- **Approval or questions**: You'll be notified via email or in the Light app
-- **After approval**: Your purchase order is created and ready to share with your vendor (or your vendor card is issued, if that's what you requested)
+- **Submit request**: immediate, in Light
+- **Review by finance**: usually 1 to 2 business days
+- **Approval or questions**: you'll be notified by email or in the Light app
+- **After approval**: your purchase order is created and ready to share with your vendor, or your vendor card is issued
 
 ## If a Request Is Declined
 
@@ -64,9 +74,9 @@ Finance will tell you why. Common reasons include missing information, a vendor 
 
 ## Related Articles
 
-- [Tracking Your Purchase Requests](./e4-2-tracking-purchase-requests.md)
-- [Your Light Card](../e3-corporate-cards/e3-1-your-light-card.md)
-- [Card Spending Limits and Policies](../e3-corporate-cards/e3-5-card-limits-policies.md)
+- [Tracking Your Purchase Requests](https://help.light.inc/employee-purchase-requests/employee-tracking-purchase-requests)
+- [Your Light Card](https://help.light.inc/employee-corporate-cards/employee-your-light-card)
+- [Card Spending Limits and Policies](https://help.light.inc/employee-corporate-cards/employee-card-limits-policies)
 
 ---
 
