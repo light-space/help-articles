@@ -51,6 +51,8 @@ If the related customer doesn't exist in Light yet, it is created automatically 
 
 The workflow can instead (or additionally) be configured to create or update AR invoices from deals.
 
+> **Good to know**: When configuring advanced mappings, you can access deal owner properties as nested fields. For example, if you need the deal owner's email on an invoice field, use `owner.email` in your mapping expression. Other owner properties like `owner.firstName` and `owner.lastName` are also available.
+
 ## Company and contact sync
 
 HubSpot companies and contacts associated with synced deals are read as part of deal processing, and companies sync to Light customer data. Default company field mappings in the **HubSpot to Light** workflow:
