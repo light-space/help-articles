@@ -1,6 +1,23 @@
 # Access Controls and SSO
 
-Light provides role-based access controls, entity-level scoping, and approval guardrails to protect your financial data. Single Sign-On (SSO) is available through Light's Auth0-based authentication layer and is configured in coordination with Light's team.
+Light provides role-based access controls, entity-level scoping, and approval guardrails to protect your financial data. Single Sign-On (SSO) is available through Light's managed authentication layer and is configured in coordination with Light's team.
+
+## What is this page about
+
+This page covers how you manage users, roles, groups, and entity assignment in Light, how approval guardrails and workflows control financial actions, and how to set up Single Sign-On. Read it when you are structuring who can do what across your finance team.
+
+**On this page**
+
+- User Management
+- Approval Guardrails
+- Workflows
+- Policies
+- Multi-Factor Authentication (MFA)
+- Session Management
+- Account Lockout and Brute-Force Protection
+- Password Policy
+- Single Sign-On (SSO)
+- Related Articles
 
 ## User Management
 
@@ -8,7 +25,7 @@ User management lives under **Business partners > Users** in the main sidebar na
 
 ### Managing Users
 
-The **Users** tab lists all users in your organization, showing their full name, email, roles, groups, and city. You can search and filter the list, customize which columns are shown via the **Columns** button, and create new users with **+ Create user**.
+The **Users** tab lists all users in your organisation, showing **Full name**, **Status**, **Email**, **City**, **Roles**, and **Groups**. You can search and filter the list, customise which columns are shown via the **Columns** button, and create new users with **+ Create user**.
 
 Clicking on a user opens their detail form, where an admin can view or edit:
 
@@ -16,30 +33,28 @@ Clicking on a user opens their detail form, where an admin can view or edit:
 - **Email**
 - **Address**, **Country**, **State**, **City**, and **Zip / postcode**
 - **Phone number**
-- **Entity** — the legal entity (company) the user belongs to, selected from a dropdown.
-- **Communication channel** — how the user receives notifications (e.g., Slack).
-- **Access role** — one or more roles assigned to the user, selected from a multi-select dropdown.
-- **Manager** — the user's direct manager, used for approval routing.
-- **Groups** — any groups the user belongs to.
-
-Users can be archived from this form using the **Archive** button.
+- **Entity**: the legal entity (company) the user belongs to, selected from a dropdown.
+- **Communication channel**: how the user receives notifications, such as Slack.
+- **Access role**: one or more roles assigned to the user, selected from a multi-select dropdown.
+- **Manager**: the user's direct manager, used for approval routing.
+- **Groups**: any groups the user belongs to.
 
 ### Access Roles
 
 Each user is assigned one or more access roles that determine what they can see and do across the platform. Light includes the following predefined roles:
 
-- **Admin** — Full system access, including settings, user management, and all modules.
-- **Controller** — Broad access to financial oversight, reporting, and reconciliation.
-- **AP clerk** — Manages accounts payable tasks such as processing and viewing bills.
-- **AP preparation** — Prepares accounts payable records for review and posting.
-- **AR clerk** — Manages accounts receivable tasks such as invoicing.
-- **Invoice approver** — Reviews and approves invoices within the approval workflow.
-- **Purchase requester** — Submits purchase requests for approval.
-- **Cardholder** — Manages their assigned corporate card and related transactions.
-- **Reimbursement** — Submits and tracks expense reimbursements.
-- **Vendor management** — Manages vendor records and onboarding.
-- **Report viewer** — Read-only access to reports and dashboards.
-- **Auditor** — Read-only audit access to all data across the platform.
+- **Admin**: full system access, including settings, user management, and all modules.
+- **Controller**: broad access to financial oversight, reporting, and reconciliation.
+- **AP clerk**: manages accounts payable tasks such as processing and viewing bills.
+- **AP preparation**: prepares accounts payable records for review and posting.
+- **AR clerk**: manages accounts receivable tasks such as invoicing.
+- **Invoice approver**: reviews and approves invoices within the approval workflow.
+- **Purchase requester**: submits purchase requests for approval.
+- **Cardholder**: manages their assigned corporate card and related transactions.
+- **Reimbursement**: submits and tracks expense reimbursements.
+- **Vendor management**: manages vendor records and onboarding.
+- **Report viewer**: read-only access to reports and dashboards.
+- **Auditor**: read-only audit access to all data across the platform.
 
 To assign roles, open a user's detail form from **Business partners > Users**, then select the desired role(s) from the **Access role** dropdown.
 
@@ -49,34 +64,35 @@ You can also view your own assigned roles in **Settings > Profile > Organization
 
 The **Access roles** tab on the Users page displays a full permissions matrix. Each row represents a specific permission (grouped by category), and each column represents a role. A checkmark indicates the role has that permission.
 
-Permission categories include:
+The matrix covers around 38 permission categories in total. Some examples:
 
-- **Accounting Documents** — viewing accounting document pages.
-- **Accounting Periods** — viewing accounting periods.
-- **AI Config** — viewing and editing AI configuration.
-- **API Keys** — viewing and editing API keys.
-- **Cards** — editing cards, posting transactions to ledger, viewing card accounts and transactions, viewing own cards.
-- **Company Settings** — editing and viewing company settings.
-- **Contracts** — contract-related permissions.
-- **Ledger** — viewing accounts, accrual templates, intercompany configurations and journal entries, journal entries, ledger transactions, reports, and tax codes.
-- **Payables** — approving bills, creating and editing bills, managing credit entries, processing payments, and viewing bills.
-- **Vendor Portal** — editing own vendor portal form.
-- **Vendors** — adding new vendors, editing vendor bank details and details, requesting vendor onboarding, viewing vendors.
-- **Workflows** — editing and viewing workflows.
+- **Accounting Documents**: viewing accounting document pages.
+- **Accounting Periods**: viewing accounting periods.
+- **AI Config**: viewing and editing AI configuration.
+- **API Keys**: viewing and editing API keys.
+- **Cards**: editing cards, posting transactions to ledger, viewing card accounts and transactions, viewing own cards.
+- **Company Settings**: editing and viewing company settings.
+- **Contracts**: contract-related permissions.
+- **Ledger**: viewing accounts, accrual templates, intercompany configurations and journal entries, journal entries, ledger transactions, reports, and tax codes.
+- **Payables**: approving bills, creating and editing bills, managing credit entries, processing payments, and viewing bills.
+- **Vendor Portal**: editing own vendor portal form.
+- **Vendors**: adding new vendors, editing vendor bank details and details, requesting vendor onboarding, viewing vendors.
+- **Workflows**: editing and viewing workflows.
+- **Budget**, **Reimbursements**, **Policies**, **Tasks**, **Bank Reconciliation**, **Integration Settings**, and more.
 
-This matrix is read-only and reflects the system-defined permissions for each role.
+This matrix is read-only and reflects the system-defined permissions for each role. Open the Access roles tab directly to see the complete list for your account.
 
 ### Groups
 
-The **Groups** tab lets you organize users into groups. Each group has a name, an optional description, and a member count. Groups can be used to scope access, route approvals, or organize teams.
+The **Groups** tab lets you organise users into groups. Each group has a name, an optional description, and a member count. Groups can be used to scope access, route approvals, or organise teams.
 
 You can create new groups using the **+ Create group** button at the top of the Users page.
 
 ### Entity Assignment
 
-Light supports multi-entity organizations. Each user is assigned to an entity (legal company) via the **Entity** dropdown on their user detail form.
+Light supports multi-entity organisations. Each user is assigned to an entity (legal company) via the **Entity** dropdown on their user detail form.
 
-Available entities are configured under **Settings > Entities**, where each entity has a code, name, base currency, and VAT number.
+Available entities are configured under **Settings > Entities**, where each entity has a code, legal name, display name, local currency, and VAT number.
 
 ## Approval Guardrails
 
@@ -88,9 +104,9 @@ Under the **Bills** tab, you can view the approval rules that apply to bill paym
 
 ### Reimbursements
 
-Under the **Reimbursements** tab, similar approval rules apply to expense reimbursements — such as requiring approval from at least two approvers before a reimbursement is paid out.
+Under the **Reimbursements** tab, similar approval rules apply to expense reimbursements. Guardrails are configurable, so your organisation can set its own approval requirements, such as a minimum number of approvers, before a reimbursement is paid out.
 
-> **Note:** Guardrail configurations are managed by Light. If you need to update your approval rules, contact your Light representative — you'll see a **Contact Light for update** prompt on the guardrails page.
+> **Note:** Guardrail configurations are managed by Light. If you need to update your approval rules, contact your Light representative. The guardrails page shows a **Contact Light for update** prompt.
 
 ## Workflows
 
@@ -98,13 +114,18 @@ Light includes a visual **Workflow** builder for automating processes that invol
 
 Each workflow is triggered by an event and can include approval steps, conditional logic, and automated actions. Pre-built workflows include:
 
-- **Bill payment** — triggered when bill data changes.
-- **Expense reimbursement** — triggered when an expense report is submitted.
-- **Vendor card request** — triggered when a card request is created.
-- **Invoice-to-cash** — triggered when an invoice is posted.
-- **Vendor onboarding** — triggered when a vendor is created or bank data changes.
-- **Employee record updates** — triggered when an HRM system update is received.
-- **Sync from HubSpot** / **Sync to Salesforce** / **Sync from Salesforce** — triggered by data changes in external systems.
+- **Bill payment**: triggered when bill data changes.
+- **Credit entry**: triggered when credit entry data changes.
+- **Journal entry**: triggered when journal entry data changes.
+- **Expense reimbursement**: triggered when an expense report is submitted.
+- **Purchase request approval**: triggered when a purchase request is submitted.
+- **Vendor card request**: triggered when a card request is created.
+- **Dunning**: triggered as part of the collections process for overdue invoices.
+- **Vendor onboarding**: triggered when a vendor is created or bank data changes.
+- **Employee record updates**: triggered when an HRM system update is received.
+- **Sync from HubSpot** and **Sync to HubSpot**: HubSpot syncs in both directions, with a separate workflow for each.
+- **Sync from Salesforce** and **Sync to Salesforce**: Salesforce also syncs both ways.
+- **Sync from Stripe**: Stripe data flows into Light.
 
 Workflows are configured using a drag-and-drop node editor with **Action** and **Condition** blocks. Each workflow can be published, and the Workflows page shows the trigger, publication date, publisher, and version number.
 
@@ -114,19 +135,9 @@ Under **Settings > Guardrails > Policies**, you can create and manage spend poli
 
 ## Multi-Factor Authentication (MFA)
 
-MFA adds a second layer of verification beyond a password, helping prevent unauthorized access even if credentials are compromised.
+MFA for your own users is governed by your identity provider. If your team signs in to Light through SSO, set your MFA policy in that provider and it applies to everyone signing in through it. MFA adds a second layer of verification beyond a password, protecting accounts even when a password is compromised.
 
-Within Light, multi-factor authentication is required for all administrative and engineering access to production systems and management consoles.
-
-### MFA for your users
-
-Light also applies its own MFA step to users signing in to the application:
-
-- **Authenticator app**: Users verify with a one-time password from an authenticator app such as Google Authenticator.
-- **Applies in addition to SSO**: Signing in through your identity provider does not replace Light's MFA step. If your identity provider also enforces MFA, users complete both.
-- **Who is prompted**: MFA is required for users holding any role beyond **Reimbursement** and **Invoice approver**. A user whose access is limited to those two roles is not prompted for a second factor.
-- **Remember this device**: Users can choose to be remembered, which suppresses the prompt on subsequent sign-ins for a limited period.
-- **Lost devices**: Recovery codes are not enabled. A user who loses their authenticator device needs an administrator to reset their MFA enrolment.
+Separately, Light requires MFA for its own staff whenever they access production systems and management consoles.
 
 ## Session Management
 
@@ -136,7 +147,7 @@ Light's authentication layer enforces session controls to limit exposure from un
 - **Absolute session lifetime**: Sessions have a maximum lifetime regardless of activity, after which a fresh sign-in is required.
 - **Sign-out propagation**: Signing out in Light revokes the active session at the identity layer.
 
-These session controls are enforced by Light for all users, including those signing in through SSO. Your identity provider governs how users authenticate, but it does not extend Light's session lifetime — once a Light session reaches its inactivity or maximum limit, the user is returned to your identity provider for a fresh sign-in.
+Customers using SSO inherit session controls from their identity provider; values configured in the IdP take precedence over Light's defaults.
 
 ## Account Lockout and Brute-Force Protection
 
@@ -162,11 +173,11 @@ For customers using SSO, password policy is governed by their identity provider.
 
 ## Single Sign-On (SSO)
 
-Light supports Single Sign-On so that employees can log in using their company's identity provider rather than managing a separate username and password. Light's SSO is powered by Auth0.
+Light supports Single Sign-On so that employees can log in using their company's identity provider rather than managing a separate username and password. Light's SSO is powered by a managed authentication layer.
 
 ### How SSO Works
 
-SSO is configured at the organization level in coordination with Light's team — there is no self-service SSO setup screen in the Light app. To enable SSO, contact your Light representative and provide:
+Light's team configures SSO at the organisation level, so setup happens through your Light representative rather than in the app. To enable SSO, contact them and provide:
 
 1. Your identity provider type (e.g., Okta, Azure AD, Google Workspace, OneLogin).
 2. The relevant connection details for your provider:
@@ -174,16 +185,7 @@ SSO is configured at the organization level in coordination with Light's team �
    - For **OpenID Connect (OIDC)** providers: Client ID, Client Secret, and discovery endpoint.
 3. The user attributes you'd like mapped (e.g., email, first name, last name).
 
-Light's team will configure the connection on the Auth0 backend and test it with you before going live.
-
-### User Provisioning
-
-SSO controls how users authenticate — it does not create their Light accounts. Light does **not** support just-in-time (JIT) provisioning from your identity provider: users are not created on first sign-in, so each user must already exist in Light before they can sign in through SSO. A user who authenticates successfully at your identity provider but has no matching Light account will be denied access.
-
-Users can be created in either of two ways:
-
-- **Manually**, under **Business partners > Users**, using the same email address they will present from your identity provider.
-- **Automatically from your HR system.** Light's HRM integration imports employees, keeps their active/inactive status in step, and assigns a default role — so joiners and leavers are handled without manual steps. See [HRM Integration (Finch)](/articles/11-integrations/11-8-hrm-finch).
+Light's team will configure the connection on Light's side and test it with you before going live.
 
 ### SAML Configuration
 
@@ -197,5 +199,5 @@ This callback URL is the same for all identity providers. Share your SAML metada
 
 ## Related Articles
 
-- [Security Architecture](/articles/13-security/13-1-security-architecture)
-- [Data Encryption and Storage](/articles/13-security/13-2-data-encryption-storage)
+- Security Architecture
+- Data Encryption and Storage
