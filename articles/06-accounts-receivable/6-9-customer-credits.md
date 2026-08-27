@@ -24,6 +24,14 @@ A credit moves from Posted → Partially cleared → Cleared as it is applied to
 2. Fill in the form (customer, entity, currency, lines, etc.)
 3. Click **Create** — the credit opens in **Draft**
 
+### Applying Line-Item Discounts
+
+When adding line items to a customer credit, you can apply a discount to each line in the **Discount** column:
+
+- **Percentage discount** — enter a percentage (e.g., `10` for 10% off)
+- **Fixed-amount discount** — enter a fixed amount in the credit's currency
+
+The total discount is shown in the totals summary at the bottom of the credit, along with any tax amounts.
 ### Tax Calculation
 
 Customer credits support tax calculation through your configured tax engine. If you use **Avatax** or **Sphere**, line items display the tax engine name as a badge in the **Tax code** column (e.g., "Avatax (P0000000)" or "Sphere"). If you use Light's built-in tax codes, you'll see a dropdown selector in that column instead.
