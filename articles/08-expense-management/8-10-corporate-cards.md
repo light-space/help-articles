@@ -38,7 +38,7 @@ Use for employee expenses like travel or supplies.
 
 5. Click **Create card** (or **Order card** for physical cards)
 
-Physical cards display a **Physical** badge on the card visual throughout Light.
+Physical cards display a **Physical** badge on the card visual throughout Light. Once ordered, you can track the delivery status in the card list and card details—see [Physical Card Delivery Tracking](#physical-card-delivery-tracking) below.
 
 ### Vendor Cards
 
@@ -108,7 +108,7 @@ Temporarily freeze a card without closing it:
 3. The card is immediately frozen — no transactions allowed
 
 To unfreeze:
-1. Click **Activate card**
+1. Click **Unfreeze card**
 2. For physical cards, you'll see a confirmation dialog: "By activating, you confirm you are in physical possession of your card." Click **Activate** to proceed.
 3. The card is immediately active again
 
@@ -126,6 +126,33 @@ A closed card cannot be reactivated. Issue a new card if needed.
 ### Add to Wallet
 
 Employee card owners can add their card to Apple Pay or Google Pay directly from the card details drawer using the **Add to wallet** button.
+
+## Physical Card Delivery Tracking
+
+When you order a physical card, Light tracks the delivery progress and displays the current status in both the card list (in the **Delivery status** column) and the card details drawer.
+
+### Delivery Statuses
+
+| Status | Description |
+|---|---|
+| **Created** | Your card order is being prepared |
+| **Shipped** | Your card is on its way. A tracking number appears in the card details if available. |
+| **Delivered** | Your card has been delivered. An activation reminder appears in the card details with instructions. |
+| **Rejected** | The card provider was unable to produce the card. An error message appears in the card details explaining why. |
+
+### Activating Your Physical Card
+
+Once your card status is **Delivered**, you'll see an activation reminder in the card details drawer. To activate:
+
+1. Make sure the card is unfrozen (click **Unfreeze card** if needed)
+2. Insert the card into any chip reader and enter your PIN (reveal the PIN in the card details below)
+3. Alternatively, insert the card at an ATM
+
+Activation is only required once. After the first successful transaction, the activation reminder disappears.
+
+### If Your Card Is Rejected
+
+If the delivery status shows **Rejected**, the card provider was unable to produce your card. Open the card details drawer to view the error message from the provider. You may need to order a new card or contact support if the issue persists.
 
 ## Transactions
 
