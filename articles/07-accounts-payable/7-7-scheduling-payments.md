@@ -18,6 +18,8 @@ To prepare a payment batch:
 4. Optionally, use the **message** icon to add a comment
 5. Click **Submit for approval** to send the batch for approval
 
+Note: For certain bank and payment rail combinations (such as HSBC BACS), Light automatically submits the payment instruction to the bank ahead of your chosen payment date to meet bank lead-time requirements. Your chosen payment date remains the settlement date - this just ensures the bank receives the instruction in time.
+
 ## Payment Batch States
 
 After submission, the batch itself is simply pending, approved, or declined, while the bills inside it move through these states:
