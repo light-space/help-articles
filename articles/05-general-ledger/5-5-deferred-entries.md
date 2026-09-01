@@ -63,6 +63,8 @@ Navigate to [**Settings (gear icon) → Releases templates**](https://app.light.
    - **Accumulate past amounts**: Whether to accumulate past period amounts
 4. Click **Create**
 
+> **Note:** The Contra account (and, where applicable, the Contract Asset, Additions, Disposal, Profit, or Loss account) on a release template cannot be an Accounts Payable or Accounts Receivable account. Selecting one returns a validation error when you create or edit the template, and posting a document against an older template that already uses one will also be blocked — pick a different contra account to continue.
+
 ### Editing a Template
 
 Open a template and click **Edit** to modify its fields. Click **Save** when done.
