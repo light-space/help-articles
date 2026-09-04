@@ -1,264 +1,69 @@
 # API Access and Custom Integrations
 
-Light's REST API covers integrations beyond the pre-built connectors. Use it to create and manage transactions, read your financial data, and automate accounting workflows from any system.
+> **What's this page about: **What Light's REST API is for, who can use it, how to get access, and where the documentation lives. The technical detail (authentication, every endpoint, error codes, rate limits) is maintained in one place, the API documentation at light.inc/docs, so it is not repeated here.
 
-[Open API documentation →](https://docs.light.inc)
+## On this page
 
-## What is this page about
-
-This page covers how to authenticate against the Light API, which resources it exposes, how to create and query records, and the rate limits and error codes to build around. It assumes you are comfortable making HTTP requests and reading JSON.
-
-**On this page**
-
-- API overview
-- Available API resources
-- Authentication
-- Creating transactions via API
-- Querying data
-- Rate limits
-- Error handling
-- Custom integration examples
-- Troubleshooting
-- API documentation and support
+- What you can do with the API
+- Who it is for
+- Getting access
+- Where to read next
+- Connecting an AI assistant instead
+- Rate limits and support
 - Related articles
 
-## API overview
+Light's REST API lets any system create and read the same records you work with in Light: bills, sales invoices, journal entries, customers, vendors, the chart of accounts and the ledger itself. Use it where a pre-built integration does not exist.
 
-The Light API is organised around REST and uses standard HTTP response codes, authentication, and verbs. Most endpoints accept and return JSON-encoded data in **camelCase** format. The base URL for all API requests is:
+[Open in Light →](https://app.light.inc/settings/api-keys)
 
-```javascript
-https://api.light.inc
-```
+[Open API documentation →](https://light.inc/docs)
 
-Some fields use enumerated (enum) values to represent specific states or types. Light documents these enums and may add new values over time, so handle unknown enum values gracefully rather than relying on exhaustive matching.
+## What you can do with the API
 
-## Available API resources
+- Push bills from a procurement or AP system, with line items and the PDF, straight into your approval flow
+- Create customers and sales invoices from a CRM or billing system, and send them
+- Post journal entries (accruals, reclassifications, corrections) from a close checklist or a spreadsheet tool
+- Pull the general ledger, account balances and every accounting document into a data warehouse or BI tool
+- Keep vendors, customers and products in sync with a master-data system
 
-The API provides endpoints for managing the following resources:
+The API does not send webhooks, does not expose reports beyond the general ledger summary, and does not list tax codes. [Choosing an endpoint](https://light.inc/docs/concepts/choosing-an-endpoint) maps common jobs to the calls that do them and lists what is not available.
 
-- **Accounting Documents**: list and query all accounting documents across types
-- **Attachments**: upload, list, and manage document attachments
-- **Authorization**: the OAuth 2.0 authorisation flow, rather than a queryable resource like the others. See Authentication below
-- **Bank Accounts**: create and access bank accounts. Creating a bank account also creates its linked ledger account atomically
-- **Card Balance Accounts**: access card balance accounts, statements, and total spend
-- **Card Customers**: retrieve the card integration public key
-- **Card Transactions**: list, post, and update card transactions and receipts
-- **Cards**: create, freeze, unfreeze, and manage corporate cards
-- **Companies**: access company configuration, such as currency settings
-- **Contracts**: create, publish, renew, terminate, and manage contracts
-- **Credit Notes**: create, list, and link credit notes to invoice payables
-- **Custom Properties**: access custom property groups
-- **Customer Credits**: manage customer credit documents
-- **Customers**: create, list, activate, and archive customers
-- **Entities**: list company entities
-- **Exchange**: retrieve currency exchange rates
-- **Expenses**: list expenses and submit reimbursements
-- **Invoice Approvals**: retrieve invoice approval status
-- **Invoice Payables**: create, approve, decline, mark as paid, and manage bills and their line items
-- **Invoice Receivables**: create, update, open, reset, and send sales invoices
-- **Journal Entries**: create journal entries programmatically
-- **Ledger Transactions**: query ledger transaction lines
-- **Ledger Accounts**: list the chart of accounts
-- **Products**: manage your product catalogue
-- **Purchase Orders**: create, close, cancel, and manage purchase orders and lines
-- **User Comments**: create, list, and manage comments on records
-- **Users**: list users, manage reimbursement configuration
-- **Vendors**: create, list, update, and manage vendors
+## Who it is for
 
-For full endpoint details, see the API Reference (click "API Reference" in the top navigation).
+Anyone who can make HTTP requests, or who works with someone who can. If you are a finance user working out what an integration could do, the [Concepts](https://light.inc/docs/concepts/how-light-records-money) pages explain how Light keeps books in plain language: what a document is, why a posting has two sides, how to read the amounts, what a closed period blocks. They are written for you, not for developers.
 
-## Authentication
+## Getting access
 
-You can authenticate to the Light API using **API keys** or **OAuth 2.0**.
+1. Go to **Settings (gear icon) → API keys**
+2. Click **Create key**, choose the roles the key should have, and copy the key. Light shows it once.
+3. Give each integration its own key with the narrowest roles that work. A key can do exactly what its roles can do, and it appears in the audit trail as its own actor. Use the IP allowlist if the calling system has a fixed address.
 
-All API requests must be made over HTTPS. Calls made over plain HTTP will fail. Make sure your HTTP client follows redirects and forwards the `Authorization` header, as some endpoints may redirect to other URLs.
+Integrations that act on behalf of individual users (submitting an expense as that person, for example) use OAuth 2.0 instead. Contact **help@light.inc** to set up a client.
 
-### API keys
+> **Security**: never put an API key in client-side code, a public repository or a shared document. Use environment variables or a secrets manager.
 
-To create an API key:
+## Where to read next
 
-1. Log in to Light and navigate to **Settings > API Keys**
-2. Click **Create key**
-3. Copy the generated API key and store it securely, since Light shows it once
+- [Authentication](https://light.inc/docs/getting-started/authentication): API keys and OAuth, with request examples
+- [Concepts](https://light.inc/docs/concepts/how-light-records-money): how Light keeps books, for readers who are not developers
+- [Choosing an endpoint](https://light.inc/docs/concepts/choosing-an-endpoint): common jobs mapped to the calls that do them
+- [Create an invoice payable](https://light.inc/docs/examples/create-invoice-payable): a worked example, end to end
+- [API reference](https://light.inc/docs/api-reference): every endpoint, with notes on behaviour the specification leaves out
 
-Light API keys are linked to roles the same way user accounts are. The roles assigned to the API key determine what actions the key can perform.
+Developers and AI agents can read the same documentation as plain text, starting from [light.inc/docs/llms.txt](https://light.inc/docs/llms.txt).
 
-To authenticate with an API key, include the `Authorization` header using **Basic** authentication:
+## Connecting an AI assistant instead
 
-```javascript
-Authorization: Basic YOUR_API_KEY
-```
+If what you want is to ask questions of your Light data, or have an assistant draft entries for you to approve, you do not need the REST API. Light has an MCP server that Claude and other AI clients connect to directly, acting as you with your permissions. See [Connect your AI assistant to Light](https://light.inc/help/ai-features/how-to-use-light-mcp).
 
-> **Security**: Never expose API keys in client-side code, public repositories, or shared documents. Use environment variables or a secrets manager.
+## Rate limits and support
 
-### OAuth 2.0
+The defaults are 300 requests a minute per user and 100,000 a day per organisation. Light can agree different limits with your company. The headers to watch and how to back off are in [Rate limits](https://light.inc/docs/getting-started/rate-limits).
 
-For integrations that act on behalf of users, Light supports the OAuth 2.0 authorization code flow:
-
-1. Contact Light support at **help@light.inc** to set up your account for OAuth 2.0
-2. You'll receive a `client_id` and `client_secret`, and provide Light with your redirect URI
-3. Initiate the flow by directing users to:
-
-```javascript
-https://api.light.inc/oauth/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI
-```
-
-1. After authorization, exchange the authorization code for an access token:
-
-```javascript
-curl -X POST https://api.light.inc/oauth/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=authorization_code&code=AUTHORIZATION_CODE&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
-```
-
-1. Use the returned access token in subsequent requests:
-
-```javascript
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
-
-The response also includes a `refresh_token` and `expires_in` value. When the access token expires, refresh it:
-
-```javascript
-curl -X POST https://api.light.inc/oauth/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=refresh_token&refresh_token=YOUR_REFRESH_TOKEN&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
-```
-
-Store your tokens securely and update the refresh token after each refresh, as the old one is invalidated.
-
-For a full implementation example (Node.js/Express), see the OAuth Callback example in the API documentation.
-
-## Creating transactions via API
-
-A common use case is creating invoice payables (bills) from an external system.
-
-**Example**: Create a bill in Light from your procurement system
-
-```javascript
-curl -X POST https://api.light.inc/v1/invoice-payables \
-  -H "Authorization: Basic YOUR_API_KEY" \
-  -H "Content-Type: application/json;charset=UTF-8" \
-  -d '{
-    "vendorId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-    "amount": 100000,
-    "currency": "USD"
-  }'
-```
-
-Note that amounts are specified in **cents** (e.g., 100000 = $1,000.00). Light creates the invoice payable and returns its ID and metadata.
-
-You can also create sales invoices, journal entries, purchase orders, and other document types through their respective endpoints.
-
-## Querying data
-
-Retrieve existing records using GET endpoints with sorting, filtering, and pagination:
-
-**Example**: List accounting documents sorted by date
-
-```javascript
-curl -X GET "https://api.light.inc/v1/accounting-documents/accounting-documents?sort=documentDate:desc&limit=50" \
-  -H "Authorization: Basic YOUR_API_KEY"
-```
-
-### Sorting
-
-Sort using the format `field:direction`. Separate multiple sort fields with commas.
-
-Available directions: `asc`, `desc`
-
-Example: `sort=amount:desc,createdAt:asc`
-
-### Filtering
-
-Filter using the format `field:operator:value`. Separate multiple filters with commas.
-
-Available operators: `eq`, `ne`, `in`, `not_in`, `gt`, `gte`, `lt`, `lte`
-
-For `in` and `not_in` operators, separate multiple values with the pipe character (`|`).
-
-Example: `filter=state:in:IN_DRAFT|SCHEDULED|PAID,amount:gte:500,vendorId:ne:null`
-
-### Pagination
-
-Results are paginated. Use the `limit` parameter to control page size (default: 50, maximum: 200). For cursor-based pagination, provide `0` as the cursor for the initial request.
-
-## Rate limits
-
-The Light API enforces two rate limits. These are the standard defaults, and Light can agree different limits with your company:
-
-- **300 requests per minute** per user. Every API key and OAuth token belonging to one user draws on that same allowance, so adding keys does not add capacity
-- **100,000 requests per day** across your whole organisation, shared by all users, resetting at midnight UTC
-
-Exceeding a limit returns a `429 Too Many Requests` response with these headers:
-
-- `X-RateLimit-Limit`: maximum capacity
-- `X-RateLimit-Remaining`: remaining capacity
-- `X-RateLimit-Reset`: Unix timestamp when the limit resets
-- `Retry-After`: recommended seconds to wait before retrying
-
-Best practices for staying within limits: monitor `X-RateLimit-Remaining` before large operations, implement exponential backoff on retries, respect the `Retry-After` header, and spread scheduled jobs across different times.
-
-If your use case requires higher limits, contact Light support at **help@light.inc**.
-
-## Error handling
-
-The API returns standard HTTP status codes:
-
-- **200 OK**: request successful
-- **400 Bad Request**: invalid request, such as malformed data or missing required fields
-- **401 Unauthorized**: API credentials invalid or missing
-- **403 Forbidden**: insufficient permissions for the requested action
-- **404 Not Found**: resource not found
-- **429 Too Many Requests**: rate limit exceeded, check the `Retry-After` header
-- **500 Internal Server Error**: server error, contact Light support with the request details
-
-## Custom integration examples
-
-**Example 1: Procurement system to AP automation**
-
-1. Procurement system approves a purchase
-2. API creates an invoice payable via `POST /v1/invoice-payables` with vendor ID and amount
-3. API adds line items via `POST /v1/invoice-payables/{id}/line-items`
-4. Approval workflow triggers via `POST /v1/invoice-payables/{id}/approve`
-5. Invoice enters Light's standard payment processing
-6. (Optional) If you handle payment externally, record the payment via `POST /v1/invoice-payables/{id}/mark-as-paid` to close the bill in Light
-
-**Example 2: CRM to invoicing**
-
-1. CRM closes a deal and records the customer
-2. API creates a customer via `POST /v1/customers` (or looks up existing via `GET /v1/customers`)
-3. API creates an invoice via `POST /v1/invoice-receivables` with customer and line items
-4. API opens the invoice via `POST /v1/invoice-receivables/{id}/open`
-5. API sends the invoice email via `POST /v1/invoice-receivables/{id}/send-email`
-
-**Example 3: Financial reporting dashboard**
-
-1. Dashboard queries ledger accounts via `GET /v1/ledger-accounts`
-2. Retrieves transaction lines via `GET /v1/ledger-transaction-lines` with date filters
-3. Aggregates data for custom visualisations
-4. Refreshes on a schedule, respecting rate limits
-
-## Troubleshooting
-
-**401 Unauthorized**: Verify your API key is correct and hasn't been revoked. Check that the `Authorization` header uses `Basic` scheme (for API keys) or `Bearer` scheme (for OAuth tokens).
-
-**400 Bad Request**: Verify request JSON is valid and all required fields are provided. Check that amounts are in cents (integer) and IDs are valid UUIDs.
-
-**403 Forbidden**: The API key's assigned role may not have permission for this action. Check role permissions in Settings > API Keys.
-
-**429 Too Many Requests**: Implement exponential backoff and check the `Retry-After` header. Consider spreading requests over time.
-
-**Redirect issues**: Ensure your HTTP client follows redirects and forwards the `Authorization` header to redirected URLs.
-
-## API documentation and support
-
-- **Full API reference**: [docs.light.inc](https://docs.light.inc), which includes endpoint details, request and response schemas, and code examples
-- **Support**: Contact **help@light.inc** for API integration help or to request OAuth 2.0 setup or higher rate limits
+For help with an integration, higher limits or OAuth setup, contact **help@light.inc**.
 
 ## Related articles
 
 - [Integrations overview](https://light.inc/help/integrations/integrations-overview)
+- [Connect your AI assistant to Light](https://light.inc/help/ai-features/how-to-use-light-mcp)
 - [Data import and migration tools](https://light.inc/help/integrations/data-import)
-- [Data migration from E-Conomic](https://light.inc/help/integrations/migration-economic)
-- [Data migration from QuickBooks](https://light.inc/help/integrations/migration-quickbooks)
