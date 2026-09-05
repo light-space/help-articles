@@ -30,7 +30,7 @@ The API does not send webhooks, does not expose reports beyond the general ledge
 
 ## Who it is for
 
-Anyone who can make HTTP requests, or who works with someone who can. If you are a finance user working out what an integration could do, the [Concepts](https://light.inc/docs/concepts/how-light-records-money) pages explain how Light keeps books in plain language: what a document is, why a posting has two sides, how to read the amounts, what a closed period blocks. They are written for you, not for developers.
+Anyone who can make HTTP requests, or who works with someone who can. Whether you are a developer without an accountant beside you or a finance user working out what an integration could do, start with the [Concepts](https://light.inc/docs/concepts/how-light-records-money) pages. They explain how Light keeps books in plain language: what a document is, why a posting has two sides, how to read the amounts, what a closed period blocks.
 
 ## Getting access
 
@@ -45,7 +45,7 @@ Integrations that act on behalf of individual users (submitting an expense as th
 ## Where to read next
 
 - [Authentication](https://light.inc/docs/getting-started/authentication): API keys and OAuth, with request examples
-- [Concepts](https://light.inc/docs/concepts/how-light-records-money): how Light keeps books, for readers who are not developers
+- [Concepts](https://light.inc/docs/concepts/how-light-records-money): how Light keeps books, for anyone reading without an accountant
 - [Choosing an endpoint](https://light.inc/docs/concepts/choosing-an-endpoint): common jobs mapped to the calls that do them
 - [Create an invoice payable](https://light.inc/docs/examples/create-invoice-payable): a worked example, end to end
 - [API reference](https://light.inc/docs/api-reference): every endpoint, with notes on behaviour the specification leaves out
