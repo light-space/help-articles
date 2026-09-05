@@ -30,6 +30,8 @@ Astra runs four types of analyses:
 
 Beyond Light's four built-in analyses, any company can now create its own scheduled AI agents from **Settings > Assistant > Agents**, using the **Create agent** button. Custom agents run on a schedule you define and are separate from Astra — they don't share Astra's Company Memory or investigate the same error feed. Creating or editing a custom agent requires the Company Admin role; this feature is currently in Beta and may still change.
 
+> Good to know: The App Store also lists ready-made agent templates (marked with an "Agent template" label). Starting a new agent from a template pre-fills the name and instructions in the New agent form — you can still edit them, pick a schedule, and click **Create** as usual.
+
 ## Findings and Delivery
 
 Each finding Astra reports includes:
