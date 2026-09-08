@@ -69,6 +69,8 @@ When clearing involves FX differences:
 
 The realized FX gain or loss is always calculated against the original posting rate of the invoice. Any period-end revaluation booked in the meantime uses the separate unrealized FX gain/loss account and does not change the realized amount recognized at clearing — see [FX revaluations](/mnt/help-articles/articles/05-general-ledger/5-10-fx-revaluations.md).
 
+> **Good to know:** The rate used for each side of a clearing is each document's own valuation date, which normally matches its posting date (Light falls back to the most recent published rate if none exists for that exact day). If you reset and re-date a posted document before it settles, its valuation date moves with the new posting date unless you explicitly set a different rate date — which means re-dating can change, or even eliminate, the realized FX/CTA that clearing recognizes.
+
 ## Realized vs. Unrealized FX Gains/Loss
 
 **Unrealized FX Gain/Loss**
