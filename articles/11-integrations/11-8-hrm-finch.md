@@ -39,7 +39,7 @@ Entity comes from the HRM field you nominate. Until that mapping is in place, Li
 
 **Note:** The sync covers your employee directory. Pay and payroll figures stay in your HRM system, since Light requests only directory, individual, and employment data from Finch.
 
-Light can also carry an HRM field such as department, team, or business unit into Light **groups**. Ask Light to add that mapping when you set up.
+Light can also carry an HRM field such as department, team, or business unit into Light **groups**. Ask Light to add that mapping when you set up. You can map more than one HRM field (for example, department and seniority) into groups at the same time - a synced user is added to a group for each mapped value. Light only manages the group memberships it assigned through the sync, so if an admin adds a synced user to another group by hand, that manual membership is left alone on later syncs.
 
 ## Sync frequency
 
