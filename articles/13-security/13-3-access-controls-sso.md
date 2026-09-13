@@ -10,6 +10,8 @@ User management lives under **Business partners > Users** in the main sidebar na
 
 The **Users** tab lists all users in your organization, showing their full name, email, roles, groups, and city. You can search and filter the list, customize which columns are shown via the **Columns** button, and create new users with **+ Create user**.
 
+An **Entity** column is available from the **Columns** menu (off by default) to show which legal entity each user is assigned to. You can also filter the list by entity — this filter can surface entities that have been deactivated or hidden, so it's useful for finding users still assigned to an entity that's no longer active.
+
 Clicking on a user opens their detail form, where an admin can view or edit:
 
 - **First name** and **Last name**
