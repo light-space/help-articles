@@ -56,6 +56,8 @@ The matched transactions move from the **Unmatched** tab to the **Matched** tab.
 
 > Good to know: You can match multiple bank transactions to a single ledger entry or vice versa. The Difference indicator helps you verify that the selected items balance before confirming.
 
+> Good to know: If the bank transaction date falls in a closed or locked accounting period, Light no longer blocks the match — instead it prompts you to **choose a clearing date** in an open period, then click **Match** to complete the reconciliation on that date. When resolving a difference with allocations, you can also edit the payment date on each line, and Light recalculates the FX rate (and converted amount) based on the date you enter.
+
 ## Running Auto Reconcile
 
 Instead of matching transactions one by one, you can let Light's matching engine do the work:
