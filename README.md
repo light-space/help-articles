@@ -1,2 +1,2 @@
 # help-articles
-Where all help articles are stored
+Only saved for IFRS articles
